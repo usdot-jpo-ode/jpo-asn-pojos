@@ -89,7 +89,7 @@ public class AudioLink extends Asn1Sequence {
 		}
 	}
 
-	AudioLink() {
+	public AudioLink() {
 		super(true);
 	}
 }

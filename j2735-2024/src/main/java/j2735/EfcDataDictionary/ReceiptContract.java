@@ -61,7 +61,7 @@ public class ReceiptContract extends Asn1Sequence {
 		}
 	}
 
-	ReceiptContract() {
+	public ReceiptContract() {
 		super(false);
 	}
 }

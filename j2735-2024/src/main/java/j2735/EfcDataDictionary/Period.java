@@ -45,7 +45,7 @@ public class Period extends Asn1Sequence {
 	@JsonProperty("endOfPeriod")
 	private Asn1GeneralizedTime endOfPeriod;
 
-	Period() {
+	public Period() {
 		super(false);
 	}
 }

@@ -50,12 +50,12 @@ public class CommonContainer extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegionInfo extends Asn1SequenceOf<RegionInfo> {
-		SequenceOfRegionInfo() {
+		public SequenceOfRegionInfo() {
 			super(RegionInfo.class, 1L, 4L);
 		}
 	}
 
-	CommonContainer() {
+	public CommonContainer() {
 		super(true);
 	}
 }

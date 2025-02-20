@@ -73,7 +73,7 @@ public class RptCommSysPerfEvents extends Asn1Choice {
 	@JsonProperty("jammingDetect")
 	private Asn1Null jammingDetect;
 
-	RptCommSysPerfEvents() {
+	public RptCommSysPerfEvents() {
 		super(true);
 	}
 

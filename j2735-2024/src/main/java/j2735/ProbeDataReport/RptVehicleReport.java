@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RptVehicleReport extends Asn1SequenceOf<NtcipEssData> {
 
-	RptVehicleReport() {
+	public RptVehicleReport() {
 		super(NtcipEssData.class, 1L, 32L);
 	}
 }

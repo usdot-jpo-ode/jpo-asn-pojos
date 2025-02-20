@@ -50,12 +50,12 @@ public class LaneClosureContainer extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfLaneStatus extends Asn1SequenceOf<LaneInfo> {
-		SequenceOfLaneStatus() {
+		public SequenceOfLaneStatus() {
 			super(LaneInfo.class, 1L, 10L);
 		}
 	}
 
-	LaneClosureContainer() {
+	public LaneClosureContainer() {
 		super(true);
 	}
 }

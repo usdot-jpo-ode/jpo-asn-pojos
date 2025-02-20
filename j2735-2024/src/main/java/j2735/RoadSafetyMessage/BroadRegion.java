@@ -44,7 +44,7 @@ public class BroadRegion extends Asn1Sequence {
 	@JsonProperty("broadArea")
 	private BroadRegionArea broadArea;
 
-	BroadRegion() {
+	public BroadRegion() {
 		super(true);
 	}
 }

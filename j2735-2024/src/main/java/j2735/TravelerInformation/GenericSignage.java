@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class GenericSignage extends Asn1SequenceOf<GenericSignageSequence> {
 
-	GenericSignage() {
+	public GenericSignage() {
 		super(GenericSignageSequence.class, 1L, 16L);
 	}
 }

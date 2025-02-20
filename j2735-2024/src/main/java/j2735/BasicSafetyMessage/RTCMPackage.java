@@ -50,7 +50,7 @@ public class RTCMPackage extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "RTCMmessage")
 	private RTCMmessageList msgs;
 
-	RTCMPackage() {
+	public RTCMPackage() {
 		super(true);
 	}
 }

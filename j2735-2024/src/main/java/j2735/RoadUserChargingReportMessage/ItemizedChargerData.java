@@ -70,7 +70,7 @@ public class ItemizedChargerData extends Asn1Sequence {
 		}
 	}
 
-	ItemizedChargerData() {
+	public ItemizedChargerData() {
 		super(true);
 	}
 }

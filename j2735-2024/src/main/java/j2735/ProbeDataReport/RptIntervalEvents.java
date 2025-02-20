@@ -83,7 +83,7 @@ public class RptIntervalEvents extends Asn1Sequence {
 		}
 	}
 
-	RptIntervalEvents() {
+	public RptIntervalEvents() {
 		super(true);
 	}
 }

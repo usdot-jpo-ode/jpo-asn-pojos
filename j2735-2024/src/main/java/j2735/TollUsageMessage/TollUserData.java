@@ -100,7 +100,7 @@ public class TollUserData extends Asn1Sequence {
 		}
 	}
 
-	TollUserData() {
+	public TollUserData() {
 		super(true);
 	}
 }

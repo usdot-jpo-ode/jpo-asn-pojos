@@ -80,7 +80,7 @@ public class BSMcoreData extends Asn1Sequence {
 	@JsonProperty("size")
 	private VehicleSize size;
 
-	BSMcoreData() {
+	public BSMcoreData() {
 		super(false);
 	}
 }

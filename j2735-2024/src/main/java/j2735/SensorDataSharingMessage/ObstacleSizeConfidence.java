@@ -47,7 +47,7 @@ public class ObstacleSizeConfidence extends Asn1Sequence {
 	@JsonProperty("heightConfidence")
 	private SizeValueConfidence heightConfidence;
 
-	ObstacleSizeConfidence() {
+	public ObstacleSizeConfidence() {
 		super(false);
 	}
 }

@@ -89,7 +89,7 @@ public class CfgVehicleEvents extends Asn1Sequence {
 		}
 	}
 
-	CfgVehicleEvents() {
+	public CfgVehicleEvents() {
 		super(true);
 	}
 }

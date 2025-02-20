@@ -90,12 +90,12 @@ public class SupplementalVehicleExtensions extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SupplementalVehicleExtensions> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_SupplementalVehicleExtensions.class, 1L, 4L);
 		}
 	}
 
-	SupplementalVehicleExtensions() {
+	public SupplementalVehicleExtensions() {
 		super(true);
 	}
 }

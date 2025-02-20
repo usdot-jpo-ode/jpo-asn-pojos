@@ -47,12 +47,12 @@ public class RoadSafetyMessage extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfContent extends Asn1SequenceOf<ContentContainer> {
-		SequenceOfContent() {
+		public SequenceOfContent() {
 			super(ContentContainer.class, 1L, 4L);
 		}
 	}
 
-	RoadSafetyMessage() {
+	public RoadSafetyMessage() {
 		super(true);
 	}
 }

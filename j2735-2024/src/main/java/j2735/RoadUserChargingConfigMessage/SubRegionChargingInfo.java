@@ -45,7 +45,7 @@ public class SubRegionChargingInfo extends Asn1Sequence {
 	@JsonProperty("chargingFees")
 	private ChargingFees chargingFees;
 
-	SubRegionChargingInfo() {
+	public SubRegionChargingInfo() {
 		super(true);
 	}
 }

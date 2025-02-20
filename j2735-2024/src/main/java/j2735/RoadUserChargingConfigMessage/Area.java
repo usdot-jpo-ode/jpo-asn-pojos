@@ -49,7 +49,7 @@ public class Area extends Asn1Sequence {
 	@JsonProperty("chargingFees")
 	private ChargingFees chargingFees;
 
-	Area() {
+	public Area() {
 		super(true);
 	}
 }

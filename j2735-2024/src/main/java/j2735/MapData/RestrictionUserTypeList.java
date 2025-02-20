@@ -31,7 +31,7 @@ import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
 @JsonInclude(Include.NON_NULL)
 public class RestrictionUserTypeList extends Asn1SequenceOf<RestrictionUserType> {
 
-	RestrictionUserTypeList() {
+	public RestrictionUserTypeList() {
 		super(RestrictionUserType.class, 1L, 16L);
 	}
 

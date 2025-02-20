@@ -44,7 +44,7 @@ public class DMonthDay extends Asn1Sequence {
 	@JsonProperty("day")
 	private DDay day;
 
-	DMonthDay() {
+	public DMonthDay() {
 		super(false);
 	}
 }

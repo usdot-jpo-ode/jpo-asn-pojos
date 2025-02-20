@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class SignalHeadLocationList extends Asn1SequenceOf<SignalHeadLocation> {
 
-	SignalHeadLocationList() {
+	public SignalHeadLocationList() {
 		super(SignalHeadLocation.class, 1L, 20L);
 	}
 }

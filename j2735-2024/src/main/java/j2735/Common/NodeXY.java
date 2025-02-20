@@ -44,7 +44,7 @@ public class NodeXY extends Asn1Sequence {
 	@JsonProperty("attributes")
 	private NodeAttributeSetXY attributes;
 
-	NodeXY() {
+	public NodeXY() {
 		super(true);
 	}
 }

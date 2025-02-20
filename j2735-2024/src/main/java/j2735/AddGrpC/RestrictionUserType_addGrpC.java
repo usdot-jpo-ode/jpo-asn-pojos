@@ -41,7 +41,7 @@ public class RestrictionUserType_addGrpC extends Asn1Sequence {
 	@JsonProperty("emission")
 	private EmissionType emission;
 
-	RestrictionUserType_addGrpC() {
+	public RestrictionUserType_addGrpC() {
 		super(true);
 	}
 }

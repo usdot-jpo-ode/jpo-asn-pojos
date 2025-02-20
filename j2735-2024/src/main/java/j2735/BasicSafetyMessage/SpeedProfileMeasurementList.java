@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class SpeedProfileMeasurementList extends Asn1SequenceOf<SpeedProfileMeasurement> {
 
-	SpeedProfileMeasurementList() {
+	public SpeedProfileMeasurementList() {
 		super(SpeedProfileMeasurement.class, 1L, 20L);
 	}
 }

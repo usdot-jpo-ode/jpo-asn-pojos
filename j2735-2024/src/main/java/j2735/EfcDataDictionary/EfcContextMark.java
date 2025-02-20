@@ -74,7 +74,7 @@ public class EfcContextMark extends Asn1Sequence {
 		}
 	}
 
-	EfcContextMark() {
+	public EfcContextMark() {
 		super(false);
 	}
 }

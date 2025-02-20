@@ -70,7 +70,7 @@ public class Sample extends Asn1Sequence {
 		}
 	}
 
-	Sample() {
+	public Sample() {
 		super(false);
 	}
 }

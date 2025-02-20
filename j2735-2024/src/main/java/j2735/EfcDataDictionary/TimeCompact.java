@@ -85,7 +85,7 @@ public class TimeCompact extends Asn1Sequence {
 		}
 	}
 
-	TimeCompact() {
+	public TimeCompact() {
 		super(false);
 	}
 }

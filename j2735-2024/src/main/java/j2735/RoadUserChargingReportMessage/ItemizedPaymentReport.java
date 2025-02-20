@@ -55,12 +55,12 @@ public class ItemizedPaymentReport extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfChargerData extends Asn1SequenceOf<ItemizedChargerData> {
-		SequenceOfChargerData() {
+		public SequenceOfChargerData() {
 			super(ItemizedChargerData.class, 1L, 999L);
 		}
 	}
 
-	ItemizedPaymentReport() {
+	public ItemizedPaymentReport() {
 		super(true);
 	}
 }

@@ -58,7 +58,7 @@ public class RptTrafficMetrics extends Asn1Choice {
 	@JsonProperty("trfsigSpatTimingError")
 	private Asn1Null trfsigSpatTimingError;
 
-	RptTrafficMetrics() {
+	public RptTrafficMetrics() {
 		super(true);
 	}
 }

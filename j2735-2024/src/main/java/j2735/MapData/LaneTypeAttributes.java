@@ -60,7 +60,7 @@ public class LaneTypeAttributes extends Asn1Choice {
 	@JsonProperty("parking")
 	private LaneAttributes_Parking parking;
 
-	LaneTypeAttributes() {
+	public LaneTypeAttributes() {
 		super(true);
 	}
 }

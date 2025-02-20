@@ -72,7 +72,7 @@ public class DetectedVehicleData extends Asn1Sequence {
 	@JsonProperty("classConf")
 	private ClassificationConfidence classConf;
 
-	DetectedVehicleData() {
+	public DetectedVehicleData() {
 		super(true);
 	}
 }

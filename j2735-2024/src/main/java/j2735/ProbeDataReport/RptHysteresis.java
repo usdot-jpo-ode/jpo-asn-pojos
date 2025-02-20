@@ -53,7 +53,7 @@ public class RptHysteresis extends Asn1Sequence {
 	@JsonProperty("velocity")
 	private RptVelocity velocity;
 
-	RptHysteresis() {
+	public RptHysteresis() {
 		super(true);
 	}
 }

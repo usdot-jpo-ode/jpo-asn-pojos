@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class PathHistoryPointList extends Asn1SequenceOf<PathHistoryPoint> {
 
-	PathHistoryPointList() {
+	public PathHistoryPointList() {
 		super(PathHistoryPoint.class, 1L, 23L);
 	}
 }

@@ -50,7 +50,7 @@ public class WiperSet extends Asn1Sequence {
 	@JsonProperty("rateRear")
 	private WiperRate rateRear;
 
-	WiperSet() {
+	public WiperSet() {
 		super(false);
 	}
 }

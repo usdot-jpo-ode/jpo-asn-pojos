@@ -42,7 +42,7 @@ public class NodeOffsetPointXY_addGrpB extends Asn1Choice {
 	@JsonProperty("posB")
 	private Node_LLdms_80b posB;
 
-	NodeOffsetPointXY_addGrpB() {
+	public NodeOffsetPointXY_addGrpB() {
 		super(true);
 	}
 }

@@ -85,7 +85,7 @@ public class RptTransitVehData extends Asn1Sequence {
 		}
 	}
 
-	RptTransitVehData() {
+	public RptTransitVehData() {
 		super(true);
 	}
 }

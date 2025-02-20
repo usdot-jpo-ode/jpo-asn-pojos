@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class PreemptPriorityList extends Asn1SequenceOf<SignalControlZone> {
 
-	PreemptPriorityList() {
+	public PreemptPriorityList() {
 		super(SignalControlZone.class, 1L, 32L);
 	}
 }

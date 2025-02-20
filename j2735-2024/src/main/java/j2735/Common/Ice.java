@@ -41,7 +41,7 @@ public class Ice extends Asn1Sequence {
 	@JsonProperty("type")
 	private IceType type;
 
-	Ice() {
+	public Ice() {
 		super(true);
 	}
 }

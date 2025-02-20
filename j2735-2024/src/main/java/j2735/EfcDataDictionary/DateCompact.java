@@ -85,7 +85,7 @@ public class DateCompact extends Asn1Sequence {
 		}
 	}
 
-	DateCompact() {
+	public DateCompact() {
 		super(false);
 	}
 }

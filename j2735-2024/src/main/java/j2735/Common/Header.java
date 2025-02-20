@@ -50,7 +50,7 @@ public class Header extends Asn1Sequence {
 	@JsonProperty("msgIssueRevision")
 	private MsgCount msgIssueRevision;
 
-	Header() {
+	public Header() {
 		super(true);
 	}
 }

@@ -57,7 +57,7 @@ public class Connection extends Asn1Sequence {
 	@JsonProperty("connectionID")
 	private LaneConnectionID connectionID;
 
-	Connection() {
+	public Connection() {
 		super(false);
 	}
 }

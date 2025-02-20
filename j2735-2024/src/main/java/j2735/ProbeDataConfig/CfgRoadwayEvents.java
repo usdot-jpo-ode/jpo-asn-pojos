@@ -95,7 +95,7 @@ public class CfgRoadwayEvents extends Asn1Sequence {
 		}
 	}
 
-	CfgRoadwayEvents() {
+	public CfgRoadwayEvents() {
 		super(true);
 	}
 }

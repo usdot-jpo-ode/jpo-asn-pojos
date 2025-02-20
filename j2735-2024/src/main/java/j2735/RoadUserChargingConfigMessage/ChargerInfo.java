@@ -53,7 +53,7 @@ public class ChargerInfo extends Asn1Sequence {
 	@JsonProperty("chargingConfig")
 	private ChargingConfig chargingConfig;
 
-	ChargerInfo() {
+	public ChargerInfo() {
 		super(true);
 	}
 }

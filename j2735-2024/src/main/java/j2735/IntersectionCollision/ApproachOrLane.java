@@ -44,7 +44,7 @@ public class ApproachOrLane extends Asn1Choice {
 	@JsonProperty("lane")
 	private LaneID lane;
 
-	ApproachOrLane() {
+	public ApproachOrLane() {
 		super(false);
 	}
 }

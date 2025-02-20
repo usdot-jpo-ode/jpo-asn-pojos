@@ -57,12 +57,12 @@ public class OffsetSystem extends Asn1Sequence {
 		@JsonProperty("ll")
 		private NodeListLL ll;
 
-		OffsetChoice() {
+		public OffsetChoice() {
 			super(false);
 		}
 	}
 
-	OffsetSystem() {
+	public OffsetSystem() {
 		super(false);
 	}
 }

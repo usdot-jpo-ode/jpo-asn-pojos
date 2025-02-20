@@ -55,7 +55,7 @@ public class ChargesTable extends Asn1Choice {
 	@JsonDeserialize(using = WeightChargesTable.WeightChargesTableDeserializer.class)
 	private WeightChargesTable weightBased;
 
-	ChargesTable() {
+	public ChargesTable() {
 		super(true);
 	}
 }

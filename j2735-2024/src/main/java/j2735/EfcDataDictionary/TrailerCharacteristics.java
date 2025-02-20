@@ -47,7 +47,7 @@ public class TrailerCharacteristics extends Asn1Sequence {
 	@JsonProperty("trailerWeightUnladen")
 	private Int2Unsigned trailerWeightUnladen;
 
-	TrailerCharacteristics() {
+	public TrailerCharacteristics() {
 		super(false);
 	}
 }

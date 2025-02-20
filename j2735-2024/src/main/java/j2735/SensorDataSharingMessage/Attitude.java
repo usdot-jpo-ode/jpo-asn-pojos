@@ -47,7 +47,7 @@ public class Attitude extends Asn1Sequence {
 	@JsonProperty("yaw")
 	private YawDetected yaw;
 
-	Attitude() {
+	public Attitude() {
 		super(false);
 	}
 }

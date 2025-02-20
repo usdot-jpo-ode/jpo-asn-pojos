@@ -61,7 +61,7 @@ public class PaymentMeans extends Asn1Sequence {
 		}
 	}
 
-	PaymentMeans() {
+	public PaymentMeans() {
 		super(false);
 	}
 }

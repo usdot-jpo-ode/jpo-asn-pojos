@@ -53,7 +53,7 @@ public class TRRLocationType2 extends Asn1Sequence {
 	@JsonProperty("laneOffset")
 	private LaneOffset laneOffset;
 
-	TRRLocationType2() {
+	public TRRLocationType2() {
 		super(true);
 	}
 }

@@ -44,7 +44,7 @@ public class RoadSegmentReferenceID extends Asn1Sequence {
 	@JsonProperty("id")
 	private RoadSegmentID id;
 
-	RoadSegmentReferenceID() {
+	public RoadSegmentReferenceID() {
 		super(false);
 	}
 }

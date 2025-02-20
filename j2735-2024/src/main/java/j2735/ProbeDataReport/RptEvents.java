@@ -52,7 +52,7 @@ public class RptEvents extends Asn1Choice {
 	@JsonProperty("swerve")
 	private Asn1Boolean swerve;
 
-	RptEvents() {
+	public RptEvents() {
 		super(true);
 	}
 }

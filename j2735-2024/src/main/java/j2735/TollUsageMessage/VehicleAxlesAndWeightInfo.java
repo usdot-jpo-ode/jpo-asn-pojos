@@ -72,7 +72,7 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfVehWeightPerAxle extends Asn1SequenceOf<SequenceOfVehWeightPerAxleInteger> {
-		SequenceOfVehWeightPerAxle() {
+		public SequenceOfVehWeightPerAxle() {
 			super(SequenceOfVehWeightPerAxleInteger.class, 1L, 10L);
 		}
 	}
@@ -141,7 +141,7 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
 		}
 	}
 
-	VehicleAxlesAndWeightInfo() {
+	public VehicleAxlesAndWeightInfo() {
 		super(true);
 	}
 }

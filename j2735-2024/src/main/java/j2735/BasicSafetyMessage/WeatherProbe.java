@@ -50,7 +50,7 @@ public class WeatherProbe extends Asn1Sequence {
 	@JsonProperty("rainRates")
 	private WiperSet rainRates;
 
-	WeatherProbe() {
+	public WeatherProbe() {
 		super(true);
 	}
 }

@@ -59,7 +59,7 @@ public class TireData extends Asn1Sequence {
 	@JsonProperty("detection")
 	private TirePressureThresholdDetection detection;
 
-	TireData() {
+	public TireData() {
 		super(true);
 	}
 }

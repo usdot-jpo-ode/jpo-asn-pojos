@@ -56,7 +56,7 @@ public class NtcipWind extends Asn1Sequence {
 	@JsonProperty("gustDirection")
 	private NTCIPWindSensorGustDirection gustDirection;
 
-	NtcipWind() {
+	public NtcipWind() {
 		super(true);
 	}
 }

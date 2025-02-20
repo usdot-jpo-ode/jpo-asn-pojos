@@ -89,7 +89,7 @@ public class VehicleDescription extends Asn1Sequence {
 	@JsonProperty("soundLevel")
 	private SoundLevel soundLevel;
 
-	VehicleDescription() {
+	public VehicleDescription() {
 		super(true);
 	}
 }

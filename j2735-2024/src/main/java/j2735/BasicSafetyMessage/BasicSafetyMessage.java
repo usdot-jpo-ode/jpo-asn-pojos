@@ -52,19 +52,19 @@ public class BasicSafetyMessage extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfPartII extends Asn1SequenceOf<BSMpartIIExtension> {
-		SequenceOfPartII() {
+		public SequenceOfPartII() {
 			super(BSMpartIIExtension.class, 1L, 8L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_BasicSafetyMessage> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_BasicSafetyMessage.class, 1L, 4L);
 		}
 	}
 
-	BasicSafetyMessage() {
+	public BasicSafetyMessage() {
 		super(true);
 	}
 }

@@ -45,7 +45,7 @@ public class Point extends Asn1Choice {
 	@JsonProperty("relativePointCoordinates")
 	private RelativePosition3d relativePointCoordinates;
 
-	Point() {
+	public Point() {
 		super(false);
 	}
 }

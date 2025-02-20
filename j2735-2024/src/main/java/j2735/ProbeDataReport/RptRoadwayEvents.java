@@ -82,7 +82,7 @@ public class RptRoadwayEvents extends Asn1Choice {
 	@JsonProperty("drawBridgeActiv")
 	private Asn1Null drawBridgeActiv;
 
-	RptRoadwayEvents() {
+	public RptRoadwayEvents() {
 		super(true);
 	}
 }

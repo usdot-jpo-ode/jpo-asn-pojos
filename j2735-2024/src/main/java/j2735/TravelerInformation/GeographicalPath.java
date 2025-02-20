@@ -88,19 +88,19 @@ public class GeographicalPath extends Asn1Sequence {
 		@JsonProperty("oldRegion")
 		private ValidRegion oldRegion;
 
-		DescriptionChoice() {
+		public DescriptionChoice() {
 			super(true);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_GeographicalPath> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_GeographicalPath.class, 1L, 4L);
 		}
 	}
 
-	GeographicalPath() {
+	public GeographicalPath() {
 		super(true);
 	}
 }

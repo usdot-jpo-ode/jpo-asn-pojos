@@ -59,7 +59,7 @@ public class SessionLocation extends Asn1Sequence {
 		}
 	}
 
-	SessionLocation() {
+	public SessionLocation() {
 		super(false);
 	}
 }

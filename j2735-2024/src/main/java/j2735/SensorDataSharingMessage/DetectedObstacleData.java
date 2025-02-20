@@ -44,7 +44,7 @@ public class DetectedObstacleData extends Asn1Sequence {
 	@JsonProperty("obstSizeConfidence")
 	private ObstacleSizeConfidence obstSizeConfidence;
 
-	DetectedObstacleData() {
+	public DetectedObstacleData() {
 		super(false);
 	}
 }

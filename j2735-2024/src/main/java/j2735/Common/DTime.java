@@ -50,7 +50,7 @@ public class DTime extends Asn1Sequence {
 	@JsonProperty("offset")
 	private DOffset offset;
 
-	DTime() {
+	public DTime() {
 		super(false);
 	}
 }

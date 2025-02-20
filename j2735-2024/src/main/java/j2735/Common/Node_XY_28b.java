@@ -44,7 +44,7 @@ public class Node_XY_28b extends Asn1Sequence {
 	@JsonProperty("y")
 	private Offset_B14 y;
 
-	Node_XY_28b() {
+	public Node_XY_28b() {
 		super(false);
 	}
 }

@@ -62,12 +62,12 @@ public class CommonSafetyRequest extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_CommonSafetyRequest> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_CommonSafetyRequest.class, 1L, 4L);
 		}
 	}
 
-	CommonSafetyRequest() {
+	public CommonSafetyRequest() {
 		super(true);
 	}
 }

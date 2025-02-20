@@ -47,7 +47,7 @@ public class AbsolutePosition3d extends Asn1Sequence {
 	@JsonProperty("altitude")
 	private Altitude altitude;
 
-	AbsolutePosition3d() {
+	public AbsolutePosition3d() {
 		super(false);
 	}
 }

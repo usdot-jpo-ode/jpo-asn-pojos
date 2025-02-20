@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RptHysteresisRecord extends Asn1SequenceOf<RptHysteresis> {
 
-	RptHysteresisRecord() {
+	public RptHysteresisRecord() {
 		super(RptHysteresis.class, 1L, 20L);
 	}
 }

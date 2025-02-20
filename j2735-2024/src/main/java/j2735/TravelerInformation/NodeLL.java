@@ -44,7 +44,7 @@ public class NodeLL extends Asn1Sequence {
 	@JsonProperty("attributes")
 	private NodeAttributeSetLL attributes;
 
-	NodeLL() {
+	public NodeLL() {
 		super(true);
 	}
 }

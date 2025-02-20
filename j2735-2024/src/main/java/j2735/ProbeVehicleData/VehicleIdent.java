@@ -78,12 +78,12 @@ public class VehicleIdent extends Asn1Sequence {
 		@JsonProperty("rEquip")
 		private IncidentResponseEquipment rEquip;
 
-		VehicleClassChoice() {
+		public VehicleClassChoice() {
 			super(false);
 		}
 	}
 
-	VehicleIdent() {
+	public VehicleIdent() {
 		super(true);
 	}
 }

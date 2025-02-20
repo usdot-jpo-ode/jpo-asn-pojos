@@ -48,7 +48,7 @@ public class AttitudeConfidence extends Asn1Sequence {
 	@JsonProperty("yawConfidence")
 	private HeadingConfidence yawConfidence;
 
-	AttitudeConfidence() {
+	public AttitudeConfidence() {
 		super(false);
 	}
 }

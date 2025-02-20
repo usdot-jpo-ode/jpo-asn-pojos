@@ -44,7 +44,7 @@ public class AbsolutePosition2d extends Asn1Sequence {
 	@JsonProperty("gnssLat")
 	private Latitude gnssLat;
 
-	AbsolutePosition2d() {
+	public AbsolutePosition2d() {
 		super(false);
 	}
 }

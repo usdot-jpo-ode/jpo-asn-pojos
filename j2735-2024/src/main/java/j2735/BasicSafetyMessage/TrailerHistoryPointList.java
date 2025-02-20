@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class TrailerHistoryPointList extends Asn1SequenceOf<TrailerHistoryPoint> {
 
-	TrailerHistoryPointList() {
+	public TrailerHistoryPointList() {
 		super(TrailerHistoryPoint.class, 1L, 23L);
 	}
 }

@@ -73,19 +73,19 @@ public class EventInfo extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfEventRecurrence extends Asn1SequenceOf<EventRecurrence> {
-		SequenceOfEventRecurrence() {
+		public SequenceOfEventRecurrence() {
 			super(EventRecurrence.class, 1L, 5L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfAffectedVehicles extends Asn1SequenceOf<VehicleGroupAffected> {
-		SequenceOfAffectedVehicles() {
+		public SequenceOfAffectedVehicles() {
 			super(VehicleGroupAffected.class, 1L, 10L);
 		}
 	}
 
-	EventInfo() {
+	public EventInfo() {
 		super(true);
 	}
 }

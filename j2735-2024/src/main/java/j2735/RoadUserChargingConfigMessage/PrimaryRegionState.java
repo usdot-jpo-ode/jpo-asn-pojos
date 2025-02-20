@@ -45,7 +45,7 @@ public class PrimaryRegionState extends Asn1Sequence {
 	@JsonProperty("chargingFees")
 	private ChargingFees chargingFees;
 
-	PrimaryRegionState() {
+	public PrimaryRegionState() {
 		super(true);
 	}
 }

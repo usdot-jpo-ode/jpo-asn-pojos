@@ -51,7 +51,7 @@ public class SnapshotTime extends Asn1Sequence {
 	@JsonProperty("time2")
 	private SecondOfTime time2;
 
-	SnapshotTime() {
+	public SnapshotTime() {
 		super(false);
 	}
 }

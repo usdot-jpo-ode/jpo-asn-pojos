@@ -62,7 +62,7 @@ public class TollUsageAckMessage extends Asn1Sequence {
 		}
 	}
 
-	TollUsageAckMessage() {
+	public TollUsageAckMessage() {
 		super(true);
 	}
 }

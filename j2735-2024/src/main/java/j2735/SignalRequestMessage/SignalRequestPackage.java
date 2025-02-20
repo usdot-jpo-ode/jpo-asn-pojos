@@ -59,12 +59,12 @@ public class SignalRequestPackage extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SignalRequestPackage> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_SignalRequestPackage.class, 1L, 4L);
 		}
 	}
 
-	SignalRequestPackage() {
+	public SignalRequestPackage() {
 		super(true);
 	}
 }

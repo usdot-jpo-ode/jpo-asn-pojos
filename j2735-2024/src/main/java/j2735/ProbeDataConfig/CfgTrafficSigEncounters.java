@@ -69,7 +69,7 @@ public class CfgTrafficSigEncounters extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfIntersections extends Asn1SequenceOf<IntersectionID> {
-		SequenceOfIntersections() {
+		public SequenceOfIntersections() {
 			super(IntersectionID.class, 1L, 100L);
 		}
 	}
@@ -110,7 +110,7 @@ public class CfgTrafficSigEncounters extends Asn1Sequence {
 		}
 	}
 
-	CfgTrafficSigEncounters() {
+	public CfgTrafficSigEncounters() {
 		super(true);
 	}
 }

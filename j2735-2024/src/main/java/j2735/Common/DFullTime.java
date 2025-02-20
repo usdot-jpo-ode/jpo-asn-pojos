@@ -53,7 +53,7 @@ public class DFullTime extends Asn1Sequence {
 	@JsonProperty("minute")
 	private DMinute minute;
 
-	DFullTime() {
+	public DFullTime() {
 		super(false);
 	}
 }

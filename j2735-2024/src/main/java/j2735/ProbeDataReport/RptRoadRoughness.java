@@ -50,7 +50,7 @@ public class RptRoadRoughness extends Asn1Sequence {
 	@JsonProperty("horizontalVariationStdDev")
 	private StdDev horizontalVariationStdDev;
 
-	RptRoadRoughness() {
+	public RptRoadRoughness() {
 		super(true);
 	}
 }

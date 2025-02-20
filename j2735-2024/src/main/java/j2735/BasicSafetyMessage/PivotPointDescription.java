@@ -49,7 +49,7 @@ public class PivotPointDescription extends Asn1Sequence {
 	@JsonProperty("pivots")
 	private PivotingAllowed pivots;
 
-	PivotPointDescription() {
+	public PivotPointDescription() {
 		super(true);
 	}
 }

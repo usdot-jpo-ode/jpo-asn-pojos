@@ -78,7 +78,7 @@ public class CfgVehicleClass extends Asn1Sequence {
 	@JsonProperty("sevenOrMoreAxleMultiTrailerTrucks")
 	private Asn1Boolean sevenOrMoreAxleMultiTrailerTrucks;
 
-	CfgVehicleClass() {
+	public CfgVehicleClass() {
 		super(true);
 	}
 }

@@ -54,7 +54,7 @@ public class DetectedVRUData extends Asn1Sequence {
 	@JsonProperty("radius")
 	private AttachmentRadius radius;
 
-	DetectedVRUData() {
+	public DetectedVRUData() {
 		super(false);
 	}
 }

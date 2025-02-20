@@ -53,7 +53,7 @@ public class TariffClassDescription extends Asn1Sequence {
 	@JsonProperty("userClassId")
 	private UserClassId userClassId;
 
-	TariffClassDescription() {
+	public TariffClassDescription() {
 		super(false);
 	}
 }

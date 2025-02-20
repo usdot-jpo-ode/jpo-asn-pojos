@@ -45,7 +45,7 @@ public class WDMSFleetData extends Asn1Sequence {
 	@JsonProperty("routingAdvice")
 	private ITIStext routingAdvice;
 
-	WDMSFleetData() {
+	public WDMSFleetData() {
 		super(true);
 	}
 }

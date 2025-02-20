@@ -47,7 +47,7 @@ public class RegionOffsets extends Asn1Sequence {
 	@JsonProperty("zOffset")
 	private OffsetLL_B16 zOffset;
 
-	RegionOffsets() {
+	public RegionOffsets() {
 		super(false);
 	}
 }

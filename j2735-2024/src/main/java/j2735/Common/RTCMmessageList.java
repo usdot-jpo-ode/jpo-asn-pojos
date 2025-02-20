@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RTCMmessageList extends Asn1SequenceOf<RTCMmessage> {
 
-	RTCMmessageList() {
+	public RTCMmessageList() {
 		super(RTCMmessage.class, 1L, 5L);
 	}
 }

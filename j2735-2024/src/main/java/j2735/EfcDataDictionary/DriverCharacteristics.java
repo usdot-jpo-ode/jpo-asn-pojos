@@ -44,7 +44,7 @@ public class DriverCharacteristics extends Asn1Sequence {
 	@JsonProperty("tripPurpose")
 	private Int1Unsigned tripPurpose;
 
-	DriverCharacteristics() {
+	public DriverCharacteristics() {
 		super(false);
 	}
 }

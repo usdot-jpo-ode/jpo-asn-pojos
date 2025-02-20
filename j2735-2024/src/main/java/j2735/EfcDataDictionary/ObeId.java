@@ -44,7 +44,7 @@ public class ObeId extends Asn1Sequence {
 	@JsonProperty("equipmentObuId")
 	private EquipmentObuId equipmentObuId;
 
-	ObeId() {
+	public ObeId() {
 		super(false);
 	}
 }

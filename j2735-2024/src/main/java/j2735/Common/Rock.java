@@ -41,7 +41,7 @@ public class Rock extends Asn1Sequence {
 	@JsonProperty("type")
 	private RockType type;
 
-	Rock() {
+	public Rock() {
 		super(true);
 	}
 }

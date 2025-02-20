@@ -47,7 +47,7 @@ public class NtcipAirTemperature extends Asn1Sequence {
 	@JsonProperty("tempSensorHeight")
 	private NTCIPEssTemperatureSensorHeight tempSensorHeight;
 
-	NtcipAirTemperature() {
+	public NtcipAirTemperature() {
 		super(true);
 	}
 }

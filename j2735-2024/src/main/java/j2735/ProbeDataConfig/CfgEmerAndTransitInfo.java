@@ -49,7 +49,7 @@ public class CfgEmerAndTransitInfo extends Asn1Choice {
 	@JsonProperty("transitVehDoor")
 	private Asn1Boolean transitVehDoor;
 
-	CfgEmerAndTransitInfo() {
+	public CfgEmerAndTransitInfo() {
 		super(true);
 	}
 }

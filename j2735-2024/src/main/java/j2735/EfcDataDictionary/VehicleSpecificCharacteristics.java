@@ -50,7 +50,7 @@ public class VehicleSpecificCharacteristics extends Asn1Sequence {
 	@JsonProperty("futureCharacteristics")
 	private FutureCharacteristics futureCharacteristics;
 
-	VehicleSpecificCharacteristics() {
+	public VehicleSpecificCharacteristics() {
 		super(false);
 	}
 }

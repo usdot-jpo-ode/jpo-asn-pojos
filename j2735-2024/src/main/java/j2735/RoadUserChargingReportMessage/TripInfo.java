@@ -74,7 +74,7 @@ public class TripInfo extends Asn1Sequence {
 		}
 	}
 
-	TripInfo() {
+	public TripInfo() {
 		super(true);
 	}
 }

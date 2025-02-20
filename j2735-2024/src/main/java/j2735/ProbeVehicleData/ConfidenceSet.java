@@ -64,7 +64,7 @@ public class ConfidenceSet extends Asn1Sequence {
 	@JsonProperty("throttleConfidence")
 	private ThrottleConfidence throttleConfidence;
 
-	ConfidenceSet() {
+	public ConfidenceSet() {
 		super(true);
 	}
 }

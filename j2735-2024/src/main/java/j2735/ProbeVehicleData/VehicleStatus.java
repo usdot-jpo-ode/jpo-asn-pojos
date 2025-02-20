@@ -115,7 +115,7 @@ public class VehicleStatus extends Asn1Sequence {
 	@JsonProperty("gnssStatus")
 	private GNSSstatus gnssStatus;
 
-	VehicleStatus() {
+	public VehicleStatus() {
 		super(true);
 	}
 }

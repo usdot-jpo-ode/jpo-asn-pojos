@@ -50,7 +50,7 @@ public class ReceiptFinancialPart extends Asn1Sequence {
 	@JsonProperty("receiptFinancialSerialNumber")
 	private Int4Unsigned receiptFinancialSerialNumber;
 
-	ReceiptFinancialPart() {
+	public ReceiptFinancialPart() {
 		super(false);
 	}
 }

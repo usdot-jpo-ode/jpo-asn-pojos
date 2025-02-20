@@ -72,7 +72,7 @@ public class TrafficLightStatusMessage extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "TrafficLightStatus")
 	private TrafficLightStatusList trafficLightStatus;
 
-	TrafficLightStatusMessage() {
+	public TrafficLightStatusMessage() {
 		super(true);
 	}
 }

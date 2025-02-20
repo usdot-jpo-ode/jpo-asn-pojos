@@ -41,7 +41,7 @@ public class NtcipPrecipitation extends Asn1Sequence {
 	@JsonProperty("precipitation")
 	private NTCIPPrecipitationSensorPrecipSituation precipitation;
 
-	NtcipPrecipitation() {
+	public NtcipPrecipitation() {
 		super(true);
 	}
 }

@@ -44,7 +44,7 @@ public class ChargeObjectId extends Asn1Sequence {
 	@JsonProperty("chargeObjectDesignation")
 	private Int4Unsigned chargeObjectDesignation;
 
-	ChargeObjectId() {
+	public ChargeObjectId() {
 		super(false);
 	}
 }

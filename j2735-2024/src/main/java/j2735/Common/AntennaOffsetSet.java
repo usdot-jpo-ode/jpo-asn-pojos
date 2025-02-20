@@ -47,7 +47,7 @@ public class AntennaOffsetSet extends Asn1Sequence {
 	@JsonProperty("antOffsetZ")
 	private Offset_B10 antOffsetZ;
 
-	AntennaOffsetSet() {
+	public AntennaOffsetSet() {
 		super(false);
 	}
 }

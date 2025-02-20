@@ -50,7 +50,7 @@ public class PrioritizationResponse extends Asn1Sequence {
 	@JsonProperty("signalGroup")
 	private SignalGroupID signalGroup;
 
-	PrioritizationResponse() {
+	public PrioritizationResponse() {
 		super(true);
 	}
 }

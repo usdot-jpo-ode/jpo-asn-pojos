@@ -40,7 +40,7 @@ public class TravelerDataFrameNewPartIIIContent extends Asn1Choice {
 	@JsonProperty("frictionInfo")
 	private FrictionInformation frictionInfo;
 
-	TravelerDataFrameNewPartIIIContent() {
+	public TravelerDataFrameNewPartIIIContent() {
 		super(true);
 	}
 }

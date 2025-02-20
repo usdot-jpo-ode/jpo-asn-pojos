@@ -49,7 +49,7 @@ public class SurroundingVehicleInfo extends Asn1Sequence {
 	@JsonProperty("surroundingVehicleSize")
 	private VehicleSize surroundingVehicleSize;
 
-	SurroundingVehicleInfo() {
+	public SurroundingVehicleInfo() {
 		super(true);
 	}
 }

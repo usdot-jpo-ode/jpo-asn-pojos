@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class SpeedLimitList extends Asn1SequenceOf<RegulatorySpeedLimit> {
 
-	SpeedLimitList() {
+	public SpeedLimitList() {
 		super(RegulatorySpeedLimit.class, 1L, 9L);
 	}
 }

@@ -130,7 +130,7 @@ public class ConfigInfo extends Asn1Sequence {
 		}
 	}
 
-	ConfigInfo() {
+	public ConfigInfo() {
 		super(true);
 	}
 }

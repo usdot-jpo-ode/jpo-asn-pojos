@@ -82,7 +82,7 @@ public class ProbeDataManagement extends Asn1Sequence {
 		@JsonProperty("termDistance")
 		private TermDistance termDistance;
 
-		TermChoice() {
+		public TermChoice() {
 			super(false);
 		}
 	}
@@ -98,19 +98,19 @@ public class ProbeDataManagement extends Asn1Sequence {
 		@JsonProperty("snapshotDistance")
 		private SnapshotDistance snapshotDistance;
 
-		SnapshotChoice() {
+		public SnapshotChoice() {
 			super(false);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_ProbeDataManagement> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_ProbeDataManagement.class, 1L, 4L);
 		}
 	}
 
-	ProbeDataManagement() {
+	public ProbeDataManagement() {
 		super(true);
 	}
 }

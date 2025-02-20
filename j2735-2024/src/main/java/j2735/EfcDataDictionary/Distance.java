@@ -44,7 +44,7 @@ public class Distance extends Asn1Sequence {
 	@JsonProperty("distanceUnit")
 	private DistanceUnit distanceUnit;
 
-	Distance() {
+	public Distance() {
 		super(false);
 	}
 }

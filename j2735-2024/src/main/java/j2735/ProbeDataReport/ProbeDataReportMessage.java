@@ -59,7 +59,7 @@ public class ProbeDataReportMessage extends Asn1Sequence {
 	@JsonProperty("avgAndSumRec")
 	private RptAveragedAndSummaryRecord avgAndSumRec;
 
-	ProbeDataReportMessage() {
+	public ProbeDataReportMessage() {
 		super(true);
 	}
 }

@@ -44,7 +44,7 @@ public class PathPrediction extends Asn1Sequence {
 	@JsonProperty("confidence")
 	private Confidence confidence;
 
-	PathPrediction() {
+	public PathPrediction() {
 		super(true);
 	}
 }

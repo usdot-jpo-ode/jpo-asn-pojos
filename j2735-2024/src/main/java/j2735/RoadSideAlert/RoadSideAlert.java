@@ -80,19 +80,19 @@ public class RoadSideAlert extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfDescription extends Asn1SequenceOf<ITIScodes> {
-		SequenceOfDescription() {
+		public SequenceOfDescription() {
 			super(ITIScodes.class, 1L, 8L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_RoadSideAlert> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_RoadSideAlert.class, 1L, 4L);
 		}
 	}
 
-	RoadSideAlert() {
+	public RoadSideAlert() {
 		super(true);
 	}
 }

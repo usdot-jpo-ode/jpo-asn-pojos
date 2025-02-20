@@ -54,12 +54,12 @@ public class WorkZoneSequence extends Asn1Sequence {
 		@JsonProperty("text")
 		private ITIStextPhrase text;
 
-		ItemChoice() {
+		public ItemChoice() {
 			super(false);
 		}
 	}
 
-	WorkZoneSequence() {
+	public WorkZoneSequence() {
 		super(false);
 	}
 }

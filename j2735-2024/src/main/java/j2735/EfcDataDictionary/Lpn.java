@@ -154,7 +154,7 @@ public class Lpn extends Asn1Sequence {
 		}
 	}
 
-	Lpn() {
+	public Lpn() {
 		super(false);
 	}
 }

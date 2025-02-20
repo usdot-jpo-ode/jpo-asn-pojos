@@ -101,7 +101,7 @@ public class DetectedObjectCommonData extends Asn1Sequence {
 	@JsonProperty("accCfdYaw")
 	private YawRateConfidence accCfdYaw;
 
-	DetectedObjectCommonData() {
+	public DetectedObjectCommonData() {
 		super(true);
 	}
 }

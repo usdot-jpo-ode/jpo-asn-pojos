@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class MovementEventList extends Asn1SequenceOf<MovementEvent> {
 
-	MovementEventList() {
+	public MovementEventList() {
 		super(MovementEvent.class, 1L, 16L);
 	}
 }

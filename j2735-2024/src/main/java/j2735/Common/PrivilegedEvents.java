@@ -44,7 +44,7 @@ public class PrivilegedEvents extends Asn1Sequence {
 	@JsonProperty("event")
 	private PrivilegedEventFlags event;
 
-	PrivilegedEvents() {
+	public PrivilegedEvents() {
 		super(true);
 	}
 }

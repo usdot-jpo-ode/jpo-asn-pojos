@@ -72,7 +72,7 @@ public class SensorDataSharingMessage extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "DetectedObjectData")
 	private DetectedObjectList objects;
 
-	SensorDataSharingMessage() {
+	public SensorDataSharingMessage() {
 		super(false);
 	}
 }

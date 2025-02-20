@@ -64,19 +64,19 @@ public class EventDescription extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfDescription extends Asn1SequenceOf<ITIScodes> {
-		SequenceOfDescription() {
+		public SequenceOfDescription() {
 			super(ITIScodes.class, 1L, 8L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_EventDescription> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_EventDescription.class, 1L, 4L);
 		}
 	}
 
-	EventDescription() {
+	public EventDescription() {
 		super(true);
 	}
 }

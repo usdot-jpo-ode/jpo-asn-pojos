@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class DetectedObjectList extends Asn1SequenceOf<DetectedObjectData> {
 
-	DetectedObjectList() {
+	public DetectedObjectList() {
 		super(DetectedObjectData.class, 1L, 256L);
 	}
 }

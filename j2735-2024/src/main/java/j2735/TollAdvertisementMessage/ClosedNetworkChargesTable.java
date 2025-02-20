@@ -42,7 +42,7 @@ public class ClosedNetworkChargesTable extends Asn1Choice {
 	@JsonProperty("exitChargesTable")
 	private ExitChargesTable exitChargesTable;
 
-	ClosedNetworkChargesTable() {
+	public ClosedNetworkChargesTable() {
 		super(true);
 	}
 }

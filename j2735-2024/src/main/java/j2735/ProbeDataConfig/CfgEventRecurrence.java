@@ -77,7 +77,7 @@ public class CfgEventRecurrence extends Asn1Sequence {
 	@JsonProperty("exclusion")
 	private Asn1Boolean exclusion;
 
-	CfgEventRecurrence() {
+	public CfgEventRecurrence() {
 		super(true);
 	}
 }

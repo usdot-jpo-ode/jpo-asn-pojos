@@ -49,7 +49,7 @@ public class TollChargerInfo extends Asn1Sequence {
 	@JsonProperty("descriptiveName")
 	private DescriptiveName descriptiveName;
 
-	TollChargerInfo() {
+	public TollChargerInfo() {
 		super(true);
 	}
 }

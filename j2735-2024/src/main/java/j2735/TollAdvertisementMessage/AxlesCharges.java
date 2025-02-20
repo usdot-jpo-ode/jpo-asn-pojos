@@ -59,7 +59,7 @@ public class AxlesCharges extends Asn1Sequence {
 		}
 	}
 
-	AxlesCharges() {
+	public AxlesCharges() {
 		super(true);
 	}
 }

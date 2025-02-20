@@ -42,7 +42,7 @@ public class RoadAuthorityID extends Asn1Choice {
 	@JsonProperty("relRdAuthID")
 	private RelativeRoadAuthorityID relRdAuthID;
 
-	RoadAuthorityID() {
+	public RoadAuthorityID() {
 		super(true);
 	}
 }

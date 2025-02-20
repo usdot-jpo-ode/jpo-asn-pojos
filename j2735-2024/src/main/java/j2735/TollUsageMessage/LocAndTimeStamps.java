@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class LocAndTimeStamps extends Asn1SequenceOf<LocAndTimeStamp> {
 
-	LocAndTimeStamps() {
+	public LocAndTimeStamps() {
 		super(LocAndTimeStamp.class, 1L, 5L);
 	}
 }

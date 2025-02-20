@@ -46,7 +46,7 @@ public class LastTollPointInfo extends Asn1Sequence {
 	@JsonProperty("timeStamp")
 	private DDateTime timeStamp;
 
-	LastTollPointInfo() {
+	public LastTollPointInfo() {
 		super(true);
 	}
 }

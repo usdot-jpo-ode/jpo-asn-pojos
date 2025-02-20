@@ -66,12 +66,12 @@ public class TravelerInformation extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_TravelerInformation> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_TravelerInformation.class, 1L, 4L);
 		}
 	}
 
-	TravelerInformation() {
+	public TravelerInformation() {
 		super(true);
 	}
 }

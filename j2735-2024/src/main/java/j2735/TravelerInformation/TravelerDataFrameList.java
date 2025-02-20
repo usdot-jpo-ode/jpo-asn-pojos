@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class TravelerDataFrameList extends Asn1SequenceOf<TravelerDataFrame> {
 
-	TravelerDataFrameList() {
+	public TravelerDataFrameList() {
 		super(TravelerDataFrame.class, 1L, 8L);
 	}
 }

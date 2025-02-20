@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class TemporaryIDList extends Asn1SequenceOf<TemporaryID> {
 
-	TemporaryIDList() {
+	public TemporaryIDList() {
 		super(TemporaryID.class, 1L, 32L);
 	}
 }

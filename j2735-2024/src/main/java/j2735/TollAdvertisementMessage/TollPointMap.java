@@ -77,19 +77,19 @@ public class TollPointMap extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfApproachLanesMap extends Asn1SequenceOf<GenericLane> {
-		SequenceOfApproachLanesMap() {
+		public SequenceOfApproachLanesMap() {
 			super(GenericLane.class, 1L, 64L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfTollZoneLanesMap extends Asn1SequenceOf<GenericLane> {
-		SequenceOfTollZoneLanesMap() {
+		public SequenceOfTollZoneLanesMap() {
 			super(GenericLane.class, 1L, 64L);
 		}
 	}
 
-	TollPointMap() {
+	public TollPointMap() {
 		super(true);
 	}
 }

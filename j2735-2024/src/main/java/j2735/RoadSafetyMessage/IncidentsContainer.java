@@ -48,12 +48,12 @@ public class IncidentsContainer extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfResponderType extends Asn1SequenceOf<ResponderGroupAffected> {
-		SequenceOfResponderType() {
+		public SequenceOfResponderType() {
 			super(ResponderGroupAffected.class, 1L, 5L);
 		}
 	}
 
-	IncidentsContainer() {
+	public IncidentsContainer() {
 		super(true);
 	}
 }

@@ -49,7 +49,7 @@ public class ConnectionManeuverAssist_addGrpC extends Asn1Sequence {
 	@JsonProperty("rsuDistanceFromAnchor")
 	private NodeOffsetPointXY rsuDistanceFromAnchor;
 
-	ConnectionManeuverAssist_addGrpC() {
+	public ConnectionManeuverAssist_addGrpC() {
 		super(false);
 	}
 }

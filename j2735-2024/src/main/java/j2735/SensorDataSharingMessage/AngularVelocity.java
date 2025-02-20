@@ -44,7 +44,7 @@ public class AngularVelocity extends Asn1Sequence {
 	@JsonProperty("rollRate")
 	private RollRate rollRate;
 
-	AngularVelocity() {
+	public AngularVelocity() {
 		super(false);
 	}
 }

@@ -43,7 +43,7 @@ public class NodeListLL extends Asn1Choice {
 	@JacksonXmlProperty(localName = "NodeLL")
 	private NodeSetLL nodes;
 
-	NodeListLL() {
+	public NodeListLL() {
 		super(true);
 	}
 }

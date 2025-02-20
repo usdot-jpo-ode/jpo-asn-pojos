@@ -44,7 +44,7 @@ public class SoundLevel extends Asn1Sequence {
 	@JsonProperty("soundDriveBy")
 	private Int1Unsigned soundDriveBy;
 
-	SoundLevel() {
+	public SoundLevel() {
 		super(false);
 	}
 }

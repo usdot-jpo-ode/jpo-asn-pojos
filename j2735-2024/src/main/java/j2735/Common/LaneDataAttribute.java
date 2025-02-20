@@ -63,13 +63,13 @@ public class LaneDataAttribute extends Asn1Choice {
 	@JsonProperty("regional")
 	private SequenceOfRegional regional;
 
-	LaneDataAttribute() {
+	public LaneDataAttribute() {
 		super(true);
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_LaneDataAttribute> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_LaneDataAttribute.class, 1L, 4L);
 		}
 	}

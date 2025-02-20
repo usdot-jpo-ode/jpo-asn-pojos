@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class SignalRequestList extends Asn1SequenceOf<SignalRequestPackage> {
 
-	SignalRequestList() {
+	public SignalRequestList() {
 		super(SignalRequestPackage.class, 1L, 32L);
 	}
 }

@@ -54,12 +54,12 @@ public class Position3D extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_Position3D> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_Position3D.class, 1L, 4L);
 		}
 	}
 
-	Position3D() {
+	public Position3D() {
 		super(true);
 	}
 }

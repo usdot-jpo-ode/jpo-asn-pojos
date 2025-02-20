@@ -54,12 +54,12 @@ public class PrimaryRegionChargingInfo extends Asn1Sequence {
 		@JsonProperty("state")
 		private PrimaryRegionState state;
 
-		ChargingPrimaryRegionChoice() {
+		public ChargingPrimaryRegionChoice() {
 			super(true);
 		}
 	}
 
-	PrimaryRegionChargingInfo() {
+	public PrimaryRegionChargingInfo() {
 		super(true);
 	}
 }

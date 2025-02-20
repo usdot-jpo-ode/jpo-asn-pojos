@@ -74,7 +74,7 @@ public class ReceiptServicePart extends Asn1Sequence {
 		}
 	}
 
-	ReceiptServicePart() {
+	public ReceiptServicePart() {
 		super(false);
 	}
 }

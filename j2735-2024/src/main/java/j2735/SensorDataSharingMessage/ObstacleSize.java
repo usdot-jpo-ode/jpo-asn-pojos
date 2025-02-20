@@ -47,7 +47,7 @@ public class ObstacleSize extends Asn1Sequence {
 	@JsonProperty("height")
 	private SizeValue height;
 
-	ObstacleSize() {
+	public ObstacleSize() {
 		super(false);
 	}
 }

@@ -45,7 +45,7 @@ public class PropelledInformation extends Asn1Choice {
 	@JsonProperty("motor")
 	private MotorizedPropelledType motor;
 
-	PropelledInformation() {
+	public PropelledInformation() {
 		super(true);
 	}
 }

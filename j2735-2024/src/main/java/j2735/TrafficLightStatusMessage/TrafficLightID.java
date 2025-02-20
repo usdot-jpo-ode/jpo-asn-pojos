@@ -43,7 +43,7 @@ public class TrafficLightID extends Asn1Choice {
 	@JsonProperty("oid")
 	private Asn1ObjectIdentifier oid;
 
-	TrafficLightID() {
+	public TrafficLightID() {
 		super(false);
 	}
 }

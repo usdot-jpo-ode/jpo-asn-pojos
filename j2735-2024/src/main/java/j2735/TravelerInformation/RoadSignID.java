@@ -52,7 +52,7 @@ public class RoadSignID extends Asn1Sequence {
 	@JsonProperty("crc")
 	private MsgCRC crc;
 
-	RoadSignID() {
+	public RoadSignID() {
 		super(false);
 	}
 }

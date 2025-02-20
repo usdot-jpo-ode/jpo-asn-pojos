@@ -87,7 +87,7 @@ public class TrailerUnitDescription extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "TrailerHistoryPoint")
 	private TrailerHistoryPointList crumbData;
 
-	TrailerUnitDescription() {
+	public TrailerUnitDescription() {
 		super(true);
 	}
 }

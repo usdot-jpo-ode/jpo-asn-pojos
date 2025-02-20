@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class WorkZone extends Asn1SequenceOf<WorkZoneSequence> {
 
-	WorkZone() {
+	public WorkZone() {
 		super(WorkZoneSequence.class, 1L, 16L);
 	}
 }

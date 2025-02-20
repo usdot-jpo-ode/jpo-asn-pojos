@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class NodeSetXY extends Asn1SequenceOf<NodeXY> {
 
-	NodeSetXY() {
+	public NodeSetXY() {
 		super(NodeXY.class, 2L, 63L);
 	}
 }

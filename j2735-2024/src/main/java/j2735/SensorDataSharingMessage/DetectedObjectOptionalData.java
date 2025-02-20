@@ -45,7 +45,7 @@ public class DetectedObjectOptionalData extends Asn1Choice {
 	@JsonProperty("detObst")
 	private DetectedObstacleData detObst;
 
-	DetectedObjectOptionalData() {
+	public DetectedObjectOptionalData() {
 		super(false);
 	}
 }

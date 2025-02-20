@@ -41,7 +41,7 @@ public class Grass extends Asn1Sequence {
 	@JsonProperty("type")
 	private GrassType type;
 
-	Grass() {
+	public Grass() {
 		super(true);
 	}
 }

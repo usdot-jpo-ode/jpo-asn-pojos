@@ -47,7 +47,7 @@ public class VehicleDimensions extends Asn1Sequence {
 	@JsonProperty("vehicleWidthOverall")
 	private Int1Unsigned vehicleWidthOverall;
 
-	VehicleDimensions() {
+	public VehicleDimensions() {
 		super(false);
 	}
 }

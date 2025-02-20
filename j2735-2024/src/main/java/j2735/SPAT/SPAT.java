@@ -60,12 +60,12 @@ public class SPAT extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SPAT> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_SPAT.class, 1L, 4L);
 		}
 	}
 
-	SPAT() {
+	public SPAT() {
 		super(true);
 	}
 }

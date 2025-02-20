@@ -49,7 +49,7 @@ public class Snapshot extends Asn1Sequence {
 	@JsonProperty("dataSet")
 	private VehicleStatus dataSet;
 
-	Snapshot() {
+	public Snapshot() {
 		super(true);
 	}
 }

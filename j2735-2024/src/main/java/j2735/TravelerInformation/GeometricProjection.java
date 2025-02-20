@@ -60,12 +60,12 @@ public class GeometricProjection extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_GeometricProjection> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_GeometricProjection.class, 1L, 4L);
 		}
 	}
 
-	GeometricProjection() {
+	public GeometricProjection() {
 		super(true);
 	}
 }

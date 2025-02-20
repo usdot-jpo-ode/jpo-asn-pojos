@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class ITIScodesAndText extends Asn1SequenceOf<ITIScodesAndTextSequence> {
 
-	ITIScodesAndText() {
+	public ITIScodesAndText() {
 		super(ITIScodesAndTextSequence.class, 1L, 100L);
 	}
 }

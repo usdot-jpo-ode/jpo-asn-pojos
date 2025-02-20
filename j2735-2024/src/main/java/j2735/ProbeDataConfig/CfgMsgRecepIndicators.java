@@ -48,12 +48,12 @@ public class CfgMsgRecepIndicators extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfMessages extends Asn1SequenceOf<DSRCmsgID> {
-		SequenceOfMessages() {
+		public SequenceOfMessages() {
 			super(DSRCmsgID.class, 1L, 8L);
 		}
 	}
 
-	CfgMsgRecepIndicators() {
+	public CfgMsgRecepIndicators() {
 		super(true);
 	}
 }

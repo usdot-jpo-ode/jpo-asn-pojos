@@ -63,7 +63,7 @@ public class RptLocOfStops extends Asn1Sequence {
 		}
 	}
 
-	RptLocOfStops() {
+	public RptLocOfStops() {
 		super(true);
 	}
 }

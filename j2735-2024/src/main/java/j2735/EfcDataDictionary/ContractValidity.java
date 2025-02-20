@@ -58,7 +58,7 @@ public class ContractValidity extends Asn1Sequence {
 		}
 	}
 
-	ContractValidity() {
+	public ContractValidity() {
 		super(false);
 	}
 }

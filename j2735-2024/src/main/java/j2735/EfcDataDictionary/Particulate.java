@@ -58,7 +58,7 @@ public class Particulate extends Asn1Sequence {
 		}
 	}
 
-	Particulate() {
+	public Particulate() {
 		super(false);
 	}
 }

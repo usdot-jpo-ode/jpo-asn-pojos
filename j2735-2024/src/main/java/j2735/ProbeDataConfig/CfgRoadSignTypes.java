@@ -81,7 +81,7 @@ public class CfgRoadSignTypes extends Asn1Sequence {
 	@JsonProperty("other")
 	private Asn1Boolean other;
 
-	CfgRoadSignTypes() {
+	public CfgRoadSignTypes() {
 		super(true);
 	}
 }

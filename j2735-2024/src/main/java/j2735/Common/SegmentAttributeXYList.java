@@ -30,7 +30,7 @@ import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 @JsonInclude(Include.NON_NULL)
 public class SegmentAttributeXYList extends Asn1SequenceOf<SegmentAttributeXY> {
 
-	SegmentAttributeXYList() {
+	public SegmentAttributeXYList() {
 		super(SegmentAttributeXY.class, 1L, 8L);
 	}
 

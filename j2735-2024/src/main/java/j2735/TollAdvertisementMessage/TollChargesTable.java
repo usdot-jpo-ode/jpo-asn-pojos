@@ -60,26 +60,26 @@ public class TollChargesTable extends Asn1Sequence {
 		@JsonProperty("timeBasedCharges")
 		private TimeChargesTable timeBasedCharges;
 
-		TollTypeChargeChoice() {
+		public TollTypeChargeChoice() {
 			super(true);
 		}
 
 		@JsonInclude(Include.NON_NULL)
 		public static class SequenceOfPerLaneCharges extends Asn1SequenceOf<LaneChargesTable> {
-			SequenceOfPerLaneCharges() {
+			public SequenceOfPerLaneCharges() {
 				super(LaneChargesTable.class, 1L, 64L);
 			}
 		}
 
 		@JsonInclude(Include.NON_NULL)
 		public static class SequenceOfClosedNetworkCharges extends Asn1SequenceOf<ClosedNetworkChargesTable> {
-			SequenceOfClosedNetworkCharges() {
+			public SequenceOfClosedNetworkCharges() {
 				super(ClosedNetworkChargesTable.class, 1L, 64L);
 			}
 		}
 	}
 
-	TollChargesTable() {
+	public TollChargesTable() {
 		super(true);
 	}
 }

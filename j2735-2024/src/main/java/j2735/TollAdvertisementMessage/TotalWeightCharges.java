@@ -109,7 +109,7 @@ public class TotalWeightCharges extends Asn1Sequence {
 		}
 	}
 
-	TotalWeightCharges() {
+	public TotalWeightCharges() {
 		super(true);
 	}
 }

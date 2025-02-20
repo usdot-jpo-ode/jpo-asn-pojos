@@ -71,7 +71,7 @@ public class TrafficLightStatus extends Asn1Sequence {
 	@JsonProperty("reserved")
 	private ReservedBit reserved;
 
-	TrafficLightStatus() {
+	public TrafficLightStatus() {
 		super(true);
 	}
 }

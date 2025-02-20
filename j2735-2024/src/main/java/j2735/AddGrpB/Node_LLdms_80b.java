@@ -44,7 +44,7 @@ public class Node_LLdms_80b extends Asn1Sequence {
 	@JsonProperty("lat")
 	private LatitudeDMS2 lat;
 
-	Node_LLdms_80b() {
+	public Node_LLdms_80b() {
 		super(false);
 	}
 }

@@ -72,12 +72,12 @@ public class RTCMcorrections extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_RTCMcorrections> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_RTCMcorrections.class, 1L, 4L);
 		}
 	}
 
-	RTCMcorrections() {
+	public RTCMcorrections() {
 		super(true);
 	}
 }

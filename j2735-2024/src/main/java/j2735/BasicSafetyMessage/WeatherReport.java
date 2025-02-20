@@ -62,7 +62,7 @@ public class WeatherReport extends Asn1Sequence {
 	@JsonProperty("roadFriction")
 	private CoefficientOfFriction roadFriction;
 
-	WeatherReport() {
+	public WeatherReport() {
 		super(true);
 	}
 }

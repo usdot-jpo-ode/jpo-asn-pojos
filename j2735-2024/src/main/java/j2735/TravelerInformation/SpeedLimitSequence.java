@@ -54,12 +54,12 @@ public class SpeedLimitSequence extends Asn1Sequence {
 		@JsonProperty("text")
 		private ITIStextPhrase text;
 
-		ItemChoice() {
+		public ItemChoice() {
 			super(false);
 		}
 	}
 
-	SpeedLimitSequence() {
+	public SpeedLimitSequence() {
 		super(false);
 	}
 }

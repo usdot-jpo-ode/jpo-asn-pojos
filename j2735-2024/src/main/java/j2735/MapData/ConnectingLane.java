@@ -45,7 +45,7 @@ public class ConnectingLane extends Asn1Sequence {
 	@JsonProperty("maneuver")
 	private AllowedManeuvers maneuver;
 
-	ConnectingLane() {
+	public ConnectingLane() {
 		super(false);
 	}
 }

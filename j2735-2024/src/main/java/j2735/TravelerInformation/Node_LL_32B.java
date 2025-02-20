@@ -44,7 +44,7 @@ public class Node_LL_32B extends Asn1Sequence {
 	@JsonProperty("lat")
 	private OffsetLL_B16 lat;
 
-	Node_LL_32B() {
+	public Node_LL_32B() {
 		super(false);
 	}
 }

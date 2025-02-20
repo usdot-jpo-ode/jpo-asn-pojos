@@ -41,7 +41,7 @@ public class Gravel extends Asn1Sequence {
 	@JsonProperty("type")
 	private GravelType type;
 
-	Gravel() {
+	public Gravel() {
 		super(true);
 	}
 }

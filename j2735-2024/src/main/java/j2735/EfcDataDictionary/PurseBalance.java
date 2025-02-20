@@ -44,7 +44,7 @@ public class PurseBalance extends Asn1Sequence {
 	@JsonProperty("purseUnit")
 	private PayUnit purseUnit;
 
-	PurseBalance() {
+	public PurseBalance() {
 		super(false);
 	}
 }

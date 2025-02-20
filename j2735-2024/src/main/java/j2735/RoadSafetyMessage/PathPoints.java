@@ -31,7 +31,7 @@ import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
 @JsonInclude(Include.NON_NULL)
 public class PathPoints extends Asn1SequenceOf<NodePointLLE> {
 
-	PathPoints() {
+	public PathPoints() {
 		super(NodePointLLE.class, 2L, 63L);
 	}
 

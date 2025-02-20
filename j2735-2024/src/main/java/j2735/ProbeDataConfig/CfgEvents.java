@@ -68,7 +68,7 @@ public class CfgEvents extends Asn1Sequence {
 		}
 	}
 
-	CfgEvents() {
+	public CfgEvents() {
 		super(true);
 	}
 }

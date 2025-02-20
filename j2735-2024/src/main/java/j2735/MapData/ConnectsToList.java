@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class ConnectsToList extends Asn1SequenceOf<Connection> {
 
-	ConnectsToList() {
+	public ConnectsToList() {
 		super(Connection.class, 1L, 16L);
 	}
 }

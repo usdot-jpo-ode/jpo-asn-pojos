@@ -42,7 +42,7 @@ public class ConfigTriggers extends Asn1Choice {
 	@JsonProperty("avgAndSumTriggers")
 	private CfgAveragedAndSummaryTriggers avgAndSumTriggers;
 
-	ConfigTriggers() {
+	public ConfigTriggers() {
 		super(true);
 	}
 }

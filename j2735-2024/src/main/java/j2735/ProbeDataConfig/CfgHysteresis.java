@@ -70,7 +70,7 @@ public class CfgHysteresis extends Asn1Sequence {
 		}
 	}
 
-	CfgHysteresis() {
+	public CfgHysteresis() {
 		super(true);
 	}
 }

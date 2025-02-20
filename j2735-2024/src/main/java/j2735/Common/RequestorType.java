@@ -57,7 +57,7 @@ public class RequestorType extends Asn1Sequence {
 	@JsonProperty("regional")
 	private Reg_RequestorType regional;
 
-	RequestorType() {
+	public RequestorType() {
 		super(true);
 	}
 }

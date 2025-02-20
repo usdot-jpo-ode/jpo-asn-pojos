@@ -69,7 +69,7 @@ public class DetectedChargeObject extends Asn1Sequence {
 	@JsonProperty("chargeObjDetectionMode")
 	private DetectionMode chargeObjDetectionMode;
 
-	DetectedChargeObject() {
+	public DetectedChargeObject() {
 		super(true);
 	}
 }

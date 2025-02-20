@@ -46,7 +46,7 @@ public class AreaType extends Asn1Choice {
 	@JacksonXmlProperty(localName = "Path")
 	private PathList paths;
 
-	AreaType() {
+	public AreaType() {
 		super(true);
 	}
 }

@@ -66,19 +66,19 @@ public class ProbeVehicleData extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfSnapshots extends Asn1SequenceOf<Snapshot> {
-		SequenceOfSnapshots() {
+		public SequenceOfSnapshots() {
 			super(Snapshot.class, 1L, 32L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_ProbeVehicleData> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_ProbeVehicleData.class, 1L, 4L);
 		}
 	}
 
-	ProbeVehicleData() {
+	public ProbeVehicleData() {
 		super(true);
 	}
 }

@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class ProbeDataConfigMessage extends Asn1SequenceOf<ProbeDataConfig> {
 
-	ProbeDataConfigMessage() {
+	public ProbeDataConfigMessage() {
 		super(ProbeDataConfig.class, 1L, 255L);
 	}
 }

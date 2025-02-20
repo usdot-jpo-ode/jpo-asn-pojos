@@ -42,7 +42,7 @@ public class RegionUncertainty extends Asn1Choice {
 	@JsonProperty("inCoordinateFrame")
 	private Offset3D inCoordinateFrame;
 
-	RegionUncertainty() {
+	public RegionUncertainty() {
 		super(true);
 	}
 }

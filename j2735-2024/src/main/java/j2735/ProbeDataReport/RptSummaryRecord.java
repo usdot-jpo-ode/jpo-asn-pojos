@@ -196,7 +196,7 @@ public class RptSummaryRecord extends Asn1Sequence {
 		}
 	}
 
-	RptSummaryRecord() {
+	public RptSummaryRecord() {
 		super(true);
 	}
 }

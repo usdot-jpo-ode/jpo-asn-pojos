@@ -57,7 +57,7 @@ public class AxesMovement extends Asn1Sequence {
 	@JsonProperty("rollRate")
 	private RollRate rollRate;
 
-	AxesMovement() {
+	public AxesMovement() {
 		super(false);
 	}
 }

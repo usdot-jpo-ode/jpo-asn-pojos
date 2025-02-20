@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class IntersectionGeometryList extends Asn1SequenceOf<IntersectionGeometry> {
 
-	IntersectionGeometryList() {
+	public IntersectionGeometryList() {
 		super(IntersectionGeometry.class, 1L, 32L);
 	}
 }

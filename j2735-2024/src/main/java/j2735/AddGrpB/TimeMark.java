@@ -68,7 +68,7 @@ public class TimeMark extends Asn1Sequence {
 	@JsonProperty("tenthSecond")
 	private TenthSecond tenthSecond;
 
-	TimeMark() {
+	public TimeMark() {
 		super(false);
 	}
 }

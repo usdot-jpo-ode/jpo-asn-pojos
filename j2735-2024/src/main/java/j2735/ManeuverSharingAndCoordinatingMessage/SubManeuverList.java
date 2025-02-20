@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class SubManeuverList extends Asn1SequenceOf<SubManeuver> {
 
-	SubManeuverList() {
+	public SubManeuverList() {
 		super(SubManeuver.class, 1L, 32L);
 	}
 }

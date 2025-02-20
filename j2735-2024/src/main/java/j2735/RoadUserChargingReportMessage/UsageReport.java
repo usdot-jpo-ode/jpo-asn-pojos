@@ -42,7 +42,7 @@ public class UsageReport extends Asn1Choice {
 	@JsonProperty("itemizedPaymentReport")
 	private ItemizedPaymentReport itemizedPaymentReport;
 
-	UsageReport() {
+	public UsageReport() {
 		super(true);
 	}
 }

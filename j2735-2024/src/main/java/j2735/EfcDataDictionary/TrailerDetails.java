@@ -58,7 +58,7 @@ public class TrailerDetails extends Asn1Sequence {
 		}
 	}
 
-	TrailerDetails() {
+	public TrailerDetails() {
 		super(false);
 	}
 }

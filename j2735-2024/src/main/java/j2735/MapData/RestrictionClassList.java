@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RestrictionClassList extends Asn1SequenceOf<RestrictionClassAssignment> {
 
-	RestrictionClassList() {
+	public RestrictionClassList() {
 		super(RestrictionClassAssignment.class, 1L, 254L);
 	}
 }

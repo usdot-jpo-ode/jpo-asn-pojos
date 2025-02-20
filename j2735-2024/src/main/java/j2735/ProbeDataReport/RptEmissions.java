@@ -175,7 +175,7 @@ public class RptEmissions extends Asn1Sequence {
 		}
 	}
 
-	RptEmissions() {
+	public RptEmissions() {
 		super(true);
 	}
 }

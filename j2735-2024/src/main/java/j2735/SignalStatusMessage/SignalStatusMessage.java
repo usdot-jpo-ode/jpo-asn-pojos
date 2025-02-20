@@ -64,12 +64,12 @@ public class SignalStatusMessage extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SignalStatusMessage> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_SignalStatusMessage.class, 1L, 4L);
 		}
 	}
 
-	SignalStatusMessage() {
+	public SignalStatusMessage() {
 		super(true);
 	}
 }

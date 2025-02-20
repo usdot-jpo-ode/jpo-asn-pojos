@@ -47,7 +47,7 @@ public class SpeedandHeadingandThrottleConfidence extends Asn1Sequence {
 	@JsonProperty("throttle")
 	private ThrottleConfidence throttle;
 
-	SpeedandHeadingandThrottleConfidence() {
+	public SpeedandHeadingandThrottleConfidence() {
 		super(false);
 	}
 }

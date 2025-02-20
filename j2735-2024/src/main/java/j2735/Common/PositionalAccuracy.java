@@ -47,7 +47,7 @@ public class PositionalAccuracy extends Asn1Sequence {
 	@JsonProperty("orientation")
 	private SemiMajorAxisOrientation orientation;
 
-	PositionalAccuracy() {
+	public PositionalAccuracy() {
 		super(false);
 	}
 }

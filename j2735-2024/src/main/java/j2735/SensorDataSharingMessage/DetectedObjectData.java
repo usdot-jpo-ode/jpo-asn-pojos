@@ -44,7 +44,7 @@ public class DetectedObjectData extends Asn1Sequence {
 	@JsonProperty("detObjOptData")
 	private DetectedObjectOptionalData detObjOptData;
 
-	DetectedObjectData() {
+	public DetectedObjectData() {
 		super(false);
 	}
 }

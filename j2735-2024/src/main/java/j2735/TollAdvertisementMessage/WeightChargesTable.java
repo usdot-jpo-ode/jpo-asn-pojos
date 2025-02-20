@@ -31,7 +31,7 @@ import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
 @JsonInclude(Include.NON_NULL)
 public class WeightChargesTable extends Asn1SequenceOf<WeightCharges> {
 
-	WeightChargesTable() {
+	public WeightChargesTable() {
 		super(WeightCharges.class, 1L, 10L);
 	}
 

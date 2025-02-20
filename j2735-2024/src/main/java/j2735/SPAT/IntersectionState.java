@@ -89,12 +89,12 @@ public class IntersectionState extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_IntersectionState> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_IntersectionState.class, 1L, 4L);
 		}
 	}
 
-	IntersectionState() {
+	public IntersectionState() {
 		super(true);
 	}
 }

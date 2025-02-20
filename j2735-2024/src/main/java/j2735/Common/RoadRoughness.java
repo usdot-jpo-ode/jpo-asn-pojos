@@ -50,7 +50,7 @@ public class RoadRoughness extends Asn1Sequence {
 	@JsonProperty("horizontalVariationStdDev")
 	private VariationStdDev horizontalVariationStdDev;
 
-	RoadRoughness() {
+	public RoadRoughness() {
 		super(true);
 	}
 }

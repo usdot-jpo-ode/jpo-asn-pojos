@@ -31,7 +31,7 @@ import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
 @JsonInclude(Include.NON_NULL)
 public class RSMPolygon extends Asn1SequenceOf<NodePointLLE> {
 
-	RSMPolygon() {
+	public RSMPolygon() {
 		super(NodePointLLE.class, 3L, 63L);
 	}
 

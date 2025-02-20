@@ -44,7 +44,7 @@ public class Duration extends Asn1Sequence {
 	@JsonProperty("timeUnit")
 	private TimeUnit timeUnit;
 
-	Duration() {
+	public Duration() {
 		super(false);
 	}
 }

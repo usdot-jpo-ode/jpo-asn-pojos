@@ -70,7 +70,7 @@ public class CfgLowSpeedCriteria extends Asn1Sequence {
 		}
 	}
 
-	CfgLowSpeedCriteria() {
+	public CfgLowSpeedCriteria() {
 		super(true);
 	}
 }

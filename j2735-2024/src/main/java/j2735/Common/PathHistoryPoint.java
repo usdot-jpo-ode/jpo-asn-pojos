@@ -59,7 +59,7 @@ public class PathHistoryPoint extends Asn1Sequence {
 	@JsonProperty("heading")
 	private CoarseHeading heading;
 
-	PathHistoryPoint() {
+	public PathHistoryPoint() {
 		super(true);
 	}
 }

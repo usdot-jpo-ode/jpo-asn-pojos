@@ -44,7 +44,7 @@ public class NtcipRelativeHumidity extends Asn1Sequence {
 	@JsonProperty("source")
 	private DataSourceInfo source;
 
-	NtcipRelativeHumidity() {
+	public NtcipRelativeHumidity() {
 		super(true);
 	}
 }

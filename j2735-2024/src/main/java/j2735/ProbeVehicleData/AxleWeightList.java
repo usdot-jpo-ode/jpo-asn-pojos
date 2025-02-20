@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class AxleWeightList extends Asn1SequenceOf<AxleWeightSet> {
 
-	AxleWeightList() {
+	public AxleWeightList() {
 		super(AxleWeightSet.class, 1L, 16L);
 	}
 }

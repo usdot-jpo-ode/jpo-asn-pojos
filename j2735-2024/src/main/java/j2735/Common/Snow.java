@@ -41,7 +41,7 @@ public class Snow extends Asn1Sequence {
 	@JsonProperty("type")
 	private SnowType type;
 
-	Snow() {
+	public Snow() {
 		super(true);
 	}
 }

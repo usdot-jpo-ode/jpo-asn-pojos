@@ -54,7 +54,7 @@ public class ContentContainer extends Asn1Choice {
 	@JsonProperty("situationalContainer")
 	private SituationalContainer situationalContainer;
 
-	ContentContainer() {
+	public ContentContainer() {
 		super(true);
 	}
 }

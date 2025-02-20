@@ -44,7 +44,7 @@ public class VehicleReport extends Asn1Sequence {
 	@JsonProperty("wdmsFleetData")
 	private WDMSFleetData wdmsFleetData;
 
-	VehicleReport() {
+	public VehicleReport() {
 		super(true);
 	}
 }

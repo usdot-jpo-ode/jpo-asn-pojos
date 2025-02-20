@@ -47,7 +47,7 @@ public class LongitudeDMS2 extends Asn1Sequence {
 	@JsonProperty("s")
 	private SecondsAngle s;
 
-	LongitudeDMS2() {
+	public LongitudeDMS2() {
 		super(false);
 	}
 }

@@ -53,7 +53,7 @@ public class ShapePointSet extends Asn1Sequence {
 	@JsonProperty("nodeList")
 	private NodeListXY nodeList;
 
-	ShapePointSet() {
+	public ShapePointSet() {
 		super(true);
 	}
 }

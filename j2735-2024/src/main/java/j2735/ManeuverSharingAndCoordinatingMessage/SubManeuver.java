@@ -65,7 +65,7 @@ public class SubManeuver extends Asn1Sequence {
 	@JsonProperty("maxSpeed")
 	private Speed maxSpeed;
 
-	SubManeuver() {
+	public SubManeuver() {
 		super(true);
 	}
 }

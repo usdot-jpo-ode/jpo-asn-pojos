@@ -47,7 +47,7 @@ public class BroadRegionArea extends Asn1Choice {
 	@JsonProperty("circle")
 	private Circle circle;
 
-	BroadRegionArea() {
+	public BroadRegionArea() {
 		super(true);
 	}
 }

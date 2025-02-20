@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class ManeuverAssistList extends Asn1SequenceOf<ConnectionManeuverAssist> {
 
-	ManeuverAssistList() {
+	public ManeuverAssistList() {
 		super(ConnectionManeuverAssist.class, 1L, 16L);
 	}
 }

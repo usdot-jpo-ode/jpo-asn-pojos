@@ -44,7 +44,7 @@ public class PaymentFee extends Asn1Sequence {
 	@JsonProperty("paymentFeeUnit")
 	private PayUnit paymentFeeUnit;
 
-	PaymentFee() {
+	public PaymentFee() {
 		super(false);
 	}
 }

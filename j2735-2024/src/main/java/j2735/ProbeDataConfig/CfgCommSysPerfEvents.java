@@ -167,7 +167,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
 		}
 	}
 
-	CfgCommSysPerfEvents() {
+	public CfgCommSysPerfEvents() {
 		super(true);
 	}
 }

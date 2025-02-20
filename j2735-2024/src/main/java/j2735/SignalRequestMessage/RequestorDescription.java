@@ -72,12 +72,12 @@ public class RequestorDescription extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_RequestorDescription> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_RequestorDescription.class, 1L, 4L);
 		}
 	}
 
-	RequestorDescription() {
+	public RequestorDescription() {
 		super(true);
 	}
 }

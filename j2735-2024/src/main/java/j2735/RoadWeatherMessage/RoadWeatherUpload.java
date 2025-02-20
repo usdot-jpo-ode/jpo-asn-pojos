@@ -43,13 +43,13 @@ public class RoadWeatherUpload extends Asn1Choice {
 	@JsonProperty("citizenReport")
 	private SnapShot citizenReport;
 
-	RoadWeatherUpload() {
+	public RoadWeatherUpload() {
 		super(true);
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfVehicleReport extends Asn1SequenceOf<VehicleReport> {
-		SequenceOfVehicleReport() {
+		public SequenceOfVehicleReport() {
 			super(VehicleReport.class, 1L, 32L);
 		}
 	}

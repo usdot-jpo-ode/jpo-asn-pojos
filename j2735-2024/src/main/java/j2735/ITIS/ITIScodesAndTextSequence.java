@@ -53,12 +53,12 @@ public class ITIScodesAndTextSequence extends Asn1Sequence {
 		@JsonProperty("text")
 		private ITIStext text;
 
-		ItemChoice() {
+		public ItemChoice() {
 			super(false);
 		}
 	}
 
-	ITIScodesAndTextSequence() {
+	public ITIScodesAndTextSequence() {
 		super(false);
 	}
 }

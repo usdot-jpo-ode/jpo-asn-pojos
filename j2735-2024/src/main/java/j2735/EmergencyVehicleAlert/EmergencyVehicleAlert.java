@@ -85,12 +85,12 @@ public class EmergencyVehicleAlert extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_EmergencyVehicleAlert> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_EmergencyVehicleAlert.class, 1L, 4L);
 		}
 	}
 
-	EmergencyVehicleAlert() {
+	public EmergencyVehicleAlert() {
 		super(true);
 	}
 }

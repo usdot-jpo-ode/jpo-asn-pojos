@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class TireDataList extends Asn1SequenceOf<TireData> {
 
-	TireDataList() {
+	public TireDataList() {
 		super(TireData.class, 1L, 16L);
 	}
 }

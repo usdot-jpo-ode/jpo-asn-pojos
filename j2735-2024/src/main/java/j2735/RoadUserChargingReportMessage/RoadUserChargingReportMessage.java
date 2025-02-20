@@ -58,7 +58,7 @@ public class RoadUserChargingReportMessage extends Asn1Sequence {
 		}
 	}
 
-	RoadUserChargingReportMessage() {
+	public RoadUserChargingReportMessage() {
 		super(true);
 	}
 }

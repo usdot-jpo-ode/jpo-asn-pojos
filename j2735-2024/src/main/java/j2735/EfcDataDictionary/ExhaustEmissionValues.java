@@ -67,7 +67,7 @@ public class ExhaustEmissionValues extends Asn1Sequence {
 		}
 	}
 
-	ExhaustEmissionValues() {
+	public ExhaustEmissionValues() {
 		super(false);
 	}
 }

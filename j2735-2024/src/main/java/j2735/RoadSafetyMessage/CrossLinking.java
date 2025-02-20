@@ -50,26 +50,26 @@ public class CrossLinking extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfAudioLinks extends Asn1SequenceOf<AudioLink> {
-		SequenceOfAudioLinks() {
+		public SequenceOfAudioLinks() {
 			super(AudioLink.class, 1L, 4L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfVisualLink extends Asn1SequenceOf<VisualLink> {
-		SequenceOfVisualLink() {
+		public SequenceOfVisualLink() {
 			super(VisualLink.class, 1L, 4L);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRsmLink extends Asn1SequenceOf<EventIdentifier> {
-		SequenceOfRsmLink() {
+		public SequenceOfRsmLink() {
 			super(EventIdentifier.class, 1L, 4L);
 		}
 	}
 
-	CrossLinking() {
+	public CrossLinking() {
 		super(true);
 	}
 }

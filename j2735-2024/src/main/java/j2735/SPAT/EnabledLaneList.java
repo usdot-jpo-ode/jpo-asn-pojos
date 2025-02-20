@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class EnabledLaneList extends Asn1SequenceOf<LaneID> {
 
-	EnabledLaneList() {
+	public EnabledLaneList() {
 		super(LaneID.class, 1L, 16L);
 	}
 }

@@ -58,7 +58,7 @@ public class TimeChargesTable extends Asn1Sequence {
 		}
 	}
 
-	TimeChargesTable() {
+	public TimeChargesTable() {
 		super(true);
 	}
 }

@@ -44,7 +44,7 @@ public class PositionConfidenceSet extends Asn1Sequence {
 	@JsonProperty("elevation")
 	private ElevationConfidence elevation;
 
-	PositionConfidenceSet() {
+	public PositionConfidenceSet() {
 		super(false);
 	}
 }

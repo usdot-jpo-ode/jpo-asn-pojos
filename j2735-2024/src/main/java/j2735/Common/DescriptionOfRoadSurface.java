@@ -60,7 +60,7 @@ public class DescriptionOfRoadSurface extends Asn1Choice {
 	@JsonProperty("snow")
 	private Snow snow;
 
-	DescriptionOfRoadSurface() {
+	public DescriptionOfRoadSurface() {
 		super(true);
 	}
 }

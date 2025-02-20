@@ -62,7 +62,7 @@ public class AggregatedSingleTariffClassSession extends Asn1Sequence {
 	@JsonProperty("sumVat")
 	private PaymentFee sumVat;
 
-	AggregatedSingleTariffClassSession() {
+	public AggregatedSingleTariffClassSession() {
 		super(true);
 	}
 }

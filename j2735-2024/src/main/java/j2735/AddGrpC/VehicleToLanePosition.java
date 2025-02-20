@@ -46,7 +46,7 @@ public class VehicleToLanePosition extends Asn1Sequence {
 	@JsonProperty("laneID")
 	private LaneID laneID;
 
-	VehicleToLanePosition() {
+	public VehicleToLanePosition() {
 		super(true);
 	}
 }

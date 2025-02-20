@@ -98,7 +98,7 @@ public class RptAveragedRecord extends Asn1Sequence {
 		}
 	}
 
-	RptAveragedRecord() {
+	public RptAveragedRecord() {
 		super(true);
 	}
 }

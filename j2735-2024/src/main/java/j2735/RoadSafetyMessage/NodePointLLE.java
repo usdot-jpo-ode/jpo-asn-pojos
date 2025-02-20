@@ -43,7 +43,7 @@ public class NodePointLLE extends Asn1Choice {
 	@JsonProperty("node-3Doffset")
 	private Offset3D node_3Doffset;
 
-	NodePointLLE() {
+	public NodePointLLE() {
 		super(true);
 	}
 }

@@ -124,7 +124,7 @@ public class PerAxleWeightCharges extends Asn1Sequence {
 		}
 	}
 
-	PerAxleWeightCharges() {
+	public PerAxleWeightCharges() {
 		super(true);
 	}
 }

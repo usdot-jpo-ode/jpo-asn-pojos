@@ -50,7 +50,7 @@ public class VehicleSafetyExtensions extends Asn1Sequence {
 	@JsonProperty("lights")
 	private ExteriorLights lights;
 
-	VehicleSafetyExtensions() {
+	public VehicleSafetyExtensions() {
 		super(true);
 	}
 }

@@ -47,7 +47,7 @@ public class DDate extends Asn1Sequence {
 	@JsonProperty("day")
 	private DDay day;
 
-	DDate() {
+	public DDate() {
 		super(false);
 	}
 }

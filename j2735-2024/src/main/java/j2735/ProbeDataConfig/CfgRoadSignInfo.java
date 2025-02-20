@@ -73,7 +73,7 @@ public class CfgRoadSignInfo extends Asn1Sequence {
 		}
 	}
 
-	CfgRoadSignInfo() {
+	public CfgRoadSignInfo() {
 		super(true);
 	}
 }

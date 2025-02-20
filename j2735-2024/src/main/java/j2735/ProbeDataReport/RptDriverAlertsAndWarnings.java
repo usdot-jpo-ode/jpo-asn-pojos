@@ -67,7 +67,7 @@ public class RptDriverAlertsAndWarnings extends Asn1Choice {
 	@JsonProperty("otherWarning")
 	private Asn1Null otherWarning;
 
-	RptDriverAlertsAndWarnings() {
+	public RptDriverAlertsAndWarnings() {
 		super(true);
 	}
 }

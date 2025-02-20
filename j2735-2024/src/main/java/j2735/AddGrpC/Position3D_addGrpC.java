@@ -41,7 +41,7 @@ public class Position3D_addGrpC extends Asn1Sequence {
 	@JsonProperty("altitude")
 	private Altitude altitude;
 
-	Position3D_addGrpC() {
+	public Position3D_addGrpC() {
 		super(true);
 	}
 }

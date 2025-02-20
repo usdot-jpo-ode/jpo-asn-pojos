@@ -92,7 +92,7 @@ public class VehicleStatusRequest extends Asn1Sequence {
 		}
 	}
 
-	VehicleStatusRequest() {
+	public VehicleStatusRequest() {
 		super(true);
 	}
 }

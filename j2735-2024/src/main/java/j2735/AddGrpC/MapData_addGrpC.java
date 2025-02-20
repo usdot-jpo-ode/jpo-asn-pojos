@@ -45,7 +45,7 @@ public class MapData_addGrpC extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "SignalHeadLocation")
 	private SignalHeadLocationList signalHeadLocations;
 
-	MapData_addGrpC() {
+	public MapData_addGrpC() {
 		super(true);
 	}
 }

@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class PrioritizationResponseList extends Asn1SequenceOf<PrioritizationResponse> {
 
-	PrioritizationResponseList() {
+	public PrioritizationResponseList() {
 		super(PrioritizationResponse.class, 0L, 2147483647L);
 	}
 }

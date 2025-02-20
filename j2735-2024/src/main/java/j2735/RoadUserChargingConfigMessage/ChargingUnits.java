@@ -42,7 +42,7 @@ public class ChargingUnits extends Asn1Choice {
 	@JsonProperty("parked")
 	private Parked parked;
 
-	ChargingUnits() {
+	public ChargingUnits() {
 		super(true);
 	}
 }

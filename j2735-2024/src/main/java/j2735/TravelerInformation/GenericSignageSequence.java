@@ -54,12 +54,12 @@ public class GenericSignageSequence extends Asn1Sequence {
 		@JsonProperty("text")
 		private ITIStextPhrase text;
 
-		ItemChoice() {
+		public ItemChoice() {
 			super(false);
 		}
 	}
 
-	GenericSignageSequence() {
+	public GenericSignageSequence() {
 		super(false);
 	}
 }

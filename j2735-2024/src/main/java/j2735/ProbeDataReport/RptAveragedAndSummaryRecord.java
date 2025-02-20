@@ -62,7 +62,7 @@ public class RptAveragedAndSummaryRecord extends Asn1Sequence {
 	@JsonProperty("record")
 	private RptAvgAndSummaryRecordData record_;
 
-	RptAveragedAndSummaryRecord() {
+	public RptAveragedAndSummaryRecord() {
 		super(true);
 	}
 }

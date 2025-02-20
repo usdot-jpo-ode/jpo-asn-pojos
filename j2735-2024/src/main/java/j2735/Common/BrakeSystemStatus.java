@@ -56,7 +56,7 @@ public class BrakeSystemStatus extends Asn1Sequence {
 	@JsonProperty("auxBrakes")
 	private AuxiliaryBrakeStatus auxBrakes;
 
-	BrakeSystemStatus() {
+	public BrakeSystemStatus() {
 		super(false);
 	}
 }

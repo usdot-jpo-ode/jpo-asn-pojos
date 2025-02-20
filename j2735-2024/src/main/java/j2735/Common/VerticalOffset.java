@@ -62,7 +62,7 @@ public class VerticalOffset extends Asn1Choice {
 	@JsonProperty("regional")
 	private Reg_VerticalOffset regional;
 
-	VerticalOffset() {
+	public VerticalOffset() {
 		super(false);
 	}
 }

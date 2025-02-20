@@ -77,7 +77,7 @@ public class EventRecurrence extends Asn1Sequence {
 	@JsonProperty("exclusion")
 	private Asn1Boolean exclusion;
 
-	EventRecurrence() {
+	public EventRecurrence() {
 		super(true);
 	}
 }

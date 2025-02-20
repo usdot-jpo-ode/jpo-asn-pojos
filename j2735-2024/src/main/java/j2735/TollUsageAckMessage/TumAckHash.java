@@ -63,7 +63,7 @@ public class TumAckHash extends Asn1Sequence {
 		}
 	}
 
-	TumAckHash() {
+	public TumAckHash() {
 		super(true);
 	}
 }

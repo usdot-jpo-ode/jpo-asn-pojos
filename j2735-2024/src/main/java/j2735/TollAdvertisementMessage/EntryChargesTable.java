@@ -44,7 +44,7 @@ public class EntryChargesTable extends Asn1Sequence {
 	@JsonProperty("chargesTable")
 	private ChargesTable chargesTable;
 
-	EntryChargesTable() {
+	public EntryChargesTable() {
 		super(true);
 	}
 }

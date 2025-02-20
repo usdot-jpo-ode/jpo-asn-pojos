@@ -52,7 +52,7 @@ public class TrailerData extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "TrailerUnitDescription")
 	private TrailerUnitDescriptionList units;
 
-	TrailerData() {
+	public TrailerData() {
 		super(true);
 	}
 }

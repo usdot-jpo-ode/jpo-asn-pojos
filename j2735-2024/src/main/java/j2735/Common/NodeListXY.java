@@ -46,7 +46,7 @@ public class NodeListXY extends Asn1Choice {
 	@JsonProperty("computed")
 	private ComputedLane computed;
 
-	NodeListXY() {
+	public NodeListXY() {
 		super(true);
 	}
 }

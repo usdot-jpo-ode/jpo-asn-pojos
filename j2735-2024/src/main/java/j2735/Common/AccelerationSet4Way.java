@@ -50,7 +50,7 @@ public class AccelerationSet4Way extends Asn1Sequence {
 	@JsonProperty("yaw")
 	private YawRate yaw;
 
-	AccelerationSet4Way() {
+	public AccelerationSet4Way() {
 		super(false);
 	}
 }

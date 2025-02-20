@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class VehicleToLanePositionList extends Asn1SequenceOf<VehicleToLanePosition> {
 
-	VehicleToLanePositionList() {
+	public VehicleToLanePositionList() {
 		super(VehicleToLanePosition.class, 0L, 2147483647L);
 	}
 }

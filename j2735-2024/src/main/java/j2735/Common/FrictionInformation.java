@@ -47,7 +47,7 @@ public class FrictionInformation extends Asn1Sequence {
 	@JsonProperty("roadRoughness")
 	private RoadRoughness roadRoughness;
 
-	FrictionInformation() {
+	public FrictionInformation() {
 		super(true);
 	}
 }

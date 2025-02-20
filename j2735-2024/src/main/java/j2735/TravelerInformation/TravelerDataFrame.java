@@ -102,14 +102,14 @@ public class TravelerDataFrame extends Asn1Sequence {
 		@JsonProperty("roadSignID")
 		private RoadSignID roadSignID;
 
-		MsgIdChoice() {
+		public MsgIdChoice() {
 			super(false);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegions extends Asn1SequenceOf<GeographicalPath> {
-		SequenceOfRegions() {
+		public SequenceOfRegions() {
 			super(GeographicalPath.class, 1L, 16L);
 		}
 	}
@@ -144,12 +144,12 @@ public class TravelerDataFrame extends Asn1Sequence {
 		@JsonSerialize(using = ExitServiceSerializer.class)
 		private ExitService exitService;
 
-		ContentChoice() {
+		public ContentChoice() {
 			super(false);
 		}
 	}
 
-	TravelerDataFrame() {
+	public TravelerDataFrame() {
 		super(true);
 	}
 

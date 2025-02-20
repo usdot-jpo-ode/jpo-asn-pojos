@@ -48,7 +48,7 @@ public class CfgTransitVehicleData extends Asn1Sequence {
 	@JsonProperty("trnstVehSchAdh")
 	private Asn1Boolean trnstVehSchAdh;
 
-	CfgTransitVehicleData() {
+	public CfgTransitVehicleData() {
 		super(true);
 	}
 }

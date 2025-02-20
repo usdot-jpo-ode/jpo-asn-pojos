@@ -48,12 +48,12 @@ public class CooperativeControlMessage extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfPartII extends Asn1SequenceOf<CCMpartIIExtension> {
-		SequenceOfPartII() {
+		public SequenceOfPartII() {
 			super(CCMpartIIExtension.class, 1L, 8L);
 		}
 	}
 
-	CooperativeControlMessage() {
+	public CooperativeControlMessage() {
 		super(true);
 	}
 }

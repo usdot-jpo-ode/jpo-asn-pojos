@@ -44,7 +44,7 @@ public class RegulatorySpeedLimit extends Asn1Sequence {
 	@JsonProperty("speed")
 	private Velocity speed;
 
-	RegulatorySpeedLimit() {
+	public RegulatorySpeedLimit() {
 		super(false);
 	}
 }

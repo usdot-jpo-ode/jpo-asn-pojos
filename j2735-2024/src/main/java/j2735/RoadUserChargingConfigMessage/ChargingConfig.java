@@ -101,12 +101,12 @@ public class ChargingConfig extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfBySubRegion extends Asn1SequenceOf<SubRegionChargingInfo> {
-		SequenceOfBySubRegion() {
+		public SequenceOfBySubRegion() {
 			super(SubRegionChargingInfo.class, 1L, 999L);
 		}
 	}
 
-	ChargingConfig() {
+	public ChargingConfig() {
 		super(true);
 	}
 }

@@ -48,7 +48,7 @@ public class CfgInstantaneousEventTriggers extends Asn1Choice {
 	@JsonProperty("commSysPerfEvents")
 	private CfgCommSysPerfEvents commSysPerfEvents;
 
-	CfgInstantaneousEventTriggers() {
+	public CfgInstantaneousEventTriggers() {
 		super(true);
 	}
 }

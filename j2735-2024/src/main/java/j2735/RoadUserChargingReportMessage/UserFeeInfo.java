@@ -45,7 +45,7 @@ public class UserFeeInfo extends Asn1Sequence {
 	@JsonProperty("timePeriod")
 	private TimePeriod timePeriod;
 
-	UserFeeInfo() {
+	public UserFeeInfo() {
 		super(true);
 	}
 }

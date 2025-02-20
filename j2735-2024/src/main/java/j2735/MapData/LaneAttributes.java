@@ -51,7 +51,7 @@ public class LaneAttributes extends Asn1Sequence {
 	@JsonProperty("regional")
 	private Reg_LaneAttributes regional;
 
-	LaneAttributes() {
+	public LaneAttributes() {
 		super(false);
 	}
 }

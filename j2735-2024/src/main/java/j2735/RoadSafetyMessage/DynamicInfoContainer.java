@@ -96,12 +96,12 @@ public class DynamicInfoContainer extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfDmsSignString extends Asn1SequenceOf<ShortString> {
-		SequenceOfDmsSignString() {
+		public SequenceOfDmsSignString() {
 			super(ShortString.class, 0L, 2147483647L);
 		}
 	}
 
-	DynamicInfoContainer() {
+	public DynamicInfoContainer() {
 		super(true);
 	}
 }

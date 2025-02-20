@@ -52,12 +52,12 @@ public class ChargingFees extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfChargingSchedule extends Asn1SequenceOf<EventRecurrence> {
-		SequenceOfChargingSchedule() {
+		public SequenceOfChargingSchedule() {
 			super(EventRecurrence.class, 1L, 5L);
 		}
 	}
 
-	ChargingFees() {
+	public ChargingFees() {
 		super(true);
 	}
 }

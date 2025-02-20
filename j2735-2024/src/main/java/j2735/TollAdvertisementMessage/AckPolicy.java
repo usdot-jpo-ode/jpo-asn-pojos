@@ -70,7 +70,7 @@ public class AckPolicy extends Asn1Sequence {
 		}
 	}
 
-	AckPolicy() {
+	public AckPolicy() {
 		super(true);
 	}
 }

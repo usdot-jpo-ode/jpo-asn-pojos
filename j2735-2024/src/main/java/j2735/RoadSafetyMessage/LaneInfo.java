@@ -48,7 +48,7 @@ public class LaneInfo extends Asn1Sequence {
 	@JsonProperty("laneCloseOffset")
 	private ObstacleDistance laneCloseOffset;
 
-	LaneInfo() {
+	public LaneInfo() {
 		super(true);
 	}
 }

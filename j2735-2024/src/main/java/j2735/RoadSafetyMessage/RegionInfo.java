@@ -59,7 +59,7 @@ public class RegionInfo extends Asn1Sequence {
 	@JsonProperty("approachRegion")
 	private AreaType approachRegion;
 
-	RegionInfo() {
+	public RegionInfo() {
 		super(true);
 	}
 }

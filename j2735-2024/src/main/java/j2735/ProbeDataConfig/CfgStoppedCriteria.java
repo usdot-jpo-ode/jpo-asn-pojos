@@ -70,7 +70,7 @@ public class CfgStoppedCriteria extends Asn1Sequence {
 		}
 	}
 
-	CfgStoppedCriteria() {
+	public CfgStoppedCriteria() {
 		super(true);
 	}
 }

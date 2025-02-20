@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class TRRLocationType3 extends Asn1SequenceOf<PositionOffsetXYZ> {
 
-	TRRLocationType3() {
+	public TRRLocationType3() {
 		super(PositionOffsetXYZ.class, 0L, 2147483647L);
 	}
 }

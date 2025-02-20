@@ -54,7 +54,7 @@ public class NtcipPavement extends Asn1Sequence {
 	@JsonProperty("roadRoughness")
 	private RoadRoughness roadRoughness;
 
-	NtcipPavement() {
+	public NtcipPavement() {
 		super(true);
 	}
 }

@@ -54,12 +54,12 @@ public class ExitServiceSequence extends Asn1Sequence {
 		@JsonProperty("text")
 		private ITIStextPhrase text;
 
-		ItemChoice() {
+		public ItemChoice() {
 			super(false);
 		}
 	}
 
-	ExitServiceSequence() {
+	public ExitServiceSequence() {
 		super(false);
 	}
 }

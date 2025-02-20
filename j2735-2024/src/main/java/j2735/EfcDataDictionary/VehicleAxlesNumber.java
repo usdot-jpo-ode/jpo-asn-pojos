@@ -44,7 +44,7 @@ public class VehicleAxlesNumber extends Asn1Sequence {
 	@JsonProperty("numberOfAxles")
 	private NumberOfAxles numberOfAxles;
 
-	VehicleAxlesNumber() {
+	public VehicleAxlesNumber() {
 		super(false);
 	}
 }

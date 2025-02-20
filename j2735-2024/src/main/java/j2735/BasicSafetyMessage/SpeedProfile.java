@@ -45,7 +45,7 @@ public class SpeedProfile extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "SpeedProfileMeasurement")
 	private SpeedProfileMeasurementList speedReports;
 
-	SpeedProfile() {
+	public SpeedProfile() {
 		super(true);
 	}
 }

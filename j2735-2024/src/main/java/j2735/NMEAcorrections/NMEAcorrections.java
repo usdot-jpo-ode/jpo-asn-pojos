@@ -61,12 +61,12 @@ public class NMEAcorrections extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_NMEAcorrections> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_NMEAcorrections.class, 1L, 4L);
 		}
 	}
 
-	NMEAcorrections() {
+	public NMEAcorrections() {
 		super(true);
 	}
 }

@@ -41,7 +41,7 @@ public class PortlandCement extends Asn1Sequence {
 	@JsonProperty("type")
 	private PortlandCementType type;
 
-	PortlandCement() {
+	public PortlandCement() {
 		super(true);
 	}
 }

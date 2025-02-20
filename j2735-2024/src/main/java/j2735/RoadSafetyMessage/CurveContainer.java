@@ -55,7 +55,7 @@ public class CurveContainer extends Asn1Sequence {
 	@JsonProperty("curveRegion")
 	private RegionInfo curveRegion;
 
-	CurveContainer() {
+	public CurveContainer() {
 		super(true);
 	}
 }

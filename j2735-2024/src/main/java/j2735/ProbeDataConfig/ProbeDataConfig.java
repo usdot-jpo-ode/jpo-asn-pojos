@@ -64,7 +64,7 @@ public class ProbeDataConfig extends Asn1Sequence {
 		}
 	}
 
-	ProbeDataConfig() {
+	public ProbeDataConfig() {
 		super(true);
 	}
 }

@@ -51,7 +51,7 @@ public class TRRLocationType1 extends Asn1Sequence {
 	@JsonProperty("tRRMovement")
 	private Speed tRRMovement;
 
-	TRRLocationType1() {
+	public TRRLocationType1() {
 		super(true);
 	}
 }

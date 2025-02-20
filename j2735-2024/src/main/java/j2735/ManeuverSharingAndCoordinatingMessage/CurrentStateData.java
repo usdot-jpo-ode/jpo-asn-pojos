@@ -61,7 +61,7 @@ public class CurrentStateData extends Asn1Sequence {
 	@JsonProperty("size")
 	private VehicleSize size;
 
-	CurrentStateData() {
+	public CurrentStateData() {
 		super(true);
 	}
 }

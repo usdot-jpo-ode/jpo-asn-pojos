@@ -85,7 +85,7 @@ public class Axles extends Asn1Sequence {
 		}
 	}
 
-	Axles() {
+	public Axles() {
 		super(true);
 	}
 }

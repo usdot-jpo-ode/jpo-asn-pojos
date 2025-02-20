@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LaneDataAttribute_addGrpB extends Asn1Sequence {
 
-	LaneDataAttribute_addGrpB() {
+	public LaneDataAttribute_addGrpB() {
 		super(true);
 	}
 }

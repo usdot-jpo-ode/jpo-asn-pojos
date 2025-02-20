@@ -44,12 +44,12 @@ public class RoadUserChargingConfigMessage extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfChargerInfoTable extends Asn1SequenceOf<ChargerInfo> {
-		SequenceOfChargerInfoTable() {
+		public SequenceOfChargerInfoTable() {
 			super(ChargerInfo.class, 1L, 999L);
 		}
 	}
 
-	RoadUserChargingConfigMessage() {
+	public RoadUserChargingConfigMessage() {
 		super(true);
 	}
 }

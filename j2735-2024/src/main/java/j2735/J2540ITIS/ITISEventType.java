@@ -150,7 +150,7 @@ public class ITISEventType extends Asn1Choice {
 	@JsonProperty("regulatorySigns")
 	private RegulatoryAndWarningSigns regulatorySigns;
 
-	ITISEventType() {
+	public ITISEventType() {
 		super(false);
 	}
 }

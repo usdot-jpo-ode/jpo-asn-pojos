@@ -61,7 +61,7 @@ public class SpecialCharges extends Asn1Sequence {
 	@JsonProperty("engineCharacteristics")
 	private EngineCharacteristics engineCharacteristics;
 
-	SpecialCharges() {
+	public SpecialCharges() {
 		super(true);
 	}
 }

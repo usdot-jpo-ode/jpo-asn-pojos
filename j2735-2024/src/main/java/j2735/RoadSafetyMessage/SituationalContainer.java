@@ -54,7 +54,7 @@ public class SituationalContainer extends Asn1Sequence {
 	@JsonProperty("applicableRegion")
 	private RegionInfo applicableRegion;
 
-	SituationalContainer() {
+	public SituationalContainer() {
 		super(true);
 	}
 }

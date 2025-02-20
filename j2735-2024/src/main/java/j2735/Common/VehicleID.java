@@ -42,7 +42,7 @@ public class VehicleID extends Asn1Choice {
 	@JsonProperty("stationID")
 	private StationID stationID;
 
-	VehicleID() {
+	public VehicleID() {
 		super(false);
 	}
 }

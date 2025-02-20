@@ -44,13 +44,13 @@ public class RestrictionUserType extends Asn1Choice {
 	@JsonProperty("regional")
 	private SequenceOfRegional regional;
 
-	RestrictionUserType() {
+	public RestrictionUserType() {
 		super(true);
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_RestrictionUserType> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_RestrictionUserType.class, 1L, 4L);
 		}
 	}

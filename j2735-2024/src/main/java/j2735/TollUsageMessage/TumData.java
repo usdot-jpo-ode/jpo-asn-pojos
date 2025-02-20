@@ -44,7 +44,7 @@ public class TumData extends Asn1Sequence {
 	@JsonProperty("tollServiceProviderData")
 	private TollServiceProviderData tollServiceProviderData;
 
-	TumData() {
+	public TumData() {
 		super(true);
 	}
 }

@@ -58,7 +58,7 @@ public class UserData extends Asn1Sequence {
 	@JsonProperty("vehicleDescription")
 	private VehicleDescription vehicleDescription;
 
-	UserData() {
+	public UserData() {
 		super(true);
 	}
 }

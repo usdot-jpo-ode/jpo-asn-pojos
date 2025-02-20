@@ -84,7 +84,7 @@ public class ReportCharacteristics extends Asn1Sequence {
 		}
 	}
 
-	ReportCharacteristics() {
+	public ReportCharacteristics() {
 		super(true);
 	}
 }

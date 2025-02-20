@@ -70,7 +70,7 @@ public class NumberOfAxles extends Asn1Sequence {
 		}
 	}
 
-	NumberOfAxles() {
+	public NumberOfAxles() {
 		super(false);
 	}
 }

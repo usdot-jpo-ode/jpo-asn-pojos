@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RegionList extends Asn1SequenceOf<RegionOffsets> {
 
-	RegionList() {
+	public RegionList() {
 		super(RegionOffsets.class, 1L, 64L);
 	}
 }

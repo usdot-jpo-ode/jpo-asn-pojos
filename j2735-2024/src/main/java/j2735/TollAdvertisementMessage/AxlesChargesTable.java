@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class AxlesChargesTable extends Asn1SequenceOf<AxlesCharges> {
 
-	AxlesChargesTable() {
+	public AxlesChargesTable() {
 		super(AxlesCharges.class, 2L, 10L);
 	}
 }

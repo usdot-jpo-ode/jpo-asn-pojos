@@ -43,7 +43,7 @@ public class ConfigBoundary extends Asn1Choice {
 	@JsonProperty("geoAndDistBoundary")
 	private ValidRegion geoAndDistBoundary;
 
-	ConfigBoundary() {
+	public ConfigBoundary() {
 		super(true);
 	}
 }

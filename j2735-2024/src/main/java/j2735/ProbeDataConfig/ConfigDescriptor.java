@@ -65,7 +65,7 @@ public class ConfigDescriptor extends Asn1Sequence {
 		}
 	}
 
-	ConfigDescriptor() {
+	public ConfigDescriptor() {
 		super(true);
 	}
 }

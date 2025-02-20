@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RptInstantaneousRecords extends Asn1SequenceOf<RptInstantaneousRecord> {
 
-	RptInstantaneousRecords() {
+	public RptInstantaneousRecords() {
 		super(RptInstantaneousRecord.class, 1L, 255L);
 	}
 }

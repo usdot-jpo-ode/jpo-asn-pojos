@@ -30,7 +30,7 @@ import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 @JsonInclude(Include.NON_NULL)
 public class RequestedItemList extends Asn1SequenceOf<RequestedItem> {
 
-	RequestedItemList() {
+	public RequestedItemList() {
 		super(RequestedItem.class, 1L, 32L);
 	}
 

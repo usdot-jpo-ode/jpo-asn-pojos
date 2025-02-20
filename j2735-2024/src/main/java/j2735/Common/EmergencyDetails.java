@@ -56,7 +56,7 @@ public class EmergencyDetails extends Asn1Sequence {
 	@JsonProperty("responseType")
 	private ResponseType responseType;
 
-	EmergencyDetails() {
+	public EmergencyDetails() {
 		super(true);
 	}
 }

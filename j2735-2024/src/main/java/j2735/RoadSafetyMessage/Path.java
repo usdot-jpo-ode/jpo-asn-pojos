@@ -62,7 +62,7 @@ public class Path extends Asn1Sequence {
 		}
 	}
 
-	Path() {
+	public Path() {
 		super(true);
 	}
 }

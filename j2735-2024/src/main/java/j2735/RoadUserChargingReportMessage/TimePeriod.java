@@ -45,7 +45,7 @@ public class TimePeriod extends Asn1Sequence {
 	@JsonProperty("endTime")
 	private DDateTime endTime;
 
-	TimePeriod() {
+	public TimePeriod() {
 		super(true);
 	}
 }

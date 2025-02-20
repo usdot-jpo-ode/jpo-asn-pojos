@@ -53,7 +53,7 @@ public class UserId extends Asn1Sequence {
 	@JsonProperty("iccId")
 	private EquipmentIccId iccId;
 
-	UserId() {
+	public UserId() {
 		super(false);
 	}
 }

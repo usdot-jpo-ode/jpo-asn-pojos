@@ -41,7 +41,7 @@ public class NtcipCloudSituation extends Asn1Sequence {
 	@JsonProperty("situation")
 	private NTCIPEssCloudSituationV4 situation;
 
-	NtcipCloudSituation() {
+	public NtcipCloudSituation() {
 		super(true);
 	}
 }

@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class IntersectionStateList extends Asn1SequenceOf<IntersectionState> {
 
-	IntersectionStateList() {
+	public IntersectionStateList() {
 		super(IntersectionState.class, 1L, 32L);
 	}
 }

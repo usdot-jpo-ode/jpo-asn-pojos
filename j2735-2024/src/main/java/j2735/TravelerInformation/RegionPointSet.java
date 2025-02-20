@@ -52,7 +52,7 @@ public class RegionPointSet extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "RegionOffsets")
 	private RegionList nodeList;
 
-	RegionPointSet() {
+	public RegionPointSet() {
 		super(true);
 	}
 }

@@ -72,7 +72,7 @@ public class SchoolBusJ2945Slash1C extends Asn1Sequence {
 	@JsonProperty("emergencyRequestPolice")
 	private Asn1Boolean emergencyRequestPolice;
 
-	SchoolBusJ2945Slash1C() {
+	public SchoolBusJ2945Slash1C() {
 		super(true);
 	}
 }

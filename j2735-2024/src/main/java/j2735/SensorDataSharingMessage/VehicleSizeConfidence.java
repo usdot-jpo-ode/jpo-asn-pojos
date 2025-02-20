@@ -47,7 +47,7 @@ public class VehicleSizeConfidence extends Asn1Sequence {
 	@JsonProperty("vehicleHeightConfidence")
 	private SizeValueConfidence vehicleHeightConfidence;
 
-	VehicleSizeConfidence() {
+	public VehicleSizeConfidence() {
 		super(false);
 	}
 }

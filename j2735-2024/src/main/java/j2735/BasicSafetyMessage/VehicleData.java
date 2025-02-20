@@ -82,7 +82,7 @@ public class VehicleData extends Asn1Sequence {
 		}
 	}
 
-	VehicleData() {
+	public VehicleData() {
 		super(true);
 	}
 }

@@ -49,7 +49,7 @@ public class RoadWeatherDownload extends Asn1Sequence {
 	@JsonProperty("wdmsFleetData")
 	private WDMSFleetData wdmsFleetData;
 
-	RoadWeatherDownload() {
+	public RoadWeatherDownload() {
 		super(true);
 	}
 }

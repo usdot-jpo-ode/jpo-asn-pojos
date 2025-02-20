@@ -42,7 +42,7 @@ public class ChargingAreaOrSegment extends Asn1Choice {
 	@JsonProperty("segment")
 	private Segment segment;
 
-	ChargingAreaOrSegment() {
+	public ChargingAreaOrSegment() {
 		super(true);
 	}
 }

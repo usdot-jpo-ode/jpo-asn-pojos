@@ -70,7 +70,7 @@ public class TumInstructions extends Asn1Sequence {
 		}
 	}
 
-	TumInstructions() {
+	public TumInstructions() {
 		super(true);
 	}
 }

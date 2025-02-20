@@ -44,7 +44,7 @@ public class AngularVelocityConfidence extends Asn1Sequence {
 	@JsonProperty("rollRateConfidence")
 	private RollRateConfidence rollRateConfidence;
 
-	AngularVelocityConfidence() {
+	public AngularVelocityConfidence() {
 		super(false);
 	}
 }

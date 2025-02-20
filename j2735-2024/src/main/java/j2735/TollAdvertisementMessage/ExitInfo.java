@@ -73,7 +73,7 @@ public class ExitInfo extends Asn1Sequence {
 		}
 	}
 
-	ExitInfo() {
+	public ExitInfo() {
 		super(true);
 	}
 }

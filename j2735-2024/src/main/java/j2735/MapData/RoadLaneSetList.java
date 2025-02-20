@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RoadLaneSetList extends Asn1SequenceOf<GenericLane> {
 
-	RoadLaneSetList() {
+	public RoadLaneSetList() {
 		super(GenericLane.class, 1L, 255L);
 	}
 }

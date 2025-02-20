@@ -48,7 +48,7 @@ public class VehTypeCharges extends Asn1Sequence {
 	@JsonProperty("specialCharges")
 	private SpecialCharges specialCharges;
 
-	VehTypeCharges() {
+	public VehTypeCharges() {
 		super(true);
 	}
 }

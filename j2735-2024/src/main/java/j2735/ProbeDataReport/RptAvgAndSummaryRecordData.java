@@ -42,7 +42,7 @@ public class RptAvgAndSummaryRecordData extends Asn1Choice {
 	@JsonProperty("summaryRecord")
 	private RptSummaryRecord summaryRecord;
 
-	RptAvgAndSummaryRecordData() {
+	public RptAvgAndSummaryRecordData() {
 		super(true);
 	}
 }

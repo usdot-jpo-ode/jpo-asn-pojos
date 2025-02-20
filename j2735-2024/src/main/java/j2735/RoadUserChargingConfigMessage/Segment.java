@@ -52,12 +52,12 @@ public class Segment extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfChargingSegment extends Asn1SequenceOf<TollAdvertisementMessage> {
-		SequenceOfChargingSegment() {
+		public SequenceOfChargingSegment() {
 			super(TollAdvertisementMessage.class, 1L, 999L);
 		}
 	}
 
-	Segment() {
+	public Segment() {
 		super(true);
 	}
 }

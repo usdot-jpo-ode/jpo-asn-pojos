@@ -48,7 +48,7 @@ public class RptKinematicEvents extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "RptHysteresis")
 	private RptHysteresisRecord hysteresis;
 
-	RptKinematicEvents() {
+	public RptKinematicEvents() {
 		super(true);
 	}
 }

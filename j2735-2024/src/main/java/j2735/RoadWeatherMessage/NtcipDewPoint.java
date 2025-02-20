@@ -47,7 +47,7 @@ public class NtcipDewPoint extends Asn1Sequence {
 	@JsonProperty("measurementStdDev")
 	private DewPointTempMeasurementStdDev measurementStdDev;
 
-	NtcipDewPoint() {
+	public NtcipDewPoint() {
 		super(true);
 	}
 }

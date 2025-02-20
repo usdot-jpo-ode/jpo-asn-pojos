@@ -71,7 +71,7 @@ public class NtcipEssData extends Asn1Sequence {
 	@JsonProperty("solarRadiation")
 	private NtcipSolarRadiation solarRadiation;
 
-	NtcipEssData() {
+	public NtcipEssData() {
 		super(true);
 	}
 }

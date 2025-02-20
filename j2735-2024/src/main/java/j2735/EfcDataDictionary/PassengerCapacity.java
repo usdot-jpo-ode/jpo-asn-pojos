@@ -44,7 +44,7 @@ public class PassengerCapacity extends Asn1Sequence {
 	@JsonProperty("numberOfStandingPlaces")
 	private Int1Unsigned numberOfStandingPlaces;
 
-	PassengerCapacity() {
+	public PassengerCapacity() {
 		super(false);
 	}
 }

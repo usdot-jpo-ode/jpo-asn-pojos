@@ -44,12 +44,12 @@ public class AreaOrSegmentChargingInfo extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfChargingAreaOrSegment extends Asn1SequenceOf<ChargingAreaOrSegment> {
-		SequenceOfChargingAreaOrSegment() {
+		public SequenceOfChargingAreaOrSegment() {
 			super(ChargingAreaOrSegment.class, 1L, 999L);
 		}
 	}
 
-	AreaOrSegmentChargingInfo() {
+	public AreaOrSegmentChargingInfo() {
 		super(true);
 	}
 }

@@ -116,7 +116,7 @@ public class ReceiptData extends Asn1Sequence {
 		}
 	}
 
-	ReceiptData() {
+	public ReceiptData() {
 		super(false);
 	}
 }

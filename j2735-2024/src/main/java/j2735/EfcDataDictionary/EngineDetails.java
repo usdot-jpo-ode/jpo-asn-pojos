@@ -44,7 +44,7 @@ public class EngineDetails extends Asn1Sequence {
 	@JsonProperty("enginePower")
 	private Int2Unsigned enginePower;
 
-	EngineDetails() {
+	public EngineDetails() {
 		super(false);
 	}
 }

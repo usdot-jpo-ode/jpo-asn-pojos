@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class LastTollPointInfos extends Asn1SequenceOf<LastTollPointInfo> {
 
-	LastTollPointInfos() {
+	public LastTollPointInfos() {
 		super(LastTollPointInfo.class, 1L, 5L);
 	}
 }

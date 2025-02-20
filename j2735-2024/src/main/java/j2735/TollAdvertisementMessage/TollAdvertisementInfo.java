@@ -110,7 +110,7 @@ public class TollAdvertisementInfo extends Asn1Sequence {
 		}
 	}
 
-	TollAdvertisementInfo() {
+	public TollAdvertisementInfo() {
 		super(true);
 	}
 }

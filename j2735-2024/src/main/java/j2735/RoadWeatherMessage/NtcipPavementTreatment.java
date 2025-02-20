@@ -62,7 +62,7 @@ public class NtcipPavementTreatment extends Asn1Sequence {
 	@JsonProperty("width")
 	private NTCIPEssPaveTreatmentWidth width;
 
-	NtcipPavementTreatment() {
+	public NtcipPavementTreatment() {
 		super(true);
 	}
 }

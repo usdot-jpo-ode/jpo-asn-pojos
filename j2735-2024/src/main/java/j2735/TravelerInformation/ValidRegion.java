@@ -64,12 +64,12 @@ public class ValidRegion extends Asn1Sequence {
 		@JsonProperty("regionPointSet")
 		private RegionPointSet regionPointSet;
 
-		AreaChoice() {
+		public AreaChoice() {
 			super(false);
 		}
 	}
 
-	ValidRegion() {
+	public ValidRegion() {
 		super(false);
 	}
 }

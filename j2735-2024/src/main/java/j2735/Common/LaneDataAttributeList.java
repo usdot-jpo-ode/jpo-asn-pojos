@@ -31,7 +31,7 @@ import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
 @JsonInclude(Include.NON_NULL)
 public class LaneDataAttributeList extends Asn1SequenceOf<LaneDataAttribute> {
 
-	LaneDataAttributeList() {
+	public LaneDataAttributeList() {
 		super(LaneDataAttribute.class, 1L, 8L);
 	}
 

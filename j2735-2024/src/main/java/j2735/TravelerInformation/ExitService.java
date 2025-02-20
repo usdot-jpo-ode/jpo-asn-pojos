@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class ExitService extends Asn1SequenceOf<ExitServiceSequence> {
 
-	ExitService() {
+	public ExitService() {
 		super(ExitServiceSequence.class, 1L, 16L);
 	}
 }

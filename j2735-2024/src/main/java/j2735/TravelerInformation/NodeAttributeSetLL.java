@@ -72,12 +72,12 @@ public class NodeAttributeSetLL extends Asn1Sequence {
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_NodeAttributeSetLL> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_NodeAttributeSetLL.class, 1L, 4L);
 		}
 	}
 
-	NodeAttributeSetLL() {
+	public NodeAttributeSetLL() {
 		super(true);
 	}
 }

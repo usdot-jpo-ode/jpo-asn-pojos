@@ -73,7 +73,7 @@ public class ComputedLane extends Asn1Sequence {
 		@JsonProperty("large")
 		private DrivenLineOffsetLg large;
 
-		OffsetXaxisChoice() {
+		public OffsetXaxisChoice() {
 			super(false);
 		}
 	}
@@ -89,19 +89,19 @@ public class ComputedLane extends Asn1Sequence {
 		@JsonProperty("large")
 		private DrivenLineOffsetLg large;
 
-		OffsetYaxisChoice() {
+		public OffsetYaxisChoice() {
 			super(false);
 		}
 	}
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_ComputedLane> {
-		SequenceOfRegional() {
+		public SequenceOfRegional() {
 			super(j2735.REGION.Reg_ComputedLane.class, 1L, 4L);
 		}
 	}
 
-	ComputedLane() {
+	public ComputedLane() {
 		super(true);
 	}
 }

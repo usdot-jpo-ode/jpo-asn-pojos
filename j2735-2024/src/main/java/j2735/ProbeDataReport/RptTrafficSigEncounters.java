@@ -45,7 +45,7 @@ public class RptTrafficSigEncounters extends Asn1Sequence {
 	@JsonProperty("trafficMetrics")
 	private RptTrafficMetrics trafficMetrics;
 
-	RptTrafficSigEncounters() {
+	public RptTrafficSigEncounters() {
 		super(true);
 	}
 }

@@ -47,7 +47,7 @@ public class VehicleWeightLimits extends Asn1Sequence {
 	@JsonProperty("vehicleWeightUnladen")
 	private Int2Unsigned vehicleWeightUnladen;
 
-	VehicleWeightLimits() {
+	public VehicleWeightLimits() {
 		super(false);
 	}
 }

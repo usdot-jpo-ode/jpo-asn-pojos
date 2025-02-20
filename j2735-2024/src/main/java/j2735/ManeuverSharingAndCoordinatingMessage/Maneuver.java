@@ -45,7 +45,7 @@ public class Maneuver extends Asn1Sequence {
 	@JacksonXmlProperty(localName = "SubManeuver")
 	private SubManeuverList subManeuverList;
 
-	Maneuver() {
+	public Maneuver() {
 		super(true);
 	}
 }

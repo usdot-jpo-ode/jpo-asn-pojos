@@ -44,7 +44,7 @@ public class AccelTimeConstant extends Asn1Sequence {
 	@JsonProperty("decelTimeConst")
 	private TimeConstant decelTimeConst;
 
-	AccelTimeConstant() {
+	public AccelTimeConstant() {
 		super(false);
 	}
 }

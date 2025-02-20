@@ -69,7 +69,7 @@ public class VehicleId extends Asn1Sequence {
 		}
 	}
 
-	VehicleId() {
+	public VehicleId() {
 		super(true);
 	}
 }

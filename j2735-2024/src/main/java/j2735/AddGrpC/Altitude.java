@@ -44,7 +44,7 @@ public class Altitude extends Asn1Sequence {
 	@JsonProperty("confidence")
 	private AltitudeConfidence confidence;
 
-	Altitude() {
+	public Altitude() {
 		super(false);
 	}
 }

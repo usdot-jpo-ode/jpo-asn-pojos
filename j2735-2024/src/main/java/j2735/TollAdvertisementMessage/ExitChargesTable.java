@@ -44,7 +44,7 @@ public class ExitChargesTable extends Asn1Sequence {
 	@JsonProperty("chargesTable")
 	private ChargesTable chargesTable;
 
-	ExitChargesTable() {
+	public ExitChargesTable() {
 		super(true);
 	}
 }
