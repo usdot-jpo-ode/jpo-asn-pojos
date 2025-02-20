@@ -1,7 +1,9 @@
 package j2735.MessageFrame;
 
+import j2735.SPAT.SPAT;
+import j2735.SPAT.SPATMessageFrame;
 import j2735.SPAT.SPATMessageFrameTest;
-import us.dot.its.jpo.ode.plugin.BaseSerializeTest;
+import j2735.BaseSerializeTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
