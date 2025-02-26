@@ -1,0 +1,73 @@
+{
+    "events": "4000",
+    "pathHistory": {
+        "initialPosition": {
+            "utcTime": {
+                "year": 3774,
+                "month": 4,
+                "day": 21,
+                "hour": 28,
+                "minute": 37,
+                "second": 51172,
+                "offset": -418
+            },
+            "long": 769874390,
+            "lat": 539901156,
+            "elevation": 3309,
+            "heading": 18841,
+            "speed": {
+                "transmisson": "forwardGears",
+                "speed": 7606
+            },
+            "posAccuracy": {
+                "semiMajor": 116,
+                "semiMinor": 61,
+                "orientation": 63218
+            },
+            "timeConfidence": "time-000-000-000-000-01",
+            "posConfidence": {
+                "pos": "a50m",
+                "elevation": "elev-010-00"
+            },
+            "speedConfidence": {
+                "heading": "prec05deg",
+                "speed": "unavailable",
+                "throttle": "prec10percent"
+            }
+        },
+        "currGNSSstatus": "40",
+        "crumbData": [
+            {
+                "latOffset": 12737,
+                "lonOffset": 56752,
+                "elevationOffset": 1569,
+                "timeOffset": 5128,
+                "speed": 4611,
+                "posAccuracy": {
+                    "semiMajor": 191,
+                    "semiMinor": 84,
+                    "orientation": 18955
+                },
+                "heading": 116
+            },
+            {
+                "latOffset": 38400,
+                "lonOffset": -9661,
+                "elevationOffset": -254,
+                "timeOffset": 8199,
+                "speed": 7029,
+                "posAccuracy": {
+                    "semiMajor": 125,
+                    "semiMinor": 25,
+                    "orientation": 6863
+                },
+                "heading": 82
+            }
+        ]
+    },
+    "pathPrediction": {
+        "radiusOfCurve": -22046,
+        "confidence": 173
+    },
+    "lights": "2000"
+}
