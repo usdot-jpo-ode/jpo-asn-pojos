@@ -39,4 +39,22 @@ public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyM
     String json = toJson(psm);
     System.out.println(json);
   }
+
+  @Test
+  public void xmlDeserialize_generatedXml_erlang_motor() throws IOException {
+    PersonalSafetyMessage psm = fromXml(loadResource("/j2735/PersonalSafetyMessage/xml/GeneratedPsmErlangMotor.xml"));
+    assertThat(psm, notNullValue());
+
+    String json = toJson(psm);
+    System.out.println(json);
+  }
+
+  @Test
+  public void jsonDeserialize_generatedJson_erlang() throws IOException {
+    PersonalSafetyMessage psm = fromJson(loadResource("/j2735/PersonalSafetyMessage/json/GeneratedPsmErlang.json"));
+    assertThat(psm, notNullValue());
+
+    String json = toJson(psm);
+    System.out.println(json);
+  }
 }
