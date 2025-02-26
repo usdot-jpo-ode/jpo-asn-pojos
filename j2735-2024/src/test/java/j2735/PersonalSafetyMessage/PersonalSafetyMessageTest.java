@@ -24,6 +24,14 @@ public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyM
     assertThat(psm, notNullValue());
   }
 
+
+  @Test
+  public void jsonDeserialize_generatedJson() throws IOException {
+    PersonalSafetyMessage psm = fromJson(loadResource("/j2735/PersonalSafetyMessage/json/GeneratedPsm.json"));
+    assertThat(psm, notNullValue());
+  }
+
+
   @Test
   public void serializeDeserialize_humanPropelledType() throws IOException {
     PersonalSafetyMessage psm = new PersonalSafetyMessage();
@@ -85,15 +93,6 @@ public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyM
   }
 
   @Test
-  public void jsonDeserialize_generatedJson() throws IOException {
-    PersonalSafetyMessage psm = fromJson(loadResource("/j2735/PersonalSafetyMessage/json/GeneratedPsm.json"));
-    assertThat(psm, notNullValue());
-
-    String json = toJson(psm);
-    System.out.println(json);
-  }
-
-  @Test
   public void roundTripSerialization_withHumanPropulsion() throws IOException {
     PersonalSafetyMessage original = new PersonalSafetyMessage();
     PropelledInformation propInfo = new PropelledInformation();
@@ -145,6 +144,8 @@ public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyM
     original.setSecMark(new DSecond(1234));
     original.setMsgCnt(new MsgCount(99));
     original.setId(new TemporaryID("12341234"));
+    original.setClusterRadius(new PersonalClusterRadius(10L));
+    original.setAttachmentRadius(new AttachmentRadius(10L));
     
     PropelledInformation propInfo = new PropelledInformation();
     propInfo.setMotor(MotorizedPropelledType.WHEELCHAIR);
@@ -160,5 +161,7 @@ public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyM
     assertThat(fromXml.getMsgCnt().getValue(), is(99L));
     assertThat(fromXml.getId().getValue(), is("12341234"));
     assertThat(fromXml.getPropulsion().getMotor(), is(MotorizedPropelledType.WHEELCHAIR));
+    assertThat(fromXml.getClusterRadius().getValue(), is(10L));
+    assertThat(fromXml.getAttachmentRadius().getValue(), is(10L));
   }
 }
