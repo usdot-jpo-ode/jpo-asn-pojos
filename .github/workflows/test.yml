@@ -1,7 +1,6 @@
 name: Test & Coverage
 
 on:
-  push:
   pull_request:
 
 jobs:
@@ -22,7 +21,9 @@ jobs:
     
     - name: Run Tests with Coverage
       working-directory: ./j2735-2024
-      run: ./gradlew test jacocoTestReport
+      run: |
+        chmod +x gradlew
+        ./gradlew test jacocoTestReport
       
     - name: Upload coverage reports
       uses: actions/upload-artifact@v4
