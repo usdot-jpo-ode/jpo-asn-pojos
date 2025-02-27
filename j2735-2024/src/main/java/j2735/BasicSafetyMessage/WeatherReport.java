@@ -22,20 +22,20 @@
 
 package j2735.BasicSafetyMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.NTCIP.EssPrecipYesNo;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.CoefficientOfFriction;
+import j2735.NTCIP.EssMobileFriction;
 import j2735.NTCIP.EssPrecipRate;
 import j2735.NTCIP.EssPrecipSituation;
+import j2735.NTCIP.EssPrecipYesNo;
 import j2735.NTCIP.EssSolarRadiation;
-import j2735.NTCIP.EssMobileFriction;
-import j2735.Common.CoefficientOfFriction;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

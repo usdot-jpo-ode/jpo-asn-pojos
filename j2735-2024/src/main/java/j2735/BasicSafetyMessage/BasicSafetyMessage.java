@@ -22,17 +22,17 @@
 
 package j2735.BasicSafetyMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.BSMcoreData;
+import j2735.REGION.Reg_BasicSafetyMessage;
 import lombok.Getter;
 import lombok.Setter;
-import j2735.Common.BSMcoreData;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.REGION.Reg_BasicSafetyMessage;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -60,7 +60,7 @@ public class BasicSafetyMessage extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_BasicSafetyMessage> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_BasicSafetyMessage.class, 1L, 4L);
+			super(Reg_BasicSafetyMessage.class, 1L, 4L);
 		}
 	}
 

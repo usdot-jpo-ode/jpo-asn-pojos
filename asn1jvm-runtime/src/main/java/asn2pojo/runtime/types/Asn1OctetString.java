@@ -15,7 +15,7 @@ public class Asn1OctetString implements Asn1Type {
 
     @JsonValue
     public String getValue() {
-        HexFormat hexFormat = HexFormat.of();
+        HexFormat hexFormat = HexFormat.of().withUpperCase();
         if (octets != null) {
             return hexFormat.formatHex(octets);
         } else {

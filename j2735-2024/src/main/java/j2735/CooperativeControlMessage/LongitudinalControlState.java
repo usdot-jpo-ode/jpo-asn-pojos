@@ -22,10 +22,10 @@
 
 package j2735.CooperativeControlMessage;
 
-import lombok.Getter;
 import asn2pojo.runtime.types.Asn1Enumerated;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Getter;
 
 @Getter
 @JsonSerialize(using = LongitudinalControlStateSerializer.class)
@@ -37,16 +37,8 @@ public enum LongitudinalControlState implements Asn1Enumerated {
 	private final int index;
 	private final String name;
 
-	public boolean hasExtensionMarker() {
-		return false;
-	}
-
 	private LongitudinalControlState(int index, String name) {
 		this.index = index;
 		this.name = name;
-	}
-
-	public int maxIndex() {
-		return 8;
 	}
 }

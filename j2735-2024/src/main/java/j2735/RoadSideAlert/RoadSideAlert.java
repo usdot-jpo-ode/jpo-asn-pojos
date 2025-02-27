@@ -22,24 +22,24 @@
 
 package j2735.RoadSideAlert;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.Common.MsgCount;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.MinuteOfTheYear;
-import j2735.ITIS.ITIScodes;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.Common.Priority;
-import j2735.Common.HeadingSlice;
 import j2735.Common.Extent;
 import j2735.Common.FullPositionVector;
 import j2735.Common.FurtherInfoID;
+import j2735.Common.HeadingSlice;
+import j2735.Common.MinuteOfTheYear;
+import j2735.Common.MsgCount;
+import j2735.Common.Priority;
+import j2735.ITIS.ITIScodes;
 import j2735.REGION.Reg_RoadSideAlert;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -88,7 +88,7 @@ public class RoadSideAlert extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_RoadSideAlert> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_RoadSideAlert.class, 1L, 4L);
+			super(Reg_RoadSideAlert.class, 1L, 4L);
 		}
 	}
 

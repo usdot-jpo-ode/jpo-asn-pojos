@@ -23,9 +23,9 @@
 package j2735.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
-import j2735.REGION.Reg_MovementEvent;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import j2735.REGION.Reg_MovementEvent;
 
 @JsonRootName("Reg_MovementEvent")
 public class MovementEvent_addGrpBReg_MovementEvent extends Reg_MovementEvent<MovementEvent_addGrpB> {

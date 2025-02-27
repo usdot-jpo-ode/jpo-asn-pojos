@@ -22,24 +22,24 @@
 
 package j2735.TollUsageMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Integer;
+import asn2pojo.runtime.types.Asn1ObjectIdentifier;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.Common.DDateTime;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import asn2pojo.runtime.types.Asn1ObjectIdentifier;
-import j2735.TollAdvertisementMessage.VehicleTypes;
-import j2735.EfcDataDictionary.VehicleDescription;
-import asn2pojo.runtime.types.Asn1Integer;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import j2735.TollAdvertisementMessage.TollPointID;
-import j2735.EfcDataDictionary.PaymentFee;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import j2735.Common.DDateTime;
+import j2735.EfcDataDictionary.PaymentFee;
+import j2735.EfcDataDictionary.VehicleDescription;
+import j2735.TollAdvertisementMessage.TollPointID;
+import j2735.TollAdvertisementMessage.VehicleTypes;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

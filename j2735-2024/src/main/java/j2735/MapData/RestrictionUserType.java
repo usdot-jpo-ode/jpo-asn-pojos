@@ -22,15 +22,15 @@
 
 package j2735.MapData;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.REGION.Reg_RestrictionUserType;
+import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.REGION.Reg_RestrictionUserType;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -51,7 +51,7 @@ public class RestrictionUserType extends Asn1Choice {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_RestrictionUserType> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_RestrictionUserType.class, 1L, 4L);
+			super(Reg_RestrictionUserType.class, 1L, 4L);
 		}
 	}
 }

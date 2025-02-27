@@ -23,9 +23,9 @@
 package j2735.TestMessage10;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
-import j2735.MessageFrame.MessageFrame;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import j2735.MessageFrame.MessageFrame;
 
 @JsonRootName("MessageFrame")
 public class TestMessage10MessageFrame extends MessageFrame<TestMessage10> {

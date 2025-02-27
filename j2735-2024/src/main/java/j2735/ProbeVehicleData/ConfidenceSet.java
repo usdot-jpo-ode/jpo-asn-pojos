@@ -22,19 +22,19 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.HeadingConfidence;
+import j2735.Common.PositionConfidenceSet;
+import j2735.Common.SpeedandHeadingandThrottleConfidence;
+import j2735.Common.ThrottleConfidence;
+import j2735.Common.TimeConfidence;
 import lombok.Getter;
 import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.SpeedandHeadingandThrottleConfidence;
-import j2735.Common.TimeConfidence;
-import j2735.Common.PositionConfidenceSet;
-import j2735.Common.HeadingConfidence;
-import j2735.Common.ThrottleConfidence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

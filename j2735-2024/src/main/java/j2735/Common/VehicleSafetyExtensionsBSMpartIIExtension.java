@@ -23,9 +23,9 @@
 package j2735.Common;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
-import j2735.BasicSafetyMessage.BSMpartIIExtension;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import j2735.BasicSafetyMessage.BSMpartIIExtension;
 
 @JsonRootName("BSMpartIIExtension")
 public class VehicleSafetyExtensionsBSMpartIIExtension extends BSMpartIIExtension<VehicleSafetyExtensions> {

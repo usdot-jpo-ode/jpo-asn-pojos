@@ -22,8 +22,6 @@
 
 package j2735.CooperativeControlMessage;
 
-import j2735.CooperativeControlMessage.PartII_Id;
-
 abstract public class CCM_PARTII_EXT_ID_AND_TYPE<T> {
 
 	abstract PartII_Id getId();

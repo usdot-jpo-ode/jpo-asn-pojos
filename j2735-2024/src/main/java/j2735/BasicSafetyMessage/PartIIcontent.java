@@ -24,7 +24,6 @@ package j2735.BasicSafetyMessage;
 
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import j2735.BasicSafetyMessage.PartII_Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 abstract public class PartIIcontent<TValue> extends Asn1Sequence {
@@ -49,17 +48,19 @@ abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 		return partII_Id.toString();
 	}
 
+	@JsonProperty("partII-Value")
 	public TValue getPartII_Value() {
 		return partII_Value;
 	}
 
+	@JsonProperty("partII-Value")
 	public void setPartII_Value(TValue partII_Value) {
 		this.partII_Value = partII_Value;
 	}
 
 	public PartIIcontent(int id, String name) {
 		super(true);
-		var theId = new j2735.BasicSafetyMessage.PartII_Id();
+		var theId = new PartII_Id();
 		theId.setValue(id);
 		this.partII_Id = theId;
 		this.name = name;

@@ -22,14 +22,14 @@
 
 package j2735.ProbeDataConfig;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.TravelerInformation.ValidRegion;
+import asn2pojo.runtime.types.Asn1Choice;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.TravelerInformation.ValidRegion;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

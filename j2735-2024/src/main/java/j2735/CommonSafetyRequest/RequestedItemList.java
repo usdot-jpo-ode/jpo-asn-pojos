@@ -22,10 +22,10 @@
 
 package j2735.CommonSafetyRequest;
 
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 
 @JsonInclude(Include.NON_NULL)
 public class RequestedItemList extends Asn1SequenceOf<RequestedItem> {

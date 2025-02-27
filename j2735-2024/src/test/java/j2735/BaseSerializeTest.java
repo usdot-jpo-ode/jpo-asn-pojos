@@ -3,6 +3,11 @@ package j2735;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -52,6 +57,25 @@ public abstract class BaseSerializeTest<T> {
       throw new RuntimeException(e);
     }
     return str;
+  }
+
+  public static List<String> listAllResourcesInDirectory(String directory) {
+    List<String> resources = new ArrayList<>();
+    try {
+      URL dirUrl = IOUtils.resourceToURL(directory);
+      File dir = new File(dirUrl.toURI());
+      String[] files = dir.list();
+      if (files != null) {
+        for (String fileName : files) {
+          String resourcePath = String.format("%s/%s", directory, fileName);
+          System.out.println(resourcePath);
+          resources.add(resourcePath);
+        }
+      }
+    } catch (IOException | URISyntaxException e) {
+      throw new RuntimeException(e);
+    }
+    return resources;
   }
 
 }

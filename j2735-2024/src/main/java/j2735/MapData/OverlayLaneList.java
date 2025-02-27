@@ -23,9 +23,9 @@
 package j2735.MapData;
 
 import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.Common.LaneID;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import j2735.Common.LaneID;
 
 @JsonInclude(Include.NON_NULL)
 public class OverlayLaneList extends Asn1SequenceOf<LaneID> {
