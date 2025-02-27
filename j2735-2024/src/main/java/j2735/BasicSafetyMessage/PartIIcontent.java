@@ -25,7 +25,9 @@ package j2735.BasicSafetyMessage;
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"partII-Id", "partII-Value"})
 abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 
 	@JsonIgnore

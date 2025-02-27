@@ -13,7 +13,7 @@ import javax.xml.namespace.QName;
 import java.io.IOException;
 
 /**
- * Serializer for nested, anonymous SEQUENCT-OF types
+ * Serializer for nested, anonymous SEQUENCE-OF types
  * @param <T> The Sequence-of type
  * @author Ivan Yourshaw
  */

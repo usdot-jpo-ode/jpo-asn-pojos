@@ -23,14 +23,19 @@
 package j2735.BasicSafetyMessage;
 
 import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.SequenceOfOpenTypeSerializer;
 import asn2pojo.runtime.types.Asn1Sequence;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.BSMcoreData;
 import j2735.REGION.Reg_BasicSafetyMessage;
+import javax.sound.midi.Sequence;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,15 +50,25 @@ public class BasicSafetyMessage extends Asn1Sequence {
 	private BSMcoreData coreData;
 	@Asn1Property(tag = 1, name = "partII", optional = true)
 	@JsonProperty("partII")
+	@JsonSerialize(using = SequenceOfPartIISerializer.class)
 	private SequenceOfPartII partII;
 	@Asn1Property(tag = 2, name = "regional", optional = true)
 	@JsonProperty("regional")
 	private SequenceOfRegional regional;
 
+
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfPartII extends Asn1SequenceOf<BSMpartIIExtension> {
 		public SequenceOfPartII() {
 			super(BSMpartIIExtension.class, 1L, 8L);
+		}
+	}
+
+	public static class SequenceOfPartIISerializer extends
+			SequenceOfOpenTypeSerializer<BSMpartIIExtension, SequenceOfPartII> {
+
+		protected SequenceOfPartIISerializer() {
+			super(BSMpartIIExtension.class, SequenceOfPartII.class);
 		}
 	}
 
