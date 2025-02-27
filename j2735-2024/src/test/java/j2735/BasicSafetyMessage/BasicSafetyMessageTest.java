@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
 public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage> {
 
@@ -20,27 +21,45 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
   }
 
   @ParameterizedTest
-  @MethodSource("getXmlResources")
-  public void xmlDeserializeTest(String resourcePath) throws IOException {
+  @MethodSource("getXmlResourcesNoExtensions")
+  public void canDeserializeXml_NoExtensionsTest(String resourcePath) throws IOException {
     String xml = loadResource(resourcePath);
     BasicSafetyMessage bsm = fromXml(xml);
     assertThat(bsm, notNullValue());
   }
 
   @ParameterizedTest
-  @MethodSource("getJsonResources")
-  public void jsonDeserializeTest(String resourcePath) throws IOException {
+  @MethodSource("getXmlResourcesNoExtensions")
+  public void canRoundTripXml_NoExtensionsTest(String resourcePath) throws IOException {
+    String xml = loadResource(resourcePath);
+    BasicSafetyMessage bsm = fromXml(xml);
+    assertThat(bsm, notNullValue());
+    String roundTripXml = toXml(bsm);
+    assertThat(roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
+  }
+
+  @ParameterizedTest
+  @MethodSource("getJsonResourcesNoExtensions")
+  public void jsonDeserializeNoExtensionsTest(String resourcePath) throws IOException {
     String json = loadResource(resourcePath);
     BasicSafetyMessage bsm = fromJson(json);
     assertThat(bsm, notNullValue());
   }
 
-  private static Stream<Arguments> getXmlResources()  {
-    return getResources("/BasicSafetyMessage/xml");
+  private static Stream<Arguments> getXmlResourcesNoExtensions() {
+    return getXmlResources("no_extensions");
   }
 
-  private static Stream<Arguments> getJsonResources() {
-    return getResources("/BasicSafetyMessage/json");
+  private static Stream<Arguments> getJsonResourcesNoExtensions() {
+    return getJsonResources("no_extensions");
+  }
+
+  private static Stream<Arguments> getXmlResources(String subdirectory)  {
+    return getResources("/BasicSafetyMessage/xml/" + subdirectory);
+  }
+
+  private static Stream<Arguments> getJsonResources(String subdirectory) {
+    return getResources("/BasicSafetyMessage/json/" + subdirectory);
   }
 
   private static Stream<Arguments> getResources(String directory) {
