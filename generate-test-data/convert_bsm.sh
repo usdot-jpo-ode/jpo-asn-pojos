@@ -3,5 +3,5 @@
 set -x
 
 BASEDIR=./examples/2024/bsm
-./converter-all -dd -p BasicSafetyMessage -iuper -oxer $BASEDIR/$1.bin > $BASEDIR/$1.xml
-./converter-all -dd -p BasicSafetyMessage -iuper -ojer $BASEDIR/$1.bin > $BASEDIR/$1.json
+./converter-debug -dd -p $1 -iuper -oxer $BASEDIR/$2.bin > $BASEDIR/$2.xml
+./converter-debug -dd -p $1 -iuper -ojer $BASEDIR/$2.bin > $BASEDIR/$2.json

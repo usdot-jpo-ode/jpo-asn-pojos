@@ -49,10 +49,12 @@ abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 		return partII_Id.toString();
 	}
 
+	@JsonProperty("partII-Value")
 	public TValue getPartII_Value() {
 		return partII_Value;
 	}
 
+	@JsonProperty("partII-Value")
 	public void setPartII_Value(TValue partII_Value) {
 		this.partII_Value = partII_Value;
 	}

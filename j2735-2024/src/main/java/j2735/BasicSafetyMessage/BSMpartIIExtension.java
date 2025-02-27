@@ -33,7 +33,7 @@ import asn2pojo.runtime.annotations.Asn1ParameterizedTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
 
 @JsonInclude(Include.NON_NULL)
-@JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "partII_Id")
+@JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "partII-Id")
 @JsonSubTypes({@JsonSubTypes.Type(value = j2735.Common.VehicleSafetyExtensionsBSMpartIIExtension.class, name = "0"),
 		@JsonSubTypes.Type(value = j2735.BasicSafetyMessage.SpecialVehicleExtensionsBSMpartIIExtension.class, name = "1"),
 		@JsonSubTypes.Type(value = j2735.BasicSafetyMessage.SupplementalVehicleExtensionsBSMpartIIExtension.class, name = "2")})
