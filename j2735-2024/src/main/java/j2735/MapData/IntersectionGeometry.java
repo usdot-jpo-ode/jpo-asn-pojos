@@ -22,25 +22,25 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.Common.DescriptiveName;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.IntersectionReferenceID;
-import j2735.Common.MsgCount;
-import j2735.Common.Position3D;
-import j2735.Common.LaneWidth;
-import j2735.Common.SpeedLimitList;
-import j2735.REGION.Reg_IntersectionGeometry;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.Common.RoadAuthorityID;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import j2735.Common.DescriptiveName;
+import j2735.Common.IntersectionReferenceID;
+import j2735.Common.LaneWidth;
+import j2735.Common.MsgCount;
+import j2735.Common.Position3D;
+import j2735.Common.RoadAuthorityID;
+import j2735.Common.SpeedLimitList;
+import j2735.REGION.Reg_IntersectionGeometry;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -88,7 +88,7 @@ public class IntersectionGeometry extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_IntersectionGeometry> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_IntersectionGeometry.class, 1L, 4L);
+			super(Reg_IntersectionGeometry.class, 1L, 4L);
 		}
 	}
 

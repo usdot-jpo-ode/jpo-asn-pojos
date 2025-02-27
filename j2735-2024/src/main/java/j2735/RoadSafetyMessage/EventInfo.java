@@ -22,20 +22,20 @@
 
 package j2735.RoadSafetyMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.MsgCount;
 import j2735.Common.DDateTime;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.J2540ITIS.ITISgroups;
+import j2735.Common.MsgCount;
 import j2735.ITIS.ITIScodes;
 import j2735.ITIS.VehicleGroupAffected;
+import j2735.J2540ITIS.ITISgroups;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -22,8 +22,6 @@
 
 package j2735.MessageFrame;
 
-import j2735.MessageFrame.DSRCmsgID;
-
 abstract public class MESSAGE_ID_AND_TYPE<T> {
 
 	abstract DSRCmsgID getId();

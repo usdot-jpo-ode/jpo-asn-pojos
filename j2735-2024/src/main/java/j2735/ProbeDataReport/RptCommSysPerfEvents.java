@@ -22,17 +22,17 @@
 
 package j2735.ProbeDataReport;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
-import asn2pojo.runtime.types.Asn1Null;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import asn2pojo.runtime.types.Asn1Choice;
+import asn2pojo.runtime.types.Asn1Integer;
+import asn2pojo.runtime.types.Asn1Null;
 import asn2pojo.runtime.types.Asn1OctetString;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

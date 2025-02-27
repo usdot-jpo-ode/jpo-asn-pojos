@@ -23,9 +23,9 @@
 package j2735.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
-import j2735.REGION.Reg_Position3D;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import j2735.REGION.Reg_Position3D;
 
 @JsonRootName("Reg_Position3D")
 public class Position3D_addGrpBReg_Position3D extends Reg_Position3D<Position3D_addGrpB> {

@@ -22,16 +22,16 @@
 
 package j2735.RoadSafetyMessage;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.TravelerInformation.Circle;
+import asn2pojo.runtime.types.Asn1Choice;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import j2735.TravelerInformation.Circle;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

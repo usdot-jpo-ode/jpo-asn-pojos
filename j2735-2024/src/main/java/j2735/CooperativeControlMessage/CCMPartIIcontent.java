@@ -24,7 +24,6 @@ package j2735.CooperativeControlMessage;
 
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import j2735.CooperativeControlMessage.PartII_Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 abstract public class CCMPartIIcontent<TValue> extends Asn1Sequence {
@@ -59,7 +58,7 @@ abstract public class CCMPartIIcontent<TValue> extends Asn1Sequence {
 
 	public CCMPartIIcontent(int id, String name) {
 		super(true);
-		var theId = new j2735.CooperativeControlMessage.PartII_Id();
+		var theId = new PartII_Id();
 		theId.setValue(id);
 		this.partII_Id = theId;
 		this.name = name;

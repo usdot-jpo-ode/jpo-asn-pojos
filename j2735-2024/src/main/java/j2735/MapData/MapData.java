@@ -22,20 +22,20 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.Common.MinuteOfTheYear;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.MsgCount;
-import j2735.REGION.Reg_MapData;
-import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import j2735.Common.MinuteOfTheYear;
+import j2735.Common.MsgCount;
+import j2735.REGION.Reg_MapData;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -80,7 +80,7 @@ public class MapData extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_MapData> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_MapData.class, 1L, 4L);
+			super(Reg_MapData.class, 1L, 4L);
 		}
 	}
 

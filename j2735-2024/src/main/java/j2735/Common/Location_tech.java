@@ -22,10 +22,10 @@
 
 package j2735.Common;
 
-import lombok.Getter;
 import asn2pojo.runtime.types.Asn1Enumerated;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Getter;
 
 @Getter
 @JsonSerialize(using = Location_techSerializer.class)
@@ -39,16 +39,8 @@ public enum Location_tech implements Asn1Enumerated {
 	private final int index;
 	private final String name;
 
-	public boolean hasExtensionMarker() {
-		return false;
-	}
-
 	private Location_tech(int index, String name) {
 		this.index = index;
 		this.name = name;
-	}
-
-	public int maxIndex() {
-		return 9;
 	}
 }

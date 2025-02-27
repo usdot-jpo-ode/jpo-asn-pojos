@@ -22,15 +22,15 @@
 
 package j2735.TravelerInformation;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
 import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Choice;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import j2735.Common.Node_LLmD_64b;
 import j2735.REGION.Reg_NodeOffsetPointLL;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

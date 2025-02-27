@@ -22,22 +22,22 @@
 
 package j2735.BasicSafetyMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.VehicleWidth;
-import j2735.Common.VehicleLength;
-import j2735.Common.VehicleHeight;
-import j2735.Common.BumperHeights;
-import j2735.Common.Offset_B12;
-import j2735.Common.Node_XY_24b;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import j2735.Common.BumperHeights;
+import j2735.Common.Node_XY_24b;
+import j2735.Common.Offset_B12;
+import j2735.Common.VehicleHeight;
+import j2735.Common.VehicleLength;
+import j2735.Common.VehicleWidth;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

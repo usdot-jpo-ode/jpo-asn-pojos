@@ -22,17 +22,17 @@
 
 package j2735.TollAdvertisementMessage;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import asn2pojo.runtime.types.Asn1Choice;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

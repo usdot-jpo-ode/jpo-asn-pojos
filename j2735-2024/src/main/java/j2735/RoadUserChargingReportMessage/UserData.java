@@ -22,19 +22,19 @@
 
 package j2735.RoadUserChargingReportMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1ObjectIdentifier;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.DDateTime;
+import j2735.EfcDataDictionary.VehicleDescription;
+import j2735.TollAdvertisementMessage.VehicleTypes;
+import j2735.TollUsageMessage.VehicleId;
 import lombok.Getter;
 import lombok.Setter;
-import j2735.Common.DDateTime;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import asn2pojo.runtime.types.Asn1ObjectIdentifier;
-import j2735.TollUsageMessage.VehicleId;
-import j2735.TollAdvertisementMessage.VehicleTypes;
-import j2735.EfcDataDictionary.VehicleDescription;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

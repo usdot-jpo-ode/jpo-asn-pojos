@@ -22,11 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfChoiceSerializer;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import asn2pojo.runtime.serialization.SequenceOfChoiceSerializer;
-import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
 
 @JsonInclude(Include.NON_NULL)
 public class RestrictionUserTypeList extends Asn1SequenceOf<RestrictionUserType> {

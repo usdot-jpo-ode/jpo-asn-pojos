@@ -22,9 +22,9 @@
 
 package j2735.RoadWeatherMessage;
 
+import asn2pojo.runtime.serialization.IntegerDeserializer;
 import asn2pojo.runtime.types.Asn1Integer;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import asn2pojo.runtime.serialization.IntegerDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = TemperatureMeasurementStdDev.TemperatureMeasurementStdDevDeserializer.class)

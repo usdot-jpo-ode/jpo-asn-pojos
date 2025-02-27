@@ -22,17 +22,17 @@
 
 package j2735.ProbeDataConfig;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Boolean;
+import asn2pojo.runtime.types.Asn1Integer;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import asn2pojo.runtime.types.Asn1Boolean;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import asn2pojo.runtime.types.Asn1Integer;
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

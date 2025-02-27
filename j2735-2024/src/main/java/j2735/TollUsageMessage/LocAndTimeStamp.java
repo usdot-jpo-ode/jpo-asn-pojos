@@ -22,19 +22,19 @@
 
 package j2735.TollUsageMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.DDateTime;
+import j2735.Common.Elevation;
+import j2735.Common.LaneID;
+import j2735.Common.Latitude;
+import j2735.Common.Longitude;
 import lombok.Getter;
 import lombok.Setter;
-import j2735.Common.Latitude;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.Longitude;
-import j2735.Common.Elevation;
-import j2735.Common.DDateTime;
-import j2735.Common.LaneID;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

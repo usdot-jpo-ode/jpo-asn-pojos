@@ -23,9 +23,9 @@
 package j2735.AddGrpC;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
-import j2735.REGION.Reg_ConnectionManeuverAssist;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import j2735.REGION.Reg_ConnectionManeuverAssist;
 
 @JsonRootName("Reg_ConnectionManeuverAssist")
 public class ConnectionManeuverAssist_addGrpCReg_ConnectionManeuverAssist

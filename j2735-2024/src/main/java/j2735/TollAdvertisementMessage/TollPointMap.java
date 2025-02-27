@@ -22,21 +22,21 @@
 
 package j2735.TollAdvertisementMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Integer;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import asn2pojo.runtime.types.Asn1Integer;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.Getter;
-import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.LaneWidth;
 import j2735.Common.Position3D;
 import j2735.Common.RegulatorySpeedLimit;
-import j2735.Common.LaneWidth;
 import j2735.MapData.GenericLane;
-import asn2pojo.runtime.types.Asn1SequenceOf;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

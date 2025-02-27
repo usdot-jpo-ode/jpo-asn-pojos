@@ -23,9 +23,9 @@
 package j2735.ProbeDataReport;
 
 import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.RoadWeatherMessage.NtcipEssData;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import j2735.RoadWeatherMessage.NtcipEssData;
 
 @JsonInclude(Include.NON_NULL)
 public class RptVehicleReport extends Asn1SequenceOf<NtcipEssData> {
