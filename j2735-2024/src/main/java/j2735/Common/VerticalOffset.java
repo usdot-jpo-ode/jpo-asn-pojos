@@ -22,15 +22,15 @@
 
 package j2735.Common;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.BasicSafetyMessage.VertOffset_B07;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.REGION.Reg_VerticalOffset;
+import asn2pojo.runtime.types.Asn1Choice;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.BasicSafetyMessage.VertOffset_B07;
+import j2735.REGION.Reg_VerticalOffset;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

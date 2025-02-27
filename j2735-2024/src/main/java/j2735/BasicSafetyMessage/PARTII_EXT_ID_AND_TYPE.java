@@ -22,8 +22,6 @@
 
 package j2735.BasicSafetyMessage;
 
-import j2735.BasicSafetyMessage.PartII_Id;
-
 abstract public class PARTII_EXT_ID_AND_TYPE<T> {
 
 	abstract PartII_Id getId();

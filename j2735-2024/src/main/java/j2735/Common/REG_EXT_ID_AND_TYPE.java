@@ -22,8 +22,6 @@
 
 package j2735.Common;
 
-import j2735.Common.RegionId;
-
 abstract public class REG_EXT_ID_AND_TYPE<T> {
 
 	abstract RegionId getId();

@@ -22,17 +22,17 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.REGION.Reg_ComputedLane;
 import lombok.Getter;
 import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import asn2pojo.runtime.types.Asn1Choice;
-import j2735.REGION.Reg_ComputedLane;
-import asn2pojo.runtime.types.Asn1SequenceOf;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -97,7 +97,7 @@ public class ComputedLane extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_ComputedLane> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_ComputedLane.class, 1L, 4L);
+			super(Reg_ComputedLane.class, 1L, 4L);
 		}
 	}
 

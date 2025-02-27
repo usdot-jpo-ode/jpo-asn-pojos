@@ -22,22 +22,22 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.IA5String;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.Common.DescriptiveName;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import asn2pojo.runtime.types.IA5String;
+import j2735.Common.DescriptiveName;
 import j2735.Common.VehicleID;
 import j2735.Common.VehicleType;
-import j2735.ITIS.VehicleGroupAffected;
-import j2735.ITIS.ResponderGroupAffected;
 import j2735.ITIS.IncidentResponseEquipment;
-import asn2pojo.runtime.types.Asn1Choice;
+import j2735.ITIS.ResponderGroupAffected;
+import j2735.ITIS.VehicleGroupAffected;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

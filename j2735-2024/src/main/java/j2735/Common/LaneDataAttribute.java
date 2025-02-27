@@ -22,17 +22,17 @@
 
 package j2735.Common;
 
-import asn2pojo.runtime.types.Asn1Choice;
-import lombok.Getter;
-import lombok.Setter;
 import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.REGION.Reg_LaneDataAttribute;
+import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import j2735.REGION.Reg_LaneDataAttribute;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -70,7 +70,7 @@ public class LaneDataAttribute extends Asn1Choice {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_LaneDataAttribute> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_LaneDataAttribute.class, 1L, 4L);
+			super(Reg_LaneDataAttribute.class, 1L, 4L);
 		}
 	}
 }

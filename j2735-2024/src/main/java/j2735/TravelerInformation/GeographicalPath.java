@@ -22,23 +22,23 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Boolean;
+import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.DescriptiveName;
+import j2735.Common.HeadingSlice;
+import j2735.Common.LaneWidth;
+import j2735.Common.Position3D;
+import j2735.Common.RoadSegmentReferenceID;
+import j2735.REGION.Reg_GeographicalPath;
 import lombok.Getter;
 import lombok.Setter;
-import j2735.Common.DescriptiveName;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.RoadSegmentReferenceID;
-import j2735.Common.Position3D;
-import j2735.Common.LaneWidth;
-import asn2pojo.runtime.types.Asn1Boolean;
-import j2735.Common.HeadingSlice;
-import asn2pojo.runtime.types.Asn1Choice;
-import j2735.REGION.Reg_GeographicalPath;
-import asn2pojo.runtime.types.Asn1SequenceOf;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -96,7 +96,7 @@ public class GeographicalPath extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_GeographicalPath> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_GeographicalPath.class, 1L, 4L);
+			super(Reg_GeographicalPath.class, 1L, 4L);
 		}
 	}
 

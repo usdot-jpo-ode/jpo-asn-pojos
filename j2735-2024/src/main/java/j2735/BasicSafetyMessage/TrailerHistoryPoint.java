@@ -22,18 +22,18 @@
 
 package j2735.BasicSafetyMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import j2735.Common.Angle;
+import j2735.Common.CoarseHeading;
+import j2735.Common.Node_XY_24b;
+import j2735.Common.TimeOffset;
 import lombok.Getter;
 import lombok.Setter;
-import j2735.Common.Angle;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.TimeOffset;
-import j2735.Common.Node_XY_24b;
-import j2735.Common.CoarseHeading;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -24,7 +24,6 @@ package j2735.Common;
 
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import j2735.Common.RegionId;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 abstract public class RegionalExtension<TValue> extends Asn1Sequence {
@@ -59,7 +58,7 @@ abstract public class RegionalExtension<TValue> extends Asn1Sequence {
 
 	public RegionalExtension(int id, String name) {
 		super(true);
-		var theId = new j2735.Common.RegionId();
+		var theId = new RegionId();
 		theId.setValue(id);
 		this.regionId = theId;
 		this.name = name;

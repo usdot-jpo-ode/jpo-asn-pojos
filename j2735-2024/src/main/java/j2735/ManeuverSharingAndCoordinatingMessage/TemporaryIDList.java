@@ -23,9 +23,9 @@
 package j2735.ManeuverSharingAndCoordinatingMessage;
 
 import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.Common.TemporaryID;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import j2735.Common.TemporaryID;
 
 @JsonInclude(Include.NON_NULL)
 public class TemporaryIDList extends Asn1SequenceOf<TemporaryID> {

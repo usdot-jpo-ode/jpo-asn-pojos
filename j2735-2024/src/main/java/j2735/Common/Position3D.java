@@ -22,16 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import j2735.REGION.Reg_Position3D;
-import asn2pojo.runtime.types.Asn1SequenceOf;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -55,7 +55,7 @@ public class Position3D extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_Position3D> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_Position3D.class, 1L, 4L);
+			super(Reg_Position3D.class, 1L, 4L);
 		}
 	}
 

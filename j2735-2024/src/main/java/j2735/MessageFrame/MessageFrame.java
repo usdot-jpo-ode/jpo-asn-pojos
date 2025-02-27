@@ -22,16 +22,15 @@
 
 package j2735.MessageFrame;
 
-import asn2pojo.runtime.types.Asn1Sequence;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import j2735.MessageFrame.DSRCmsgID;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
+import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 @JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "messageId")
 @JsonSubTypes({@JsonSubTypes.Type(value = j2735.BasicSafetyMessage.BasicSafetyMessageMessageFrame.class, name = "20"),
@@ -165,7 +164,7 @@ abstract public class MessageFrame<TValue> extends Asn1Sequence {
 
 	public MessageFrame(int id, String name) {
 		super(true);
-		var theId = new j2735.MessageFrame.DSRCmsgID();
+		var theId = new DSRCmsgID();
 		theId.setValue(id);
 		this.messageId = theId;
 		this.name = name;

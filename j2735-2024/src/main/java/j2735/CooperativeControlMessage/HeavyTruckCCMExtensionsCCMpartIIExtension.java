@@ -23,9 +23,8 @@
 package j2735.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
-import j2735.CooperativeControlMessage.CCMpartIIExtension;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonRootName("CCMpartIIExtension")
 public class HeavyTruckCCMExtensionsCCMpartIIExtension extends CCMpartIIExtension<HeavyTruckCCMExtensions> {

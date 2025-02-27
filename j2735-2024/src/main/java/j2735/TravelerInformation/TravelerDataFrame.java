@@ -22,25 +22,25 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.NestedSequenceOfDeserializer;
+import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
+import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import j2735.Common.DYear;
+import j2735.Common.FurtherInfoID;
+import j2735.Common.MinuteOfTheYear;
+import j2735.Common.SSPindex;
+import j2735.ITIS.ITIScodesAndText;
 import lombok.Getter;
 import lombok.Setter;
-import j2735.Common.SSPindex;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.FurtherInfoID;
-import asn2pojo.runtime.types.Asn1Choice;
-import j2735.Common.DYear;
-import j2735.Common.MinuteOfTheYear;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import j2735.ITIS.ITIScodesAndText;
-import asn2pojo.runtime.serialization.NestedSequenceOfDeserializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

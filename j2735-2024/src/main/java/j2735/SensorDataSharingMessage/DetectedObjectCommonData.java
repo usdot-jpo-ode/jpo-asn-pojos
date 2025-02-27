@@ -22,23 +22,23 @@
 
 package j2735.SensorDataSharingMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.TimeConfidence;
+import j2735.Common.AccelerationSet4Way;
+import j2735.Common.Heading;
+import j2735.Common.HeadingConfidence;
 import j2735.Common.PositionConfidenceSet;
 import j2735.Common.Speed;
 import j2735.Common.SpeedConfidence;
-import j2735.Common.Heading;
-import j2735.Common.HeadingConfidence;
-import j2735.Common.AccelerationSet4Way;
+import j2735.Common.TimeConfidence;
 import j2735.ProbeVehicleData.AccelerationConfidence;
 import j2735.ProbeVehicleData.YawRateConfidence;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

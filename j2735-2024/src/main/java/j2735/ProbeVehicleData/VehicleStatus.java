@@ -22,25 +22,25 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.types.Asn1Sequence;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.Common.ExteriorLights;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.LightbarInUse;
-import j2735.Common.WiperSet;
+import j2735.Common.AmbientAirPressure;
+import j2735.Common.AmbientAirTemperature;
 import j2735.Common.BrakeSystemStatus;
 import j2735.Common.CoefficientOfFriction;
-import j2735.Common.AmbientAirTemperature;
-import j2735.Common.AmbientAirPressure;
+import j2735.Common.ExteriorLights;
 import j2735.Common.FullPositionVector;
-import j2735.Common.SpeedandHeadingandThrottleConfidence;
-import j2735.Common.SpeedConfidence;
 import j2735.Common.GNSSstatus;
+import j2735.Common.LightbarInUse;
+import j2735.Common.SpeedConfidence;
+import j2735.Common.SpeedandHeadingandThrottleConfidence;
+import j2735.Common.WiperSet;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

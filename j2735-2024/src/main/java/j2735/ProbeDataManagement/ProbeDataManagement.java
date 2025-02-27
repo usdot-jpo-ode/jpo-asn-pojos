@@ -22,21 +22,21 @@
 
 package j2735.ProbeDataManagement;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import j2735.Common.MinuteOfTheYear;
-import asn2pojo.runtime.annotations.Asn1Property;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import j2735.Common.HeadingSlice;
-import asn2pojo.runtime.types.Asn1Choice;
-import j2735.REGION.Reg_ProbeDataManagement;
-import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import j2735.Common.HeadingSlice;
+import j2735.Common.MinuteOfTheYear;
+import j2735.REGION.Reg_ProbeDataManagement;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -106,7 +106,7 @@ public class ProbeDataManagement extends Asn1Sequence {
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_ProbeDataManagement> {
 		public SequenceOfRegional() {
-			super(j2735.REGION.Reg_ProbeDataManagement.class, 1L, 4L);
+			super(Reg_ProbeDataManagement.class, 1L, 4L);
 		}
 	}
 

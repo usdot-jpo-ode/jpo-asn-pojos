@@ -22,22 +22,22 @@
 
 package j2735.TollUsageMessage;
 
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
+import asn2pojo.runtime.types.Asn1Enumerated;
+import asn2pojo.runtime.types.Asn1Integer;
 import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import asn2pojo.runtime.types.Asn1Integer;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
-import asn2pojo.runtime.annotations.Asn1Property;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import asn2pojo.runtime.types.Asn1SequenceOf;
-import asn2pojo.runtime.types.Asn1Enumerated;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import asn2pojo.runtime.serialization.EnumeratedSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import asn2pojo.runtime.serialization.EnumeratedDeserializer;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -110,17 +110,9 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
 		private final int index;
 		private final String name;
 
-		public boolean hasExtensionMarker() {
-			return false;
-		}
-
 		private EnumeratedVehWeightUnits(int index, String name) {
 			this.index = index;
 			this.name = name;
-		}
-
-		public int maxIndex() {
-			return 1;
 		}
 	}
 
