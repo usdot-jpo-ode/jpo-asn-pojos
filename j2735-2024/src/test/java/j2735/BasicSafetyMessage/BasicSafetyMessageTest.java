@@ -1,6 +1,6 @@
 package j2735.BasicSafetyMessage;
 
-
+import j2735.Common.BSMcoreData;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -13,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
+import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 
 public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage> {
 
@@ -26,6 +27,8 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
     String xml = loadResource(resourcePath);
     BasicSafetyMessage bsm = fromXml(xml);
     assertThat(bsm, notNullValue());
+    BSMcoreData coreData = bsm.getCoreData();
+    assertThat(coreData, notNullValue());
   }
 
   @ParameterizedTest
@@ -40,10 +43,20 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
 
   @ParameterizedTest
   @MethodSource("getJsonResourcesNoExtensions")
-  public void jsonDeserializeNoExtensionsTest(String resourcePath) throws IOException {
+  public void canDeserialize_NoExtensionsTest(String resourcePath) throws IOException {
     String json = loadResource(resourcePath);
     BasicSafetyMessage bsm = fromJson(json);
     assertThat(bsm, notNullValue());
+  }
+
+  @ParameterizedTest
+  @MethodSource("getJsonResourcesNoExtensions")
+  public void canRoundTripJson_NoExtensionsTest(String resourcePath) throws IOException {
+    String json = loadResource(resourcePath);
+    BasicSafetyMessage bsm = fromJson(json);
+    assertThat(bsm, notNullValue());
+    String roundTripJson = toJson(bsm);
+    assertThat(roundTripJson, jsonEquals(json));
   }
 
   private static Stream<Arguments> getXmlResourcesNoExtensions() {

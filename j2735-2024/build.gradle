@@ -27,6 +27,8 @@ dependencies {
     testImplementation 'commons-io:commons-io:2.18.0'
     testImplementation 'org.xmlunit:xmlunit-core:2.10.0'
     testImplementation 'org.xmlunit:xmlunit-matchers:2.10.0'
+    testImplementation 'net.javacrumbs.json-unit:json-unit:4.1.0'
+
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
