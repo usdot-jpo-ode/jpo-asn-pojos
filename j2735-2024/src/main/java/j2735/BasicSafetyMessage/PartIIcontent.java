@@ -52,11 +52,7 @@ abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 		return name;
 	}
 
-	//@JsonProperty("partII-Id")
-//	@JsonIgnore
-//	public String getIdString() {
-//		return partII_Id.toString();
-//	}
+
 
 	@JsonProperty("partII-Value")
 	public TValue getPartII_Value() {

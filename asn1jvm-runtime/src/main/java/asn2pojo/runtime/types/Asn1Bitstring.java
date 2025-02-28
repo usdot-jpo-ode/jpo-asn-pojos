@@ -66,7 +66,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
             bits.clear();
             return;
         }
-        char[] chars = str.toCharArray();
+        char[] chars = str.trim().toCharArray();
         if (chars.length < size) {
             throw new IllegalArgumentException("Not enough characters in string " + str);
         }

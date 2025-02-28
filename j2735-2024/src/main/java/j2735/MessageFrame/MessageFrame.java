@@ -27,6 +27,7 @@ import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
@@ -132,6 +133,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 		@Asn1ParameterizedTypes.Type(value = j2735.TestMessage13.TestMessage13MessageFrame.class, intId = 253),
 		@Asn1ParameterizedTypes.Type(value = j2735.TestMessage14.TestMessage14MessageFrame.class, intId = 254),
 		@Asn1ParameterizedTypes.Type(value = j2735.TestMessage15.TestMessage15MessageFrame.class, intId = 255)})
+@JsonPropertyOrder({"messageId", "value"})
 abstract public class MessageFrame<TValue> extends Asn1Sequence {
 
 	@JsonIgnore
