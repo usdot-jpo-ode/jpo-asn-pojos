@@ -1,95 +1,126 @@
 <PersonalSafetyMessage>
-    <basicType><aPEDALCYCLIST/></basicType>
-    <secMark>-65534</secMark>
-    <msgCnt>128</msgCnt>
-    <id>00000000</id>
+    <basicType>
+        <aPEDESTRIAN />
+    </basicType>
+    <secMark>49141</secMark>
+    <msgCnt>63</msgCnt>
+    <id>4F435445</id>
     <position>
-        <lat>-126</lat>
-        <long>127</long>
-        <regional>
-        </regional>
+        <lat>-283524444</lat>
+        <long>-929410239</long>
+        <elevation>45115</elevation>
     </position>
     <accuracy>
-        <semiMajor>-16385</semiMajor>
-        <semiMinor>-65534</semiMinor>
-        <orientation>-127</orientation>
+        <semiMajor>242</semiMajor>
+        <semiMinor>196</semiMinor>
+        <orientation>33804</orientation>
     </accuracy>
-    <speed>126</speed>
-    <heading>-256</heading>
+    <speed>2351</speed>
+    <heading>26230</heading>
     <accelSet>
-        <long>-65536</long>
-        <lat>65535</lat>
-        <vert>-254</vert>
-        <yaw>0</yaw>
+        <long>574</long>
+        <lat>-779</lat>
+        <vert>-41</vert>
+        <yaw>17248</yaw>
     </accelSet>
     <pathHistory>
         <initialPosition>
             <utcTime>
-                <year>-32768</year>
-                <month>-256</month>
-                <day>-16383</day>
-                <hour>256</hour>
-                <minute>127</minute>
-                <second>16383</second>
-                <offset>-129</offset>
+                <year>1609</year>
+                <month>4</month>
+                <day>9</day>
+                <hour>1</hour>
+                <minute>8</minute>
+                <second>25326</second>
+                <offset>682</offset>
             </utcTime>
-            <long>-255</long>
-            <lat>126</lat>
-            <elevation>-256</elevation>
+            <long>874152033</long>
+            <lat>408613166</lat>
+            <elevation>44900</elevation>
+            <heading>12214</heading>
             <speed>
-                <transmisson><park/></transmisson>
-                <speed>-16383</speed>
+                <transmisson>
+                    <forwardGears />
+                </transmisson>
+                <speed>6379</speed>
             </speed>
             <posAccuracy>
-                <semiMajor>16385</semiMajor>
-                <semiMinor>-16383</semiMinor>
-                <orientation>65537</orientation>
+                <semiMajor>148</semiMajor>
+                <semiMinor>209</semiMinor>
+                <orientation>45356</orientation>
             </posAccuracy>
-            <timeConfidence><time-000-000-02/></timeConfidence>
+            <timeConfidence>
+                <time-000-005 />
+            </timeConfidence>
+            <posConfidence>
+                <pos>
+                    <a50m />
+                </pos>
+                <elevation>
+                    <elev-050-00 />
+                </elevation>
+            </posConfidence>
             <speedConfidence>
-                <heading><prec0-05deg/></heading>
-                <speed><unavailable/></speed>
-                <throttle><unavailable/></throttle>
+                <heading>
+                    <prec10deg />
+                </heading>
+                <speed>
+                    <prec0-1ms />
+                </speed>
+                <throttle>
+                    <unavailable />
+                </throttle>
             </speedConfidence>
         </initialPosition>
-        <currGNSSstatus>
-
-        </currGNSSstatus>
+        <currGNSSstatus>00001000</currGNSSstatus>
         <crumbData>
+            <PathHistoryPoint>
+                <latOffset>127415</latOffset>
+                <lonOffset>129534</lonOffset>
+                <elevationOffset>-347</elevationOffset>
+                <timeOffset>24559</timeOffset>
+                <speed>5297</speed>
+                <posAccuracy>
+                    <semiMajor>163</semiMajor>
+                    <semiMinor>141</semiMinor>
+                    <orientation>44545</orientation>
+                </posAccuracy>
+                <heading>194</heading>
+            </PathHistoryPoint>
         </crumbData>
     </pathHistory>
     <pathPrediction>
-        <radiusOfCurve>-254</radiusOfCurve>
-        <confidence>257</confidence>
+        <radiusOfCurve>20378</radiusOfCurve>
+        <confidence>131</confidence>
     </pathPrediction>
     <propulsion>
-        <human><skateboard/></human>
+        <animal>
+            <animalMounted />
+        </animal>
     </propulsion>
-    <useState>
-        0000110101100010001100111001000010111101101111011101111011011111
-        10001110111010001101100110101011011001010101010110010
-    </useState>
-    <crossRequest><true/></crossRequest>
-    <crossState><false/></crossState>
-    <clusterSize><unavailable/></clusterSize>
-    <eventResponderType><towOperater/></eventResponderType>
-    <activityType>
-        1100110111111100110001100100110101001111110101000010111100000011
-        111001001110110111000000010000100100110101001110001010110010011
-    </activityType>
-    <assistType>
-        110011011010101101101100101001111
-    </assistType>
-    <sizing>
-        0011111011110010111101000000110001101111001110111101101000111111
-        1000111110001010010000100111010011110111100000110011011111000100
-        0101001011100100111010111100111011110110111010000110000001000100
-
-        00010100110011001110110111101110100000101110011011101011010000000101100
-    </sizing>
-    <attachment><stroller/></attachment>
-    <attachmentRadius>256</attachmentRadius>
-    <animalType><unavailable/></animalType>
-    <regional>
-    </regional>
+    <useState>000010000</useState>
+    <crossRequest>
+        <true />
+    </crossRequest>
+    <crossState>
+        <true />
+    </crossState>
+    <clusterSize>
+        <small />
+    </clusterSize>
+    <clusterRadius>37</clusterRadius>
+    <eventResponderType>
+        <hazmatResponder />
+    </eventResponderType>
+    <activityType>100000</activityType>
+    <activitySubType>0100000</activitySubType>
+    <assistType>000010</assistType>
+    <sizing>00100</sizing>
+    <attachment>
+        <cart />
+    </attachment>
+    <attachmentRadius>102</attachmentRadius>
+    <animalType>
+        <serviceUse />
+    </animalType>
 </PersonalSafetyMessage>

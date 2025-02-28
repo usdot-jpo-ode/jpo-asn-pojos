@@ -1,98 +1,96 @@
 {
   "basicType": "aPEDESTRIAN",
-  "secMark": 63364,
-  "msgCnt": 115,
+  "secMark": 49141,
+  "msgCnt": 63,
   "id": "4F435445",
   "position": {
-    "lat": -322352782,
-    "long": -1390327360,
-    "elevation": 35204,
-    "regional": []
+    "lat": -283524444,
+    "long": -929410239,
+    "elevation": 45115
   },
   "accuracy": {
-    "semiMajor": 167,
-    "semiMinor": 30,
-    "orientation": 23832
+    "semiMajor": 242,
+    "semiMinor": 196,
+    "orientation": 33804
   },
-  "speed": 162,
-  "heading": 22144,
+  "speed": 2351,
+  "heading": 26230,
   "accelSet": {
-    "long": 1050,
-    "lat": 1999,
-    "vert": 52,
-    "yaw": 2334
+    "long": 574,
+    "lat": -779,
+    "vert": -41,
+    "yaw": 17248
   },
   "pathHistory": {
     "initialPosition": {
       "utcTime": {
-        "year": 3582,
-        "month": 1,
-        "day": 21,
-        "hour": 24,
-        "minute": 39,
-        "second": 35644,
-        "offset": 649
+        "year": 1609,
+        "month": 4,
+        "day": 9,
+        "hour": 1,
+        "minute": 8,
+        "second": 25326,
+        "offset": 682
       },
-      "long": 273616426,
-      "lat": -138038280,
-      "elevation": 8370,
-      "heading": 25956,
+      "long": 874152033,
+      "lat": 408613166,
+      "elevation": 44900,
+      "heading": 12214,
       "speed": {
-        "transmisson": "reserved3",
-        "speed": 44
+        "transmisson": "forwardGears",
+        "speed": 6379
       },
       "posAccuracy": {
-        "semiMajor": 156,
-        "semiMinor": 111,
-        "orientation": 21942
+        "semiMajor": 148,
+        "semiMinor": 209,
+        "orientation": 45356
       },
-      "timeConfidence": "time-000-000-000-001",
+      "timeConfidence": "time-000-005",
       "posConfidence": {
-        "pos": "a50cm",
-        "elevation": "elev-000-02"
+        "pos": "a50m",
+        "elevation": "elev-050-00"
       },
       "speedConfidence": {
-        "heading": "unavailable",
-        "speed": "prec10ms",
+        "heading": "prec10deg",
+        "speed": "prec0-1ms",
         "throttle": "unavailable"
       }
     },
-    "currGNSSstatus": "80",
+    "currGNSSstatus": "08",
     "crumbData": [
       {
-        "latOffset": 55735,
-        "lonOffset": 56164,
-        "elevationOffset": -1108,
-        "timeOffset": 64042,
-        "speed": 3721,
+        "latOffset": 127415,
+        "lonOffset": 129534,
+        "elevationOffset": -347,
+        "timeOffset": 24559,
+        "speed": 5297,
         "posAccuracy": {
-          "semiMajor": 179,
-          "semiMinor": 198,
-          "orientation": 16353
+          "semiMajor": 163,
+          "semiMinor": 141,
+          "orientation": 44545
         },
-        "heading": 183
+        "heading": 194
       }
     ]
   },
   "pathPrediction": {
-    "radiusOfCurve": -9574,
-    "confidence": 26
+    "radiusOfCurve": 20378,
+    "confidence": 131
   },
   "propulsion": {
-    "animal": "animalDrawnCarriage"
+    "animal": "animalMounted"
   },
-  "useState": "20",
+  "useState": "0800",
   "crossRequest": true,
   "crossState": true,
-  "clusterSize": "unavailable",
-  "clusterRadius": 26,
-  "eventResponderType": "fireAndEMSWorker",
-  "activityType": "08",
+  "clusterSize": "small",
+  "clusterRadius": 37,
+  "eventResponderType": "hazmatResponder",
+  "activityType": "80",
   "activitySubType": "40",
-  "assistType": "10",
-  "sizing": "40",
-  "attachment": "unavailable",
-  "attachmentRadius": 65,
-  "animalType": "serviceUse",
-  "regional": []
+  "assistType": "08",
+  "sizing": "20",
+  "attachment": "cart",
+  "attachmentRadius": 102,
+  "animalType": "serviceUse"
 }

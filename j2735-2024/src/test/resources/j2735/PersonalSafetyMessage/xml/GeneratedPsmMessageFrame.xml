@@ -2,164 +2,130 @@
     <messageId>32</messageId>
     <value>
         <PersonalSafetyMessage>
-            <basicType><anANIMAL/></basicType>
-            <secMark>59922</secMark>
-            <msgCnt>48</msgCnt>
+            <basicType>
+                <aPEDESTRIAN />
+            </basicType>
+            <secMark>49141</secMark>
+            <msgCnt>63</msgCnt>
             <id>4F435445</id>
             <position>
-                <lat>-608167188</lat>
-                <long>1535545271</long>
-                <elevation>59374</elevation>
+                <lat>-283524444</lat>
+                <long>-929410239</long>
+                <elevation>45115</elevation>
             </position>
             <accuracy>
-                <semiMajor>22</semiMajor>
-                <semiMinor>126</semiMinor>
-                <orientation>19119</orientation>
+                <semiMajor>242</semiMajor>
+                <semiMinor>196</semiMinor>
+                <orientation>33804</orientation>
             </accuracy>
-            <speed>4045</speed>
-            <heading>10156</heading>
+            <speed>2351</speed>
+            <heading>26230</heading>
             <accelSet>
-                <long>-173</long>
-                <lat>-1331</lat>
-                <vert>-30</vert>
-                <yaw>-25064</yaw>
+                <long>574</long>
+                <lat>-779</lat>
+                <vert>-41</vert>
+                <yaw>17248</yaw>
             </accelSet>
             <pathHistory>
                 <initialPosition>
                     <utcTime>
-                        <year>3208</year>
-                        <month>1</month>
-                        <day>2</day>
-                        <hour>0</hour>
-                        <minute>56</minute>
-                        <second>52411</second>
-                        <offset>178</offset>
+                        <year>1609</year>
+                        <month>4</month>
+                        <day>9</day>
+                        <hour>1</hour>
+                        <minute>8</minute>
+                        <second>25326</second>
+                        <offset>682</offset>
                     </utcTime>
-                    <long>-676976227</long>
-                    <lat>484251509</lat>
-                    <elevation>-3730</elevation>
-                    <heading>27502</heading>
+                    <long>874152033</long>
+                    <lat>408613166</lat>
+                    <elevation>44900</elevation>
+                    <heading>12214</heading>
                     <speed>
-                        <transmisson><reserved3/></transmisson>
-                        <speed>6621</speed>
+                        <transmisson>
+                            <forwardGears />
+                        </transmisson>
+                        <speed>6379</speed>
                     </speed>
                     <posAccuracy>
-                        <semiMajor>48</semiMajor>
-                        <semiMinor>61</semiMinor>
-                        <orientation>6826</orientation>
+                        <semiMajor>148</semiMajor>
+                        <semiMinor>209</semiMinor>
+                        <orientation>45356</orientation>
                     </posAccuracy>
-                    <timeConfidence><time-000-000-000-02/></timeConfidence>
+                    <timeConfidence>
+                        <time-000-005 />
+                    </timeConfidence>
                     <posConfidence>
-                        <pos><a5cm/></pos>
-                        <elevation><elev-002-00/></elevation>
+                        <pos>
+                            <a50m />
+                        </pos>
+                        <elevation>
+                            <elev-050-00 />
+                        </elevation>
                     </posConfidence>
                     <speedConfidence>
-                        <heading><prec05deg/></heading>
-                        <speed><prec1ms/></speed>
-                        <throttle><prec0-5percent/></throttle>
+                        <heading>
+                            <prec10deg />
+                        </heading>
+                        <speed>
+                            <prec0-1ms />
+                        </speed>
+                        <throttle>
+                            <unavailable />
+                        </throttle>
                     </speedConfidence>
                 </initialPosition>
-                <currGNSSstatus>
-                    00000001
-                </currGNSSstatus>
+                <currGNSSstatus>00001000</currGNSSstatus>
                 <crumbData>
                     <PathHistoryPoint>
-                        <latOffset>-10040</latOffset>
-                        <lonOffset>-122632</lonOffset>
-                        <elevationOffset>-937</elevationOffset>
-                        <timeOffset>50605</timeOffset>
-                        <speed>4517</speed>
+                        <latOffset>127415</latOffset>
+                        <lonOffset>129534</lonOffset>
+                        <elevationOffset>-347</elevationOffset>
+                        <timeOffset>24559</timeOffset>
+                        <speed>5297</speed>
                         <posAccuracy>
-                            <semiMajor>27</semiMajor>
-                            <semiMinor>185</semiMinor>
-                            <orientation>12528</orientation>
+                            <semiMajor>163</semiMajor>
+                            <semiMinor>141</semiMinor>
+                            <orientation>44545</orientation>
                         </posAccuracy>
-                        <heading>110</heading>
-                    </PathHistoryPoint>
-                    <PathHistoryPoint>
-                        <latOffset>46351</latOffset>
-                        <lonOffset>-95114</lonOffset>
-                        <elevationOffset>-1174</elevationOffset>
-                        <timeOffset>30176</timeOffset>
-                        <speed>4245</speed>
-                        <posAccuracy>
-                            <semiMajor>94</semiMajor>
-                            <semiMinor>125</semiMinor>
-                            <orientation>39727</orientation>
-                        </posAccuracy>
-                        <heading>56</heading>
-                    </PathHistoryPoint>
-                    <PathHistoryPoint>
-                        <latOffset>-4850</latOffset>
-                        <lonOffset>-73016</lonOffset>
-                        <elevationOffset>-521</elevationOffset>
-                        <timeOffset>29342</timeOffset>
-                        <speed>7401</speed>
-                        <posAccuracy>
-                            <semiMajor>64</semiMajor>
-                            <semiMinor>48</semiMinor>
-                            <orientation>41499</orientation>
-                        </posAccuracy>
-                        <heading>71</heading>
-                    </PathHistoryPoint>
-                    <PathHistoryPoint>
-                        <latOffset>-24068</latOffset>
-                        <lonOffset>84127</lonOffset>
-                        <elevationOffset>112</elevationOffset>
-                        <timeOffset>39916</timeOffset>
-                        <speed>328</speed>
-                        <posAccuracy>
-                            <semiMajor>42</semiMajor>
-                            <semiMinor>31</semiMinor>
-                            <orientation>57148</orientation>
-                        </posAccuracy>
-                        <heading>144</heading>
-                    </PathHistoryPoint>
-                    <PathHistoryPoint>
-                        <latOffset>-63609</latOffset>
-                        <lonOffset>108612</lonOffset>
-                        <elevationOffset>1407</elevationOffset>
-                        <timeOffset>2043</timeOffset>
-                        <speed>6449</speed>
-                        <posAccuracy>
-                            <semiMajor>158</semiMajor>
-                            <semiMinor>32</semiMinor>
-                            <orientation>4580</orientation>
-                        </posAccuracy>
-                        <heading>213</heading>
+                        <heading>194</heading>
                     </PathHistoryPoint>
                 </crumbData>
             </pathHistory>
             <pathPrediction>
-                <radiusOfCurve>-15292</radiusOfCurve>
-                <confidence>57</confidence>
+                <radiusOfCurve>20378</radiusOfCurve>
+                <confidence>131</confidence>
             </pathPrediction>
             <propulsion>
-                <motor><wheelChair/></motor>
+                <animal>
+                    <animalMounted />
+                </animal>
             </propulsion>
-            <useState>
-                00000010
-            </useState>
-            <crossRequest><true/></crossRequest>
-            <crossState><true/></crossState>
-            <clusterSize><medium/></clusterSize>
-            <clusterRadius>85</clusterRadius>
-            <eventResponderType><animalControlWorker/></eventResponderType>
-            <activityType>
-                10000000
-            </activityType>
-            <activitySubType>
-                00000010
-            </activitySubType>
-            <assistType>
-                00100000
-            </assistType>
-            <sizing>
-                00010000
-            </sizing>
-            <attachment><unavailable/></attachment>
-            <attachmentRadius>130</attachmentRadius>
-            <animalType><serviceUse/></animalType>
+            <useState>000010000</useState>
+            <crossRequest>
+                <true />
+            </crossRequest>
+            <crossState>
+                <true />
+            </crossState>
+            <clusterSize>
+                <small />
+            </clusterSize>
+            <clusterRadius>37</clusterRadius>
+            <eventResponderType>
+                <hazmatResponder />
+            </eventResponderType>
+            <activityType>100000</activityType>
+            <activitySubType>0100000</activitySubType>
+            <assistType>000010</assistType>
+            <sizing>00100</sizing>
+            <attachment>
+                <cart />
+            </attachment>
+            <attachmentRadius>102</attachmentRadius>
+            <animalType>
+                <serviceUse />
+            </animalType>
         </PersonalSafetyMessage>
     </value>
 </MessageFrame>

@@ -30,15 +30,15 @@ After:
     4045,10156,
     ...
 ```
-4. Using the erlang CLI load in the modified `psm.src` file and output a JER message:
+4. Using the erlang CLI load in the modified `psm.src` file and output an UPER encoded message:
 
 ```erlang
 {ok, [PsmReload]} = file:consult("../examples/psm.src").
-{ok, PsmJer} = 'PersonalSafetyMessage':jer_encode('PersonalSafetyMessage', PsmReload).
-file:write_file("../examples/psm.json", PsmJer).
+{ok, PsmUper} = 'PersonalSafetyMessage':encode('PersonalSafetyMessage', PsmReload).
+file:write_file("../examples/psm.uper", PsmUper).
 ```
 
-5. Transfer the `psm.json` file into this directory.
+5. Transfer the `psm.uper` file into this directory.
 6. Manually edit the bit string fields (any field that has a "value" and "length" key):
 
 Before:
