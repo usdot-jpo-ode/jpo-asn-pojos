@@ -36,8 +36,10 @@ public abstract class OpenTypeDeserializer<T extends Asn1Type> extends StdDeseri
     @Override
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         T result = null;
+        System.out.println("deserialize open type");
         if (jsonParser instanceof FromXmlParser xmlParser) {
             // XML: Unwrap
+            System.out.println("deserialize open type: xml");
             XmlMapper xmlMapper = (XmlMapper)xmlParser.getCodec();
             TreeNode node = xmlParser.getCodec().readTree(xmlParser);
             String xml = xmlMapper.writeValueAsString(node);
@@ -45,8 +47,20 @@ public abstract class OpenTypeDeserializer<T extends Asn1Type> extends StdDeseri
             var unwrapped = unwrap(tokens);
             result = xmlMapper.readValue(stringifyTokens(unwrapped), thisClass);
         } else {
-            // JSON: pass through
-            result = jsonParser.getCodec().readValue(jsonParser, thisClass);
+            // JSON:
+            System.out.println("deserialize open type: json");
+            TreeNode node = jsonParser.getCodec().readTree(jsonParser);
+            if (node instanceof ObjectNode objectNode) {
+                // Try unwrapping
+                JsonNode innerNode = objectNode.findValue(wrapped);
+                if (innerNode != null) {
+                    System.out.printf("deserialize open type json unwrapped %s%n", wrapped);
+                }
+                JsonNode useNode = innerNode != null ? innerNode : objectNode;
+                String json = SerializationUtil.jsonMapper().writeValueAsString(useNode);
+                System.out.printf("deserialize open type: json value: %s%n", json);
+                result = SerializationUtil.jsonMapper().readValue(json, thisClass);
+            }
         }
         return result;
     }

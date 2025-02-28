@@ -52,7 +52,7 @@ public abstract class BaseSerializeTest<T> {
     String str;
     try {
       str = IOUtils.resourceToString(path, StandardCharsets.UTF_8);
-      System.out.printf("Loaded resource:%n%s%n", str);
+      //System.out.printf("Loaded resource:%n%s%n", str);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
