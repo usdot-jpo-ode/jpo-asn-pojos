@@ -3,6 +3,7 @@ package asn2pojo.runtime.types;
 import asn2pojo.runtime.serialization.BitstringSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.Arrays;
 import java.util.BitSet;
 import java.util.HexFormat;
 
@@ -48,8 +49,16 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public String hexString() {
-        HexFormat hex = HexFormat.of();
-        return hex.formatHex(reverseBits(bits.toByteArray()));
+        HexFormat hex = HexFormat.of().withUpperCase();
+        int expectedNumBytes = (size() + 7) / 8;
+        byte[] bytes = reverseBits(bits.toByteArray());
+        if (bytes.length < expectedNumBytes) {
+            // Pad with 0's to get expected number of bytes
+            byte[] paddedBytes = new byte[expectedNumBytes];
+            System.arraycopy(bytes, 0, paddedBytes, 0, bytes.length);
+            bytes = paddedBytes;
+        }
+        return hex.formatHex(bytes);
     }
 
     public void fromBinaryString(String str) {
@@ -57,7 +66,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
             bits.clear();
             return;
         }
-        char[] chars = str.toCharArray();
+        char[] chars = str.trim().toCharArray();
         if (chars.length < size) {
             throw new IllegalArgumentException("Not enough characters in string " + str);
         }
@@ -68,22 +77,15 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public void fromHexString(String str) {
-        System.out.println(str);
         if (str == null) {
             bits.clear();
             return;
         }
         HexFormat hex = HexFormat.of();
         byte[] bytes = reverseBits(hex.parseHex(str));
-        System.out.println(bytes.length);
         BitSet newBits = BitSet.valueOf(bytes);
-        System.out.println(newBits);
-//        if (newBits.length() != size) {
-//            throw new IllegalArgumentException("Wrong number of bits in " + str);
-//        }
         bits.clear();
         bits.or(newBits);
-        System.out.println(binaryString());
     }
 
     public String name(int index) {

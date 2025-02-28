@@ -46,6 +46,8 @@ import java.io.IOException;
  * }</pre>
  * <p>See "Encoding of open type values", ITU-T Rec X.697 (02/2021), Sec 41.
  *
+ * <p> asn1c expects wrapped JSON though</p>
+ *
  * @author Ivan Yourshaw
  */
 public abstract class OpenTypeSerializer<T extends Asn1Type> extends StdSerializer<T> {
@@ -68,8 +70,10 @@ public abstract class OpenTypeSerializer<T extends Asn1Type> extends StdSerializ
             xmlGen.writeObject(t);
             xmlGen.finishWrappedValue(wrapper, wrapped);
         } else {
-            // Pass through JER
-            jsonGenerator.writeObject(t);
+            // Wrapped JER
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeObjectField(wrapped.getLocalPart(), t);
+            jsonGenerator.writeEndObject();
         }
 
     }
