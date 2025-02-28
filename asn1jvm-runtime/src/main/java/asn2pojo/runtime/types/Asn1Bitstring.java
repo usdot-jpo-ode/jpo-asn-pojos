@@ -49,6 +49,13 @@ public abstract class Asn1Bitstring implements Asn1Type {
 
     public String hexString() {
         HexFormat hex = HexFormat.of();
+        int expectedNumBytes = size() % 8;
+        byte[] bytes = bits.toByteArray();
+        if (bytes.length < expectedNumBytes) {
+            // Pad with 0's to get expected number of bytes
+            byte[] paddedBytes = new byte[expectedNumBytes];
+
+        }
         return hex.formatHex(reverseBits(bits.toByteArray()));
     }
 
