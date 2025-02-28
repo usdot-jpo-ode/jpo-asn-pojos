@@ -51,6 +51,26 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
     assertThat(roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
   }
 
+  @ParameterizedTest
+  @MethodSource("getXmlResourcesSupplementalExtensions")
+  public void canRoundTripXml_SupplementalExtensionsTest(String resourcePath) throws IOException {
+    String xml = loadResource(resourcePath);
+    BasicSafetyMessage bsm = fromXml(xml);
+    assertThat(bsm, notNullValue());
+    String roundTripXml = toXml(bsm);
+    assertThat(roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
+  }
+
+  @ParameterizedTest
+  @MethodSource("getXmlResourcesMultipleExtensions")
+  public void canRoundTripXml_MultipleExtensionsTest(String resourcePath) throws IOException {
+    String xml = loadResource(resourcePath);
+    BasicSafetyMessage bsm = fromXml(xml);
+    assertThat(bsm, notNullValue());
+    String roundTripXml = toXml(bsm);
+    assertThat(roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
+  }
+
 
   @ParameterizedTest
   @MethodSource("getJsonResourcesNoExtensions")
@@ -87,6 +107,17 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
   @ParameterizedTest
   @MethodSource("getJsonResourcesSupplementalExtensions")
   public void canRoundTripJson_SupplementalExtensionsTest(String resourcePath) throws IOException {
+    String json = loadResource(resourcePath);
+    BasicSafetyMessage bsm = fromJson(json);
+    assertThat(bsm, notNullValue());
+    String roundTripJson = toJson(bsm);
+    System.out.printf("roundTripJson: %s%n", roundTripJson);
+    assertThat(roundTripJson, jsonEquals(json));
+  }
+
+  @ParameterizedTest
+  @MethodSource("getJsonResourcesMultipleExtensions")
+  public void canRoundTripJson_MultipleExtensionsTest(String resourcePath) throws IOException {
     String json = loadResource(resourcePath);
     BasicSafetyMessage bsm = fromJson(json);
     assertThat(bsm, notNullValue());
