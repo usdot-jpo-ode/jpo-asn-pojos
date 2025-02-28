@@ -22,7 +22,30 @@
 
 package j2735.BasicSafetyMessage;
 
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import j2735.Common.Angle;
 
+@JsonDeserialize(using = ObstacleDirection.ObstacleDirectionDeserializer.class)
 public class ObstacleDirection extends Angle {
+
+  public ObstacleDirection() {
+    super();
+  }
+
+  @JsonCreator
+  public ObstacleDirection(long value) {
+    super(value);
+  }
+
+  public static class ObstacleDirectionDeserializer extends IntegerDeserializer<ObstacleDirection> {
+    public ObstacleDirectionDeserializer() {
+      super(ObstacleDirection.class);
+    }
+    @Override
+    protected ObstacleDirection construct() {
+      return new ObstacleDirection();
+    }
+  }
 }

@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.Extent;
 import j2735.Common.HeadingSlice;
 import j2735.Common.Priority;
@@ -48,6 +50,8 @@ public class EventDescription extends Asn1Sequence {
 	private ITIScodes typeEvent;
 	@Asn1Property(tag = 1, name = "description", optional = true)
 	@JsonProperty("description")
+	@JacksonXmlElementWrapper(localName = "description")
+	@JacksonXmlProperty(localName = "ITIScodes")
 	private SequenceOfDescription description;
 	@Asn1Property(tag = 2, name = "priority", optional = true)
 	@JsonProperty("priority")
