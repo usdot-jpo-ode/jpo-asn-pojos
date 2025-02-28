@@ -68,8 +68,10 @@ public abstract class OpenTypeSerializer<T extends Asn1Type> extends StdSerializ
             xmlGen.writeObject(t);
             xmlGen.finishWrappedValue(wrapper, wrapped);
         } else {
-            // Pass through JER
-            jsonGenerator.writeObject(t);
+            // Wrapped JER
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeObjectField(wrapped.getLocalPart(), t);
+            jsonGenerator.writeEndObject();
         }
 
     }
