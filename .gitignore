@@ -120,5 +120,5 @@ fabric.properties
 # Built Visual Studio Code Extensions
 *.vsix
 
-# VS Code built folders
+# VS Code build folders
 **/bin
