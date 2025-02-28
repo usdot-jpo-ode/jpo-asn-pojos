@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.BasicSafetyMessage.BSMpartIIExtension;
 
 @JsonRootName("BSMpartIIExtension")
+@JsonDeserialize(using = BSMpartIIExtension.BSMpartIIExtensionDeserializer.None.class)
 public class VehicleSafetyExtensionsBSMpartIIExtension extends BSMpartIIExtension<VehicleSafetyExtensions> {
 
 	public VehicleSafetyExtensionsBSMpartIIExtension() {

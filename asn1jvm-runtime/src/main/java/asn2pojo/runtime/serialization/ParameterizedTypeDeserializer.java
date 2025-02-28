@@ -11,9 +11,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
 import java.io.IOException;
 
 import static asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType.INTEGER;
+import static asn2pojo.runtime.utils.XmlUtils.tokenize;
 
 /**
  * Deserialize a parameterized SEQUENCE type.
@@ -41,20 +44,51 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
             throw new RuntimeException("Missing Asn1ParameterizedTypes annotation.");
         }
         final String idPropName = typeAnnot.idProperty();
+        System.out.printf("idPropName: %s%n", idPropName);
         final Asn1ParameterizedTypes.IdType idType = typeAnnot.idType();
+        System.out.printf("idType: %s%n", idType);
         final Asn1ParameterizedTypes.Type[] types = typeAnnot.value();
         if (types == null || types.length == 0) {
             throw new RuntimeException("No Types are defined in the Asn1ParameterizedTypes annotation.");
-        }
-        TreeNode node = jsonParser.getCodec().readTree(jsonParser);
-        if (node instanceof ObjectNode objectNode) {
-            JsonNode idPropNode = objectNode.findValue(idPropName);
-            final Object id = (idType == INTEGER) ? idPropNode.asInt() : idPropNode.asText();
-            Class<?> subType = getSubtypeForId(id, idType, types);
-            return (T)jsonParser.getCodec().readValue(jsonParser, subType);
         } else {
-            throw new RuntimeException("Not instance of object");
+            for (var t : types) {
+                System.out.printf("type: %s%n", t);
+            }
         }
+        if (jsonParser instanceof FromXmlParser xmlParser) {
+            // XER
+            XmlMapper xmlMapper = (XmlMapper)xmlParser.getCodec();
+            TreeNode node = xmlMapper.readTree(xmlParser);
+            System.out.println("hello");
+            String xml = xmlMapper.writeValueAsString(node);
+            System.out.printf("node xml: %s%n", xml);
+            if (node instanceof ObjectNode objectNode) {
+                System.out.printf("ObjectNode: %s%n", objectNode);
+                JsonNode idPropNode = objectNode.findValue(idPropName);
+                if (idPropNode == null) {
+
+                }
+                final Object id = (idType == INTEGER) ? idPropNode.asInt() : idPropNode.asText();
+                System.out.printf("id: %s%n", id);
+                Class<?> subType = getSubtypeForId(id, idType, types);
+                System.out.printf("subtype: %s%n", subType.getName());
+                return (T)SerializationUtil.xmlMapper().readValue(xml, subType);
+            } else {
+                throw new RuntimeException("Not instance of object");
+            }
+        } else {
+            // JER
+            return null;
+        }
+//        TreeNode node = jsonParser.getCodec().readTree(jsonParser);
+//        if (node instanceof ObjectNode objectNode) {
+//            JsonNode idPropNode = objectNode.findValue(idPropName);
+//            final Object id = (idType == INTEGER) ? idPropNode.asInt() : idPropNode.asText();
+//            Class<?> subType = getSubtypeForId(id, idType, types);
+//            return (T)jsonParser.getCodec().readValue(jsonParser, subType);
+//        } else {
+//            throw new RuntimeException("Not instance of object");
+//        }
     }
 
     private Class<?> getSubtypeForId(final Object id, Asn1ParameterizedTypes.IdType idType, Asn1ParameterizedTypes.Type[] types) {

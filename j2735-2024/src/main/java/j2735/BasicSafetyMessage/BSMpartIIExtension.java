@@ -24,25 +24,36 @@ package j2735.BasicSafetyMessage;
 
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
+import asn2pojo.runtime.serialization.ParameterizedTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonInclude(Include.NON_NULL)
-@JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "partII-Id")
-@JsonSubTypes({@JsonSubTypes.Type(value = j2735.Common.VehicleSafetyExtensionsBSMpartIIExtension.class, name = "0"),
-		@JsonSubTypes.Type(value = SpecialVehicleExtensionsBSMpartIIExtension.class, name = "1"),
-		@JsonSubTypes.Type(value = SupplementalVehicleExtensionsBSMpartIIExtension.class, name = "2")})
-@Asn1ParameterizedTypes(idProperty = "partII_Id", idType = IdType.INTEGER, valueProperty = "partII_Value", value = {
+//@JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "partII-Id")
+//@JsonSubTypes({@JsonSubTypes.Type(value = j2735.Common.VehicleSafetyExtensionsBSMpartIIExtension.class, name = "0"),
+//		@JsonSubTypes.Type(value = SpecialVehicleExtensionsBSMpartIIExtension.class, name = "1"),
+//		@JsonSubTypes.Type(value = SupplementalVehicleExtensionsBSMpartIIExtension.class, name = "2")})
+@Asn1ParameterizedTypes(idProperty = "partII-Id", idType = IdType.INTEGER, valueProperty = "partII-Value", value = {
 		@Asn1ParameterizedTypes.Type(value = j2735.Common.VehicleSafetyExtensionsBSMpartIIExtension.class, intId = 0),
 		@Asn1ParameterizedTypes.Type(value = SpecialVehicleExtensionsBSMpartIIExtension.class, intId = 1),
 		@Asn1ParameterizedTypes.Type(value = SupplementalVehicleExtensionsBSMpartIIExtension.class, intId = 2)})
+@JsonDeserialize(using = j2735.BasicSafetyMessage.BSMpartIIExtension.BSMpartIIExtensionDeserializer.class)
 abstract public class BSMpartIIExtension<TValue> extends PartIIcontent<TValue> {
 
 	public BSMpartIIExtension(int id, String name) {
 		super(id, name);
+	}
+
+	public static class BSMpartIIExtensionDeserializer extends ParameterizedTypeDeserializer<BSMpartIIExtension> {
+
+		protected BSMpartIIExtensionDeserializer() {
+			super(BSMpartIIExtension.class);
+		}
+
 	}
 }
