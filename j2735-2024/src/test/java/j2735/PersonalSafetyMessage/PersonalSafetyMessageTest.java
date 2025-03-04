@@ -1,16 +1,19 @@
 package j2735.PersonalSafetyMessage;
 
+import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.is;
+import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
 import j2735.BaseSerializeTest;
-import j2735.Common.DSecond;
-import j2735.Common.MsgCount;
-import j2735.Common.TemporaryID;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyMessage> {
 
@@ -18,150 +21,46 @@ public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyM
     super(PersonalSafetyMessage.class);
   }
 
-  @Test
-  public void xmlDeserialize_generatedXml_basicDeserialization() throws IOException {
-    PersonalSafetyMessage psm = fromXml(loadResource("/j2735/PersonalSafetyMessage/xml/GeneratedPsm.xml"));
+  @ParameterizedTest
+  @MethodSource("getXmlResourcesPropulsionTypes")
+  public void canRoundTripXml_PropulsionTypesTest(String resourcePath) throws IOException {
+    String xml = loadResource(resourcePath);
+    PersonalSafetyMessage psm = fromXml(xml);
     assertThat(psm, notNullValue());
+    String roundTripXml = toXml(psm);
+    assertThat(roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
   }
 
-
-  @Test
-  public void jsonDeserialize_generatedJson() throws IOException {
-    PersonalSafetyMessage psm = fromJson(loadResource("/j2735/PersonalSafetyMessage/json/GeneratedPsm.json"));
+  @ParameterizedTest
+  @MethodSource("getJsonResourcesPropulsionTypes")
+  public void canRoundTripJson_PropulsionTypesTest(String resourcePath) throws IOException {
+    String json = loadResource(resourcePath);
+    PersonalSafetyMessage psm = fromJson(json);
     assertThat(psm, notNullValue());
+    String roundTripJson = toJson(psm);
+    assertThat(roundTripJson, jsonEquals(json));
   }
 
-
-  @Test
-  public void serializeDeserialize_humanPropelledType() throws IOException {
-    PersonalSafetyMessage psm = new PersonalSafetyMessage();
-    
-    HumanPropelledType humanType = HumanPropelledType.PUSHORKICKSCOOTER;
-    PropelledInformation propelledInformation = new PropelledInformation();
-    propelledInformation.setHuman(humanType);
-    psm.setPropulsion(propelledInformation);
-
-    // Test XML serialization
-    String xml = toXml(psm);
-    PersonalSafetyMessage deserializedFromXml = fromXml(xml);
-    assertThat(deserializedFromXml.getPropulsion().getHuman(), is(humanType));
-
-    // Test JSON serialization
-    String json = toJson(psm);
-    PersonalSafetyMessage deserializedFromJson = fromJson(json);
-    assertThat(deserializedFromJson.getPropulsion().getHuman(), is(humanType));
+  private static Stream<Arguments> getXmlResourcesPropulsionTypes() {
+    return getXmlResources("propulsion_types");
   }
 
-  @Test
-  public void serializeDeserialize_motorizedPropelledType() throws IOException {
-    PersonalSafetyMessage psm = new PersonalSafetyMessage();
-    
-    MotorizedPropelledType motorType = MotorizedPropelledType.SELFBALANCINGDEVICE;
-    PropelledInformation propelledInformation = new PropelledInformation();
-    propelledInformation.setMotor(motorType);
-    psm.setPropulsion(propelledInformation);
-
-    // Test XML serialization
-    String xml = toXml(psm);
-    PersonalSafetyMessage deserializedFromXml = fromXml(xml);
-    assertThat(deserializedFromXml.getPropulsion().getMotor(), is(motorType));
-
-    // Test JSON serialization
-    String json = toJson(psm);
-    PersonalSafetyMessage deserializedFromJson = fromJson(json);
-    assertThat(deserializedFromJson.getPropulsion().getMotor(), is(motorType));
+  private static Stream<Arguments> getJsonResourcesPropulsionTypes() {
+    return getJsonResources("propulsion_types");
   }
 
-  @Test
-  public void serializeDeserialize_animalPropelledType() throws IOException {
-    PersonalSafetyMessage psm = new PersonalSafetyMessage();
-    
-    AnimalPropelledType animalType = AnimalPropelledType.ANIMALDRAWNCARRIAGE;
-    PropelledInformation propelledInformation = new PropelledInformation();
-    propelledInformation.setAnimal(animalType);
-    psm.setPropulsion(propelledInformation);
-
-    // Test XML serialization
-    String xml = toXml(psm);
-    PersonalSafetyMessage deserializedFromXml = fromXml(xml);
-    assertThat(deserializedFromXml.getPropulsion().getAnimal(), is(animalType));
-
-    // Test JSON serialization
-    String json = toJson(psm);
-    PersonalSafetyMessage deserializedFromJson = fromJson(json);
-    assertThat(deserializedFromJson.getPropulsion().getAnimal(), is(animalType));
+  private static Stream<Arguments> getXmlResources(String subdirectory)  {
+    return getResources("/j2735/PersonalSafetyMessage/xml/" + subdirectory);
   }
 
-  @Test
-  public void roundTripSerialization_withHumanPropulsion() throws IOException {
-    PersonalSafetyMessage original = new PersonalSafetyMessage();
-    PropelledInformation propInfo = new PropelledInformation();
-    propInfo.setHuman(HumanPropelledType.PUSHORKICKSCOOTER);
-    original.setPropulsion(propInfo);
-
-    // Serialize to JSON and back
-    String json = toJson(original);
-    PersonalSafetyMessage deserialized = fromJson(json);
-
-    // Verify
-    assertThat(deserialized.getPropulsion().getHuman(), is(HumanPropelledType.PUSHORKICKSCOOTER));
-    assertThat(deserialized.getPropulsion().getMotor(), is((MotorizedPropelledType) null));
-    assertThat(deserialized.getPropulsion().getAnimal(), is((AnimalPropelledType) null));
+  private static Stream<Arguments> getJsonResources(String subdirectory) {
+    return getResources("/j2735/PersonalSafetyMessage/json/" + subdirectory);
   }
 
-  @Test
-  public void xmlSerialization_nullPropulsion() throws IOException {
-    PersonalSafetyMessage psm = new PersonalSafetyMessage();
-    psm.setPropulsion(null);
-
-    String xml = toXml(psm);
-    PersonalSafetyMessage deserialized = fromXml(xml);
-    
-    assertThat(deserialized.getPropulsion(), is((PropelledInformation) null));
-  }
-
-  @Test
-  public void jsonSerialization_emptyPropelledInfo() throws IOException {
-    PersonalSafetyMessage psm = new PersonalSafetyMessage();
-    PropelledInformation emptyPropInfo = new PropelledInformation();
-    psm.setPropulsion(emptyPropInfo);
-
-    String json = toJson(psm);
-    PersonalSafetyMessage deserialized = fromJson(json);
-    
-    assertThat(deserialized.getPropulsion(), notNullValue());
-    assertThat(deserialized.getPropulsion().getHuman(), is((HumanPropelledType) null));
-    assertThat(deserialized.getPropulsion().getMotor(), is((MotorizedPropelledType) null));
-    assertThat(deserialized.getPropulsion().getAnimal(), is((AnimalPropelledType) null));
-  }
-
-  @Test
-  public void roundTripSerialization_allFieldsPopulated() throws IOException {
-    PersonalSafetyMessage original = new PersonalSafetyMessage();
-    
-    // Set all available fields
-    original.setBasicType(PersonalDeviceUserType.APEDESTRIAN);
-    original.setSecMark(new DSecond(1234));
-    original.setMsgCnt(new MsgCount(99));
-    original.setId(new TemporaryID("12341234"));
-    original.setClusterRadius(new PersonalClusterRadius(10L));
-    original.setAttachmentRadius(new AttachmentRadius(10L));
-    
-    PropelledInformation propInfo = new PropelledInformation();
-    propInfo.setMotor(MotorizedPropelledType.WHEELCHAIR);
-    original.setPropulsion(propInfo);
-
-    // Serialize to XML and back
-    String xml = toXml(original);
-    PersonalSafetyMessage fromXml = fromXml(xml);
-
-    // Verify all fields
-    assertThat(fromXml.getBasicType(), is(PersonalDeviceUserType.APEDESTRIAN));
-    assertThat(fromXml.getSecMark().getValue(), is(1234L));
-    assertThat(fromXml.getMsgCnt().getValue(), is(99L));
-    assertThat(fromXml.getId().getValue(), is("12341234"));
-    assertThat(fromXml.getPropulsion().getMotor(), is(MotorizedPropelledType.WHEELCHAIR));
-    assertThat(fromXml.getClusterRadius().getValue(), is(10L));
-    assertThat(fromXml.getAttachmentRadius().getValue(), is(10L));
+  private static Stream<Arguments> getResources(String directory) {
+    List<String> resources = listAllResourcesInDirectory(directory);
+    var streamBuilder = Stream.<Arguments>builder();
+    resources.forEach(resource -> streamBuilder.add(Arguments.of(resource)));
+    return streamBuilder.build();
   }
 }
