@@ -4,8 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
 import j2735.BaseSerializeTest;
+import j2735.BasicSafetyMessage.BasicSafetyMessageMessageFrame;
 import j2735.MessageFrame.DSRCmsgID;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
@@ -18,8 +20,10 @@ public class PersonalSafetyMessageFrameTest extends BaseSerializeTest<PersonalSa
 
   @Test
   public void xmlDeserialize_generatedXml() throws IOException {
-    PersonalSafetyMessageMessageFrame pmf = fromXml(loadResource("/j2735/PersonalSafetyMessage/xml/GeneratedPsmMessageFrame.xml"));
-    assertThat(pmf, notNullValue());
-    assertThat(pmf, hasProperty("messageId", equalTo(new DSRCmsgID(32))));
+    final String xml = loadResource("/j2735/PersonalSafetyMessage/xml/message_frame/psm_01.xml");
+    PersonalSafetyMessageMessageFrame psmf = fromXml(xml);
+    assertThat(psmf, notNullValue());
+    final String roundTripXml = toXml(psmf);
+    assertThat(roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
   }
 }

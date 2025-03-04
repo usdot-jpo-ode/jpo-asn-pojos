@@ -75,7 +75,7 @@ After:
 7. In a WSL/linux terminal, run the [`./convert-all`](../../../converter-all) script like this:
 
 ```bash
-./converter-all -p PersonalSafetyMessage -ijer -oxer examples/2024/psm/psm.json > examples/2024/psm/psm.xml
+./converter-all -p PersonalSafetyMessage -ijer -oxer examples/2024/psm/psm_animal.json > examples/2024/psm/psm_animal.xml
 ```
 
 8. Manually update the output `psm.xml` file to use a valid `id` (no spaces) field:
