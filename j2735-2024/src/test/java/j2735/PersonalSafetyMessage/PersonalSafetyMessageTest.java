@@ -57,7 +57,7 @@ public class PersonalSafetyMessageTest extends BaseSerializeTest<PersonalSafetyM
     return getResources("/j2735/PersonalSafetyMessage/json/" + subdirectory);
   }
 
-  private static Stream<Arguments> getResources(String directory) {
+  protected static Stream<Arguments> getResources(String directory) {
     List<String> resources = listAllResourcesInDirectory(directory);
     var streamBuilder = Stream.<Arguments>builder();
     resources.forEach(resource -> streamBuilder.add(Arguments.of(resource)));
