@@ -18,6 +18,8 @@ public class MapDataTest extends BaseSerializeTest<MapData> {
     super(MapData.class);
   }
 
+
+
   @ParameterizedTest
   @MethodSource("getXmlResources")
   public void canRoundTripXml(String resourcePath) throws IOException {

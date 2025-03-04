@@ -12,4 +12,5 @@ public class TrailerMassTest {
     var tm = new TrailerMass(2000L);
     assertThat(tm.getValue(), equalTo(2000L));
   }
+
 }
