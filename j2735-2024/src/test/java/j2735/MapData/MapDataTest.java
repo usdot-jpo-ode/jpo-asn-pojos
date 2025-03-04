@@ -41,10 +41,10 @@ public class MapDataTest extends BaseSerializeTest<MapData> {
   }
 
   private static Stream<Arguments> getXmlResources() {
-    return getResources("/MapData/xml");
+    return getResources("/j2735/MapData/xml");
   }
 
   private static Stream<Arguments> getJsonResources() {
-    return getResources("/MapData/json");
+    return getResources("/j2735/MapData/json");
   }
 }

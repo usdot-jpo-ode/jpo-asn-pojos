@@ -55,14 +55,16 @@ public class TIMMessageFrameTest extends BaseSerializeTest<TravelerInformationMe
 
     @Test
     public void xmlDeserialize_generatedXml() throws IOException {
-        TravelerInformationMessageFrame tim = fromXml(loadResource("/GeneratedTim.xml"));
+        TravelerInformationMessageFrame tim = fromXml(loadResource(
+            "/j2735/TravelerInformation/GeneratedTim.xml"));
         assertThat(tim, notNullValue());
         assertThat(tim, hasProperty("messageId", equalTo(new DSRCmsgID(31))));
     }
 
     @Test
     public void xmlDeserialize_generatedXmlWithComputedLanes() throws IOException {
-        TravelerInformationMessageFrame tim = fromXml(loadResource("/GeneratedTimWithComputedLanes.xml"));
+        TravelerInformationMessageFrame tim = fromXml(loadResource(
+            "/j2735/TravelerInformation/GeneratedTimWithComputedLanes.xml"));
         assertThat(tim, notNullValue());
         assertThat(tim, hasProperty("messageId", equalTo(new DSRCmsgID(31))));
     }

@@ -16,7 +16,7 @@ public class MapDataMessageFrameTest extends BaseSerializeTest<MapDataMessageFra
 
   @Test
   public void xmlRoundTripTest() throws IOException {
-    final String xml = loadResource("/MapData/xml_message_frame/map_01.xml");
+    final String xml = loadResource("/j2735/MapData/xml_message_frame/map_01.xml");
     MapDataMessageFrame mdmf = fromXml(xml);
     assertThat(mdmf, notNullValue());
     final String roundTripXml = toXml(mdmf);
