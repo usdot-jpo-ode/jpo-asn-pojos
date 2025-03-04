@@ -55,4 +55,29 @@ test {
 
 jacocoTestReport {
     dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+    }
+    // Include only modules of interest in coverage
+    // Ref: https://liviutudor.com/2016/02/11/jacoco-gradle-excluding-source-files-and-classes/
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, include: [
+                    '**/BasicSafetyMessage/**',
+                    '**/Common/**',
+                    '**/ITIS/**',
+                    '**/J2540ITIS/**',
+                    '**/MapData/**',
+                    '**/PersonalSafetyMessage/**',
+                    '**/RoadSafetyMessage/**',
+                    '**/RTCMcorrections/**',
+                    '**/SensorDataSharingMessage/**',
+                    '**/SignalRequestMessage/**',
+                    '**/SignalStatusMessage/**',
+                    '**/SPAT/**',
+                    '**/TravelerInformation/**'
+            ])
+        })
+    }
 }

@@ -1,7 +1,5 @@
 package j2735.BasicSafetyMessage;
 
-import j2735.Common.BSMcoreData;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -167,17 +165,17 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
   }
 
   private static Stream<Arguments> getXmlResources(String subdirectory)  {
-    return getResources("/BasicSafetyMessage/xml/" + subdirectory);
+    return getResources("/j2735/BasicSafetyMessage/xml/" + subdirectory);
   }
 
   private static Stream<Arguments> getJsonResources(String subdirectory) {
-    return getResources("/BasicSafetyMessage/json/" + subdirectory);
+    return getResources("/j2735/BasicSafetyMessage/json/" + subdirectory);
   }
 
-  private static Stream<Arguments> getResources(String directory) {
-    List<String> resources = listAllResourcesInDirectory(directory);
-    var streamBuilder = Stream.<Arguments>builder();
-    resources.forEach(resource -> streamBuilder.add(Arguments.of(resource)));
-    return streamBuilder.build();
-  }
+//  private static Stream<Arguments> getResources(String directory) {
+//    List<String> resources = listAllResourcesInDirectory(directory);
+//    var streamBuilder = Stream.<Arguments>builder();
+//    resources.forEach(resource -> streamBuilder.add(Arguments.of(resource)));
+//    return streamBuilder.build();
+//  }
 }

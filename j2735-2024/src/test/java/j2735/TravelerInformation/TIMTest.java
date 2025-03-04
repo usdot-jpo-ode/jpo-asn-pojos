@@ -17,7 +17,8 @@ public class TIMTest extends BaseSerializeTest<TravelerInformation> {
 
     @Test
     public void xmlDeserialize_generatedXml() throws IOException {
-        TravelerInformation tim = fromXml(loadResource("/TravelerInformation.xml"));
+        TravelerInformation tim = fromXml(loadResource(
+            "/j2735/TravelerInformation/TravelerInformation.xml"));
         assertThat(tim, notNullValue());
 
         String json = toJson(tim);
@@ -29,7 +30,8 @@ public class TIMTest extends BaseSerializeTest<TravelerInformation> {
 
     @Test
     public void xmlDeserialize_generatedXmlWithComputedLanes() throws IOException {
-        TravelerInformation tim = fromXml(loadResource("/TravelerInformationWithComputedLanes.xml"));
+        TravelerInformation tim = fromXml(loadResource(
+            "/j2735/TravelerInformation/TravelerInformationWithComputedLanes.xml"));
         assertThat(tim, notNullValue());
     }
 }
