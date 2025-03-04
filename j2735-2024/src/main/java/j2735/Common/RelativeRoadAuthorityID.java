@@ -23,6 +23,16 @@
 package j2735.Common;
 
 import asn2pojo.runtime.types.Asn1RelativeOID;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class RelativeRoadAuthorityID extends Asn1RelativeOID {
+
+  public RelativeRoadAuthorityID() {
+
+  }
+
+  @JsonCreator
+  public RelativeRoadAuthorityID(String value) {
+    super(value);
+  }
 }

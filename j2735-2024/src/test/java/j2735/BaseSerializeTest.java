@@ -8,10 +8,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import org.junit.jupiter.params.provider.Arguments;
 
 
 public abstract class BaseSerializeTest<T> {
@@ -48,7 +50,7 @@ public abstract class BaseSerializeTest<T> {
     return object;
   }
 
-  public String loadResource(String path) {
+  protected String loadResource(String path) {
     String str;
     try {
       str = IOUtils.resourceToString(path, StandardCharsets.UTF_8);
@@ -59,7 +61,7 @@ public abstract class BaseSerializeTest<T> {
     return str;
   }
 
-  public static List<String> listAllResourcesInDirectory(String directory) {
+  protected static List<String> listAllResourcesInDirectory(String directory) {
     List<String> resources = new ArrayList<>();
     try {
       URL dirUrl = IOUtils.resourceToURL(directory);
@@ -76,6 +78,13 @@ public abstract class BaseSerializeTest<T> {
       throw new RuntimeException(e);
     }
     return resources;
+  }
+
+  protected static Stream<Arguments> getResources(String directory) {
+    List<String> resources = listAllResourcesInDirectory(directory);
+    var streamBuilder = Stream.<Arguments>builder();
+    resources.forEach(resource -> streamBuilder.add(Arguments.of(resource)));
+    return streamBuilder.build();
   }
 
 }
