@@ -18,7 +18,7 @@ public class BasicSafetyMessageMessageFrameTest extends
 
   @Test
   public void xmlRoundTripTest() throws IOException {
-    final String xml = loadResource("/BasicSafetyMessage/xml/message_frame/bsm_noext_01.xml");
+    final String xml = loadResource("/j2735/BasicSafetyMessage/xml/message_frame/bsm_noext_01.xml");
     BasicSafetyMessageMessageFrame bsmf = fromXml(xml);
     assertThat(bsmf, notNullValue());
     final String roundTripXml = toXml(bsmf);
