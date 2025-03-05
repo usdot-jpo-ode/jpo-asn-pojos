@@ -45,7 +45,7 @@ public class SignalStatusMessageTest extends BaseSerializeTest<SignalStatusMessa
   }
 
   private static Stream<Arguments> getXmlResources() {
-    return getResources("/j2735/SignalStatusMessage/xml");
+    return getResources("/j2735/SignalStatusMessage/xml/data");
   }
 
   private static Stream<Arguments> getJsonResources() {
