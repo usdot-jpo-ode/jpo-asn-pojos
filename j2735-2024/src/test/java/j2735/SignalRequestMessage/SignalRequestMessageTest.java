@@ -15,6 +15,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+/**
+ * Unit tests for the SignalRequestMessage class.
+ */
 public class SignalRequestMessageTest extends BaseSerializeTest<SignalRequestMessage> {
 
   public SignalRequestMessageTest() {
@@ -42,7 +45,7 @@ public class SignalRequestMessageTest extends BaseSerializeTest<SignalRequestMes
   }
 
   private static Stream<Arguments> getXmlResources() {
-    return getResources("/j2735/SignalRequestMessage/xml");
+    return getResources("/j2735/SignalRequestMessage/xml/data");
   }
 
   private static Stream<Arguments> getJsonResources() {
