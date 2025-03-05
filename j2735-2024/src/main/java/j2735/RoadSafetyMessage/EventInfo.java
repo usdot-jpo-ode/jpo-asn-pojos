@@ -102,12 +102,12 @@ public class EventInfo extends Asn1Sequence {
 
 		@Override
 		protected VehicleGroupAffected[] listEnumValues() {
-			return new VehicleGroupAffected[0];
+			return VehicleGroupAffected.values();
 		}
 
 		@Override
 		protected SequenceOfAffectedVehicles construct() {
-			return null;
+			return new SequenceOfAffectedVehicles();
 		}
 	}
 
