@@ -28,6 +28,7 @@ public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> 
     RoadSafetyMessage rsm = fromXml(xml);
     assertThat(rsm, notNullValue());
     String roundTripXml = toXml(rsm);
+    System.out.println(roundTripXml);
     assertThat(roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
   }
 

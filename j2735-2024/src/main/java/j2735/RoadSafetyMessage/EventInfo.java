@@ -23,12 +23,17 @@
 package j2735.RoadSafetyMessage;
 
 import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 import asn2pojo.runtime.types.Asn1Sequence;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.DDateTime;
 import j2735.Common.MsgCount;
 import j2735.ITIS.ITIScodes;
@@ -60,6 +65,8 @@ public class EventInfo extends Asn1Sequence {
 	private DDateTime endDateTime;
 	@Asn1Property(tag = 5, name = "eventRecurrence", optional = true)
 	@JsonProperty("eventRecurrence")
+	@JacksonXmlElementWrapper(localName = "eventRecurrence")
+	@JacksonXmlProperty(localName = "EventRecurrence")
 	private SequenceOfEventRecurrence eventRecurrence;
 	@Asn1Property(tag = 6, name = "causeCode")
 	@JsonProperty("causeCode")
@@ -69,6 +76,7 @@ public class EventInfo extends Asn1Sequence {
 	private ITIScodes subCauseCode;
 	@Asn1Property(tag = 8, name = "affectedVehicles", optional = true)
 	@JsonProperty("affectedVehicles")
+	@JsonDeserialize(using = SequenceOfAffectedVehiclesDeserializer.class)
 	private SequenceOfAffectedVehicles affectedVehicles;
 
 	@JsonInclude(Include.NON_NULL)
@@ -82,6 +90,24 @@ public class EventInfo extends Asn1Sequence {
 	public static class SequenceOfAffectedVehicles extends Asn1SequenceOf<VehicleGroupAffected> {
 		public SequenceOfAffectedVehicles() {
 			super(VehicleGroupAffected.class, 1L, 10L);
+		}
+	}
+
+	public static class SequenceOfAffectedVehiclesDeserializer extends
+			SequenceOfEnumeratedDeserializer<VehicleGroupAffected, SequenceOfAffectedVehicles> {
+
+		protected SequenceOfAffectedVehiclesDeserializer() {
+			super(SequenceOfAffectedVehicles.class, VehicleGroupAffected.class);
+		}
+
+		@Override
+		protected VehicleGroupAffected[] listEnumValues() {
+			return new VehicleGroupAffected[0];
+		}
+
+		@Override
+		protected SequenceOfAffectedVehicles construct() {
+			return null;
 		}
 	}
 

@@ -23,12 +23,16 @@
 package j2735.RoadSafetyMessage;
 
 import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfChoiceSerializer;
 import asn2pojo.runtime.types.Asn1Sequence;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,12 +47,33 @@ public class RoadSafetyMessage extends Asn1Sequence {
 	private CommonContainer commonContainer;
 	@Asn1Property(tag = 1, name = "content")
 	@JsonProperty("content")
+	@JsonSerialize(using = SequenceOfContentSerializer.class)
+	@JsonDeserialize(using = SequenceOfContentDeserializer.class)
 	private SequenceOfContent content;
 
 	@JsonInclude(Include.NON_NULL)
 	public static class SequenceOfContent extends Asn1SequenceOf<ContentContainer> {
 		public SequenceOfContent() {
 			super(ContentContainer.class, 1L, 4L);
+		}
+	}
+
+	public static class SequenceOfContentSerializer
+			extends SequenceOfChoiceSerializer<ContentContainer, SequenceOfContent> {
+		public SequenceOfContentSerializer() {
+			super(ContentContainer.class, SequenceOfContent.class);
+		}
+	}
+
+	public static class SequenceOfContentDeserializer
+			extends SequenceOfChoiceDeserializer<ContentContainer, SequenceOfContent> {
+		public SequenceOfContentDeserializer() {
+			super(ContentContainer.class, SequenceOfContent.class);
+		}
+
+		@Override
+		protected SequenceOfContent construct() {
+			return new SequenceOfContent();
 		}
 	}
 
