@@ -1,5 +1,6 @@
 package asn2pojo.runtime.serialization;
 
+import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
@@ -11,7 +12,6 @@ import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageContainsSequenceOfChoice> {
 
@@ -28,12 +28,30 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
     assertThat(description, roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
   }
 
+  @ParameterizedTest
+  @MethodSource("jsonValues")
+  public void canRoundTripJson(final String description, final String json) throws IOException {
+    MessageContainsSequenceOfChoice m = fromJson(json);
+    assertThat(description, m, notNullValue());
+    String roundTripJson = toJson(m);
+    assertThat(description, roundTripJson, jsonEquals(json));
+  }
+
   private static Stream<Arguments> xmlValues() {
     return Stream.of(
         Arguments.of("Single value", XML_SINGLE),
         Arguments.of("Unique values", XML_UNIQUE),
         Arguments.of("Duplicate values, ordered", XML_DUPLICATES),
         Arguments.of("Duplicate values, mixed order", XML_MIXED)
+    );
+  }
+
+  private static Stream<Arguments> jsonValues() {
+    return Stream.of(
+        Arguments.of("Single value", JSON_SINGLE),
+        Arguments.of("Unique values", JSON_UNIQUE),
+        Arguments.of("Duplicate values, ordered", JSON_DUPLICATES),
+        Arguments.of("Duplicate values, mixed order", JSON_MIXED)
     );
   }
 
@@ -47,6 +65,17 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
           </a>
         </choices>
       </MessageContainsSequenceOfChoice>
+      """;
+
+  public static final String JSON_SINGLE = """
+      {
+        "id": 10,
+        "choices": [
+          {
+            "a": {"a-int": 5, "a-str": "asdf"}
+          }
+        ]
+      }
       """;
 
   public static final String XML_UNIQUE = """
@@ -63,6 +92,20 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
           </b>
         </choices>
       </MessageContainsSequenceOfChoice>
+      """;
+
+  public static final String JSON_UNIQUE = """
+      {
+        "id": 10,
+        "choices": [
+          {
+            "a": {"a-int": 5, "a-str": "asdf"}
+          },
+          {
+            "b": {"b-int": 6, "b-str": "qwerty"}
+          }
+        ]
+      }
       """;
 
   public static final String XML_DUPLICATES = """
@@ -89,6 +132,26 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
       </MessageContainsSequenceOfChoice>
       """;
 
+  public static final String JSON_DUPLICATES = """
+      {
+        "id": 10,
+        "choices": [
+          {
+            "a": {"a-int": 5, "a-str": "asdf"}
+          },
+          {
+            "a": {"a-int": 10, "a-str": "yuio"}
+          },
+          {
+            "b": {"b-int": 6, "b-str": "qwerty"}
+          },
+          {
+            "b": {"b-int": 12, "b-str": "hjkl"}
+          }
+        ]
+      }
+      """;
+
   public static final String XML_MIXED = """
       <MessageContainsSequenceOfChoice>
         <id>10</id>
@@ -111,5 +174,25 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
           </b>
         </choices>
       </MessageContainsSequenceOfChoice>
+      """;
+
+  public static final String JSON_MIXED = """
+      {
+        "id": 10,
+        "choices": [
+          {
+            "a": {"a-int": 5, "a-str": "asdf"}
+          },
+          {
+            "b": {"b-int": 6, "b-str": "qwerty"}
+          },
+          {
+            "a": {"a-int": 10, "a-str": "yuio"}
+          },
+          {
+            "b": {"b-int": 12, "b-str": "hjkl"}
+          }
+        ]
+      }
       """;
 }
