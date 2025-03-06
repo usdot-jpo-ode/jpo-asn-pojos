@@ -15,7 +15,7 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
-public class Message extends Asn1Sequence {
+public class MessageContainsSequenceOfChoice extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")
   @JsonProperty("id")
@@ -27,7 +27,7 @@ public class Message extends Asn1Sequence {
   @JsonDeserialize(using = SequenceOfChoice.TestSequenceOfChoiceDeserializer.class)
   private SequenceOfChoice choices;
 
-  public Message() {
+  public MessageContainsSequenceOfChoice() {
     super(true);
   }
 }

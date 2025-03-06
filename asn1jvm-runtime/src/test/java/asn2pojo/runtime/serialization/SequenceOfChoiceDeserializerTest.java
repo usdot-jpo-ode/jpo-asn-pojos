@@ -5,32 +5,40 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
 import asn2pojo.runtime.BaseSerializeTest;
-import asn2pojo.runtime.examples.Message;
+import asn2pojo.runtime.examples.MessageContainsSequenceOfChoice;
 import java.io.IOException;
+import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<Message> {
+public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageContainsSequenceOfChoice> {
 
   public SequenceOfChoiceDeserializerTest() {
-    super(Message.class);
+    super(MessageContainsSequenceOfChoice.class);
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {
-      XML_SINGLE,
-      XML_UNIQUE,
-      XML_DUPLICATES,
-      XML_MIXED})
-  public void canRoundTripXml(final String xml) throws IOException {
-    Message m = fromXml(xml);
-    assertThat(m, notNullValue());
+  @MethodSource("xmlValues")
+  public void canRoundTripXml(final String description, final String xml) throws IOException {
+    MessageContainsSequenceOfChoice m = fromXml(xml);
+    assertThat(description, m, notNullValue());
     String roundTripXml = toXml(m);
-    assertThat(roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
+    assertThat(description, roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
+  }
+
+  private static Stream<Arguments> xmlValues() {
+    return Stream.of(
+        Arguments.of("Single value", XML_SINGLE),
+        Arguments.of("Unique values", XML_UNIQUE),
+        Arguments.of("Duplicate values, ordered", XML_DUPLICATES),
+        Arguments.of("Duplicate values, mixed order", XML_MIXED)
+    );
   }
 
   public static final String XML_SINGLE = """
-      <Message>
+      <MessageContainsSequenceOfChoice>
         <id>10</id>
         <choices>
           <a>
@@ -38,11 +46,11 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<Message>
             <a-str>asdf</a-str>
           </a>
         </choices>
-      </Message>
+      </MessageContainsSequenceOfChoice>
       """;
 
   public static final String XML_UNIQUE = """
-      <Message>
+      <MessageContainsSequenceOfChoice>
         <id>10</id>
         <choices>
           <a>
@@ -54,11 +62,11 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<Message>
             <b-str>qwerty</b-str>
           </b>
         </choices>
-      </Message>
+      </MessageContainsSequenceOfChoice>
       """;
 
   public static final String XML_DUPLICATES = """
-      <Message>
+      <MessageContainsSequenceOfChoice>
         <id>10</id>
         <choices>
           <a>
@@ -78,11 +86,11 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<Message>
             <b-str>hjkl</b-str>
           </b>
         </choices>
-      </Message>
+      </MessageContainsSequenceOfChoice>
       """;
 
   public static final String XML_MIXED = """
-      <Message>
+      <MessageContainsSequenceOfChoice>
         <id>10</id>
         <choices>
           <a>
@@ -102,6 +110,6 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<Message>
             <b-str>hjkl</b-str>
           </b>
         </choices>
-      </Message>
+      </MessageContainsSequenceOfChoice>
       """;
 }
