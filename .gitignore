@@ -2,6 +2,9 @@
 # Gradle Ignores
 # Ref. https://github.com/github/gitignore/blob/main/Gradle.gitignore
 
+# VS Code build folders
+**/bin
+
 .gradle
 **/build/
 !src/**/build/
