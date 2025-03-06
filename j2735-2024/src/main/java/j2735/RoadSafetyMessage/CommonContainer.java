@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,6 +45,8 @@ public class CommonContainer extends Asn1Sequence {
 	private EventInfo eventInfo;
 	@Asn1Property(tag = 1, name = "regionInfo")
 	@JsonProperty("regionInfo")
+	@JacksonXmlElementWrapper(localName = "regionInfo")
+	@JacksonXmlProperty(localName = "RegionInfo")
 	private SequenceOfRegionInfo regionInfo;
 	@Asn1Property(tag = 2, name = "crossLinking", optional = true)
 	@JsonProperty("crossLinking")
