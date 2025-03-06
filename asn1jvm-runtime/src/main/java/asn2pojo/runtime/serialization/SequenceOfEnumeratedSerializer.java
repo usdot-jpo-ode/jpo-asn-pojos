@@ -25,9 +25,11 @@ public class SequenceOfEnumeratedSerializer<S extends Asn1Enumerated, T extends 
       throws IOException {
     if (serializerProvider instanceof XmlSerializerProvider xmlProvider) {
       // XER: write unwrapped
+      jsonGenerator.writeStartArray();
       for (var enumItem : sequenceOf) {
         jsonGenerator.writeRaw(String.format("<%s/>", enumItem.getName()));
       }
+      jsonGenerator.writeEndArray();
     } else {
       // JER: Normal, pass through
       jsonGenerator.writeObject(sequenceOf);

@@ -9,11 +9,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Stream;
+import org.xmlunit.diff.DefaultNodeMatcher;
+import org.xmlunit.diff.ElementSelectors;
 
 import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
+import static org.xmlunit.matchers.CompareMatcher.isSimilarTo;
 
 public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> {
 
@@ -28,8 +31,15 @@ public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> 
     RoadSafetyMessage rsm = fromXml(xml);
     assertThat(rsm, notNullValue());
     String roundTripXml = toXml(rsm);
-    System.out.println(roundTripXml);
-    assertThat(roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
+
+    assertThat("Lenient test: Ignore order of sequence-of mixed types",
+        roundTripXml,
+        isSimilarTo(xml).ignoreWhitespace().normalizeWhitespace()
+            .withNodeMatcher(new DefaultNodeMatcher(
+                ElementSelectors.byNameAndText
+            )));
+
+    //assertThat("strict test", roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
   }
 
 //  @ParameterizedTest

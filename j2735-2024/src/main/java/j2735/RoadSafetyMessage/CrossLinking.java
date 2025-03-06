@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,12 +42,18 @@ public class CrossLinking extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "audioLinks", optional = true)
 	@JsonProperty("audioLinks")
+	@JacksonXmlElementWrapper(localName = "audioLinks")
+	@JacksonXmlProperty(localName = "AudioLink")
 	private SequenceOfAudioLinks audioLinks;
 	@Asn1Property(tag = 1, name = "visualLink", optional = true)
 	@JsonProperty("visualLink")
+	@JacksonXmlElementWrapper(localName = "visualLink")
+	@JacksonXmlProperty(localName = "VisualLink")
 	private SequenceOfVisualLink visualLink;
 	@Asn1Property(tag = 2, name = "rsmLink", optional = true)
 	@JsonProperty("rsmLink")
+	@JacksonXmlElementWrapper(localName = "rsmLink")
+	@JacksonXmlProperty(localName = "EventIdentifier")
 	private SequenceOfRsmLink rsmLink;
 
 	@JsonInclude(Include.NON_NULL)

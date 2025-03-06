@@ -38,8 +38,12 @@ public class SequenceOfChoiceSerializer<S extends Asn1Choice, T extends Asn1Sequ
             var xmlGen = (ToXmlGenerator)jsonGenerator;
             var mapper = SerializationUtil.xmlMapper();
 
-            for (var choiceItem : sequenceOf) {
+            for (S choiceItem : sequenceOf) {
+                System.out.printf("SequenceOfChoiceSerializer: ChoiceClass: %s, SequenceOfClass: %s, choiceItem: %s%n", choiceClass.getName(), sequenceOfClass.getName(),
+                    choiceItem);
+
                 String choiceXml = mapper.writeValueAsString(choiceItem);
+
                 String unwrappedXml = stringifyTokens(unwrap(tokenize(choiceXml)));
                 xmlGen.writeRaw(unwrappedXml);
             }

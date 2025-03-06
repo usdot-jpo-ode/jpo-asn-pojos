@@ -23,12 +23,16 @@
 package j2735.RoadSafetyMessage;
 
 import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Sequence;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.ITIS.ResponderGroupAffected;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,6 +45,8 @@ public class IncidentsContainer extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "responderType", optional = true)
 	@JsonProperty("responderType")
+	@JsonSerialize(using = SequenceOfResponderTypeSerializer.class)
+	@JsonDeserialize(using = SequenceOfResponderTypeDeserializer.class)
 	private SequenceOfResponderType responderType;
 	@Asn1Property(tag = 1, name = "incidentLocation")
 	@JsonProperty("incidentLocation")
@@ -50,6 +56,32 @@ public class IncidentsContainer extends Asn1Sequence {
 	public static class SequenceOfResponderType extends Asn1SequenceOf<ResponderGroupAffected> {
 		public SequenceOfResponderType() {
 			super(ResponderGroupAffected.class, 1L, 5L);
+		}
+	}
+
+	public static class SequenceOfResponderTypeDeserializer extends
+			SequenceOfEnumeratedDeserializer<ResponderGroupAffected, SequenceOfResponderType> {
+
+		protected SequenceOfResponderTypeDeserializer() {
+			super(SequenceOfResponderType.class, ResponderGroupAffected.class);
+		}
+
+		@Override
+		protected ResponderGroupAffected[] listEnumValues() {
+			return ResponderGroupAffected.values();
+		}
+
+		@Override
+		protected SequenceOfResponderType construct() {
+			return new SequenceOfResponderType();
+		}
+	}
+
+	public static class SequenceOfResponderTypeSerializer extends
+			SequenceOfEnumeratedSerializer<ResponderGroupAffected, SequenceOfResponderType> {
+
+		protected SequenceOfResponderTypeSerializer() {
+			super(ResponderGroupAffected.class, SequenceOfResponderType.class);
 		}
 	}
 
