@@ -25,6 +25,7 @@ package j2735.RoadSafetyMessage;
 import asn2pojo.runtime.annotations.Asn1Property;
 import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Sequence;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -32,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.DDateTime;
@@ -76,6 +78,7 @@ public class EventInfo extends Asn1Sequence {
 	private ITIScodes subCauseCode;
 	@Asn1Property(tag = 8, name = "affectedVehicles", optional = true)
 	@JsonProperty("affectedVehicles")
+	@JsonSerialize(using = SequenceOfAffectedVehiclesSerializer.class)
 	@JsonDeserialize(using = SequenceOfAffectedVehiclesDeserializer.class)
 	private SequenceOfAffectedVehicles affectedVehicles;
 
@@ -110,6 +113,17 @@ public class EventInfo extends Asn1Sequence {
 			return new SequenceOfAffectedVehicles();
 		}
 	}
+
+	public static class SequenceOfAffectedVehiclesSerializer extends
+			SequenceOfEnumeratedSerializer<VehicleGroupAffected, SequenceOfAffectedVehicles> {
+
+		protected SequenceOfAffectedVehiclesSerializer() {
+			super(VehicleGroupAffected.class, SequenceOfAffectedVehicles.class);
+		}
+
+	}
+
+
 
 	public EventInfo() {
 		super(true);
