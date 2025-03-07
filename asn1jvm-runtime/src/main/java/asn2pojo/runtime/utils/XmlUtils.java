@@ -164,6 +164,33 @@ public class XmlUtils {
 //        return wrapped;
 //    }
 
+    // Extract unwrapped items from the XML stream, in original order with duplicates
+    public static List<String> extractXmlList(FromXmlParser xmlParser) throws IOException {
+        Formatter xml = new Formatter();
+        List<String> itemXmlList = new ArrayList<>();
+
+        XmlReadContext pc = xmlParser.getParsingContext();
+        XmlReadContext parent = pc.getParent();
+        log.trace("extractXmlList: parent name {}, value: {}, index: {}, nesting: {}",
+            parent.getCurrentName(),
+            parent.getCurrentValue(), parent.getCurrentIndex(), parent.getNestingDepth());
+        XmlElement element = new XmlElement();
+        final int startNesting = parent.getNestingDepth();
+        final String startName = parent.getCurrentName();
+
+        while (!element.isFinishedAll()) {
+            element = extractXml(xml, xmlParser, element, startNesting, startName);
+            if (element.isFinishedItem()) {
+                itemXmlList.add(xml.toString());
+                xml = new Formatter();
+            }
+            if (!element.isFinishedAll()) {
+                xmlParser.nextToken();
+            }
+        }
+        return itemXmlList;
+    }
+
     public static XmlElement extractXml(Formatter xml, FromXmlParser xmlParser, final XmlElement previous,
         final int startNesting, final String startName) throws IOException {
         XmlReadContext pc = xmlParser.getParsingContext();
@@ -196,14 +223,14 @@ public class XmlUtils {
 
             // For simple choice types there won't be an END_OBJECT
             if (pc.getNestingDepth() == startNesting + 1) {
-                element.setFinishedChoice(true);
+                element.setFinishedItem(true);
             }
         } else if (token == JsonToken.END_OBJECT && pc.hasCurrentName()) {
             xml.format("</%s>", pc.getCurrentName());
             if ( pc.getNestingDepth() == startNesting && Objects.equals(pc.getCurrentName(), startName)) {
                 element.setFinishedAll(true);
             } else if (pc.getNestingDepth() == startNesting + 1) {
-                element.setFinishedChoice(true);
+                element.setFinishedItem(true);
             }
         }
 
@@ -226,6 +253,6 @@ public class XmlUtils {
         JsonToken token;
         String fieldName;
         boolean finishedAll;
-        boolean finishedChoice;
+        boolean finishedItem;
     }
 }
