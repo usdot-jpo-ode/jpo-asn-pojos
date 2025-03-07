@@ -26,7 +26,7 @@ public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> 
 
   @ParameterizedTest
   @MethodSource("getXmlResourcesRoot")
-  public void canRoundTripXml(String resourcePath) throws IOException {
+  public void canRoundTripXml_LenientTest(String resourcePath) throws IOException {
     String xml = loadResource(resourcePath);
     RoadSafetyMessage rsm = fromXml(xml);
     assertThat(rsm, notNullValue());
@@ -38,8 +38,18 @@ public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> 
             .withNodeMatcher(new DefaultNodeMatcher(
                 ElementSelectors.byNameAndText
             )));
+  }
 
-    //assertThat("strict test", roundTripXml, isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
+  @ParameterizedTest
+  @MethodSource("getXmlResourcesRoot")
+  public void canRoundTripXml_StrictTest(String resourcePath) throws IOException {
+    String xml = loadResource(resourcePath);
+    RoadSafetyMessage rsm = fromXml(xml);
+    assertThat(rsm, notNullValue());
+    String roundTripXml = toXml(rsm);
+
+    assertThat("strict test: exact element order", roundTripXml,
+        isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
   }
 
 //  @ParameterizedTest
@@ -60,7 +70,7 @@ public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> 
     return getJsonResources("propulsion_types");
   }
 
-  private static Stream<Arguments> getXmlResources(String subdirectory)  {
+  private static Stream<Arguments> getXmlResources(String subdirectory) {
     return getResources("/j2735/RoadSafetyMessage/xml/" + subdirectory);
   }
 

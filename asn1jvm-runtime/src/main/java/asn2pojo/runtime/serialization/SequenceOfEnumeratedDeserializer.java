@@ -8,10 +8,14 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import javax.xml.stream.XMLStreamReader;
 
 public abstract class SequenceOfEnumeratedDeserializer<S extends Enum<?> & Asn1Enumerated, T extends Asn1SequenceOf<S>>
     extends StdDeserializer<T> {
@@ -31,6 +35,9 @@ public abstract class SequenceOfEnumeratedDeserializer<S extends Enum<?> & Asn1E
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         T result = null;
         if (jsonParser instanceof FromXmlParser xmlParser) {
+
+
+
             // Unwrapped enum items
             result = construct();
             TreeNode node = xmlParser.getCodec().readTree(xmlParser);

@@ -1,5 +1,10 @@
 package asn2pojo.runtime.utils;
 
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
+import com.fasterxml.jackson.dataformat.xml.deser.XmlReadContext;
+import java.io.IOException;
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.SneakyThrows;
@@ -12,8 +17,9 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 public class XmlUtils {
 
     @SneakyThrows
@@ -39,21 +45,21 @@ public class XmlUtils {
         return mergeEmptyElements(tokens);
     }
 
-    @SneakyThrows
-    public static List<XmlToken> readTokens(XMLStreamReader xmlReader, String endElement) {
-        var tokens = new ArrayList<XmlToken>();
-        addToken(xmlReader, tokens);
-
-        while (xmlReader.hasNext()) {
-            xmlReader.next();
-            XmlToken token = addToken(xmlReader, tokens);
-            if (token != null && token.isLast && token.text.equals(endElement)) {
-                tokens.removeLast();
-                break;
-            }
-        }
-        return mergeEmptyElements(tokens);
-    }
+//    @SneakyThrows
+//    public static List<XmlToken> readTokens(XMLStreamReader xmlReader, String endElement) {
+//        var tokens = new ArrayList<XmlToken>();
+//        addToken(xmlReader, tokens);
+//
+//        while (xmlReader.hasNext()) {
+//            xmlReader.next();
+//            XmlToken token = addToken(xmlReader, tokens);
+//            if (token != null && token.isLast && token.text.equals(endElement)) {
+//                tokens.removeLast();
+//                break;
+//            }
+//        }
+//        return mergeEmptyElements(tokens);
+//    }
 
     private static XmlToken addToken(XMLStreamReader xmlReader, List<XmlToken> tokens) {
         XmlToken token = null;
@@ -119,27 +125,27 @@ public class XmlUtils {
         return f.toString();
     }
 
-    public static List<List<XmlToken>> groupTopLevelTokens(final List<XmlToken> tokens) {
-        XmlToken topLevel = null;
-        var tokenLists = new ArrayList<List<XmlToken>>();
-        List<XmlToken> tokenList = null;
-        for (XmlToken token : tokens) {
-            if (topLevel == null && token.isFirst) {
-                // Start list
-                topLevel = token;
-                tokenList = new ArrayList<XmlToken>();
-                tokenList.add(token);
-            } else if (topLevel != null && token.isLast && token.text.equals(topLevel.text)) {
-                // complete list
-                tokenList.add(token);
-                topLevel = null;
-                tokenLists.add(tokenList);
-            } else if (tokenList != null) {
-                tokenList.add(token);
-            }
-        }
-        return tokenLists;
-    }
+//    public static List<List<XmlToken>> groupTopLevelTokens(final List<XmlToken> tokens) {
+//        XmlToken topLevel = null;
+//        var tokenLists = new ArrayList<List<XmlToken>>();
+//        List<XmlToken> tokenList = null;
+//        for (XmlToken token : tokens) {
+//            if (topLevel == null && token.isFirst) {
+//                // Start list
+//                topLevel = token;
+//                tokenList = new ArrayList<XmlToken>();
+//                tokenList.add(token);
+//            } else if (topLevel != null && token.isLast && token.text.equals(topLevel.text)) {
+//                // complete list
+//                tokenList.add(token);
+//                topLevel = null;
+//                tokenLists.add(tokenList);
+//            } else if (tokenList != null) {
+//                tokenList.add(token);
+//            }
+//        }
+//        return tokenLists;
+//    }
 
     public static List<XmlToken> unwrap(final List<XmlToken> tokens) {
         // Remove first and last
@@ -150,12 +156,61 @@ public class XmlUtils {
         }
     }
 
-    public static List<XmlToken> wrap(final List<XmlToken> tokens, String wrapper) {
-        var wrapped = new ArrayList<XmlToken>();
-        wrapped.add(new XmlToken(wrapper, true, false));
-        wrapped.addAll(tokens);
-        wrapped.add(new XmlToken(wrapper, false, true));
-        return wrapped;
+//    public static List<XmlToken> wrap(final List<XmlToken> tokens, String wrapper) {
+//        var wrapped = new ArrayList<XmlToken>();
+//        wrapped.add(new XmlToken(wrapper, true, false));
+//        wrapped.addAll(tokens);
+//        wrapped.add(new XmlToken(wrapper, false, true));
+//        return wrapped;
+//    }
+
+    public static XmlElement extractXml(Formatter xml, FromXmlParser xmlParser, final XmlElement previous,
+        final int startNesting, final String startName) throws IOException {
+        XmlReadContext pc = xmlParser.getParsingContext();
+
+        JsonToken token = xmlParser.getCurrentToken();
+        XmlElement element = new XmlElement();
+        element.setToken(token);
+
+        if (token == JsonToken.START_OBJECT) {
+            // Advance to field name
+            token = xmlParser.nextToken();
+            element.setToken(token);
+        }
+
+        if (token == JsonToken.FIELD_NAME && pc.getCurrentName() != null) {
+            xml.format("<%s>", pc.getCurrentName());
+            element.setFieldName(pc.getCurrentName());
+        } else if (token == JsonToken.VALUE_STRING) {
+            String val = xmlParser.getValueAsString();
+            log.trace("Value String: {}", val);
+
+            pc.setCurrentValue(val);
+            xml.format("%s", val);
+            // Wrap the value
+            if (pc.getCurrentName() != null) {
+                xml.format("</%s>", pc.getCurrentName());
+            } else if (previous != null && previous.getFieldName() != null) {
+                xml.format("</%s>", previous.getFieldName());
+            }
+
+            // For simple choice types there won't be an END_OBJECT
+            if (pc.getNestingDepth() == startNesting + 1) {
+                element.setFinishedChoice(true);
+            }
+        } else if (token == JsonToken.END_OBJECT && pc.hasCurrentName()) {
+            xml.format("</%s>", pc.getCurrentName());
+            if ( pc.getNestingDepth() == startNesting && Objects.equals(pc.getCurrentName(), startName)) {
+                element.setFinishedAll(true);
+            } else if (pc.getNestingDepth() == startNesting + 1) {
+                element.setFinishedChoice(true);
+            }
+        }
+
+        log.trace("current token: {} name: {} index: {}, nesting: {}",
+            token, pc.getCurrentName(), pc.getCurrentIndex(), pc.getNestingDepth());
+
+        return element;
     }
 
     @AllArgsConstructor
@@ -164,5 +219,13 @@ public class XmlUtils {
         String text;
         boolean isFirst;
         boolean isLast;
+    }
+
+    @Data
+    public static class XmlElement {
+        JsonToken token;
+        String fieldName;
+        boolean finishedAll;
+        boolean finishedChoice;
     }
 }

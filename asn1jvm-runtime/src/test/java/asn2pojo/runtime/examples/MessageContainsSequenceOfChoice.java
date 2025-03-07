@@ -10,11 +10,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
+@ToString
 public class MessageContainsSequenceOfChoice extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")
@@ -26,6 +28,10 @@ public class MessageContainsSequenceOfChoice extends Asn1Sequence {
   @JsonSerialize(using = SequenceOfChoice.TestSequenceOfChoiceSerializer.class)
   @JsonDeserialize(using = SequenceOfChoice.TestSequenceOfChoiceDeserializer.class)
   private SequenceOfChoice choices;
+
+  @Asn1Property(tag = 2, name = "num")
+  @JsonProperty("num")
+  private ExampleInteger num;
 
   public MessageContainsSequenceOfChoice() {
     super(true);

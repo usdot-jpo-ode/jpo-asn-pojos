@@ -24,6 +24,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
   public void canRoundTripXml(final String description, final String xml) throws IOException {
     MessageContainsSequenceOfChoice m = fromXml(xml);
     assertThat(description, m, notNullValue());
+    System.out.println(m);
     String roundTripXml = toXml(m);
     assertThat(description, roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
   }
@@ -64,6 +65,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
             <a-str>asdf</a-str>
           </a>
         </choices>
+        <num>7</num>
       </MessageContainsSequenceOfChoice>
       """;
 
@@ -74,7 +76,8 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
           {
             "a": {"a-int": 5, "a-str": "asdf"}
           }
-        ]
+        ],
+        "num": 7
       }
       """;
 
@@ -91,6 +94,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
             <b-str>qwerty</b-str>
           </b>
         </choices>
+        <num>7</num>
       </MessageContainsSequenceOfChoice>
       """;
 
@@ -104,7 +108,8 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
           {
             "b": {"b-int": 6, "b-str": "qwerty"}
           }
-        ]
+        ],
+        "num": 7
       }
       """;
 
@@ -129,6 +134,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
             <b-str>hjkl</b-str>
           </b>
         </choices>
+        <num>7</num>
       </MessageContainsSequenceOfChoice>
       """;
 
@@ -148,7 +154,8 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
           {
             "b": {"b-int": 12, "b-str": "hjkl"}
           }
-        ]
+        ],
+        "num": 7
       }
       """;
 
@@ -173,6 +180,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
             <b-str>hjkl</b-str>
           </b>
         </choices>
+        <num>7</num>
       </MessageContainsSequenceOfChoice>
       """;
 
@@ -192,7 +200,8 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
           {
             "b": {"b-int": 12, "b-str": "hjkl"}
           }
-        ]
+        ],
+        "num": 7
       }
       """;
 }
