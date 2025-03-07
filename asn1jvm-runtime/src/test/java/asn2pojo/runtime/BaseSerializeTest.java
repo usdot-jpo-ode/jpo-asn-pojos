@@ -39,13 +39,17 @@ public abstract class BaseSerializeTest<T> {
 
   protected T fromXml(String xml) throws IOException {
     T object = xmlMapper.readValue(xml, clazz);
-    System.out.println(object.toString());
+    if (object != null) {
+      System.out.println(object.toString());
+    }
     return object;
   }
 
   protected T fromJson(String json) throws IOException {
     T object = jsonMapper.readValue(json, clazz);
-    System.out.println(object.toString());
+    if (object != null) {
+      System.out.println(object.toString());
+    }
     return object;
   }
 

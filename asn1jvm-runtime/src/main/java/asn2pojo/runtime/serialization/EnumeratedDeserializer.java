@@ -3,46 +3,51 @@ package asn2pojo.runtime.serialization;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
 import java.io.IOException;
 import java.util.Objects;
+import lombok.extern.slf4j.Slf4j;
 
-public abstract class EnumeratedDeserializer<T extends Enum<?> & Asn1Enumerated>  extends StdDeserializer<T> {
+@Slf4j
+public abstract class EnumeratedDeserializer<T extends Enum<?> & Asn1Enumerated> extends
+    StdDeserializer<T> {
 
-    protected abstract T[] listEnumValues();
+  protected abstract T[] listEnumValues();
 
-    protected EnumeratedDeserializer(Class<T> valueClass) {
-        super(valueClass);
+  protected EnumeratedDeserializer(Class<T> valueClass) {
+    super(valueClass);
+  }
+
+  @Override
+  public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+      throws IOException, JacksonException {
+    String name = null;
+    if (jsonParser instanceof FromXmlParser xmlParser) {
+      // XML
+      // The enum in BASIC-XER is an empty element, so Jackson thinks it's an object with a key
+      // of that name with no value
+      TreeNode node = xmlParser.getCodec().readTree(xmlParser);
+      var iterator = node.fieldNames();
+      if (iterator.hasNext()) {
+        name = node.fieldNames().next();
+      }
+    } else {
+      // JSON
+      // Behaves normally: The enum name is the text
+      name = jsonParser.getText();
+    }
+    for (T enumValue : listEnumValues()) {
+      if (Objects.equals(enumValue.getName(), name)) {
+        return enumValue;
+      }
     }
 
-    @Override
-    public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        String name = null;
-        if (jsonParser.getCodec() instanceof XmlMapper) {
-            // XML
-            // The enum in BASIC-XER is an empty element, so Jackson thinks it's an object with a key
-            // of that name with no value
-            TreeNode node = jsonParser.getCodec().readTree(jsonParser);
-            var iterator = node.fieldNames();
-            if (iterator.hasNext()) {
-                name = node.fieldNames().next();
-            }
-        } else {
-            // JSON
-            // Behaves normally: The enum name is the text
-            name = jsonParser.getText();
-        }
-        for (T enumValue : listEnumValues()) {
-            if (Objects.equals(enumValue.getName(), name)) {
-                return enumValue;
-            }
-        }
-
-
-        return null;
-    }
+    return null;
+  }
 }
