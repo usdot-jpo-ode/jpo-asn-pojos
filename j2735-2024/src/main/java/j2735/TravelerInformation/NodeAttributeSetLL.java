@@ -45,14 +45,17 @@ public class NodeAttributeSetLL extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "localNode", optional = true)
 	@JsonProperty("localNode")
+	@JsonSerialize(using = NodeAttributeLLList.NodeAttributeLLListSerializer.class)
 	@JsonDeserialize(using = NodeAttributeLLList.NodeAttributeLLListDeserializer.class)
 	private NodeAttributeLLList localNode;
 	@Asn1Property(tag = 1, name = "disabled", optional = true)
 	@JsonProperty("disabled")
+	@JsonSerialize(using = SegmentAttributeLLList.SegmentAttributeLLListSerializer.class)
 	@JsonDeserialize(using = SegmentAttributeLLList.SegmentAttributeLLListDeserializer.class)
 	private SegmentAttributeLLList disabled;
 	@Asn1Property(tag = 2, name = "enabled", optional = true)
 	@JsonProperty("enabled")
+	@JsonSerialize(using = SegmentAttributeLLList.SegmentAttributeLLListSerializer.class)
 	@JsonDeserialize(using = SegmentAttributeLLList.SegmentAttributeLLListDeserializer.class)
 	private SegmentAttributeLLList enabled;
 	@Asn1Property(tag = 3, name = "data", optional = true)

@@ -23,6 +23,7 @@
 package j2735.Common;
 
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -34,9 +35,16 @@ public class SegmentAttributeXYList extends Asn1SequenceOf<SegmentAttributeXY> {
 		super(SegmentAttributeXY.class, 1L, 8L);
 	}
 
+	public static class SegmentAttributeXYListSerializer
+			extends SequenceOfEnumeratedSerializer<SegmentAttributeXY, SegmentAttributeXYList> {
+		public SegmentAttributeXYListSerializer() {
+			super(SegmentAttributeXY.class, SegmentAttributeXYList.class);
+		}
+	}
+
 	public static class SegmentAttributeXYListDeserializer
 			extends
-				SequenceOfEnumeratedDeserializer<SegmentAttributeXY, SegmentAttributeXYList> {
+			SequenceOfEnumeratedDeserializer<SegmentAttributeXY, SegmentAttributeXYList> {
 		public SegmentAttributeXYListDeserializer() {
 			super(SegmentAttributeXYList.class, SegmentAttributeXY.class);
 		}
