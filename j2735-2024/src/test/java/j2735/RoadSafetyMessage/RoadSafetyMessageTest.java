@@ -52,22 +52,24 @@ public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> 
         isIdenticalTo(xml).ignoreComments().ignoreWhitespace());
   }
 
-//  @ParameterizedTest
-//  @MethodSource("getJsonResources")
-//  public void canRoundTripJson_PropulsionTypesTest(String resourcePath) throws IOException {
-//    String json = loadResource(resourcePath);
-//    RoadSafetyMessage rsm = fromJson(json);
-//    assertThat(rsm, notNullValue());
-//    String roundTripJson = toJson(rsm);
-//    assertThat(roundTripJson, jsonEquals(json));
-//  }
+  @ParameterizedTest
+  @MethodSource("getJsonResourcesRoot")
+  public void canRoundTripJson_Test(String resourcePath) throws IOException {
+    String json = loadResource(resourcePath);
+    RoadSafetyMessage rsm = fromJson(json);
+    assertThat(rsm, notNullValue());
+    String roundTripJson = toJson(rsm);
+
+    assertThat("strict test: exact element order", roundTripJson,
+        jsonEquals(json));
+  }
 
   private static Stream<Arguments> getXmlResourcesRoot() {
     return getXmlResources("");
   }
 
-  private static Stream<Arguments> getJsonResourcesPropulsionTypes() {
-    return getJsonResources("propulsion_types");
+  private static Stream<Arguments> getJsonResourcesRoot() {
+    return getJsonResources("");
   }
 
   private static Stream<Arguments> getXmlResources(String subdirectory) {
