@@ -2,7 +2,6 @@ package j2735.MessageFrame;
 
 import j2735.SPAT.SPAT;
 import j2735.SPAT.SPATMessageFrame;
-import j2735.SPAT.SPATMessageFrameTest;
 import j2735.BaseSerializeTest;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +19,8 @@ public class MessageFrameTest extends BaseSerializeTest<MessageFrame> {
 
     @Test
     public void xmlDeserialize_SPAT() throws IOException {
-        MessageFrame<?> smf = fromXml(SPATMessageFrameTest.expectedXml);
+        final String xml = loadResource("/j2735/SPAT/xml/message_frame/spat_mf.xml");
+        MessageFrame<?> smf = fromXml(xml);
         assertThat(smf, notNullValue());
         assertThat(smf, instanceOf(SPATMessageFrame.class));
         assertThat(smf, hasProperty("messageId", equalTo(new DSRCmsgID(19))));
