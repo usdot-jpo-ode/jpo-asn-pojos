@@ -1,111 +1,126 @@
 package j2735.SPAT;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the IntersectionStatusObject class.
- * Generated using ChatGPT
  */
 public class IntersectionStatusObjectTest {
 
-  /**
-   * Test that the default state of each flag is false.
-   */
   @Test
   public void testDefaultState() {
-      IntersectionStatusObject status = new IntersectionStatusObject();
-      assertFalse(status.isManualControlIsEnabled(), "Default manualControlIsEnabled should be false.");
-      assertFalse(status.isStopTimeIsActivated(), "Default stopTimeIsActivated should be false.");
-      assertFalse(status.isFailureFlash(), "Default failureFlash should be false.");
-      assertFalse(status.isPreemptIsActive(), "Default preemptIsActive should be false.");
-      assertFalse(status.isSignalPriorityIsActive(), "Default signalPriorityIsActive should be false.");
-      assertFalse(status.isFixedTimeOperation(), "Default fixedTimeOperation should be false.");
-      assertFalse(status.isTrafficDependentOperation(), "Default trafficDependentOperation should be false.");
-      assertFalse(status.isStandbyOperation(), "Default standbyOperation should be false.");
-      assertFalse(status.isFailureMode(), "Default failureMode should be false.");
-      assertFalse(status.isOff(), "Default off should be false.");
-      assertFalse(status.isRecentMAPmessageUpdate(), "Default recentMAPmessageUpdate should be false.");
-      assertFalse(status.isRecentChangeInMAPassignedLanesIDsUsed(), "Default recentChangeInMAPassignedLanesIDsUsed should be false.");
-      assertFalse(status.isNoValidMAPisAvailableAtThisTime(), "Default noValidMAPisAvailableAtThisTime should be false.");
-      assertFalse(status.isNoValidSPATisAvailableAtThisTime(), "Default noValidSPATisAvailableAtThisTime should be false.");
+    var status = new IntersectionStatusObject();
+    status.fromBinaryString("0000000000000000");
+    
+    assertThat(status.isManualControlIsEnabled(), equalTo(false));
+    assertThat(status.isStopTimeIsActivated(), equalTo(false));
+    assertThat(status.isFailureFlash(), equalTo(false));
+    assertThat(status.isPreemptIsActive(), equalTo(false));
+    assertThat(status.isSignalPriorityIsActive(), equalTo(false));
+    assertThat(status.isFixedTimeOperation(), equalTo(false));
+    assertThat(status.isTrafficDependentOperation(), equalTo(false));
+    assertThat(status.isStandbyOperation(), equalTo(false));
+    assertThat(status.isFailureMode(), equalTo(false));
+    assertThat(status.isOff(), equalTo(false));
+    assertThat(status.isRecentMAPmessageUpdate(), equalTo(false));
+    assertThat(status.isRecentChangeInMAPassignedLanesIDsUsed(), equalTo(false));
+    assertThat(status.isNoValidMAPisAvailableAtThisTime(), equalTo(false));
+    assertThat(status.isNoValidSPATisAvailableAtThisTime(), equalTo(false));
   }
 
-  /**
-   * Test the getter and setter for each flag.
-   */
   @Test
-  public void testSettersAndGetters() {
-      IntersectionStatusObject status = new IntersectionStatusObject();
-      
-      status.setManualControlIsEnabled(true);
-      assertTrue(status.isManualControlIsEnabled());
-      status.setManualControlIsEnabled(false);
-      assertFalse(status.isManualControlIsEnabled());
-      
-      status.setStopTimeIsActivated(true);
-      assertTrue(status.isStopTimeIsActivated());
-      status.setStopTimeIsActivated(false);
-      assertFalse(status.isStopTimeIsActivated());
-      
-      status.setFailureFlash(true);
-      assertTrue(status.isFailureFlash());
-      status.setFailureFlash(false);
-      assertFalse(status.isFailureFlash());
-      
-      status.setPreemptIsActive(true);
-      assertTrue(status.isPreemptIsActive());
-      status.setPreemptIsActive(false);
-      assertFalse(status.isPreemptIsActive());
-      
-      status.setSignalPriorityIsActive(true);
-      assertTrue(status.isSignalPriorityIsActive());
-      status.setSignalPriorityIsActive(false);
-      assertFalse(status.isSignalPriorityIsActive());
-      
-      status.setFixedTimeOperation(true);
-      assertTrue(status.isFixedTimeOperation());
-      status.setFixedTimeOperation(false);
-      assertFalse(status.isFixedTimeOperation());
-      
-      status.setTrafficDependentOperation(true);
-      assertTrue(status.isTrafficDependentOperation());
-      status.setTrafficDependentOperation(false);
-      assertFalse(status.isTrafficDependentOperation());
-      
-      status.setStandbyOperation(true);
-      assertTrue(status.isStandbyOperation());
-      status.setStandbyOperation(false);
-      assertFalse(status.isStandbyOperation());
-      
-      status.setFailureMode(true);
-      assertTrue(status.isFailureMode());
-      status.setFailureMode(false);
-      assertFalse(status.isFailureMode());
-      
-      status.setOff(true);
-      assertTrue(status.isOff());
-      status.setOff(false);
-      assertFalse(status.isOff());
-      
-      status.setRecentMAPmessageUpdate(true);
-      assertTrue(status.isRecentMAPmessageUpdate());
-      status.setRecentMAPmessageUpdate(false);
-      assertFalse(status.isRecentMAPmessageUpdate());
-      
-      status.setRecentChangeInMAPassignedLanesIDsUsed(true);
-      assertTrue(status.isRecentChangeInMAPassignedLanesIDsUsed());
-      status.setRecentChangeInMAPassignedLanesIDsUsed(false);
-      assertFalse(status.isRecentChangeInMAPassignedLanesIDsUsed());
-      
-      status.setNoValidMAPisAvailableAtThisTime(true);
-      assertTrue(status.isNoValidMAPisAvailableAtThisTime());
-      status.setNoValidMAPisAvailableAtThisTime(false);
-      assertFalse(status.isNoValidMAPisAvailableAtThisTime());
-      
-      status.setNoValidSPATisAvailableAtThisTime(true);
-      assertTrue(status.isNoValidSPATisAvailableAtThisTime());
-      status.setNoValidSPATisAvailableAtThisTime(false);
-      assertFalse(status.isNoValidSPATisAvailableAtThisTime());
+  public void testAllFlagsSet() {
+    var status = new IntersectionStatusObject();
+    status.fromBinaryString("1111111111111111");
+    
+    assertThat(status.isManualControlIsEnabled(), equalTo(true));
+    assertThat(status.isStopTimeIsActivated(), equalTo(true));
+    assertThat(status.isFailureFlash(), equalTo(true));
+    assertThat(status.isPreemptIsActive(), equalTo(true));
+    assertThat(status.isSignalPriorityIsActive(), equalTo(true));
+    assertThat(status.isFixedTimeOperation(), equalTo(true));
+    assertThat(status.isTrafficDependentOperation(), equalTo(true));
+    assertThat(status.isStandbyOperation(), equalTo(true));
+    assertThat(status.isFailureMode(), equalTo(true));
+    assertThat(status.isOff(), equalTo(true));
+    assertThat(status.isRecentMAPmessageUpdate(), equalTo(true));
+    assertThat(status.isRecentChangeInMAPassignedLanesIDsUsed(), equalTo(true));
+    assertThat(status.isNoValidMAPisAvailableAtThisTime(), equalTo(true));
+    assertThat(status.isNoValidSPATisAvailableAtThisTime(), equalTo(true));
+  }
+
+  @Test
+  public void testMixedStates() {
+    var status = new IntersectionStatusObject();
+    status.fromBinaryString("1010101010101010");
+    
+    assertThat(status.isManualControlIsEnabled(), equalTo(true));
+    assertThat(status.isStopTimeIsActivated(), equalTo(false));
+    assertThat(status.isFailureFlash(), equalTo(true));
+    assertThat(status.isPreemptIsActive(), equalTo(false));
+    assertThat(status.isSignalPriorityIsActive(), equalTo(true));
+    assertThat(status.isFixedTimeOperation(), equalTo(false));
+    assertThat(status.isTrafficDependentOperation(), equalTo(true));
+    assertThat(status.isStandbyOperation(), equalTo(false));
+    assertThat(status.isFailureMode(), equalTo(true));
+    assertThat(status.isOff(), equalTo(false));
+    assertThat(status.isRecentMAPmessageUpdate(), equalTo(true));
+    assertThat(status.isRecentChangeInMAPassignedLanesIDsUsed(), equalTo(false));
+    assertThat(status.isNoValidMAPisAvailableAtThisTime(), equalTo(true));
+    assertThat(status.isNoValidSPATisAvailableAtThisTime(), equalTo(false));
+  }
+
+  @Test
+  public void testSetters() {
+    var status = new IntersectionStatusObject();
+
+    status.setManualControlIsEnabled(true);
+    assertThat(status.isManualControlIsEnabled(), equalTo(true));
+
+    status.setStopTimeIsActivated(true);
+    assertThat(status.isStopTimeIsActivated(), equalTo(true));
+    
+    status.setFailureFlash(true);
+    assertThat(status.isFailureFlash(), equalTo(true));
+    
+    status.setPreemptIsActive(true);
+    assertThat(status.isPreemptIsActive(), equalTo(true));
+    
+    status.setSignalPriorityIsActive(true);
+    assertThat(status.isSignalPriorityIsActive(), equalTo(true));
+    
+    status.setFixedTimeOperation(true);
+    assertThat(status.isFixedTimeOperation(), equalTo(true));
+    
+    status.setTrafficDependentOperation(true);
+    assertThat(status.isTrafficDependentOperation(), equalTo(true));
+    
+    status.setStandbyOperation(true);
+    assertThat(status.isStandbyOperation(), equalTo(true));
+    
+    status.setFailureMode(true);
+    assertThat(status.isFailureMode(), equalTo(true));
+
+    status.setOff(true);
+    assertThat(status.isOff(), equalTo(true));
+
+    status.setRecentMAPmessageUpdate(true);
+    assertThat(status.isRecentMAPmessageUpdate(), equalTo(true));
+
+    status.setRecentChangeInMAPassignedLanesIDsUsed(true);
+    assertThat(status.isRecentChangeInMAPassignedLanesIDsUsed(), equalTo(true));
+
+    status.setNoValidMAPisAvailableAtThisTime(true);
+    assertThat(status.isNoValidMAPisAvailableAtThisTime(), equalTo(true));
+
+    status.setNoValidSPATisAvailableAtThisTime(true);
+    assertThat(status.isNoValidSPATisAvailableAtThisTime(), equalTo(true));
+    
+    // Verify final state matches all bits set
+    var allSet = new IntersectionStatusObject();
+    allSet.fromBinaryString("1111111111111100");
+    assertThat(status.toString(), equalTo(allSet.toString()));
   }
 }
