@@ -65,11 +65,11 @@ public class RoadSafetyMessageTest extends BaseSerializeTest<RoadSafetyMessage> 
   }
 
   private static Stream<Arguments> getXmlResourcesRoot() {
-    return getXmlResources("");
+    return getXmlResources("data");
   }
 
   private static Stream<Arguments> getJsonResourcesRoot() {
-    return getJsonResources("");
+    return getJsonResources("data");
   }
 
   private static Stream<Arguments> getXmlResources(String subdirectory) {
