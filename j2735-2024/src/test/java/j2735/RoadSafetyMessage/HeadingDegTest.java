@@ -5,12 +5,12 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.api.Test;
 
-public class RoadSafetyMessage_RadiusTest {
+public class HeadingDegTest {
 
   @Test
   public void constructorTest() {
-    var radius = new Radius(2000L);
-    assertThat(radius.getValue(), equalTo(2000L));
+    var ho = new HeadingDeg(2000L);
+    assertThat(ho.getValue(), equalTo(2000L));
   }
 
 }

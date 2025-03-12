@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.api.Test;
 
-public class RoadSafetyMessage_LongOffsetTest {
+public class LongOffsetTest {
 
   @Test
   public void constructorTest() {

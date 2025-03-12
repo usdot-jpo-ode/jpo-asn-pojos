@@ -5,12 +5,12 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.api.Test;
 
-public class RoadSafetyMessage_ToleranceTest {
+public class RadiusTest {
 
   @Test
   public void constructorTest() {
-    var tol = new Tolerance(2000L);
-    assertThat(tol.getValue(), equalTo(2000L));
+    var radius = new Radius(2000L);
+    assertThat(radius.getValue(), equalTo(2000L));
   }
 
 }

@@ -5,12 +5,12 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.api.Test;
 
-public class RoadSafetyMessage_HeadingDegTest {
+public class ToleranceTest {
 
   @Test
   public void constructorTest() {
-    var ho = new HeadingDeg(2000L);
-    assertThat(ho.getValue(), equalTo(2000L));
+    var tol = new Tolerance(2000L);
+    assertThat(tol.getValue(), equalTo(2000L));
   }
 
 }
