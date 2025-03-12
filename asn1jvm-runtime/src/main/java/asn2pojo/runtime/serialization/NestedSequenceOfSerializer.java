@@ -1,5 +1,7 @@
 package asn2pojo.runtime.serialization;
 
+import static asn2pojo.runtime.utils.XmlUtils.unwrap;
+
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -34,16 +36,10 @@ public class NestedSequenceOfSerializer<T extends Asn1SequenceOf<?>> extends Std
             for (var item : t) {
 
                 xmlGen.writeRaw(String.format("<%s>", wrapped));
+
                 var mapper = SerializationUtil.xmlMapper();
-                String itemXml = mapper.writeValueAsString(item);
-
-                // Horrible hack to write the item value without being wrapped by the class name.
-                // Probably a better way exists, but this works.
-                String itemClassName = item.getClass().getSimpleName();
-                String startElement = String.format("<%s>", itemClassName);
-                String endElement = String.format("</%s>", itemClassName);
-                String strippedXml = itemXml.replace(startElement, "").replace(endElement, "");
-
+                final String itemXml = mapper.writeValueAsString(item);
+                final String strippedXml = unwrap(itemXml);
                 xmlGen.writeRaw(strippedXml);
 
                 xmlGen.writeRaw(String.format("</%s>", wrapped));
