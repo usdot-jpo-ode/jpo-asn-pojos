@@ -47,7 +47,7 @@ public class SequenceOfChoiceSerializer<S extends Asn1Choice, T extends Asn1Sequ
             choiceClass.getName(), sequenceOfClass.getName(),
             choiceItem);
         String choiceXml = mapper.writeValueAsString(choiceItem);
-        String unwrappedXml = stringifyTokens(unwrap(tokenize(choiceXml)));
+        String unwrappedXml = unwrap(choiceXml);
         xmlGen.writeRaw(unwrappedXml);
       }
       xmlGen.writeEndArray();

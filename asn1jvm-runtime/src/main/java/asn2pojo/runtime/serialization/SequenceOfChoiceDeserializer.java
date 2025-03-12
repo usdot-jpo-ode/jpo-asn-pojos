@@ -1,18 +1,13 @@
 package asn2pojo.runtime.serialization;
 
-import static asn2pojo.runtime.utils.XmlUtils.extractXml;
 import static asn2pojo.runtime.utils.XmlUtils.extractXmlList;
 
-import asn2pojo.runtime.utils.XmlUtils.XmlElement;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
-import com.fasterxml.jackson.dataformat.xml.deser.XmlReadContext;
-import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
 import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1SequenceOf;
