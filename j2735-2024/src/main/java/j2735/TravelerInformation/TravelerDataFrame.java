@@ -22,18 +22,21 @@
 
 package j2735.TravelerInformation;
 
-import asn2pojo.runtime.annotations.Asn1Property;
-import asn2pojo.runtime.serialization.NestedSequenceOfDeserializer;
-import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
-import asn2pojo.runtime.types.Asn1Choice;
-import asn2pojo.runtime.types.Asn1Sequence;
-import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.NestedSequenceOfDeserializer;
+import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
+import asn2pojo.runtime.types.Asn1Choice;
+import asn2pojo.runtime.types.Asn1Sequence;
+import asn2pojo.runtime.types.Asn1SequenceOf;
 import j2735.Common.DYear;
 import j2735.Common.FurtherInfoID;
 import j2735.Common.MinuteOfTheYear;
@@ -74,6 +77,8 @@ public class TravelerDataFrame extends Asn1Sequence {
 	private SSPindex doNotUse2;
 	@Asn1Property(tag = 8, name = "regions")
 	@JsonProperty("regions")
+	@JacksonXmlElementWrapper(localName = "regions")
+	@JacksonXmlProperty(localName = "GeographicalPath")
 	private SequenceOfRegions regions;
 	@Asn1Property(tag = 9, name = "doNotUse3")
 	@JsonProperty("doNotUse3")

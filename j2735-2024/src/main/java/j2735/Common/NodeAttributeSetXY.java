@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import j2735.REGION.Reg_NodeAttributeSetXY;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,14 +44,17 @@ public class NodeAttributeSetXY extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "localNode", optional = true)
 	@JsonProperty("localNode")
+	@JsonSerialize(using = NodeAttributeXYList.NodeAttributeXYListSerializer.class)
 	@JsonDeserialize(using = NodeAttributeXYList.NodeAttributeXYListDeserializer.class)
 	private NodeAttributeXYList localNode;
 	@Asn1Property(tag = 1, name = "disabled", optional = true)
 	@JsonProperty("disabled")
+	@JsonSerialize(using = SegmentAttributeXYList.SegmentAttributeXYListSerializer.class)
 	@JsonDeserialize(using = SegmentAttributeXYList.SegmentAttributeXYListDeserializer.class)
 	private SegmentAttributeXYList disabled;
 	@Asn1Property(tag = 2, name = "enabled", optional = true)
 	@JsonProperty("enabled")
+	@JsonSerialize(using = SegmentAttributeXYList.SegmentAttributeXYListSerializer.class)
 	@JsonDeserialize(using = SegmentAttributeXYList.SegmentAttributeXYListDeserializer.class)
 	private SegmentAttributeXYList enabled;
 	@Asn1Property(tag = 3, name = "data", optional = true)

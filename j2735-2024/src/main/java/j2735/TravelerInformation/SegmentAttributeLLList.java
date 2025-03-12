@@ -23,6 +23,7 @@
 package j2735.TravelerInformation;
 
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -34,9 +35,16 @@ public class SegmentAttributeLLList extends Asn1SequenceOf<SegmentAttributeLL> {
 		super(SegmentAttributeLL.class, 1L, 8L);
 	}
 
+	public static class SegmentAttributeLLListSerializer
+			extends SequenceOfEnumeratedSerializer<SegmentAttributeLL, SegmentAttributeLLList> {
+		public SegmentAttributeLLListSerializer() {
+			super(SegmentAttributeLL.class, SegmentAttributeLLList.class);
+		}
+	}
+
 	public static class SegmentAttributeLLListDeserializer
 			extends
-				SequenceOfEnumeratedDeserializer<SegmentAttributeLL, SegmentAttributeLLList> {
+			SequenceOfEnumeratedDeserializer<SegmentAttributeLL, SegmentAttributeLLList> {
 		public SegmentAttributeLLListDeserializer() {
 			super(SegmentAttributeLLList.class, SegmentAttributeLL.class);
 		}
