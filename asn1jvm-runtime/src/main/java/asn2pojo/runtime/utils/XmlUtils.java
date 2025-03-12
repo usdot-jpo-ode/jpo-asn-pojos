@@ -153,7 +153,7 @@ public class XmlUtils {
         Formatter xml = new Formatter();
         XmlReadContext pc = xmlParser.getParsingContext();
         XmlReadContext parent = pc.getParent();
-        log.info("extractXmlElement: parent name {}, value: {}, index: {}, nesting: {}",
+        log.debug("extractXmlElement: parent name {}, value: {}, index: {}, nesting: {}",
             parent.getCurrentName(),
             parent.getCurrentValue(), parent.getCurrentIndex(), parent.getNestingDepth());
         XmlElement element = new XmlElement();

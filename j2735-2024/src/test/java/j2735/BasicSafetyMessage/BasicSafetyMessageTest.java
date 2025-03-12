@@ -7,12 +7,14 @@ import j2735.BaseSerializeTest;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 
+@Slf4j
 public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage> {
 
   public BasicSafetyMessageTest() {
@@ -87,7 +89,7 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
     BasicSafetyMessage bsm = fromJson(json);
     assertThat(bsm, notNullValue());
     String roundTripJson = toJson(bsm);
-    System.out.printf("roundTripJson: %s%n", roundTripJson);
+    log.info("roundTripJson: {}", roundTripJson);
     assertThat(roundTripJson, jsonEquals(json));
   }
 
@@ -98,7 +100,7 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
     BasicSafetyMessage bsm = fromJson(json);
     assertThat(bsm, notNullValue());
     String roundTripJson = toJson(bsm);
-    System.out.printf("roundTripJson: %s%n", roundTripJson);
+    log.info("roundTripJson: {}", roundTripJson);
     assertThat(roundTripJson, jsonEquals(json));
   }
 
@@ -109,7 +111,7 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
     BasicSafetyMessage bsm = fromJson(json);
     assertThat(bsm, notNullValue());
     String roundTripJson = toJson(bsm);
-    System.out.printf("roundTripJson: %s%n", roundTripJson);
+    log.info("roundTripJson: {}", roundTripJson);
     assertThat(roundTripJson, jsonEquals(json));
   }
 
@@ -120,7 +122,7 @@ public class BasicSafetyMessageTest extends BaseSerializeTest<BasicSafetyMessage
     BasicSafetyMessage bsm = fromJson(json);
     assertThat(bsm, notNullValue());
     String roundTripJson = toJson(bsm);
-    System.out.printf("roundTripJson: %s%n", roundTripJson);
+    log.info("roundTripJson: {}", roundTripJson);
     assertThat(roundTripJson, jsonEquals(json));
   }
 

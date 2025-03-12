@@ -3,7 +3,9 @@ package asn2pojo.runtime.types;
 import asn2pojo.runtime.serialization.SerializationUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public abstract class Asn1Sequence implements Asn1Type {
 
     final boolean extensionMarker;
@@ -23,7 +25,7 @@ public abstract class Asn1Sequence implements Asn1Type {
         try {
             return mapper.writeValueAsString(this);
         } catch (JsonProcessingException e) {
-            System.err.println(e.getMessage());
+            log.error(e.getMessage());
             return "";
         }
     }

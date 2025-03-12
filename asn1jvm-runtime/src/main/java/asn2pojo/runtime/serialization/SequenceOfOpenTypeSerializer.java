@@ -8,8 +8,9 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.fasterxml.jackson.dataformat.xml.ser.XmlSerializerProvider;
 import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 public class SequenceOfOpenTypeSerializer<S extends Asn1Type, T extends Asn1SequenceOf<S>>
     extends StdSerializer<T> {
 
@@ -31,7 +32,7 @@ public class SequenceOfOpenTypeSerializer<S extends Asn1Type, T extends Asn1Sequ
       var mapper = SerializationUtil.xmlMapper();
       for (var item : sequenceOf) {
         String itemXml = mapper.writeValueAsString(item);
-        System.out.printf("itemXml: %s%n", itemXml);
+        log.trace("itemXml: {}", itemXml);
         xmlGen.writeRaw(itemXml);
       }
     } else {

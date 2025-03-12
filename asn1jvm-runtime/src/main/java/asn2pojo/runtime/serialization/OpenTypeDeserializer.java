@@ -54,7 +54,7 @@ public abstract class OpenTypeDeserializer<T extends Asn1Type> extends StdDeseri
                 // Try unwrapping
                 JsonNode innerNode = objectNode.findValue(wrapped);
                 if (innerNode != null) {
-                    log.info("deserialize open type json unwrapped {}", wrapped);
+                    log.debug("deserialize open type json unwrapped {}", wrapped);
                 }
                 JsonNode useNode = innerNode != null ? innerNode : objectNode;
                 String json = SerializationUtil.jsonMapper().writeValueAsString(useNode);

@@ -9,10 +9,12 @@ import asn2pojo.runtime.BaseSerializeTest;
 import asn2pojo.runtime.examples.MessageContainsSequenceOfChoice;
 import java.io.IOException;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@Slf4j
 public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageContainsSequenceOfChoice> {
 
   public SequenceOfChoiceDeserializerTest() {
@@ -24,7 +26,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
   public void canRoundTripXml(final String description, final String xml) throws IOException {
     MessageContainsSequenceOfChoice m = fromXml(xml);
     assertThat(description, m, notNullValue());
-    System.out.println(m);
+    log.info("{}", m);
     String roundTripXml = toXml(m);
     assertThat(description, roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
   }

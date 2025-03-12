@@ -11,10 +11,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.params.provider.Arguments;
 
 
+@Slf4j
 public abstract class BaseSerializeTest<T> {
 
   private final static XmlMapper xmlMapper = new XmlMapper();
@@ -27,20 +29,20 @@ public abstract class BaseSerializeTest<T> {
 
   protected String toXml(T object) throws JsonProcessingException {
     String str = xmlMapper.writeValueAsString(object);
-    System.out.println(str);
+    log.info(str);
     return str;
   }
 
   protected String toJson(T object) throws JsonProcessingException {
     String str = jsonMapper.writeValueAsString(object);
-    System.out.println(str);
+    log.info(str);
     return str;
   }
 
   protected T fromXml(String xml) throws IOException {
     T object = xmlMapper.readValue(xml, clazz);
     if (object != null) {
-      System.out.println(object.toString());
+      log.info(object.toString());
     }
     return object;
   }
@@ -48,7 +50,7 @@ public abstract class BaseSerializeTest<T> {
   protected T fromJson(String json) throws IOException {
     T object = jsonMapper.readValue(json, clazz);
     if (object != null) {
-      System.out.println(object.toString());
+      log.info(object.toString());
     }
     return object;
   }
@@ -57,7 +59,7 @@ public abstract class BaseSerializeTest<T> {
     String str;
     try {
       str = IOUtils.resourceToString(path, StandardCharsets.UTF_8);
-      //System.out.printf("Loaded resource:%n%s%n", str);
+      log.debug("Loaded resource: {}", str);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -73,7 +75,7 @@ public abstract class BaseSerializeTest<T> {
       if (files != null) {
         for (String fileName : files) {
           String resourcePath = String.format("%s/%s", directory, fileName);
-          System.out.println(resourcePath);
+          log.info(resourcePath);
           resources.add(resourcePath);
         }
       }
