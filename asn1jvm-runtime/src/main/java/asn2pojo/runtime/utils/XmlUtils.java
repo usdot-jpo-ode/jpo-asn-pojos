@@ -45,21 +45,6 @@ public class XmlUtils {
         return mergeEmptyElements(tokens);
     }
 
-//    @SneakyThrows
-//    public static List<XmlToken> readTokens(XMLStreamReader xmlReader, String endElement) {
-//        var tokens = new ArrayList<XmlToken>();
-//        addToken(xmlReader, tokens);
-//
-//        while (xmlReader.hasNext()) {
-//            xmlReader.next();
-//            XmlToken token = addToken(xmlReader, tokens);
-//            if (token != null && token.isLast && token.text.equals(endElement)) {
-//                tokens.removeLast();
-//                break;
-//            }
-//        }
-//        return mergeEmptyElements(tokens);
-//    }
 
     private static XmlToken addToken(XMLStreamReader xmlReader, List<XmlToken> tokens) {
         XmlToken token = null;
@@ -125,27 +110,6 @@ public class XmlUtils {
         return f.toString();
     }
 
-//    public static List<List<XmlToken>> groupTopLevelTokens(final List<XmlToken> tokens) {
-//        XmlToken topLevel = null;
-//        var tokenLists = new ArrayList<List<XmlToken>>();
-//        List<XmlToken> tokenList = null;
-//        for (XmlToken token : tokens) {
-//            if (topLevel == null && token.isFirst) {
-//                // Start list
-//                topLevel = token;
-//                tokenList = new ArrayList<XmlToken>();
-//                tokenList.add(token);
-//            } else if (topLevel != null && token.isLast && token.text.equals(topLevel.text)) {
-//                // complete list
-//                tokenList.add(token);
-//                topLevel = null;
-//                tokenLists.add(tokenList);
-//            } else if (tokenList != null) {
-//                tokenList.add(token);
-//            }
-//        }
-//        return tokenLists;
-//    }
 
     public static List<XmlToken> unwrap(final List<XmlToken> tokens) {
         // Remove first and last
@@ -156,13 +120,6 @@ public class XmlUtils {
         }
     }
 
-//    public static List<XmlToken> wrap(final List<XmlToken> tokens, String wrapper) {
-//        var wrapped = new ArrayList<XmlToken>();
-//        wrapped.add(new XmlToken(wrapper, true, false));
-//        wrapped.addAll(tokens);
-//        wrapped.add(new XmlToken(wrapper, false, true));
-//        return wrapped;
-//    }
 
     // Extract unwrapped items from the XML stream, in original order with duplicates
     public static List<String> extractXmlList(FromXmlParser xmlParser) throws IOException {
@@ -189,6 +146,26 @@ public class XmlUtils {
             }
         }
         return itemXmlList;
+    }
+
+    // Extract a single unwrapped xml item from the XML stream, preserving order of elements
+    public static String extractXmlElement(FromXmlParser xmlParser) throws IOException {
+        Formatter xml = new Formatter();
+        XmlReadContext pc = xmlParser.getParsingContext();
+        XmlReadContext parent = pc.getParent();
+        log.info("extractXmlElement: parent name {}, value: {}, index: {}, nesting: {}",
+            parent.getCurrentName(),
+            parent.getCurrentValue(), parent.getCurrentIndex(), parent.getNestingDepth());
+        XmlElement element = new XmlElement();
+        final int startNesting = parent.getNestingDepth();
+        final String startName = parent.getCurrentName();
+        while (!element.isFinishedItem()) {
+            element = extractXml(xml, xmlParser, element, startNesting, startName);
+            if (!element.isFinishedItem()) {
+                xmlParser.nextToken();
+            }
+        }
+        return xml.toString();
     }
 
     public static XmlElement extractXml(Formatter xml, FromXmlParser xmlParser, final XmlElement previous,

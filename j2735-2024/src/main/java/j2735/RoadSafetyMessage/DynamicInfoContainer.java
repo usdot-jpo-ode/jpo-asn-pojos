@@ -34,6 +34,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,6 +50,8 @@ public class DynamicInfoContainer extends Asn1Sequence {
 	private EnumeratedPriority priority;
 	@Asn1Property(tag = 1, name = "dmsSignString")
 	@JsonProperty("dmsSignString")
+	@JacksonXmlElementWrapper(localName = "dmsSignString")
+	@JacksonXmlProperty(localName = "ShortString")
 	private SequenceOfDmsSignString dmsSignString;
 	@Asn1Property(tag = 2, name = "applicableRegion")
 	@JsonProperty("applicableRegion")
