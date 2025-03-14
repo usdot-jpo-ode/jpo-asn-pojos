@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TractionControlStatusSerializer.class)
-@JsonDeserialize(using = TractionControlStatusDeserializer.class)
+@JsonSerialize(using = TractionControlStatus.TractionControlStatusSerializer.class)
+@JsonDeserialize(using = TractionControlStatus.TractionControlStatusDeserializer.class)
 public enum TractionControlStatus implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OFF(1, "off"), ON(2, "on"), ENGAGED(3, "engaged");
 
@@ -39,5 +41,22 @@ public enum TractionControlStatus implements Asn1Enumerated {
 	private TractionControlStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TractionControlStatusSerializer extends EnumeratedSerializer<TractionControlStatus> {
+		public TractionControlStatusSerializer() {
+			super(TractionControlStatus.class);
+		}
+	}
+
+	public static class TractionControlStatusDeserializer extends EnumeratedDeserializer<TractionControlStatus> {
+		public TractionControlStatusDeserializer() {
+			super(TractionControlStatus.class);
+		}
+
+		@Override
+		protected TractionControlStatus[] listEnumValues() {
+			return TractionControlStatus.values();
+		}
 	}
 }

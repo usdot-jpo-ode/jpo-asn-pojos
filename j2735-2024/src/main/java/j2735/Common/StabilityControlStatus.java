@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = StabilityControlStatusSerializer.class)
-@JsonDeserialize(using = StabilityControlStatusDeserializer.class)
+@JsonSerialize(using = StabilityControlStatus.StabilityControlStatusSerializer.class)
+@JsonDeserialize(using = StabilityControlStatus.StabilityControlStatusDeserializer.class)
 public enum StabilityControlStatus implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OFF(1, "off"), ON(2, "on"), ENGAGED(3, "engaged");
 
@@ -39,5 +41,22 @@ public enum StabilityControlStatus implements Asn1Enumerated {
 	private StabilityControlStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class StabilityControlStatusSerializer extends EnumeratedSerializer<StabilityControlStatus> {
+		public StabilityControlStatusSerializer() {
+			super(StabilityControlStatus.class);
+		}
+	}
+
+	public static class StabilityControlStatusDeserializer extends EnumeratedDeserializer<StabilityControlStatus> {
+		public StabilityControlStatusDeserializer() {
+			super(StabilityControlStatus.class);
+		}
+
+		@Override
+		protected StabilityControlStatus[] listEnumValues() {
+			return StabilityControlStatus.values();
+		}
 	}
 }

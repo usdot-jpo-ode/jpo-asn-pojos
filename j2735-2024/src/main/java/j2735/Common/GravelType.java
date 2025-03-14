@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = GravelTypeSerializer.class)
-@JsonDeserialize(using = GravelTypeDeserializer.class)
+@JsonSerialize(using = GravelType.GravelTypeSerializer.class)
+@JsonDeserialize(using = GravelType.GravelTypeDeserializer.class)
 public enum GravelType implements Asn1Enumerated {
 	PACKEDOILED(0, "packedOiled"), LOOSE(1, "loose");
 
@@ -39,5 +41,22 @@ public enum GravelType implements Asn1Enumerated {
 	private GravelType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class GravelTypeSerializer extends EnumeratedSerializer<GravelType> {
+		public GravelTypeSerializer() {
+			super(GravelType.class);
+		}
+	}
+
+	public static class GravelTypeDeserializer extends EnumeratedDeserializer<GravelType> {
+		public GravelTypeDeserializer() {
+			super(GravelType.class);
+		}
+
+		@Override
+		protected GravelType[] listEnumValues() {
+			return GravelType.values();
+		}
 	}
 }

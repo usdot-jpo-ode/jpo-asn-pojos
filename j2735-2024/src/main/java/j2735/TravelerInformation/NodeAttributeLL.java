@@ -22,14 +22,16 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = NodeAttributeLLSerializer.class)
-@JsonDeserialize(using = NodeAttributeLLDeserializer.class)
+@JsonSerialize(using = NodeAttributeLL.NodeAttributeLLSerializer.class)
+@JsonDeserialize(using = NodeAttributeLL.NodeAttributeLLDeserializer.class)
 public enum NodeAttributeLL implements Asn1Enumerated {
 	RESERVED(0, "reserved"), STOPLINE(1, "stopLine"), ROUNDEDCAPSTYLEA(2, "roundedCapStyleA"), ROUNDEDCAPSTYLEB(3,
 			"roundedCapStyleB"), MERGEPOINT(4, "mergePoint"), DIVERGEPOINT(5, "divergePoint"), DOWNSTREAMSTOPLINE(6,
@@ -43,5 +45,22 @@ public enum NodeAttributeLL implements Asn1Enumerated {
 	private NodeAttributeLL(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class NodeAttributeLLSerializer extends EnumeratedSerializer<NodeAttributeLL> {
+		public NodeAttributeLLSerializer() {
+			super(NodeAttributeLL.class);
+		}
+	}
+
+	public static class NodeAttributeLLDeserializer extends EnumeratedDeserializer<NodeAttributeLL> {
+		public NodeAttributeLLDeserializer() {
+			super(NodeAttributeLL.class);
+		}
+
+		@Override
+		protected NodeAttributeLL[] listEnumValues() {
+			return NodeAttributeLL.values();
+		}
 	}
 }

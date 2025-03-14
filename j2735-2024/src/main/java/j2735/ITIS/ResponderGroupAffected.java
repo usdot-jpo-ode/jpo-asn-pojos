@@ -22,14 +22,16 @@
 
 package j2735.ITIS;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ResponderGroupAffectedSerializer.class)
-@JsonDeserialize(using = ResponderGroupAffectedDeserializer.class)
+@JsonSerialize(using = ResponderGroupAffected.ResponderGroupAffectedSerializer.class)
+@JsonDeserialize(using = ResponderGroupAffected.ResponderGroupAffectedDeserializer.class)
 public enum ResponderGroupAffected implements Asn1Enumerated {
 	EMERGENCY_VEHICLE_UNITS(9729, "emergency-vehicle-units"), FEDERAL_LAW_ENFORCEMENT_UNITS(9730,
 			"federal-law-enforcement-units"), STATE_POLICE_UNITS(9731, "state-police-units"), COUNTY_POLICE_UNITS(9732,
@@ -49,5 +51,22 @@ public enum ResponderGroupAffected implements Asn1Enumerated {
 	private ResponderGroupAffected(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ResponderGroupAffectedSerializer extends EnumeratedSerializer<ResponderGroupAffected> {
+		public ResponderGroupAffectedSerializer() {
+			super(ResponderGroupAffected.class);
+		}
+	}
+
+	public static class ResponderGroupAffectedDeserializer extends EnumeratedDeserializer<ResponderGroupAffected> {
+		public ResponderGroupAffectedDeserializer() {
+			super(ResponderGroupAffected.class);
+		}
+
+		@Override
+		protected ResponderGroupAffected[] listEnumValues() {
+			return ResponderGroupAffected.values();
+		}
 	}
 }

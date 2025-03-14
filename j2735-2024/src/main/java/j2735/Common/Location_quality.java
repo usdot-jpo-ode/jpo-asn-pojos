@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = Location_qualitySerializer.class)
-@JsonDeserialize(using = Location_qualityDeserializer.class)
+@JsonSerialize(using = Location_quality.Location_qualitySerializer.class)
+@JsonDeserialize(using = Location_quality.Location_qualityDeserializer.class)
 public enum Location_quality implements Asn1Enumerated {
 	LOC_QUAL_BT1M(0, "loc-qual-bt1m"), LOC_QUAL_BT5M(1, "loc-qual-bt5m"), LOC_QUAL_BT12M(2,
 			"loc-qual-bt12m"), LOC_QUAL_BT50M(3, "loc-qual-bt50m"), LOC_QUAL_BT125M(4,
@@ -42,5 +44,22 @@ public enum Location_quality implements Asn1Enumerated {
 	private Location_quality(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class Location_qualitySerializer extends EnumeratedSerializer<Location_quality> {
+		public Location_qualitySerializer() {
+			super(Location_quality.class);
+		}
+	}
+
+	public static class Location_qualityDeserializer extends EnumeratedDeserializer<Location_quality> {
+		public Location_qualityDeserializer() {
+			super(Location_quality.class);
+		}
+
+		@Override
+		protected Location_quality[] listEnumValues() {
+			return Location_quality.values();
+		}
 	}
 }

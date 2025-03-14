@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = MultiVehicleResponseSerializer.class)
-@JsonDeserialize(using = MultiVehicleResponseDeserializer.class)
+@JsonSerialize(using = MultiVehicleResponse.MultiVehicleResponseSerializer.class)
+@JsonDeserialize(using = MultiVehicleResponse.MultiVehicleResponseDeserializer.class)
 public enum MultiVehicleResponse implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), SINGLEVEHICLE(1, "singleVehicle"), MULTIVEHICLE(2, "multiVehicle"), RESERVED(3,
 			"reserved");
@@ -40,5 +42,22 @@ public enum MultiVehicleResponse implements Asn1Enumerated {
 	private MultiVehicleResponse(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class MultiVehicleResponseSerializer extends EnumeratedSerializer<MultiVehicleResponse> {
+		public MultiVehicleResponseSerializer() {
+			super(MultiVehicleResponse.class);
+		}
+	}
+
+	public static class MultiVehicleResponseDeserializer extends EnumeratedDeserializer<MultiVehicleResponse> {
+		public MultiVehicleResponseDeserializer() {
+			super(MultiVehicleResponse.class);
+		}
+
+		@Override
+		protected MultiVehicleResponse[] listEnumValues() {
+			return MultiVehicleResponse.values();
+		}
 	}
 }

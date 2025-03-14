@@ -22,14 +22,16 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RestrictionAppliesToSerializer.class)
-@JsonDeserialize(using = RestrictionAppliesToDeserializer.class)
+@JsonSerialize(using = RestrictionAppliesTo.RestrictionAppliesToSerializer.class)
+@JsonDeserialize(using = RestrictionAppliesTo.RestrictionAppliesToDeserializer.class)
 public enum RestrictionAppliesTo implements Asn1Enumerated {
 	NONE(0, "none"), EQUIPPEDTRANSIT(1, "equippedTransit"), EQUIPPEDTAXIS(2, "equippedTaxis"), EQUIPPEDOTHER(3,
 			"equippedOther"), EMISSIONCOMPLIANT(4, "emissionCompliant"), EQUIPPEDBICYCLE(5,
@@ -46,5 +48,22 @@ public enum RestrictionAppliesTo implements Asn1Enumerated {
 	private RestrictionAppliesTo(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RestrictionAppliesToSerializer extends EnumeratedSerializer<RestrictionAppliesTo> {
+		public RestrictionAppliesToSerializer() {
+			super(RestrictionAppliesTo.class);
+		}
+	}
+
+	public static class RestrictionAppliesToDeserializer extends EnumeratedDeserializer<RestrictionAppliesTo> {
+		public RestrictionAppliesToDeserializer() {
+			super(RestrictionAppliesTo.class);
+		}
+
+		@Override
+		protected RestrictionAppliesTo[] listEnumValues() {
+			return RestrictionAppliesTo.values();
+		}
 	}
 }

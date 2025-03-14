@@ -22,14 +22,16 @@
 
 package j2735.ProbeDataManagement;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = VehicleStatusDeviceTypeTagSerializer.class)
-@JsonDeserialize(using = VehicleStatusDeviceTypeTagDeserializer.class)
+@JsonSerialize(using = VehicleStatusDeviceTypeTag.VehicleStatusDeviceTypeTagSerializer.class)
+@JsonDeserialize(using = VehicleStatusDeviceTypeTag.VehicleStatusDeviceTypeTagDeserializer.class)
 public enum VehicleStatusDeviceTypeTag implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), LIGHTS(1, "lights"), WIPERS(2, "wipers"), BRAKES(3, "brakes"), STAB(4, "stab"), TRAC(5,
 			"trac"), ABS(6, "abs"), SUNS(7, "sunS"), RAINS(8, "rainS"), AIRTEMP(9, "airTemp"), STEERING(10,
@@ -48,5 +50,24 @@ public enum VehicleStatusDeviceTypeTag implements Asn1Enumerated {
 	private VehicleStatusDeviceTypeTag(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class VehicleStatusDeviceTypeTagSerializer extends EnumeratedSerializer<VehicleStatusDeviceTypeTag> {
+		public VehicleStatusDeviceTypeTagSerializer() {
+			super(VehicleStatusDeviceTypeTag.class);
+		}
+	}
+
+	public static class VehicleStatusDeviceTypeTagDeserializer
+			extends
+				EnumeratedDeserializer<VehicleStatusDeviceTypeTag> {
+		public VehicleStatusDeviceTypeTagDeserializer() {
+			super(VehicleStatusDeviceTypeTag.class);
+		}
+
+		@Override
+		protected VehicleStatusDeviceTypeTag[] listEnumValues() {
+			return VehicleStatusDeviceTypeTag.values();
+		}
 	}
 }

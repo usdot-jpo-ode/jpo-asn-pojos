@@ -22,14 +22,16 @@
 
 package j2735.AddGrpB;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = DayOfWeekSerializer.class)
-@JsonDeserialize(using = DayOfWeekDeserializer.class)
+@JsonSerialize(using = DayOfWeek.DayOfWeekSerializer.class)
+@JsonDeserialize(using = DayOfWeek.DayOfWeekDeserializer.class)
 public enum DayOfWeek implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), MONDAY(1, "monday"), TUESDAY(2, "tuesday"), WEDNESDAY(3, "wednesday"), THURSDAY(4,
 			"thursday"), FRIDAY(5, "friday"), SATURDAY(6, "saturday"), SUNDAY(7, "sunday");
@@ -40,5 +42,22 @@ public enum DayOfWeek implements Asn1Enumerated {
 	private DayOfWeek(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class DayOfWeekSerializer extends EnumeratedSerializer<DayOfWeek> {
+		public DayOfWeekSerializer() {
+			super(DayOfWeek.class);
+		}
+	}
+
+	public static class DayOfWeekDeserializer extends EnumeratedDeserializer<DayOfWeek> {
+		public DayOfWeekDeserializer() {
+			super(DayOfWeek.class);
+		}
+
+		@Override
+		protected DayOfWeek[] listEnumValues() {
+			return DayOfWeek.values();
+		}
 	}
 }

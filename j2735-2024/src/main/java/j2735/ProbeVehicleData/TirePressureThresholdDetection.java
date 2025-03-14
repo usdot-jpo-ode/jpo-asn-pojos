@@ -22,14 +22,16 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TirePressureThresholdDetectionSerializer.class)
-@JsonDeserialize(using = TirePressureThresholdDetectionDeserializer.class)
+@JsonSerialize(using = TirePressureThresholdDetection.TirePressureThresholdDetectionSerializer.class)
+@JsonDeserialize(using = TirePressureThresholdDetection.TirePressureThresholdDetectionDeserializer.class)
 public enum TirePressureThresholdDetection implements Asn1Enumerated {
 	NODATA(0, "noData"), OVERPRESSURE(1, "overPressure"), NOWARNINGPRESSURE(2, "noWarningPressure"), UNDERPRESSURE(3,
 			"underPressure"), EXTREMEUNDERPRESSURE(4, "extremeUnderPressure"), UNDEFINED(5,
@@ -41,5 +43,26 @@ public enum TirePressureThresholdDetection implements Asn1Enumerated {
 	private TirePressureThresholdDetection(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TirePressureThresholdDetectionSerializer
+			extends
+				EnumeratedSerializer<TirePressureThresholdDetection> {
+		public TirePressureThresholdDetectionSerializer() {
+			super(TirePressureThresholdDetection.class);
+		}
+	}
+
+	public static class TirePressureThresholdDetectionDeserializer
+			extends
+				EnumeratedDeserializer<TirePressureThresholdDetection> {
+		public TirePressureThresholdDetectionDeserializer() {
+			super(TirePressureThresholdDetection.class);
+		}
+
+		@Override
+		protected TirePressureThresholdDetection[] listEnumValues() {
+			return TirePressureThresholdDetection.values();
+		}
 	}
 }

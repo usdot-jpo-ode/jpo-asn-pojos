@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = Location_techSerializer.class)
-@JsonDeserialize(using = Location_techDeserializer.class)
+@JsonSerialize(using = Location_tech.Location_techSerializer.class)
+@JsonDeserialize(using = Location_tech.Location_techDeserializer.class)
 public enum Location_tech implements Asn1Enumerated {
 	LOC_TECH_UNKNOWN(0, "loc-tech-unknown"), LOC_TECH_GNSS(1, "loc-tech-GNSS"), LOC_TECH_DGPS(2,
 			"loc-tech-DGPS"), LOC_TECH_RTK(3, "loc-tech-RTK"), LOC_TECH_PPP(4, "loc-tech-PPP"), LOC_TECH_DRGPS(5,
@@ -42,5 +44,22 @@ public enum Location_tech implements Asn1Enumerated {
 	private Location_tech(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class Location_techSerializer extends EnumeratedSerializer<Location_tech> {
+		public Location_techSerializer() {
+			super(Location_tech.class);
+		}
+	}
+
+	public static class Location_techDeserializer extends EnumeratedDeserializer<Location_tech> {
+		public Location_techDeserializer() {
+			super(Location_tech.class);
+		}
+
+		@Override
+		protected Location_tech[] listEnumValues() {
+			return Location_tech.values();
+		}
 	}
 }

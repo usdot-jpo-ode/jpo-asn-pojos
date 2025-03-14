@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AuxiliaryBrakeStatusSerializer.class)
-@JsonDeserialize(using = AuxiliaryBrakeStatusDeserializer.class)
+@JsonSerialize(using = AuxiliaryBrakeStatus.AuxiliaryBrakeStatusSerializer.class)
+@JsonDeserialize(using = AuxiliaryBrakeStatus.AuxiliaryBrakeStatusDeserializer.class)
 public enum AuxiliaryBrakeStatus implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OFF(1, "off"), ON(2, "on"), RESERVED(3, "reserved");
 
@@ -39,5 +41,22 @@ public enum AuxiliaryBrakeStatus implements Asn1Enumerated {
 	private AuxiliaryBrakeStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AuxiliaryBrakeStatusSerializer extends EnumeratedSerializer<AuxiliaryBrakeStatus> {
+		public AuxiliaryBrakeStatusSerializer() {
+			super(AuxiliaryBrakeStatus.class);
+		}
+	}
+
+	public static class AuxiliaryBrakeStatusDeserializer extends EnumeratedDeserializer<AuxiliaryBrakeStatus> {
+		public AuxiliaryBrakeStatusDeserializer() {
+			super(AuxiliaryBrakeStatus.class);
+		}
+
+		@Override
+		protected AuxiliaryBrakeStatus[] listEnumValues() {
+			return AuxiliaryBrakeStatus.values();
+		}
 	}
 }

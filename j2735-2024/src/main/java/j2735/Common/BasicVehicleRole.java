@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = BasicVehicleRoleSerializer.class)
-@JsonDeserialize(using = BasicVehicleRoleDeserializer.class)
+@JsonSerialize(using = BasicVehicleRole.BasicVehicleRoleSerializer.class)
+@JsonDeserialize(using = BasicVehicleRole.BasicVehicleRoleDeserializer.class)
 public enum BasicVehicleRole implements Asn1Enumerated {
 	BASICVEHICLE(0, "basicVehicle"), PUBLICTRANSPORT(1, "publicTransport"), SPECIALTRANSPORT(2,
 			"specialTransport"), DANGEROUSGOODS(3, "dangerousGoods"), ROADWORK(4, "roadWork"), ROADRESCUE(5,
@@ -47,5 +49,22 @@ public enum BasicVehicleRole implements Asn1Enumerated {
 	private BasicVehicleRole(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class BasicVehicleRoleSerializer extends EnumeratedSerializer<BasicVehicleRole> {
+		public BasicVehicleRoleSerializer() {
+			super(BasicVehicleRole.class);
+		}
+	}
+
+	public static class BasicVehicleRoleDeserializer extends EnumeratedDeserializer<BasicVehicleRole> {
+		public BasicVehicleRoleDeserializer() {
+			super(BasicVehicleRole.class);
+		}
+
+		@Override
+		protected BasicVehicleRole[] listEnumValues() {
+			return BasicVehicleRole.values();
+		}
 	}
 }

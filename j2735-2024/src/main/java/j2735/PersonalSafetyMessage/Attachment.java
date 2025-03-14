@@ -22,14 +22,16 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AttachmentSerializer.class)
-@JsonDeserialize(using = AttachmentDeserializer.class)
+@JsonSerialize(using = Attachment.AttachmentSerializer.class)
+@JsonDeserialize(using = Attachment.AttachmentDeserializer.class)
 public enum Attachment implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), STROLLER(1, "stroller"), BICYCLETRAILER(2, "bicycleTrailer"), CART(3,
 			"cart"), WHEELCHAIR(4,
@@ -41,5 +43,22 @@ public enum Attachment implements Asn1Enumerated {
 	private Attachment(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AttachmentSerializer extends EnumeratedSerializer<Attachment> {
+		public AttachmentSerializer() {
+			super(Attachment.class);
+		}
+	}
+
+	public static class AttachmentDeserializer extends EnumeratedDeserializer<Attachment> {
+		public AttachmentDeserializer() {
+			super(Attachment.class);
+		}
+
+		@Override
+		protected Attachment[] listEnumValues() {
+			return Attachment.values();
+		}
 	}
 }

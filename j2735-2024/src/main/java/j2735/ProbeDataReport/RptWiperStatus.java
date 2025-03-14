@@ -22,14 +22,16 @@
 
 package j2735.ProbeDataReport;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RptWiperStatusSerializer.class)
-@JsonDeserialize(using = RptWiperStatusDeserializer.class)
+@JsonSerialize(using = RptWiperStatus.RptWiperStatusSerializer.class)
+@JsonDeserialize(using = RptWiperStatus.RptWiperStatusDeserializer.class)
 public enum RptWiperStatus implements Asn1Enumerated {
 	OFF(0, "off"), LOW(1, "low"), MEDIUM(2, "medium"), HIGH(3, "high");
 
@@ -39,5 +41,22 @@ public enum RptWiperStatus implements Asn1Enumerated {
 	private RptWiperStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RptWiperStatusSerializer extends EnumeratedSerializer<RptWiperStatus> {
+		public RptWiperStatusSerializer() {
+			super(RptWiperStatus.class);
+		}
+	}
+
+	public static class RptWiperStatusDeserializer extends EnumeratedDeserializer<RptWiperStatus> {
+		public RptWiperStatusDeserializer() {
+			super(RptWiperStatus.class);
+		}
+
+		@Override
+		protected RptWiperStatus[] listEnumValues() {
+			return RptWiperStatus.values();
+		}
 	}
 }

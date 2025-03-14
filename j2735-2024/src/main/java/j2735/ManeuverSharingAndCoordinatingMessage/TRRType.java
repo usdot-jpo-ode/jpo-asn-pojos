@@ -22,14 +22,16 @@
 
 package j2735.ManeuverSharingAndCoordinatingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TRRTypeSerializer.class)
-@JsonDeserialize(using = TRRTypeDeserializer.class)
+@JsonSerialize(using = TRRType.TRRTypeSerializer.class)
+@JsonDeserialize(using = TRRType.TRRTypeDeserializer.class)
 public enum TRRType implements Asn1Enumerated {
 	TRRTYPE1(0, "tRRType1"), TRRTYPE2(1, "tRRType2"), TRRTYPE3(2, "tRRType3");
 
@@ -39,5 +41,22 @@ public enum TRRType implements Asn1Enumerated {
 	private TRRType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TRRTypeSerializer extends EnumeratedSerializer<TRRType> {
+		public TRRTypeSerializer() {
+			super(TRRType.class);
+		}
+	}
+
+	public static class TRRTypeDeserializer extends EnumeratedDeserializer<TRRType> {
+		public TRRTypeDeserializer() {
+			super(TRRType.class);
+		}
+
+		@Override
+		protected TRRType[] listEnumValues() {
+			return TRRType.values();
+		}
 	}
 }

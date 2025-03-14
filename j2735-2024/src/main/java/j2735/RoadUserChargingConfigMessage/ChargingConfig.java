@@ -66,7 +66,7 @@ public class ChargingConfig extends Asn1Sequence {
 	@Getter
 	@JsonSerialize(using = EnumeratedReportSchedSerializer.class)
 	@JsonDeserialize(using = EnumeratedReportSchedDeserializer.class)
-	public static enum EnumeratedReportSched implements Asn1Enumerated {
+	public enum EnumeratedReportSched implements Asn1Enumerated {
 		HOURLY(0, "hourly"), WEEKLY(1, "weekly"), MONTHLY(2, "monthly"), QUARTERLY(3, "quarterly");
 
 		private final int index;
@@ -79,13 +79,13 @@ public class ChargingConfig extends Asn1Sequence {
 	}
 
 	public static class EnumeratedReportSchedSerializer extends EnumeratedSerializer<EnumeratedReportSched> {
-		EnumeratedReportSchedSerializer() {
+		public EnumeratedReportSchedSerializer() {
 			super(EnumeratedReportSched.class);
 		}
 	}
 
 	public static class EnumeratedReportSchedDeserializer extends EnumeratedDeserializer<EnumeratedReportSched> {
-		EnumeratedReportSchedDeserializer() {
+		public EnumeratedReportSchedDeserializer() {
 			super(EnumeratedReportSched.class);
 		}
 

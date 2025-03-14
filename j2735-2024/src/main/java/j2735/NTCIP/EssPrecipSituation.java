@@ -22,14 +22,16 @@
 
 package j2735.NTCIP;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = EssPrecipSituationSerializer.class)
-@JsonDeserialize(using = EssPrecipSituationDeserializer.class)
+@JsonSerialize(using = EssPrecipSituation.EssPrecipSituationSerializer.class)
+@JsonDeserialize(using = EssPrecipSituation.EssPrecipSituationDeserializer.class)
 public enum EssPrecipSituation implements Asn1Enumerated {
 	OTHER(1, "other"), UNKNOWN(2, "unknown"), NOPRECIPITATION(3, "noPrecipitation"), UNIDENTIFIEDSLIGHT(4,
 			"unidentifiedSlight"), UNIDENTIFIEDMODERATE(5, "unidentifiedModerate"), UNIDENTIFIEDHEAVY(6,
@@ -46,5 +48,22 @@ public enum EssPrecipSituation implements Asn1Enumerated {
 	private EssPrecipSituation(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class EssPrecipSituationSerializer extends EnumeratedSerializer<EssPrecipSituation> {
+		public EssPrecipSituationSerializer() {
+			super(EssPrecipSituation.class);
+		}
+	}
+
+	public static class EssPrecipSituationDeserializer extends EnumeratedDeserializer<EssPrecipSituation> {
+		public EssPrecipSituationDeserializer() {
+			super(EssPrecipSituation.class);
+		}
+
+		@Override
+		protected EssPrecipSituation[] listEnumValues() {
+			return EssPrecipSituation.values();
+		}
 	}
 }

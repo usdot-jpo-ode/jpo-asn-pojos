@@ -22,14 +22,16 @@
 
 package j2735.ManeuverSharingAndCoordinatingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ReasonCodeSerializer.class)
-@JsonDeserialize(using = ReasonCodeDeserializer.class)
+@JsonSerialize(using = ReasonCode.ReasonCodeSerializer.class)
+@JsonDeserialize(using = ReasonCode.ReasonCodeDeserializer.class)
 public enum ReasonCode implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), UNABLETOCONFORM(1, "unableToConform"), UNWANTED(2, "unwanted"), UNABLETOUNDERSTAND(3,
 			"unableToUnderstand"), ERRONEOUSBEHAVIORDETECTED(4, "erroneousBehaviorDetected"), MISBEHAVIORATTACKDETECTED(
@@ -42,5 +44,22 @@ public enum ReasonCode implements Asn1Enumerated {
 	private ReasonCode(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ReasonCodeSerializer extends EnumeratedSerializer<ReasonCode> {
+		public ReasonCodeSerializer() {
+			super(ReasonCode.class);
+		}
+	}
+
+	public static class ReasonCodeDeserializer extends EnumeratedDeserializer<ReasonCode> {
+		public ReasonCodeDeserializer() {
+			super(ReasonCode.class);
+		}
+
+		@Override
+		protected ReasonCode[] listEnumValues() {
+			return ReasonCode.values();
+		}
 	}
 }

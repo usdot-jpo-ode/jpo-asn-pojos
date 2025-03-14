@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TimeConfidenceSerializer.class)
-@JsonDeserialize(using = TimeConfidenceDeserializer.class)
+@JsonSerialize(using = TimeConfidence.TimeConfidenceSerializer.class)
+@JsonDeserialize(using = TimeConfidence.TimeConfidenceDeserializer.class)
 public enum TimeConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), TIME_100_000(1, "time-100-000"), TIME_050_000(2, "time-050-000"), TIME_020_000(3,
 			"time-020-000"), TIME_010_000(4, "time-010-000"), TIME_002_000(5, "time-002-000"), TIME_001_000(6,
@@ -89,5 +91,22 @@ public enum TimeConfidence implements Asn1Enumerated {
 	private TimeConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TimeConfidenceSerializer extends EnumeratedSerializer<TimeConfidence> {
+		public TimeConfidenceSerializer() {
+			super(TimeConfidence.class);
+		}
+	}
+
+	public static class TimeConfidenceDeserializer extends EnumeratedDeserializer<TimeConfidence> {
+		public TimeConfidenceDeserializer() {
+			super(TimeConfidence.class);
+		}
+
+		@Override
+		protected TimeConfidence[] listEnumValues() {
+			return TimeConfidence.values();
+		}
 	}
 }

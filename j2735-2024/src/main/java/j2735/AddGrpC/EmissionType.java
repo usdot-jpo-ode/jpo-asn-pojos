@@ -22,14 +22,16 @@
 
 package j2735.AddGrpC;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = EmissionTypeSerializer.class)
-@JsonDeserialize(using = EmissionTypeDeserializer.class)
+@JsonSerialize(using = EmissionType.EmissionTypeSerializer.class)
+@JsonDeserialize(using = EmissionType.EmissionTypeDeserializer.class)
 public enum EmissionType implements Asn1Enumerated {
 	TYPEA(0, "typeA"), TYPEB(1, "typeB"), TYPEC(2, "typeC"), TYPED(3, "typeD"), TYPEE(4, "typeE");
 
@@ -39,5 +41,22 @@ public enum EmissionType implements Asn1Enumerated {
 	private EmissionType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class EmissionTypeSerializer extends EnumeratedSerializer<EmissionType> {
+		public EmissionTypeSerializer() {
+			super(EmissionType.class);
+		}
+	}
+
+	public static class EmissionTypeDeserializer extends EnumeratedDeserializer<EmissionType> {
+		public EmissionTypeDeserializer() {
+			super(EmissionType.class);
+		}
+
+		@Override
+		protected EmissionType[] listEnumValues() {
+			return EmissionType.values();
+		}
 	}
 }

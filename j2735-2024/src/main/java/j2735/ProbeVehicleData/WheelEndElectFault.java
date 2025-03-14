@@ -22,14 +22,16 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = WheelEndElectFaultSerializer.class)
-@JsonDeserialize(using = WheelEndElectFaultDeserializer.class)
+@JsonSerialize(using = WheelEndElectFault.WheelEndElectFaultSerializer.class)
+@JsonDeserialize(using = WheelEndElectFault.WheelEndElectFaultDeserializer.class)
 public enum WheelEndElectFault implements Asn1Enumerated {
 	ISOK(0, "isOk"), ISNOTDEFINED(1, "isNotDefined"), ISERROR(2, "isError"), ISNOTSUPPORTED(3, "isNotSupported");
 
@@ -39,5 +41,22 @@ public enum WheelEndElectFault implements Asn1Enumerated {
 	private WheelEndElectFault(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class WheelEndElectFaultSerializer extends EnumeratedSerializer<WheelEndElectFault> {
+		public WheelEndElectFaultSerializer() {
+			super(WheelEndElectFault.class);
+		}
+	}
+
+	public static class WheelEndElectFaultDeserializer extends EnumeratedDeserializer<WheelEndElectFault> {
+		public WheelEndElectFaultDeserializer() {
+			super(WheelEndElectFault.class);
+		}
+
+		@Override
+		protected WheelEndElectFault[] listEnumValues() {
+			return WheelEndElectFault.values();
+		}
 	}
 }

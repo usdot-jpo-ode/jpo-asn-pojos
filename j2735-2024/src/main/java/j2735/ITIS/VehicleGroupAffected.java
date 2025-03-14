@@ -22,14 +22,16 @@
 
 package j2735.ITIS;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = VehicleGroupAffectedSerializer.class)
-@JsonDeserialize(using = VehicleGroupAffectedDeserializer.class)
+@JsonSerialize(using = VehicleGroupAffected.VehicleGroupAffectedSerializer.class)
+@JsonDeserialize(using = VehicleGroupAffected.VehicleGroupAffectedDeserializer.class)
 public enum VehicleGroupAffected implements Asn1Enumerated {
 	ALL_VEHICLES(9217, "all-vehicles"), BICYCLES(9218, "bicycles"), MOTORCYCLES(9219, "motorcycles"), CARS(9220,
 			"cars"), LIGHT_VEHICLES(9221, "light-vehicles"), CARS_AND_LIGHT_VEHICLES(9222,
@@ -88,5 +90,22 @@ public enum VehicleGroupAffected implements Asn1Enumerated {
 	private VehicleGroupAffected(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class VehicleGroupAffectedSerializer extends EnumeratedSerializer<VehicleGroupAffected> {
+		public VehicleGroupAffectedSerializer() {
+			super(VehicleGroupAffected.class);
+		}
+	}
+
+	public static class VehicleGroupAffectedDeserializer extends EnumeratedDeserializer<VehicleGroupAffected> {
+		public VehicleGroupAffectedDeserializer() {
+			super(VehicleGroupAffected.class);
+		}
+
+		@Override
+		protected VehicleGroupAffected[] listEnumValues() {
+			return VehicleGroupAffected.values();
+		}
 	}
 }

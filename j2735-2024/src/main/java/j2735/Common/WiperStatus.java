@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = WiperStatusSerializer.class)
-@JsonDeserialize(using = WiperStatusDeserializer.class)
+@JsonSerialize(using = WiperStatus.WiperStatusSerializer.class)
+@JsonDeserialize(using = WiperStatus.WiperStatusDeserializer.class)
 public enum WiperStatus implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OFF(1, "off"), INTERMITTENT(2, "intermittent"), LOW(3, "low"), HIGH(4,
 			"high"), WASHERINUSE(5, "washerInUse"), AUTOMATICPRESENT(6, "automaticPresent");
@@ -40,5 +42,22 @@ public enum WiperStatus implements Asn1Enumerated {
 	private WiperStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class WiperStatusSerializer extends EnumeratedSerializer<WiperStatus> {
+		public WiperStatusSerializer() {
+			super(WiperStatus.class);
+		}
+	}
+
+	public static class WiperStatusDeserializer extends EnumeratedDeserializer<WiperStatus> {
+		public WiperStatusDeserializer() {
+			super(WiperStatus.class);
+		}
+
+		@Override
+		protected WiperStatus[] listEnumValues() {
+			return WiperStatus.values();
+		}
 	}
 }

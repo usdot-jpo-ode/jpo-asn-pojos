@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = GrassTypeSerializer.class)
-@JsonDeserialize(using = GrassTypeDeserializer.class)
+@JsonSerialize(using = GrassType.GrassTypeSerializer.class)
+@JsonDeserialize(using = GrassType.GrassTypeDeserializer.class)
 public enum GrassType implements Asn1Enumerated {
 	LESSTHAN30MPH(0, "lessThan30Mph");
 
@@ -39,5 +41,22 @@ public enum GrassType implements Asn1Enumerated {
 	private GrassType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class GrassTypeSerializer extends EnumeratedSerializer<GrassType> {
+		public GrassTypeSerializer() {
+			super(GrassType.class);
+		}
+	}
+
+	public static class GrassTypeDeserializer extends EnumeratedDeserializer<GrassType> {
+		public GrassTypeDeserializer() {
+			super(GrassType.class);
+		}
+
+		@Override
+		protected GrassType[] listEnumValues() {
+			return GrassType.values();
+		}
 	}
 }

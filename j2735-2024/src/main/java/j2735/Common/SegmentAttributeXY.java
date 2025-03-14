@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SegmentAttributeXYSerializer.class)
-@JsonDeserialize(using = SegmentAttributeXYDeserializer.class)
+@JsonSerialize(using = SegmentAttributeXY.SegmentAttributeXYSerializer.class)
+@JsonDeserialize(using = SegmentAttributeXY.SegmentAttributeXYDeserializer.class)
 public enum SegmentAttributeXY implements Asn1Enumerated {
 	RESERVED(0, "reserved"), DONOTBLOCK(1, "doNotBlock"), WHITELINE(2, "whiteLine"), MERGINGLANELEFT(3,
 			"mergingLaneLeft"), MERGINGLANERIGHT(4, "mergingLaneRight"), CURBONLEFT(5, "curbOnLeft"), CURBONRIGHT(6,
@@ -91,5 +93,22 @@ public enum SegmentAttributeXY implements Asn1Enumerated {
 	private SegmentAttributeXY(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SegmentAttributeXYSerializer extends EnumeratedSerializer<SegmentAttributeXY> {
+		public SegmentAttributeXYSerializer() {
+			super(SegmentAttributeXY.class);
+		}
+	}
+
+	public static class SegmentAttributeXYDeserializer extends EnumeratedDeserializer<SegmentAttributeXY> {
+		public SegmentAttributeXYDeserializer() {
+			super(SegmentAttributeXY.class);
+		}
+
+		@Override
+		protected SegmentAttributeXY[] listEnumValues() {
+			return SegmentAttributeXY.values();
+		}
 	}
 }

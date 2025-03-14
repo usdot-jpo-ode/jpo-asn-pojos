@@ -22,14 +22,16 @@
 
 package j2735.RoadWeatherMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = NTCIPPrecipitationSensorPrecipSituationSerializer.class)
-@JsonDeserialize(using = NTCIPPrecipitationSensorPrecipSituationDeserializer.class)
+@JsonSerialize(using = NTCIPPrecipitationSensorPrecipSituation.NTCIPPrecipitationSensorPrecipSituationSerializer.class)
+@JsonDeserialize(using = NTCIPPrecipitationSensorPrecipSituation.NTCIPPrecipitationSensorPrecipSituationDeserializer.class)
 public enum NTCIPPrecipitationSensorPrecipSituation implements Asn1Enumerated {
 	OTHER(1, "other"), UNKNOWN(2, "unknown"), NOPRECIPITATION(3, "noPrecipitation"), UNIDENTIFIEDSLIGHT(4,
 			"unidentifiedSlight"), UNIDENTIFIEDMODERATE(5, "unidentifiedModerate"), UNIDENTIFIEDHEAVY(6,
@@ -46,5 +48,26 @@ public enum NTCIPPrecipitationSensorPrecipSituation implements Asn1Enumerated {
 	private NTCIPPrecipitationSensorPrecipSituation(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class NTCIPPrecipitationSensorPrecipSituationSerializer
+			extends
+				EnumeratedSerializer<NTCIPPrecipitationSensorPrecipSituation> {
+		public NTCIPPrecipitationSensorPrecipSituationSerializer() {
+			super(NTCIPPrecipitationSensorPrecipSituation.class);
+		}
+	}
+
+	public static class NTCIPPrecipitationSensorPrecipSituationDeserializer
+			extends
+				EnumeratedDeserializer<NTCIPPrecipitationSensorPrecipSituation> {
+		public NTCIPPrecipitationSensorPrecipSituationDeserializer() {
+			super(NTCIPPrecipitationSensorPrecipSituation.class);
+		}
+
+		@Override
+		protected NTCIPPrecipitationSensorPrecipSituation[] listEnumValues() {
+			return NTCIPPrecipitationSensorPrecipSituation.values();
+		}
 	}
 }

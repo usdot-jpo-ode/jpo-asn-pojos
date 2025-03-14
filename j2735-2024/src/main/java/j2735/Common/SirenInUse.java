@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SirenInUseSerializer.class)
-@JsonDeserialize(using = SirenInUseDeserializer.class)
+@JsonSerialize(using = SirenInUse.SirenInUseSerializer.class)
+@JsonDeserialize(using = SirenInUse.SirenInUseDeserializer.class)
 public enum SirenInUse implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), NOTINUSE(1, "notInUse"), INUSE(2, "inUse"), RESERVED(3, "reserved");
 
@@ -39,5 +41,22 @@ public enum SirenInUse implements Asn1Enumerated {
 	private SirenInUse(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SirenInUseSerializer extends EnumeratedSerializer<SirenInUse> {
+		public SirenInUseSerializer() {
+			super(SirenInUse.class);
+		}
+	}
+
+	public static class SirenInUseDeserializer extends EnumeratedDeserializer<SirenInUse> {
+		public SirenInUseDeserializer() {
+			super(SirenInUse.class);
+		}
+
+		@Override
+		protected SirenInUse[] listEnumValues() {
+			return SirenInUse.values();
+		}
 	}
 }

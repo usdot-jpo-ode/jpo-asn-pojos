@@ -22,14 +22,16 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = MUTCDCodeSerializer.class)
-@JsonDeserialize(using = MUTCDCodeDeserializer.class)
+@JsonSerialize(using = MUTCDCode.MUTCDCodeSerializer.class)
+@JsonDeserialize(using = MUTCDCode.MUTCDCodeDeserializer.class)
 public enum MUTCDCode implements Asn1Enumerated {
 	NONE(0, "none"), REGULATORY(1, "regulatory"), WARNING(2, "warning"), MAINTENANCE(3,
 			"maintenance"), MOTORISTSERVICE(4, "motoristService"), GUIDE(5, "guide"), REC(6, "rec");
@@ -40,5 +42,22 @@ public enum MUTCDCode implements Asn1Enumerated {
 	private MUTCDCode(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class MUTCDCodeSerializer extends EnumeratedSerializer<MUTCDCode> {
+		public MUTCDCodeSerializer() {
+			super(MUTCDCode.class);
+		}
+	}
+
+	public static class MUTCDCodeDeserializer extends EnumeratedDeserializer<MUTCDCode> {
+		public MUTCDCodeDeserializer() {
+			super(MUTCDCode.class);
+		}
+
+		@Override
+		protected MUTCDCode[] listEnumValues() {
+			return MUTCDCode.values();
+		}
 	}
 }

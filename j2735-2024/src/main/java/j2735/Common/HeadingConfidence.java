@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = HeadingConfidenceSerializer.class)
-@JsonDeserialize(using = HeadingConfidenceDeserializer.class)
+@JsonSerialize(using = HeadingConfidence.HeadingConfidenceSerializer.class)
+@JsonDeserialize(using = HeadingConfidence.HeadingConfidenceDeserializer.class)
 public enum HeadingConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), PREC10DEG(1, "prec10deg"), PREC05DEG(2, "prec05deg"), PREC01DEG(3,
 			"prec01deg"), PREC0_1DEG(4, "prec0-1deg"), PREC0_05DEG(5,
@@ -41,5 +43,22 @@ public enum HeadingConfidence implements Asn1Enumerated {
 	private HeadingConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class HeadingConfidenceSerializer extends EnumeratedSerializer<HeadingConfidence> {
+		public HeadingConfidenceSerializer() {
+			super(HeadingConfidence.class);
+		}
+	}
+
+	public static class HeadingConfidenceDeserializer extends EnumeratedDeserializer<HeadingConfidence> {
+		public HeadingConfidenceDeserializer() {
+			super(HeadingConfidence.class);
+		}
+
+		@Override
+		protected HeadingConfidence[] listEnumValues() {
+			return HeadingConfidence.values();
+		}
 	}
 }

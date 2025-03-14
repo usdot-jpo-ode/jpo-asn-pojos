@@ -22,14 +22,16 @@
 
 package j2735.AddGrpC;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AltitudeConfidenceSerializer.class)
-@JsonDeserialize(using = AltitudeConfidenceDeserializer.class)
+@JsonSerialize(using = AltitudeConfidence.AltitudeConfidenceSerializer.class)
+@JsonDeserialize(using = AltitudeConfidence.AltitudeConfidenceDeserializer.class)
 public enum AltitudeConfidence implements Asn1Enumerated {
 	ALT_000_01(0, "alt-000-01"), ALT_000_02(1, "alt-000-02"), ALT_000_05(2, "alt-000-05"), ALT_000_10(3,
 			"alt-000-10"), ALT_000_20(4, "alt-000-20"), ALT_000_50(5, "alt-000-50"), ALT_001_00(6,
@@ -44,5 +46,22 @@ public enum AltitudeConfidence implements Asn1Enumerated {
 	private AltitudeConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AltitudeConfidenceSerializer extends EnumeratedSerializer<AltitudeConfidence> {
+		public AltitudeConfidenceSerializer() {
+			super(AltitudeConfidence.class);
+		}
+	}
+
+	public static class AltitudeConfidenceDeserializer extends EnumeratedDeserializer<AltitudeConfidence> {
+		public AltitudeConfidenceDeserializer() {
+			super(AltitudeConfidence.class);
+		}
+
+		@Override
+		protected AltitudeConfidence[] listEnumValues() {
+			return AltitudeConfidence.values();
+		}
 	}
 }

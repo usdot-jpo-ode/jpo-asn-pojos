@@ -104,7 +104,7 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
 	@Getter
 	@JsonSerialize(using = EnumeratedVehWeightUnitsSerializer.class)
 	@JsonDeserialize(using = EnumeratedVehWeightUnitsDeserializer.class)
-	public static enum EnumeratedVehWeightUnits implements Asn1Enumerated {
+	public enum EnumeratedVehWeightUnits implements Asn1Enumerated {
 		POUNDS(0, "pounds"), KILOGRAMS(1, "kilograms");
 
 		private final int index;
@@ -117,13 +117,13 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
 	}
 
 	public static class EnumeratedVehWeightUnitsSerializer extends EnumeratedSerializer<EnumeratedVehWeightUnits> {
-		EnumeratedVehWeightUnitsSerializer() {
+		public EnumeratedVehWeightUnitsSerializer() {
 			super(EnumeratedVehWeightUnits.class);
 		}
 	}
 
 	public static class EnumeratedVehWeightUnitsDeserializer extends EnumeratedDeserializer<EnumeratedVehWeightUnits> {
-		EnumeratedVehWeightUnitsDeserializer() {
+		public EnumeratedVehWeightUnitsDeserializer() {
 			super(EnumeratedVehWeightUnits.class);
 		}
 

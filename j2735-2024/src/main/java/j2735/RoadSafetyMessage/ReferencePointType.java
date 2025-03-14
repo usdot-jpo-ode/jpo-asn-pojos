@@ -22,14 +22,16 @@
 
 package j2735.RoadSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ReferencePointTypeSerializer.class)
-@JsonDeserialize(using = ReferencePointTypeDeserializer.class)
+@JsonSerialize(using = ReferencePointType.ReferencePointTypeSerializer.class)
+@JsonDeserialize(using = ReferencePointType.ReferencePointTypeDeserializer.class)
 public enum ReferencePointType implements Asn1Enumerated {
 	STARTOFEVENT(0, "startOfEvent"), ARBITRARY(1, "arbitrary");
 
@@ -39,5 +41,22 @@ public enum ReferencePointType implements Asn1Enumerated {
 	private ReferencePointType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ReferencePointTypeSerializer extends EnumeratedSerializer<ReferencePointType> {
+		public ReferencePointTypeSerializer() {
+			super(ReferencePointType.class);
+		}
+	}
+
+	public static class ReferencePointTypeDeserializer extends EnumeratedDeserializer<ReferencePointType> {
+		public ReferencePointTypeDeserializer() {
+			super(ReferencePointType.class);
+		}
+
+		@Override
+		protected ReferencePointType[] listEnumValues() {
+			return ReferencePointType.values();
+		}
 	}
 }

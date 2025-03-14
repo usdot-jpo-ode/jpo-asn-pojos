@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = BrakeBoostAppliedSerializer.class)
-@JsonDeserialize(using = BrakeBoostAppliedDeserializer.class)
+@JsonSerialize(using = BrakeBoostApplied.BrakeBoostAppliedSerializer.class)
+@JsonDeserialize(using = BrakeBoostApplied.BrakeBoostAppliedDeserializer.class)
 public enum BrakeBoostApplied implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OFF(1, "off"), ON(2, "on");
 
@@ -39,5 +41,22 @@ public enum BrakeBoostApplied implements Asn1Enumerated {
 	private BrakeBoostApplied(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class BrakeBoostAppliedSerializer extends EnumeratedSerializer<BrakeBoostApplied> {
+		public BrakeBoostAppliedSerializer() {
+			super(BrakeBoostApplied.class);
+		}
+	}
+
+	public static class BrakeBoostAppliedDeserializer extends EnumeratedDeserializer<BrakeBoostApplied> {
+		public BrakeBoostAppliedDeserializer() {
+			super(BrakeBoostApplied.class);
+		}
+
+		@Override
+		protected BrakeBoostApplied[] listEnumValues() {
+			return BrakeBoostApplied.values();
+		}
 	}
 }

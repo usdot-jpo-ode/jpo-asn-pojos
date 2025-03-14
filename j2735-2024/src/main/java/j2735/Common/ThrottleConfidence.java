@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ThrottleConfidenceSerializer.class)
-@JsonDeserialize(using = ThrottleConfidenceDeserializer.class)
+@JsonSerialize(using = ThrottleConfidence.ThrottleConfidenceSerializer.class)
+@JsonDeserialize(using = ThrottleConfidence.ThrottleConfidenceDeserializer.class)
 public enum ThrottleConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), PREC10PERCENT(1, "prec10percent"), PREC1PERCENT(2, "prec1percent"), PREC0_5PERCENT(3,
 			"prec0-5percent");
@@ -40,5 +42,22 @@ public enum ThrottleConfidence implements Asn1Enumerated {
 	private ThrottleConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ThrottleConfidenceSerializer extends EnumeratedSerializer<ThrottleConfidence> {
+		public ThrottleConfidenceSerializer() {
+			super(ThrottleConfidence.class);
+		}
+	}
+
+	public static class ThrottleConfidenceDeserializer extends EnumeratedDeserializer<ThrottleConfidence> {
+		public ThrottleConfidenceDeserializer() {
+			super(ThrottleConfidence.class);
+		}
+
+		@Override
+		protected ThrottleConfidence[] listEnumValues() {
+			return ThrottleConfidence.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.CooperativeControlMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = LongitudinalControlStateSerializer.class)
-@JsonDeserialize(using = LongitudinalControlStateDeserializer.class)
+@JsonSerialize(using = LongitudinalControlState.LongitudinalControlStateSerializer.class)
+@JsonDeserialize(using = LongitudinalControlState.LongitudinalControlStateDeserializer.class)
 public enum LongitudinalControlState implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), MANUAL(1, "manual"), CC(2, "cc"), ACC(3, "acc"), CACCONE(4, "caccOne"), CACCMULTIPLE(
 			5, "caccMultiple"), SENSORAUTO(6, "sensorAuto"), FUSEDAUTO(7, "fusedAuto"), MANUALOVER(8, "manualOver");
@@ -40,5 +42,22 @@ public enum LongitudinalControlState implements Asn1Enumerated {
 	private LongitudinalControlState(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class LongitudinalControlStateSerializer extends EnumeratedSerializer<LongitudinalControlState> {
+		public LongitudinalControlStateSerializer() {
+			super(LongitudinalControlState.class);
+		}
+	}
+
+	public static class LongitudinalControlStateDeserializer extends EnumeratedDeserializer<LongitudinalControlState> {
+		public LongitudinalControlStateDeserializer() {
+			super(LongitudinalControlState.class);
+		}
+
+		@Override
+		protected LongitudinalControlState[] listEnumValues() {
+			return LongitudinalControlState.values();
+		}
 	}
 }

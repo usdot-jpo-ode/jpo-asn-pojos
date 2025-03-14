@@ -22,14 +22,16 @@
 
 package j2735.ManeuverSharingAndCoordinatingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = MSCMTypeSerializer.class)
-@JsonDeserialize(using = MSCMTypeDeserializer.class)
+@JsonSerialize(using = MSCMType.MSCMTypeSerializer.class)
+@JsonDeserialize(using = MSCMType.MSCMTypeDeserializer.class)
 public enum MSCMType implements Asn1Enumerated {
 	MANEUVERINTENT(0, "maneuverIntent"), MANEUVERREQUEST(1, "maneuverRequest"), MANEUVERRESPONSE(2,
 			"maneuverResponse"), MANEUVERRESERVATION(3, "maneuverReservation"), HVMANEUVERCANCELLATION(4,
@@ -44,5 +46,22 @@ public enum MSCMType implements Asn1Enumerated {
 	private MSCMType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class MSCMTypeSerializer extends EnumeratedSerializer<MSCMType> {
+		public MSCMTypeSerializer() {
+			super(MSCMType.class);
+		}
+	}
+
+	public static class MSCMTypeDeserializer extends EnumeratedDeserializer<MSCMType> {
+		public MSCMTypeDeserializer() {
+			super(MSCMType.class);
+		}
+
+		@Override
+		protected MSCMType[] listEnumValues() {
+			return MSCMType.values();
+		}
 	}
 }

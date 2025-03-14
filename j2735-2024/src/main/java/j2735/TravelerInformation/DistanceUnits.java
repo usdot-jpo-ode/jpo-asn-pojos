@@ -22,14 +22,16 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = DistanceUnitsSerializer.class)
-@JsonDeserialize(using = DistanceUnitsDeserializer.class)
+@JsonSerialize(using = DistanceUnits.DistanceUnitsSerializer.class)
+@JsonDeserialize(using = DistanceUnits.DistanceUnitsDeserializer.class)
 public enum DistanceUnits implements Asn1Enumerated {
 	CENTIMETER(0, "centimeter"), CM2_5(1, "cm2-5"), DECIMETER(2, "decimeter"), METER(3, "meter"), KILOMETER(4,
 			"kilometer"), FOOT(5, "foot"), YARD(6, "yard"), MILE(7, "mile");
@@ -40,5 +42,22 @@ public enum DistanceUnits implements Asn1Enumerated {
 	private DistanceUnits(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class DistanceUnitsSerializer extends EnumeratedSerializer<DistanceUnits> {
+		public DistanceUnitsSerializer() {
+			super(DistanceUnits.class);
+		}
+	}
+
+	public static class DistanceUnitsDeserializer extends EnumeratedDeserializer<DistanceUnits> {
+		public DistanceUnitsDeserializer() {
+			super(DistanceUnits.class);
+		}
+
+		@Override
+		protected DistanceUnits[] listEnumValues() {
+			return DistanceUnits.values();
+		}
 	}
 }

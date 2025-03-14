@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = IceTypeSerializer.class)
-@JsonDeserialize(using = IceTypeDeserializer.class)
+@JsonSerialize(using = IceType.IceTypeSerializer.class)
+@JsonDeserialize(using = IceType.IceTypeDeserializer.class)
 public enum IceType implements Asn1Enumerated {
 	SMOOTH(0, "smooth");
 
@@ -39,5 +41,22 @@ public enum IceType implements Asn1Enumerated {
 	private IceType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class IceTypeSerializer extends EnumeratedSerializer<IceType> {
+		public IceTypeSerializer() {
+			super(IceType.class);
+		}
+	}
+
+	public static class IceTypeDeserializer extends EnumeratedDeserializer<IceType> {
+		public IceTypeDeserializer() {
+			super(IceType.class);
+		}
+
+		@Override
+		protected IceType[] listEnumValues() {
+			return IceType.values();
+		}
 	}
 }

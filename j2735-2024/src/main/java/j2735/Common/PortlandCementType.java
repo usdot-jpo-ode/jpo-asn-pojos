@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = PortlandCementTypeSerializer.class)
-@JsonDeserialize(using = PortlandCementTypeDeserializer.class)
+@JsonSerialize(using = PortlandCementType.PortlandCementTypeSerializer.class)
+@JsonDeserialize(using = PortlandCementType.PortlandCementTypeDeserializer.class)
 public enum PortlandCementType implements Asn1Enumerated {
 	NEWSHARP(0, "newSharp"), TRAVELED(1, "traveled"), TRAFFICPOLISHED(2, "trafficPolished");
 
@@ -39,5 +41,22 @@ public enum PortlandCementType implements Asn1Enumerated {
 	private PortlandCementType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class PortlandCementTypeSerializer extends EnumeratedSerializer<PortlandCementType> {
+		public PortlandCementTypeSerializer() {
+			super(PortlandCementType.class);
+		}
+	}
+
+	public static class PortlandCementTypeDeserializer extends EnumeratedDeserializer<PortlandCementType> {
+		public PortlandCementTypeDeserializer() {
+			super(PortlandCementType.class);
+		}
+
+		@Override
+		protected PortlandCementType[] listEnumValues() {
+			return PortlandCementType.values();
+		}
 	}
 }

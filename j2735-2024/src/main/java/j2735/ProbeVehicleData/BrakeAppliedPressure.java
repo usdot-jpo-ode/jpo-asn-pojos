@@ -22,14 +22,16 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = BrakeAppliedPressureSerializer.class)
-@JsonDeserialize(using = BrakeAppliedPressureDeserializer.class)
+@JsonSerialize(using = BrakeAppliedPressure.BrakeAppliedPressureSerializer.class)
+@JsonDeserialize(using = BrakeAppliedPressure.BrakeAppliedPressureDeserializer.class)
 public enum BrakeAppliedPressure implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), MINPRESSURE(1, "minPressure"), BKLVL_2(2, "bkLvl-2"), BKLVL_3(3, "bkLvl-3"), BKLVL_4(
 			4, "bkLvl-4"), BKLVL_5(5, "bkLvl-5"), BKLVL_6(6, "bkLvl-6"), BKLVL_7(7, "bkLvl-7"), BKLVL_8(8,
@@ -43,5 +45,22 @@ public enum BrakeAppliedPressure implements Asn1Enumerated {
 	private BrakeAppliedPressure(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class BrakeAppliedPressureSerializer extends EnumeratedSerializer<BrakeAppliedPressure> {
+		public BrakeAppliedPressureSerializer() {
+			super(BrakeAppliedPressure.class);
+		}
+	}
+
+	public static class BrakeAppliedPressureDeserializer extends EnumeratedDeserializer<BrakeAppliedPressure> {
+		public BrakeAppliedPressureDeserializer() {
+			super(BrakeAppliedPressure.class);
+		}
+
+		@Override
+		protected BrakeAppliedPressure[] listEnumValues() {
+			return BrakeAppliedPressure.values();
+		}
 	}
 }

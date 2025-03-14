@@ -22,14 +22,16 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = MotorizedPropelledTypeSerializer.class)
-@JsonDeserialize(using = MotorizedPropelledTypeDeserializer.class)
+@JsonSerialize(using = MotorizedPropelledType.MotorizedPropelledTypeSerializer.class)
+@JsonDeserialize(using = MotorizedPropelledType.MotorizedPropelledTypeDeserializer.class)
 public enum MotorizedPropelledType implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OTHERTYPES(1, "otherTypes"), WHEELCHAIR(2, "wheelChair"), BICYCLE(3,
 			"bicycle"), SCOOTER(4, "scooter"), SELFBALANCINGDEVICE(5, "selfBalancingDevice");
@@ -40,5 +42,22 @@ public enum MotorizedPropelledType implements Asn1Enumerated {
 	private MotorizedPropelledType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class MotorizedPropelledTypeSerializer extends EnumeratedSerializer<MotorizedPropelledType> {
+		public MotorizedPropelledTypeSerializer() {
+			super(MotorizedPropelledType.class);
+		}
+	}
+
+	public static class MotorizedPropelledTypeDeserializer extends EnumeratedDeserializer<MotorizedPropelledType> {
+		public MotorizedPropelledTypeDeserializer() {
+			super(MotorizedPropelledType.class);
+		}
+
+		@Override
+		protected MotorizedPropelledType[] listEnumValues() {
+			return MotorizedPropelledType.values();
+		}
 	}
 }

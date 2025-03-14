@@ -22,14 +22,16 @@
 
 package j2735.SPAT;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AdvisorySpeedTypeSerializer.class)
-@JsonDeserialize(using = AdvisorySpeedTypeDeserializer.class)
+@JsonSerialize(using = AdvisorySpeedType.AdvisorySpeedTypeSerializer.class)
+@JsonDeserialize(using = AdvisorySpeedType.AdvisorySpeedTypeDeserializer.class)
 public enum AdvisorySpeedType implements Asn1Enumerated {
 	NONE(0, "none"), GREENWAVE(1, "greenwave"), ECODRIVE(2, "ecoDrive"), TRANSIT(3, "transit");
 
@@ -39,5 +41,22 @@ public enum AdvisorySpeedType implements Asn1Enumerated {
 	private AdvisorySpeedType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AdvisorySpeedTypeSerializer extends EnumeratedSerializer<AdvisorySpeedType> {
+		public AdvisorySpeedTypeSerializer() {
+			super(AdvisorySpeedType.class);
+		}
+	}
+
+	public static class AdvisorySpeedTypeDeserializer extends EnumeratedDeserializer<AdvisorySpeedType> {
+		public AdvisorySpeedTypeDeserializer() {
+			super(AdvisorySpeedType.class);
+		}
+
+		@Override
+		protected AdvisorySpeedType[] listEnumValues() {
+			return AdvisorySpeedType.values();
+		}
 	}
 }

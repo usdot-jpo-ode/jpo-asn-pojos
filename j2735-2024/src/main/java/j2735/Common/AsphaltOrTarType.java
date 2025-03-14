@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AsphaltOrTarTypeSerializer.class)
-@JsonDeserialize(using = AsphaltOrTarTypeDeserializer.class)
+@JsonSerialize(using = AsphaltOrTarType.AsphaltOrTarTypeSerializer.class)
+@JsonDeserialize(using = AsphaltOrTarType.AsphaltOrTarTypeDeserializer.class)
 public enum AsphaltOrTarType implements Asn1Enumerated {
 	NEWSHARP(0, "newSharp"), TRAVELED(1, "traveled"), TRAFFICPOLISHED(2, "trafficPolished"), EXCESSTAR(3, "excessTar");
 
@@ -39,5 +41,22 @@ public enum AsphaltOrTarType implements Asn1Enumerated {
 	private AsphaltOrTarType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AsphaltOrTarTypeSerializer extends EnumeratedSerializer<AsphaltOrTarType> {
+		public AsphaltOrTarTypeSerializer() {
+			super(AsphaltOrTarType.class);
+		}
+	}
+
+	public static class AsphaltOrTarTypeDeserializer extends EnumeratedDeserializer<AsphaltOrTarType> {
+		public AsphaltOrTarTypeDeserializer() {
+			super(AsphaltOrTarType.class);
+		}
+
+		@Override
+		protected AsphaltOrTarType[] listEnumValues() {
+			return AsphaltOrTarType.values();
+		}
 	}
 }

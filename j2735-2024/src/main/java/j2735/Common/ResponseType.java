@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ResponseTypeSerializer.class)
-@JsonDeserialize(using = ResponseTypeDeserializer.class)
+@JsonSerialize(using = ResponseType.ResponseTypeSerializer.class)
+@JsonDeserialize(using = ResponseType.ResponseTypeDeserializer.class)
 public enum ResponseType implements Asn1Enumerated {
 	NOTINUSEORNOTEQUIPPED(0, "notInUseOrNotEquipped"), EMERGENCY(1, "emergency"), NONEMERGENCY(2,
 			"nonEmergency"), PURSUIT(3, "pursuit"), STATIONARY(4,
@@ -41,5 +43,22 @@ public enum ResponseType implements Asn1Enumerated {
 	private ResponseType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ResponseTypeSerializer extends EnumeratedSerializer<ResponseType> {
+		public ResponseTypeSerializer() {
+			super(ResponseType.class);
+		}
+	}
+
+	public static class ResponseTypeDeserializer extends EnumeratedDeserializer<ResponseType> {
+		public ResponseTypeDeserializer() {
+			super(ResponseType.class);
+		}
+
+		@Override
+		protected ResponseType[] listEnumValues() {
+			return ResponseType.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.RoadWeatherMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = DataSourceInfoSerializer.class)
-@JsonDeserialize(using = DataSourceInfoDeserializer.class)
+@JsonSerialize(using = DataSourceInfo.DataSourceInfoSerializer.class)
+@JsonDeserialize(using = DataSourceInfo.DataSourceInfoDeserializer.class)
 public enum DataSourceInfo implements Asn1Enumerated {
 	MEASURED(0, "measured"), DERIVED(1, "derived");
 
@@ -39,5 +41,22 @@ public enum DataSourceInfo implements Asn1Enumerated {
 	private DataSourceInfo(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class DataSourceInfoSerializer extends EnumeratedSerializer<DataSourceInfo> {
+		public DataSourceInfoSerializer() {
+			super(DataSourceInfo.class);
+		}
+	}
+
+	public static class DataSourceInfoDeserializer extends EnumeratedDeserializer<DataSourceInfo> {
+		public DataSourceInfoDeserializer() {
+			super(DataSourceInfo.class);
+		}
+
+		@Override
+		protected DataSourceInfo[] listEnumValues() {
+			return DataSourceInfo.values();
+		}
 	}
 }

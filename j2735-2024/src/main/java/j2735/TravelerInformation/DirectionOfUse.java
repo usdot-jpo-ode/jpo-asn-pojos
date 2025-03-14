@@ -22,14 +22,16 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = DirectionOfUseSerializer.class)
-@JsonDeserialize(using = DirectionOfUseDeserializer.class)
+@JsonSerialize(using = DirectionOfUse.DirectionOfUseSerializer.class)
+@JsonDeserialize(using = DirectionOfUse.DirectionOfUseDeserializer.class)
 public enum DirectionOfUse implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), FORWARD(1, "forward"), REVERSE(2, "reverse"), BOTH(3, "both");
 
@@ -39,5 +41,22 @@ public enum DirectionOfUse implements Asn1Enumerated {
 	private DirectionOfUse(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class DirectionOfUseSerializer extends EnumeratedSerializer<DirectionOfUse> {
+		public DirectionOfUseSerializer() {
+			super(DirectionOfUse.class);
+		}
+	}
+
+	public static class DirectionOfUseDeserializer extends EnumeratedDeserializer<DirectionOfUse> {
+		public DirectionOfUseDeserializer() {
+			super(DirectionOfUse.class);
+		}
+
+		@Override
+		protected DirectionOfUse[] listEnumValues() {
+			return DirectionOfUse.values();
+		}
 	}
 }

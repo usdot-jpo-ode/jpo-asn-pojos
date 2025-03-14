@@ -22,14 +22,16 @@
 
 package j2735.AddGrpB;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SummerTimeSerializer.class)
-@JsonDeserialize(using = SummerTimeDeserializer.class)
+@JsonSerialize(using = SummerTime.SummerTimeSerializer.class)
+@JsonDeserialize(using = SummerTime.SummerTimeDeserializer.class)
 public enum SummerTime implements Asn1Enumerated {
 	NOTINSUMMERTIME(0, "notInSummerTime"), INSUMMERTIME(1, "inSummerTime");
 
@@ -39,5 +41,22 @@ public enum SummerTime implements Asn1Enumerated {
 	private SummerTime(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SummerTimeSerializer extends EnumeratedSerializer<SummerTime> {
+		public SummerTimeSerializer() {
+			super(SummerTime.class);
+		}
+	}
+
+	public static class SummerTimeDeserializer extends EnumeratedDeserializer<SummerTime> {
+		public SummerTimeDeserializer() {
+			super(SummerTime.class);
+		}
+
+		@Override
+		protected SummerTime[] listEnumValues() {
+			return SummerTime.values();
+		}
 	}
 }

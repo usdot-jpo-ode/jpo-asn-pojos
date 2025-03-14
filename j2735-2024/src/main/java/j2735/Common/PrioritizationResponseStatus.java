@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = PrioritizationResponseStatusSerializer.class)
-@JsonDeserialize(using = PrioritizationResponseStatusDeserializer.class)
+@JsonSerialize(using = PrioritizationResponseStatus.PrioritizationResponseStatusSerializer.class)
+@JsonDeserialize(using = PrioritizationResponseStatus.PrioritizationResponseStatusDeserializer.class)
 public enum PrioritizationResponseStatus implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), REQUESTED(1, "requested"), PROCESSING(2, "processing"), WATCHOTHERTRAFFIC(3,
 			"watchOtherTraffic"), GRANTED(4, "granted"), REJECTED(5,
@@ -41,5 +43,26 @@ public enum PrioritizationResponseStatus implements Asn1Enumerated {
 	private PrioritizationResponseStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class PrioritizationResponseStatusSerializer
+			extends
+				EnumeratedSerializer<PrioritizationResponseStatus> {
+		public PrioritizationResponseStatusSerializer() {
+			super(PrioritizationResponseStatus.class);
+		}
+	}
+
+	public static class PrioritizationResponseStatusDeserializer
+			extends
+				EnumeratedDeserializer<PrioritizationResponseStatus> {
+		public PrioritizationResponseStatusDeserializer() {
+			super(PrioritizationResponseStatus.class);
+		}
+
+		@Override
+		protected PrioritizationResponseStatus[] listEnumValues() {
+			return PrioritizationResponseStatus.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.SensorDataSharingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SizeValueConfidenceSerializer.class)
-@JsonDeserialize(using = SizeValueConfidenceDeserializer.class)
+@JsonSerialize(using = SizeValueConfidence.SizeValueConfidenceSerializer.class)
+@JsonDeserialize(using = SizeValueConfidence.SizeValueConfidenceDeserializer.class)
 public enum SizeValueConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), SIZE_100_00(1, "size-100-00"), SIZE_050_00(2, "size-050-00"), SIZE_020_00(3,
 			"size-020-00"), SIZE_010_00(4, "size-010-00"), SIZE_005_00(5, "size-005-00"), SIZE_002_00(6,
@@ -43,5 +45,22 @@ public enum SizeValueConfidence implements Asn1Enumerated {
 	private SizeValueConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SizeValueConfidenceSerializer extends EnumeratedSerializer<SizeValueConfidence> {
+		public SizeValueConfidenceSerializer() {
+			super(SizeValueConfidence.class);
+		}
+	}
+
+	public static class SizeValueConfidenceDeserializer extends EnumeratedDeserializer<SizeValueConfidence> {
+		public SizeValueConfidenceDeserializer() {
+			super(SizeValueConfidence.class);
+		}
+
+		@Override
+		protected SizeValueConfidence[] listEnumValues() {
+			return SizeValueConfidence.values();
+		}
 	}
 }

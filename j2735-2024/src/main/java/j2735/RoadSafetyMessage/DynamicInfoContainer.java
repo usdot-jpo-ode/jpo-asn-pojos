@@ -60,7 +60,7 @@ public class DynamicInfoContainer extends Asn1Sequence {
 	@Getter
 	@JsonSerialize(using = EnumeratedPrioritySerializer.class)
 	@JsonDeserialize(using = EnumeratedPriorityDeserializer.class)
-	public static enum EnumeratedPriority implements Asn1Enumerated {
+	public enum EnumeratedPriority implements Asn1Enumerated {
 		LOW_PRIORITY(0, "low-priority"), MEDIUM_PRIORITY(1, "medium-priority"), HIGH_PRIORITY(2,
 				"high-priority"), CRITICAL(3, "critical");
 
@@ -74,13 +74,13 @@ public class DynamicInfoContainer extends Asn1Sequence {
 	}
 
 	public static class EnumeratedPrioritySerializer extends EnumeratedSerializer<EnumeratedPriority> {
-		EnumeratedPrioritySerializer() {
+		public EnumeratedPrioritySerializer() {
 			super(EnumeratedPriority.class);
 		}
 	}
 
 	public static class EnumeratedPriorityDeserializer extends EnumeratedDeserializer<EnumeratedPriority> {
-		EnumeratedPriorityDeserializer() {
+		public EnumeratedPriorityDeserializer() {
 			super(EnumeratedPriority.class);
 		}
 

@@ -22,14 +22,16 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = WheelSensorStatusSerializer.class)
-@JsonDeserialize(using = WheelSensorStatusDeserializer.class)
+@JsonSerialize(using = WheelSensorStatus.WheelSensorStatusSerializer.class)
+@JsonDeserialize(using = WheelSensorStatus.WheelSensorStatusDeserializer.class)
 public enum WheelSensorStatus implements Asn1Enumerated {
 	OFF(0, "off"), ON(1, "on"), NOTDEFINED(2, "notDefined"), NOTSUPPORTED(3, "notSupported");
 
@@ -39,5 +41,22 @@ public enum WheelSensorStatus implements Asn1Enumerated {
 	private WheelSensorStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class WheelSensorStatusSerializer extends EnumeratedSerializer<WheelSensorStatus> {
+		public WheelSensorStatusSerializer() {
+			super(WheelSensorStatus.class);
+		}
+	}
+
+	public static class WheelSensorStatusDeserializer extends EnumeratedDeserializer<WheelSensorStatus> {
+		public WheelSensorStatusDeserializer() {
+			super(WheelSensorStatus.class);
+		}
+
+		@Override
+		protected WheelSensorStatus[] listEnumValues() {
+			return WheelSensorStatus.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.ITIS;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = IncidentResponseEquipmentSerializer.class)
-@JsonDeserialize(using = IncidentResponseEquipmentDeserializer.class)
+@JsonSerialize(using = IncidentResponseEquipment.IncidentResponseEquipmentSerializer.class)
+@JsonDeserialize(using = IncidentResponseEquipment.IncidentResponseEquipmentDeserializer.class)
 public enum IncidentResponseEquipment implements Asn1Enumerated {
 	GROUND_FIRE_SUPPRESSION(9985, "ground-fire-suppression"), HEAVY_GROUND_EQUIPMENT(9986,
 			"heavy-ground-equipment"), AIRCRAFT(9988, "aircraft"), MARINE_EQUIPMENT(9989,
@@ -162,5 +164,24 @@ public enum IncidentResponseEquipment implements Asn1Enumerated {
 	private IncidentResponseEquipment(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class IncidentResponseEquipmentSerializer extends EnumeratedSerializer<IncidentResponseEquipment> {
+		public IncidentResponseEquipmentSerializer() {
+			super(IncidentResponseEquipment.class);
+		}
+	}
+
+	public static class IncidentResponseEquipmentDeserializer
+			extends
+				EnumeratedDeserializer<IncidentResponseEquipment> {
+		public IncidentResponseEquipmentDeserializer() {
+			super(IncidentResponseEquipment.class);
+		}
+
+		@Override
+		protected IncidentResponseEquipment[] listEnumValues() {
+			return IncidentResponseEquipment.values();
+		}
 	}
 }

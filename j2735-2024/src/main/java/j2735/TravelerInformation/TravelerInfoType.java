@@ -22,14 +22,16 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TravelerInfoTypeSerializer.class)
-@JsonDeserialize(using = TravelerInfoTypeDeserializer.class)
+@JsonSerialize(using = TravelerInfoType.TravelerInfoTypeSerializer.class)
+@JsonDeserialize(using = TravelerInfoType.TravelerInfoTypeDeserializer.class)
 public enum TravelerInfoType implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), ADVISORY(1, "advisory"), ROADSIGNAGE(2, "roadSignage"), COMMERCIALSIGNAGE(3,
 			"commercialSignage");
@@ -40,5 +42,22 @@ public enum TravelerInfoType implements Asn1Enumerated {
 	private TravelerInfoType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TravelerInfoTypeSerializer extends EnumeratedSerializer<TravelerInfoType> {
+		public TravelerInfoTypeSerializer() {
+			super(TravelerInfoType.class);
+		}
+	}
+
+	public static class TravelerInfoTypeDeserializer extends EnumeratedDeserializer<TravelerInfoType> {
+		public TravelerInfoTypeDeserializer() {
+			super(TravelerInfoType.class);
+		}
+
+		@Override
+		protected TravelerInfoType[] listEnumValues() {
+			return TravelerInfoType.values();
+		}
 	}
 }

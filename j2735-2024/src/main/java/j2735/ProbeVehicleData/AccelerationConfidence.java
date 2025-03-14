@@ -22,14 +22,16 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AccelerationConfidenceSerializer.class)
-@JsonDeserialize(using = AccelerationConfidenceDeserializer.class)
+@JsonSerialize(using = AccelerationConfidence.AccelerationConfidenceSerializer.class)
+@JsonDeserialize(using = AccelerationConfidence.AccelerationConfidenceDeserializer.class)
 public enum AccelerationConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), ACCL_100_00(1, "accl-100-00"), ACCL_010_00(2, "accl-010-00"), ACCL_005_00(3,
 			"accl-005-00"), ACCL_001_00(4, "accl-001-00"), ACCL_000_10(5,
@@ -41,5 +43,22 @@ public enum AccelerationConfidence implements Asn1Enumerated {
 	private AccelerationConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AccelerationConfidenceSerializer extends EnumeratedSerializer<AccelerationConfidence> {
+		public AccelerationConfidenceSerializer() {
+			super(AccelerationConfidence.class);
+		}
+	}
+
+	public static class AccelerationConfidenceDeserializer extends EnumeratedDeserializer<AccelerationConfidence> {
+		public AccelerationConfidenceDeserializer() {
+			super(AccelerationConfidence.class);
+		}
+
+		@Override
+		protected AccelerationConfidence[] listEnumValues() {
+			return AccelerationConfidence.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.TollAdvertisementMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = VehicleTypesSerializer.class)
-@JsonDeserialize(using = VehicleTypesDeserializer.class)
+@JsonSerialize(using = VehicleTypes.VehicleTypesSerializer.class)
+@JsonDeserialize(using = VehicleTypes.VehicleTypesDeserializer.class)
 public enum VehicleTypes implements Asn1Enumerated {
 	MOTORCYCLES(1, "motorcycles"), PASSENGERCARS(2, "passengerCars"), FOURTIRESINGLEUNIT(3,
 			"fourTireSingleUnit"), BUSES(4, "buses"), TWOAXLESIXTIRESINGLEUNIT(5,
@@ -51,5 +53,22 @@ public enum VehicleTypes implements Asn1Enumerated {
 	private VehicleTypes(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class VehicleTypesSerializer extends EnumeratedSerializer<VehicleTypes> {
+		public VehicleTypesSerializer() {
+			super(VehicleTypes.class);
+		}
+	}
+
+	public static class VehicleTypesDeserializer extends EnumeratedDeserializer<VehicleTypes> {
+		public VehicleTypesDeserializer() {
+			super(VehicleTypes.class);
+		}
+
+		@Override
+		protected VehicleTypes[] listEnumValues() {
+			return VehicleTypes.values();
+		}
 	}
 }

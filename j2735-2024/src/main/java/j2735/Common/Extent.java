@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ExtentSerializer.class)
-@JsonDeserialize(using = ExtentDeserializer.class)
+@JsonSerialize(using = Extent.ExtentSerializer.class)
+@JsonDeserialize(using = Extent.ExtentDeserializer.class)
 public enum Extent implements Asn1Enumerated {
 	USEINSTANTLYONLY(0, "useInstantlyOnly"), USEFOR3METERS(1, "useFor3meters"), USEFOR10METERS(2,
 			"useFor10meters"), USEFOR50METERS(3, "useFor50meters"), USEFOR100METERS(4,
@@ -49,5 +51,22 @@ public enum Extent implements Asn1Enumerated {
 	private Extent(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ExtentSerializer extends EnumeratedSerializer<Extent> {
+		public ExtentSerializer() {
+			super(Extent.class);
+		}
+	}
+
+	public static class ExtentDeserializer extends EnumeratedDeserializer<Extent> {
+		public ExtentDeserializer() {
+			super(Extent.class);
+		}
+
+		@Override
+		protected Extent[] listEnumValues() {
+			return Extent.values();
+		}
 	}
 }

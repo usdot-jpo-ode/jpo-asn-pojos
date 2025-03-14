@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = PositionConfidenceSerializer.class)
-@JsonDeserialize(using = PositionConfidenceDeserializer.class)
+@JsonSerialize(using = PositionConfidence.PositionConfidenceSerializer.class)
+@JsonDeserialize(using = PositionConfidence.PositionConfidenceDeserializer.class)
 public enum PositionConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), A500M(1, "a500m"), A200M(2, "a200m"), A100M(3, "a100m"), A50M(4, "a50m"), A20M(5,
 			"a20m"), A10M(6, "a10m"), A5M(7, "a5m"), A2M(8, "a2m"), A1M(9, "a1m"), A50CM(10, "a50cm"), A20CM(11,
@@ -41,5 +43,22 @@ public enum PositionConfidence implements Asn1Enumerated {
 	private PositionConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class PositionConfidenceSerializer extends EnumeratedSerializer<PositionConfidence> {
+		public PositionConfidenceSerializer() {
+			super(PositionConfidence.class);
+		}
+	}
+
+	public static class PositionConfidenceDeserializer extends EnumeratedDeserializer<PositionConfidence> {
+		public PositionConfidenceDeserializer() {
+			super(PositionConfidence.class);
+		}
+
+		@Override
+		protected PositionConfidence[] listEnumValues() {
+			return PositionConfidence.values();
+		}
 	}
 }

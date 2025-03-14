@@ -22,14 +22,16 @@
 
 package j2735.SPAT;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = MovementPhaseStateSerializer.class)
-@JsonDeserialize(using = MovementPhaseStateDeserializer.class)
+@JsonSerialize(using = MovementPhaseState.MovementPhaseStateSerializer.class)
+@JsonDeserialize(using = MovementPhaseState.MovementPhaseStateDeserializer.class)
 public enum MovementPhaseState implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), DARK(1, "dark"), STOP_THEN_PROCEED(2, "stop-Then-Proceed"), STOP_AND_REMAIN(3,
 			"stop-And-Remain"), PRE_MOVEMENT(4, "pre-Movement"), PERMISSIVE_MOVEMENT_ALLOWED(5,
@@ -45,5 +47,22 @@ public enum MovementPhaseState implements Asn1Enumerated {
 	private MovementPhaseState(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class MovementPhaseStateSerializer extends EnumeratedSerializer<MovementPhaseState> {
+		public MovementPhaseStateSerializer() {
+			super(MovementPhaseState.class);
+		}
+	}
+
+	public static class MovementPhaseStateDeserializer extends EnumeratedDeserializer<MovementPhaseState> {
+		public MovementPhaseStateDeserializer() {
+			super(MovementPhaseState.class);
+		}
+
+		@Override
+		protected MovementPhaseState[] listEnumValues() {
+			return MovementPhaseState.values();
+		}
 	}
 }

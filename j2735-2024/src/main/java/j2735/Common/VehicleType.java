@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = VehicleTypeSerializer.class)
-@JsonDeserialize(using = VehicleTypeDeserializer.class)
+@JsonSerialize(using = VehicleType.VehicleTypeSerializer.class)
+@JsonDeserialize(using = VehicleType.VehicleTypeDeserializer.class)
 public enum VehicleType implements Asn1Enumerated {
 	NONE(0, "none"), UNKNOWN(1, "unknown"), SPECIAL(2, "special"), MOTO(3, "moto"), CAR(4, "car"), CAROTHER(5,
 			"carOther"), BUS(6, "bus"), AXLECNT2(7, "axleCnt2"), AXLECNT3(8, "axleCnt3"), AXLECNT4(9,
@@ -44,5 +46,22 @@ public enum VehicleType implements Asn1Enumerated {
 	private VehicleType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class VehicleTypeSerializer extends EnumeratedSerializer<VehicleType> {
+		public VehicleTypeSerializer() {
+			super(VehicleType.class);
+		}
+	}
+
+	public static class VehicleTypeDeserializer extends EnumeratedDeserializer<VehicleType> {
+		public VehicleTypeDeserializer() {
+			super(VehicleType.class);
+		}
+
+		@Override
+		protected VehicleType[] listEnumValues() {
+			return VehicleType.values();
+		}
 	}
 }

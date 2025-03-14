@@ -22,14 +22,16 @@
 
 package j2735.ProbeDataConfig;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = CfgMsgDictionarySerializer.class)
-@JsonDeserialize(using = CfgMsgDictionaryDeserializer.class)
+@JsonSerialize(using = CfgMsgDictionary.CfgMsgDictionarySerializer.class)
+@JsonDeserialize(using = CfgMsgDictionary.CfgMsgDictionaryDeserializer.class)
 public enum CfgMsgDictionary implements Asn1Enumerated {
 	SAE(1, "sae"), ETSI(2, "etsi"), ISO(3, "iso");
 
@@ -39,5 +41,22 @@ public enum CfgMsgDictionary implements Asn1Enumerated {
 	private CfgMsgDictionary(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class CfgMsgDictionarySerializer extends EnumeratedSerializer<CfgMsgDictionary> {
+		public CfgMsgDictionarySerializer() {
+			super(CfgMsgDictionary.class);
+		}
+	}
+
+	public static class CfgMsgDictionaryDeserializer extends EnumeratedDeserializer<CfgMsgDictionary> {
+		public CfgMsgDictionaryDeserializer() {
+			super(CfgMsgDictionary.class);
+		}
+
+		@Override
+		protected CfgMsgDictionary[] listEnumValues() {
+			return CfgMsgDictionary.values();
+		}
 	}
 }

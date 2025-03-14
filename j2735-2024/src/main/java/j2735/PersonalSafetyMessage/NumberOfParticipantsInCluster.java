@@ -22,14 +22,16 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = NumberOfParticipantsInClusterSerializer.class)
-@JsonDeserialize(using = NumberOfParticipantsInClusterDeserializer.class)
+@JsonSerialize(using = NumberOfParticipantsInCluster.NumberOfParticipantsInClusterSerializer.class)
+@JsonDeserialize(using = NumberOfParticipantsInCluster.NumberOfParticipantsInClusterDeserializer.class)
 public enum NumberOfParticipantsInCluster implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), SMALL(1, "small"), MEDIUM(2, "medium"), LARGE(3, "large");
 
@@ -39,5 +41,26 @@ public enum NumberOfParticipantsInCluster implements Asn1Enumerated {
 	private NumberOfParticipantsInCluster(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class NumberOfParticipantsInClusterSerializer
+			extends
+				EnumeratedSerializer<NumberOfParticipantsInCluster> {
+		public NumberOfParticipantsInClusterSerializer() {
+			super(NumberOfParticipantsInCluster.class);
+		}
+	}
+
+	public static class NumberOfParticipantsInClusterDeserializer
+			extends
+				EnumeratedDeserializer<NumberOfParticipantsInCluster> {
+		public NumberOfParticipantsInClusterDeserializer() {
+			super(NumberOfParticipantsInCluster.class);
+		}
+
+		@Override
+		protected NumberOfParticipantsInCluster[] listEnumValues() {
+			return NumberOfParticipantsInCluster.values();
+		}
 	}
 }

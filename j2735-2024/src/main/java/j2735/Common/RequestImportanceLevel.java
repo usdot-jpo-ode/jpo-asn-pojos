@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RequestImportanceLevelSerializer.class)
-@JsonDeserialize(using = RequestImportanceLevelDeserializer.class)
+@JsonSerialize(using = RequestImportanceLevel.RequestImportanceLevelSerializer.class)
+@JsonDeserialize(using = RequestImportanceLevel.RequestImportanceLevelDeserializer.class)
 public enum RequestImportanceLevel implements Asn1Enumerated {
 	REQUESTIMPORTANCELEVELUNKNOWN(0, "requestImportanceLevelUnKnown"), REQUESTIMPORTANCELEVEL1(1,
 			"requestImportanceLevel1"), REQUESTIMPORTANCELEVEL2(2, "requestImportanceLevel2"), REQUESTIMPORTANCELEVEL3(
@@ -59,5 +61,22 @@ public enum RequestImportanceLevel implements Asn1Enumerated {
 	private RequestImportanceLevel(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RequestImportanceLevelSerializer extends EnumeratedSerializer<RequestImportanceLevel> {
+		public RequestImportanceLevelSerializer() {
+			super(RequestImportanceLevel.class);
+		}
+	}
+
+	public static class RequestImportanceLevelDeserializer extends EnumeratedDeserializer<RequestImportanceLevel> {
+		public RequestImportanceLevelDeserializer() {
+			super(RequestImportanceLevel.class);
+		}
+
+		@Override
+		protected RequestImportanceLevel[] listEnumValues() {
+			return RequestImportanceLevel.values();
+		}
 	}
 }

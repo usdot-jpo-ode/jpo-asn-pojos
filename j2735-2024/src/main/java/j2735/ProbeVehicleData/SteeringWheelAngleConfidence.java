@@ -22,14 +22,16 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SteeringWheelAngleConfidenceSerializer.class)
-@JsonDeserialize(using = SteeringWheelAngleConfidenceDeserializer.class)
+@JsonSerialize(using = SteeringWheelAngleConfidence.SteeringWheelAngleConfidenceSerializer.class)
+@JsonDeserialize(using = SteeringWheelAngleConfidence.SteeringWheelAngleConfidenceDeserializer.class)
 public enum SteeringWheelAngleConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), PREC2DEG(1, "prec2deg"), PREC1DEG(2, "prec1deg"), PREC0_02DEG(3, "prec0-02deg");
 
@@ -39,5 +41,26 @@ public enum SteeringWheelAngleConfidence implements Asn1Enumerated {
 	private SteeringWheelAngleConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SteeringWheelAngleConfidenceSerializer
+			extends
+				EnumeratedSerializer<SteeringWheelAngleConfidence> {
+		public SteeringWheelAngleConfidenceSerializer() {
+			super(SteeringWheelAngleConfidence.class);
+		}
+	}
+
+	public static class SteeringWheelAngleConfidenceDeserializer
+			extends
+				EnumeratedDeserializer<SteeringWheelAngleConfidence> {
+		public SteeringWheelAngleConfidenceDeserializer() {
+			super(SteeringWheelAngleConfidence.class);
+		}
+
+		@Override
+		protected SteeringWheelAngleConfidence[] listEnumValues() {
+			return SteeringWheelAngleConfidence.values();
+		}
 	}
 }

@@ -57,7 +57,7 @@ public class Lpn extends Asn1Sequence {
 	@Getter
 	@JsonSerialize(using = EnumeratedAlphabetIndicatorSerializer.class)
 	@JsonDeserialize(using = EnumeratedAlphabetIndicatorDeserializer.class)
-	public static enum EnumeratedAlphabetIndicator implements Asn1Enumerated {
+	public enum EnumeratedAlphabetIndicator implements Asn1Enumerated {
 		LATINALPHABETNO1(1, "latinAlphabetNo1"), LATINALPHABETNO2(2, "latinAlphabetNo2"), LATINALPHABETNO3(3,
 				"latinAlphabetNo3"), LATINALPHABETNO4(4, "latinAlphabetNo4"), LATINCYRILLICALPHABET(5,
 						"latinCyrillicAlphabet"), LATINARABICALPHABET(6, "latinArabicAlphabet"), LATINGREEKALPHABET(7,
@@ -116,7 +116,7 @@ public class Lpn extends Asn1Sequence {
 	public static class EnumeratedAlphabetIndicatorSerializer
 			extends
 				EnumeratedSerializer<EnumeratedAlphabetIndicator> {
-		EnumeratedAlphabetIndicatorSerializer() {
+		public EnumeratedAlphabetIndicatorSerializer() {
 			super(EnumeratedAlphabetIndicator.class);
 		}
 	}
@@ -124,7 +124,7 @@ public class Lpn extends Asn1Sequence {
 	public static class EnumeratedAlphabetIndicatorDeserializer
 			extends
 				EnumeratedDeserializer<EnumeratedAlphabetIndicator> {
-		EnumeratedAlphabetIndicatorDeserializer() {
+		public EnumeratedAlphabetIndicatorDeserializer() {
 			super(EnumeratedAlphabetIndicator.class);
 		}
 

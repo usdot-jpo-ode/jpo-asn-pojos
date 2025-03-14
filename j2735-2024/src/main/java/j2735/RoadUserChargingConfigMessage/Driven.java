@@ -22,14 +22,16 @@
 
 package j2735.RoadUserChargingConfigMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = DrivenSerializer.class)
-@JsonDeserialize(using = DrivenDeserializer.class)
+@JsonSerialize(using = Driven.DrivenSerializer.class)
+@JsonDeserialize(using = Driven.DrivenDeserializer.class)
 public enum Driven implements Asn1Enumerated {
 	PERMIN(0, "perMin"), PERHOUR(1, "perHour"), PERDAY(2, "perDay"), PERDISTMILE(3, "perDistMile"), PERDISTKILO(4,
 			"perDistKilo");
@@ -40,5 +42,22 @@ public enum Driven implements Asn1Enumerated {
 	private Driven(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class DrivenSerializer extends EnumeratedSerializer<Driven> {
+		public DrivenSerializer() {
+			super(Driven.class);
+		}
+	}
+
+	public static class DrivenDeserializer extends EnumeratedDeserializer<Driven> {
+		public DrivenDeserializer() {
+			super(Driven.class);
+		}
+
+		@Override
+		protected Driven[] listEnumValues() {
+			return Driven.values();
+		}
 	}
 }

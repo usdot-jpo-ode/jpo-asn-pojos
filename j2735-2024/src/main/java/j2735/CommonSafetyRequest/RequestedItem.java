@@ -22,14 +22,16 @@
 
 package j2735.CommonSafetyRequest;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RequestedItemSerializer.class)
-@JsonDeserialize(using = RequestedItemDeserializer.class)
+@JsonSerialize(using = RequestedItem.RequestedItemSerializer.class)
+@JsonDeserialize(using = RequestedItem.RequestedItemDeserializer.class)
 public enum RequestedItem implements Asn1Enumerated {
 	RESERVED(0, "reserved"), ITEMA(1, "itemA"), ITEMB(2, "itemB"), ITEMC(3, "itemC"), ITEMD(4, "itemD"), ITEME(5,
 			"itemE"), ITEMF(6, "itemF"), ITEMG(7, "itemG"), ITEMI(8, "itemI"), ITEMJ(9,
@@ -42,5 +44,22 @@ public enum RequestedItem implements Asn1Enumerated {
 	private RequestedItem(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RequestedItemSerializer extends EnumeratedSerializer<RequestedItem> {
+		public RequestedItemSerializer() {
+			super(RequestedItem.class);
+		}
+	}
+
+	public static class RequestedItemDeserializer extends EnumeratedDeserializer<RequestedItem> {
+		public RequestedItemDeserializer() {
+			super(RequestedItem.class);
+		}
+
+		@Override
+		protected RequestedItem[] listEnumValues() {
+			return RequestedItem.values();
+		}
 	}
 }

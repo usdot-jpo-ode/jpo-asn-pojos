@@ -22,14 +22,16 @@
 
 package j2735.SensorDataSharingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ObjectTypeSerializer.class)
-@JsonDeserialize(using = ObjectTypeDeserializer.class)
+@JsonSerialize(using = ObjectType.ObjectTypeSerializer.class)
+@JsonDeserialize(using = ObjectType.ObjectTypeDeserializer.class)
 public enum ObjectType implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), VEHICLE(1, "vehicle"), VRU(2, "vru"), ANIMAL(3, "animal");
 
@@ -39,5 +41,22 @@ public enum ObjectType implements Asn1Enumerated {
 	private ObjectType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ObjectTypeSerializer extends EnumeratedSerializer<ObjectType> {
+		public ObjectTypeSerializer() {
+			super(ObjectType.class);
+		}
+	}
+
+	public static class ObjectTypeDeserializer extends EnumeratedDeserializer<ObjectType> {
+		public ObjectTypeDeserializer() {
+			super(ObjectType.class);
+		}
+
+		@Override
+		protected ObjectType[] listEnumValues() {
+			return ObjectType.values();
+		}
 	}
 }

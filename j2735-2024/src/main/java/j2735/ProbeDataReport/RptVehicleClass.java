@@ -22,14 +22,16 @@
 
 package j2735.ProbeDataReport;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RptVehicleClassSerializer.class)
-@JsonDeserialize(using = RptVehicleClassDeserializer.class)
+@JsonSerialize(using = RptVehicleClass.RptVehicleClassSerializer.class)
+@JsonDeserialize(using = RptVehicleClass.RptVehicleClassDeserializer.class)
 public enum RptVehicleClass implements Asn1Enumerated {
 	MOTORCYCLES(1, "motorcycles"), PASSENGERCARS(2, "passengerCars"), OTHER2AXLE4TIRESINGLEUNITVEHS(3,
 			"other2axle4tireSingleUnitVehs"), BUSES(4, "buses"), TWOAXLE6TIRESINGLEUNITTRUCKS(5,
@@ -52,5 +54,22 @@ public enum RptVehicleClass implements Asn1Enumerated {
 	private RptVehicleClass(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RptVehicleClassSerializer extends EnumeratedSerializer<RptVehicleClass> {
+		public RptVehicleClassSerializer() {
+			super(RptVehicleClass.class);
+		}
+	}
+
+	public static class RptVehicleClassDeserializer extends EnumeratedDeserializer<RptVehicleClass> {
+		public RptVehicleClassDeserializer() {
+			super(RptVehicleClass.class);
+		}
+
+		@Override
+		protected RptVehicleClass[] listEnumValues() {
+			return RptVehicleClass.values();
+		}
 	}
 }

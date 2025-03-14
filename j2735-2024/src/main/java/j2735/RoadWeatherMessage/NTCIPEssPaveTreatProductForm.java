@@ -22,14 +22,16 @@
 
 package j2735.RoadWeatherMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = NTCIPEssPaveTreatProductFormSerializer.class)
-@JsonDeserialize(using = NTCIPEssPaveTreatProductFormDeserializer.class)
+@JsonSerialize(using = NTCIPEssPaveTreatProductForm.NTCIPEssPaveTreatProductFormSerializer.class)
+@JsonDeserialize(using = NTCIPEssPaveTreatProductForm.NTCIPEssPaveTreatProductFormDeserializer.class)
 public enum NTCIPEssPaveTreatProductForm implements Asn1Enumerated {
 	OTHER(1, "other"), DRY(2, "dry"), PREWET(3, "prewet"), LIQUID(4, "liquid");
 
@@ -39,5 +41,26 @@ public enum NTCIPEssPaveTreatProductForm implements Asn1Enumerated {
 	private NTCIPEssPaveTreatProductForm(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class NTCIPEssPaveTreatProductFormSerializer
+			extends
+				EnumeratedSerializer<NTCIPEssPaveTreatProductForm> {
+		public NTCIPEssPaveTreatProductFormSerializer() {
+			super(NTCIPEssPaveTreatProductForm.class);
+		}
+	}
+
+	public static class NTCIPEssPaveTreatProductFormDeserializer
+			extends
+				EnumeratedDeserializer<NTCIPEssPaveTreatProductForm> {
+		public NTCIPEssPaveTreatProductFormDeserializer() {
+			super(NTCIPEssPaveTreatProductForm.class);
+		}
+
+		@Override
+		protected NTCIPEssPaveTreatProductForm[] listEnumValues() {
+			return NTCIPEssPaveTreatProductForm.values();
+		}
 	}
 }

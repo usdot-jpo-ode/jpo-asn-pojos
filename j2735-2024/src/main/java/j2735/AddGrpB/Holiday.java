@@ -22,14 +22,16 @@
 
 package j2735.AddGrpB;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = HolidaySerializer.class)
-@JsonDeserialize(using = HolidayDeserializer.class)
+@JsonSerialize(using = Holiday.HolidaySerializer.class)
+@JsonDeserialize(using = Holiday.HolidayDeserializer.class)
 public enum Holiday implements Asn1Enumerated {
 	WEEKDAY(0, "weekday"), HOLIDAY(1, "holiday");
 
@@ -39,5 +41,22 @@ public enum Holiday implements Asn1Enumerated {
 	private Holiday(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class HolidaySerializer extends EnumeratedSerializer<Holiday> {
+		public HolidaySerializer() {
+			super(Holiday.class);
+		}
+	}
+
+	public static class HolidayDeserializer extends EnumeratedDeserializer<Holiday> {
+		public HolidayDeserializer() {
+			super(Holiday.class);
+		}
+
+		@Override
+		protected Holiday[] listEnumValues() {
+			return Holiday.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.SensorDataSharingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RollRateConfidenceSerializer.class)
-@JsonDeserialize(using = RollRateConfidenceDeserializer.class)
+@JsonSerialize(using = RollRateConfidence.RollRateConfidenceSerializer.class)
+@JsonDeserialize(using = RollRateConfidence.RollRateConfidenceDeserializer.class)
 public enum RollRateConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), DEGSEC_100_00(1, "degSec-100-00"), DEGSEC_010_00(2, "degSec-010-00"), DEGSEC_005_00(
 			3, "degSec-005-00"), DEGSEC_001_00(4, "degSec-001-00"), DEGSEC_000_10(5,
@@ -41,5 +43,22 @@ public enum RollRateConfidence implements Asn1Enumerated {
 	private RollRateConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RollRateConfidenceSerializer extends EnumeratedSerializer<RollRateConfidence> {
+		public RollRateConfidenceSerializer() {
+			super(RollRateConfidence.class);
+		}
+	}
+
+	public static class RollRateConfidenceDeserializer extends EnumeratedDeserializer<RollRateConfidence> {
+		public RollRateConfidenceDeserializer() {
+			super(RollRateConfidence.class);
+		}
+
+		@Override
+		protected RollRateConfidence[] listEnumValues() {
+			return RollRateConfidence.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.ITIS;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = GenericLocationsSerializer.class)
-@JsonDeserialize(using = GenericLocationsDeserializer.class)
+@JsonSerialize(using = GenericLocations.GenericLocationsSerializer.class)
+@JsonDeserialize(using = GenericLocations.GenericLocationsDeserializer.class)
 public enum GenericLocations implements Asn1Enumerated {
 	ON_BRIDGES(7937, "on-bridges"), IN_TUNNELS(7938, "in-tunnels"), ENTERING_OR_LEAVING_TUNNELS(7939,
 			"entering-or-leaving-tunnels"), ON_RAMPS(7940, "on-ramps"), IN_ROAD_CONSTRUCTION_AREA(7941,
@@ -205,5 +207,22 @@ public enum GenericLocations implements Asn1Enumerated {
 	private GenericLocations(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class GenericLocationsSerializer extends EnumeratedSerializer<GenericLocations> {
+		public GenericLocationsSerializer() {
+			super(GenericLocations.class);
+		}
+	}
+
+	public static class GenericLocationsDeserializer extends EnumeratedDeserializer<GenericLocations> {
+		public GenericLocationsDeserializer() {
+			super(GenericLocations.class);
+		}
+
+		@Override
+		protected GenericLocations[] listEnumValues() {
+			return GenericLocations.values();
+		}
 	}
 }

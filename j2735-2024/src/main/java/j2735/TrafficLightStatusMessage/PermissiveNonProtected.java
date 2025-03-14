@@ -22,14 +22,16 @@
 
 package j2735.TrafficLightStatusMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = PermissiveNonProtectedSerializer.class)
-@JsonDeserialize(using = PermissiveNonProtectedDeserializer.class)
+@JsonSerialize(using = PermissiveNonProtected.PermissiveNonProtectedSerializer.class)
+@JsonDeserialize(using = PermissiveNonProtected.PermissiveNonProtectedDeserializer.class)
 public enum PermissiveNonProtected implements Asn1Enumerated {
 	NONE(0, "none"), PERMISSIVE(1, "permissive");
 
@@ -39,5 +41,22 @@ public enum PermissiveNonProtected implements Asn1Enumerated {
 	private PermissiveNonProtected(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class PermissiveNonProtectedSerializer extends EnumeratedSerializer<PermissiveNonProtected> {
+		public PermissiveNonProtectedSerializer() {
+			super(PermissiveNonProtected.class);
+		}
+	}
+
+	public static class PermissiveNonProtectedDeserializer extends EnumeratedDeserializer<PermissiveNonProtected> {
+		public PermissiveNonProtectedDeserializer() {
+			super(PermissiveNonProtected.class);
+		}
+
+		@Override
+		protected PermissiveNonProtected[] listEnumValues() {
+			return PermissiveNonProtected.values();
+		}
 	}
 }

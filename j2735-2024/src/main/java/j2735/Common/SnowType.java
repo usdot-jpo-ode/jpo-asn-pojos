@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SnowTypeSerializer.class)
-@JsonDeserialize(using = SnowTypeDeserializer.class)
+@JsonSerialize(using = SnowType.SnowTypeSerializer.class)
+@JsonDeserialize(using = SnowType.SnowTypeDeserializer.class)
 public enum SnowType implements Asn1Enumerated {
 	PACKED(0, "packed"), LOOSE(1, "loose");
 
@@ -39,5 +41,22 @@ public enum SnowType implements Asn1Enumerated {
 	private SnowType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SnowTypeSerializer extends EnumeratedSerializer<SnowType> {
+		public SnowTypeSerializer() {
+			super(SnowType.class);
+		}
+	}
+
+	public static class SnowTypeDeserializer extends EnumeratedDeserializer<SnowType> {
+		public SnowTypeDeserializer() {
+			super(SnowType.class);
+		}
+
+		@Override
+		protected SnowType[] listEnumValues() {
+			return SnowType.values();
+		}
 	}
 }

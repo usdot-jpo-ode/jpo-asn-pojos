@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = CindersTypeSerializer.class)
-@JsonDeserialize(using = CindersTypeDeserializer.class)
+@JsonSerialize(using = CindersType.CindersTypeSerializer.class)
+@JsonDeserialize(using = CindersType.CindersTypeDeserializer.class)
 public enum CindersType implements Asn1Enumerated {
 	PACKED(0, "packed");
 
@@ -39,5 +41,22 @@ public enum CindersType implements Asn1Enumerated {
 	private CindersType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class CindersTypeSerializer extends EnumeratedSerializer<CindersType> {
+		public CindersTypeSerializer() {
+			super(CindersType.class);
+		}
+	}
+
+	public static class CindersTypeDeserializer extends EnumeratedDeserializer<CindersType> {
+		public CindersTypeDeserializer() {
+			super(CindersType.class);
+		}
+
+		@Override
+		protected CindersType[] listEnumValues() {
+			return CindersType.values();
+		}
 	}
 }

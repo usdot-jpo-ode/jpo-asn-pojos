@@ -22,14 +22,16 @@
 
 package j2735.ProbeVehicleData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RainSensorSerializer.class)
-@JsonDeserialize(using = RainSensorDeserializer.class)
+@JsonSerialize(using = RainSensor.RainSensorSerializer.class)
+@JsonDeserialize(using = RainSensor.RainSensorDeserializer.class)
 public enum RainSensor implements Asn1Enumerated {
 	NONE(0, "none"), LIGHTMIST(1, "lightMist"), HEAVYMIST(2, "heavyMist"), LIGHTRAINORDRIZZLE(3,
 			"lightRainOrDrizzle"), RAIN(4, "rain"), MODERATERAIN(5,
@@ -41,5 +43,22 @@ public enum RainSensor implements Asn1Enumerated {
 	private RainSensor(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RainSensorSerializer extends EnumeratedSerializer<RainSensor> {
+		public RainSensorSerializer() {
+			super(RainSensor.class);
+		}
+	}
+
+	public static class RainSensorDeserializer extends EnumeratedDeserializer<RainSensor> {
+		public RainSensorDeserializer() {
+			super(RainSensor.class);
+		}
+
+		@Override
+		protected RainSensor[] listEnumValues() {
+			return RainSensor.values();
+		}
 	}
 }

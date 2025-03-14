@@ -22,14 +22,16 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AnimalTypeSerializer.class)
-@JsonDeserialize(using = AnimalTypeDeserializer.class)
+@JsonSerialize(using = AnimalType.AnimalTypeSerializer.class)
+@JsonDeserialize(using = AnimalType.AnimalTypeDeserializer.class)
 public enum AnimalType implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), SERVICEUSE(1, "serviceUse"), PET(2, "pet"), FARM(3, "farm");
 
@@ -39,5 +41,22 @@ public enum AnimalType implements Asn1Enumerated {
 	private AnimalType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AnimalTypeSerializer extends EnumeratedSerializer<AnimalType> {
+		public AnimalTypeSerializer() {
+			super(AnimalType.class);
+		}
+	}
+
+	public static class AnimalTypeDeserializer extends EnumeratedDeserializer<AnimalType> {
+		public AnimalTypeDeserializer() {
+			super(AnimalType.class);
+		}
+
+		@Override
+		protected AnimalType[] listEnumValues() {
+			return AnimalType.values();
+		}
 	}
 }

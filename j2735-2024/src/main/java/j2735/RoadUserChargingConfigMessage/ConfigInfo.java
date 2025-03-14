@@ -88,7 +88,7 @@ public class ConfigInfo extends Asn1Sequence {
 	@Getter
 	@JsonSerialize(using = EnumeratedConfigurationFeeTypeSerializer.class)
 	@JsonDeserialize(using = EnumeratedConfigurationFeeTypeDeserializer.class)
-	public static enum EnumeratedConfigurationFeeType implements Asn1Enumerated {
+	public enum EnumeratedConfigurationFeeType implements Asn1Enumerated {
 		EXCLUDED(0, "excluded"), REPLACESOTHERCHARGES(1, "replacesOtherCharges"), ADDEDTOOTHERCHARGES(2,
 				"addedToOtherCharges");
 
@@ -104,7 +104,7 @@ public class ConfigInfo extends Asn1Sequence {
 	public static class EnumeratedConfigurationFeeTypeSerializer
 			extends
 				EnumeratedSerializer<EnumeratedConfigurationFeeType> {
-		EnumeratedConfigurationFeeTypeSerializer() {
+		public EnumeratedConfigurationFeeTypeSerializer() {
 			super(EnumeratedConfigurationFeeType.class);
 		}
 	}
@@ -112,7 +112,7 @@ public class ConfigInfo extends Asn1Sequence {
 	public static class EnumeratedConfigurationFeeTypeDeserializer
 			extends
 				EnumeratedDeserializer<EnumeratedConfigurationFeeType> {
-		EnumeratedConfigurationFeeTypeDeserializer() {
+		public EnumeratedConfigurationFeeTypeDeserializer() {
 			super(EnumeratedConfigurationFeeType.class);
 		}
 

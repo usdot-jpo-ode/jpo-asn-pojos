@@ -22,14 +22,16 @@
 
 package j2735.ManeuverSharingAndCoordinatingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ManeuverExecutionStatusSerializer.class)
-@JsonDeserialize(using = ManeuverExecutionStatusDeserializer.class)
+@JsonSerialize(using = ManeuverExecutionStatus.ManeuverExecutionStatusSerializer.class)
+@JsonDeserialize(using = ManeuverExecutionStatus.ManeuverExecutionStatusDeserializer.class)
 public enum ManeuverExecutionStatus implements Asn1Enumerated {
 	STARTED(0, "started"), INPROGRESS(1, "inProgress"), COMPLETED(2, "completed"), TERMINATED(3, "terminated");
 
@@ -39,5 +41,22 @@ public enum ManeuverExecutionStatus implements Asn1Enumerated {
 	private ManeuverExecutionStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ManeuverExecutionStatusSerializer extends EnumeratedSerializer<ManeuverExecutionStatus> {
+		public ManeuverExecutionStatusSerializer() {
+			super(ManeuverExecutionStatus.class);
+		}
+	}
+
+	public static class ManeuverExecutionStatusDeserializer extends EnumeratedDeserializer<ManeuverExecutionStatus> {
+		public ManeuverExecutionStatusDeserializer() {
+			super(ManeuverExecutionStatus.class);
+		}
+
+		@Override
+		protected ManeuverExecutionStatus[] listEnumValues() {
+			return ManeuverExecutionStatus.values();
+		}
 	}
 }

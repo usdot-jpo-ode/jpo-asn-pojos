@@ -22,14 +22,16 @@
 
 package j2735.SignalRequestMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TransitVehicleOccupancySerializer.class)
-@JsonDeserialize(using = TransitVehicleOccupancyDeserializer.class)
+@JsonSerialize(using = TransitVehicleOccupancy.TransitVehicleOccupancySerializer.class)
+@JsonDeserialize(using = TransitVehicleOccupancy.TransitVehicleOccupancyDeserializer.class)
 public enum TransitVehicleOccupancy implements Asn1Enumerated {
 	OCCUPANCYUNKNOWN(0, "occupancyUnknown"), OCCUPANCYEMPTY(1, "occupancyEmpty"), OCCUPANCYVERYLOW(2,
 			"occupancyVeryLow"), OCCUPANCYLOW(3, "occupancyLow"), OCCUPANCYMED(4, "occupancyMed"), OCCUPANCYHIGH(5,
@@ -41,5 +43,22 @@ public enum TransitVehicleOccupancy implements Asn1Enumerated {
 	private TransitVehicleOccupancy(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TransitVehicleOccupancySerializer extends EnumeratedSerializer<TransitVehicleOccupancy> {
+		public TransitVehicleOccupancySerializer() {
+			super(TransitVehicleOccupancy.class);
+		}
+	}
+
+	public static class TransitVehicleOccupancyDeserializer extends EnumeratedDeserializer<TransitVehicleOccupancy> {
+		public TransitVehicleOccupancyDeserializer() {
+			super(TransitVehicleOccupancy.class);
+		}
+
+		@Override
+		protected TransitVehicleOccupancy[] listEnumValues() {
+			return TransitVehicleOccupancy.values();
+		}
 	}
 }

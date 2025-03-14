@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ElevationConfidenceSerializer.class)
-@JsonDeserialize(using = ElevationConfidenceDeserializer.class)
+@JsonSerialize(using = ElevationConfidence.ElevationConfidenceSerializer.class)
+@JsonDeserialize(using = ElevationConfidence.ElevationConfidenceDeserializer.class)
 public enum ElevationConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), ELEV_500_00(1, "elev-500-00"), ELEV_200_00(2, "elev-200-00"), ELEV_100_00(3,
 			"elev-100-00"), ELEV_050_00(4, "elev-050-00"), ELEV_020_00(5, "elev-020-00"), ELEV_010_00(6,
@@ -44,5 +46,22 @@ public enum ElevationConfidence implements Asn1Enumerated {
 	private ElevationConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ElevationConfidenceSerializer extends EnumeratedSerializer<ElevationConfidence> {
+		public ElevationConfidenceSerializer() {
+			super(ElevationConfidence.class);
+		}
+	}
+
+	public static class ElevationConfidenceDeserializer extends EnumeratedDeserializer<ElevationConfidence> {
+		public ElevationConfidenceDeserializer() {
+			super(ElevationConfidence.class);
+		}
+
+		@Override
+		protected ElevationConfidence[] listEnumValues() {
+			return ElevationConfidence.values();
+		}
 	}
 }

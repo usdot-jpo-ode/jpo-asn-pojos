@@ -22,14 +22,16 @@
 
 package j2735.TravelerInformation;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SegmentAttributeLLSerializer.class)
-@JsonDeserialize(using = SegmentAttributeLLDeserializer.class)
+@JsonSerialize(using = SegmentAttributeLL.SegmentAttributeLLSerializer.class)
+@JsonDeserialize(using = SegmentAttributeLL.SegmentAttributeLLDeserializer.class)
 public enum SegmentAttributeLL implements Asn1Enumerated {
 	RESERVED(0, "reserved"), DONOTBLOCK(1, "doNotBlock"), WHITELINE(2, "whiteLine"), MERGINGLANELEFT(3,
 			"mergingLaneLeft"), MERGINGLANERIGHT(4, "mergingLaneRight"), CURBONLEFT(5, "curbOnLeft"), CURBONRIGHT(6,
@@ -91,5 +93,22 @@ public enum SegmentAttributeLL implements Asn1Enumerated {
 	private SegmentAttributeLL(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SegmentAttributeLLSerializer extends EnumeratedSerializer<SegmentAttributeLL> {
+		public SegmentAttributeLLSerializer() {
+			super(SegmentAttributeLL.class);
+		}
+	}
+
+	public static class SegmentAttributeLLDeserializer extends EnumeratedDeserializer<SegmentAttributeLL> {
+		public SegmentAttributeLLDeserializer() {
+			super(SegmentAttributeLL.class);
+		}
+
+		@Override
+		protected SegmentAttributeLL[] listEnumValues() {
+			return SegmentAttributeLL.values();
+		}
 	}
 }

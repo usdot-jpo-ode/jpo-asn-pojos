@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = NodeAttributeXYSerializer.class)
-@JsonDeserialize(using = NodeAttributeXYDeserializer.class)
+@JsonSerialize(using = NodeAttributeXY.NodeAttributeXYSerializer.class)
+@JsonDeserialize(using = NodeAttributeXY.NodeAttributeXYDeserializer.class)
 public enum NodeAttributeXY implements Asn1Enumerated {
 	RESERVED(0, "reserved"), STOPLINE(1, "stopLine"), ROUNDEDCAPSTYLEA(2, "roundedCapStyleA"), ROUNDEDCAPSTYLEB(3,
 			"roundedCapStyleB"), MERGEPOINT(4, "mergePoint"), DIVERGEPOINT(5, "divergePoint"), DOWNSTREAMSTOPLINE(6,
@@ -43,5 +45,22 @@ public enum NodeAttributeXY implements Asn1Enumerated {
 	private NodeAttributeXY(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class NodeAttributeXYSerializer extends EnumeratedSerializer<NodeAttributeXY> {
+		public NodeAttributeXYSerializer() {
+			super(NodeAttributeXY.class);
+		}
+	}
+
+	public static class NodeAttributeXYDeserializer extends EnumeratedDeserializer<NodeAttributeXY> {
+		public NodeAttributeXYDeserializer() {
+			super(NodeAttributeXY.class);
+		}
+
+		@Override
+		protected NodeAttributeXY[] listEnumValues() {
+			return NodeAttributeXY.values();
+		}
 	}
 }

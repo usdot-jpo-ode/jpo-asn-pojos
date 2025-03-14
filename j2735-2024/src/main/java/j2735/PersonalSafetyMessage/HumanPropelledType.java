@@ -22,14 +22,16 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = HumanPropelledTypeSerializer.class)
-@JsonDeserialize(using = HumanPropelledTypeDeserializer.class)
+@JsonSerialize(using = HumanPropelledType.HumanPropelledTypeSerializer.class)
+@JsonDeserialize(using = HumanPropelledType.HumanPropelledTypeDeserializer.class)
 public enum HumanPropelledType implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OTHERTYPES(1, "otherTypes"), ONFOOT(2, "onFoot"), SKATEBOARD(3,
 			"skateboard"), PUSHORKICKSCOOTER(4, "pushOrKickScooter"), WHEELCHAIR(5, "wheelchair");
@@ -40,5 +42,22 @@ public enum HumanPropelledType implements Asn1Enumerated {
 	private HumanPropelledType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class HumanPropelledTypeSerializer extends EnumeratedSerializer<HumanPropelledType> {
+		public HumanPropelledTypeSerializer() {
+			super(HumanPropelledType.class);
+		}
+	}
+
+	public static class HumanPropelledTypeDeserializer extends EnumeratedDeserializer<HumanPropelledType> {
+		public HumanPropelledTypeDeserializer() {
+			super(HumanPropelledType.class);
+		}
+
+		@Override
+		protected HumanPropelledType[] listEnumValues() {
+			return HumanPropelledType.values();
+		}
 	}
 }

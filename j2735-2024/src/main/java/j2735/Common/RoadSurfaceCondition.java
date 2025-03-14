@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RoadSurfaceConditionSerializer.class)
-@JsonDeserialize(using = RoadSurfaceConditionDeserializer.class)
+@JsonSerialize(using = RoadSurfaceCondition.RoadSurfaceConditionSerializer.class)
+@JsonDeserialize(using = RoadSurfaceCondition.RoadSurfaceConditionDeserializer.class)
 public enum RoadSurfaceCondition implements Asn1Enumerated {
 	DRY(0, "dry"), WET(1, "wet");
 
@@ -39,5 +41,22 @@ public enum RoadSurfaceCondition implements Asn1Enumerated {
 	private RoadSurfaceCondition(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RoadSurfaceConditionSerializer extends EnumeratedSerializer<RoadSurfaceCondition> {
+		public RoadSurfaceConditionSerializer() {
+			super(RoadSurfaceCondition.class);
+		}
+	}
+
+	public static class RoadSurfaceConditionDeserializer extends EnumeratedDeserializer<RoadSurfaceCondition> {
+		public RoadSurfaceConditionDeserializer() {
+			super(RoadSurfaceCondition.class);
+		}
+
+		@Override
+		protected RoadSurfaceCondition[] listEnumValues() {
+			return RoadSurfaceCondition.values();
+		}
 	}
 }

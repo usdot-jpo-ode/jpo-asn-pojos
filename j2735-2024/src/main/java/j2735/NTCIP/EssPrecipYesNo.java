@@ -22,14 +22,16 @@
 
 package j2735.NTCIP;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = EssPrecipYesNoSerializer.class)
-@JsonDeserialize(using = EssPrecipYesNoDeserializer.class)
+@JsonSerialize(using = EssPrecipYesNo.EssPrecipYesNoSerializer.class)
+@JsonDeserialize(using = EssPrecipYesNo.EssPrecipYesNoDeserializer.class)
 public enum EssPrecipYesNo implements Asn1Enumerated {
 	PRECIP(1, "precip"), NOPRECIP(2, "noPrecip"), ERROR(3, "error");
 
@@ -39,5 +41,22 @@ public enum EssPrecipYesNo implements Asn1Enumerated {
 	private EssPrecipYesNo(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class EssPrecipYesNoSerializer extends EnumeratedSerializer<EssPrecipYesNo> {
+		public EssPrecipYesNoSerializer() {
+			super(EssPrecipYesNo.class);
+		}
+	}
+
+	public static class EssPrecipYesNoDeserializer extends EnumeratedDeserializer<EssPrecipYesNo> {
+		public EssPrecipYesNoDeserializer() {
+			super(EssPrecipYesNo.class);
+		}
+
+		@Override
+		protected EssPrecipYesNo[] listEnumValues() {
+			return EssPrecipYesNo.values();
+		}
 	}
 }

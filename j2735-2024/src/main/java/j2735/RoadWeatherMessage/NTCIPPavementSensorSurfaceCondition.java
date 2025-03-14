@@ -22,14 +22,16 @@
 
 package j2735.RoadWeatherMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = NTCIPPavementSensorSurfaceConditionSerializer.class)
-@JsonDeserialize(using = NTCIPPavementSensorSurfaceConditionDeserializer.class)
+@JsonSerialize(using = NTCIPPavementSensorSurfaceCondition.NTCIPPavementSensorSurfaceConditionSerializer.class)
+@JsonDeserialize(using = NTCIPPavementSensorSurfaceCondition.NTCIPPavementSensorSurfaceConditionDeserializer.class)
 public enum NTCIPPavementSensorSurfaceCondition implements Asn1Enumerated {
 	OTHER(1, "other"), ERROR(2, "error"), DRY(3, "dry"), MOIST(4, "moist"), CHEMICALLYMOIST(5, "chemicallyMoist"), WET(
 			6, "wet"), CHEMICALLYWET(7, "chemicallyWet"), STANDINGWATER(8, "standingWater"), FROST(9,
@@ -41,5 +43,26 @@ public enum NTCIPPavementSensorSurfaceCondition implements Asn1Enumerated {
 	private NTCIPPavementSensorSurfaceCondition(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class NTCIPPavementSensorSurfaceConditionSerializer
+			extends
+				EnumeratedSerializer<NTCIPPavementSensorSurfaceCondition> {
+		public NTCIPPavementSensorSurfaceConditionSerializer() {
+			super(NTCIPPavementSensorSurfaceCondition.class);
+		}
+	}
+
+	public static class NTCIPPavementSensorSurfaceConditionDeserializer
+			extends
+				EnumeratedDeserializer<NTCIPPavementSensorSurfaceCondition> {
+		public NTCIPPavementSensorSurfaceConditionDeserializer() {
+			super(NTCIPPavementSensorSurfaceCondition.class);
+		}
+
+		@Override
+		protected NTCIPPavementSensorSurfaceCondition[] listEnumValues() {
+			return NTCIPPavementSensorSurfaceCondition.values();
+		}
 	}
 }

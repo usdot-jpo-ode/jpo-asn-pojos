@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SpeedConfidenceSerializer.class)
-@JsonDeserialize(using = SpeedConfidenceDeserializer.class)
+@JsonSerialize(using = SpeedConfidence.SpeedConfidenceSerializer.class)
+@JsonDeserialize(using = SpeedConfidence.SpeedConfidenceDeserializer.class)
 public enum SpeedConfidence implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), PREC100MS(1, "prec100ms"), PREC10MS(2, "prec10ms"), PREC5MS(3, "prec5ms"), PREC1MS(4,
 			"prec1ms"), PREC0_1MS(5, "prec0-1ms"), PREC0_05MS(6, "prec0-05ms"), PREC0_01MS(7, "prec0-01ms");
@@ -40,5 +42,22 @@ public enum SpeedConfidence implements Asn1Enumerated {
 	private SpeedConfidence(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SpeedConfidenceSerializer extends EnumeratedSerializer<SpeedConfidence> {
+		public SpeedConfidenceSerializer() {
+			super(SpeedConfidence.class);
+		}
+	}
+
+	public static class SpeedConfidenceDeserializer extends EnumeratedDeserializer<SpeedConfidence> {
+		public SpeedConfidenceDeserializer() {
+			super(SpeedConfidence.class);
+		}
+
+		@Override
+		protected SpeedConfidence[] listEnumValues() {
+			return SpeedConfidence.values();
+		}
 	}
 }

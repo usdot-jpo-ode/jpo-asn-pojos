@@ -22,14 +22,16 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = LayerTypeSerializer.class)
-@JsonDeserialize(using = LayerTypeDeserializer.class)
+@JsonSerialize(using = LayerType.LayerTypeSerializer.class)
+@JsonDeserialize(using = LayerType.LayerTypeDeserializer.class)
 public enum LayerType implements Asn1Enumerated {
 	NONE(0, "none"), MIXEDCONTENT(1, "mixedContent"), GENERALMAPDATA(2, "generalMapData"), INTERSECTIONDATA(3,
 			"intersectionData"), CURVEDATA(4, "curveData"), ROADWAYSECTIONDATA(5,
@@ -41,5 +43,22 @@ public enum LayerType implements Asn1Enumerated {
 	private LayerType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class LayerTypeSerializer extends EnumeratedSerializer<LayerType> {
+		public LayerTypeSerializer() {
+			super(LayerType.class);
+		}
+	}
+
+	public static class LayerTypeDeserializer extends EnumeratedDeserializer<LayerType> {
+		public LayerTypeDeserializer() {
+			super(LayerType.class);
+		}
+
+		@Override
+		protected LayerType[] listEnumValues() {
+			return LayerType.values();
+		}
 	}
 }

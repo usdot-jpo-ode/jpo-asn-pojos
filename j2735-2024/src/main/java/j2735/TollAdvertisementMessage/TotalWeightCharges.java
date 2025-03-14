@@ -70,7 +70,7 @@ public class TotalWeightCharges extends Asn1Sequence {
 	@Getter
 	@JsonSerialize(using = EnumeratedWeightLimitUnitsSerializer.class)
 	@JsonDeserialize(using = EnumeratedWeightLimitUnitsDeserializer.class)
-	public static enum EnumeratedWeightLimitUnits implements Asn1Enumerated {
+	public enum EnumeratedWeightLimitUnits implements Asn1Enumerated {
 		POUNDS(0, "pounds"), KILOGRAMS(1, "kilograms");
 
 		private final int index;
@@ -83,7 +83,7 @@ public class TotalWeightCharges extends Asn1Sequence {
 	}
 
 	public static class EnumeratedWeightLimitUnitsSerializer extends EnumeratedSerializer<EnumeratedWeightLimitUnits> {
-		EnumeratedWeightLimitUnitsSerializer() {
+		public EnumeratedWeightLimitUnitsSerializer() {
 			super(EnumeratedWeightLimitUnits.class);
 		}
 	}
@@ -91,7 +91,7 @@ public class TotalWeightCharges extends Asn1Sequence {
 	public static class EnumeratedWeightLimitUnitsDeserializer
 			extends
 				EnumeratedDeserializer<EnumeratedWeightLimitUnits> {
-		EnumeratedWeightLimitUnitsDeserializer() {
+		public EnumeratedWeightLimitUnitsDeserializer() {
 			super(EnumeratedWeightLimitUnits.class);
 		}
 

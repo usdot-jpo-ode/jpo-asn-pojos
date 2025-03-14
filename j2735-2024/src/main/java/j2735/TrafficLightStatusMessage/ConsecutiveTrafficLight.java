@@ -22,14 +22,16 @@
 
 package j2735.TrafficLightStatusMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = ConsecutiveTrafficLightSerializer.class)
-@JsonDeserialize(using = ConsecutiveTrafficLightDeserializer.class)
+@JsonSerialize(using = ConsecutiveTrafficLight.ConsecutiveTrafficLightSerializer.class)
+@JsonDeserialize(using = ConsecutiveTrafficLight.ConsecutiveTrafficLightDeserializer.class)
 public enum ConsecutiveTrafficLight implements Asn1Enumerated {
 	NONE(0, "none"), FIRST(1, "first"), SECOND(2, "second");
 
@@ -39,5 +41,22 @@ public enum ConsecutiveTrafficLight implements Asn1Enumerated {
 	private ConsecutiveTrafficLight(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class ConsecutiveTrafficLightSerializer extends EnumeratedSerializer<ConsecutiveTrafficLight> {
+		public ConsecutiveTrafficLightSerializer() {
+			super(ConsecutiveTrafficLight.class);
+		}
+	}
+
+	public static class ConsecutiveTrafficLightDeserializer extends EnumeratedDeserializer<ConsecutiveTrafficLight> {
+		public ConsecutiveTrafficLightDeserializer() {
+			super(ConsecutiveTrafficLight.class);
+		}
+
+		@Override
+		protected ConsecutiveTrafficLight[] listEnumValues() {
+			return ConsecutiveTrafficLight.values();
+		}
 	}
 }

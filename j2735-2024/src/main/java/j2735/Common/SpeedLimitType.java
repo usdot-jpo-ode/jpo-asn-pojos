@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = SpeedLimitTypeSerializer.class)
-@JsonDeserialize(using = SpeedLimitTypeDeserializer.class)
+@JsonSerialize(using = SpeedLimitType.SpeedLimitTypeSerializer.class)
+@JsonDeserialize(using = SpeedLimitType.SpeedLimitTypeDeserializer.class)
 public enum SpeedLimitType implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), MAXSPEEDINSCHOOLZONE(1, "maxSpeedInSchoolZone"), MAXSPEEDINSCHOOLZONEWHENCHILDRENAREPRESENT(
 			2, "maxSpeedInSchoolZoneWhenChildrenArePresent"), MAXSPEEDINCONSTRUCTIONZONE(3,
@@ -47,5 +49,22 @@ public enum SpeedLimitType implements Asn1Enumerated {
 	private SpeedLimitType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class SpeedLimitTypeSerializer extends EnumeratedSerializer<SpeedLimitType> {
+		public SpeedLimitTypeSerializer() {
+			super(SpeedLimitType.class);
+		}
+	}
+
+	public static class SpeedLimitTypeDeserializer extends EnumeratedDeserializer<SpeedLimitType> {
+		public SpeedLimitTypeDeserializer() {
+			super(SpeedLimitType.class);
+		}
+
+		@Override
+		protected SpeedLimitType[] listEnumValues() {
+			return SpeedLimitType.values();
+		}
 	}
 }

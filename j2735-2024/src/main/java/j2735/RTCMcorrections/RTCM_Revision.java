@@ -22,14 +22,16 @@
 
 package j2735.RTCMcorrections;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RTCM_RevisionSerializer.class)
-@JsonDeserialize(using = RTCM_RevisionDeserializer.class)
+@JsonSerialize(using = RTCM_Revision.RTCM_RevisionSerializer.class)
+@JsonDeserialize(using = RTCM_Revision.RTCM_RevisionDeserializer.class)
 public enum RTCM_Revision implements Asn1Enumerated {
 	UNKNOWN(0, "unknown"), RTCMREV2(1, "rtcmRev2"), RTCMREV3(2, "rtcmRev3"), RESERVED(3, "reserved");
 
@@ -39,5 +41,22 @@ public enum RTCM_Revision implements Asn1Enumerated {
 	private RTCM_Revision(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RTCM_RevisionSerializer extends EnumeratedSerializer<RTCM_Revision> {
+		public RTCM_RevisionSerializer() {
+			super(RTCM_Revision.class);
+		}
+	}
+
+	public static class RTCM_RevisionDeserializer extends EnumeratedDeserializer<RTCM_Revision> {
+		public RTCM_RevisionDeserializer() {
+			super(RTCM_Revision.class);
+		}
+
+		@Override
+		protected RTCM_Revision[] listEnumValues() {
+			return RTCM_Revision.values();
+		}
 	}
 }

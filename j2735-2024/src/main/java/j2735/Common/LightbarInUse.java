@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = LightbarInUseSerializer.class)
-@JsonDeserialize(using = LightbarInUseDeserializer.class)
+@JsonSerialize(using = LightbarInUse.LightbarInUseSerializer.class)
+@JsonDeserialize(using = LightbarInUse.LightbarInUseDeserializer.class)
 public enum LightbarInUse implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), NOTINUSE(1, "notInUse"), INUSE(2, "inUse"), YELLOWCAUTIONLIGHTS(3,
 			"yellowCautionLights"), SCHOOLDBUSLIGHTS(4, "schooldBusLights"), ARROWSIGNSACTIVE(5,
@@ -41,5 +43,22 @@ public enum LightbarInUse implements Asn1Enumerated {
 	private LightbarInUse(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class LightbarInUseSerializer extends EnumeratedSerializer<LightbarInUse> {
+		public LightbarInUseSerializer() {
+			super(LightbarInUse.class);
+		}
+	}
+
+	public static class LightbarInUseDeserializer extends EnumeratedDeserializer<LightbarInUse> {
+		public LightbarInUseDeserializer() {
+			super(LightbarInUse.class);
+		}
+
+		@Override
+		protected LightbarInUse[] listEnumValues() {
+			return LightbarInUse.values();
+		}
 	}
 }

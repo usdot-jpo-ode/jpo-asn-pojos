@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AntiLockBrakeStatusSerializer.class)
-@JsonDeserialize(using = AntiLockBrakeStatusDeserializer.class)
+@JsonSerialize(using = AntiLockBrakeStatus.AntiLockBrakeStatusSerializer.class)
+@JsonDeserialize(using = AntiLockBrakeStatus.AntiLockBrakeStatusDeserializer.class)
 public enum AntiLockBrakeStatus implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OFF(1, "off"), ON(2, "on"), ENGAGED(3, "engaged");
 
@@ -39,5 +41,22 @@ public enum AntiLockBrakeStatus implements Asn1Enumerated {
 	private AntiLockBrakeStatus(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AntiLockBrakeStatusSerializer extends EnumeratedSerializer<AntiLockBrakeStatus> {
+		public AntiLockBrakeStatusSerializer() {
+			super(AntiLockBrakeStatus.class);
+		}
+	}
+
+	public static class AntiLockBrakeStatusDeserializer extends EnumeratedDeserializer<AntiLockBrakeStatus> {
+		public AntiLockBrakeStatusDeserializer() {
+			super(AntiLockBrakeStatus.class);
+		}
+
+		@Override
+		protected AntiLockBrakeStatus[] listEnumValues() {
+			return AntiLockBrakeStatus.values();
+		}
 	}
 }

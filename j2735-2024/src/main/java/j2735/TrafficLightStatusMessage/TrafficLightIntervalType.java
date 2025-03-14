@@ -22,14 +22,16 @@
 
 package j2735.TrafficLightStatusMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TrafficLightIntervalTypeSerializer.class)
-@JsonDeserialize(using = TrafficLightIntervalTypeDeserializer.class)
+@JsonSerialize(using = TrafficLightIntervalType.TrafficLightIntervalTypeSerializer.class)
+@JsonDeserialize(using = TrafficLightIntervalType.TrafficLightIntervalTypeDeserializer.class)
 public enum TrafficLightIntervalType implements Asn1Enumerated {
 	STATIC_(0, "static"), VARIABLE(1, "variable");
 
@@ -39,5 +41,22 @@ public enum TrafficLightIntervalType implements Asn1Enumerated {
 	private TrafficLightIntervalType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TrafficLightIntervalTypeSerializer extends EnumeratedSerializer<TrafficLightIntervalType> {
+		public TrafficLightIntervalTypeSerializer() {
+			super(TrafficLightIntervalType.class);
+		}
+	}
+
+	public static class TrafficLightIntervalTypeDeserializer extends EnumeratedDeserializer<TrafficLightIntervalType> {
+		public TrafficLightIntervalTypeDeserializer() {
+			super(TrafficLightIntervalType.class);
+		}
+
+		@Override
+		protected TrafficLightIntervalType[] listEnumValues() {
+			return TrafficLightIntervalType.values();
+		}
 	}
 }

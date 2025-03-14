@@ -22,14 +22,16 @@
 
 package j2735.ManeuverSharingAndCoordinatingMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = LaneOffsetSerializer.class)
-@JsonDeserialize(using = LaneOffsetDeserializer.class)
+@JsonSerialize(using = LaneOffset.LaneOffsetSerializer.class)
+@JsonDeserialize(using = LaneOffset.LaneOffsetDeserializer.class)
 public enum LaneOffset implements Asn1Enumerated {
 	CURRENTLANE(0, "currentLane"), FIRSTLEFTLANE(1, "firstLeftLane"), FIRSTRIGHTLANE(2,
 			"firstRightLane"), SECONDLEFTLANE(3, "secondLeftLane"), SECONDRIGHTLANE(4,
@@ -41,5 +43,22 @@ public enum LaneOffset implements Asn1Enumerated {
 	private LaneOffset(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class LaneOffsetSerializer extends EnumeratedSerializer<LaneOffset> {
+		public LaneOffsetSerializer() {
+			super(LaneOffset.class);
+		}
+	}
+
+	public static class LaneOffsetDeserializer extends EnumeratedDeserializer<LaneOffset> {
+		public LaneOffsetDeserializer() {
+			super(LaneOffset.class);
+		}
+
+		@Override
+		protected LaneOffset[] listEnumValues() {
+			return LaneOffset.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RockTypeSerializer.class)
-@JsonDeserialize(using = RockTypeDeserializer.class)
+@JsonSerialize(using = RockType.RockTypeSerializer.class)
+@JsonDeserialize(using = RockType.RockTypeDeserializer.class)
 public enum RockType implements Asn1Enumerated {
 	CRUSHED(0, "crushed");
 
@@ -39,5 +41,22 @@ public enum RockType implements Asn1Enumerated {
 	private RockType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RockTypeSerializer extends EnumeratedSerializer<RockType> {
+		public RockTypeSerializer() {
+			super(RockType.class);
+		}
+	}
+
+	public static class RockTypeDeserializer extends EnumeratedDeserializer<RockType> {
+		public RockTypeDeserializer() {
+			super(RockType.class);
+		}
+
+		@Override
+		protected RockType[] listEnumValues() {
+			return RockType.values();
+		}
 	}
 }

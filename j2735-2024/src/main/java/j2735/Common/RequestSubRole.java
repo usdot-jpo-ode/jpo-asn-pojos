@@ -22,14 +22,16 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = RequestSubRoleSerializer.class)
-@JsonDeserialize(using = RequestSubRoleDeserializer.class)
+@JsonSerialize(using = RequestSubRole.RequestSubRoleSerializer.class)
+@JsonDeserialize(using = RequestSubRole.RequestSubRoleDeserializer.class)
 public enum RequestSubRole implements Asn1Enumerated {
 	REQUESTSUBROLEUNKNOWN(0, "requestSubRoleUnKnown"), REQUESTSUBROLE1(1, "requestSubRole1"), REQUESTSUBROLE2(2,
 			"requestSubRole2"), REQUESTSUBROLE3(3, "requestSubRole3"), REQUESTSUBROLE4(4,
@@ -49,5 +51,22 @@ public enum RequestSubRole implements Asn1Enumerated {
 	private RequestSubRole(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class RequestSubRoleSerializer extends EnumeratedSerializer<RequestSubRole> {
+		public RequestSubRoleSerializer() {
+			super(RequestSubRole.class);
+		}
+	}
+
+	public static class RequestSubRoleDeserializer extends EnumeratedDeserializer<RequestSubRole> {
+		public RequestSubRoleDeserializer() {
+			super(RequestSubRole.class);
+		}
+
+		@Override
+		protected RequestSubRole[] listEnumValues() {
+			return RequestSubRole.values();
+		}
 	}
 }

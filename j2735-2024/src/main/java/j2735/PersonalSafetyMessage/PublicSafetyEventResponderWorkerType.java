@@ -22,14 +22,16 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = PublicSafetyEventResponderWorkerTypeSerializer.class)
-@JsonDeserialize(using = PublicSafetyEventResponderWorkerTypeDeserializer.class)
+@JsonSerialize(using = PublicSafetyEventResponderWorkerType.PublicSafetyEventResponderWorkerTypeSerializer.class)
+@JsonDeserialize(using = PublicSafetyEventResponderWorkerType.PublicSafetyEventResponderWorkerTypeDeserializer.class)
 public enum PublicSafetyEventResponderWorkerType implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), TOWOPERATER(1, "towOperater"), FIREANDEMSWORKER(2, "fireAndEMSWorker"), ADOTWORKER(3,
 			"aDOTWorker"), LAWENFORCEMENT(4, "lawEnforcement"), HAZMATRESPONDER(5,
@@ -42,5 +44,26 @@ public enum PublicSafetyEventResponderWorkerType implements Asn1Enumerated {
 	private PublicSafetyEventResponderWorkerType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class PublicSafetyEventResponderWorkerTypeSerializer
+			extends
+				EnumeratedSerializer<PublicSafetyEventResponderWorkerType> {
+		public PublicSafetyEventResponderWorkerTypeSerializer() {
+			super(PublicSafetyEventResponderWorkerType.class);
+		}
+	}
+
+	public static class PublicSafetyEventResponderWorkerTypeDeserializer
+			extends
+				EnumeratedDeserializer<PublicSafetyEventResponderWorkerType> {
+		public PublicSafetyEventResponderWorkerTypeDeserializer() {
+			super(PublicSafetyEventResponderWorkerType.class);
+		}
+
+		@Override
+		protected PublicSafetyEventResponderWorkerType[] listEnumValues() {
+			return PublicSafetyEventResponderWorkerType.values();
+		}
 	}
 }

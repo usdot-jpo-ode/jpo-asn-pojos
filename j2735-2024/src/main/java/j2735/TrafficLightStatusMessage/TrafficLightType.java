@@ -22,14 +22,16 @@
 
 package j2735.TrafficLightStatusMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = TrafficLightTypeSerializer.class)
-@JsonDeserialize(using = TrafficLightTypeDeserializer.class)
+@JsonSerialize(using = TrafficLightType.TrafficLightTypeSerializer.class)
+@JsonDeserialize(using = TrafficLightType.TrafficLightTypeDeserializer.class)
 public enum TrafficLightType implements Asn1Enumerated {
 	RESERVED(0, "reserved"), STRAIGHT(1, "straight"), LEFT_TURN(2, "left-turn"), PEDESTRIAN(3, "pedestrian"), BICYCLE(4,
 			"bicycle"), RIGHT_TURN(5, "right-turn"), BUS(6, "bus"), U_TURN(7, "u-turn");
@@ -40,5 +42,22 @@ public enum TrafficLightType implements Asn1Enumerated {
 	private TrafficLightType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class TrafficLightTypeSerializer extends EnumeratedSerializer<TrafficLightType> {
+		public TrafficLightTypeSerializer() {
+			super(TrafficLightType.class);
+		}
+	}
+
+	public static class TrafficLightTypeDeserializer extends EnumeratedDeserializer<TrafficLightType> {
+		public TrafficLightTypeDeserializer() {
+			super(TrafficLightType.class);
+		}
+
+		@Override
+		protected TrafficLightType[] listEnumValues() {
+			return TrafficLightType.values();
+		}
 	}
 }

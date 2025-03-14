@@ -22,14 +22,16 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = AnimalPropelledTypeSerializer.class)
-@JsonDeserialize(using = AnimalPropelledTypeDeserializer.class)
+@JsonSerialize(using = AnimalPropelledType.AnimalPropelledTypeSerializer.class)
+@JsonDeserialize(using = AnimalPropelledType.AnimalPropelledTypeDeserializer.class)
 public enum AnimalPropelledType implements Asn1Enumerated {
 	UNAVAILABLE(0, "unavailable"), OTHERTYPES(1, "otherTypes"), ANIMALMOUNTED(2,
 			"animalMounted"), ANIMALDRAWNCARRIAGE(3, "animalDrawnCarriage");
@@ -40,5 +42,22 @@ public enum AnimalPropelledType implements Asn1Enumerated {
 	private AnimalPropelledType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class AnimalPropelledTypeSerializer extends EnumeratedSerializer<AnimalPropelledType> {
+		public AnimalPropelledTypeSerializer() {
+			super(AnimalPropelledType.class);
+		}
+	}
+
+	public static class AnimalPropelledTypeDeserializer extends EnumeratedDeserializer<AnimalPropelledType> {
+		public AnimalPropelledTypeDeserializer() {
+			super(AnimalPropelledType.class);
+		}
+
+		@Override
+		protected AnimalPropelledType[] listEnumValues() {
+			return AnimalPropelledType.values();
+		}
 	}
 }

@@ -22,14 +22,16 @@
 
 package j2735.SignalRequestMessage;
 
+import asn2pojo.runtime.serialization.EnumeratedDeserializer;
+import asn2pojo.runtime.serialization.EnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Enumerated;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 
 @Getter
-@JsonSerialize(using = PriorityRequestTypeSerializer.class)
-@JsonDeserialize(using = PriorityRequestTypeDeserializer.class)
+@JsonSerialize(using = PriorityRequestType.PriorityRequestTypeSerializer.class)
+@JsonDeserialize(using = PriorityRequestType.PriorityRequestTypeDeserializer.class)
 public enum PriorityRequestType implements Asn1Enumerated {
 	PRIORITYREQUESTTYPERESERVED(0, "priorityRequestTypeReserved"), PRIORITYREQUEST(1,
 			"priorityRequest"), PRIORITYREQUESTUPDATE(2,
@@ -41,5 +43,22 @@ public enum PriorityRequestType implements Asn1Enumerated {
 	private PriorityRequestType(int index, String name) {
 		this.index = index;
 		this.name = name;
+	}
+
+	public static class PriorityRequestTypeSerializer extends EnumeratedSerializer<PriorityRequestType> {
+		public PriorityRequestTypeSerializer() {
+			super(PriorityRequestType.class);
+		}
+	}
+
+	public static class PriorityRequestTypeDeserializer extends EnumeratedDeserializer<PriorityRequestType> {
+		public PriorityRequestTypeDeserializer() {
+			super(PriorityRequestType.class);
+		}
+
+		@Override
+		protected PriorityRequestType[] listEnumValues() {
+			return PriorityRequestType.values();
+		}
 	}
 }
