@@ -23,11 +23,13 @@
 package j2735.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.REGION.Reg_LaneDataAttribute;
 
 @JsonRootName("Reg_LaneDataAttribute")
+@JsonDeserialize(using = None.class)
 public class LaneDataAttribute_addGrpBReg_LaneDataAttribute extends Reg_LaneDataAttribute<LaneDataAttribute_addGrpB> {
 
 	public LaneDataAttribute_addGrpBReg_LaneDataAttribute() {

@@ -69,6 +69,8 @@ public class ProbeDataManagement extends Asn1Sequence {
 	private VehicleStatusRequestList dataElements;
 	@Asn1Property(tag = 7, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-ProbeDataManagement")
 	private SequenceOfRegional regional;
 
 	@Getter

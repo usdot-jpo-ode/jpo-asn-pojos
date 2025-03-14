@@ -23,6 +23,7 @@
 package j2735.CommonSafetyRequest;
 
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfEnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -32,6 +33,14 @@ public class RequestedItemList extends Asn1SequenceOf<RequestedItem> {
 
 	public RequestedItemList() {
 		super(RequestedItem.class, 1L, 32L);
+	}
+
+	public static class RequestedItemListSerializer
+			extends
+				SequenceOfEnumeratedSerializer<RequestedItem, RequestedItemList> {
+		public RequestedItemListSerializer() {
+			super(RequestedItem.class, RequestedItemList.class);
+		}
 	}
 
 	public static class RequestedItemListDeserializer

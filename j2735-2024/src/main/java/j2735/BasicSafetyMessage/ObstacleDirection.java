@@ -30,22 +30,24 @@ import j2735.Common.Angle;
 @JsonDeserialize(using = ObstacleDirection.ObstacleDirectionDeserializer.class)
 public class ObstacleDirection extends Angle {
 
-  public ObstacleDirection() {
-    super();
-  }
+	public ObstacleDirection() {
+		super();
+	}
 
-  @JsonCreator
-  public ObstacleDirection(long value) {
-    super(value);
-  }
+	@JsonCreator
+	public ObstacleDirection(long value) {
+		this();
+		this.value = value;
+	}
 
-  public static class ObstacleDirectionDeserializer extends IntegerDeserializer<ObstacleDirection> {
-    public ObstacleDirectionDeserializer() {
-      super(ObstacleDirection.class);
-    }
-    @Override
-    protected ObstacleDirection construct() {
-      return new ObstacleDirection();
-    }
-  }
+	public static class ObstacleDirectionDeserializer extends IntegerDeserializer<ObstacleDirection> {
+		public ObstacleDirectionDeserializer() {
+			super(ObstacleDirection.class);
+		}
+
+		@Override
+		protected ObstacleDirection construct() {
+			return new ObstacleDirection();
+		}
+	}
 }

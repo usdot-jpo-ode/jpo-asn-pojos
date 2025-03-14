@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.BSMcoreData;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +46,8 @@ public class CooperativeControlMessage extends Asn1Sequence {
 	private BSMcoreData coreData;
 	@Asn1Property(tag = 1, name = "partII", optional = true)
 	@JsonProperty("partII")
+	@JacksonXmlElementWrapper(localName = "partII")
+	@JacksonXmlProperty(localName = "CCMpartIIExtension")
 	private SequenceOfPartII partII;
 
 	@JsonInclude(Include.NON_NULL)

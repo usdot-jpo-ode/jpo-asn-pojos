@@ -23,15 +23,14 @@
 package j2735.Common;
 
 import asn2pojo.runtime.types.Asn1ObjectIdentifier;
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class FullRoadAuthorityID extends Asn1ObjectIdentifier {
 
-  public FullRoadAuthorityID() {
-  }
+	public FullRoadAuthorityID() {
+		super();
+	}
 
-  @JsonCreator
-  public FullRoadAuthorityID(String value) {
-    super(value);
-  }
+	public FullRoadAuthorityID(String value) {
+		super(value);
+	}
 }

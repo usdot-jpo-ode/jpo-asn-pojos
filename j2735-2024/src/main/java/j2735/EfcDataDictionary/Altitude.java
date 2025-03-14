@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = Altitude.AltitudeDeserializer.class)
 public class Altitude extends Int2Signed {
+
+	public Altitude() {
+		super();
+	}
+
+	@JsonCreator
+	public Altitude(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class AltitudeDeserializer extends IntegerDeserializer<Altitude> {
+		public AltitudeDeserializer() {
+			super(Altitude.class);
+		}
+
+		@Override
+		protected Altitude construct() {
+			return new Altitude();
+		}
+	}
 }

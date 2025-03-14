@@ -26,8 +26,6 @@ import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 
 @JsonPropertyOrder({"partII-Id", "partII-Value"})
 abstract public class PartIIcontent<TValue> extends Asn1Sequence {
@@ -35,8 +33,7 @@ abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 	protected PartII_Id partII_Id;
 	@JsonIgnore
 	final protected String name;
-	private TValue partII_Value;
-
+	protected TValue partII_Value;
 
 	@JsonProperty("partII-Id")
 	public PartII_Id getPartII_Id() {
@@ -51,8 +48,6 @@ abstract public class PartIIcontent<TValue> extends Asn1Sequence {
 	public String getName() {
 		return name;
 	}
-
-
 
 	@JsonProperty("partII-Value")
 	public TValue getPartII_Value() {

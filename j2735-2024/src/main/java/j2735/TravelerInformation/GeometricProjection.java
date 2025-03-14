@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.Extent;
 import j2735.Common.HeadingSlice;
 import j2735.Common.LaneWidth;
@@ -56,6 +58,8 @@ public class GeometricProjection extends Asn1Sequence {
 	private Circle circle;
 	@Asn1Property(tag = 4, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-GeometricProjection")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

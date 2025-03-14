@@ -25,33 +25,36 @@ package j2735.CooperativeControlMessage;
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"partII-Id", "partII-Value"})
 abstract public class CCMPartIIcontent<TValue> extends Asn1Sequence {
 
-	@JsonIgnore
-	final protected PartII_Id partII_Id;
+	protected PartII_Id partII_Id;
 	@JsonIgnore
 	final protected String name;
-	private TValue partII_Value;
-	public final static String INFORMATION_OBJECT_CLASS = "CCM_PARTII_EXT_ID_AND_TYPE";
+	protected TValue partII_Value;
 
+	@JsonProperty("partII-Id")
 	public PartII_Id getPartII_Id() {
 		return partII_Id;
+	}
+
+	@JsonProperty("partII-Id")
+	public void setPartII_Id(PartII_Id partII_Id) {
+		this.partII_Id = partII_Id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	@JsonProperty("partII-Id")
-	public String getIdString() {
-		return partII_Id.toString();
-	}
-
+	@JsonProperty("partII-Value")
 	public TValue getPartII_Value() {
 		return partII_Value;
 	}
 
+	@JsonProperty("partII-Value")
 	public void setPartII_Value(TValue partII_Value) {
 		this.partII_Value = partII_Value;
 	}

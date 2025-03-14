@@ -54,6 +54,8 @@ public class MovementEvent extends Asn1Sequence {
 	private AdvisorySpeedList speeds;
 	@Asn1Property(tag = 3, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-MovementEvent")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

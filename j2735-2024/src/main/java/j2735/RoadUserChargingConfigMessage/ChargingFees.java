@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.RoadSafetyMessage.EventRecurrence;
 import j2735.TollAdvertisementMessage.ChargesTable;
 import lombok.Getter;
@@ -42,6 +44,8 @@ public class ChargingFees extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "chargingSchedule", optional = true)
 	@JsonProperty("chargingSchedule")
+	@JacksonXmlElementWrapper(localName = "chargingSchedule")
+	@JacksonXmlProperty(localName = "EventRecurrence")
 	private SequenceOfChargingSchedule chargingSchedule;
 	@Asn1Property(tag = 1, name = "chargesTable")
 	@JsonProperty("chargesTable")

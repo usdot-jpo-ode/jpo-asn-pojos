@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = CO2EmissionValue.CO2EmissionValueDeserializer.class)
 public class CO2EmissionValue extends Int2Unsigned {
+
+	public CO2EmissionValue() {
+		super();
+	}
+
+	@JsonCreator
+	public CO2EmissionValue(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class CO2EmissionValueDeserializer extends IntegerDeserializer<CO2EmissionValue> {
+		public CO2EmissionValueDeserializer() {
+			super(CO2EmissionValue.class);
+		}
+
+		@Override
+		protected CO2EmissionValue construct() {
+			return new CO2EmissionValue();
+		}
+	}
 }

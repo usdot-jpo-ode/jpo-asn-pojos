@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.IntersectionAccessPoint;
 import j2735.Common.IntersectionReferenceID;
 import j2735.Common.RequestID;
@@ -59,6 +61,8 @@ public class SignalRequest extends Asn1Sequence {
 	private IntersectionAccessPoint outBoundLane;
 	@Asn1Property(tag = 5, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-SignalRequest")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

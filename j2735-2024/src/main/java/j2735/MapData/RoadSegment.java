@@ -74,6 +74,8 @@ public class RoadSegment extends Asn1Sequence {
 	private RoadLaneSetList roadLaneSet;
 	@Asn1Property(tag = 7, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-RoadSegment")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

@@ -23,11 +23,13 @@
 package j2735.TestMessage04;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.MessageFrame.MessageFrame;
 
 @JsonRootName("MessageFrame")
+@JsonDeserialize(using = None.class)
 public class TestMessage04MessageFrame extends MessageFrame<TestMessage04> {
 
 	public TestMessage04MessageFrame() {

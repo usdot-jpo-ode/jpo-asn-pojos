@@ -21,5 +21,34 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = VehicleCurrentMaxTrainWeight.VehicleCurrentMaxTrainWeightDeserializer.class)
 public class VehicleCurrentMaxTrainWeight extends Int2Unsigned {
+
+	public VehicleCurrentMaxTrainWeight() {
+		super();
+	}
+
+	@JsonCreator
+	public VehicleCurrentMaxTrainWeight(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class VehicleCurrentMaxTrainWeightDeserializer
+			extends
+				IntegerDeserializer<VehicleCurrentMaxTrainWeight> {
+		public VehicleCurrentMaxTrainWeightDeserializer() {
+			super(VehicleCurrentMaxTrainWeight.class);
+		}
+
+		@Override
+		protected VehicleCurrentMaxTrainWeight construct() {
+			return new VehicleCurrentMaxTrainWeight();
+		}
+	}
 }

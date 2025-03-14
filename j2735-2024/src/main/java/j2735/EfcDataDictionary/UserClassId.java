@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = UserClassId.UserClassIdDeserializer.class)
 public class UserClassId extends Int1Unsigned {
+
+	public UserClassId() {
+		super();
+	}
+
+	@JsonCreator
+	public UserClassId(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class UserClassIdDeserializer extends IntegerDeserializer<UserClassId> {
+		public UserClassIdDeserializer() {
+			super(UserClassId.class);
+		}
+
+		@Override
+		protected UserClassId construct() {
+			return new UserClassId();
+		}
+	}
 }

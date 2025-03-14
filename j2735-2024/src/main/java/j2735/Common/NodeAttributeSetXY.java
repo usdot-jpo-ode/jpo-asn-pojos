@@ -31,7 +31,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.REGION.Reg_NodeAttributeSetXY;
 import lombok.Getter;
 import lombok.Setter;
@@ -70,6 +71,8 @@ public class NodeAttributeSetXY extends Asn1Sequence {
 	private Offset_B10 dElevation;
 	@Asn1Property(tag = 6, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-NodeAttributeSetXY")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

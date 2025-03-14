@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.MessageFrame.DSRCmsgID;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +46,8 @@ public class CfgMsgRecepIndicators extends Asn1Sequence {
 	private CfgMsgDictionary msgDictionary;
 	@Asn1Property(tag = 1, name = "messages", optional = true)
 	@JsonProperty("messages")
+	@JacksonXmlElementWrapper(localName = "messages")
+	@JacksonXmlProperty(localName = "DSRCmsgID")
 	private SequenceOfMessages messages;
 
 	@JsonInclude(Include.NON_NULL)

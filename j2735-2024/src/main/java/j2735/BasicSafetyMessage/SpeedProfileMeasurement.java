@@ -22,7 +22,32 @@
 
 package j2735.BasicSafetyMessage;
 
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import j2735.Common.GrossSpeed;
 
+@JsonDeserialize(using = SpeedProfileMeasurement.SpeedProfileMeasurementDeserializer.class)
 public class SpeedProfileMeasurement extends GrossSpeed {
+
+	public SpeedProfileMeasurement() {
+		super();
+	}
+
+	@JsonCreator
+	public SpeedProfileMeasurement(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class SpeedProfileMeasurementDeserializer extends IntegerDeserializer<SpeedProfileMeasurement> {
+		public SpeedProfileMeasurementDeserializer() {
+			super(SpeedProfileMeasurement.class);
+		}
+
+		@Override
+		protected SpeedProfileMeasurement construct() {
+			return new SpeedProfileMeasurement();
+		}
+	}
 }

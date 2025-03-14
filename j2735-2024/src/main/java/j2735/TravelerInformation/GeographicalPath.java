@@ -31,6 +31,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.DescriptiveName;
 import j2735.Common.HeadingSlice;
 import j2735.Common.LaneWidth;
@@ -72,6 +74,8 @@ public class GeographicalPath extends Asn1Sequence {
 	private DescriptionChoice description;
 	@Asn1Property(tag = 8, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-GeographicalPath")
 	private SequenceOfRegional regional;
 
 	@Getter

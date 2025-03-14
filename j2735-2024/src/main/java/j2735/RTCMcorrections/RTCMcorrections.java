@@ -68,6 +68,8 @@ public class RTCMcorrections extends Asn1Sequence {
 	private RTCMmessageList msgs;
 	@Asn1Property(tag = 6, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-RTCMcorrections")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

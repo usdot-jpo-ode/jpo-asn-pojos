@@ -24,25 +24,26 @@ package j2735.CooperativeControlMessage;
 
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
+import asn2pojo.runtime.serialization.ParameterizedTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonInclude(Include.NON_NULL)
-@JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "partII_Id")
-@JsonSubTypes({@JsonSubTypes.Type(value = j2735.Common.VehicleSafetyExtensionsCCMpartIIExtension.class, name = "0"),
-		@JsonSubTypes.Type(value = LightVehicleCCMExtensionsCCMpartIIExtension.class, name = "1"),
-		@JsonSubTypes.Type(value = HeavyTruckCCMExtensionsCCMpartIIExtension.class, name = "2")})
-@Asn1ParameterizedTypes(idProperty = "partII_Id", idType = IdType.INTEGER, valueProperty = "partII_Value", value = {
+@Asn1ParameterizedTypes(idProperty = "partII-Id", idType = IdType.INTEGER, valueProperty = "partII-Value", value = {
 		@Asn1ParameterizedTypes.Type(value = j2735.Common.VehicleSafetyExtensionsCCMpartIIExtension.class, intId = 0),
 		@Asn1ParameterizedTypes.Type(value = LightVehicleCCMExtensionsCCMpartIIExtension.class, intId = 1),
 		@Asn1ParameterizedTypes.Type(value = HeavyTruckCCMExtensionsCCMpartIIExtension.class, intId = 2)})
+@JsonDeserialize(using = CCMpartIIExtension.CCMpartIIExtensionDeserializer.class)
 abstract public class CCMpartIIExtension<TValue> extends CCMPartIIcontent<TValue> {
 
 	public CCMpartIIExtension(int id, String name) {
 		super(id, name);
+	}
+
+	public static class CCMpartIIExtensionDeserializer extends ParameterizedTypeDeserializer<CCMpartIIExtension> {
+		public CCMpartIIExtensionDeserializer() {
+			super(CCMpartIIExtension.class);
+		}
 	}
 }

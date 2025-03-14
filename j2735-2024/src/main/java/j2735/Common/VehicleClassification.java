@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.ITIS.IncidentResponseEquipment;
 import j2735.ITIS.ResponderGroupAffected;
 import j2735.ITIS.VehicleGroupAffected;
@@ -68,6 +70,8 @@ public class VehicleClassification extends Asn1Sequence {
 	private FuelType fuelType;
 	@Asn1Property(tag = 8, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-VehicleClassification")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

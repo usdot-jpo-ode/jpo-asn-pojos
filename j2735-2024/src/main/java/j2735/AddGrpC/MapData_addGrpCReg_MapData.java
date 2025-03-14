@@ -23,11 +23,13 @@
 package j2735.AddGrpC;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.REGION.Reg_MapData;
 
 @JsonRootName("Reg_MapData")
+@JsonDeserialize(using = None.class)
 public class MapData_addGrpCReg_MapData extends Reg_MapData<MapData_addGrpC> {
 
 	public MapData_addGrpCReg_MapData() {

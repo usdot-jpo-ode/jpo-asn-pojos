@@ -23,10 +23,12 @@
 package j2735.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonRootName("CCMpartIIExtension")
+@JsonDeserialize(using = None.class)
 public class LightVehicleCCMExtensionsCCMpartIIExtension extends CCMpartIIExtension<LightVehicleCCMExtensions> {
 
 	public LightVehicleCCMExtensionsCCMpartIIExtension() {

@@ -36,7 +36,8 @@ public class SegmentAttributeXYList extends Asn1SequenceOf<SegmentAttributeXY> {
 	}
 
 	public static class SegmentAttributeXYListSerializer
-			extends SequenceOfEnumeratedSerializer<SegmentAttributeXY, SegmentAttributeXYList> {
+			extends
+				SequenceOfEnumeratedSerializer<SegmentAttributeXY, SegmentAttributeXYList> {
 		public SegmentAttributeXYListSerializer() {
 			super(SegmentAttributeXY.class, SegmentAttributeXYList.class);
 		}
@@ -44,7 +45,7 @@ public class SegmentAttributeXYList extends Asn1SequenceOf<SegmentAttributeXY> {
 
 	public static class SegmentAttributeXYListDeserializer
 			extends
-			SequenceOfEnumeratedDeserializer<SegmentAttributeXY, SegmentAttributeXYList> {
+				SequenceOfEnumeratedDeserializer<SegmentAttributeXY, SegmentAttributeXYList> {
 		public SegmentAttributeXYListDeserializer() {
 			super(SegmentAttributeXYList.class, SegmentAttributeXY.class);
 		}

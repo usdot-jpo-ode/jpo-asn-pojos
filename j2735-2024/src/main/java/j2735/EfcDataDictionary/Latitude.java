@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = Latitude.LatitudeDeserializer.class)
 public class Latitude extends Int4Signed {
+
+	public Latitude() {
+		super();
+	}
+
+	@JsonCreator
+	public Latitude(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class LatitudeDeserializer extends IntegerDeserializer<Latitude> {
+		public LatitudeDeserializer() {
+			super(Latitude.class);
+		}
+
+		@Override
+		protected Latitude construct() {
+			return new Latitude();
+		}
+	}
 }

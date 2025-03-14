@@ -24,23 +24,25 @@ package j2735.REGION;
 
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
+import asn2pojo.runtime.serialization.ParameterizedTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import j2735.Common.RegionalExtension;
 
 @JsonInclude(Include.NON_NULL)
-@JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "regionId")
-@JsonSubTypes({
-		@JsonSubTypes.Type(value = j2735.AddGrpB.LaneDataAttribute_addGrpBReg_LaneDataAttribute.class, name = "2")})
 @Asn1ParameterizedTypes(idProperty = "regionId", idType = IdType.INTEGER, valueProperty = "regExtValue", value = {
 		@Asn1ParameterizedTypes.Type(value = j2735.AddGrpB.LaneDataAttribute_addGrpBReg_LaneDataAttribute.class, intId = 2)})
+@JsonDeserialize(using = Reg_LaneDataAttribute.Reg_LaneDataAttributeDeserializer.class)
 abstract public class Reg_LaneDataAttribute<TValue> extends RegionalExtension<TValue> {
 
 	public Reg_LaneDataAttribute(int id, String name) {
 		super(id, name);
+	}
+
+	public static class Reg_LaneDataAttributeDeserializer extends ParameterizedTypeDeserializer<Reg_LaneDataAttribute> {
+		public Reg_LaneDataAttributeDeserializer() {
+			super(Reg_LaneDataAttribute.class);
+		}
 	}
 }

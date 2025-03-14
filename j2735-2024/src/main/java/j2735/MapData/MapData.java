@@ -75,6 +75,8 @@ public class MapData extends Asn1Sequence {
 	private RestrictionClassList restrictionList;
 	@Asn1Property(tag = 8, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-MapData")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

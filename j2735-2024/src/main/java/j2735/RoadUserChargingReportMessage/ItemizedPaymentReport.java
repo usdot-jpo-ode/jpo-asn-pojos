@@ -30,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.DDateTime;
 import lombok.Getter;
 import lombok.Setter;
@@ -51,6 +53,8 @@ public class ItemizedPaymentReport extends Asn1Sequence {
 	private Asn1ObjectIdentifier svcProvID;
 	@Asn1Property(tag = 3, name = "chargerData")
 	@JsonProperty("chargerData")
+	@JacksonXmlElementWrapper(localName = "chargerData")
+	@JacksonXmlProperty(localName = "ItemizedChargerData")
 	private SequenceOfChargerData chargerData;
 
 	@JsonInclude(Include.NON_NULL)

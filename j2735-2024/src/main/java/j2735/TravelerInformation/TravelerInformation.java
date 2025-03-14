@@ -62,6 +62,8 @@ public class TravelerInformation extends Asn1Sequence {
 	private TravelerDataFrameList dataFrames;
 	@Asn1Property(tag = 5, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-TravelerInformation")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

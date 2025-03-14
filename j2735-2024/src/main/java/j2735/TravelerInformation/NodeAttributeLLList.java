@@ -25,7 +25,6 @@ package j2735.TravelerInformation;
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1SequenceOf;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -37,7 +36,8 @@ public class NodeAttributeLLList extends Asn1SequenceOf<NodeAttributeLL> {
 	}
 
 	public static class NodeAttributeLLListSerializer
-			extends SequenceOfEnumeratedSerializer<NodeAttributeLL, NodeAttributeLLList> {
+			extends
+				SequenceOfEnumeratedSerializer<NodeAttributeLL, NodeAttributeLLList> {
 		public NodeAttributeLLListSerializer() {
 			super(NodeAttributeLL.class, NodeAttributeLLList.class);
 		}

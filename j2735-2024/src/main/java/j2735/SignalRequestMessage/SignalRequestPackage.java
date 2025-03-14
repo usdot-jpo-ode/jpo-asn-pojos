@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.DSecond;
 import j2735.Common.MinuteOfTheYear;
 import j2735.REGION.Reg_SignalRequestPackage;
@@ -55,6 +57,8 @@ public class SignalRequestPackage extends Asn1Sequence {
 	private DSecond duration;
 	@Asn1Property(tag = 4, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-SignalRequestPackage")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

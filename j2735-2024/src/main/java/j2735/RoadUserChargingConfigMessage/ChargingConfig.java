@@ -34,6 +34,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -54,6 +56,8 @@ public class ChargingConfig extends Asn1Sequence {
 	private PrimaryRegionChargingInfo byPrimaryRegion;
 	@Asn1Property(tag = 3, name = "bySubRegion", optional = true)
 	@JsonProperty("bySubRegion")
+	@JacksonXmlElementWrapper(localName = "bySubRegion")
+	@JacksonXmlProperty(localName = "SubRegionChargingInfo")
 	private SequenceOfBySubRegion bySubRegion;
 	@Asn1Property(tag = 4, name = "byAreaOrSegment", optional = true)
 	@JsonProperty("byAreaOrSegment")

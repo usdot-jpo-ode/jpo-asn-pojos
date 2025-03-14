@@ -23,11 +23,13 @@
 package j2735.AddGrpC;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.REGION.Reg_IntersectionState;
 
 @JsonRootName("Reg_IntersectionState")
+@JsonDeserialize(using = None.class)
 public class IntersectionState_addGrpCReg_IntersectionState extends Reg_IntersectionState<IntersectionState_addGrpC> {
 
 	public IntersectionState_addGrpCReg_IntersectionState() {

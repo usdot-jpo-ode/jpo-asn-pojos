@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.Extent;
 import j2735.Common.FullPositionVector;
 import j2735.Common.FurtherInfoID;
@@ -58,6 +60,8 @@ public class RoadSideAlert extends Asn1Sequence {
 	private ITIScodes typeEvent;
 	@Asn1Property(tag = 3, name = "description", optional = true)
 	@JsonProperty("description")
+	@JacksonXmlElementWrapper(localName = "description")
+	@JacksonXmlProperty(localName = "ITIScodes")
 	private SequenceOfDescription description;
 	@Asn1Property(tag = 4, name = "priority", optional = true)
 	@JsonProperty("priority")
@@ -76,6 +80,8 @@ public class RoadSideAlert extends Asn1Sequence {
 	private FurtherInfoID furtherInfoID;
 	@Asn1Property(tag = 9, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-RoadSideAlert")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

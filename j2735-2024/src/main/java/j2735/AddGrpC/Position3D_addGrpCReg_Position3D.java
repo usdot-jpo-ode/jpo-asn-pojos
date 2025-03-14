@@ -23,11 +23,13 @@
 package j2735.AddGrpC;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.REGION.Reg_Position3D;
 
 @JsonRootName("Reg_Position3D")
+@JsonDeserialize(using = None.class)
 public class Position3D_addGrpCReg_Position3D extends Reg_Position3D<Position3D_addGrpC> {
 
 	public Position3D_addGrpCReg_Position3D() {

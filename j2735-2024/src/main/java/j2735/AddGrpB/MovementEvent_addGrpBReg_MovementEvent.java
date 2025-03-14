@@ -23,11 +23,13 @@
 package j2735.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.REGION.Reg_MovementEvent;
 
 @JsonRootName("Reg_MovementEvent")
+@JsonDeserialize(using = None.class)
 public class MovementEvent_addGrpBReg_MovementEvent extends Reg_MovementEvent<MovementEvent_addGrpB> {
 
 	public MovementEvent_addGrpBReg_MovementEvent() {

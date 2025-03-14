@@ -56,6 +56,8 @@ public class SPAT extends Asn1Sequence {
 	private IntersectionStateList intersections;
 	@Asn1Property(tag = 3, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-SPAT")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = ReceiptDistance.ReceiptDistanceDeserializer.class)
 public class ReceiptDistance extends Int3Unsigned {
+
+	public ReceiptDistance() {
+		super();
+	}
+
+	@JsonCreator
+	public ReceiptDistance(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class ReceiptDistanceDeserializer extends IntegerDeserializer<ReceiptDistance> {
+		public ReceiptDistanceDeserializer() {
+			super(ReceiptDistance.class);
+		}
+
+		@Override
+		protected ReceiptDistance construct() {
+			return new ReceiptDistance();
+		}
+	}
 }

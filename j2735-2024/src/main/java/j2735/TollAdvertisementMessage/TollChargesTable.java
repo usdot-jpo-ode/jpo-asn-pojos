@@ -23,6 +23,8 @@
 package j2735.TollAdvertisementMessage;
 
 import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfChoiceSerializer;
 import asn2pojo.runtime.types.Asn1Choice;
 import asn2pojo.runtime.types.Asn1Sequence;
 import asn2pojo.runtime.types.Asn1SequenceOf;
@@ -30,6 +32,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,9 +58,13 @@ public class TollChargesTable extends Asn1Sequence {
 		private ChargesTable pointCharges;
 		@Asn1Property(tag = 1, name = "perLaneCharges")
 		@JsonProperty("perLaneCharges")
+		@JacksonXmlElementWrapper(localName = "perLaneCharges")
+		@JacksonXmlProperty(localName = "LaneChargesTable")
 		private SequenceOfPerLaneCharges perLaneCharges;
 		@Asn1Property(tag = 2, name = "closedNetworkCharges")
 		@JsonProperty("closedNetworkCharges")
+		@JsonSerialize(using = SequenceOfClosedNetworkChargesSerializer.class)
+		@JsonDeserialize(using = SequenceOfClosedNetworkChargesDeserializer.class)
 		private SequenceOfClosedNetworkCharges closedNetworkCharges;
 		@Asn1Property(tag = 3, name = "timeBasedCharges")
 		@JsonProperty("timeBasedCharges")
@@ -75,6 +85,27 @@ public class TollChargesTable extends Asn1Sequence {
 		public static class SequenceOfClosedNetworkCharges extends Asn1SequenceOf<ClosedNetworkChargesTable> {
 			public SequenceOfClosedNetworkCharges() {
 				super(ClosedNetworkChargesTable.class, 1L, 64L);
+			}
+		}
+
+		public static class SequenceOfClosedNetworkChargesSerializer
+				extends
+					SequenceOfChoiceSerializer<ClosedNetworkChargesTable, SequenceOfClosedNetworkCharges> {
+			public SequenceOfClosedNetworkChargesSerializer() {
+				super(ClosedNetworkChargesTable.class, SequenceOfClosedNetworkCharges.class);
+			}
+		}
+
+		public static class SequenceOfClosedNetworkChargesDeserializer
+				extends
+					SequenceOfChoiceDeserializer<ClosedNetworkChargesTable, SequenceOfClosedNetworkCharges> {
+			public SequenceOfClosedNetworkChargesDeserializer() {
+				super(ClosedNetworkChargesTable.class, SequenceOfClosedNetworkCharges.class);
+			}
+
+			@Override
+			protected SequenceOfClosedNetworkCharges construct() {
+				return new SequenceOfClosedNetworkCharges();
 			}
 		}
 	}

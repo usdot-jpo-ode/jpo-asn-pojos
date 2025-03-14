@@ -23,13 +23,13 @@
 package j2735.Common;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import j2735.BasicSafetyMessage.BSMpartIIExtension;
 
 @JsonRootName("BSMpartIIExtension")
-@JsonDeserialize(using = StdDeserializer.None.class)
+@JsonDeserialize(using = None.class)
 public class VehicleSafetyExtensionsBSMpartIIExtension extends BSMpartIIExtension<VehicleSafetyExtensions> {
 
 	public VehicleSafetyExtensionsBSMpartIIExtension() {

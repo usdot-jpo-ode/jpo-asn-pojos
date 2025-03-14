@@ -59,10 +59,22 @@ public class IncidentsContainer extends Asn1Sequence {
 		}
 	}
 
-	public static class SequenceOfResponderTypeDeserializer extends
-			SequenceOfEnumeratedDeserializer<ResponderGroupAffected, SequenceOfResponderType> {
+	public IncidentsContainer() {
+		super(true);
+	}
 
-		protected SequenceOfResponderTypeDeserializer() {
+	public static class SequenceOfResponderTypeSerializer
+			extends
+				SequenceOfEnumeratedSerializer<ResponderGroupAffected, SequenceOfResponderType> {
+		public SequenceOfResponderTypeSerializer() {
+			super(ResponderGroupAffected.class, SequenceOfResponderType.class);
+		}
+	}
+
+	public static class SequenceOfResponderTypeDeserializer
+			extends
+				SequenceOfEnumeratedDeserializer<ResponderGroupAffected, SequenceOfResponderType> {
+		public SequenceOfResponderTypeDeserializer() {
 			super(SequenceOfResponderType.class, ResponderGroupAffected.class);
 		}
 
@@ -75,17 +87,5 @@ public class IncidentsContainer extends Asn1Sequence {
 		protected SequenceOfResponderType construct() {
 			return new SequenceOfResponderType();
 		}
-	}
-
-	public static class SequenceOfResponderTypeSerializer extends
-			SequenceOfEnumeratedSerializer<ResponderGroupAffected, SequenceOfResponderType> {
-
-		protected SequenceOfResponderTypeSerializer() {
-			super(ResponderGroupAffected.class, SequenceOfResponderType.class);
-		}
-	}
-
-	public IncidentsContainer() {
-		super(true);
 	}
 }

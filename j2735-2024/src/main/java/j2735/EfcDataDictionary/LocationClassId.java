@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = LocationClassId.LocationClassIdDeserializer.class)
 public class LocationClassId extends Int4Unsigned {
+
+	public LocationClassId() {
+		super();
+	}
+
+	@JsonCreator
+	public LocationClassId(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class LocationClassIdDeserializer extends IntegerDeserializer<LocationClassId> {
+		public LocationClassIdDeserializer() {
+			super(LocationClassId.class);
+		}
+
+		@Override
+		protected LocationClassId construct() {
+			return new LocationClassId();
+		}
+	}
 }

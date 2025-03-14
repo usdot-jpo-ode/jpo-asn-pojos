@@ -64,6 +64,8 @@ public class EventDescription extends Asn1Sequence {
 	private Extent extent;
 	@Asn1Property(tag = 5, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-EventDescription")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

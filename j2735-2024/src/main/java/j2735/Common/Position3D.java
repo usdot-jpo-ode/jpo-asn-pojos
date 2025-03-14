@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.REGION.Reg_Position3D;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,6 +52,8 @@ public class Position3D extends Asn1Sequence {
 	private Elevation elevation;
 	@Asn1Property(tag = 3, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-Position3D")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

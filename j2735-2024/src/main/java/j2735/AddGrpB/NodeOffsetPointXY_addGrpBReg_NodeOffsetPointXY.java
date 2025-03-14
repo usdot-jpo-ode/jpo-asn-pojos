@@ -23,11 +23,13 @@
 package j2735.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.JsonDeserializer.None;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import j2735.REGION.Reg_NodeOffsetPointXY;
 
 @JsonRootName("Reg_NodeOffsetPointXY")
+@JsonDeserialize(using = None.class)
 public class NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXY extends Reg_NodeOffsetPointXY<NodeOffsetPointXY_addGrpB> {
 
 	public NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXY() {

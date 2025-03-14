@@ -25,33 +25,36 @@ package j2735.Common;
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"regionId", "regExtValue"})
 abstract public class RegionalExtension<TValue> extends Asn1Sequence {
 
-	@JsonIgnore
-	final protected RegionId regionId;
+	protected RegionId regionId;
 	@JsonIgnore
 	final protected String name;
-	private TValue regExtValue;
-	public final static String INFORMATION_OBJECT_CLASS = "REG_EXT_ID_AND_TYPE";
+	protected TValue regExtValue;
 
+	@JsonProperty("regionId")
 	public RegionId getRegionId() {
 		return regionId;
+	}
+
+	@JsonProperty("regionId")
+	public void setRegionId(RegionId regionId) {
+		this.regionId = regionId;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	@JsonProperty("regionId")
-	public String getIdString() {
-		return regionId.toString();
-	}
-
+	@JsonProperty("regExtValue")
 	public TValue getRegExtValue() {
 		return regExtValue;
 	}
 
+	@JsonProperty("regExtValue")
 	public void setRegExtValue(TValue regExtValue) {
 		this.regExtValue = regExtValue;
 	}

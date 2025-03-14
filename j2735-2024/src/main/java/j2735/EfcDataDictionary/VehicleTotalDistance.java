@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = VehicleTotalDistance.VehicleTotalDistanceDeserializer.class)
 public class VehicleTotalDistance extends Int4Unsigned {
+
+	public VehicleTotalDistance() {
+		super();
+	}
+
+	@JsonCreator
+	public VehicleTotalDistance(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class VehicleTotalDistanceDeserializer extends IntegerDeserializer<VehicleTotalDistance> {
+		public VehicleTotalDistanceDeserializer() {
+			super(VehicleTotalDistance.class);
+		}
+
+		@Override
+		protected VehicleTotalDistance construct() {
+			return new VehicleTotalDistance();
+		}
+	}
 }

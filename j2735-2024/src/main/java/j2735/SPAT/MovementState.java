@@ -61,6 +61,8 @@ public class MovementState extends Asn1Sequence {
 	private ManeuverAssistList maneuverAssistList;
 	@Asn1Property(tag = 4, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-MovementState")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

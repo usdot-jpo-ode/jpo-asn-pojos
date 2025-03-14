@@ -30,6 +30,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.MinuteOfTheYear;
 import j2735.Common.MsgCount;
 import j2735.Common.TemporaryID;
@@ -54,10 +57,13 @@ public class CommonSafetyRequest extends Asn1Sequence {
 	private TemporaryID id;
 	@Asn1Property(tag = 3, name = "requests")
 	@JsonProperty("requests")
+	@JsonSerialize(using = RequestedItemList.RequestedItemListSerializer.class)
 	@JsonDeserialize(using = RequestedItemList.RequestedItemListDeserializer.class)
 	private RequestedItemList requests;
 	@Asn1Property(tag = 4, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-CommonSafetyRequest")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

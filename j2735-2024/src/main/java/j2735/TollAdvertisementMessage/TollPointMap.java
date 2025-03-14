@@ -31,6 +31,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.LaneWidth;
 import j2735.Common.Position3D;
 import j2735.Common.RegulatorySpeedLimit;
@@ -58,9 +60,13 @@ public class TollPointMap extends Asn1Sequence {
 	private LaneWidth laneWidth;
 	@Asn1Property(tag = 4, name = "approachLanesMap")
 	@JsonProperty("approachLanesMap")
+	@JacksonXmlElementWrapper(localName = "approachLanesMap")
+	@JacksonXmlProperty(localName = "GenericLane")
 	private SequenceOfApproachLanesMap approachLanesMap;
 	@Asn1Property(tag = 5, name = "tollZoneLanesMap")
 	@JsonProperty("tollZoneLanesMap")
+	@JacksonXmlElementWrapper(localName = "tollZoneLanesMap")
+	@JacksonXmlProperty(localName = "GenericLane")
 	private SequenceOfTollZoneLanesMap tollZoneLanesMap;
 
 	public static class RevisionNumInteger extends Asn1Integer {

@@ -28,6 +28,8 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,6 +40,8 @@ public class RoadWeatherUpload extends Asn1Choice {
 
 	@Asn1Property(tag = 0, name = "vehicleReport")
 	@JsonProperty("vehicleReport")
+	@JacksonXmlElementWrapper(localName = "vehicleReport")
+	@JacksonXmlProperty(localName = "VehicleReport")
 	private SequenceOfVehicleReport vehicleReport;
 	@Asn1Property(tag = 1, name = "citizenReport")
 	@JsonProperty("citizenReport")

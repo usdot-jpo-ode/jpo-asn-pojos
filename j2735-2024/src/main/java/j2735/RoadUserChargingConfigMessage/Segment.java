@@ -30,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.TollAdvertisementMessage.TollAdvertisementMessage;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,6 +47,8 @@ public class Segment extends Asn1Sequence {
 	private Asn1ObjectIdentifier segmentID;
 	@Asn1Property(tag = 1, name = "chargingSegment")
 	@JsonProperty("chargingSegment")
+	@JacksonXmlElementWrapper(localName = "chargingSegment")
+	@JacksonXmlProperty(localName = "TollAdvertisementMessage")
 	private SequenceOfChargingSegment chargingSegment;
 	@Asn1Property(tag = 2, name = "chargingUnits", optional = true)
 	@JsonProperty("chargingUnits")

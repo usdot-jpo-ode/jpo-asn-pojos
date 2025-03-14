@@ -30,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.REGION.Reg_ComputedLane;
 import lombok.Getter;
 import lombok.Setter;
@@ -60,6 +62,8 @@ public class ComputedLane extends Asn1Sequence {
 	private Scale_B12 scaleYaxis;
 	@Asn1Property(tag = 6, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-ComputedLane")
 	private SequenceOfRegional regional;
 
 	@Getter

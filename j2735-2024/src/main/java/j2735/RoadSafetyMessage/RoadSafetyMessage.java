@@ -58,15 +58,21 @@ public class RoadSafetyMessage extends Asn1Sequence {
 		}
 	}
 
+	public RoadSafetyMessage() {
+		super(true);
+	}
+
 	public static class SequenceOfContentSerializer
-			extends SequenceOfChoiceSerializer<ContentContainer, SequenceOfContent> {
+			extends
+				SequenceOfChoiceSerializer<ContentContainer, SequenceOfContent> {
 		public SequenceOfContentSerializer() {
 			super(ContentContainer.class, SequenceOfContent.class);
 		}
 	}
 
 	public static class SequenceOfContentDeserializer
-			extends SequenceOfChoiceDeserializer<ContentContainer, SequenceOfContent> {
+			extends
+				SequenceOfChoiceDeserializer<ContentContainer, SequenceOfContent> {
 		public SequenceOfContentDeserializer() {
 			super(ContentContainer.class, SequenceOfContent.class);
 		}
@@ -75,9 +81,5 @@ public class RoadSafetyMessage extends Asn1Sequence {
 		protected SequenceOfContent construct() {
 			return new SequenceOfContent();
 		}
-	}
-
-	public RoadSafetyMessage() {
-		super(true);
 	}
 }

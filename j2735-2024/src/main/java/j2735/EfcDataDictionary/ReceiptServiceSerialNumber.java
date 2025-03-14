@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = ReceiptServiceSerialNumber.ReceiptServiceSerialNumberDeserializer.class)
 public class ReceiptServiceSerialNumber extends Int3Unsigned {
+
+	public ReceiptServiceSerialNumber() {
+		super();
+	}
+
+	@JsonCreator
+	public ReceiptServiceSerialNumber(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class ReceiptServiceSerialNumberDeserializer extends IntegerDeserializer<ReceiptServiceSerialNumber> {
+		public ReceiptServiceSerialNumberDeserializer() {
+			super(ReceiptServiceSerialNumber.class);
+		}
+
+		@Override
+		protected ReceiptServiceSerialNumber construct() {
+			return new ReceiptServiceSerialNumber();
+		}
+	}
 }

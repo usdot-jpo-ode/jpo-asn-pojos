@@ -60,6 +60,8 @@ public class SignalStatusMessage extends Asn1Sequence {
 	private SignalStatusList status;
 	@Asn1Property(tag = 4, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-SignalStatusMessage")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

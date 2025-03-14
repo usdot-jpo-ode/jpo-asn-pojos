@@ -21,5 +21,32 @@
  *============================================================================*/
 
 package j2735.EfcDataDictionary;
+
+import asn2pojo.runtime.serialization.IntegerDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(using = TariffClassId.TariffClassIdDeserializer.class)
 public class TariffClassId extends Int4Unsigned {
+
+	public TariffClassId() {
+		super();
+	}
+
+	@JsonCreator
+	public TariffClassId(long value) {
+		this();
+		this.value = value;
+	}
+
+	public static class TariffClassIdDeserializer extends IntegerDeserializer<TariffClassId> {
+		public TariffClassIdDeserializer() {
+			super(TariffClassId.class);
+		}
+
+		@Override
+		protected TariffClassId construct() {
+			return new TariffClassId();
+		}
+	}
 }

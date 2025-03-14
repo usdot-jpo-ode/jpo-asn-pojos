@@ -75,6 +75,8 @@ public class SupplementalVehicleExtensions extends Asn1Sequence {
 	private RTCMPackage doNotUse5;
 	@Asn1Property(tag = 9, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-SupplementalVehicleExtensions")
 	private SequenceOfRegional regional;
 	@Asn1Property(tag = 10, name = "fhwaVehicleClass", extension = true)
 	@JsonProperty("fhwaVehicleClass")

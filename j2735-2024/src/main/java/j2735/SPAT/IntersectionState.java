@@ -82,6 +82,8 @@ public class IntersectionState extends Asn1Sequence {
 	private ManeuverAssistList maneuverAssistList;
 	@Asn1Property(tag = 9, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-IntersectionState")
 	private SequenceOfRegional regional;
 	@Asn1Property(tag = 10, name = "roadAuthorityID", optional = true, extension = true)
 	@JsonProperty("roadAuthorityID")

@@ -61,6 +61,8 @@ public class LaneDataAttribute extends Asn1Choice {
 	private SpeedLimitList speedLimits;
 	@Asn1Property(tag = 6, name = "regional")
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-LaneDataAttribute")
 	private SequenceOfRegional regional;
 
 	public LaneDataAttribute() {

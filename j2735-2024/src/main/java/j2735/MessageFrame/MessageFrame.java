@@ -24,65 +24,14 @@ package j2735.MessageFrame;
 
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes;
 import asn2pojo.runtime.annotations.Asn1ParameterizedTypes.IdType;
+import asn2pojo.runtime.serialization.ParameterizedTypeDeserializer;
 import asn2pojo.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonTypeInfo(use = Id.NAME, include = As.EXISTING_PROPERTY, property = "messageId")
-@JsonSubTypes({@JsonSubTypes.Type(value = j2735.BasicSafetyMessage.BasicSafetyMessageMessageFrame.class, name = "20"),
-		@JsonSubTypes.Type(value = j2735.MapData.MapDataMessageFrame.class, name = "18"),
-		@JsonSubTypes.Type(value = j2735.SPAT.SPATMessageFrame.class, name = "19"),
-		@JsonSubTypes.Type(value = j2735.CommonSafetyRequest.CommonSafetyRequestMessageFrame.class, name = "21"),
-		@JsonSubTypes.Type(value = j2735.EmergencyVehicleAlert.EmergencyVehicleAlertMessageFrame.class, name = "22"),
-		@JsonSubTypes.Type(value = j2735.IntersectionCollision.IntersectionCollisionMessageFrame.class, name = "23"),
-		@JsonSubTypes.Type(value = j2735.NMEAcorrections.NMEAcorrectionsMessageFrame.class, name = "24"),
-		@JsonSubTypes.Type(value = j2735.ProbeDataManagement.ProbeDataManagementMessageFrame.class, name = "25"),
-		@JsonSubTypes.Type(value = j2735.ProbeVehicleData.ProbeVehicleDataMessageFrame.class, name = "26"),
-		@JsonSubTypes.Type(value = j2735.RoadSideAlert.RoadSideAlertMessageFrame.class, name = "27"),
-		@JsonSubTypes.Type(value = j2735.RTCMcorrections.RTCMcorrectionsMessageFrame.class, name = "28"),
-		@JsonSubTypes.Type(value = j2735.SignalRequestMessage.SignalRequestMessageMessageFrame.class, name = "29"),
-		@JsonSubTypes.Type(value = j2735.SignalStatusMessage.SignalStatusMessageMessageFrame.class, name = "30"),
-		@JsonSubTypes.Type(value = j2735.TravelerInformation.TravelerInformationMessageFrame.class, name = "31"),
-		@JsonSubTypes.Type(value = j2735.PersonalSafetyMessage.PersonalSafetyMessageMessageFrame.class, name = "32"),
-		@JsonSubTypes.Type(value = j2735.RoadSafetyMessage.RoadSafetyMessageMessageFrame.class, name = "33"),
-		@JsonSubTypes.Type(value = j2735.RoadWeatherMessage.RoadWeatherMessageMessageFrame.class, name = "34"),
-		@JsonSubTypes.Type(value = j2735.ProbeDataConfig.ProbeDataConfigMessageMessageFrame.class, name = "35"),
-		@JsonSubTypes.Type(value = j2735.ProbeDataReport.ProbeDataReportMessageMessageFrame.class, name = "36"),
-		@JsonSubTypes.Type(value = j2735.TollAdvertisementMessage.TollAdvertisementMessageMessageFrame.class, name = "37"),
-		@JsonSubTypes.Type(value = j2735.TollUsageMessage.TollUsageMessageMessageFrame.class, name = "38"),
-		@JsonSubTypes.Type(value = j2735.TollUsageAckMessage.TollUsageAckMessageMessageFrame.class, name = "39"),
-		@JsonSubTypes.Type(value = j2735.CooperativeControlMessage.CooperativeControlMessageMessageFrame.class, name = "40"),
-		@JsonSubTypes.Type(value = j2735.SensorDataSharingMessage.SensorDataSharingMessageMessageFrame.class, name = "41"),
-		@JsonSubTypes.Type(value = j2735.ManeuverSharingAndCoordinatingMessage.ManeuverSharingAndCoordinatingMessageMessageFrame.class, name = "42"),
-		@JsonSubTypes.Type(value = j2735.RoadGeometryAndAttributes.RoadGeometryAndAttributesMessageFrame.class, name = "43"),
-		@JsonSubTypes.Type(value = j2735.PersonalSafetyMessage2.PersonalSafetyMessage2MessageFrame.class, name = "44"),
-		@JsonSubTypes.Type(value = j2735.TrafficSignalPhaseAndTiming.TrafficSignalPhaseAndTimingMessageFrame.class, name = "45"),
-		@JsonSubTypes.Type(value = j2735.SignalControlAndPrioritizationRequest.SignalControlAndPrioritizationRequestMessageFrame.class, name = "46"),
-		@JsonSubTypes.Type(value = j2735.SignalControlAndPrioritizationStatus.SignalControlAndPrioritizationStatusMessageFrame.class, name = "47"),
-		@JsonSubTypes.Type(value = j2735.RoadUserChargingConfigMessage.RoadUserChargingConfigMessageMessageFrame.class, name = "48"),
-		@JsonSubTypes.Type(value = j2735.RoadUserChargingReportMessage.RoadUserChargingReportMessageMessageFrame.class, name = "49"),
-		@JsonSubTypes.Type(value = j2735.TrafficLightStatusMessage.TrafficLightStatusMessageMessageFrame.class, name = "50"),
-		@JsonSubTypes.Type(value = j2735.TestMessage00.TestMessage00MessageFrame.class, name = "240"),
-		@JsonSubTypes.Type(value = j2735.TestMessage01.TestMessage01MessageFrame.class, name = "241"),
-		@JsonSubTypes.Type(value = j2735.TestMessage02.TestMessage02MessageFrame.class, name = "242"),
-		@JsonSubTypes.Type(value = j2735.TestMessage03.TestMessage03MessageFrame.class, name = "243"),
-		@JsonSubTypes.Type(value = j2735.TestMessage04.TestMessage04MessageFrame.class, name = "244"),
-		@JsonSubTypes.Type(value = j2735.TestMessage05.TestMessage05MessageFrame.class, name = "245"),
-		@JsonSubTypes.Type(value = j2735.TestMessage06.TestMessage06MessageFrame.class, name = "246"),
-		@JsonSubTypes.Type(value = j2735.TestMessage07.TestMessage07MessageFrame.class, name = "247"),
-		@JsonSubTypes.Type(value = j2735.TestMessage08.TestMessage08MessageFrame.class, name = "248"),
-		@JsonSubTypes.Type(value = j2735.TestMessage09.TestMessage09MessageFrame.class, name = "249"),
-		@JsonSubTypes.Type(value = j2735.TestMessage10.TestMessage10MessageFrame.class, name = "250"),
-		@JsonSubTypes.Type(value = j2735.TestMessage11.TestMessage11MessageFrame.class, name = "251"),
-		@JsonSubTypes.Type(value = j2735.TestMessage12.TestMessage12MessageFrame.class, name = "252"),
-		@JsonSubTypes.Type(value = j2735.TestMessage13.TestMessage13MessageFrame.class, name = "253"),
-		@JsonSubTypes.Type(value = j2735.TestMessage14.TestMessage14MessageFrame.class, name = "254"),
-		@JsonSubTypes.Type(value = j2735.TestMessage15.TestMessage15MessageFrame.class, name = "255")})
+@JsonPropertyOrder({"messageId", "value"})
 @Asn1ParameterizedTypes(idProperty = "messageId", idType = IdType.INTEGER, valueProperty = "value", value = {
 		@Asn1ParameterizedTypes.Type(value = j2735.BasicSafetyMessage.BasicSafetyMessageMessageFrame.class, intId = 20),
 		@Asn1ParameterizedTypes.Type(value = j2735.MapData.MapDataMessageFrame.class, intId = 18),
@@ -133,33 +82,34 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 		@Asn1ParameterizedTypes.Type(value = j2735.TestMessage13.TestMessage13MessageFrame.class, intId = 253),
 		@Asn1ParameterizedTypes.Type(value = j2735.TestMessage14.TestMessage14MessageFrame.class, intId = 254),
 		@Asn1ParameterizedTypes.Type(value = j2735.TestMessage15.TestMessage15MessageFrame.class, intId = 255)})
-@JsonPropertyOrder({"messageId", "value"})
+@JsonDeserialize(using = MessageFrame.MessageFrameDeserializer.class)
 abstract public class MessageFrame<TValue> extends Asn1Sequence {
 
-	@JsonIgnore
-	final protected DSRCmsgID messageId;
+	protected DSRCmsgID messageId;
 	@JsonIgnore
 	final protected String name;
-	private TValue value;
-	public final static String INFORMATION_OBJECT_CLASS = "MESSAGE_ID_AND_TYPE";
+	protected TValue value;
 
+	@JsonProperty("messageId")
 	public DSRCmsgID getMessageId() {
 		return messageId;
+	}
+
+	@JsonProperty("messageId")
+	public void setMessageId(DSRCmsgID messageId) {
+		this.messageId = messageId;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	@JsonProperty("messageId")
-	public String getIdString() {
-		return messageId.toString();
-	}
-
+	@JsonProperty("value")
 	public TValue getValue() {
 		return value;
 	}
 
+	@JsonProperty("value")
 	public void setValue(TValue value) {
 		this.value = value;
 	}
@@ -170,5 +120,11 @@ abstract public class MessageFrame<TValue> extends Asn1Sequence {
 		theId.setValue(id);
 		this.messageId = theId;
 		this.name = name;
+	}
+
+	public static class MessageFrameDeserializer extends ParameterizedTypeDeserializer<MessageFrame> {
+		public MessageFrameDeserializer() {
+			super(MessageFrame.class);
+		}
 	}
 }

@@ -78,6 +78,8 @@ public class GenericLane extends Asn1Sequence {
 	private OverlayLaneList overlays;
 	@Asn1Property(tag = 9, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-GenericLane")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)

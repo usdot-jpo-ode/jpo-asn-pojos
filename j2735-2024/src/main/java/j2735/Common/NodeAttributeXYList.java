@@ -36,7 +36,8 @@ public class NodeAttributeXYList extends Asn1SequenceOf<NodeAttributeXY> {
 	}
 
 	public static class NodeAttributeXYListSerializer
-			extends SequenceOfEnumeratedSerializer<NodeAttributeXY, NodeAttributeXYList> {
+			extends
+				SequenceOfEnumeratedSerializer<NodeAttributeXY, NodeAttributeXYList> {
 		public NodeAttributeXYListSerializer() {
 			super(NodeAttributeXY.class, NodeAttributeXYList.class);
 		}

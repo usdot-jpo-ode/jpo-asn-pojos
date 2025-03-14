@@ -28,6 +28,8 @@ import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.REGION.Reg_RestrictionUserType;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,6 +44,8 @@ public class RestrictionUserType extends Asn1Choice {
 	private RestrictionAppliesTo basicType;
 	@Asn1Property(tag = 1, name = "regional")
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-RestrictionUserType")
 	private SequenceOfRegional regional;
 
 	public RestrictionUserType() {

@@ -23,12 +23,16 @@
 package j2735.RoadUserChargingConfigMessage;
 
 import asn2pojo.runtime.annotations.Asn1Property;
+import asn2pojo.runtime.serialization.SequenceOfChoiceDeserializer;
+import asn2pojo.runtime.serialization.SequenceOfChoiceSerializer;
 import asn2pojo.runtime.types.Asn1Sequence;
 import asn2pojo.runtime.types.Asn1SequenceOf;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,6 +44,8 @@ public class AreaOrSegmentChargingInfo extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "chargingAreaOrSegment")
 	@JsonProperty("chargingAreaOrSegment")
+	@JsonSerialize(using = SequenceOfChargingAreaOrSegmentSerializer.class)
+	@JsonDeserialize(using = SequenceOfChargingAreaOrSegmentDeserializer.class)
 	private SequenceOfChargingAreaOrSegment chargingAreaOrSegment;
 
 	@JsonInclude(Include.NON_NULL)
@@ -51,5 +57,26 @@ public class AreaOrSegmentChargingInfo extends Asn1Sequence {
 
 	public AreaOrSegmentChargingInfo() {
 		super(true);
+	}
+
+	public static class SequenceOfChargingAreaOrSegmentSerializer
+			extends
+				SequenceOfChoiceSerializer<ChargingAreaOrSegment, SequenceOfChargingAreaOrSegment> {
+		public SequenceOfChargingAreaOrSegmentSerializer() {
+			super(ChargingAreaOrSegment.class, SequenceOfChargingAreaOrSegment.class);
+		}
+	}
+
+	public static class SequenceOfChargingAreaOrSegmentDeserializer
+			extends
+				SequenceOfChoiceDeserializer<ChargingAreaOrSegment, SequenceOfChargingAreaOrSegment> {
+		public SequenceOfChargingAreaOrSegmentDeserializer() {
+			super(ChargingAreaOrSegment.class, SequenceOfChargingAreaOrSegment.class);
+		}
+
+		@Override
+		protected SequenceOfChargingAreaOrSegment construct() {
+			return new SequenceOfChargingAreaOrSegment();
+		}
 	}
 }

@@ -23,7 +23,6 @@
 package j2735.RoadSafetyMessage;
 
 import asn2pojo.runtime.annotations.Asn1Property;
-import asn2pojo.runtime.serialization.NestedSequenceOfSerializer;
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedDeserializer;
 import asn2pojo.runtime.serialization.SequenceOfEnumeratedSerializer;
 import asn2pojo.runtime.types.Asn1Sequence;
@@ -96,10 +95,22 @@ public class EventInfo extends Asn1Sequence {
 		}
 	}
 
-	public static class SequenceOfAffectedVehiclesDeserializer extends
-			SequenceOfEnumeratedDeserializer<VehicleGroupAffected, SequenceOfAffectedVehicles> {
+	public EventInfo() {
+		super(true);
+	}
 
-		protected SequenceOfAffectedVehiclesDeserializer() {
+	public static class SequenceOfAffectedVehiclesSerializer
+			extends
+				SequenceOfEnumeratedSerializer<VehicleGroupAffected, SequenceOfAffectedVehicles> {
+		public SequenceOfAffectedVehiclesSerializer() {
+			super(VehicleGroupAffected.class, SequenceOfAffectedVehicles.class);
+		}
+	}
+
+	public static class SequenceOfAffectedVehiclesDeserializer
+			extends
+				SequenceOfEnumeratedDeserializer<VehicleGroupAffected, SequenceOfAffectedVehicles> {
+		public SequenceOfAffectedVehiclesDeserializer() {
 			super(SequenceOfAffectedVehicles.class, VehicleGroupAffected.class);
 		}
 
@@ -112,20 +123,5 @@ public class EventInfo extends Asn1Sequence {
 		protected SequenceOfAffectedVehicles construct() {
 			return new SequenceOfAffectedVehicles();
 		}
-	}
-
-	public static class SequenceOfAffectedVehiclesSerializer extends
-			SequenceOfEnumeratedSerializer<VehicleGroupAffected, SequenceOfAffectedVehicles> {
-
-		protected SequenceOfAffectedVehiclesSerializer() {
-			super(VehicleGroupAffected.class, SequenceOfAffectedVehicles.class);
-		}
-
-	}
-
-
-
-	public EventInfo() {
-		super(true);
 	}
 }

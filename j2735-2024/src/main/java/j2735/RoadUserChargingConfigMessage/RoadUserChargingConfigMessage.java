@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,6 +42,8 @@ public class RoadUserChargingConfigMessage extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "chargerInfoTable")
 	@JsonProperty("chargerInfoTable")
+	@JacksonXmlElementWrapper(localName = "chargerInfoTable")
+	@JacksonXmlProperty(localName = "ChargerInfo")
 	private SequenceOfChargerInfoTable chargerInfoTable;
 
 	@JsonInclude(Include.NON_NULL)

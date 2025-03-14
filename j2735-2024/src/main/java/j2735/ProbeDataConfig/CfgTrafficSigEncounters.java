@@ -32,6 +32,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.IntersectionID;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +46,8 @@ public class CfgTrafficSigEncounters extends Asn1Sequence {
 
 	@Asn1Property(tag = 0, name = "intersections", optional = true)
 	@JsonProperty("intersections")
+	@JacksonXmlElementWrapper(localName = "intersections")
+	@JacksonXmlProperty(localName = "IntersectionID")
 	private SequenceOfIntersections intersections;
 	@Asn1Property(tag = 1, name = "trfcsigApproachDelay", optional = true)
 	@JsonProperty("trfcsigApproachDelay")

@@ -80,6 +80,8 @@ public class IntersectionGeometry extends Asn1Sequence {
 	private PreemptPriorityList preemptPriorityData;
 	@Asn1Property(tag = 8, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-IntersectionGeometry")
 	private SequenceOfRegional regional;
 	@Asn1Property(tag = 9, name = "roadAuthorityID", optional = true, extension = true)
 	@JsonProperty("roadAuthorityID")

@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import j2735.Common.FullPositionVector;
 import j2735.Common.MinuteOfTheYear;
 import j2735.Common.VehicleClassification;
@@ -59,9 +61,13 @@ public class ProbeVehicleData extends Asn1Sequence {
 	private VehicleClassification vehicleType;
 	@Asn1Property(tag = 5, name = "snapshots")
 	@JsonProperty("snapshots")
+	@JacksonXmlElementWrapper(localName = "snapshots")
+	@JacksonXmlProperty(localName = "Snapshot")
 	private SequenceOfSnapshots snapshots;
 	@Asn1Property(tag = 6, name = "regional", optional = true)
 	@JsonProperty("regional")
+	@JacksonXmlElementWrapper(localName = "regional")
+	@JacksonXmlProperty(localName = "Reg-ProbeVehicleData")
 	private SequenceOfRegional regional;
 
 	@JsonInclude(Include.NON_NULL)
