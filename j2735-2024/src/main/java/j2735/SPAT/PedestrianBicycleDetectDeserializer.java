@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class PedestrianBicycleDetectDeserializer extends BooleanDeserializer<PedestrianBicycleDetect> {
 
-	PedestrianBicycleDetectDeserializer() {
+	public PedestrianBicycleDetectDeserializer() {
 		super(PedestrianBicycleDetect.class);
 	}
 

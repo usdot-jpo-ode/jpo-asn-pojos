@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = VerticalAccelerationThresholdDeserializer.class)
+@JsonDeserialize(using = VerticalAccelerationThreshold.VerticalAccelerationThresholdDeserializer.class)
 public class VerticalAccelerationThreshold extends Asn1Bitstring {
 
 	public boolean isNotEquipped() {
@@ -70,5 +71,18 @@ public class VerticalAccelerationThreshold extends Asn1Bitstring {
 
 	public VerticalAccelerationThreshold() {
 		super(5, false, new String[]{"notEquipped", "leftFront", "leftRear", "rightFront", "rightRear"});
+	}
+
+	public static class VerticalAccelerationThresholdDeserializer
+			extends
+				BitStringDeserializer<VerticalAccelerationThreshold> {
+		public VerticalAccelerationThresholdDeserializer() {
+			super(VerticalAccelerationThreshold.class);
+		}
+
+		@Override
+		protected VerticalAccelerationThreshold construct() {
+			return new VerticalAccelerationThreshold();
+		}
 	}
 }

@@ -22,13 +22,25 @@
 
 package j2735.EfcDataDictionary;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = EquipmentStatusDeserializer.class)
+@JsonDeserialize(using = EquipmentStatus.EquipmentStatusDeserializer.class)
 public class EquipmentStatus extends Asn1Bitstring {
 
 	public EquipmentStatus() {
 		super(16, false, new String[]{});
+	}
+
+	public static class EquipmentStatusDeserializer extends BitStringDeserializer<EquipmentStatus> {
+		public EquipmentStatusDeserializer() {
+			super(EquipmentStatus.class);
+		}
+
+		@Override
+		protected EquipmentStatus construct() {
+			return new EquipmentStatus();
+		}
 	}
 }

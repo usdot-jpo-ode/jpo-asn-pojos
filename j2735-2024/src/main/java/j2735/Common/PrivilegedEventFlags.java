@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = PrivilegedEventFlagsDeserializer.class)
+@JsonDeserialize(using = PrivilegedEventFlags.PrivilegedEventFlagsDeserializer.class)
 public class PrivilegedEventFlags extends Asn1Bitstring {
 
 	public boolean isPeUnavailable() {
@@ -79,5 +80,16 @@ public class PrivilegedEventFlags extends Asn1Bitstring {
 	public PrivilegedEventFlags() {
 		super(16, false, new String[]{"peUnavailable", "peEmergencyResponse", "peEmergencyLightsActive",
 				"peEmergencySoundActive", "peNonEmergencyLightsActive", "peNonEmergencySoundActive"});
+	}
+
+	public static class PrivilegedEventFlagsDeserializer extends BitStringDeserializer<PrivilegedEventFlags> {
+		public PrivilegedEventFlagsDeserializer() {
+			super(PrivilegedEventFlags.class);
+		}
+
+		@Override
+		protected PrivilegedEventFlags construct() {
+			return new PrivilegedEventFlags();
+		}
 	}
 }

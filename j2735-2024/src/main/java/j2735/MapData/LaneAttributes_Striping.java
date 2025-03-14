@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LaneAttributes_StripingDeserializer.class)
+@JsonDeserialize(using = LaneAttributes_Striping.LaneAttributes_StripingDeserializer.class)
 public class LaneAttributes_Striping extends Asn1Bitstring {
 
 	public boolean isStripeToConnectingLanesRevocableLane() {
@@ -79,5 +80,16 @@ public class LaneAttributes_Striping extends Asn1Bitstring {
 	public LaneAttributes_Striping() {
 		super(16, false, new String[]{"stripeToConnectingLanesRevocableLane", "stripeDrawOnLeft", "stripeDrawOnRight",
 				"stripeToConnectingLanesLeft", "stripeToConnectingLanesRight", "stripeToConnectingLanesAhead"});
+	}
+
+	public static class LaneAttributes_StripingDeserializer extends BitStringDeserializer<LaneAttributes_Striping> {
+		public LaneAttributes_StripingDeserializer() {
+			super(LaneAttributes_Striping.class);
+		}
+
+		@Override
+		protected LaneAttributes_Striping construct() {
+			return new LaneAttributes_Striping();
+		}
 	}
 }

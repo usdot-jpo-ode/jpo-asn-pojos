@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class LaneClosedDeserializer extends BooleanDeserializer<LaneClosed> {
 
-	LaneClosedDeserializer() {
+	public LaneClosedDeserializer() {
 		super(LaneClosed.class);
 	}
 

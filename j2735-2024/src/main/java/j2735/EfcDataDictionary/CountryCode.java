@@ -22,13 +22,25 @@
 
 package j2735.EfcDataDictionary;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = CountryCodeDeserializer.class)
+@JsonDeserialize(using = CountryCode.CountryCodeDeserializer.class)
 public class CountryCode extends Asn1Bitstring {
 
 	public CountryCode() {
 		super(10, false, new String[]{});
+	}
+
+	public static class CountryCodeDeserializer extends BitStringDeserializer<CountryCode> {
+		public CountryCodeDeserializer() {
+			super(CountryCode.class);
+		}
+
+		@Override
+		protected CountryCode construct() {
+			return new CountryCode();
+		}
 	}
 }

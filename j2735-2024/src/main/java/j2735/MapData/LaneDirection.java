@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LaneDirectionDeserializer.class)
+@JsonDeserialize(using = LaneDirection.LaneDirectionDeserializer.class)
 public class LaneDirection extends Asn1Bitstring {
 
 	public boolean isIngressPath() {
@@ -46,5 +47,16 @@ public class LaneDirection extends Asn1Bitstring {
 
 	public LaneDirection() {
 		super(2, false, new String[]{"ingressPath", "egressPath"});
+	}
+
+	public static class LaneDirectionDeserializer extends BitStringDeserializer<LaneDirection> {
+		public LaneDirectionDeserializer() {
+			super(LaneDirection.class);
+		}
+
+		@Override
+		protected LaneDirection construct() {
+			return new LaneDirection();
+		}
 	}
 }

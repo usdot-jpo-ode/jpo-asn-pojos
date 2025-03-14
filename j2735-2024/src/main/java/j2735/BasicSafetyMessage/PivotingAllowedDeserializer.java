@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class PivotingAllowedDeserializer extends BooleanDeserializer<PivotingAllowed> {
 
-	PivotingAllowedDeserializer() {
+	public PivotingAllowedDeserializer() {
 		super(PivotingAllowed.class);
 	}
 

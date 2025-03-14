@@ -22,10 +22,11 @@
 
 package j2735.TrafficLightStatusMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = TrafficLightControllerStatusDeserializer.class)
+@JsonDeserialize(using = TrafficLightControllerStatus.TrafficLightControllerStatusDeserializer.class)
 public class TrafficLightControllerStatus extends Asn1Bitstring {
 
 	public boolean isConflict() {
@@ -95,5 +96,18 @@ public class TrafficLightControllerStatus extends Asn1Bitstring {
 	public TrafficLightControllerStatus() {
 		super(8, false, new String[]{"conflict", "center-comm-error", "scu-comm-error", "reserved1", "reserved2",
 				"reserved3", "reserved4", "reserved5"});
+	}
+
+	public static class TrafficLightControllerStatusDeserializer
+			extends
+				BitStringDeserializer<TrafficLightControllerStatus> {
+		public TrafficLightControllerStatusDeserializer() {
+			super(TrafficLightControllerStatus.class);
+		}
+
+		@Override
+		protected TrafficLightControllerStatus construct() {
+			return new TrafficLightControllerStatus();
+		}
 	}
 }

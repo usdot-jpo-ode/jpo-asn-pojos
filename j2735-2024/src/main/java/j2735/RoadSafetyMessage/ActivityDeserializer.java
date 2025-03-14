@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class ActivityDeserializer extends BooleanDeserializer<Activity> {
 
-	ActivityDeserializer() {
+	public ActivityDeserializer() {
 		super(Activity.class);
 	}
 

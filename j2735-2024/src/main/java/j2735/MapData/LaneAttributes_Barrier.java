@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LaneAttributes_BarrierDeserializer.class)
+@JsonDeserialize(using = LaneAttributes_Barrier.LaneAttributes_BarrierDeserializer.class)
 public class LaneAttributes_Barrier extends Asn1Bitstring {
 
 	public boolean isMedian_RevocableLane() {
@@ -112,5 +113,16 @@ public class LaneAttributes_Barrier extends Asn1Bitstring {
 		super(16, false,
 				new String[]{"median-RevocableLane", "median", "whiteLineHashing", "stripedLines", "doubleStripedLines",
 						"trafficCones", "constructionBarrier", "trafficChannels", "lowCurbs", "highCurbs"});
+	}
+
+	public static class LaneAttributes_BarrierDeserializer extends BitStringDeserializer<LaneAttributes_Barrier> {
+		public LaneAttributes_BarrierDeserializer() {
+			super(LaneAttributes_Barrier.class);
+		}
+
+		@Override
+		protected LaneAttributes_Barrier construct() {
+			return new LaneAttributes_Barrier();
+		}
 	}
 }

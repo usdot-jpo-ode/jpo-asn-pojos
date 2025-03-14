@@ -22,10 +22,11 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = UserSizeAndBehaviourDeserializer.class)
+@JsonDeserialize(using = UserSizeAndBehaviour.UserSizeAndBehaviourDeserializer.class)
 public class UserSizeAndBehaviour extends Asn1Bitstring {
 
 	public boolean isUnavailable() {
@@ -70,5 +71,16 @@ public class UserSizeAndBehaviour extends Asn1Bitstring {
 
 	public UserSizeAndBehaviour() {
 		super(5, false, new String[]{"unavailable", "smallStature", "largeStature", "erraticMoving", "slowMoving"});
+	}
+
+	public static class UserSizeAndBehaviourDeserializer extends BitStringDeserializer<UserSizeAndBehaviour> {
+		public UserSizeAndBehaviourDeserializer() {
+			super(UserSizeAndBehaviour.class);
+		}
+
+		@Override
+		protected UserSizeAndBehaviour construct() {
+			return new UserSizeAndBehaviour();
+		}
 	}
 }

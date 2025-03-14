@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class IsDollyDeserializer extends BooleanDeserializer<IsDolly> {
 
-	IsDollyDeserializer() {
+	public IsDollyDeserializer() {
 		super(IsDolly.class);
 	}
 

@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LaneSharingDeserializer.class)
+@JsonDeserialize(using = LaneSharing.LaneSharingDeserializer.class)
 public class LaneSharing extends Asn1Bitstring {
 
 	public boolean isOverlappingLaneDescriptionProvided() {
@@ -114,5 +115,16 @@ public class LaneSharing extends Asn1Bitstring {
 						"otherNonMotorizedTrafficTypes", "individualMotorizedVehicleTraffic", "busVehicleTraffic",
 						"taxiVehicleTraffic", "pedestriansTraffic", "cyclistVehicleTraffic", "trackedVehicleTraffic",
 						"reserved"});
+	}
+
+	public static class LaneSharingDeserializer extends BitStringDeserializer<LaneSharing> {
+		public LaneSharingDeserializer() {
+			super(LaneSharing.class);
+		}
+
+		@Override
+		protected LaneSharing construct() {
+			return new LaneSharing();
+		}
 	}
 }

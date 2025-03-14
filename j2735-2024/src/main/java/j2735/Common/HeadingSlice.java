@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = HeadingSliceDeserializer.class)
+@JsonDeserialize(using = HeadingSlice.HeadingSliceDeserializer.class)
 public class HeadingSlice extends Asn1Bitstring {
 
 	public boolean isFrom000_0to022_5degrees() {
@@ -164,5 +165,16 @@ public class HeadingSlice extends Asn1Bitstring {
 						"from202-5to225-0degrees", "from225-0to247-5degrees", "from247-5to270-0degrees",
 						"from270-0to292-5degrees", "from292-5to315-0degrees", "from315-0to337-5degrees",
 						"from337-5to360-0degrees"});
+	}
+
+	public static class HeadingSliceDeserializer extends BitStringDeserializer<HeadingSlice> {
+		public HeadingSliceDeserializer() {
+			super(HeadingSlice.class);
+		}
+
+		@Override
+		protected HeadingSlice construct() {
+			return new HeadingSlice();
+		}
 	}
 }

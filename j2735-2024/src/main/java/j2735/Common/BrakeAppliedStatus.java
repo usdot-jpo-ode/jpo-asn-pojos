@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = BrakeAppliedStatusDeserializer.class)
+@JsonDeserialize(using = BrakeAppliedStatus.BrakeAppliedStatusDeserializer.class)
 public class BrakeAppliedStatus extends Asn1Bitstring {
 
 	public boolean isUnavailable() {
@@ -70,5 +71,16 @@ public class BrakeAppliedStatus extends Asn1Bitstring {
 
 	public BrakeAppliedStatus() {
 		super(5, false, new String[]{"unavailable", "leftFront", "leftRear", "rightFront", "rightRear"});
+	}
+
+	public static class BrakeAppliedStatusDeserializer extends BitStringDeserializer<BrakeAppliedStatus> {
+		public BrakeAppliedStatusDeserializer() {
+			super(BrakeAppliedStatus.class);
+		}
+
+		@Override
+		protected BrakeAppliedStatus construct() {
+			return new BrakeAppliedStatus();
+		}
 	}
 }

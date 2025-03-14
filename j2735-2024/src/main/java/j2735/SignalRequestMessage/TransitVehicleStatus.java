@@ -22,10 +22,11 @@
 
 package j2735.SignalRequestMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = TransitVehicleStatusDeserializer.class)
+@JsonDeserialize(using = TransitVehicleStatus.TransitVehicleStatusDeserializer.class)
 public class TransitVehicleStatus extends Asn1Bitstring {
 
 	public boolean isLoading() {
@@ -78,5 +79,16 @@ public class TransitVehicleStatus extends Asn1Bitstring {
 
 	public TransitVehicleStatus() {
 		super(8, false, new String[]{"loading", "anADAuse", "aBikeLoad", "doorOpen", "charging", "atStopLine"});
+	}
+
+	public static class TransitVehicleStatusDeserializer extends BitStringDeserializer<TransitVehicleStatus> {
+		public TransitVehicleStatusDeserializer() {
+			super(TransitVehicleStatus.class);
+		}
+
+		@Override
+		protected TransitVehicleStatus construct() {
+			return new TransitVehicleStatus();
+		}
 	}
 }

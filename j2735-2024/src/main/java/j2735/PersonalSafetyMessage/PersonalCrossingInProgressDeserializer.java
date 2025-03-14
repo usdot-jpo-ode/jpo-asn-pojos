@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class PersonalCrossingInProgressDeserializer extends BooleanDeserializer<PersonalCrossingInProgress> {
 
-	PersonalCrossingInProgressDeserializer() {
+	public PersonalCrossingInProgressDeserializer() {
 		super(PersonalCrossingInProgress.class);
 	}
 

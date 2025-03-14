@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = ExteriorLightsDeserializer.class)
+@JsonDeserialize(using = ExteriorLights.ExteriorLightsDeserializer.class)
 public class ExteriorLights extends Asn1Bitstring {
 
 	public boolean isLowBeamHeadlightsOn() {
@@ -105,5 +106,16 @@ public class ExteriorLights extends Asn1Bitstring {
 				new String[]{"lowBeamHeadlightsOn", "highBeamHeadlightsOn", "leftTurnSignalOn", "rightTurnSignalOn",
 						"hazardSignalOn", "automaticLightControlOn", "daytimeRunningLightsOn", "fogLightOn",
 						"parkingLightsOn"});
+	}
+
+	public static class ExteriorLightsDeserializer extends BitStringDeserializer<ExteriorLights> {
+		public ExteriorLightsDeserializer() {
+			super(ExteriorLights.class);
+		}
+
+		@Override
+		protected ExteriorLights construct() {
+			return new ExteriorLights();
+		}
 	}
 }

@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LaneAttributes_VehicleDeserializer.class)
+@JsonDeserialize(using = LaneAttributes_Vehicle.LaneAttributes_VehicleDeserializer.class)
 public class LaneAttributes_Vehicle extends Asn1Bitstring {
 
 	public boolean isIsVehicleRevocableLane() {
@@ -97,5 +98,16 @@ public class LaneAttributes_Vehicle extends Asn1Bitstring {
 				new String[]{"isVehicleRevocableLane", "isVehicleFlyOverLane", "hovLaneUseOnly", "restrictedToBusUse",
 						"restrictedToTaxiUse", "restrictedFromPublicUse", "hasIRbeaconCoverage",
 						"permissionOnRequest"});
+	}
+
+	public static class LaneAttributes_VehicleDeserializer extends BitStringDeserializer<LaneAttributes_Vehicle> {
+		public LaneAttributes_VehicleDeserializer() {
+			super(LaneAttributes_Vehicle.class);
+		}
+
+		@Override
+		protected LaneAttributes_Vehicle construct() {
+			return new LaneAttributes_Vehicle();
+		}
 	}
 }

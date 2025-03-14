@@ -22,10 +22,11 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = PersonalDeviceUsageStateDeserializer.class)
+@JsonDeserialize(using = PersonalDeviceUsageState.PersonalDeviceUsageStateDeserializer.class)
 public class PersonalDeviceUsageState extends Asn1Bitstring {
 
 	public boolean isUnavailable() {
@@ -103,5 +104,16 @@ public class PersonalDeviceUsageState extends Asn1Bitstring {
 	public PersonalDeviceUsageState() {
 		super(9, false, new String[]{"unavailable", "other", "idle", "listeningToAudio", "typing", "calling",
 				"playingGames", "reading", "viewing"});
+	}
+
+	public static class PersonalDeviceUsageStateDeserializer extends BitStringDeserializer<PersonalDeviceUsageState> {
+		public PersonalDeviceUsageStateDeserializer() {
+			super(PersonalDeviceUsageState.class);
+		}
+
+		@Override
+		protected PersonalDeviceUsageState construct() {
+			return new PersonalDeviceUsageState();
+		}
 	}
 }

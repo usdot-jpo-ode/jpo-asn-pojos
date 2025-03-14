@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = VehicleEventFlagsDeserializer.class)
+@JsonDeserialize(using = VehicleEventFlags.VehicleEventFlagsDeserializer.class)
 public class VehicleEventFlags extends Asn1Bitstring {
 
 	public boolean isEventHazardLights() {
@@ -138,5 +139,16 @@ public class VehicleEventFlags extends Asn1Bitstring {
 						"eventTractionControlLoss", "eventStabilityControlactivated", "eventHazardousMaterials",
 						"eventReserved1", "eventHardBraking", "eventLightsChanged", "eventWipersChanged",
 						"eventFlatTire", "eventDisabledVehicle", "eventAirBagDeployment"});
+	}
+
+	public static class VehicleEventFlagsDeserializer extends BitStringDeserializer<VehicleEventFlags> {
+		public VehicleEventFlagsDeserializer() {
+			super(VehicleEventFlags.class);
+		}
+
+		@Override
+		protected VehicleEventFlags construct() {
+			return new VehicleEventFlags();
+		}
 	}
 }

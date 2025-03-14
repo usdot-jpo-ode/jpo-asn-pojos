@@ -22,10 +22,11 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = PersonalAssistiveDeserializer.class)
+@JsonDeserialize(using = PersonalAssistive.PersonalAssistiveDeserializer.class)
 public class PersonalAssistive extends Asn1Bitstring {
 
 	public boolean isUnavailable() {
@@ -78,5 +79,16 @@ public class PersonalAssistive extends Asn1Bitstring {
 
 	public PersonalAssistive() {
 		super(6, false, new String[]{"unavailable", "otherType", "vision", "hearing", "movement", "cognition"});
+	}
+
+	public static class PersonalAssistiveDeserializer extends BitStringDeserializer<PersonalAssistive> {
+		public PersonalAssistiveDeserializer() {
+			super(PersonalAssistive.class);
+		}
+
+		@Override
+		protected PersonalAssistive construct() {
+			return new PersonalAssistive();
+		}
 	}
 }

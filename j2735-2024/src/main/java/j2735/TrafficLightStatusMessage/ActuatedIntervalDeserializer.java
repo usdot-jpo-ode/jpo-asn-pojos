@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class ActuatedIntervalDeserializer extends BooleanDeserializer<ActuatedInterval> {
 
-	ActuatedIntervalDeserializer() {
+	public ActuatedIntervalDeserializer() {
 		super(ActuatedInterval.class);
 	}
 

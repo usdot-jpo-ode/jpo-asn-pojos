@@ -22,10 +22,11 @@
 
 package j2735.PersonalSafetyMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = PublicSafetyDirectingTrafficSubTypeDeserializer.class)
+@JsonDeserialize(using = PublicSafetyDirectingTrafficSubType.PublicSafetyDirectingTrafficSubTypeDeserializer.class)
 public class PublicSafetyDirectingTrafficSubType extends Asn1Bitstring {
 
 	public boolean isUnavailable() {
@@ -89,5 +90,18 @@ public class PublicSafetyDirectingTrafficSubType extends Asn1Bitstring {
 				new String[]{"unavailable", "policeAndTrafficOfficers", "trafficControlPersons",
 						"railroadCrossingGuards", "civilDefenseNationalGuardMilitaryPolice",
 						"emergencyOrganizationPersonnel", "highwayServiceVehiclePersonnel"});
+	}
+
+	public static class PublicSafetyDirectingTrafficSubTypeDeserializer
+			extends
+				BitStringDeserializer<PublicSafetyDirectingTrafficSubType> {
+		public PublicSafetyDirectingTrafficSubTypeDeserializer() {
+			super(PublicSafetyDirectingTrafficSubType.class);
+		}
+
+		@Override
+		protected PublicSafetyDirectingTrafficSubType construct() {
+			return new PublicSafetyDirectingTrafficSubType();
+		}
 	}
 }

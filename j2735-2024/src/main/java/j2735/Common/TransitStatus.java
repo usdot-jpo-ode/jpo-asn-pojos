@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = TransitStatusDeserializer.class)
+@JsonDeserialize(using = TransitStatus.TransitStatusDeserializer.class)
 public class TransitStatus extends Asn1Bitstring {
 
 	public boolean isNone() {
@@ -78,5 +79,16 @@ public class TransitStatus extends Asn1Bitstring {
 
 	public TransitStatus() {
 		super(6, false, new String[]{"none", "anADAuse", "aBikeLoad", "doorOpen", "occM", "occL"});
+	}
+
+	public static class TransitStatusDeserializer extends BitStringDeserializer<TransitStatus> {
+		public TransitStatusDeserializer() {
+			super(TransitStatus.class);
+		}
+
+		@Override
+		protected TransitStatus construct() {
+			return new TransitStatus();
+		}
 	}
 }

@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = AllowedManeuversDeserializer.class)
+@JsonDeserialize(using = AllowedManeuvers.AllowedManeuversDeserializer.class)
 public class AllowedManeuvers extends Asn1Bitstring {
 
 	public boolean isManeuverStraightAllowed() {
@@ -130,5 +131,16 @@ public class AllowedManeuvers extends Asn1Bitstring {
 						"maneuverUTurnAllowed", "maneuverLeftTurnOnRedAllowed", "maneuverRightTurnOnRedAllowed",
 						"maneuverLaneChangeAllowed", "maneuverNoStoppingAllowed", "yieldAllwaysRequired", "goWithHalt",
 						"caution", "reserved1"});
+	}
+
+	public static class AllowedManeuversDeserializer extends BitStringDeserializer<AllowedManeuvers> {
+		public AllowedManeuversDeserializer() {
+			super(AllowedManeuvers.class);
+		}
+
+		@Override
+		protected AllowedManeuvers construct() {
+			return new AllowedManeuvers();
+		}
 	}
 }

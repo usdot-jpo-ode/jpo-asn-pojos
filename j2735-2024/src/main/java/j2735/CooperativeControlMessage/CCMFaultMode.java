@@ -22,10 +22,11 @@
 
 package j2735.CooperativeControlMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = CCMFaultModeDeserializer.class)
+@JsonDeserialize(using = CCMFaultMode.CCMFaultModeDeserializer.class)
 public class CCMFaultMode extends Asn1Bitstring {
 
 	public boolean isUnavailable() {
@@ -95,5 +96,16 @@ public class CCMFaultMode extends Asn1Bitstring {
 	public CCMFaultMode() {
 		super(8, false, new String[]{"unavailable", "commFault", "radarFault", "lidarFault", "engingBrkCtlFault",
 				"serviceBrkCtlFault", "transRetarderFault", "engineCtlFault"});
+	}
+
+	public static class CCMFaultModeDeserializer extends BitStringDeserializer<CCMFaultMode> {
+		public CCMFaultModeDeserializer() {
+			super(CCMFaultMode.class);
+		}
+
+		@Override
+		protected CCMFaultMode construct() {
+			return new CCMFaultMode();
+		}
 	}
 }

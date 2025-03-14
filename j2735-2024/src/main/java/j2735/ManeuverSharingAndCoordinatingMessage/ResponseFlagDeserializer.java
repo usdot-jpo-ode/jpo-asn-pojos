@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class ResponseFlagDeserializer extends BooleanDeserializer<ResponseFlag> {
 
-	ResponseFlagDeserializer() {
+	public ResponseFlagDeserializer() {
 		super(ResponseFlag.class);
 	}
 

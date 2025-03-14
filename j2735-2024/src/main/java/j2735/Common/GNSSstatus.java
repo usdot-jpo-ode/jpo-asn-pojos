@@ -22,10 +22,11 @@
 
 package j2735.Common;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = GNSSstatusDeserializer.class)
+@JsonDeserialize(using = GNSSstatus.GNSSstatusDeserializer.class)
 public class GNSSstatus extends Asn1Bitstring {
 
 	public boolean isUnavailable() {
@@ -95,5 +96,16 @@ public class GNSSstatus extends Asn1Bitstring {
 	public GNSSstatus() {
 		super(8, false, new String[]{"unavailable", "isHealthy", "isMonitored", "baseStationType", "aPDOPofUnder5",
 				"inViewOfUnder5", "localCorrectionsPresent", "networkCorrectionsPresent"});
+	}
+
+	public static class GNSSstatusDeserializer extends BitStringDeserializer<GNSSstatus> {
+		public GNSSstatusDeserializer() {
+			super(GNSSstatus.class);
+		}
+
+		@Override
+		protected GNSSstatus construct() {
+			return new GNSSstatus();
+		}
 	}
 }

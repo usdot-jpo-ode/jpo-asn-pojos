@@ -22,13 +22,25 @@
 
 package j2735.ManeuverSharingAndCoordinatingMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = TemporaryIDPointerDeserializer.class)
+@JsonDeserialize(using = TemporaryIDPointer.TemporaryIDPointerDeserializer.class)
 public class TemporaryIDPointer extends Asn1Bitstring {
 
 	public TemporaryIDPointer() {
 		super(-1, false, new String[]{});
+	}
+
+	public static class TemporaryIDPointerDeserializer extends BitStringDeserializer<TemporaryIDPointer> {
+		public TemporaryIDPointerDeserializer() {
+			super(TemporaryIDPointer.class);
+		}
+
+		@Override
+		protected TemporaryIDPointer construct() {
+			return new TemporaryIDPointer();
+		}
 	}
 }

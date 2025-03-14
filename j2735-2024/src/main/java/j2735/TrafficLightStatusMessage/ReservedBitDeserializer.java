@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class ReservedBitDeserializer extends BooleanDeserializer<ReservedBit> {
 
-	ReservedBitDeserializer() {
+	public ReservedBitDeserializer() {
 		super(ReservedBit.class);
 	}
 

@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class WaitOnStoplineDeserializer extends BooleanDeserializer<WaitOnStopline> {
 
-	WaitOnStoplineDeserializer() {
+	public WaitOnStoplineDeserializer() {
 		super(WaitOnStopline.class);
 	}
 

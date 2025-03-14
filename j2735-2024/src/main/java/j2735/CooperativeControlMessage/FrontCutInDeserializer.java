@@ -26,7 +26,7 @@ import asn2pojo.runtime.serialization.BooleanDeserializer;
 
 public class FrontCutInDeserializer extends BooleanDeserializer<FrontCutIn> {
 
-	FrontCutInDeserializer() {
+	public FrontCutInDeserializer() {
 		super(FrontCutIn.class);
 	}
 

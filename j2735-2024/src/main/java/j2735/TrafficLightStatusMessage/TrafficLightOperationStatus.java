@@ -22,10 +22,11 @@
 
 package j2735.TrafficLightStatusMessage;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = TrafficLightOperationStatusDeserializer.class)
+@JsonDeserialize(using = TrafficLightOperationStatus.TrafficLightOperationStatusDeserializer.class)
 public class TrafficLightOperationStatus extends Asn1Bitstring {
 
 	public boolean isManual() {
@@ -95,5 +96,18 @@ public class TrafficLightOperationStatus extends Asn1Bitstring {
 	public TrafficLightOperationStatus() {
 		super(8, false, new String[]{"manual", "flashing", "off", "actuated", "transition", "priority", "holding-phase",
 				"reserved"});
+	}
+
+	public static class TrafficLightOperationStatusDeserializer
+			extends
+				BitStringDeserializer<TrafficLightOperationStatus> {
+		public TrafficLightOperationStatusDeserializer() {
+			super(TrafficLightOperationStatus.class);
+		}
+
+		@Override
+		protected TrafficLightOperationStatus construct() {
+			return new TrafficLightOperationStatus();
+		}
 	}
 }

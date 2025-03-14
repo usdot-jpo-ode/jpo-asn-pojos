@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LaneAttributes_CrosswalkDeserializer.class)
+@JsonDeserialize(using = LaneAttributes_Crosswalk.LaneAttributes_CrosswalkDeserializer.class)
 public class LaneAttributes_Crosswalk extends Asn1Bitstring {
 
 	public boolean isCrosswalkRevocableLane() {
@@ -105,5 +106,16 @@ public class LaneAttributes_Crosswalk extends Asn1Bitstring {
 				new String[]{"crosswalkRevocableLane", "bicyleUseAllowed", "isXwalkFlyOverLane", "fixedCycleTime",
 						"biDirectionalCycleTimes", "hasPushToWalkButton", "audioSupport", "rfSignalRequestPresent",
 						"unsignalizedSegmentsPresent"});
+	}
+
+	public static class LaneAttributes_CrosswalkDeserializer extends BitStringDeserializer<LaneAttributes_Crosswalk> {
+		public LaneAttributes_CrosswalkDeserializer() {
+			super(LaneAttributes_Crosswalk.class);
+		}
+
+		@Override
+		protected LaneAttributes_Crosswalk construct() {
+			return new LaneAttributes_Crosswalk();
+		}
 	}
 }

@@ -22,10 +22,11 @@
 
 package j2735.MapData;
 
+import asn2pojo.runtime.serialization.BitStringDeserializer;
 import asn2pojo.runtime.types.Asn1Bitstring;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LaneAttributes_TrackedVehicleDeserializer.class)
+@JsonDeserialize(using = LaneAttributes_TrackedVehicle.LaneAttributes_TrackedVehicleDeserializer.class)
 public class LaneAttributes_TrackedVehicle extends Asn1Bitstring {
 
 	public boolean isSpec_RevocableLane() {
@@ -71,5 +72,18 @@ public class LaneAttributes_TrackedVehicle extends Asn1Bitstring {
 	public LaneAttributes_TrackedVehicle() {
 		super(16, false, new String[]{"spec-RevocableLane", "spec-commuterRailRoadTrack", "spec-lightRailRoadTrack",
 				"spec-heavyRailRoadTrack", "spec-otherRailType"});
+	}
+
+	public static class LaneAttributes_TrackedVehicleDeserializer
+			extends
+				BitStringDeserializer<LaneAttributes_TrackedVehicle> {
+		public LaneAttributes_TrackedVehicleDeserializer() {
+			super(LaneAttributes_TrackedVehicle.class);
+		}
+
+		@Override
+		protected LaneAttributes_TrackedVehicle construct() {
+			return new LaneAttributes_TrackedVehicle();
+		}
 	}
 }
