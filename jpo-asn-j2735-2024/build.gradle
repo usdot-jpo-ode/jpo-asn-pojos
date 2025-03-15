@@ -12,8 +12,8 @@ plugins {
     id 'jacoco'
 }
 
-group = 'j2735'
-version = '1.0-SNAPSHOT'
+group = 'usdot.jpo.asn'
+version = '1.0'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -35,7 +35,7 @@ dependencies {
     api 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.2'
     api 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
 
-    api 'asn1jvm:asn1jvm-runtime'
+    api 'usdot.jpo.asn:jpo-asn-runtime'
 
     implementation 'org.slf4j:slf4j-api:2.0.5'
     implementation 'org.slf4j:slf4j-simple:2.0.5'
@@ -68,6 +68,7 @@ jacocoTestReport {
                     '**/Common/**',
                     '**/ITIS/**',
                     '**/J2540ITIS/**',
+                    '**/NTCIP/**',
                     '**/MapData/**',
                     '**/PersonalSafetyMessage/**',
                     '**/RoadSafetyMessage/**',

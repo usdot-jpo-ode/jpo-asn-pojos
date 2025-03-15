@@ -12,7 +12,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'asn1jvm'
+group = 'usdot.jpo.asn'
 version = '1.0'
 
 repositories {

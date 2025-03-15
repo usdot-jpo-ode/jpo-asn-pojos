@@ -11,5 +11,5 @@ plugins {
 }
 
 
-rootProject.name = 'asn1jvm-runtime'
+rootProject.name = 'jpo-asn-runtime'
 

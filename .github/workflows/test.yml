@@ -20,7 +20,7 @@ jobs:
       uses: gradle/gradle-build-action@v2
     
     - name: Run Tests with Coverage
-      working-directory: ./j2735-2024
+      working-directory: ./jpo-asn-j2735-2024
       run: |
         chmod +x gradlew
         ./gradlew test jacocoTestReport
@@ -29,13 +29,13 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
-        path: j2735-2024/build/reports/jacoco/test/html/
+        path: jpo-asn-j2735-2024/build/reports/jacoco/test/html/
 
     - name: Add Coverage PR Comment
       uses: madrapps/jacoco-report@v1.6.1
       if: github.event_name == 'pull_request'
       with:
-        paths: ${{ github.workspace }}/j2735-2024/build/reports/jacoco/test/jacocoTestReport.xml
+        paths: ${{ github.workspace }}/jpo-asn-j2735-2024/build/reports/jacoco/test/jacocoTestReport.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         min-coverage-overall: 80
         min-coverage-changed-files: 80 

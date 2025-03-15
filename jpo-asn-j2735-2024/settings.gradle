@@ -10,8 +10,8 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
 }
 
-rootProject.name = 'j2735-2024'
+rootProject.name = 'jpo-asn-j2735-2024'
 
-includeBuild('../asn1jvm-runtime')
+includeBuild('../jpo-asn-runtime')
 
 
