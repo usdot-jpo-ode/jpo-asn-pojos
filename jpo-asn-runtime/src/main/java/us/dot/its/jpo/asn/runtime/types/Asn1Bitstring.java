@@ -39,16 +39,34 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public String binaryString() {
-        char[] chars = new char[size];
-        for (int i = 0; i < size; i++) {
+        // Write extension bits if the number of named bits is larger than the "size" and
+        // those bits are set
+        final int sizeWithExtensions = sizeWithExtensions();
+
+        char[] chars = new char[sizeWithExtensions];
+        for (int i = 0; i < sizeWithExtensions; i++) {
             chars[i] = get(i) ? '1' : '0';
         }
         return new String(chars);
     }
 
+    // Get the effective bitstring size including extension bits with defined names that are set
+    private int sizeWithExtensions() {
+        final int numExtensions = names.length - size;  // Number of extensions defined
+        int maxSetExtensionIndex = -1;
+        for (int extNum = 0; extNum < numExtensions; extNum++) {
+            final int extIndex = size + extNum;
+            if (get(extIndex)) {
+                maxSetExtensionIndex = extIndex;
+            }
+        }
+        return (maxSetExtensionIndex > -1) ? maxSetExtensionIndex + 1 : size;
+    }
+
     public String hexString() {
+        final int sizeWithExtensions = sizeWithExtensions();
         HexFormat hex = HexFormat.of().withUpperCase();
-        int expectedNumBytes = (size() + 7) / 8;
+        int expectedNumBytes = (sizeWithExtensions + 7) / 8;
         byte[] bytes = reverseBits(bits.toByteArray());
         if (bytes.length < expectedNumBytes) {
             // Pad with 0's to get expected number of bytes
@@ -68,9 +86,22 @@ public abstract class Asn1Bitstring implements Asn1Type {
         if (chars.length < size) {
             throw new IllegalArgumentException("Not enough characters in string " + str);
         }
+
         for (int i = 0; i < size; i++) {
             char c = chars[i];
             set(i, c == '1');
+        }
+
+        // Read extension bits if the number of named bits is larger than the "size" and the binary
+        // string is long enough to contain extensions
+        final int numExtensions = names.length - size;  // Number of extensions defined
+        final int numExtensionsInString = chars.length - size; // Number of extensions present in string
+        if (numExtensions > 0 && numExtensionsInString >= numExtensions) {
+             for (int extNum = 0; extNum < numExtensionsInString; extNum++) {
+                 final int extIndex = size + extNum;
+                 char c = chars[extIndex];
+                 set(extIndex, c == '1');
+             }
         }
     }
 

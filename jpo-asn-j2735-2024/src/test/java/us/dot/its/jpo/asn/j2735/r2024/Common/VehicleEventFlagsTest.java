@@ -6,6 +6,8 @@ import static org.hamcrest.Matchers.hasProperty;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class VehicleEventFlagsTest {
 
@@ -47,11 +49,69 @@ public class VehicleEventFlagsTest {
     assertThat(vef.binaryString(), equalTo("1111111111111"));
   }
 
-  @Disabled("TODO fix this")
-  @Test
-  public void testJackKnifeExtension() {
+  @ParameterizedTest
+  @CsvSource({
+      "00000000000001,true",
+      "10000000000001,true",
+      "11111111111111,true",
+      "01010101010101,true",
+      "00000000000000,false",
+      "10000000000000,false",
+      "1111111111111,false",
+      "0101010101010,false",
+      "0000000000000,false",
+      "1000000000000,false",
+      "1111111111111,false",
+      "0101010101010,false"
+  })
+  public void testJackKnifeExtension_fromBinaryString(
+      final String binaryString, boolean expectSetBit) {
     var vef = new VehicleEventFlags();
-    vef.fromBinaryString("00000000000001");
-    assertThat(vef, hasProperty("eventJackKnife", equalTo(true)));
+    vef.fromBinaryString(binaryString);
+    assertThat(vef, hasProperty("eventJackKnife", equalTo(expectSetBit)));
   }
+
+  @ParameterizedTest
+  @CsvSource({
+      "0004,true",
+      "8004,true",
+      "FFFC,true",
+      "5555,true",
+      "0000,false",
+      "8000,false",
+      "FFF8,false",
+      "5550,false"
+  })
+  public void testJackKnifeExtension_fromHexString(final String hexString, boolean expectSetBit) {
+    var vef = new VehicleEventFlags();
+    vef.fromHexString(hexString);
+    assertThat(vef, hasProperty("eventJackKnife", equalTo(expectSetBit)));
+  }
+
+  @Test
+  public void testJackKnifeExtension_encodeBinaryString() {
+    var vef = new VehicleEventFlags();
+    vef.setEventHazardLights(true);
+    vef.setEventJackKnife(true);
+    final String binaryStr = vef.binaryString();
+    assertThat(binaryStr, equalTo("10000000000001"));
+    vef.setEventJackKnife(false);
+    final String binaryStrZero = vef.binaryString();
+    assertThat(binaryStrZero, equalTo("1000000000000"));
+  }
+
+  @Test
+  public void testJackKnifeExtension_encodeHexString() {
+    var vef = new VehicleEventFlags();
+    vef.setEventHazardLights(true);
+    vef.setEventJackKnife(true);
+    final String binaryStr = vef.hexString();
+    assertThat(binaryStr, equalTo("8004"));
+    vef.setEventJackKnife(false);
+    final String binaryStrZero = vef.hexString();
+    assertThat(binaryStrZero, equalTo("8000"));
+  }
+
+
+
 }

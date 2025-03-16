@@ -38,10 +38,4 @@ public @interface Asn1Property {
      */
     String defaultValue() default "";
 
-    /**
-     * @return Indicates that the property is an ASN1 Open Type, so UPER encoding needs to use a length determinant
-     * as described in T-REC-X.691 (2021/2) section 11.2.
-     */
-    boolean openType() default false;
-
 }
