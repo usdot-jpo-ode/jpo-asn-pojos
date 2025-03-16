@@ -79,7 +79,7 @@ This converter consumes and produces **CANONICAL** XER which is the same dialect
 and asn1jvm POJOs expect. It is characterized by octet strings with no spaces between the bytes,
 and compact XML with no line breaks or indentation.
 
-Usage example to convert an BSM MessageFrame from a file containing UPER-encoded binary to XER and
+Usage example to convert a BSM MessageFrame from a file containing UPER-encoded binary to XER and
 JER:
 
 ```bash
@@ -95,16 +95,18 @@ https://github.com/iyourshaw/j2735-erlang
 
 The Erlang converter's random asn.1 generator has it's own quirks, the main one being that
 if messages contain open types, it fills them with random junk that needs to be removed
-to get a valid message. It is capable of producing JER, but not XER.
-But on the positive side, it respects bitstring sizes, and is better able
-to generate large messages than asn1c.
+to get a valid message. It is capable of producing UPER and JER, but not XER.
+It respects bitstring sizes, and is better able to generate large messages than asn1c.
 
 It can be run using the dev container in that repo.
 
 Example, generate a random RoadSafetyMessage and save to a file:
 
 ```erlang
+% Create a random message
 {ok, Rsm} = asn1ct:value('RoadSafetyMessage', 'RoadSafetyMessage').
+
+% Save the Erlang term to a file
 file:write_file("../examples/rsm.src", io_lib:format("~p.~n", [Rsm])).
 ```
 
@@ -118,11 +120,22 @@ Manually edit, replacing the Regional Extension open types like:
 
 with `asn1_NOVALUE`
 
-Reload the edited erlang term and convert to JER and save to a file:
+Reload the edited erlang term and convert to UPER and JER and save to a file:
 
 ```erlang
+% Reload the Erlang term
 {ok, [RsmReload]} = file:consult("../examples/rsm.src").
+
+% Convert to UPER
+{ok, RsmUper} = 'RoadSafetyMessage':encode('RoadSafetyMessage', RsmReload).
+
+% Save UPER to file
+file:write_file("rsm.bin", RsmUper).
+
+% Convert to JER
 {ok, RsmJer} = 'RoadSafetyMessage':jer_encode('RoadSafetyMessage', RsmReload).
+
+% Save JER to file
 file:write_file("rsm.json", RsmJer).
 ```
 
