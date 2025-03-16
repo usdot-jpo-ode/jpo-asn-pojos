@@ -2,9 +2,13 @@ package us.dot.its.jpo.asn.runtime.serialization;
 
 import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import us.dot.its.jpo.asn.runtime.BaseSerializeTest;
 import us.dot.its.jpo.asn.runtime.examples.MessageContainsSequenceOfChoice;
 import java.io.IOException;
@@ -40,6 +44,17 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
     assertThat(description, roundTripJson, jsonEquals(json));
   }
 
+  @ParameterizedTest
+  @MethodSource("malformedXmlValues")
+  public void malformedXmlDoesNotHang(final String description, final String xml)  {
+    JsonProcessingException jpe = assertThrows(
+        JsonProcessingException.class,
+        () -> fromXml(xml),
+        "Invalid xml: Expect JsonProcessingException and not stack overflow or anything else"
+    );
+    log.info("Malformed xml threw expected exception: {}", jpe.getMessage());
+  }
+
   private static Stream<Arguments> xmlValues() {
     return Stream.of(
         Arguments.of("Single value", XML_SINGLE),
@@ -55,6 +70,14 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
         Arguments.of("Unique values", JSON_UNIQUE),
         Arguments.of("Duplicate values, ordered", JSON_DUPLICATES),
         Arguments.of("Duplicate values, mixed order", JSON_MIXED)
+    );
+  }
+
+  private static Stream<Arguments> malformedXmlValues() {
+    return Stream.of(
+        Arguments.of("Outer element not closed", XML_MALFORMED1),
+        Arguments.of("Choice element not closed", XML_MALFORMED2),
+        Arguments.of("random junk", XML_MALFORMED3)
     );
   }
 
@@ -205,5 +228,31 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
         ],
         "num": 7
       }
+      """;
+
+  public static final String XML_MALFORMED1 = """
+      <MessageContainsSequenceOfChoice>
+        <id>10</id>
+        <choices>
+          <a>
+            <a-int>5</a-int>
+            <a-str>asdf</a-str>
+          </a>
+        </choices>
+        <num>7</num>
+      """;
+
+  public static final String XML_MALFORMED2 = """
+      <MessageContainsSequenceOfChoice>
+        <id>10</id>
+        <choices>
+          <a>
+            <a-int>5</a-int>
+            <a-str>asdf</a-str>
+          </a>
+      """;
+
+  public static final String XML_MALFORMED3 = """
+      <asdf><<< /
       """;
 }
