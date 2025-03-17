@@ -106,23 +106,20 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.12</version>
         <configuration>
-          <includes>
-            <include>**/runtime/**</include>
-            <include>**/BasicSafetyMessage/**</include>
-            <include>**/Common/**</include>
-            <include>**/ITIS/**</include>
-            <include>**/J2540ITIS/**</include>
-            <include>**/NTCIP/**</include>
-            <include>**/MapData/**</include>
-            <include>**/PersonalSafetyMessage/**</include>
-            <include>**/RoadSafetyMessage/**</include>
-            <include>**/RTCMcorrections/**</include>
-            <include>**/SensorDataSharingMessage/**</include>
-            <include>**/SignalRequestMessage/**</include>
-            <include>**/SignalStatusMessage/**</include>
-            <include>**/SPAT/**</include>
-            <include>**/TravelerInformation/**</include>
-          </includes>
+          <excludes>
+            <!-- Exclude modules with few types of interest -->
+            <exclude>**/EfcDataDictionary/**</exclude>
+            <exclude>**/J2540ITIS/**</exclude>
+            <exclude>**/AddGrpB/**</exclude>
+            <exclude>**/AddGrpC/**</exclude>
+            <exclude>**/REGION/**</exclude>
+            <!-- Exclude null messages types -->
+            <exclude>**/PersonalSafetyMessage2/**</exclude>
+            <exclude>**/RoadGeometryAndAttributes/**</exclude>
+            <exclude>**/SignalControlAndPrioritizationRequest/**</exclude>
+            <exclude>**/SignalControlAndPrioritizationStatus/**</exclude>
+            <exclude>**/TrafficSignalPhaseAndTiming/**</exclude>
+          </excludes>
         </configuration>
         <executions>
           <execution>
