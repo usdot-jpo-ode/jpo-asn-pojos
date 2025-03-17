@@ -15,7 +15,7 @@ See the documentation for the test generator included in this project:
 Note that all examples generated from it should be verified to be valid by round tripping them
 through an independent asn1 tool, such as the asn1c converter.
 
-For example generate a random SPAT:
+For example generate a random Road Weather Message:
 
 ```bash
 java -jar testgen-cli.jar -m RoadWeatherMessage -p RoadWeatherMessage -x rwm.xml -j rwm.json
