@@ -14,7 +14,13 @@ public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
     final int lower = instance.getMinLength();
     final int upper = instance.getMaxLength();
     Random r = new Random();
-    final int len = r.nextInt(upper - lower) + lower;
+    int len;
+    if (lower == upper) {
+      len = lower;
+    } else {
+      System.out.printf("upper %s, lower %s", upper, lower);
+      len = r.nextInt(upper - lower) + lower;
+    }
     byte[] bytes = new byte[len];
     for (int i = 0; i < len; i++) {
       bytes[i] = (byte)r.nextInt(256);

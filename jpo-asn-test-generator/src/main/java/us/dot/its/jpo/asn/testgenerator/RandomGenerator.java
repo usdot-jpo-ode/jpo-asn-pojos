@@ -5,6 +5,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import us.dot.its.jpo.asn.runtime.serialization.SerializationUtil;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
+import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 import us.dot.its.jpo.asn.runtime.types.Asn1Enumerated;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
@@ -51,6 +52,8 @@ public abstract class RandomGenerator<T extends Asn1Type> {
       return new RelativeOIDGenerator(name, limit);
     } else if (Asn1OctetString.class.isAssignableFrom(type)) {
       return new OctetStringGenerator(name, limit);
+    } else if (Asn1Boolean.class.isAssignableFrom(type)) {
+      return new BooleanGenerator(name, limit);
     } else {
       System.err.printf("No RandomGenerator found for type %s%n", type.getName());
       return null;
