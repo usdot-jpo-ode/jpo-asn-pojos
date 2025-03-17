@@ -12,9 +12,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import us.dot.its.jpo.asn.j2735.r2024.BaseSerializeTest;
 
-public class RoadUserChargingReportMessage extends BaseSerializeTest<RoadUserChargingReportMessage> {
+public class RoadUserChargingReportMessageTest extends BaseSerializeTest<RoadUserChargingReportMessage> {
 
-  public RoadUserChargingReportMessage() {
+  public RoadUserChargingReportMessageTest() {
     super(RoadUserChargingReportMessage.class);
   }
 
