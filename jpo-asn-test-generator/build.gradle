@@ -61,5 +61,5 @@ jar {
                 'Main-Class': 'us.dot.its.jpo.asn.testgenerator.TestGenCli'
         )
     }
-    archiveBaseName = 'test-generator'
+    archiveBaseName = 'testgen'
 }
