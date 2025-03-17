@@ -3,10 +3,14 @@ package us.dot.its.jpo.asn.runtime.types;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HexFormat;
+import lombok.Getter;
 
 public class Asn1OctetString implements Asn1Type {
 
+    @Getter
     protected final int minLength;
+
+    @Getter
     protected final int maxLength;
 
     @JsonIgnore
