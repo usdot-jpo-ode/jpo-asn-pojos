@@ -1,10 +1,37 @@
 # Generating test data for J2735/2024
 
-We have 2 open-source tools for generating message examples that were generated using mature,
+We have 3 open-source tools for generating message examples that were generated using mature,
 third-pary ASN.1 compilers:
 
+* [jpo-asn-test-generator](../jpo-asn-test-generator/README.md)
 * asn1c converters
 * Erlang OTP converters
+
+## Java Converter
+
+See the documentation for the test generator included in this project:
+[jpo-asn-test-generator](../jpo-asn-test-generator/README.md)
+
+Note that all examples generated from it should be verified to be valid by round tripping them
+through an independent asn1 tool, such as the asn1c converter.
+
+For example generate a random SPAT:
+
+```bash
+java -jar testgen-cli.jar -m RoadWeatherMessage -p RoadWeatherMessage -x rwm.xml -j rwm.json
+```
+
+Then verify that the XML is valid using the asn1c converter.  Convert the XER to UPER:
+```bash
+./converter-debug -p RoadWeatherMessage -ixer -ouper rwm.xml > rwm.bin
+```
+
+Convert the UPER back to XER:
+```bash
+./converter-debug -p RoadWeatherMessage -iuper -oxer rwm.bin > rwm_rt.xml
+```
+
+And check that the files rwm.xml and rwm_rt.xml contain the same XML.
 
 ## asn1c Converters
 
