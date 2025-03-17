@@ -59,25 +59,26 @@ jacocoTestReport {
         xml.required = true
         html.required = true
     }
-    // Include only modules of interest in coverage
+    // Coverage includes/excludes
     // Ref: https://liviutudor.com/2016/02/11/jacoco-gradle-excluding-source-files-and-classes/
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, include: [
-                    '**/BasicSafetyMessage/**',
-                    '**/Common/**',
-                    '**/ITIS/**',
+            fileTree(dir: it, excludes: [
+
+                    // Exclude modules with few types of interest
+                    '**/EfcDataDictionary/**',
                     '**/J2540ITIS/**',
-                    '**/NTCIP/**',
-                    '**/MapData/**',
-                    '**/PersonalSafetyMessage/**',
-                    '**/RoadSafetyMessage/**',
-                    '**/RTCMcorrections/**',
-                    '**/SensorDataSharingMessage/**',
-                    '**/SignalRequestMessage/**',
-                    '**/SignalStatusMessage/**',
-                    '**/SPAT/**',
-                    '**/TravelerInformation/**'
+                    '**/AddGrpB/**',
+                    '**/AddGrpC/**',
+                    '**/REGION/**',
+
+                    // Exclude null messages types
+                    '**/PersonalSafetyMessage2/**',
+                    '**/RoadGeometryAndAttributes/**',
+                    '**/SignalControlAndPrioritizationRequest/**',
+                    '**/SignalControlAndPrioritizationStatus/**',
+                    '**/TrafficSignalPhaseAndTiming/**'
+
             ])
         })
     }
