@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import us.dot.its.jpo.asn.j2735.r2024.MapData.PreemptPriorityList;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Field;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
@@ -27,11 +28,20 @@ public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
     List<Asn1Field> fields = AsnFieldUtil.fields(instance);
     List<Asn1Field> fieldsWithValues = new ArrayList<>();
     for (Asn1Field field : fields) {
+
       // Ignore fields named "regional"
       if (field.name().equals("regional")) {
         fieldsWithValues.add(field);
         continue;
       }
+
+      // Ignore certain open types containing regional/open types to produce valid messages
+      // ignore for MapData
+      if (field.type().equals(PreemptPriorityList.class)) {
+        fieldsWithValues.add(field);
+        continue;
+      }
+
       RandomGenerator<?> fieldGen = getGeneratorForType(field.type(), sequenceOfLimit);
       if (fieldGen != null) {
         Asn1Type value = fieldGen.createRandom();

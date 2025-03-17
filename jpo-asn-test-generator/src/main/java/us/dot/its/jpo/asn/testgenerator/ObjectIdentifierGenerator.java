@@ -11,10 +11,9 @@ public class ObjectIdentifierGenerator extends RandomGenerator<Asn1ObjectIdentif
 
   @Override
   protected void populateRandom(Asn1ObjectIdentifier instance) {
-    Random r = new Random();
-    String str = String.format("%s.%s.%s.%s.%s", randomShort(r), randomShort(r), randomShort(r),
-        randomShort(r), randomShort(r));
-    instance.setValue(str);
+      Random r = new Random();
+      String str = String.format("1.0.%s.1", randomShort(r));
+      instance.setValue(str);
   }
 
   private short randomShort(Random r) {
