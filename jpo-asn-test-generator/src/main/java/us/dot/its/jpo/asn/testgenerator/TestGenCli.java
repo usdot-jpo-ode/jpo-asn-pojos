@@ -10,6 +10,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
+import us.dot.its.jpo.asn.runtime.types.Asn1Type;
 
 @Command(name = "testgen-cli", version = "testgen 1.0", mixinStandardHelpOptions = true,
   sortOptions = false, sortSynopsis = false)
@@ -21,8 +22,7 @@ public class TestGenCli implements Runnable {
 
   @Option(names = {"-p", "--pdu"}, required = true,
       description = "REQUIRED. Protocol Data Unit (PDU).  Name of the class to generate an example of"
-          + ", qualified by the module. For example: MapData, BSMCoreData.  The PDU "
-          + "must be a SEQUENCE type.")
+          + ", qualified by the module. For example: MapData, BSMCoreData.")
   String pdu;
 
   @Option(names = {"-s", "--sequence-of-limit"}, defaultValue = "5",
@@ -43,6 +43,7 @@ public class TestGenCli implements Runnable {
     System.exit(exitCode);
   }
 
+  @SuppressWarnings({"unchecked"})
   @Override
   public void run() {
     System.out.println("ASN.1 POJO Test Generator");
@@ -51,8 +52,18 @@ public class TestGenCli implements Runnable {
     System.out.println("SEQUENCE-OF limit: " + sequenceOfLimit);
     final String fullPdu = String.format("us.dot.its.jpo.asn.j2735.r2024.%s.%s", module, pdu);
     System.out.printf("Fully qualified class name = %s%n", fullPdu);
-    SequenceGenerator seqGen = new SequenceGenerator(fullPdu, sequenceOfLimit);
-    Asn1Sequence seq = seqGen.createRandom();
+
+    Class clazz;
+    try {
+      clazz = Class.forName(fullPdu);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
+    RandomGenerator<?> seqGen = RandomGenerator.getGeneratorForType(clazz, sequenceOfLimit);
+    if (seqGen == null) {
+      throw new RuntimeException(String.format("Generator for type %s not found", fullPdu));
+    }
+    var seq = seqGen.createRandom();
     try {
       var xml = seqGen.toXml(seq);
       if (xerOutputFile != null) {

@@ -97,12 +97,12 @@ public abstract class RandomGenerator<T extends Asn1Type> {
     return instance;
   }
 
-  public String toXml(T instance) throws JsonProcessingException {
+  public String toXml(Object instance) throws JsonProcessingException {
     var mapper = SerializationUtil.xmlMapper();
     return mapper.writeValueAsString(instance);
   }
 
-  public String toJson(T instance) throws JsonProcessingException {
+  public String toJson(Object instance) throws JsonProcessingException {
     var mapper = SerializationUtil.jsonMapper();
     return mapper.writeValueAsString(instance);
   }
