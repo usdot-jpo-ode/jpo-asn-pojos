@@ -6,24 +6,26 @@ These are Java codecs for XER and JER ASN.1 encodings.
 
 Folders:
 
-* **jp-asn-asn1jvm-runtime** - Runtime library.
-* **jpo-asn-j2735-2024** - POJOs for the J2735/2024 specification.
-* **jpo-asn-test-generator** - A Java command-line utility for generating test XER and JER messages.
-* **generate-test-data** - Various utilities for generating test data and examples of serialized
+* [jpo-asn-runtime](jpo-asn-runtime/README.md) - Runtime library.
+* [jpo-asn-j2735-2024](jpo-asn-j2735-2024/README.md) - POJOs for the J2735/2024 specification.
+* [jpo-asn-test-generator](jpo-asn-test-generator/README.md) - A Java command-line utility for
+  generating test XER and JER messages.
+* [generate-test-data](generate-test-data/README.md) - Various utilities for generating test data
+  and examples of serialized
   messages.
 
 Prerequisites:
 
 * JDK 21
 
-To build using gradle:
+To build using Gradle:
 
 ```bash
 cd jpo-asn-j2735-2024
 ./gradlew clean build
 ```
 
-To build using maven, from the root directory:
+To build using Maven, from the root directory:
 
 ```bash
 ./mvnw clean package
