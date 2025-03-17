@@ -18,7 +18,6 @@ public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
     if (lower == upper) {
       len = lower;
     } else {
-      System.out.printf("upper %s, lower %s", upper, lower);
       len = r.nextInt(upper - lower) + lower;
     }
     byte[] bytes = new byte[len];
