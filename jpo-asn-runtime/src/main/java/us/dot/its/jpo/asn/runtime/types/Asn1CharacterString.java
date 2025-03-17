@@ -2,12 +2,14 @@ package us.dot.its.jpo.asn.runtime.types;
 
 
 import com.fasterxml.jackson.annotation.JsonValue;
-
+import lombok.Getter;
 
 
 public abstract class Asn1CharacterString implements Asn1Type {
 
+    @Getter
     protected final int minLength;
+    @Getter
     protected final int maxLength;
     protected final int bitsPerCharacter;
     protected String value;

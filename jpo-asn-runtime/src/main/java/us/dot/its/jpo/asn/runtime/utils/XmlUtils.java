@@ -66,7 +66,7 @@ public class XmlUtils {
     }
 
     final String unwrapped = trimmed.substring(endFirst + 1, startLast - 2);
-    log.info("trace: {}", unwrapped);
+    log.trace("unwrapped: {}", unwrapped);
     return unwrapped;
   }
 

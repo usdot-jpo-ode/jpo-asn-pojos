@@ -1,0 +1,23 @@
+package us.dot.its.jpo.asn.testgenerator;
+
+import java.util.Random;
+import us.dot.its.jpo.asn.runtime.types.Asn1ObjectIdentifier;
+
+public class ObjectIdentifierGenerator extends RandomGenerator<Asn1ObjectIdentifier>{
+
+  public ObjectIdentifierGenerator(String pdu, int sequenceOfLimit) {
+    super(pdu, sequenceOfLimit);
+  }
+
+  @Override
+  protected void populateRandom(Asn1ObjectIdentifier instance) {
+    Random r = new Random();
+    String str = String.format("%s.%s.%s.%s.%s", randomShort(r), randomShort(r), randomShort(r),
+        randomShort(r), randomShort(r));
+    instance.setValue(str);
+  }
+
+  private short randomShort(Random r) {
+    return (short)r.nextInt(Short.MAX_VALUE);
+  }
+}

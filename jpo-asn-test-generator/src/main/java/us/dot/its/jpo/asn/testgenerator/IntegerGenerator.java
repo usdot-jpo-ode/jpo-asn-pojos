@@ -5,8 +5,8 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class IntegerGenerator extends RandomGenerator<Asn1Integer> {
 
-  public IntegerGenerator(String pdu) {
-    super(pdu);
+  public IntegerGenerator(String pdu, int limit) {
+    super(pdu, limit);
   }
 
   @Override

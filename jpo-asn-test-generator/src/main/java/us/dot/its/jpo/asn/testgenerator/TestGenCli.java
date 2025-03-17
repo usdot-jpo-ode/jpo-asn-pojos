@@ -25,9 +25,9 @@ public class TestGenCli implements Runnable {
           + "must be a SEQUENCE type.")
   String pdu;
 
-  @Option(names = {"-o", "--exclude-optional"}, defaultValue = "false",
-  description = "Exclude optional fields from sequences")
-  boolean excludeOptional;
+  @Option(names = {"-s", "--sequence-of-limit"}, defaultValue = "5",
+  description = "Limit the number of items in SEQUENCE-OF types")
+  int sequenceOfLimit;
 
   @Option(names = {"-x", "--xer-output-file"},
       description="Output file path for the XER file.")
@@ -48,12 +48,10 @@ public class TestGenCli implements Runnable {
     System.out.println("ASN.1 POJO Test Generator");
     System.out.println("Module: " + module);
     System.out.println("PDU: " + pdu);
-    if (excludeOptional) {
-      System.out.println("exclude-optional");
-    }
+    System.out.println("SEQUENCE-OF limit: " + sequenceOfLimit);
     final String fullPdu = String.format("us.dot.its.jpo.asn.j2735.r2024.%s.%s", module, pdu);
     System.out.printf("Fully qualified class name = %s%n", fullPdu);
-    SequenceGenerator seqGen = new SequenceGenerator(fullPdu);
+    SequenceGenerator seqGen = new SequenceGenerator(fullPdu, sequenceOfLimit);
     Asn1Sequence seq = seqGen.createRandom();
     try {
       var xml = seqGen.toXml(seq);

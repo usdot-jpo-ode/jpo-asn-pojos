@@ -18,64 +18,36 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 
 public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
 
-  public SequenceGenerator(String pdu) {
-    super(pdu);
+  public SequenceGenerator(String pdu, int limit) {
+    super(pdu, limit);
   }
 
   @Override
   protected void populateRandom(Asn1Sequence instance) {
-    List<Asn1Field> fields = fields(instance);
+    List<Asn1Field> fields = AsnFieldUtil.fields(instance);
     List<Asn1Field> fieldsWithValues = new ArrayList<>();
     for (Asn1Field field : fields) {
-      RandomGenerator<?> fieldGen = getGeneratorForType(field.type());
+      // Ignore fields named "regional"
+      if (field.name().equals("regional")) {
+        fieldsWithValues.add(field);
+        continue;
+      }
+      RandomGenerator<?> fieldGen = getGeneratorForType(field.type(), sequenceOfLimit);
       if (fieldGen != null) {
         Asn1Type value = fieldGen.createRandom();
-        Asn1Field fieldWithValue = new Asn1Field(field.name(), value, field.optional(), field.tag(), field.type());
-        fieldsWithValues.add(fieldWithValue);
+        if (value != null) {
+          Asn1Field fieldWithValue = new Asn1Field(field.name(), value, field.optional(),
+              field.tag(), field.type());
+          fieldsWithValues.add(fieldWithValue);
+        } else {
+          fieldsWithValues.add(field);
+        }
       } else {
         fieldsWithValues.add(field);
       }
     }
-    setFields(instance, fieldsWithValues);
+    AsnFieldUtil.setFields(instance, fieldsWithValues);
   }
 
-  @SuppressWarnings({"unchecked"})
-  private List<Asn1Field> fields(Asn1Sequence sequence) {
-    List<Asn1Field> fields = new ArrayList<>();
-    for (Field field : FieldUtils.getFieldsListWithAnnotation(sequence.getClass(), Asn1Property.class)) {
-      Object fieldValue;
-      try {
-        field.setAccessible(true);
-        fieldValue = field.get(sequence);
-      } catch (IllegalAccessException e) {
-        throw new RuntimeException(e);
-      }
-      Asn1Property annot = field.getAnnotation(Asn1Property.class);
 
-      Asn1Field asnField = new Asn1Field(field.getName(), (Asn1Type)fieldValue, annot.optional(),
-          annot.tag(), (Class<? extends Asn1Type>)field.getType());
-      fields.add(asnField);
-
-    }
-
-    // Sort in tag order
-    fields.sort(Comparator.comparingInt(Asn1Field::tag));
-
-    return fields;
-  }
-
-  private void setFields(Asn1Sequence sequence, List<Asn1Field> fields) {
-    Map<String, Field> fieldMap =
-        FieldUtils.getFieldsListWithAnnotation(sequence.getClass(), Asn1Property.class)
-            .stream().collect(Collectors.toMap(Field::getName, field -> field));
-    for (Asn1Field asnField : fields) {
-      Field field = fieldMap.get(asnField.name());
-      field.setAccessible(true);
-      try {
-        field.set(sequence, asnField.value());
-      } catch (IllegalAccessException e) {
-        throw new RuntimeException(e);
-      }
-    }
-  }
 }
