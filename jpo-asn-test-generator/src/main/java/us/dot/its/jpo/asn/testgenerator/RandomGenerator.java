@@ -3,6 +3,7 @@ package us.dot.its.jpo.asn.testgenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.serialization.SerializationUtil;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
@@ -32,6 +33,18 @@ public abstract class RandomGenerator<T extends Asn1Type> {
   protected static <T extends Asn1Type> RandomGenerator<?> getGeneratorForType(final Class<T> type,
       final int limit) {
     final String name = type.getName();
+
+    try {
+      Class<?> clazz = Class.forName(name);
+      final Asn1ParameterizedTypes typeAnnot = clazz.getAnnotation(Asn1ParameterizedTypes.class);
+      if (typeAnnot != null) {
+        // this is an abstract class with a parameterized type annotation
+        return new ParameterizedTypeGenerator(name, limit, typeAnnot);
+      }
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
+
     if (Asn1Integer.class.isAssignableFrom(type)) {
       return new IntegerGenerator(name, limit);
     } else if (Asn1Sequence.class.isAssignableFrom(type)) {
