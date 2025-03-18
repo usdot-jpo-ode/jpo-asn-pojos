@@ -1,7 +1,6 @@
 # Generating test data for J2735/2024
 
-We have 3 open-source tools for generating message examples that were generated using mature,
-third-pary ASN.1 compilers:
+We have 3 open-source tools for generating message examples :
 
 * [jpo-asn-test-generator](../jpo-asn-test-generator/README.md)
 * asn1c converters
@@ -35,7 +34,7 @@ And check that the files rwm.xml and rwm_rt.xml contain the same XML.
 
 ## asn1c Converters
 
-This directory contains two converters created with the [VLM asn1c](https://github.com/vlm/asn1c)
+This directory contains three converters created with the [VLM asn1c](https://github.com/vlm/asn1c)
 compiler (using the [usdot fork](https://github.com/usdot-fhwa-stol/usdot-asn1c) of the
 [mouse07410 fork](https://github.com/mouse07410/asn1c)). These are command line tools that work in
 WSL/Ubuntu.
