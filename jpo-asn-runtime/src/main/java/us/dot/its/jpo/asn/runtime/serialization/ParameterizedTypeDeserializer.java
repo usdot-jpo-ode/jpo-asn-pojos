@@ -8,6 +8,9 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
+import com.fasterxml.jackson.databind.exc.InvalidTypeIdException;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
@@ -41,7 +44,9 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         final var typeAnnot = thisClass.getAnnotation(Asn1ParameterizedTypes.class);
         if (typeAnnot == null) {
-            throw new RuntimeException("Missing Asn1ParameterizedTypes annotation.");
+            // Jackson's InvalidDefinitionExecption seems appropriate for missing annotations
+            // Ref. https://javadoc.io/static/com.fasterxml.jackson.core/jackson-databind/2.18.3/com/fasterxml/jackson/databind/exc/InvalidDefinitionException.html
+            throw InvalidDefinitionException.from(jsonParser, "Missing Asn1ParameterizedTypes annotation.", getValueType());
         }
         final String idPropName = typeAnnot.idProperty();
         log.trace("idPropName: {}", idPropName);
@@ -49,7 +54,7 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
         log.trace("idType: {}", idType);
         final Asn1ParameterizedTypes.Type[] types = typeAnnot.value();
         if (types == null || types.length == 0) {
-            throw new RuntimeException("No Types are defined in the Asn1ParameterizedTypes annotation.");
+            throw InvalidDefinitionException.from(jsonParser, "No Types are defined in the Asn1ParameterizedTypes annotation.", getValueType());
         } else {
             for (var t : types) {
                 log.trace("type: {}", t);
@@ -66,15 +71,17 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
                 String xml = xmlMapper.writeValueAsString(node);
                 log.trace("node xml: {}", xml);
                 if (idPropNode == null) {
-                    throw new RuntimeException("idPropNode is null");
+                    // Ref. https://javadoc.io/static/com.fasterxml.jackson.core/jackson-databind/2.18.3/com/fasterxml/jackson/databind/exc/InvalidTypeIdException.html
+                    throw InvalidTypeIdException.from(jsonParser, "idPropNode is null", getValueType(), "");
                 }
                 final Object id = (idType == INTEGER) ? idPropNode.asInt() : idPropNode.asText();
                 log.trace("id: {}", id);
-                Class<?> subType = getSubtypeForId(id, idType, types);
+                Class<?> subType = getSubtypeForId(id, idType, types, jsonParser);
                 log.trace("subtype: {}", subType.getName());
                 return (T)SerializationUtil.xmlMapper().readValue(xml, subType);
             } else {
-                throw new RuntimeException("Not instance of object");
+                // Ref. https://javadoc.io/static/com.fasterxml.jackson.core/jackson-databind/2.18.3/com/fasterxml/jackson/databind/exc/MismatchedInputException.html
+                throw MismatchedInputException.from(jsonParser, thisClass, "Not instance of object");
             }
         } else {
             // JER
@@ -85,28 +92,29 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
                 String json = SerializationUtil.jsonMapper().writeValueAsString(objectNode);
                 log.trace("node json: {}", json);
                 if (idPropNode == null) {
-                    throw new RuntimeException("idPropNode is null");
+                    throw InvalidTypeIdException.from(jsonParser, "idPropNode is null", getValueType(), "");
                 }
                 final Object id = (idType == INTEGER) ? idPropNode.asInt() : idPropNode.asText();
                 log.trace("id: {}", id);
-                Class<?> subType = getSubtypeForId(id, idType, types);
+                Class<?> subType = getSubtypeForId(id, idType, types, jsonParser);
                 log.trace("subtype: {}", subType.getName());
                 T deserializedItem = (T)SerializationUtil.jsonMapper().readValue(json, subType);
                 log.trace("deserializedItem: {}", deserializedItem);
                 return deserializedItem;
             } else {
-                throw new RuntimeException("Not instance of object");
+                throw MismatchedInputException.from(jsonParser, thisClass, "Not instance of object");
             }
         }
     }
 
-    private Class<?> getSubtypeForId(final Object id, Asn1ParameterizedTypes.IdType idType, Asn1ParameterizedTypes.Type[] types) {
+    private Class<?> getSubtypeForId(final Object id, Asn1ParameterizedTypes.IdType idType, Asn1ParameterizedTypes.Type[] types, JsonParser jsonParser)
+        throws InvalidDefinitionException {
         for (var theType : types) {
             Object idValue = (idType == INTEGER) ? theType.intId() : theType.stringId();
             if (id.equals(idValue)) {
                 return theType.value();
             }
         }
-        throw new RuntimeException(String.format("Id %s not found in list of types", id));
+        throw InvalidDefinitionException.from(jsonParser, String.format("Id %s not found in list of types", id), getValueType());
     }
 }

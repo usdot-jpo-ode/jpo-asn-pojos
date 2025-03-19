@@ -55,37 +55,33 @@ public abstract class BaseSerializeTest<T> {
     return object;
   }
 
-  protected String loadResource(String path) {
+  protected String loadResource(String path) throws IOException {
     String str;
-    try {
-      str = IOUtils.resourceToString(path, StandardCharsets.UTF_8);
-      log.debug("Loaded resource: {}", str);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    str = IOUtils.resourceToString(path, StandardCharsets.UTF_8);
+    log.debug("Loaded resource: {}", str);
     return str;
   }
 
-  protected static List<String> listAllResourcesInDirectory(String directory) {
+  protected static List<String> listAllResourcesInDirectory(String directory)
+      throws IOException, URISyntaxException {
     List<String> resources = new ArrayList<>();
-    try {
-      URL dirUrl = IOUtils.resourceToURL(directory);
-      File dir = new File(dirUrl.toURI());
-      String[] files = dir.list();
-      if (files != null) {
-        for (String fileName : files) {
-          String resourcePath = String.format("%s/%s", directory, fileName);
-          log.info(resourcePath);
-          resources.add(resourcePath);
-        }
+
+    URL dirUrl = IOUtils.resourceToURL(directory);
+    File dir = new File(dirUrl.toURI());
+    String[] files = dir.list();
+    if (files != null) {
+      for (String fileName : files) {
+        String resourcePath = String.format("%s/%s", directory, fileName);
+        log.info(resourcePath);
+        resources.add(resourcePath);
       }
-    } catch (IOException | URISyntaxException e) {
-      throw new RuntimeException(e);
     }
+
     return resources;
   }
 
-  protected static Stream<Arguments> getResources(String directory) {
+  protected static Stream<Arguments> getResources(String directory)
+      throws IOException, URISyntaxException {
     List<String> resources = listAllResourcesInDirectory(directory);
     var streamBuilder = Stream.<Arguments>builder();
     resources.forEach(resource -> streamBuilder.add(Arguments.of(resource)));
