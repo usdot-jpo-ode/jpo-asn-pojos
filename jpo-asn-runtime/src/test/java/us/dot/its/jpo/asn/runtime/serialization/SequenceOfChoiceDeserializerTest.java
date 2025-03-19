@@ -30,7 +30,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
   public void canRoundTripXml(final String description, final String xml) throws IOException {
     MessageContainsSequenceOfChoice m = fromXml(xml);
     assertThat(description, m, notNullValue());
-    log.info("{}", m);
+    log.debug("{}", m);
     String roundTripXml = toXml(m);
     assertThat(description, roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
   }
@@ -52,7 +52,7 @@ public class SequenceOfChoiceDeserializerTest extends BaseSerializeTest<MessageC
         () -> fromXml(xml),
         "Invalid xml: Expect JsonProcessingException and not stack overflow or anything else"
     );
-    log.info("Malformed xml threw expected exception: {}", jpe.getMessage());
+    log.debug("Malformed xml threw expected exception: {}", jpe.getMessage());
   }
 
   private static Stream<Arguments> xmlValues() {
