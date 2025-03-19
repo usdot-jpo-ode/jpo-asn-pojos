@@ -2,12 +2,10 @@ package us.dot.its.jpo.asn.runtime.serialization;
 
 import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import us.dot.its.jpo.asn.runtime.BaseSerializeTest;
 import us.dot.its.jpo.asn.runtime.examples.MessageContainsSequenceOfChoice;
