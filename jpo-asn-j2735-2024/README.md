@@ -67,10 +67,10 @@ comparing the result with the original using the [XMLUnit](https://www.xmlunit.o
 
 The specification represented by the classes in this library consists of a large number of very
 complex data structures. These were tested using generated examples of the serialized XER and JER
-messages and verifying their correctness independent of the code being tested. Due to the complexity
-of the standard, it would have been a very laborious and error-prone process to create all the 
-sample data needed for a comprehensive test suite by hand. Therefore, we used several automated 
-tools to aid in creating and verifying the test messages. Those tools are described here: 
+messages whose correctness was verified independently of the code being tested. Due to the 
+complexity of the standard, it would have been a very laborious and error-prone process to create 
+all the sample data needed for a comprehensive test suite by hand. Therefore, we used several 
+automated tools to aid in creating and verifying the test messages. Those tools are described here: 
 [generate-test-data](../generate-test-data/README.md).
 
 ### Gradle
