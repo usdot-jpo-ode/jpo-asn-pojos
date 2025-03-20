@@ -7,6 +7,9 @@ import java.util.BitSet;
 import java.util.HexFormat;
 import us.dot.its.jpo.asn.runtime.serialization.BitstringSerializer;
 
+/**
+ * Base class for ASN.1 BIT STRING types.
+ */
 @JsonSerialize(using = BitstringSerializer.class)
 public abstract class Asn1Bitstring implements Asn1Type {
 
@@ -26,6 +29,10 @@ public abstract class Asn1Bitstring implements Asn1Type {
         return size;
     }
 
+    /**
+     * Indicates whether the SIZE constraint of this BIT STRING has an extension marker
+     * @return whether the size of the BIT STRING may be extended in the future
+     */
     public boolean hasExtensionMarker() {
         return hasExtensionMarker;
     }

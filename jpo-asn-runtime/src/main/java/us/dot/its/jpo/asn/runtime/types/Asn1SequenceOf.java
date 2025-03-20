@@ -3,7 +3,10 @@ package us.dot.its.jpo.asn.runtime.types;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 
-
+/**
+ * Base class for ASN.1 SEQUENCE-OF types.
+ * @param <T> The type of items in the SEQUENCE-OF
+ */
 public abstract class Asn1SequenceOf<T extends Asn1Type>
     extends ArrayList<T>
     implements Asn1Type {

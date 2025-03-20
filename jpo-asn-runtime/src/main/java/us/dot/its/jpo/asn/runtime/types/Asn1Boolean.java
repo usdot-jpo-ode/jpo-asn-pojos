@@ -9,7 +9,9 @@ import us.dot.its.jpo.asn.runtime.serialization.BooleanDeserializer;
 import us.dot.its.jpo.asn.runtime.serialization.BooleanSerializer;
 
 
-
+/**
+ * Base class for ASN.1 BOOLEAN types.
+ */
 @JsonSerialize(using = BooleanSerializer.class)
 @JsonDeserialize(using = BooleanDeserializer.class)
 public class Asn1Boolean implements Asn1Type {

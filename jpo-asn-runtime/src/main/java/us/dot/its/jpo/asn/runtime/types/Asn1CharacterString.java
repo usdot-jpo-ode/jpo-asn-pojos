@@ -4,7 +4,9 @@ package us.dot.its.jpo.asn.runtime.types;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 
-
+/**
+ * Base class for ASN.1 the various character string types.
+ */
 public abstract class Asn1CharacterString implements Asn1Type {
 
     @Getter

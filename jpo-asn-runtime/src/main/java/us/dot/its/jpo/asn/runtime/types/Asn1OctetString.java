@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HexFormat;
 import lombok.Getter;
 
+/**
+ * Represents an ASN.1 OCTET STRING type, and is the base class for OCTET STRING type assignments.
+ */
 public class Asn1OctetString implements Asn1Type {
 
     @Getter

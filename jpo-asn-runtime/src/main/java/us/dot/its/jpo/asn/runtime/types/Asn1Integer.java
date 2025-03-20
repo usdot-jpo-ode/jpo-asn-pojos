@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Objects;
 
 /**
- * A constrained integer type with lower bound and upper bound.
- * Unconstrained integer types and extensibility markers in integer constraints are not supported.
+ * Represents an ASN.1 INTEGER type, and is also used as a base class for INTEGER type
+ * assignments with or without size constraints.
  */
 public class Asn1Integer implements Asn1Type, Comparable<Asn1Integer> {
 
