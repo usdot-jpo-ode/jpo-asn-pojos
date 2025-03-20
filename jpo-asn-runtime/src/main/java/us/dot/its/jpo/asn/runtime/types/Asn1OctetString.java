@@ -60,7 +60,7 @@ public class Asn1OctetString implements Asn1Type {
         this.maxLength = maxLength;
     }
 
-    protected byte[] validate(String aValue) throws Exception {
+    protected void validate(String aValue) throws Exception {
         if (aValue == null) {
             throw new Exception("hex string is null");
         }
@@ -68,15 +68,8 @@ public class Asn1OctetString implements Asn1Type {
         boolean validLength = aValue.length() >= 2 * minLength && aValue.length() <= 2 * maxLength;
         if (!validLength) {
             throw new Exception(String.format("Hex string length out of bounds, %s, number of bytes must be between" +
-                    " %d and %d", aValue, minLength, maxLength));
+                " %d and %d", aValue, minLength, maxLength));
         }
-        HexFormat hexFormat = HexFormat.of();
-        try {
-            return hexFormat.parseHex(aValue);
-        } catch (IllegalArgumentException e) {
-            throw new Exception(e.getMessage());
-        }
-
     }
 
     @Override
