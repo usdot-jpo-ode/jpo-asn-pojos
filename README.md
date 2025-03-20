@@ -1,8 +1,43 @@
 # jpo-asn-pojos
 
-Generated POJOs from ASN SAE and IEEE standards
+Generated POJOs ("Plain Old Java Objects") from ASN SAE and IEEE standards.
 
-These are Java codecs for XER and JER ASN.1 encodings.
+## Background
+
+## Features
+
+These are Java classes for encoding and decoding the ASN.1 XER (XML Encoding Rules) and JER (JSON
+Encoding Rules) formats.
+
+## Getting Started
+
+### Prerequisites
+
+* JDK 21 or higher
+* Gradle or Maven
+
+### Build
+
+### Run Tests
+
+### Installation
+
+#### Use as a Submodule
+
+##### Gradle
+
+##### Maven
+
+#### Use as a Dependency
+
+##### Gradle
+
+##### Maven
+
+## Usage
+
+## Contributing
+
 
 Folders:
 
