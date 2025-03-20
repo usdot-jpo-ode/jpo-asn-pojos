@@ -28,7 +28,9 @@ public class Asn1OctetString implements Asn1Type {
 
     public void setValue(String value) {
         try {
-            this.octets = validate(value);
+            validate(value);
+            HexFormat hexFormat = HexFormat.of();
+            this.octets = hexFormat.parseHex(value);
         } catch (Exception e) {
             throw new IllegalArgumentException(
                     String.format("Hex String '%s' is not valid", value), e);
