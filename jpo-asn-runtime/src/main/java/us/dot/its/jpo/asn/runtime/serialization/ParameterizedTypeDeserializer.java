@@ -44,7 +44,7 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         final var typeAnnot = thisClass.getAnnotation(Asn1ParameterizedTypes.class);
         if (typeAnnot == null) {
-            // Jackson's InvalidDefinitionExecption seems appropriate for missing annotations
+            // Jackson's InvalidDefinitionException seems appropriate for missing annotations
             // Ref. https://javadoc.io/static/com.fasterxml.jackson.core/jackson-databind/2.18.3/com/fasterxml/jackson/databind/exc/InvalidDefinitionException.html
             throw InvalidDefinitionException.from(jsonParser, "Missing Asn1ParameterizedTypes annotation.", getValueType());
         }
