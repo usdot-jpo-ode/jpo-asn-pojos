@@ -16,7 +16,7 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class MessageContainsSequenceOfChoice extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")

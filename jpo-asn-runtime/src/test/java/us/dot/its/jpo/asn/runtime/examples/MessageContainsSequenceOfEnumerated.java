@@ -1,5 +1,6 @@
 package us.dot.its.jpo.asn.runtime.examples;
 
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
+@ToString(callSuper = true)
 public class MessageContainsSequenceOfEnumerated extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")

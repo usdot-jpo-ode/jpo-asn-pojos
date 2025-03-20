@@ -1,11 +1,10 @@
 package us.dot.its.jpo.asn.runtime.types;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import us.dot.its.jpo.asn.runtime.serialization.SerializationUtil;
 
 @Slf4j
+@ToString
 public abstract class Asn1Sequence implements Asn1Type {
 
     final boolean extensionMarker;
@@ -19,14 +18,4 @@ public abstract class Asn1Sequence implements Asn1Type {
     }
 
 
-    @Override
-    public String toString() {
-        ObjectMapper mapper = SerializationUtil.jsonMapper();
-        try {
-            return mapper.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            log.error(e.getMessage());
-            return "";
-        }
-    }
 }

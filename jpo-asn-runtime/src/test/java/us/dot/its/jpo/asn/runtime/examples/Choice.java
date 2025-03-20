@@ -1,5 +1,6 @@
 package us.dot.its.jpo.asn.runtime.examples;
 
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonInclude(Include.NON_NULL)
+@ToString(callSuper = true)
 public class Choice extends Asn1Choice {
 
   @Asn1Property(tag = 0, name = "a")
