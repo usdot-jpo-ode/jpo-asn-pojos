@@ -28,26 +28,30 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class LatitudeDMS2 extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "d")
-	@JsonProperty("d")
-	private DegreesLat d;
-	@Asn1Property(tag = 1, name = "m")
-	@JsonProperty("m")
-	private MinutesAngle m;
-	@Asn1Property(tag = 2, name = "s")
-	@JsonProperty("s")
-	private SecondsAngle s;
+  @Asn1Property(tag = 0, name = "d")
+  @JsonProperty("d")
+  private DegreesLat d;
 
-	public LatitudeDMS2() {
-		super(false);
-	}
+  @Asn1Property(tag = 1, name = "m")
+  @JsonProperty("m")
+  private MinutesAngle m;
+
+  @Asn1Property(tag = 2, name = "s")
+  @JsonProperty("s")
+  private SecondsAngle s;
+
+  public LatitudeDMS2() {
+    super(false);
+  }
 }

@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.j2735.r2024.Common.Angle;
 import us.dot.its.jpo.asn.j2735.r2024.Common.Position3D;
 import us.dot.its.jpo.asn.j2735.r2024.Common.TransmissionAndSpeed;
@@ -36,21 +37,24 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class RequestorPositionVector extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "position")
-	@JsonProperty("position")
-	private Position3D position;
-	@Asn1Property(tag = 1, name = "heading", optional = true)
-	@JsonProperty("heading")
-	private Angle heading;
-	@Asn1Property(tag = 2, name = "speed", optional = true)
-	@JsonProperty("speed")
-	private TransmissionAndSpeed speed;
+  @Asn1Property(tag = 0, name = "position")
+  @JsonProperty("position")
+  private Position3D position;
 
-	public RequestorPositionVector() {
-		super(true);
-	}
+  @Asn1Property(tag = 1, name = "heading", optional = true)
+  @JsonProperty("heading")
+  private Angle heading;
+
+  @Asn1Property(tag = 2, name = "speed", optional = true)
+  @JsonProperty("speed")
+  private TransmissionAndSpeed speed;
+
+  public RequestorPositionVector() {
+    super(true);
+  }
 }

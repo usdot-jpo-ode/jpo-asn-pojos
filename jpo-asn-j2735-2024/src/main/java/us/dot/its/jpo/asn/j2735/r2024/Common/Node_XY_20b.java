@@ -28,23 +28,26 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class Node_XY_20b extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "x")
-	@JsonProperty("x")
-	private Offset_B10 x;
-	@Asn1Property(tag = 1, name = "y")
-	@JsonProperty("y")
-	private Offset_B10 y;
+  @Asn1Property(tag = 0, name = "x")
+  @JsonProperty("x")
+  private Offset_B10 x;
 
-	public Node_XY_20b() {
-		super(false);
-	}
+  @Asn1Property(tag = 1, name = "y")
+  @JsonProperty("y")
+  private Offset_B10 y;
+
+  public Node_XY_20b() {
+    super(false);
+  }
 }

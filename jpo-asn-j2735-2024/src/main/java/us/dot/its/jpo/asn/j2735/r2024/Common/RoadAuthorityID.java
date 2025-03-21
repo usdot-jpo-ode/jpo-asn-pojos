@@ -27,22 +27,25 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 
+@ToString(callSuper = true)
 @Getter
 @Setter
 @JsonInclude(Include.NON_NULL)
 public class RoadAuthorityID extends Asn1Choice {
 
-	@Asn1Property(tag = 0, name = "fullRdAuthID")
-	@JsonProperty("fullRdAuthID")
-	private FullRoadAuthorityID fullRdAuthID;
-	@Asn1Property(tag = 1, name = "relRdAuthID")
-	@JsonProperty("relRdAuthID")
-	private RelativeRoadAuthorityID relRdAuthID;
+  @Asn1Property(tag = 0, name = "fullRdAuthID")
+  @JsonProperty("fullRdAuthID")
+  private FullRoadAuthorityID fullRdAuthID;
 
-	public RoadAuthorityID() {
-		super(true);
-	}
+  @Asn1Property(tag = 1, name = "relRdAuthID")
+  @JsonProperty("relRdAuthID")
+  private RelativeRoadAuthorityID relRdAuthID;
+
+  public RoadAuthorityID() {
+    super(true);
+  }
 }

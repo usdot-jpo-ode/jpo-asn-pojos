@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.j2735.r2024.Common.PrioritizationResponseStatus;
 import us.dot.its.jpo.asn.j2735.r2024.Common.SignalGroupID;
 import us.dot.its.jpo.asn.j2735.r2024.Common.StationID;
@@ -36,21 +37,24 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class PrioritizationResponse extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "stationID")
-	@JsonProperty("stationID")
-	private StationID stationID;
-	@Asn1Property(tag = 1, name = "priorState")
-	@JsonProperty("priorState")
-	private PrioritizationResponseStatus priorState;
-	@Asn1Property(tag = 2, name = "signalGroup")
-	@JsonProperty("signalGroup")
-	private SignalGroupID signalGroup;
+  @Asn1Property(tag = 0, name = "stationID")
+  @JsonProperty("stationID")
+  private StationID stationID;
 
-	public PrioritizationResponse() {
-		super(true);
-	}
+  @Asn1Property(tag = 1, name = "priorState")
+  @JsonProperty("priorState")
+  private PrioritizationResponseStatus priorState;
+
+  @Asn1Property(tag = 2, name = "signalGroup")
+  @JsonProperty("signalGroup")
+  private SignalGroupID signalGroup;
+
+  public PrioritizationResponse() {
+    super(true);
+  }
 }

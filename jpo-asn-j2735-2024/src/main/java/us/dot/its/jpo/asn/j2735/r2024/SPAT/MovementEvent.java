@@ -30,6 +30,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.j2735.r2024.REGION.Reg_MovementEvent;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
@@ -37,35 +38,39 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class MovementEvent extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "eventState")
-	@JsonProperty("eventState")
-	private MovementPhaseState eventState;
-	@Asn1Property(tag = 1, name = "timing", optional = true)
-	@JsonProperty("timing")
-	private TimeChangeDetails timing;
-	@Asn1Property(tag = 2, name = "speeds", optional = true)
-	@JsonProperty("speeds")
-	@JacksonXmlElementWrapper(localName = "speeds")
-	@JacksonXmlProperty(localName = "AdvisorySpeed")
-	private AdvisorySpeedList speeds;
-	@Asn1Property(tag = 3, name = "regional", optional = true)
-	@JsonProperty("regional")
-	@JacksonXmlElementWrapper(localName = "regional")
-	@JacksonXmlProperty(localName = "Reg-MovementEvent")
-	private SequenceOfRegional regional;
+  @Asn1Property(tag = 0, name = "eventState")
+  @JsonProperty("eventState")
+  private MovementPhaseState eventState;
 
-	@JsonInclude(Include.NON_NULL)
-	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_MovementEvent> {
-		public SequenceOfRegional() {
-			super(Reg_MovementEvent.class, 1L, 4L);
-		}
-	}
+  @Asn1Property(tag = 1, name = "timing", optional = true)
+  @JsonProperty("timing")
+  private TimeChangeDetails timing;
 
-	public MovementEvent() {
-		super(true);
-	}
+  @Asn1Property(tag = 2, name = "speeds", optional = true)
+  @JsonProperty("speeds")
+  @JacksonXmlElementWrapper(localName = "speeds")
+  @JacksonXmlProperty(localName = "AdvisorySpeed")
+  private AdvisorySpeedList speeds;
+
+  @Asn1Property(tag = 3, name = "regional", optional = true)
+  @JsonProperty("regional")
+  @JacksonXmlElementWrapper(localName = "regional")
+  @JacksonXmlProperty(localName = "Reg-MovementEvent")
+  private SequenceOfRegional regional;
+
+  @JsonInclude(Include.NON_NULL)
+  public static class SequenceOfRegional extends Asn1SequenceOf<Reg_MovementEvent> {
+    public SequenceOfRegional() {
+      super(Reg_MovementEvent.class, 1L, 4L);
+    }
+  }
+
+  public MovementEvent() {
+    super(true);
+  }
 }

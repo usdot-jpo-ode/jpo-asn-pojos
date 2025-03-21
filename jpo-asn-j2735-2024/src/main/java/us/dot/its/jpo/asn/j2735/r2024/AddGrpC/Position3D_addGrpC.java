@@ -28,20 +28,22 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class Position3D_addGrpC extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "altitude")
-	@JsonProperty("altitude")
-	private Altitude altitude;
+  @Asn1Property(tag = 0, name = "altitude")
+  @JsonProperty("altitude")
+  private Altitude altitude;
 
-	public Position3D_addGrpC() {
-		super(true);
-	}
+  public Position3D_addGrpC() {
+    super(true);
+  }
 }

@@ -30,22 +30,24 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class IntersectionState_addGrpC extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "activePrioritizations", optional = true)
-	@JsonProperty("activePrioritizations")
-	@JacksonXmlElementWrapper(localName = "activePrioritizations")
-	@JacksonXmlProperty(localName = "PrioritizationResponse")
-	private PrioritizationResponseList activePrioritizations;
+  @Asn1Property(tag = 0, name = "activePrioritizations", optional = true)
+  @JsonProperty("activePrioritizations")
+  @JacksonXmlElementWrapper(localName = "activePrioritizations")
+  @JacksonXmlProperty(localName = "PrioritizationResponse")
+  private PrioritizationResponseList activePrioritizations;
 
-	public IntersectionState_addGrpC() {
-		super(true);
-	}
+  public IntersectionState_addGrpC() {
+    super(true);
+  }
 }

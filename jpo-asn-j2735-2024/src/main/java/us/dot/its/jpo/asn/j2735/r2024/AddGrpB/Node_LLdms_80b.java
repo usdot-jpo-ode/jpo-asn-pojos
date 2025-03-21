@@ -28,23 +28,26 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class Node_LLdms_80b extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "lon")
-	@JsonProperty("lon")
-	private LongitudeDMS2 lon;
-	@Asn1Property(tag = 1, name = "lat")
-	@JsonProperty("lat")
-	private LatitudeDMS2 lat;
+  @Asn1Property(tag = 0, name = "lon")
+  @JsonProperty("lon")
+  private LongitudeDMS2 lon;
 
-	public Node_LLdms_80b() {
-		super(false);
-	}
+  @Asn1Property(tag = 1, name = "lat")
+  @JsonProperty("lat")
+  private LatitudeDMS2 lat;
+
+  public Node_LLdms_80b() {
+    super(false);
+  }
 }

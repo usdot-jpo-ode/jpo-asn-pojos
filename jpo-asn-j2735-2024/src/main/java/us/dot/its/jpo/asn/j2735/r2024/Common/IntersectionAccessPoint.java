@@ -27,25 +27,29 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 
+@ToString(callSuper = true)
 @Getter
 @Setter
 @JsonInclude(Include.NON_NULL)
 public class IntersectionAccessPoint extends Asn1Choice {
 
-	@Asn1Property(tag = 0, name = "lane")
-	@JsonProperty("lane")
-	private LaneID lane;
-	@Asn1Property(tag = 1, name = "approach")
-	@JsonProperty("approach")
-	private ApproachID approach;
-	@Asn1Property(tag = 2, name = "connection")
-	@JsonProperty("connection")
-	private LaneConnectionID connection;
+  @Asn1Property(tag = 0, name = "lane")
+  @JsonProperty("lane")
+  private LaneID lane;
 
-	public IntersectionAccessPoint() {
-		super(true);
-	}
+  @Asn1Property(tag = 1, name = "approach")
+  @JsonProperty("approach")
+  private ApproachID approach;
+
+  @Asn1Property(tag = 2, name = "connection")
+  @JsonProperty("connection")
+  private LaneConnectionID connection;
+
+  public IntersectionAccessPoint() {
+    super(true);
+  }
 }

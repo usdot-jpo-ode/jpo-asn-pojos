@@ -30,6 +30,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.j2735.r2024.Common.IntersectionAccessPoint;
 import us.dot.its.jpo.asn.j2735.r2024.Common.IntersectionReferenceID;
 import us.dot.its.jpo.asn.j2735.r2024.Common.RequestID;
@@ -40,39 +41,45 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class SignalRequest extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "id")
-	@JsonProperty("id")
-	private IntersectionReferenceID id;
-	@Asn1Property(tag = 1, name = "requestID")
-	@JsonProperty("requestID")
-	private RequestID requestID;
-	@Asn1Property(tag = 2, name = "requestType")
-	@JsonProperty("requestType")
-	private PriorityRequestType requestType;
-	@Asn1Property(tag = 3, name = "inBoundLane")
-	@JsonProperty("inBoundLane")
-	private IntersectionAccessPoint inBoundLane;
-	@Asn1Property(tag = 4, name = "outBoundLane", optional = true)
-	@JsonProperty("outBoundLane")
-	private IntersectionAccessPoint outBoundLane;
-	@Asn1Property(tag = 5, name = "regional", optional = true)
-	@JsonProperty("regional")
-	@JacksonXmlElementWrapper(localName = "regional")
-	@JacksonXmlProperty(localName = "Reg-SignalRequest")
-	private SequenceOfRegional regional;
+  @Asn1Property(tag = 0, name = "id")
+  @JsonProperty("id")
+  private IntersectionReferenceID id;
 
-	@JsonInclude(Include.NON_NULL)
-	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SignalRequest> {
-		public SequenceOfRegional() {
-			super(Reg_SignalRequest.class, 1L, 4L);
-		}
-	}
+  @Asn1Property(tag = 1, name = "requestID")
+  @JsonProperty("requestID")
+  private RequestID requestID;
 
-	public SignalRequest() {
-		super(true);
-	}
+  @Asn1Property(tag = 2, name = "requestType")
+  @JsonProperty("requestType")
+  private PriorityRequestType requestType;
+
+  @Asn1Property(tag = 3, name = "inBoundLane")
+  @JsonProperty("inBoundLane")
+  private IntersectionAccessPoint inBoundLane;
+
+  @Asn1Property(tag = 4, name = "outBoundLane", optional = true)
+  @JsonProperty("outBoundLane")
+  private IntersectionAccessPoint outBoundLane;
+
+  @Asn1Property(tag = 5, name = "regional", optional = true)
+  @JsonProperty("regional")
+  @JacksonXmlElementWrapper(localName = "regional")
+  @JacksonXmlProperty(localName = "Reg-SignalRequest")
+  private SequenceOfRegional regional;
+
+  @JsonInclude(Include.NON_NULL)
+  public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SignalRequest> {
+    public SequenceOfRegional() {
+      super(Reg_SignalRequest.class, 1L, 4L);
+    }
+  }
+
+  public SignalRequest() {
+    super(true);
+  }
 }

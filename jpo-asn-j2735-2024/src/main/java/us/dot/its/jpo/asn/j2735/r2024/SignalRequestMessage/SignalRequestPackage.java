@@ -30,6 +30,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.j2735.r2024.Common.DSecond;
 import us.dot.its.jpo.asn.j2735.r2024.Common.MinuteOfTheYear;
 import us.dot.its.jpo.asn.j2735.r2024.REGION.Reg_SignalRequestPackage;
@@ -39,36 +40,41 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class SignalRequestPackage extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "request")
-	@JsonProperty("request")
-	private SignalRequest request;
-	@Asn1Property(tag = 1, name = "minute", optional = true)
-	@JsonProperty("minute")
-	private MinuteOfTheYear minute;
-	@Asn1Property(tag = 2, name = "second", optional = true)
-	@JsonProperty("second")
-	private DSecond second;
-	@Asn1Property(tag = 3, name = "duration", optional = true)
-	@JsonProperty("duration")
-	private DSecond duration;
-	@Asn1Property(tag = 4, name = "regional", optional = true)
-	@JsonProperty("regional")
-	@JacksonXmlElementWrapper(localName = "regional")
-	@JacksonXmlProperty(localName = "Reg-SignalRequestPackage")
-	private SequenceOfRegional regional;
+  @Asn1Property(tag = 0, name = "request")
+  @JsonProperty("request")
+  private SignalRequest request;
 
-	@JsonInclude(Include.NON_NULL)
-	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SignalRequestPackage> {
-		public SequenceOfRegional() {
-			super(Reg_SignalRequestPackage.class, 1L, 4L);
-		}
-	}
+  @Asn1Property(tag = 1, name = "minute", optional = true)
+  @JsonProperty("minute")
+  private MinuteOfTheYear minute;
 
-	public SignalRequestPackage() {
-		super(true);
-	}
+  @Asn1Property(tag = 2, name = "second", optional = true)
+  @JsonProperty("second")
+  private DSecond second;
+
+  @Asn1Property(tag = 3, name = "duration", optional = true)
+  @JsonProperty("duration")
+  private DSecond duration;
+
+  @Asn1Property(tag = 4, name = "regional", optional = true)
+  @JsonProperty("regional")
+  @JacksonXmlElementWrapper(localName = "regional")
+  @JacksonXmlProperty(localName = "Reg-SignalRequestPackage")
+  private SequenceOfRegional regional;
+
+  @JsonInclude(Include.NON_NULL)
+  public static class SequenceOfRegional extends Asn1SequenceOf<Reg_SignalRequestPackage> {
+    public SequenceOfRegional() {
+      super(Reg_SignalRequestPackage.class, 1L, 4L);
+    }
+  }
+
+  public SignalRequestPackage() {
+    super(true);
+  }
 }

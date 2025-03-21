@@ -27,22 +27,25 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 
+@ToString(callSuper = true)
 @Getter
 @Setter
 @JsonInclude(Include.NON_NULL)
 public class VehicleID extends Asn1Choice {
 
-	@Asn1Property(tag = 0, name = "entityID")
-	@JsonProperty("entityID")
-	private TemporaryID entityID;
-	@Asn1Property(tag = 1, name = "stationID")
-	@JsonProperty("stationID")
-	private StationID stationID;
+  @Asn1Property(tag = 0, name = "entityID")
+  @JsonProperty("entityID")
+  private TemporaryID entityID;
 
-	public VehicleID() {
-		super(false);
-	}
+  @Asn1Property(tag = 1, name = "stationID")
+  @JsonProperty("stationID")
+  private StationID stationID;
+
+  public VehicleID() {
+    super(false);
+  }
 }

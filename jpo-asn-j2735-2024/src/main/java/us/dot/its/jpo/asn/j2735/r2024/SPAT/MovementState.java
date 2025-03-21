@@ -30,6 +30,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import us.dot.its.jpo.asn.j2735.r2024.Common.DescriptiveName;
 import us.dot.its.jpo.asn.j2735.r2024.Common.SignalGroupID;
 import us.dot.its.jpo.asn.j2735.r2024.REGION.Reg_MovementState;
@@ -39,40 +40,45 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class MovementState extends Asn1Sequence {
 
-	@Asn1Property(tag = 0, name = "movementName", optional = true)
-	@JsonProperty("movementName")
-	private DescriptiveName movementName;
-	@Asn1Property(tag = 1, name = "signalGroup")
-	@JsonProperty("signalGroup")
-	private SignalGroupID signalGroup;
-	@Asn1Property(tag = 2, name = "state-time-speed")
-	@JsonProperty("state-time-speed")
-	@JacksonXmlElementWrapper(localName = "state-time-speed")
-	@JacksonXmlProperty(localName = "MovementEvent")
-	private MovementEventList state_time_speed;
-	@Asn1Property(tag = 3, name = "maneuverAssistList", optional = true)
-	@JsonProperty("maneuverAssistList")
-	@JacksonXmlElementWrapper(localName = "maneuverAssistList")
-	@JacksonXmlProperty(localName = "ConnectionManeuverAssist")
-	private ManeuverAssistList maneuverAssistList;
-	@Asn1Property(tag = 4, name = "regional", optional = true)
-	@JsonProperty("regional")
-	@JacksonXmlElementWrapper(localName = "regional")
-	@JacksonXmlProperty(localName = "Reg-MovementState")
-	private SequenceOfRegional regional;
+  @Asn1Property(tag = 0, name = "movementName", optional = true)
+  @JsonProperty("movementName")
+  private DescriptiveName movementName;
 
-	@JsonInclude(Include.NON_NULL)
-	public static class SequenceOfRegional extends Asn1SequenceOf<Reg_MovementState> {
-		public SequenceOfRegional() {
-			super(Reg_MovementState.class, 1L, 4L);
-		}
-	}
+  @Asn1Property(tag = 1, name = "signalGroup")
+  @JsonProperty("signalGroup")
+  private SignalGroupID signalGroup;
 
-	public MovementState() {
-		super(true);
-	}
+  @Asn1Property(tag = 2, name = "state-time-speed")
+  @JsonProperty("state-time-speed")
+  @JacksonXmlElementWrapper(localName = "state-time-speed")
+  @JacksonXmlProperty(localName = "MovementEvent")
+  private MovementEventList state_time_speed;
+
+  @Asn1Property(tag = 3, name = "maneuverAssistList", optional = true)
+  @JsonProperty("maneuverAssistList")
+  @JacksonXmlElementWrapper(localName = "maneuverAssistList")
+  @JacksonXmlProperty(localName = "ConnectionManeuverAssist")
+  private ManeuverAssistList maneuverAssistList;
+
+  @Asn1Property(tag = 4, name = "regional", optional = true)
+  @JsonProperty("regional")
+  @JacksonXmlElementWrapper(localName = "regional")
+  @JacksonXmlProperty(localName = "Reg-MovementState")
+  private SequenceOfRegional regional;
+
+  @JsonInclude(Include.NON_NULL)
+  public static class SequenceOfRegional extends Asn1SequenceOf<Reg_MovementState> {
+    public SequenceOfRegional() {
+      super(Reg_MovementState.class, 1L, 4L);
+    }
+  }
+
+  public MovementState() {
+    super(true);
+  }
 }
