@@ -38,7 +38,8 @@ To run tests using Gradle, from this directory:
 ./gradlew clean test
 ```
 
-To run tests using Maven, drom the root directory:
+To run tests using Maven, from the root directory:
+
 
 ```bash
 ./mvnw -pl jpo-asn-runtime -am clean test
