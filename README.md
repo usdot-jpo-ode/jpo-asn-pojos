@@ -14,8 +14,7 @@ Canonical XER (XML Encoding Rules) and JER (JSON Encoding Rules) formats. These 
 generated from SAE and IEEE standards to facilitate the handling of ASN.1 data structures in Java 
 applications.
 
-The J2735/2024 specification is copyright by SAE so can't be reproduced here, but it is available 
-as a free download from:
+The SAE J2735/2024 specification is available as a free download from:
 https://www.sae.org/standards/content/j2735_202409/
 
 The J2735 specification uses a subset of ASN.1 which is documented in the following ITU
