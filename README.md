@@ -151,5 +151,9 @@ provided in the [jpo-asn-runtime](jpo-asn-runtime/README.md) and
 Contributions are welcome! Please [create an issue](https://github.com/usdot-jpo-ode/jpo-asn-pojos/issues), 
 and submit a corresponding pull request for any enhancements or bug fixes.
 
+## License
+
+This project is licensed under the Apache 2 License - see the [LICENSE](LICENSE) file for details.
+
 
 

@@ -99,5 +99,8 @@ The coverage report will be available at `target/target/site/jacoco/index/html`.
 
 The individual test results are available in the `target/surefire-reports` directory.
 
+## License
+
+This project is licensed under the Apache 2 License - see the [LICENSE](../LICENSE) file for details.
 
 
