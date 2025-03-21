@@ -3,7 +3,7 @@
 This repository contains generated POJOs ("Plain Old Java Objects") from ASN.1 (Abstract Syntax 
 Notation) specifications.
 
-Currently, includes the J2735 (2024) V2X specification.  In the future, later versions of
+Currently it includes the J2735 (2024) V2X specification.  In the future, later versions of
 J2735, as well as additional SAE and IEEE specifications related to connected vehicles, such as
 IEEE 1609.2/3, etc. may be included.
 
@@ -25,14 +25,9 @@ recommendations:
 * [X.682 - Constraints](https://www.itu.int/rec/T-REC-X.682/en)
 * [X.683 - Parameterization](https://www.itu.int/rec/T-REC-X.683/en)
 
-The XER and JER encodings are describe here:
+The XER and JER encodings are documented here:
 * [X.693 - XML Encoding Rules (XER)](https://www.itu.int/rec/T-REC-X.693/en) (and also in X.680)
 * [X.697 - JSON Encoding Rules (JER)](https://www.itu.int/rec/T-REC-X.697/en)
-
-
-## Features
-
-- Java classes for ASN.1 XER and JER encoding and decoding.
 
 ## Project Structure
 
@@ -130,7 +125,7 @@ steps:
   Then, add the dependencies in your `pom.xml` file:
   ```xml
   <dependency>
-      <groupId>us.dot.its.jpo</groupId>
+      <groupId>usdot.jpo.asn</groupId>
       <artifactId>jpo-asn-j2735-2024</artifactId>
       <version>1.0.0</version>
   </dependency>
@@ -141,7 +136,7 @@ project's root directory.
 
 ### Use as a Maven Dependency
 
-TBD. The library will be deployed to the Github Maven, and hopefully Maven Central in the future, 
+TBD. The library JARs will be deployed to Github Maven, and hopefully Maven Central, in the future, 
 but in the near term this repo is intended to be incorporated as a submodule into the ODE.
 
 ## Usage
