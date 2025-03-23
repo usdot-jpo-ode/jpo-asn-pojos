@@ -68,18 +68,14 @@ jacocoTestReport {
                     // Exclude modules with few types of interest
                     '**/EfcDataDictionary/**',
                     '**/J2540ITIS/**',
-                    '**/AddGrpB/**',
-                    '**/AddGrpC/**',
-                    '**/REGION/**',
 
-                    // Exclude null messages types
+                    // Exclude null message types
                     '**/PersonalSafetyMessage2/**',
                     '**/RoadGeometryAndAttributes/**',
                     '**/SignalControlAndPrioritizationRequest/**',
                     '**/SignalControlAndPrioritizationStatus/**',
-                    '**/TrafficSignalPhaseAndTiming/**',
+                    '**/TrafficSignalPhaseAndTiming/**'
 
-                    // Exclude
 
             ])
         })
