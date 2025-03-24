@@ -14,7 +14,7 @@ import java.io.IOException;
 import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 
 /**
- * Serializer for nested, anonymous SEQUENCE-OF types.  Handles XER's way of wrapping these.
+ * Deserializer for nested, anonymous SEQUENCE-OF types.  Handles XER's way of wrapping these.
  * @param <T> The Sequence Of type
  * @author Ivan Yourshaw
  */
