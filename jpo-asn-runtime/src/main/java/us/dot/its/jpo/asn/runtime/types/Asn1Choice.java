@@ -1,0 +1,22 @@
+package us.dot.its.jpo.asn.runtime.types;
+
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Base class for ASN.1 CHOICE types.
+ */
+@Slf4j
+@ToString
+public abstract class Asn1Choice implements Asn1Type {
+
+    /**
+     * Indicates whether the CHOICE type has an extension marker.
+     */
+    final boolean hasExtensionMarker;
+
+    public Asn1Choice(boolean hasExtensionMarker) {
+        this.hasExtensionMarker = hasExtensionMarker;
+    }
+
+}
