@@ -82,9 +82,8 @@ public abstract class BaseSerializeTest<T> {
 
   protected static Stream<Arguments> getResources(String directory) {
     List<String> resources = listAllResourcesInDirectory(directory);
-    var streamBuilder = Stream.<Arguments>builder();
-    resources.forEach(resource -> streamBuilder.add(Arguments.of(resource)));
-    return streamBuilder.build();
+    return resources.stream().map(Arguments::of);
   }
+  
 
 }
