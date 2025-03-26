@@ -74,7 +74,7 @@ public class MovementEvent extends Asn1Sequence {
   }
 
   @Override
-  public boolean isExtensible() {
+  public boolean hasExtensionMarker() {
     return true;
   }
 }

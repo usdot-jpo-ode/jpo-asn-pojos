@@ -34,7 +34,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
      * @return whether the size of the BIT STRING may be extended in the future
      */
     @Override
-    public boolean isExtensible() {
+    public boolean hasExtensionMarker() {
         return hasExtensionMarker;
     }
 

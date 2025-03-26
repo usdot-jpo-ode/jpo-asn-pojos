@@ -49,7 +49,7 @@ public class NodeOffsetPointXY_addGrpB extends Asn1Choice {
   }
 
   @Override
-  public boolean isExtensible() {
+  public boolean hasExtensionMarker() {
     return true;
   }
 }

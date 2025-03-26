@@ -47,7 +47,7 @@ public class Position3D_addGrpC extends Asn1Sequence {
   }
 
   @Override
-  public boolean isExtensible() {
+  public boolean hasExtensionMarker() {
     return true;
   }
 }

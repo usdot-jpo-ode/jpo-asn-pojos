@@ -26,7 +26,7 @@ public interface Asn1Type {
      * @return true if the ASN.1 type has an extension marker, false otherwise
      */
     @JsonIgnore
-    default boolean isExtensible() {
+    default boolean hasExtensionMarker() {
         return false;
     }
 }

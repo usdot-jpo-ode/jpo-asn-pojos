@@ -53,7 +53,7 @@ public class IntersectionAccessPoint extends Asn1Choice {
   }
 
   @Override
-  public boolean isExtensible() {
+  public boolean hasExtensionMarker() {
     return true;
   }
 }
