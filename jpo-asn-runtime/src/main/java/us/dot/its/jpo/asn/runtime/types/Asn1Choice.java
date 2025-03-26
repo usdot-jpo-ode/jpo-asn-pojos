@@ -9,5 +9,4 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ToString
 public abstract class Asn1Choice implements Asn1Type {
-
 }

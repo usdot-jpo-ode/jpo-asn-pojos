@@ -5,6 +5,4 @@ package us.dot.its.jpo.asn.runtime.types;
  * specifications.
  */
 public class Asn1Null implements Asn1Type {
-    
-
 }
