@@ -40,13 +40,12 @@ import java.util.function.UnaryOperator;
  */
 public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, List<T> {
 
-    final Class<T> itemClass;
+    private final Class<T> itemClass;
     /** The minimum number of elements required (inclusive) */
-    final long sizeLowerBound;
+    private final long sizeLowerBound;
     /** The maximum number of elements allowed (inclusive), or -1 for unbounded */
-    final long sizeUpperBound;
-    // TODO: add logic to ensure elements is of valid size using sizeLowerBound and sizeUpperBound
-    final List<T> elements;
+    private final long sizeUpperBound;
+    private final List<T> elements;
 
     /**
      * Constructs a new ASN.1 SEQUENCE OF with the specified element type and size constraints.
@@ -96,6 +95,7 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
      */
     @SuppressWarnings("unchecked")
     public boolean add(Asn1Type item) {
+        validateAddition(1);
         return this.elements.add((T) item);
     }
 
@@ -141,11 +141,13 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
+        validateAddition(c.size());
         return this.elements.addAll(c);
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
+        validateAddition(c.size());
         return this.elements.addAll(index, c);
     }
 
@@ -186,6 +188,7 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
 
     @Override
     public void add(int index, T element) {
+        validateAddition(1);
         this.elements.add(index, element);
     }
 
@@ -231,11 +234,13 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
 
     @Override
     public void addFirst(T t) {
+        validateAddition(1);
         this.elements.addFirst(t);
     }
 
     @Override
     public void addLast(T t) {
+        validateAddition(1);
         this.elements.addLast(t);
     }
 
@@ -263,4 +268,39 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
     public List<T> reversed() {
         return this.elements.reversed();
     }
+
+    /**
+     * Validates that the elements collection meets the defined size constraints.
+     * Throws an exception if the size is outside the allowed range.
+     *
+     * @throws IllegalStateException if the collection size is below minimum or above maximum allowed
+     */
+    public void validate() throws IllegalStateException {
+        int size = this.elements.size();
+
+        // Check lower bound constraint
+        if (size < sizeLowerBound) {
+            throw new IllegalStateException("Collection size " + size +
+                    " is below the minimum required size of " + sizeLowerBound);
+        }
+
+        // Check upper bound constraint (only if it's bounded)
+        if (sizeUpperBound != -1 && size > sizeUpperBound) {
+            throw new IllegalStateException("Collection size " + size +
+                    " exceeds the maximum allowed size of " + sizeUpperBound);
+        }
+    }
+
+    /**
+     * Validates if adding one more element would exceed the upper bound.
+     *
+     * @throws IllegalStateException if adding an element would exceed the maximum allowed size
+     */
+    private void validateAddition(int numElementsToAdd) throws IllegalStateException {
+        // Only check if there's an upper bound defined
+        if (sizeUpperBound != -1 && this.elements.size() + numElementsToAdd > sizeUpperBound) {
+            throw new IllegalStateException("Cannot add element: would exceed maximum allowed size of " + sizeUpperBound);
+        }
+    }
+
 }
