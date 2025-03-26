@@ -49,7 +49,7 @@ public class VehicleID extends Asn1Choice {
   }
 
   @Override
-  public boolean hasExtensionMarker() {
+  public boolean isExtensible() {
     return false;
   }
 }

@@ -51,7 +51,7 @@ public class IntersectionState_addGrpC implements Asn1Sequence {
   }
 
   @Override
-  public boolean hasExtensionMarker() {
+  public boolean isExtensible() {
     return true;
   }
 }

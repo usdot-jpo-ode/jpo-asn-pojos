@@ -22,7 +22,7 @@ public interface Asn1Type {
      *      *
      * @return true if the ASN.1 type has an extension marker, false otherwise
      */
-    default boolean hasExtensionMarker() {
+    default boolean isExtensible() {
         return false;
     }
 }

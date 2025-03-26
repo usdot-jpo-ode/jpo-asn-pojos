@@ -51,7 +51,7 @@ public class Node_LLdms_48b implements Asn1Sequence {
   }
 
   @Override
-  public boolean hasExtensionMarker() {
+  public boolean isExtensible() {
     return false;
   }
 }

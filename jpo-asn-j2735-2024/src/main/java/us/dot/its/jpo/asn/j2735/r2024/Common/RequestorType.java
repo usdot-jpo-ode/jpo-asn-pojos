@@ -68,7 +68,7 @@ public class RequestorType implements Asn1Sequence {
   }
 
   @Override
-  public boolean hasExtensionMarker() {
+  public boolean isExtensible() {
     return true;
   }
 }

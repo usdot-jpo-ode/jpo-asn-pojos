@@ -66,7 +66,7 @@ public abstract class RegionalExtension<TValue> implements Asn1Sequence {
   }
 
   @Override
-  public boolean hasExtensionMarker() {
+  public boolean isExtensible() {
     return true;
   }
 }

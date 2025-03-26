@@ -29,7 +29,7 @@ public class Asn1ObjectIdentifier implements Asn1Type {
   }
 
   @Override
-  public boolean hasExtensionMarker() {
+  public boolean isExtensible() {
     return false;
   }
 }
