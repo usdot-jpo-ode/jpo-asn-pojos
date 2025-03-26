@@ -73,8 +73,5 @@ public class NodeOffsetPointXY extends Asn1Choice {
   public NodeOffsetPointXY() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

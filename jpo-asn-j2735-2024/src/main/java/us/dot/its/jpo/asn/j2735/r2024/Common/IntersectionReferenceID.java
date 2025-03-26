@@ -50,8 +50,5 @@ public class IntersectionReferenceID extends Asn1Sequence {
   public IntersectionReferenceID() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

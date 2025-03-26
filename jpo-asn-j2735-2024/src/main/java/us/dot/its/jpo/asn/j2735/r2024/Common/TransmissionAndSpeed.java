@@ -50,8 +50,5 @@ public class TransmissionAndSpeed extends Asn1Sequence {
   public TransmissionAndSpeed() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

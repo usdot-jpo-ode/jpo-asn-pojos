@@ -28,8 +28,5 @@ public class Asn1ObjectIdentifier implements Asn1Type {
     this.value = value;
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

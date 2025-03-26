@@ -50,8 +50,5 @@ public class Node_LLdms_80b extends Asn1Sequence {
   public Node_LLdms_80b() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

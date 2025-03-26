@@ -50,8 +50,5 @@ public class Altitude extends Asn1Sequence {
   public Altitude() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

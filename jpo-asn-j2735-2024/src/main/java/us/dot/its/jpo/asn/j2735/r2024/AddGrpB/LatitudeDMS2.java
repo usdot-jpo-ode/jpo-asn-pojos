@@ -54,8 +54,5 @@ public class LatitudeDMS2 extends Asn1Sequence {
   public LatitudeDMS2() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

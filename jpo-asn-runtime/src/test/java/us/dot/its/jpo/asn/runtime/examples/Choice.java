@@ -26,8 +26,5 @@ public class Choice extends Asn1Choice {
   public Choice() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

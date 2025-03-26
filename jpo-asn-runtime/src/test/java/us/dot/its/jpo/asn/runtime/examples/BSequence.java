@@ -27,8 +27,5 @@ public class BSequence extends Asn1Sequence {
   public BSequence() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

@@ -48,8 +48,5 @@ public class VehicleID extends Asn1Choice {
   public VehicleID() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

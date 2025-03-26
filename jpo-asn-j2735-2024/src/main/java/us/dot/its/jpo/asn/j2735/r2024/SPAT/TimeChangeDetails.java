@@ -66,8 +66,5 @@ public class TimeChangeDetails extends Asn1Sequence {
   public TimeChangeDetails() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

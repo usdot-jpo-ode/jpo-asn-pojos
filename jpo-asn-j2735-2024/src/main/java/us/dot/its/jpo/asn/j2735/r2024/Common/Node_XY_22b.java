@@ -50,8 +50,5 @@ public class Node_XY_22b extends Asn1Sequence {
   public Node_XY_22b() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }

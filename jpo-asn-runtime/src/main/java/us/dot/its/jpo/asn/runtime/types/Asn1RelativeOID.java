@@ -28,9 +28,6 @@ public class Asn1RelativeOID implements Asn1Type {
     this.value = value;
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 
 }

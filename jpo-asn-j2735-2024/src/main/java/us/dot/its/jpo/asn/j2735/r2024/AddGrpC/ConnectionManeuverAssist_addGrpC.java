@@ -55,8 +55,5 @@ public class ConnectionManeuverAssist_addGrpC extends Asn1Sequence {
   public ConnectionManeuverAssist_addGrpC() {
   }
 
-  @Override
-  public boolean isExtensible() {
-    return false;
-  }
+
 }
