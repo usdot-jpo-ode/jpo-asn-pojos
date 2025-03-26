@@ -15,7 +15,7 @@ import java.util.function.UnaryOperator;
 /**
  * Base class for ASN.1 SEQUENCE-OF types.
  * <p>
- * In ASN.1 notation, a SEQUENCE OF represents an ordered collection of elements all of the same type.
+ * In ASN.1 notation, a SEQUENCE OF represents an ordered collection of elements all the same type.
  * Unlike a basic SEQUENCE which contains named elements of potentially different types, a SEQUENCE OF
  * is more analogous to an array or list in traditional programming languages.
  * <p>
@@ -31,7 +31,7 @@ import java.util.function.UnaryOperator;
  * <pre>
  * VehicleList ::= SEQUENCE OF Vehicle
  * </pre>
- * would be represented as a subclass of Asn1SequenceOf&lt;Vehicle&gt;.
+ * would be represented as a subclass of Asn1SequenceOf<Vehicle>
  *
  * @param <T> The type of items in the SEQUENCE OF, must extend {@link Asn1Type}
  *
@@ -45,7 +45,8 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
     final long sizeLowerBound;
     /** The maximum number of elements allowed (inclusive), or -1 for unbounded */
     final long sizeUpperBound;
-    final ArrayList<T> elements;
+    // TODO: add logic to ensure elements is of valid size using sizeLowerBound and sizeUpperBound
+    final List<T> elements;
 
     /**
      * Constructs a new ASN.1 SEQUENCE OF with the specified element type and size constraints.
