@@ -111,11 +111,6 @@ public class ASequence extends Asn1Sequence {
 
   public ASequence() {
   }
-
-  @Override
-  public boolean hasExtensionMarker() {
-    return false;
-  }
 }
 ```
 
