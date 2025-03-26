@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class ASequence implements Asn1Sequence {
+public class ASequence extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "a-int")
   @JsonProperty("a-int")

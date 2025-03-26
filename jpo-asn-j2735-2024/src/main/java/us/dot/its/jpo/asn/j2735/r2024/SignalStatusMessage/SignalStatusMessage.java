@@ -44,7 +44,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class SignalStatusMessage implements Asn1Sequence {
+public class SignalStatusMessage extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "timeStamp", optional = true)
   @JsonProperty("timeStamp")

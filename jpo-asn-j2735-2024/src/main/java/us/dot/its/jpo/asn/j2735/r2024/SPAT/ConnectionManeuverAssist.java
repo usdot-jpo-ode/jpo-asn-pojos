@@ -42,7 +42,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class ConnectionManeuverAssist implements Asn1Sequence {
+public class ConnectionManeuverAssist extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "connectionID")
   @JsonProperty("connectionID")

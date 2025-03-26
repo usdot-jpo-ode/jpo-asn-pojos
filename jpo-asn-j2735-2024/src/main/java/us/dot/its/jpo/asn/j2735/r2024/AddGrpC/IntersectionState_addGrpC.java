@@ -39,7 +39,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class IntersectionState_addGrpC implements Asn1Sequence {
+public class IntersectionState_addGrpC extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "activePrioritizations", optional = true)
   @JsonProperty("activePrioritizations")

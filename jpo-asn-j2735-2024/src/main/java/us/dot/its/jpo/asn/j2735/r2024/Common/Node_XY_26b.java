@@ -37,7 +37,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class Node_XY_26b implements Asn1Sequence {
+public class Node_XY_26b extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "x")
   @JsonProperty("x")

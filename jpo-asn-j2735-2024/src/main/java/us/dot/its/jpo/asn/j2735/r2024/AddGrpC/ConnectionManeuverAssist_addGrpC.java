@@ -40,7 +40,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class ConnectionManeuverAssist_addGrpC implements Asn1Sequence {
+public class ConnectionManeuverAssist_addGrpC extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "vehicleToLanePositions")
   @JsonProperty("vehicleToLanePositions")

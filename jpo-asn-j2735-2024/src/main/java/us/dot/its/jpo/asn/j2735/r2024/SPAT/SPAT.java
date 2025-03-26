@@ -43,7 +43,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class SPAT implements Asn1Sequence {
+public class SPAT extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "timeStamp", optional = true)
   @JsonProperty("timeStamp")

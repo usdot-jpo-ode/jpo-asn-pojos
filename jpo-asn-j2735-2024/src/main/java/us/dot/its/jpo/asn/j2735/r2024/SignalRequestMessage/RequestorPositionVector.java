@@ -40,7 +40,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class RequestorPositionVector implements Asn1Sequence {
+public class RequestorPositionVector extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "position")
   @JsonProperty("position")

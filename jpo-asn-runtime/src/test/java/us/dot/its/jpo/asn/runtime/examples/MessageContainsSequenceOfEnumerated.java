@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class MessageContainsSequenceOfEnumerated implements Asn1Sequence {
+public class MessageContainsSequenceOfEnumerated extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")
   @JsonProperty("id")

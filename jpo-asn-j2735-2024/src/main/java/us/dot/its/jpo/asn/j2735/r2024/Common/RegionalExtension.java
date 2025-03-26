@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonPropertyOrder({"regionId", "regExtValue"})
-public abstract class RegionalExtension<TValue> implements Asn1Sequence {
+public abstract class RegionalExtension<TValue> extends Asn1Sequence {
 
   protected RegionId regionId;
   @JsonIgnore protected final String name;

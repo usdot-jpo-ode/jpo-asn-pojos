@@ -37,7 +37,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class LatitudeDMS2 implements Asn1Sequence {
+public class LatitudeDMS2 extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "d")
   @JsonProperty("d")

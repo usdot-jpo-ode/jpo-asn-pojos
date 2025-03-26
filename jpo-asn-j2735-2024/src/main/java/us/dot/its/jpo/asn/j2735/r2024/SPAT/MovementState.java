@@ -43,7 +43,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class MovementState implements Asn1Sequence {
+public class MovementState extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "movementName", optional = true)
   @JsonProperty("movementName")

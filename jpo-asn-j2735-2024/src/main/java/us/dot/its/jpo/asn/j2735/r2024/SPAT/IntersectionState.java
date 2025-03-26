@@ -47,7 +47,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class IntersectionState implements Asn1Sequence {
+public class IntersectionState extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "name", optional = true)
   @JsonProperty("name")
