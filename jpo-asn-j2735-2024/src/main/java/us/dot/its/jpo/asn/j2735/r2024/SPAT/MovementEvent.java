@@ -41,7 +41,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class MovementEvent extends Asn1Sequence {
+public class MovementEvent implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "eventState")
   @JsonProperty("eventState")
@@ -71,6 +71,10 @@ public class MovementEvent extends Asn1Sequence {
   }
 
   public MovementEvent() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

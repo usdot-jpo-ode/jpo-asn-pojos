@@ -46,6 +46,10 @@ public class NodeOffsetPointXY_addGrpB extends Asn1Choice {
   private Node_LLdms_80b posB;
 
   public NodeOffsetPointXY_addGrpB() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

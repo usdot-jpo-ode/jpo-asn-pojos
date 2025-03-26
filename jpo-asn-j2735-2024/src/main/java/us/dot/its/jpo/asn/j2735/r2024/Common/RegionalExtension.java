@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 @JsonPropertyOrder({"regionId", "regExtValue"})
-public abstract class RegionalExtension<TValue> extends Asn1Sequence {
+public abstract class RegionalExtension<TValue> implements Asn1Sequence {
 
   protected RegionId regionId;
   @JsonIgnore protected final String name;
@@ -59,10 +59,14 @@ public abstract class RegionalExtension<TValue> extends Asn1Sequence {
   }
 
   public RegionalExtension(int id, String name) {
-    super(true);
     var theId = new us.dot.its.jpo.asn.j2735.r2024.Common.RegionId();
     theId.setValue(id);
     this.regionId = theId;
     this.name = name;
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

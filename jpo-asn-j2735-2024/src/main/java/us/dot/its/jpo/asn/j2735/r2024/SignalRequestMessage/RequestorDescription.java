@@ -44,7 +44,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class RequestorDescription extends Asn1Sequence {
+public class RequestorDescription implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")
   @JsonProperty("id")
@@ -92,6 +92,10 @@ public class RequestorDescription extends Asn1Sequence {
   }
 
   public RequestorDescription() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

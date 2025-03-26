@@ -28,4 +28,9 @@ public class Asn1RelativeOID implements Asn1Type {
     this.value = value;
   }
 
+  @Override
+  public boolean hasExtensionMarker() {
+    return false;
+  }
+
 }

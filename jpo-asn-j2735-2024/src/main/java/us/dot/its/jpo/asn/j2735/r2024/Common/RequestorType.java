@@ -38,7 +38,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class RequestorType extends Asn1Sequence {
+public class RequestorType implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "role")
   @JsonProperty("role")
@@ -65,6 +65,10 @@ public class RequestorType extends Asn1Sequence {
   private Reg_RequestorType regional;
 
   public RequestorType() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

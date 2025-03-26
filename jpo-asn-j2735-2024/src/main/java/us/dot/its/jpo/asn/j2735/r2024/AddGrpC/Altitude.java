@@ -37,7 +37,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class Altitude extends Asn1Sequence {
+public class Altitude implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "value")
   @JsonProperty("value")
@@ -48,6 +48,10 @@ public class Altitude extends Asn1Sequence {
   private AltitudeConfidence confidence;
 
   public Altitude() {
-    super(false);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return false;
   }
 }

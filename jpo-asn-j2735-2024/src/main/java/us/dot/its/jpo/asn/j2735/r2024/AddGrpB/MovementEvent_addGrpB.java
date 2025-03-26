@@ -38,7 +38,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class MovementEvent_addGrpB extends Asn1Sequence {
+public class MovementEvent_addGrpB implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "startTime", optional = true)
   @JsonProperty("startTime")
@@ -65,6 +65,10 @@ public class MovementEvent_addGrpB extends Asn1Sequence {
   private TimeRemaining nextTime;
 
   public MovementEvent_addGrpB() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

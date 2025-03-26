@@ -41,7 +41,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class Position3D extends Asn1Sequence {
+public class Position3D implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "lat")
   @JsonProperty("lat")
@@ -69,6 +69,10 @@ public class Position3D extends Asn1Sequence {
   }
 
   public Position3D() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

@@ -42,7 +42,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class SignalRequesterInfo extends Asn1Sequence {
+public class SignalRequesterInfo implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")
   @JsonProperty("id")
@@ -65,6 +65,10 @@ public class SignalRequesterInfo extends Asn1Sequence {
   private RequestorType typeData;
 
   public SignalRequesterInfo() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

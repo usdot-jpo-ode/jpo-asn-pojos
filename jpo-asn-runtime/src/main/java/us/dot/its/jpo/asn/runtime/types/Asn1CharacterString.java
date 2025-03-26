@@ -40,6 +40,8 @@ public abstract class Asn1CharacterString implements Asn1Type {
         if (aValue == null) return true;
         return aValue.length() >= minLength && aValue.length() <= maxLength;
     }
+    
+
 
     @Override
     public String toString() {

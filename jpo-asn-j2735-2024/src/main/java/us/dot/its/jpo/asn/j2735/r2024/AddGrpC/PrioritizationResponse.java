@@ -40,7 +40,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class PrioritizationResponse extends Asn1Sequence {
+public class PrioritizationResponse implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "stationID")
   @JsonProperty("stationID")
@@ -55,6 +55,10 @@ public class PrioritizationResponse extends Asn1Sequence {
   private SignalGroupID signalGroup;
 
   public PrioritizationResponse() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

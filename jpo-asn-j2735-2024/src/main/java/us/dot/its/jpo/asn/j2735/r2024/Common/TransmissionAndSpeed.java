@@ -37,7 +37,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class TransmissionAndSpeed extends Asn1Sequence {
+public class TransmissionAndSpeed implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "transmisson")
   @JsonProperty("transmisson")
@@ -48,6 +48,10 @@ public class TransmissionAndSpeed extends Asn1Sequence {
   private Velocity speed;
 
   public TransmissionAndSpeed() {
-    super(false);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return false;
   }
 }

@@ -43,7 +43,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class AdvisorySpeed extends Asn1Sequence {
+public class AdvisorySpeed implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "type")
   @JsonProperty("type")
@@ -79,6 +79,10 @@ public class AdvisorySpeed extends Asn1Sequence {
   }
 
   public AdvisorySpeed() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

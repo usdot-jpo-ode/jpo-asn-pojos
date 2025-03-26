@@ -50,6 +50,10 @@ public class IntersectionAccessPoint extends Asn1Choice {
   private LaneConnectionID connection;
 
   public IntersectionAccessPoint() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

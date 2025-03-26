@@ -37,7 +37,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class LongitudeDMS2 extends Asn1Sequence {
+public class LongitudeDMS2 implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "d")
   @JsonProperty("d")
@@ -52,6 +52,10 @@ public class LongitudeDMS2 extends Asn1Sequence {
   private SecondsAngle s;
 
   public LongitudeDMS2() {
-    super(false);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return false;
   }
 }

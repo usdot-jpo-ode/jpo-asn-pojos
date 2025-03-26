@@ -37,7 +37,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class IntersectionReferenceID extends Asn1Sequence {
+public class IntersectionReferenceID implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "region", optional = true)
   @JsonProperty("region")
@@ -48,6 +48,10 @@ public class IntersectionReferenceID extends Asn1Sequence {
   private IntersectionID id;
 
   public IntersectionReferenceID() {
-    super(false);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return false;
   }
 }

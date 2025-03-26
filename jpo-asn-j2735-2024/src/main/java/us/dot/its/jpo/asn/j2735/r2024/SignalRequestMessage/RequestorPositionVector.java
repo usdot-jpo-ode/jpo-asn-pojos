@@ -40,7 +40,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class RequestorPositionVector extends Asn1Sequence {
+public class RequestorPositionVector implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "position")
   @JsonProperty("position")
@@ -55,6 +55,10 @@ public class RequestorPositionVector extends Asn1Sequence {
   private TransmissionAndSpeed speed;
 
   public RequestorPositionVector() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

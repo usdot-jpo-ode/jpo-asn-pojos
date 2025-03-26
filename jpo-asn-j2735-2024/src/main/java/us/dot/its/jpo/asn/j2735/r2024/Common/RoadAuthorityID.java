@@ -46,6 +46,10 @@ public class RoadAuthorityID extends Asn1Choice {
   private RelativeRoadAuthorityID relRdAuthID;
 
   public RoadAuthorityID() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

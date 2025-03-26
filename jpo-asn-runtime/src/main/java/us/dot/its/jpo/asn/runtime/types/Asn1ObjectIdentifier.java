@@ -28,4 +28,8 @@ public class Asn1ObjectIdentifier implements Asn1Type {
     this.value = value;
   }
 
+  @Override
+  public boolean hasExtensionMarker() {
+    return false;
+  }
 }

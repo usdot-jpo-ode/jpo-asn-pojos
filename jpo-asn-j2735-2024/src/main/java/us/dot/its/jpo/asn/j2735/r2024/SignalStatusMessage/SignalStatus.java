@@ -43,7 +43,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 @ToString(callSuper = true)
 @Getter
 @Setter
-public class SignalStatus extends Asn1Sequence {
+public class SignalStatus implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "sequenceNumber")
   @JsonProperty("sequenceNumber")
@@ -73,6 +73,10 @@ public class SignalStatus extends Asn1Sequence {
   }
 
   public SignalStatus() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

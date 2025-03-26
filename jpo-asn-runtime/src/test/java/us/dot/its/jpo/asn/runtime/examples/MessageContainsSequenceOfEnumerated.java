@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class MessageContainsSequenceOfEnumerated extends Asn1Sequence {
+public class MessageContainsSequenceOfEnumerated implements Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "id")
   @JsonProperty("id")
@@ -30,6 +30,10 @@ public class MessageContainsSequenceOfEnumerated extends Asn1Sequence {
   private SequenceOfFruitEnum fruits;
 
   public MessageContainsSequenceOfEnumerated() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

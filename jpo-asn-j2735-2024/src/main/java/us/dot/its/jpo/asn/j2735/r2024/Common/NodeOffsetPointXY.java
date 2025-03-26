@@ -71,6 +71,10 @@ public class NodeOffsetPointXY extends Asn1Choice {
   private Reg_NodeOffsetPointXY regional;
 
   public NodeOffsetPointXY() {
-    super(false);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return false;
   }
 }
