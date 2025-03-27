@@ -52,6 +52,7 @@ public class LongitudeDMS2 extends Asn1Sequence {
   private SecondsAngle s;
 
   public LongitudeDMS2() {
-    super(false);
   }
+
+
 }

@@ -52,6 +52,10 @@ public class Position3D_addGrpB extends Asn1Sequence {
   private Elevation elevation;
 
   public Position3D_addGrpB() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

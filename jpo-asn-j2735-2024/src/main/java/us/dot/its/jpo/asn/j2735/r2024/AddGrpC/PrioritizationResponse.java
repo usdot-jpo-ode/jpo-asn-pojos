@@ -55,6 +55,10 @@ public class PrioritizationResponse extends Asn1Sequence {
   private SignalGroupID signalGroup;
 
   public PrioritizationResponse() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

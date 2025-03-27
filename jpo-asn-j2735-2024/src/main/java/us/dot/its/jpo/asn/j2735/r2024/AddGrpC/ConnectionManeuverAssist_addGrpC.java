@@ -53,6 +53,7 @@ public class ConnectionManeuverAssist_addGrpC extends Asn1Sequence {
   private NodeOffsetPointXY rsuDistanceFromAnchor;
 
   public ConnectionManeuverAssist_addGrpC() {
-    super(false);
   }
+
+
 }

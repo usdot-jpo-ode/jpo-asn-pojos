@@ -25,6 +25,7 @@ public class BSequence extends Asn1Sequence {
   private BString bStr;
 
   public BSequence() {
-    super(false);
   }
+
+
 }

@@ -92,6 +92,10 @@ public class RequestorDescription extends Asn1Sequence {
   }
 
   public RequestorDescription() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

@@ -48,6 +48,7 @@ public class Node_LLmD_64b extends Asn1Sequence {
   private Latitude lat;
 
   public Node_LLmD_64b() {
-    super(false);
   }
+
+
 }

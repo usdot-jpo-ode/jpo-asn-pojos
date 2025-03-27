@@ -55,6 +55,10 @@ public class RequestorPositionVector extends Asn1Sequence {
   private TransmissionAndSpeed speed;
 
   public RequestorPositionVector() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

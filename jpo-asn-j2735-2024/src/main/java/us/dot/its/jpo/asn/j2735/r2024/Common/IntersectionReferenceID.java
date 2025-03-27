@@ -48,6 +48,7 @@ public class IntersectionReferenceID extends Asn1Sequence {
   private IntersectionID id;
 
   public IntersectionReferenceID() {
-    super(false);
   }
+
+
 }

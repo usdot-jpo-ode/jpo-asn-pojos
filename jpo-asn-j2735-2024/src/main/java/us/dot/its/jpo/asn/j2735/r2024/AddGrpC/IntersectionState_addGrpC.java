@@ -48,6 +48,10 @@ public class IntersectionState_addGrpC extends Asn1Sequence {
   private PrioritizationResponseList activePrioritizations;
 
   public IntersectionState_addGrpC() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

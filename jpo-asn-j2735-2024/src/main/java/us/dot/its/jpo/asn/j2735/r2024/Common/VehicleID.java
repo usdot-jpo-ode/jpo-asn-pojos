@@ -46,6 +46,7 @@ public class VehicleID extends Asn1Choice {
   private StationID stationID;
 
   public VehicleID() {
-    super(false);
   }
+
+
 }

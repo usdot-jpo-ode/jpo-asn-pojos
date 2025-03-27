@@ -65,6 +65,10 @@ public class RequestorType extends Asn1Sequence {
   private Reg_RequestorType regional;
 
   public RequestorType() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

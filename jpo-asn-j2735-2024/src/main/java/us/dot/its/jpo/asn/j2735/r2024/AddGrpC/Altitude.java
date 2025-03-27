@@ -48,6 +48,7 @@ public class Altitude extends Asn1Sequence {
   private AltitudeConfidence confidence;
 
   public Altitude() {
-    super(false);
   }
+
+
 }

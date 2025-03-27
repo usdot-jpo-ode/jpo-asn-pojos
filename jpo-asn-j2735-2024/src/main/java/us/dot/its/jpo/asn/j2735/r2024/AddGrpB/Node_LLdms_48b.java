@@ -48,6 +48,7 @@ public class Node_LLdms_48b extends Asn1Sequence {
   private LatitudeDMS lat;
 
   public Node_LLdms_48b() {
-    super(false);
   }
+
+
 }

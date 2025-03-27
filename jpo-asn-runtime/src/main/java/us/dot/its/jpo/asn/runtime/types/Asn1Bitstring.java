@@ -33,6 +33,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
      * Indicates whether the SIZE constraint of this BIT STRING has an extension marker
      * @return whether the size of the BIT STRING may be extended in the future
      */
+    @Override
     public boolean hasExtensionMarker() {
         return hasExtensionMarker;
     }

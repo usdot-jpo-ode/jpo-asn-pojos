@@ -109,6 +109,10 @@ public class IntersectionState extends Asn1Sequence {
   }
 
   public IntersectionState() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

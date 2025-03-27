@@ -78,6 +78,10 @@ public class SignalStatusMessage extends Asn1Sequence {
   }
 
   public SignalStatusMessage() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

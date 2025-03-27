@@ -69,6 +69,10 @@ public class Position3D extends Asn1Sequence {
   }
 
   public Position3D() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

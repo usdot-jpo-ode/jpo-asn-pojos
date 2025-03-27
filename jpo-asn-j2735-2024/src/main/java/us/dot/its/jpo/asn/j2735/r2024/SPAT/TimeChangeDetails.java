@@ -64,6 +64,7 @@ public class TimeChangeDetails extends Asn1Sequence {
   private TimeMark nextTime;
 
   public TimeChangeDetails() {
-    super(false);
   }
+
+
 }

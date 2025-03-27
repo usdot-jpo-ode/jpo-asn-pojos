@@ -48,6 +48,7 @@ public class Node_XY_26b extends Asn1Sequence {
   private Offset_B13 y;
 
   public Node_XY_26b() {
-    super(false);
   }
+
+
 }

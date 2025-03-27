@@ -50,6 +50,10 @@ public class VehicleToLanePosition extends Asn1Sequence {
   private LaneID laneID;
 
   public VehicleToLanePosition() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

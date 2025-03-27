@@ -65,6 +65,10 @@ public class SignalRequesterInfo extends Asn1Sequence {
   private RequestorType typeData;
 
   public SignalRequesterInfo() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

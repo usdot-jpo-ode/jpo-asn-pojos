@@ -24,6 +24,7 @@ public class Choice extends Asn1Choice {
   private BSequence b;
 
   public Choice() {
-    super(false);
   }
+
+
 }

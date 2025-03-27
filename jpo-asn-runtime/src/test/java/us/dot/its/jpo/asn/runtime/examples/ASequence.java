@@ -25,6 +25,7 @@ public class ASequence extends Asn1Sequence {
   private AString aStr;
 
   public ASequence() {
-    super(false);
   }
+
+
 }

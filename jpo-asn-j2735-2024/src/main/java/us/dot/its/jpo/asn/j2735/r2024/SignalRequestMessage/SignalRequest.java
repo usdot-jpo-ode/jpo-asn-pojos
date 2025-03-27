@@ -80,6 +80,10 @@ public class SignalRequest extends Asn1Sequence {
   }
 
   public SignalRequest() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

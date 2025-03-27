@@ -48,6 +48,7 @@ public class TransmissionAndSpeed extends Asn1Sequence {
   private Velocity speed;
 
   public TransmissionAndSpeed() {
-    super(false);
   }
+
+
 }

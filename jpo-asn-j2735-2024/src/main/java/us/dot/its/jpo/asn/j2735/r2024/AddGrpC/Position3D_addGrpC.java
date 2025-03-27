@@ -44,6 +44,10 @@ public class Position3D_addGrpC extends Asn1Sequence {
   private Altitude altitude;
 
   public Position3D_addGrpC() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }
