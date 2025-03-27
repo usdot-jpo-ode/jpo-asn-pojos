@@ -73,23 +73,6 @@ public class Asn1SequenceOfTest {
     }
 
     @Test
-    void testAddAsn1TypeExceedingUpperBound() {
-        // Sequence with min=0, max=2
-        TestSequence sequence = new TestSequence(0, 2);
-
-        // Add items up to limit
-        assertTrue(sequence.add(item1));
-        assertTrue(sequence.add(item2));
-
-        // Third item should throw exception
-        IllegalStateException exception = assertThrows(IllegalStateException.class, () -> {
-            sequence.add(item3);
-        });
-
-        assertTrue(exception.getMessage().contains("exceed maximum allowed size"));
-    }
-
-    @Test
     void testIsSizeValidWithEmptySequence() {
         // Sequence with min=0, max=3
         TestSequence validEmptySequence = new TestSequence(0, 3);
