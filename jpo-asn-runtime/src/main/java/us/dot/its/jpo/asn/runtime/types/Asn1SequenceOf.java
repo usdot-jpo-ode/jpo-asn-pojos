@@ -2,15 +2,10 @@ package us.dot.its.jpo.asn.runtime.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
+
 
 /**
  * Base class for ASN.1 SEQUENCE-OF types.
@@ -19,7 +14,7 @@ import java.util.function.UnaryOperator;
  * Unlike a basic SEQUENCE which contains named elements of potentially different types, a SEQUENCE OF
  * is more analogous to an array or list in traditional programming languages.
  * <p>
- * This implementation extends {@link ArrayList} to provide the ordered collection behavior while
+ * This implementation extends {@link AbstractList} to provide the ordered collection behavior while
  * adding ASN.1-specific constraints:
  * <ul>
  *   <li>Type safety - ensures all elements are of the specified ASN.1 type</li>
@@ -38,14 +33,15 @@ import java.util.function.UnaryOperator;
  * @see Asn1Type The base interface for all ASN.1 types
  * @see Asn1Sequence For representing ASN.1 SEQUENCE types with named fields
  */
-public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, List<T> {
+public abstract class Asn1SequenceOf<T extends Asn1Type> extends AbstractList<T> implements Asn1Type {
 
     private final Class<T> itemClass;
     /** The minimum number of elements required (inclusive) */
     private final long sizeLowerBound;
     /** The maximum number of elements allowed (inclusive), or -1 for unbounded */
     private final long sizeUpperBound;
-    private final List<T> elements;
+    // The internal list that backs this AbstractList implementation
+    private final ArrayList<T> elements;
 
     /**
      * Constructs a new ASN.1 SEQUENCE OF with the specified element type and size constraints.
@@ -96,177 +92,47 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
     @SuppressWarnings("unchecked")
     public boolean add(Asn1Type item) {
         validateAddition(1);
-        return this.elements.add((T) item);
+        return elements.add((T) item);
+    }
+
+    // AbstractList implementation - only override the necessary methods
+
+    @Override
+    public T get(int index) {
+        return elements.get(index);
     }
 
     @Override
     public int size() {
-        return this.elements.size();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return this.elements.isEmpty();
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        return this.elements.contains(o);
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return this.elements.iterator();
-    }
-
-    @Override
-    public Object[] toArray() {
-        return this.elements.toArray();
-    }
-
-    @Override
-    public <T1> T1[] toArray(T1[] a) {
-        return this.elements.toArray(a);
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return this.elements.remove(o);
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        return this.elements.containsAll(c);
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends T> c) {
-        validateAddition(c.size());
-        return this.elements.addAll(c);
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends T> c) {
-        validateAddition(c.size());
-        return this.elements.addAll(index, c);
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        return this.elements.removeAll(c);
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return this.elements.retainAll(c);
-    }
-
-    @Override
-    public void replaceAll(UnaryOperator<T> operator) {
-        this.elements.replaceAll(operator);
-    }
-
-    @Override
-    public void sort(Comparator<? super T> c) {
-        this.elements.sort(c);
-    }
-
-    @Override
-    public void clear() {
-        this.elements.clear();
-    }
-
-    @Override
-    public T get(int index) {
-        return this.elements.get(index);
+        return elements.size();
     }
 
     @Override
     public T set(int index, T element) {
-        return this.elements.set(index, element);
+        return elements.set(index, element);
     }
 
     @Override
     public void add(int index, T element) {
         validateAddition(1);
-        this.elements.add(index, element);
+        elements.add(index, element);
     }
 
     @Override
     public T remove(int index) {
-        return this.elements.remove(index);
+        return elements.remove(index);
     }
 
     @Override
-    public int indexOf(Object o) {
-        return this.elements.indexOf(o);
+    public boolean addAll(Collection<? extends T> c) {
+        validateAddition(c.size());
+        return super.addAll(c);
     }
 
     @Override
-    public int lastIndexOf(Object o) {
-        return this.elements.lastIndexOf(o);
-    }
-
-    @Override
-    public ListIterator<T> listIterator() {
-        return this.elements.listIterator();
-    }
-
-    @Override
-    public ListIterator<T> listIterator(int index) {
-        return this.elements.listIterator(index);
-    }
-
-    @Override
-    public List<T> subList(int fromIndex, int toIndex) {
-        return this.elements.subList(fromIndex, toIndex);
-    }
-
-    @Override
-    public void forEach(Consumer<? super T> action) {
-        this.elements.forEach(action);
-    }
-
-    @Override
-    public Spliterator<T> spliterator() {
-        return this.elements.spliterator();
-    }
-
-    @Override
-    public void addFirst(T t) {
-        validateAddition(1);
-        this.elements.addFirst(t);
-    }
-
-    @Override
-    public void addLast(T t) {
-        validateAddition(1);
-        this.elements.addLast(t);
-    }
-
-    @Override
-    public T getFirst() {
-        return this.elements.getFirst();
-    }
-
-    @Override
-    public T getLast() {
-        return this.elements.getLast();
-    }
-
-    @Override
-    public T removeFirst() {
-        return this.elements.removeFirst();
-    }
-
-    @Override
-    public T removeLast() {
-        return this.elements.removeLast();
-    }
-
-    @Override
-    public List<T> reversed() {
-        return this.elements.reversed();
+    public boolean addAll(int index, Collection<? extends T> c) {
+        validateAddition(c.size());
+        return elements.addAll(index, c);
     }
 
     /**
@@ -276,7 +142,7 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
      * @throws IllegalStateException if the collection size is below minimum or above maximum allowed
      */
     public void validate() throws IllegalStateException {
-        int size = this.elements.size();
+        int size = size();
 
         // Check lower bound constraint
         if (size < sizeLowerBound) {
@@ -292,15 +158,14 @@ public abstract class Asn1SequenceOf<T extends Asn1Type> implements Asn1Type, Li
     }
 
     /**
-     * Validates if adding one more element would exceed the upper bound.
+     * Validates if adding more elements would exceed the upper bound.
      *
-     * @throws IllegalStateException if adding an element would exceed the maximum allowed size
+     * @throws IllegalStateException if adding elements would exceed the maximum allowed size
      */
     private void validateAddition(int numElementsToAdd) throws IllegalStateException {
         // Only check if there's an upper bound defined
-        if (sizeUpperBound != -1 && this.elements.size() + numElementsToAdd > sizeUpperBound) {
+        if (sizeUpperBound != -1 && size() + numElementsToAdd > sizeUpperBound) {
             throw new IllegalStateException("Cannot add element: would exceed maximum allowed size of " + sizeUpperBound);
         }
     }
-
 }
