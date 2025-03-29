@@ -1,182 +1,315 @@
 #!/usr/bin/env bash
 
+# echo on
+set -x
+
 BRANCH=j2735-2024-type-refactor-everything
 PACKAGE=src/main/java/us/dot/its/jpo/asn/j2735/r2024
 
 echo "Checkout files from $BRANCH"
 
-# echo on
-set -x
+MODULE=""
 
-############################################################################################# Part 1
+function checkout() {
+  git checkout $BRANCH ${PACKAGE}/${MODULE}/$1
+}
 
-git checkout $BRANCH ${PACKAGE}/AddGrpB/DegreesLat.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/DegreesLong.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/Elevation.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/LatitudeDMS.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/LatitudeDMS2.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/LongitudeDMS.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/LongitudeDMS2.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/MaxTimetoChange.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/MinTimetoChange.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/MinutesAngle.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/MovementEvent_addGrpB.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/MovementEvent_addGrpBReg_MovementEvent.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/MovementEvent_addGrpBReg_MovementEventValueDeserializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/MovementEvent_addGrpBReg_MovementEventValueSerializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/NodeOffsetPointXY_addGrpB.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXY.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXYValueDeserializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXYValueSerializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/Node_LLdms_48b.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/Node_LLdms_80b.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/Position3D_addGrpB.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/Position3D_addGrpBReg_Position3D.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/Position3D_addGrpBReg_Position3DValueDeserializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/Position3D_addGrpBReg_Position3DValueSerializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/SecondsAngle.java
-git checkout $BRANCH ${PACKAGE}/AddGrpB/TimeRemaining.java
+MODULE=AddGrpB
+checkout DegreesLat.java
+checkout DegreesLong.java
+checkout Elevation.java
+checkout LaneDataAttribute_addGrpB.java
+checkout LaneDataAttribute_addGrpBReg_LaneDataAttribute.java
+checkout LatitudeDMS.java
+checkout LatitudeDMS2.java
+checkout LongitudeDMS.java
+checkout LongitudeDMS2.java
+checkout MaxTimetoChange.java
+checkout MinTimetoChange.java
+checkout MinutesAngle.java
+checkout MovementEvent_addGrpB.java
+checkout MovementEvent_addGrpBReg_MovementEvent.java
+checkout NodeOffsetPointXY_addGrpB.java
+checkout NodeOffsetPointXY_addGrpBReg_NodeOffsetPointXY.java
+checkout Node_LLdms_48b.java
+checkout Node_LLdms_80b.java
+checkout Position3D_addGrpB.java
+checkout Position3D_addGrpBReg_Position3D.java
+checkout SecondsAngle.java
+checkout TimeRemaining.java
 
+MODULE=AddGrpC
+checkout Altitude.java
+checkout AltitudeConfidence.java
+checkout AltitudeValue.java
+checkout ConnectionManeuverAssist_addGrpC.java
+checkout ConnectionManeuverAssist_addGrpCReg_ConnectionManeuverAssist.java
+checkout EmissionType.java
+checkout IntersectionState_addGrpC.java
+checkout IntersectionState_addGrpCReg_IntersectionState.java
+checkout MapData_addGrpC.java
+checkout MapData_addGrpCReg_MapData.java
+checkout Position3D_addGrpC.java
+checkout Position3D_addGrpCReg_Position3D.java
+checkout PrioritizationResponse.java
+checkout PrioritizationResponseList.java
+checkout RestrictionUserType_addGrpC.java
+checkout RestrictionUserType_addGrpCReg_RestrictionUserType.java
+checkout SignalHeadLocation.java
+checkout SignalHeadLocationList.java
+checkout VehicleToLanePosition.java
+checkout VehicleToLanePositionList.java
 
+MODULE=Common
+checkout Acceleration.java
+checkout AccelerationSet4Way.java
+checkout Angle.java
+checkout AntennaOffsetSet.java
+checkout ApproachID.java
+checkout BasicVehicleRole.java
+checkout CoarseHeading.java
+checkout ComputedLane.java
+checkout Confidence.java
+checkout DDateTime.java
+checkout DDay.java
+checkout DHour.java
+checkout DMinute.java
+checkout DMonth.java
+checkout DOffset.java
+checkout DSecond.java
+checkout DYear.java
+checkout DeltaAngle.java
+checkout DescriptiveName.java
+checkout DrivenLineOffsetLg.java
+checkout DrivenLineOffsetSm.java
+checkout Elevation.java
+checkout ElevationConfidence.java
+checkout FullPositionVector.java
+checkout FullRoadAuthorityID.java
+checkout GNSSstatus.java
+checkout Heading.java
+checkout HeadingConfidence.java
+checkout IntersectionAccessPoint.java
+checkout IntersectionID.java
+checkout IntersectionReferenceID.java
+checkout Iso3833VehicleType.java
+checkout LaneConnectionID.java
+checkout LaneDataAttribute.java
+checkout LaneDataAttributeList.java
+checkout LaneID.java
+checkout LaneWidth.java
+checkout Latitude.java
+checkout Longitude.java
+checkout MergeDivergeNodeAngle.java
+checkout MinuteOfTheYear.java
+checkout MsgCount.java
+checkout NodeAttributeSetXY.java
+checkout NodeAttributeXY.java
+checkout NodeAttributeXYList.java
+checkout NodeListXY.java
+checkout NodeOffsetPointXY.java
+checkout NodeSetXY.java
+checkout NodeXY.java
+checkout Node_LLmD_64b.java
+checkout Node_XY_20b.java
+checkout Node_XY_22b.java
+checkout Node_XY_24b.java
+checkout Node_XY_26b.java
+checkout Node_XY_28b.java
+checkout Node_XY_32b.java
+checkout OffsetLL_B18.java
+checkout Offset_B09.java
+checkout Offset_B10.java
+checkout Offset_B11.java
+checkout Offset_B12.java
+checkout Offset_B13.java
+checkout Offset_B14.java
+checkout Offset_B16.java
+checkout PathHistory.java
+checkout PathHistoryPoint.java
+checkout PathHistoryPointList.java
+checkout PathPrediction.java
+checkout Position3D.java
+checkout PositionConfidence.java
+checkout PositionConfidenceSet.java
+checkout PositionalAccuracy.java
+checkout PrioritizationResponseStatus.java
+checkout RTCMheader.java
+checkout RTCMmessage.java
+checkout RTCMmessageList.java
+checkout RadiusOfCurvature.java
+checkout RegionId.java
+checkout RegionalExtension.java
+checkout RegulatorySpeedLimit.java
+checkout RelativeRoadAuthorityID.java
+checkout RequestID.java
+checkout RequestImportanceLevel.java
+checkout RequestSubRole.java
+checkout RequestorType.java
+checkout RestrictionClassID.java
+checkout RoadAuthorityID.java
+checkout RoadRegulatorID.java
+checkout RoadSegmentID.java
+checkout RoadSegmentReferenceID.java
+checkout RoadwayCrownAngle.java
+checkout Scale_B12.java
+checkout SegmentAttributeXY.java
+checkout SegmentAttributeXYList.java
+checkout SemiMajorAxisAccuracy.java
+checkout SemiMajorAxisOrientation.java
+checkout SemiMinorAxisAccuracy.java
+checkout SignalGroupID.java
+checkout Speed.java
+checkout SpeedConfidence.java
+checkout SpeedLimitList.java
+checkout SpeedLimitType.java
+checkout SpeedandHeadingandThrottleConfidence.java
+checkout StationID.java
+checkout TemporaryID.java
+checkout ThrottleConfidence.java
+checkout TimeConfidence.java
+checkout TimeOffset.java
+checkout TransmissionAndSpeed.java
+checkout TransmissionState.java
+checkout VehicleID.java
+checkout VehicleType.java
+checkout Velocity.java
+checkout VertOffset_B12.java
+checkout VerticalAcceleration.java
+checkout YawRate.java
 
-git checkout $BRANCH ${PACKAGE}/AddGrpC/Altitude.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/AltitudeConfidence.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/AltitudeValue.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/ConnectionManeuverAssist_addGrpC.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/ConnectionManeuverAssist_addGrpCReg_ConnectionManeuverAssist.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/ConnectionManeuverAssist_addGrpCReg_ConnectionManeuverAssistValueDeserializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/ConnectionManeuverAssist_addGrpCReg_ConnectionManeuverAssistValueSerializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/IntersectionState_addGrpC.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/IntersectionState_addGrpCReg_IntersectionState.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/IntersectionState_addGrpCReg_IntersectionStateValueDeserializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/IntersectionState_addGrpCReg_IntersectionStateValueSerializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/Position3D_addGrpC.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/Position3D_addGrpCReg_Position3D.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/Position3D_addGrpCReg_Position3DValueDeserializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/Position3D_addGrpCReg_Position3DValueSerializer.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/PrioritizationResponse.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/PrioritizationResponseList.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/VehicleToLanePosition.java
-git checkout $BRANCH ${PACKAGE}/AddGrpC/VehicleToLanePositionList.java
+MODULE=MapData
+checkout AllowedManeuvers.java
+checkout ConnectingLane.java
+checkout Connection.java
+checkout ConnectsToList.java
+checkout DataParameters.java
+checkout GenericLane.java
+checkout IntersectionGeometry.java
+checkout IntersectionGeometryList.java
+checkout LaneAttributes.java
+checkout LaneAttributes_Barrier.java
+checkout LaneAttributes_Bike.java
+checkout LaneAttributes_Crosswalk.java
+checkout LaneAttributes_Parking.java
+checkout LaneAttributes_Sidewalk.java
+checkout LaneAttributes_Striping.java
+checkout LaneAttributes_TrackedVehicle.java
+checkout LaneAttributes_Vehicle.java
+checkout LaneDirection.java
+checkout LaneList.java
+checkout LaneSharing.java
+checkout LaneTypeAttributes.java
+checkout LayerID.java
+checkout LayerType.java
+checkout MapData.java
+checkout OverlayLaneList.java
+checkout PreemptPriorityList.java
+checkout RestrictionAppliesTo.java
+checkout RestrictionClassAssignment.java
+checkout RestrictionClassList.java
+checkout RestrictionUserType.java
+checkout RestrictionUserTypeList.java
+checkout RoadLaneSetList.java
+checkout RoadSegment.java
+checkout RoadSegmentList.java
+checkout SignalControlZone.java
 
+MODULE=PersonalSafetyMessage
+checkout AnimalPropelledType.java
+checkout AnimalType.java
+checkout Attachment.java
+checkout AttachmentRadius.java
+checkout HumanPropelledType.java
+checkout MotorizedPropelledType.java
+checkout NumberOfParticipantsInCluster.java
+checkout PersonalAssistive.java
+checkout PersonalClusterRadius.java
+checkout PersonalCrossingInProgress.java
+checkout PersonalCrossingRequest.java
+checkout PersonalDeviceUsageState.java
+checkout PersonalDeviceUserType.java
+checkout PersonalSafetyMessage.java
+checkout PropelledInformation.java
+checkout PublicSafetyAndRoadWorkerActivity.java
+checkout PublicSafetyDirectingTrafficSubType.java
+checkout PublicSafetyEventResponderWorkerType.java
+checkout UserSizeAndBehaviour.java
 
+MODULE=REGION
+checkout Reg_AdvisorySpeed.java
+checkout Reg_ComputedLane.java
+checkout Reg_ConnectionManeuverAssist.java
+checkout Reg_GenericLane.java
+checkout Reg_IntersectionGeometry.java
+checkout Reg_IntersectionState.java
+checkout Reg_LaneAttributes.java
+checkout Reg_LaneDataAttribute.java
+checkout Reg_MapData.java
+checkout Reg_MovementEvent.java
+checkout Reg_MovementState.java
+checkout Reg_NodeAttributeSetXY.java
+checkout Reg_NodeOffsetPointXY.java
+checkout Reg_PersonalSafetyMessage.java
+checkout Reg_Position3D.java
+checkout Reg_RTCMcorrections.java
+checkout Reg_RequestorDescription.java
+checkout Reg_RequestorType.java
+checkout Reg_RestrictionUserType.java
+checkout Reg_RoadSegment.java
+checkout Reg_SPAT.java
+checkout Reg_SignalControlZone.java
+checkout Reg_SignalRequest.java
+checkout Reg_SignalRequestMessage.java
+checkout Reg_SignalRequestPackage.java
+checkout Reg_SignalStatus.java
+checkout Reg_SignalStatusMessage.java
+checkout Reg_SignalStatusPackage.java
 
-git checkout $BRANCH ${PACKAGE}/Common/Angle.java
-git checkout $BRANCH ${PACKAGE}/Common/ApproachID.java
-git checkout $BRANCH ${PACKAGE}/Common/BasicVehicleRole.java
-git checkout $BRANCH ${PACKAGE}/Common/DSecond.java
-git checkout $BRANCH ${PACKAGE}/Common/DescriptiveName.java
-git checkout $BRANCH ${PACKAGE}/Common/Elevation.java
-git checkout $BRANCH ${PACKAGE}/Common/FullRoadAuthorityID.java
-git checkout $BRANCH ${PACKAGE}/Common/IntersectionAccessPoint.java
-git checkout $BRANCH ${PACKAGE}/Common/IntersectionID.java
-git checkout $BRANCH ${PACKAGE}/Common/IntersectionReferenceID.java
-git checkout $BRANCH ${PACKAGE}/Common/Iso3833VehicleType.java
-git checkout $BRANCH ${PACKAGE}/Common/LaneConnectionID.java
-git checkout $BRANCH ${PACKAGE}/Common/LaneID.java
-git checkout $BRANCH ${PACKAGE}/Common/Latitude.java
-git checkout $BRANCH ${PACKAGE}/Common/Longitude.java
-git checkout $BRANCH ${PACKAGE}/Common/MinuteOfTheYear.java
-git checkout $BRANCH ${PACKAGE}/Common/MsgCount.java
-git checkout $BRANCH ${PACKAGE}/Common/NodeOffsetPointXY.java
-git checkout $BRANCH ${PACKAGE}/Common/Node_LLmD_64b.java
-git checkout $BRANCH ${PACKAGE}/Common/Node_XY_20b.java
-git checkout $BRANCH ${PACKAGE}/Common/Node_XY_22b.java
-git checkout $BRANCH ${PACKAGE}/Common/Node_XY_24b.java
-git checkout $BRANCH ${PACKAGE}/Common/Node_XY_26b.java
-git checkout $BRANCH ${PACKAGE}/Common/Node_XY_28b.java
-git checkout $BRANCH ${PACKAGE}/Common/Node_XY_32b.java
-git checkout $BRANCH ${PACKAGE}/Common/Offset_B09.java
-git checkout $BRANCH ${PACKAGE}/Common/Offset_B10.java
-git checkout $BRANCH ${PACKAGE}/Common/Offset_B11.java
-git checkout $BRANCH ${PACKAGE}/Common/Offset_B12.java
-git checkout $BRANCH ${PACKAGE}/Common/Offset_B13.java
-git checkout $BRANCH ${PACKAGE}/Common/Offset_B14.java
-git checkout $BRANCH ${PACKAGE}/Common/Offset_B16.java
-git checkout $BRANCH ${PACKAGE}/Common/Position3D.java
-git checkout $BRANCH ${PACKAGE}/Common/PrioritizationResponseStatus.java
-git checkout $BRANCH ${PACKAGE}/Common/RegionId.java
-git checkout $BRANCH ${PACKAGE}/Common/RegionalExtension.java
-git checkout $BRANCH ${PACKAGE}/Common/RelativeRoadAuthorityID.java
-git checkout $BRANCH ${PACKAGE}/Common/RequestID.java
-git checkout $BRANCH ${PACKAGE}/Common/RequestImportanceLevel.java
-git checkout $BRANCH ${PACKAGE}/Common/RequestSubRole.java
-git checkout $BRANCH ${PACKAGE}/Common/RequestorType.java
-git checkout $BRANCH ${PACKAGE}/Common/RestrictionClassID.java
-git checkout $BRANCH ${PACKAGE}/Common/RoadAuthorityID.java
-git checkout $BRANCH ${PACKAGE}/Common/RoadRegulatorID.java
-git checkout $BRANCH ${PACKAGE}/Common/SignalGroupID.java
-git checkout $BRANCH ${PACKAGE}/Common/SpeedConfidence.java
-git checkout $BRANCH ${PACKAGE}/Common/StationID.java
-git checkout $BRANCH ${PACKAGE}/Common/TemporaryID.java
-git checkout $BRANCH ${PACKAGE}/Common/TransmissionAndSpeed.java
-git checkout $BRANCH ${PACKAGE}/Common/TransmissionState.java
-git checkout $BRANCH ${PACKAGE}/Common/VehicleID.java
-git checkout $BRANCH ${PACKAGE}/Common/VehicleType.java
-git checkout $BRANCH ${PACKAGE}/Common/Velocity.java
+MODULE=RTCMcorrections
+checkout RTCM_Revision.java
+checkout RTCMcorrections.java
 
+MODULE=SPAT
+checkout AdvisorySpeed.java
+checkout AdvisorySpeedList.java
+checkout AdvisorySpeedType.java
+checkout ConnectionManeuverAssist.java
+checkout EnabledLaneList.java
+checkout IntersectionState.java
+checkout IntersectionStateList.java
+checkout IntersectionStatusObject.java
+checkout ManeuverAssistList.java
+checkout MovementEvent.java
+checkout MovementEventList.java
+checkout MovementList.java
+checkout MovementPhaseState.java
+checkout MovementState.java
+checkout PedestrianBicycleDetect.java
+checkout SPAT.java
+checkout SpeedAdvice.java
+checkout TimeChangeDetails.java
+checkout TimeIntervalConfidence.java
+checkout TimeMark.java
+checkout WaitOnStopline.java
+checkout ZoneLength.java
 
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_AdvisorySpeed.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_ConnectionManeuverAssist.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_IntersectionState.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_MovementEvent.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_MovementState.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_NodeOffsetPointXY.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_Position3D.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_RequestorDescription.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_RequestorType.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_SPAT.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_SignalRequest.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_SignalRequestMessage.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_SignalRequestPackage.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_SignalStatus.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_SignalStatusMessage.java
-git checkout $BRANCH ${PACKAGE}/REGION/Reg_SignalStatusPackage.java
+MODULE=SignalRequestMessage
+checkout DeltaTime.java
+checkout PriorityRequestType.java
+checkout RequestorDescription.java
+checkout RequestorPositionVector.java
+checkout SignalRequest.java
+checkout SignalRequestList.java
+checkout SignalRequestMessage.java
+checkout SignalRequestPackage.java
+checkout TransitVehicleOccupancy.java
+checkout TransitVehicleStatus.java
 
-
-git checkout $BRANCH ${PACKAGE}/SPAT/AdvisorySpeed.java
-git checkout $BRANCH ${PACKAGE}/SPAT/AdvisorySpeedList.java
-git checkout $BRANCH ${PACKAGE}/SPAT/AdvisorySpeedType.java
-git checkout $BRANCH ${PACKAGE}/SPAT/ConnectionManeuverAssist.java
-git checkout $BRANCH ${PACKAGE}/SPAT/EnabledLaneList.java
-git checkout $BRANCH ${PACKAGE}/SPAT/IntersectionState.java
-git checkout $BRANCH ${PACKAGE}/SPAT/IntersectionStateList.java
-git checkout $BRANCH ${PACKAGE}/SPAT/IntersectionStatusObject.java
-git checkout $BRANCH ${PACKAGE}/SPAT/ManeuverAssistList.java
-git checkout $BRANCH ${PACKAGE}/SPAT/MovementEvent.java
-git checkout $BRANCH ${PACKAGE}/SPAT/MovementEventList.java
-git checkout $BRANCH ${PACKAGE}/SPAT/MovementList.java
-git checkout $BRANCH ${PACKAGE}/SPAT/MovementPhaseState.java
-git checkout $BRANCH ${PACKAGE}/SPAT/MovementState.java
-git checkout $BRANCH ${PACKAGE}/SPAT/PedestrianBicycleDetect.java
-git checkout $BRANCH ${PACKAGE}/SPAT/PedestrianBicycleDetectDeserializer.java
-git checkout $BRANCH ${PACKAGE}/SPAT/SPAT.java
-git checkout $BRANCH ${PACKAGE}/SPAT/SpeedAdvice.java
-git checkout $BRANCH ${PACKAGE}/SPAT/TimeChangeDetails.java
-git checkout $BRANCH ${PACKAGE}/SPAT/TimeIntervalConfidence.java
-git checkout $BRANCH ${PACKAGE}/SPAT/TimeMark.java
-git checkout $BRANCH ${PACKAGE}/SPAT/WaitOnStopline.java
-git checkout $BRANCH ${PACKAGE}/SPAT/WaitOnStoplineDeserializer.java
-git checkout $BRANCH ${PACKAGE}/SPAT/ZoneLength.java
-
-
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/DeltaTime.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/PriorityRequestType.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/RequestorDescription.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/RequestorPositionVector.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/SignalRequest.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/SignalRequestList.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/SignalRequestMessage.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/SignalRequestPackage.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/TransitVehicleOccupancy.java
-git checkout $BRANCH ${PACKAGE}/SignalRequestMessage/TransitVehicleStatus.java
-
-
-git checkout $BRANCH ${PACKAGE}/SignalStatusMessage/SignalRequesterInfo.java
-git checkout $BRANCH ${PACKAGE}/SignalStatusMessage/SignalStatus.java
-git checkout $BRANCH ${PACKAGE}/SignalStatusMessage/SignalStatusList.java
-git checkout $BRANCH ${PACKAGE}/SignalStatusMessage/SignalStatusMessage.java
-git checkout $BRANCH ${PACKAGE}/SignalStatusMessage/SignalStatusPackage.java
-git checkout $BRANCH ${PACKAGE}/SignalStatusMessage/SignalStatusPackageList.java
-
-############################################################################################# Part 2
+MODULE=SignalStatusMessage
+checkout SignalRequesterInfo.java
+checkout SignalStatus.java
+checkout SignalStatusList.java
+checkout SignalStatusMessage.java
+checkout SignalStatusPackage.java
+checkout SignalStatusPackageList.java
