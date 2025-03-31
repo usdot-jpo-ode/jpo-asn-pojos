@@ -17,22 +17,31 @@ Then the executable named `testgen-cli.jar` will be available in the `build/libs
 ## Usage
 
 ```
-Usage: testgen-cli [-hV] -m=<module> -p=<pdu> [-s=<sequenceOfLimit>]
-                   [-x=<xerOutputFile>] [-j=<jerOutputFile>]
+Usage: testgen-cli [-rhV] -m=<module> -p=<pdu> [-xp=<excludePdus>]...
+                   [-s=<sequenceOfLimit>] [-x=<xerOutputFile>]
+                   [-j=<jerOutputFile>]
   -m, --module=<module>   REQUIRED. ASN.1 Module name.  For example: MapData,
                             Common.
   -p, --pdu=<pdu>         REQUIRED. Protocol Data Unit (PDU).  Name of the
-                            class to generate an example of, qualified by the
-                            module. For example: MapData, BSMCoreData.  The PDU
-                            must be a SEQUENCE type.
+                            class to generate an example of.For example:
+                            MapData, BSMCoreData.
+  -xp, --exclude-pdus=<excludePdus>
+                          Module.PDUs to exclude from sequences (class name eg.
+                            'MapData.PreemptPriorityList',  'REGION.
+                            Reg_MovementEvent')
   -s, --sequence-of-limit=<sequenceOfLimit>
-                          Limit the number of items in SEQUENCE-OF types
+                          Limit the number of items in SEQUENCE-OF types. Must
+                            be at least 2.
   -x, --xer-output-file=<xerOutputFile>
                           Output file path for the XER file.
   -j, --jer-output-file=<jerOutputFile>
                           Output file path for the JER file.
+  -r, --regional          Include fields named 'regional' and other regional
+                            extensions. Omitted by default if this flag is not
+                            present.
   -h, --help              Show this help message and exit.
   -V, --version           Print version information and exit.
+
 ```
 
 ### Usage Examples
