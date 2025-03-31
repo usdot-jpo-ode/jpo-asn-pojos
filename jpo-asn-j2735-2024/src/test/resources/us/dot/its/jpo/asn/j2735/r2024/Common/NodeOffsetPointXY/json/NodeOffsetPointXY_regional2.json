@@ -1,0 +1,13 @@
+{
+  "regional": {
+    "regionId": 2,
+    "regExtValue": {
+      "NodeOffsetPointXY_addGrpB": {
+        "posA": {
+          "lon": 17533774,
+          "lat": -12792393
+        }
+      }
+    }
+  }
+}

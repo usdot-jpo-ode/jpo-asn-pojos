@@ -34,6 +34,10 @@ public class MessageContainsSequenceOfChoice extends Asn1Sequence {
   private ExampleInteger num;
 
   public MessageContainsSequenceOfChoice() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }

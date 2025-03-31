@@ -30,6 +30,10 @@ public class MessageContainsSequenceOfEnumerated extends Asn1Sequence {
   private SequenceOfFruitEnum fruits;
 
   public MessageContainsSequenceOfEnumerated() {
-    super(true);
+  }
+
+  @Override
+  public boolean hasExtensionMarker() {
+    return true;
   }
 }
