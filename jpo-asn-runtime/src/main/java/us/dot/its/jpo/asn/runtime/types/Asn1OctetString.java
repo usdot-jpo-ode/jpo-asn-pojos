@@ -54,8 +54,7 @@ public class Asn1OctetString implements Asn1Type {
      * Default constructor creates octet string with unrestricted length
      */
     public Asn1OctetString() {
-        this.minLength = 0;
-        this.maxLength = Integer.MAX_VALUE;
+        this(0, Integer.MAX_VALUE);
     }
 
     public Asn1OctetString(int minLength, int maxLength) {
