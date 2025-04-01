@@ -10,7 +10,6 @@ import lombok.Getter;
 /**
  * Represents an ASN.1 OCTET STRING type, which is an ordered sequence of zero or more octets,
  * each octet being 8 bits. This class serves as the base for OCTET STRING type assignments.
- *
  * In ASN.1, OCTET STRING can have size constraints which are represented by minLength and maxLength.
  */
 public class Asn1OctetString implements Asn1Type {
@@ -23,6 +22,18 @@ public class Asn1OctetString implements Asn1Type {
 
     @JsonIgnore
     protected byte[] octets;
+
+    /**
+     * Default constructor creates octet string with unrestricted length
+     */
+    public Asn1OctetString() {
+        this(0, Integer.MAX_VALUE);
+    }
+
+    public Asn1OctetString(int minLength, int maxLength) {
+        this.minLength = minLength;
+        this.maxLength = maxLength;
+    }
 
     /**
      * Returns the hexadecimal string representation of this OCTET STRING.
@@ -93,18 +104,6 @@ public class Asn1OctetString implements Asn1Type {
                     "OCTET STRING length (%d bytes) out of bounds - must be between %d and %d bytes",
                     bytes.length, minLength, maxLength));
         }
-    }
-
-    /**
-     * Default constructor creates octet string with unrestricted length
-     */
-    public Asn1OctetString() {
-        this(0, Integer.MAX_VALUE);
-    }
-
-    public Asn1OctetString(int minLength, int maxLength) {
-        this.minLength = minLength;
-        this.maxLength = maxLength;
     }
 
     /**
