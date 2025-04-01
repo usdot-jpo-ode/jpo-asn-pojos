@@ -126,7 +126,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
         }
         char[] chars = str.trim().toCharArray();
         if (chars.length < size) {
-            throw new IllegalArgumentException("String too short: " + str + " (expected " + size + " bits)");
+            throw new IllegalArgumentException("String too short: " + str + " (expected " + size + " bits) but got (" + chars.length + " bits)");
         }
 
         for (int i = 0; i < size; i++) {
