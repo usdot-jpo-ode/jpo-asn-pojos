@@ -83,7 +83,7 @@ public class Position3D extends Asn1Sequence {
 
 The library makes extensive use of custom Jackson serializers/deserializers and annotations. This was necessary to achieve the goal of having POJOs capable of handling both XER and JER in the same classes, while still leveraging Jackson, but does lead to some complexity.
 
-For instance, in some cases when adding a `@JsonDeserialize(using = SomeCustomSerializer.class)` annotation to a base class, it's necessary to add `@JsonDeserialize(using = None.class)` to the implementation classes to prevent an infinite recursion in the deserializer.  
+For instance, in some cases when adding a `@JsonDeserialize(using = SomeCustomDeserializer.class)` annotation to a base class, it's necessary to add `@JsonDeserialize(using = None.class)` to the implementation classes to prevent an infinite recursion in the deserializer.  
 
 For example, the abstract generic class `Reg_Position3D` is annotated with a custom deserializer:
 
