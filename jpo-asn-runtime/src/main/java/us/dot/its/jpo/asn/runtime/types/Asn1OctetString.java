@@ -117,12 +117,13 @@ public class Asn1OctetString implements Asn1Type {
             throw new IllegalArgumentException("Hex string cannot be null");
         }
 
+        var trimmedLength = hexString.trim().length();
         // Check if length is even (each byte needs two hex chars)
-        if (hexString.length() % 2 != 0) {
+        if (trimmedLength % 2 != 0) {
             throw new IllegalArgumentException("Hex string must have an even number of characters");
         }
 
-        int byteLength = hexString.trim().length() / 2;
+        int byteLength = trimmedLength / 2;
 
         // Size of hex format string can be 2 * byte size
         if (byteLength < minLength || byteLength > maxLength) {
