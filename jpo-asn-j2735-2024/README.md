@@ -30,9 +30,9 @@ MessageFrame<MapData>
 MessageFrame<BasicSafetyMessage>
 ```
 
-matches the intended meaning of the parameterized types in the ASN.1 specification which is as a set of various types that plug into a "hole" in another type in a modular and extensible fashion.
+which matches the intended meaning of the parameterized types in the ASN.1 specification, which is as a set of various types that plug into a "hole" in another type in a modular and extensible fashion.
 
-In the standard, parameterized types are defined as sets of types identified by named integer IDs, linked by an Information Object Class with an integer "id" identified by a "type".
+In the standard, parameterized types are defined as sets of types linked by an Information Object Class with a type identified by and integer ID.
 
 As a specific example, the regional extensions for Position3D are defined this way in the ASN.1 standard:
 
