@@ -27,6 +27,8 @@ public abstract class Asn1Bitstring implements Asn1Type {
 
     final int upperBound;
 
+    private int actualSize = 0;
+
     final boolean hasExtensionMarker;
     final String[] names;
 
@@ -78,15 +80,21 @@ public abstract class Asn1Bitstring implements Asn1Type {
 
     public void set(int bitIndex, boolean value) {
         bits.set(bitIndex, value);
+
+        // Update actual size if no named bits
+        if (names.length == 0 && actualSize < bitIndex + 1) {
+            actualSize = bitIndex + 1;
+        }
     }
 
     public String binaryString() {
+
         // Write extension bits if the number of named bits is larger than the "size" and
         // those bits are set
-        final int sizeWithExtensions = sizeWithExtensions();
+        final int resolvedSize = (names.length == 0) ? actualSize : sizeWithExtensions();
 
-        char[] chars = new char[sizeWithExtensions];
-        for (int i = 0; i < sizeWithExtensions; i++) {
+        char[] chars = new char[resolvedSize];
+        for (int i = 0; i < resolvedSize; i++) {
             chars[i] = get(i) ? '1' : '0';
         }
         return new String(chars);
@@ -106,9 +114,9 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public String hexString() {
-        final int sizeWithExtensions = sizeWithExtensions();
+        final int resolvedSize = (names.length == 0) ? actualSize : sizeWithExtensions();
         HexFormat hex = HexFormat.of().withUpperCase();
-        int expectedNumBytes = (sizeWithExtensions + 7) / 8;
+        int expectedNumBytes = (resolvedSize + 7) / 8;
         byte[] bytes = reverseBits(bits.toByteArray());
         if (bytes.length < expectedNumBytes) {
             // Pad with 0's to get expected number of bytes
@@ -129,6 +137,17 @@ public abstract class Asn1Bitstring implements Asn1Type {
             throw new IllegalArgumentException("String too short: " + str + " (expected " + size + " bits) but got (" + chars.length + " bits)");
         }
 
+        // Read all bits in the string if there are no named bits
+        if (names.length == 0) {
+            for (int i = 0; i < chars.length; i++) {
+                char c = chars[i];
+                set(i, c == '1');
+            }
+            actualSize = chars.length;
+            return;
+        }
+
+        // Otherwise only read named bits and extensions
         for (int i = 0; i < size; i++) {
             char c = chars[i];
             set(i, c == '1');
@@ -157,6 +176,14 @@ public abstract class Asn1Bitstring implements Asn1Type {
         BitSet newBits = BitSet.valueOf(bytes);
         bits.clear();
         bits.or(newBits);
+
+        // If no named bits, set the actual size
+        if (names.length == 0) {
+            // We should check the JSON for the size field: Not yet supported since we are initially
+            // mainly concerned with deserializing XML.  For now sizes that aren't multiples
+            // of 8 won't round trip correctly for JSON.
+            actualSize = bytes.length * 8;
+        }
     }
 
     public String name(int index) {
