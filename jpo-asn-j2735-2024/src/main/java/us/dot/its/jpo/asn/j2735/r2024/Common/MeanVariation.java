@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = MeanVariation.MeanVariationDeserializer.class)
 public class MeanVariation extends Asn1Integer {
 
   public MeanVariation() {
@@ -38,16 +35,5 @@ public class MeanVariation extends Asn1Integer {
   public MeanVariation(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MeanVariationDeserializer extends IntegerDeserializer<MeanVariation> {
-    public MeanVariationDeserializer() {
-      super(MeanVariation.class);
-    }
-
-    @Override
-    protected MeanVariation construct() {
-      return new MeanVariation();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SPAT;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TimeIntervalConfidence.TimeIntervalConfidenceDeserializer.class)
 public class TimeIntervalConfidence extends Asn1Integer {
 
   public TimeIntervalConfidence() {
@@ -38,17 +35,5 @@ public class TimeIntervalConfidence extends Asn1Integer {
   public TimeIntervalConfidence(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TimeIntervalConfidenceDeserializer
-      extends IntegerDeserializer<TimeIntervalConfidence> {
-    public TimeIntervalConfidenceDeserializer() {
-      super(TimeIntervalConfidence.class);
-    }
-
-    @Override
-    protected TimeIntervalConfidence construct() {
-      return new TimeIntervalConfidence();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Elevation.ElevationDeserializer.class)
 public class Elevation extends Asn1Integer {
 
   public Elevation() {
@@ -38,16 +35,5 @@ public class Elevation extends Asn1Integer {
   public Elevation(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ElevationDeserializer extends IntegerDeserializer<Elevation> {
-    public ElevationDeserializer() {
-      super(Elevation.class);
-    }
-
-    @Override
-    protected Elevation construct() {
-      return new Elevation();
-    }
   }
 }

@@ -27,7 +27,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = VerticalAcceleration.VerticalAccelerationDeserializer.class)
 public class VerticalAcceleration extends Asn1Integer {
 
   public VerticalAcceleration() {
@@ -38,17 +37,5 @@ public class VerticalAcceleration extends Asn1Integer {
   public VerticalAcceleration(long value) {
     this();
     this.value = value;
-  }
-
-  public static class VerticalAccelerationDeserializer
-      extends IntegerDeserializer<VerticalAcceleration> {
-    public VerticalAccelerationDeserializer() {
-      super(VerticalAcceleration.class);
-    }
-
-    @Override
-    protected VerticalAcceleration construct() {
-      return new VerticalAcceleration();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = MinuteOfTheYear.MinuteOfTheYearDeserializer.class)
 public class MinuteOfTheYear extends Asn1Integer {
 
   public MinuteOfTheYear() {
@@ -38,16 +35,5 @@ public class MinuteOfTheYear extends Asn1Integer {
   public MinuteOfTheYear(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MinuteOfTheYearDeserializer extends IntegerDeserializer<MinuteOfTheYear> {
-    public MinuteOfTheYearDeserializer() {
-      super(MinuteOfTheYear.class);
-    }
-
-    @Override
-    protected MinuteOfTheYear construct() {
-      return new MinuteOfTheYear();
-    }
   }
 }

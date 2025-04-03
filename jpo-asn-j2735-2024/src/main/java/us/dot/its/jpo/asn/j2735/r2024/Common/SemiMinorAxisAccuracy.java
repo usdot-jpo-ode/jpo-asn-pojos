@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SemiMinorAxisAccuracy.SemiMinorAxisAccuracyDeserializer.class)
 public class SemiMinorAxisAccuracy extends Asn1Integer {
 
   public SemiMinorAxisAccuracy() {
@@ -38,17 +35,5 @@ public class SemiMinorAxisAccuracy extends Asn1Integer {
   public SemiMinorAxisAccuracy(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SemiMinorAxisAccuracyDeserializer
-      extends IntegerDeserializer<SemiMinorAxisAccuracy> {
-    public SemiMinorAxisAccuracyDeserializer() {
-      super(SemiMinorAxisAccuracy.class);
-    }
-
-    @Override
-    protected SemiMinorAxisAccuracy construct() {
-      return new SemiMinorAxisAccuracy();
-    }
   }
 }

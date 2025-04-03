@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DrivenLineOffsetSm.DrivenLineOffsetSmDeserializer.class)
 public class DrivenLineOffsetSm extends Asn1Integer {
 
   public DrivenLineOffsetSm() {
@@ -38,17 +35,5 @@ public class DrivenLineOffsetSm extends Asn1Integer {
   public DrivenLineOffsetSm(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DrivenLineOffsetSmDeserializer
-      extends IntegerDeserializer<DrivenLineOffsetSm> {
-    public DrivenLineOffsetSmDeserializer() {
-      super(DrivenLineOffsetSm.class);
-    }
-
-    @Override
-    protected DrivenLineOffsetSm construct() {
-      return new DrivenLineOffsetSm();
-    }
   }
 }
