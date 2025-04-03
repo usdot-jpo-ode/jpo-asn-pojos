@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#
+# This script is to be used during the PR review process to pull in any changes from a "main" branch
+# into the branch under review, in the event the clases need to be regenerated.  It pulls in the
+# subset of classes in this and previously merged PRs.
+#
+# Prerequisites:
+#   Git Bash shell
+#
 
 # echo on
 set -x
