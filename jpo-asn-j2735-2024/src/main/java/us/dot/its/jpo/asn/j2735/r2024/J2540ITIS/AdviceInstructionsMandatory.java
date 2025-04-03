@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = AdviceInstructionsMandatory.AdviceInstructionsMandatoryDeserializer.class)
 public class AdviceInstructionsMandatory extends Asn1Integer {
 
   public AdviceInstructionsMandatory() {
@@ -38,17 +35,5 @@ public class AdviceInstructionsMandatory extends Asn1Integer {
   public AdviceInstructionsMandatory(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AdviceInstructionsMandatoryDeserializer
-      extends IntegerDeserializer<AdviceInstructionsMandatory> {
-    public AdviceInstructionsMandatoryDeserializer() {
-      super(AdviceInstructionsMandatory.class);
-    }
-
-    @Override
-    protected AdviceInstructionsMandatory construct() {
-      return new AdviceInstructionsMandatory();
-    }
   }
 }

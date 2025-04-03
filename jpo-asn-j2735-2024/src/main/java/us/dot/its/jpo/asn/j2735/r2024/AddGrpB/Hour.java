@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Hour.HourDeserializer.class)
 public class Hour extends Asn1Integer {
 
   public Hour() {
@@ -38,16 +35,5 @@ public class Hour extends Asn1Integer {
   public Hour(long value) {
     this();
     this.value = value;
-  }
-
-  public static class HourDeserializer extends IntegerDeserializer<Hour> {
-    public HourDeserializer() {
-      super(Hour.class);
-    }
-
-    @Override
-    protected Hour construct() {
-      return new Hour();
-    }
   }
 }

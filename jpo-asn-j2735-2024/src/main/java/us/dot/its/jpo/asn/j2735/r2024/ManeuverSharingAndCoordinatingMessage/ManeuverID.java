@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ManeuverSharingAndCoordinatingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ManeuverID.ManeuverIDDeserializer.class)
 public class ManeuverID extends Asn1Integer {
 
   public ManeuverID() {
@@ -38,16 +35,5 @@ public class ManeuverID extends Asn1Integer {
   public ManeuverID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ManeuverIDDeserializer extends IntegerDeserializer<ManeuverID> {
-    public ManeuverIDDeserializer() {
-      super(ManeuverID.class);
-    }
-
-    @Override
-    protected ManeuverID construct() {
-      return new ManeuverID();
-    }
   }
 }

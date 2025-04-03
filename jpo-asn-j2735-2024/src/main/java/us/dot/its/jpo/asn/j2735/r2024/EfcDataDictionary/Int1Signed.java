@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Int1Signed.Int1SignedDeserializer.class)
 public class Int1Signed extends Asn1Integer {
 
   public Int1Signed() {
@@ -38,16 +35,5 @@ public class Int1Signed extends Asn1Integer {
   public Int1Signed(long value) {
     this();
     this.value = value;
-  }
-
-  public static class Int1SignedDeserializer extends IntegerDeserializer<Int1Signed> {
-    public Int1SignedDeserializer() {
-      super(Int1Signed.class);
-    }
-
-    @Override
-    protected Int1Signed construct() {
-      return new Int1Signed();
-    }
   }
 }

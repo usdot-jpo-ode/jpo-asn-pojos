@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DSecond.DSecondDeserializer.class)
 public class DSecond extends Asn1Integer {
 
   public DSecond() {
@@ -38,16 +35,5 @@ public class DSecond extends Asn1Integer {
   public DSecond(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DSecondDeserializer extends IntegerDeserializer<DSecond> {
-    public DSecondDeserializer() {
-      super(DSecond.class);
-    }
-
-    @Override
-    protected DSecond construct() {
-      return new DSecond();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = AxleWeight.AxleWeightDeserializer.class)
 public class AxleWeight extends Asn1Integer {
 
   public AxleWeight() {
@@ -38,16 +35,5 @@ public class AxleWeight extends Asn1Integer {
   public AxleWeight(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AxleWeightDeserializer extends IntegerDeserializer<AxleWeight> {
-    public AxleWeightDeserializer() {
-      super(AxleWeight.class);
-    }
-
-    @Override
-    protected AxleWeight construct() {
-      return new AxleWeight();
-    }
   }
 }

@@ -42,5 +42,4 @@ public class EquipmentObuId extends Asn1OctetString {
     this();
     setValue(value);
   }
-
 }

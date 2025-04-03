@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SpecialEvents.SpecialEventsDeserializer.class)
 public class SpecialEvents extends Asn1Integer {
 
   public SpecialEvents() {
@@ -38,16 +35,5 @@ public class SpecialEvents extends Asn1Integer {
   public SpecialEvents(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SpecialEventsDeserializer extends IntegerDeserializer<SpecialEvents> {
-    public SpecialEventsDeserializer() {
-      super(SpecialEvents.class);
-    }
-
-    @Override
-    protected SpecialEvents construct() {
-      return new SpecialEvents();
-    }
   }
 }

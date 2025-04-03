@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Angle.AngleDeserializer.class)
 public class Angle extends Asn1Integer {
 
   public Angle() {
@@ -38,16 +35,5 @@ public class Angle extends Asn1Integer {
   public Angle(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AngleDeserializer extends IntegerDeserializer<Angle> {
-    public AngleDeserializer() {
-      super(Angle.class);
-    }
-
-    @Override
-    protected Angle construct() {
-      return new Angle();
-    }
   }
 }

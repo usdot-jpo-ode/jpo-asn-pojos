@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = GenericLocations.GenericLocationsDeserializer.class)
 public class GenericLocations extends Asn1Integer {
 
   public GenericLocations() {
@@ -38,16 +35,5 @@ public class GenericLocations extends Asn1Integer {
   public GenericLocations(long value) {
     this();
     this.value = value;
-  }
-
-  public static class GenericLocationsDeserializer extends IntegerDeserializer<GenericLocations> {
-    public GenericLocationsDeserializer() {
-      super(GenericLocations.class);
-    }
-
-    @Override
-    protected GenericLocations construct() {
-      return new GenericLocations();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DeltaAngle.DeltaAngleDeserializer.class)
 public class DeltaAngle extends Asn1Integer {
 
   public DeltaAngle() {
@@ -38,16 +35,5 @@ public class DeltaAngle extends Asn1Integer {
   public DeltaAngle(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DeltaAngleDeserializer extends IntegerDeserializer<DeltaAngle> {
-    public DeltaAngleDeserializer() {
-      super(DeltaAngle.class);
-    }
-
-    @Override
-    protected DeltaAngle construct() {
-      return new DeltaAngle();
-    }
   }
 }

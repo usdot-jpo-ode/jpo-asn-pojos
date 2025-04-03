@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = Latitude.LatitudeDeserializer.class)
 public class Latitude extends Int4Signed {
 
   public Latitude() {
@@ -37,16 +34,5 @@ public class Latitude extends Int4Signed {
   public Latitude(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LatitudeDeserializer extends IntegerDeserializer<Latitude> {
-    public LatitudeDeserializer() {
-      super(Latitude.class);
-    }
-
-    @Override
-    protected Latitude construct() {
-      return new Latitude();
-    }
   }
 }

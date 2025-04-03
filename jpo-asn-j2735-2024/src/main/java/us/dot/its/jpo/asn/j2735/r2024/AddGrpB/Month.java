@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Month.MonthDeserializer.class)
 public class Month extends Asn1Integer {
 
   public Month() {
@@ -38,16 +35,5 @@ public class Month extends Asn1Integer {
   public Month(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MonthDeserializer extends IntegerDeserializer<Month> {
-    public MonthDeserializer() {
-      super(Month.class);
-    }
-
-    @Override
-    protected Month construct() {
-      return new Month();
-    }
   }
 }

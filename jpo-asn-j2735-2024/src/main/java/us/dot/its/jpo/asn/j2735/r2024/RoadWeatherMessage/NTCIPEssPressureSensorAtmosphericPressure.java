@@ -23,14 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using =
-        NTCIPEssPressureSensorAtmosphericPressure
-            .NTCIPEssPressureSensorAtmosphericPressureDeserializer.class)
 public class NTCIPEssPressureSensorAtmosphericPressure extends Asn1Integer {
 
   public NTCIPEssPressureSensorAtmosphericPressure() {
@@ -41,17 +35,5 @@ public class NTCIPEssPressureSensorAtmosphericPressure extends Asn1Integer {
   public NTCIPEssPressureSensorAtmosphericPressure(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPEssPressureSensorAtmosphericPressureDeserializer
-      extends IntegerDeserializer<NTCIPEssPressureSensorAtmosphericPressure> {
-    public NTCIPEssPressureSensorAtmosphericPressureDeserializer() {
-      super(NTCIPEssPressureSensorAtmosphericPressure.class);
-    }
-
-    @Override
-    protected NTCIPEssPressureSensorAtmosphericPressure construct() {
-      return new NTCIPEssPressureSensorAtmosphericPressure();
-    }
   }
 }

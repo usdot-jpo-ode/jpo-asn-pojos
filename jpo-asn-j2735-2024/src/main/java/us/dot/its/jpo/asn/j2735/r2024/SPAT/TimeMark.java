@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SPAT;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TimeMark.TimeMarkDeserializer.class)
 public class TimeMark extends Asn1Integer {
 
   public TimeMark() {
@@ -38,16 +35,5 @@ public class TimeMark extends Asn1Integer {
   public TimeMark(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TimeMarkDeserializer extends IntegerDeserializer<TimeMark> {
-    public TimeMarkDeserializer() {
-      super(TimeMark.class);
-    }
-
-    @Override
-    protected TimeMark construct() {
-      return new TimeMark();
-    }
   }
 }

@@ -42,5 +42,4 @@ public class EquipmentIccId extends Asn1OctetString {
     this();
     setValue(value);
   }
-
 }

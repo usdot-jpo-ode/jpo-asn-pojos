@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = EmissionUnit.EmissionUnitDeserializer.class)
 public class EmissionUnit extends Asn1Integer {
 
   public EmissionUnit() {
@@ -38,16 +35,5 @@ public class EmissionUnit extends Asn1Integer {
   public EmissionUnit(long value) {
     this();
     this.value = value;
-  }
-
-  public static class EmissionUnitDeserializer extends IntegerDeserializer<EmissionUnit> {
-    public EmissionUnitDeserializer() {
-      super(EmissionUnit.class);
-    }
-
-    @Override
-    protected EmissionUnit construct() {
-      return new EmissionUnit();
-    }
   }
 }

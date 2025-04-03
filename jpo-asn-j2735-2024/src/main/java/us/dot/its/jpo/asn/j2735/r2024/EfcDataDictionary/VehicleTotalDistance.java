@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = VehicleTotalDistance.VehicleTotalDistanceDeserializer.class)
 public class VehicleTotalDistance extends Int4Unsigned {
 
   public VehicleTotalDistance() {
@@ -37,17 +34,5 @@ public class VehicleTotalDistance extends Int4Unsigned {
   public VehicleTotalDistance(long value) {
     this();
     this.value = value;
-  }
-
-  public static class VehicleTotalDistanceDeserializer
-      extends IntegerDeserializer<VehicleTotalDistance> {
-    public VehicleTotalDistanceDeserializer() {
-      super(VehicleTotalDistance.class);
-    }
-
-    @Override
-    protected VehicleTotalDistance construct() {
-      return new VehicleTotalDistance();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Weekday.WeekdayDeserializer.class)
 public class Weekday extends Asn1Integer {
 
   public Weekday() {
@@ -38,16 +35,5 @@ public class Weekday extends Asn1Integer {
   public Weekday(long value) {
     this();
     this.value = value;
-  }
-
-  public static class WeekdayDeserializer extends IntegerDeserializer<Weekday> {
-    public WeekdayDeserializer() {
-      super(Weekday.class);
-    }
-
-    @Override
-    protected Weekday construct() {
-      return new Weekday();
-    }
   }
 }

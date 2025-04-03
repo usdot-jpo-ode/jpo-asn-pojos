@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Closures.ClosuresDeserializer.class)
 public class Closures extends Asn1Integer {
 
   public Closures() {
@@ -38,16 +35,5 @@ public class Closures extends Asn1Integer {
   public Closures(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ClosuresDeserializer extends IntegerDeserializer<Closures> {
-    public ClosuresDeserializer() {
-      super(Closures.class);
-    }
-
-    @Override
-    protected Closures construct() {
-      return new Closures();
-    }
   }
 }

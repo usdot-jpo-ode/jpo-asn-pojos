@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DeviceStatus.DeviceStatusDeserializer.class)
 public class DeviceStatus extends Asn1Integer {
 
   public DeviceStatus() {
@@ -38,16 +35,5 @@ public class DeviceStatus extends Asn1Integer {
   public DeviceStatus(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DeviceStatusDeserializer extends IntegerDeserializer<DeviceStatus> {
-    public DeviceStatusDeserializer() {
-      super(DeviceStatus.class);
-    }
-
-    @Override
-    protected DeviceStatus construct() {
-      return new DeviceStatus();
-    }
   }
 }

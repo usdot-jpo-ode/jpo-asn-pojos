@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = TariffClassId.TariffClassIdDeserializer.class)
 public class TariffClassId extends Int4Unsigned {
 
   public TariffClassId() {
@@ -37,16 +34,5 @@ public class TariffClassId extends Int4Unsigned {
   public TariffClassId(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TariffClassIdDeserializer extends IntegerDeserializer<TariffClassId> {
-    public TariffClassIdDeserializer() {
-      super(TariffClassId.class);
-    }
-
-    @Override
-    protected TariffClassId construct() {
-      return new TariffClassId();
-    }
   }
 }

@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = ReceiptServiceSerialNumber.ReceiptServiceSerialNumberDeserializer.class)
 public class ReceiptServiceSerialNumber extends Int3Unsigned {
 
   public ReceiptServiceSerialNumber() {
@@ -37,17 +34,5 @@ public class ReceiptServiceSerialNumber extends Int3Unsigned {
   public ReceiptServiceSerialNumber(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ReceiptServiceSerialNumberDeserializer
-      extends IntegerDeserializer<ReceiptServiceSerialNumber> {
-    public ReceiptServiceSerialNumberDeserializer() {
-      super(ReceiptServiceSerialNumber.class);
-    }
-
-    @Override
-    protected ReceiptServiceSerialNumber construct() {
-      return new ReceiptServiceSerialNumber();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SteeringAxleTemperature.SteeringAxleTemperatureDeserializer.class)
 public class SteeringAxleTemperature extends Asn1Integer {
 
   public SteeringAxleTemperature() {
@@ -38,17 +35,5 @@ public class SteeringAxleTemperature extends Asn1Integer {
   public SteeringAxleTemperature(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SteeringAxleTemperatureDeserializer
-      extends IntegerDeserializer<SteeringAxleTemperature> {
-    public SteeringAxleTemperatureDeserializer() {
-      super(SteeringAxleTemperature.class);
-    }
-
-    @Override
-    protected SteeringAxleTemperature construct() {
-      return new SteeringAxleTemperature();
-    }
   }
 }

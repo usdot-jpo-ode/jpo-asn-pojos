@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = CO2EmissionValue.CO2EmissionValueDeserializer.class)
 public class CO2EmissionValue extends Int2Unsigned {
 
   public CO2EmissionValue() {
@@ -37,16 +34,5 @@ public class CO2EmissionValue extends Int2Unsigned {
   public CO2EmissionValue(long value) {
     this();
     this.value = value;
-  }
-
-  public static class CO2EmissionValueDeserializer extends IntegerDeserializer<CO2EmissionValue> {
-    public CO2EmissionValueDeserializer() {
-      super(CO2EmissionValue.class);
-    }
-
-    @Override
-    protected CO2EmissionValue construct() {
-      return new CO2EmissionValue();
-    }
   }
 }

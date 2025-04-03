@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SuggestionAdvice.SuggestionAdviceDeserializer.class)
 public class SuggestionAdvice extends Asn1Integer {
 
   public SuggestionAdvice() {
@@ -38,16 +35,5 @@ public class SuggestionAdvice extends Asn1Integer {
   public SuggestionAdvice(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SuggestionAdviceDeserializer extends IntegerDeserializer<SuggestionAdvice> {
-    public SuggestionAdviceDeserializer() {
-      super(SuggestionAdvice.class);
-    }
-
-    @Override
-    protected SuggestionAdvice construct() {
-      return new SuggestionAdvice();
-    }
   }
 }

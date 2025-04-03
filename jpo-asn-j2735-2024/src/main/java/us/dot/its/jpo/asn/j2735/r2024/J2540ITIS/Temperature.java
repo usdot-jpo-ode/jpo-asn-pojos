@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Temperature.TemperatureDeserializer.class)
 public class Temperature extends Asn1Integer {
 
   public Temperature() {
@@ -38,16 +35,5 @@ public class Temperature extends Asn1Integer {
   public Temperature(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TemperatureDeserializer extends IntegerDeserializer<Temperature> {
-    public TemperatureDeserializer() {
-      super(Temperature.class);
-    }
-
-    @Override
-    protected Temperature construct() {
-      return new Temperature();
-    }
   }
 }

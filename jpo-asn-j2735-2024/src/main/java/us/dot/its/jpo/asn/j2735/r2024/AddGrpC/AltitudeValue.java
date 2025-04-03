@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpC;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = AltitudeValue.AltitudeValueDeserializer.class)
 public class AltitudeValue extends Asn1Integer {
 
   public AltitudeValue() {
@@ -38,16 +35,5 @@ public class AltitudeValue extends Asn1Integer {
   public AltitudeValue(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AltitudeValueDeserializer extends IntegerDeserializer<AltitudeValue> {
-    public AltitudeValueDeserializer() {
-      super(AltitudeValue.class);
-    }
-
-    @Override
-    protected AltitudeValue construct() {
-      return new AltitudeValue();
-    }
   }
 }

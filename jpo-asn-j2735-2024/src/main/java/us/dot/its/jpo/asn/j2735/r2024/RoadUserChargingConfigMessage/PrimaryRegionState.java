@@ -66,7 +66,6 @@ public class PrimaryRegionState extends Asn1Sequence {
       this();
       this.value = value;
     }
-
   }
 
   @Asn1Property(tag = 1, name = "chargingFees", optional = true)

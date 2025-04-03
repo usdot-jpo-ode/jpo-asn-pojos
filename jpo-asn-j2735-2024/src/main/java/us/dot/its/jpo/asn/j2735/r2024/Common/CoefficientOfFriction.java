@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = CoefficientOfFriction.CoefficientOfFrictionDeserializer.class)
 public class CoefficientOfFriction extends Asn1Integer {
 
   public CoefficientOfFriction() {
@@ -38,17 +35,5 @@ public class CoefficientOfFriction extends Asn1Integer {
   public CoefficientOfFriction(long value) {
     this();
     this.value = value;
-  }
-
-  public static class CoefficientOfFrictionDeserializer
-      extends IntegerDeserializer<CoefficientOfFriction> {
-    public CoefficientOfFrictionDeserializer() {
-      super(CoefficientOfFriction.class);
-    }
-
-    @Override
-    protected CoefficientOfFriction construct() {
-      return new CoefficientOfFriction();
-    }
   }
 }

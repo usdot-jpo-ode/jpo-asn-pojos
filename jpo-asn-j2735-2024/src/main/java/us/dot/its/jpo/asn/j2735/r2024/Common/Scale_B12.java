@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Scale_B12.Scale_B12Deserializer.class)
 public class Scale_B12 extends Asn1Integer {
 
   public Scale_B12() {
@@ -38,16 +35,5 @@ public class Scale_B12 extends Asn1Integer {
   public Scale_B12(long value) {
     this();
     this.value = value;
-  }
-
-  public static class Scale_B12Deserializer extends IntegerDeserializer<Scale_B12> {
-    public Scale_B12Deserializer() {
-      super(Scale_B12.class);
-    }
-
-    @Override
-    protected Scale_B12 construct() {
-      return new Scale_B12();
-    }
   }
 }

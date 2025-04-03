@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = ActualNumberOfPassengers.ActualNumberOfPassengersDeserializer.class)
 public class ActualNumberOfPassengers extends Int1Unsigned {
 
   public ActualNumberOfPassengers() {
@@ -37,17 +34,5 @@ public class ActualNumberOfPassengers extends Int1Unsigned {
   public ActualNumberOfPassengers(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ActualNumberOfPassengersDeserializer
-      extends IntegerDeserializer<ActualNumberOfPassengers> {
-    public ActualNumberOfPassengersDeserializer() {
-      super(ActualNumberOfPassengers.class);
-    }
-
-    @Override
-    protected ActualNumberOfPassengers construct() {
-      return new ActualNumberOfPassengers();
-    }
   }
 }

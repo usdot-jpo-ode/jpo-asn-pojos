@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Int8Unsigned.Int8UnsignedDeserializer.class)
 public class Int8Unsigned extends Asn1Integer {
 
   public Int8Unsigned() {
@@ -38,16 +35,5 @@ public class Int8Unsigned extends Asn1Integer {
   public Int8Unsigned(long value) {
     this();
     this.value = value;
-  }
-
-  public static class Int8UnsignedDeserializer extends IntegerDeserializer<Int8Unsigned> {
-    public Int8UnsignedDeserializer() {
-      super(Int8Unsigned.class);
-    }
-
-    @Override
-    protected Int8Unsigned construct() {
-      return new Int8Unsigned();
-    }
   }
 }

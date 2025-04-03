@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.NTCIP;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = EssSolarRadiation.EssSolarRadiationDeserializer.class)
 public class EssSolarRadiation extends Asn1Integer {
 
   public EssSolarRadiation() {
@@ -38,16 +35,5 @@ public class EssSolarRadiation extends Asn1Integer {
   public EssSolarRadiation(long value) {
     this();
     this.value = value;
-  }
-
-  public static class EssSolarRadiationDeserializer extends IntegerDeserializer<EssSolarRadiation> {
-    public EssSolarRadiationDeserializer() {
-      super(EssSolarRadiation.class);
-    }
-
-    @Override
-    protected EssSolarRadiation construct() {
-      return new EssSolarRadiation();
-    }
   }
 }

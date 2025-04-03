@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = AmbientAirTemperature.AmbientAirTemperatureDeserializer.class)
 public class AmbientAirTemperature extends Asn1Integer {
 
   public AmbientAirTemperature() {
@@ -38,17 +35,5 @@ public class AmbientAirTemperature extends Asn1Integer {
   public AmbientAirTemperature(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AmbientAirTemperatureDeserializer
-      extends IntegerDeserializer<AmbientAirTemperature> {
-    public AmbientAirTemperatureDeserializer() {
-      super(AmbientAirTemperature.class);
-    }
-
-    @Override
-    protected AmbientAirTemperature construct() {
-      return new AmbientAirTemperature();
-    }
   }
 }

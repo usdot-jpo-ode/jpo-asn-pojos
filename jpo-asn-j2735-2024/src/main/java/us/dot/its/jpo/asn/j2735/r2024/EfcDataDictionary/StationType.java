@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = StationType.StationTypeDeserializer.class)
 public class StationType extends Asn1Integer {
 
   public StationType() {
@@ -38,16 +35,5 @@ public class StationType extends Asn1Integer {
   public StationType(long value) {
     this();
     this.value = value;
-  }
-
-  public static class StationTypeDeserializer extends IntegerDeserializer<StationType> {
-    public StationTypeDeserializer() {
-      super(StationType.class);
-    }
-
-    @Override
-    protected StationType construct() {
-      return new StationType();
-    }
   }
 }

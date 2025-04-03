@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = Altitude.AltitudeDeserializer.class)
 public class Altitude extends Int2Signed {
 
   public Altitude() {
@@ -37,16 +34,5 @@ public class Altitude extends Int2Signed {
   public Altitude(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AltitudeDeserializer extends IntegerDeserializer<Altitude> {
-    public AltitudeDeserializer() {
-      super(Altitude.class);
-    }
-
-    @Override
-    protected Altitude construct() {
-      return new Altitude();
-    }
   }
 }

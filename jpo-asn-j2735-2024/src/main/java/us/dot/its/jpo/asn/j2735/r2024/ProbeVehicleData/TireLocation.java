@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TireLocation.TireLocationDeserializer.class)
 public class TireLocation extends Asn1Integer {
 
   public TireLocation() {
@@ -38,16 +35,5 @@ public class TireLocation extends Asn1Integer {
   public TireLocation(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TireLocationDeserializer extends IntegerDeserializer<TireLocation> {
-    public TireLocationDeserializer() {
-      super(TireLocation.class);
-    }
-
-    @Override
-    protected TireLocation construct() {
-      return new TireLocation();
-    }
   }
 }

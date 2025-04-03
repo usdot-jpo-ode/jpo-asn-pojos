@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = LocalVehicleClassId.LocalVehicleClassIdDeserializer.class)
 public class LocalVehicleClassId extends Int2Unsigned {
 
   public LocalVehicleClassId() {
@@ -37,17 +34,5 @@ public class LocalVehicleClassId extends Int2Unsigned {
   public LocalVehicleClassId(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LocalVehicleClassIdDeserializer
-      extends IntegerDeserializer<LocalVehicleClassId> {
-    public LocalVehicleClassIdDeserializer() {
-      super(LocalVehicleClassId.class);
-    }
-
-    @Override
-    protected LocalVehicleClassId construct() {
-      return new LocalVehicleClassId();
-    }
   }
 }

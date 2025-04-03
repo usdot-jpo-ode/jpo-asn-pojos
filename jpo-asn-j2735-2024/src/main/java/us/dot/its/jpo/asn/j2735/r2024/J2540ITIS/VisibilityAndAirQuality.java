@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = VisibilityAndAirQuality.VisibilityAndAirQualityDeserializer.class)
 public class VisibilityAndAirQuality extends Asn1Integer {
 
   public VisibilityAndAirQuality() {
@@ -38,17 +35,5 @@ public class VisibilityAndAirQuality extends Asn1Integer {
   public VisibilityAndAirQuality(long value) {
     this();
     this.value = value;
-  }
-
-  public static class VisibilityAndAirQualityDeserializer
-      extends IntegerDeserializer<VisibilityAndAirQuality> {
-    public VisibilityAndAirQualityDeserializer() {
-      super(VisibilityAndAirQuality.class);
-    }
-
-    @Override
-    protected VisibilityAndAirQuality construct() {
-      return new VisibilityAndAirQuality();
-    }
   }
 }

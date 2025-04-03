@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Roadwork.RoadworkDeserializer.class)
 public class Roadwork extends Asn1Integer {
 
   public Roadwork() {
@@ -38,16 +35,5 @@ public class Roadwork extends Asn1Integer {
   public Roadwork(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RoadworkDeserializer extends IntegerDeserializer<Roadwork> {
-    public RoadworkDeserializer() {
-      super(Roadwork.class);
-    }
-
-    @Override
-    protected Roadwork construct() {
-      return new Roadwork();
-    }
   }
 }

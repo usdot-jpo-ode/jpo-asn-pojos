@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeDataManagement;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TermDistance.TermDistanceDeserializer.class)
 public class TermDistance extends Asn1Integer {
 
   public TermDistance() {
@@ -38,16 +35,5 @@ public class TermDistance extends Asn1Integer {
   public TermDistance(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TermDistanceDeserializer extends IntegerDeserializer<TermDistance> {
-    public TermDistanceDeserializer() {
-      super(TermDistance.class);
-    }
-
-    @Override
-    protected TermDistance construct() {
-      return new TermDistance();
-    }
   }
 }

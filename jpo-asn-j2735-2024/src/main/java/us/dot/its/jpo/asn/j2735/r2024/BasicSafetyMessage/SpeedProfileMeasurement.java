@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.BasicSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import us.dot.its.jpo.asn.j2735.r2024.Common.GrossSpeed;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = SpeedProfileMeasurement.SpeedProfileMeasurementDeserializer.class)
 public class SpeedProfileMeasurement extends GrossSpeed {
 
   public SpeedProfileMeasurement() {
@@ -38,17 +35,5 @@ public class SpeedProfileMeasurement extends GrossSpeed {
   public SpeedProfileMeasurement(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SpeedProfileMeasurementDeserializer
-      extends IntegerDeserializer<SpeedProfileMeasurement> {
-    public SpeedProfileMeasurementDeserializer() {
-      super(SpeedProfileMeasurement.class);
-    }
-
-    @Override
-    protected SpeedProfileMeasurement construct() {
-      return new SpeedProfileMeasurement();
-    }
   }
 }

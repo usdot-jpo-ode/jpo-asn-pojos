@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = YawRate.YawRateDeserializer.class)
 public class YawRate extends Asn1Integer {
 
   public YawRate() {
@@ -38,16 +35,5 @@ public class YawRate extends Asn1Integer {
   public YawRate(long value) {
     this();
     this.value = value;
-  }
-
-  public static class YawRateDeserializer extends IntegerDeserializer<YawRate> {
-    public YawRateDeserializer() {
-      super(YawRate.class);
-    }
-
-    @Override
-    protected YawRate construct() {
-      return new YawRate();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SizeValue.SizeValueDeserializer.class)
 public class SizeValue extends Asn1Integer {
 
   public SizeValue() {
@@ -38,16 +35,5 @@ public class SizeValue extends Asn1Integer {
   public SizeValue(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SizeValueDeserializer extends IntegerDeserializer<SizeValue> {
-    public SizeValueDeserializer() {
-      super(SizeValue.class);
-    }
-
-    @Override
-    protected SizeValue construct() {
-      return new SizeValue();
-    }
   }
 }

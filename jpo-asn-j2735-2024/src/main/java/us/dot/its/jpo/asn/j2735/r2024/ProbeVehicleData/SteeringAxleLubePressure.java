@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SteeringAxleLubePressure.SteeringAxleLubePressureDeserializer.class)
 public class SteeringAxleLubePressure extends Asn1Integer {
 
   public SteeringAxleLubePressure() {
@@ -38,17 +35,5 @@ public class SteeringAxleLubePressure extends Asn1Integer {
   public SteeringAxleLubePressure(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SteeringAxleLubePressureDeserializer
-      extends IntegerDeserializer<SteeringAxleLubePressure> {
-    public SteeringAxleLubePressureDeserializer() {
-      super(SteeringAxleLubePressure.class);
-    }
-
-    @Override
-    protected SteeringAxleLubePressure construct() {
-      return new SteeringAxleLubePressure();
-    }
   }
 }

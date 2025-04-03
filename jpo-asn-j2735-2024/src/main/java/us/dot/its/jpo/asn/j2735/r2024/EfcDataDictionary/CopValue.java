@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = CopValue.CopValueDeserializer.class)
 public class CopValue extends Asn1Integer {
 
   public CopValue() {
@@ -38,16 +35,5 @@ public class CopValue extends Asn1Integer {
   public CopValue(long value) {
     this();
     this.value = value;
-  }
-
-  public static class CopValueDeserializer extends IntegerDeserializer<CopValue> {
-    public CopValueDeserializer() {
-      super(CopValue.class);
-    }
-
-    @Override
-    protected CopValue construct() {
-      return new CopValue();
-    }
   }
 }

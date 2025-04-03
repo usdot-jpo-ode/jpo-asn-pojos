@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = FuelType.FuelTypeDeserializer.class)
 public class FuelType extends Asn1Integer {
 
   public FuelType() {
@@ -38,16 +35,5 @@ public class FuelType extends Asn1Integer {
   public FuelType(long value) {
     this();
     this.value = value;
-  }
-
-  public static class FuelTypeDeserializer extends IntegerDeserializer<FuelType> {
-    public FuelTypeDeserializer() {
-      super(FuelType.class);
-    }
-
-    @Override
-    protected FuelType construct() {
-      return new FuelType();
-    }
   }
 }

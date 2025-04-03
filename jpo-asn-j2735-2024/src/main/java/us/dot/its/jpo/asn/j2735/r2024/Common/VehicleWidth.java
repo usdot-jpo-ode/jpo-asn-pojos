@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = VehicleWidth.VehicleWidthDeserializer.class)
 public class VehicleWidth extends Asn1Integer {
 
   public VehicleWidth() {
@@ -38,16 +35,5 @@ public class VehicleWidth extends Asn1Integer {
   public VehicleWidth(long value) {
     this();
     this.value = value;
-  }
-
-  public static class VehicleWidthDeserializer extends IntegerDeserializer<VehicleWidth> {
-    public VehicleWidthDeserializer() {
-      super(VehicleWidth.class);
-    }
-
-    @Override
-    protected VehicleWidth construct() {
-      return new VehicleWidth();
-    }
   }
 }

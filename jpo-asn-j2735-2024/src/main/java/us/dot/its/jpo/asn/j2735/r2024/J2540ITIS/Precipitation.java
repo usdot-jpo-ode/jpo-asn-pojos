@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Precipitation.PrecipitationDeserializer.class)
 public class Precipitation extends Asn1Integer {
 
   public Precipitation() {
@@ -38,16 +35,5 @@ public class Precipitation extends Asn1Integer {
   public Precipitation(long value) {
     this();
     this.value = value;
-  }
-
-  public static class PrecipitationDeserializer extends IntegerDeserializer<Precipitation> {
-    public PrecipitationDeserializer() {
-      super(Precipitation.class);
-    }
-
-    @Override
-    protected Precipitation construct() {
-      return new Precipitation();
-    }
   }
 }

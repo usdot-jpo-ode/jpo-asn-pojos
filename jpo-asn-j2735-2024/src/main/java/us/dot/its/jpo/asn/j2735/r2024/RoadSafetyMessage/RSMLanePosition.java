@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = RSMLanePosition.RSMLanePositionDeserializer.class)
 public class RSMLanePosition extends Asn1Integer {
 
   public RSMLanePosition() {
@@ -38,16 +35,5 @@ public class RSMLanePosition extends Asn1Integer {
   public RSMLanePosition(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RSMLanePositionDeserializer extends IntegerDeserializer<RSMLanePosition> {
-    public RSMLanePositionDeserializer() {
-      super(RSMLanePosition.class);
-    }
-
-    @Override
-    protected RSMLanePosition construct() {
-      return new RSMLanePosition();
-    }
   }
 }

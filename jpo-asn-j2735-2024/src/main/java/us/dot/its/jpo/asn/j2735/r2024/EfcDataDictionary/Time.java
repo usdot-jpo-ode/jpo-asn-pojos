@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = Time.TimeDeserializer.class)
 public class Time extends Int4Unsigned {
 
   public Time() {
@@ -37,16 +34,5 @@ public class Time extends Int4Unsigned {
   public Time(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TimeDeserializer extends IntegerDeserializer<Time> {
-    public TimeDeserializer() {
-      super(Time.class);
-    }
-
-    @Override
-    protected Time construct() {
-      return new Time();
-    }
   }
 }

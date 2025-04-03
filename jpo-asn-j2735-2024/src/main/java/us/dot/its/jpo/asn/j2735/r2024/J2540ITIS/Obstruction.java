@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Obstruction.ObstructionDeserializer.class)
 public class Obstruction extends Asn1Integer {
 
   public Obstruction() {
@@ -38,16 +35,5 @@ public class Obstruction extends Asn1Integer {
   public Obstruction(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ObstructionDeserializer extends IntegerDeserializer<Obstruction> {
-    public ObstructionDeserializer() {
-      super(Obstruction.class);
-    }
-
-    @Override
-    protected Obstruction construct() {
-      return new Obstruction();
-    }
   }
 }

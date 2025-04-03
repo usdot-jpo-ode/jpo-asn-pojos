@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = VehicleWeightLaden.VehicleWeightLadenDeserializer.class)
 public class VehicleWeightLaden extends Int2Unsigned {
 
   public VehicleWeightLaden() {
@@ -37,17 +34,5 @@ public class VehicleWeightLaden extends Int2Unsigned {
   public VehicleWeightLaden(long value) {
     this();
     this.value = value;
-  }
-
-  public static class VehicleWeightLadenDeserializer
-      extends IntegerDeserializer<VehicleWeightLaden> {
-    public VehicleWeightLadenDeserializer() {
-      super(VehicleWeightLaden.class);
-    }
-
-    @Override
-    protected VehicleWeightLaden construct() {
-      return new VehicleWeightLaden();
-    }
   }
 }

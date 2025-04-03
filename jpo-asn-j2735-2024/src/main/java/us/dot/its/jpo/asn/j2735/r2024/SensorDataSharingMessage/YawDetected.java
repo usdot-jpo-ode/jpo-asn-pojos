@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = YawDetected.YawDetectedDeserializer.class)
 public class YawDetected extends Asn1Integer {
 
   public YawDetected() {
@@ -38,16 +35,5 @@ public class YawDetected extends Asn1Integer {
   public YawDetected(long value) {
     this();
     this.value = value;
-  }
-
-  public static class YawDetectedDeserializer extends IntegerDeserializer<YawDetected> {
-    public YawDetectedDeserializer() {
-      super(YawDetected.class);
-    }
-
-    @Override
-    protected YawDetected construct() {
-      return new YawDetected();
-    }
   }
 }

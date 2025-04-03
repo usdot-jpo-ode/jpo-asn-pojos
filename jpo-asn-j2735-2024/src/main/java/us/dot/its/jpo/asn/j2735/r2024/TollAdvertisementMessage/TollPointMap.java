@@ -109,7 +109,7 @@ public class TollPointMap extends Asn1Sequence {
   // REMOVED JacksonXmlElementWrapper and @JacksonXmlProperty annotations
   @Asn1Property(tag = 5, name = "tollZoneLanesMap")
   @JsonProperty("tollZoneLanesMap")
-  @JsonSerialize(using = SequenceOfTollZoneLanesMapSerializer.class)  // ADDED
+  @JsonSerialize(using = SequenceOfTollZoneLanesMapSerializer.class) // ADDED
   private SequenceOfTollZoneLanesMap tollZoneLanesMap;
 
   public static class RevisionNumInteger extends Asn1Integer {
@@ -140,18 +140,21 @@ public class TollPointMap extends Asn1Sequence {
 
     // ADDED
     public static class SequenceOfTollZoneLanesMapSerializer
-      extends StdSerializer<SequenceOfTollZoneLanesMap> {
+        extends StdSerializer<SequenceOfTollZoneLanesMap> {
 
       protected SequenceOfTollZoneLanesMapSerializer() {
         super(SequenceOfTollZoneLanesMap.class);
       }
 
       @Override
-      public void serialize(SequenceOfTollZoneLanesMap genericLanes, JsonGenerator jsonGenerator,
-          SerializerProvider serializerProvider) throws IOException {
+      public void serialize(
+          SequenceOfTollZoneLanesMap genericLanes,
+          JsonGenerator jsonGenerator,
+          SerializerProvider serializerProvider)
+          throws IOException {
         if (serializerProvider instanceof XmlSerializerProvider) {
-          var xmlGen = (ToXmlGenerator)jsonGenerator;
-          var mapper = (XmlMapper)xmlGen.getCodec();
+          var xmlGen = (ToXmlGenerator) jsonGenerator;
+          var mapper = (XmlMapper) xmlGen.getCodec();
           for (GenericLane lane : genericLanes) {
             final String itemXml = mapper.writeValueAsString(lane);
             xmlGen.writeRaw(itemXml);
@@ -161,7 +164,6 @@ public class TollPointMap extends Asn1Sequence {
         }
       }
     }
-
   }
 
   public TollPointMap() {}

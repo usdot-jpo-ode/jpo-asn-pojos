@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SunSensor.SunSensorDeserializer.class)
 public class SunSensor extends Asn1Integer {
 
   public SunSensor() {
@@ -38,16 +35,5 @@ public class SunSensor extends Asn1Integer {
   public SunSensor(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SunSensorDeserializer extends IntegerDeserializer<SunSensor> {
-    public SunSensorDeserializer() {
-      super(SunSensor.class);
-    }
-
-    @Override
-    protected SunSensor construct() {
-      return new SunSensor();
-    }
   }
 }
