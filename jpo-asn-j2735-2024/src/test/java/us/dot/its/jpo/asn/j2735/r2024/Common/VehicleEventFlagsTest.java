@@ -13,7 +13,7 @@ public class VehicleEventFlagsTest {
   @Test
   public void testGetters() {
     var vef = new VehicleEventFlags();
-    vef.fromBinaryString("1111111111111");
+    vef.fromBinaryString("11111111111111");
     assertThat(vef.isEventHazardLights(), equalTo(true));
     assertThat(vef.isEventStopLineViolation(), equalTo(true));
     assertThat(vef.isEventABSactivated(), equalTo(true));
@@ -27,6 +27,7 @@ public class VehicleEventFlagsTest {
     assertThat(vef.isEventFlatTire(), equalTo(true));
     assertThat(vef.isEventDisabledVehicle(), equalTo(true));
     assertThat(vef.isEventAirBagDeployment(), equalTo(true));
+    assertThat(vef.isEventJackKnife(), equalTo(true));
   }
 
   @Test
@@ -45,7 +46,8 @@ public class VehicleEventFlagsTest {
     vef.setEventFlatTire(true);
     vef.setEventDisabledVehicle(true);
     vef.setEventAirBagDeployment(true);
-    assertThat(vef.binaryString(), equalTo("1111111111111"));
+    vef.setEventJackKnife(true);
+    assertThat(vef.binaryString(), equalTo("11111111111111"));
   }
 
   @ParameterizedTest
