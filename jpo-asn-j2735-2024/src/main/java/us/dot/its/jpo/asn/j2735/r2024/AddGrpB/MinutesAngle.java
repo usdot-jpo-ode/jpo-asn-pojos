@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = MinutesAngle.MinutesAngleDeserializer.class)
 public class MinutesAngle extends Asn1Integer {
 
   public MinutesAngle() {
@@ -38,16 +35,5 @@ public class MinutesAngle extends Asn1Integer {
   public MinutesAngle(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MinutesAngleDeserializer extends IntegerDeserializer<MinutesAngle> {
-    public MinutesAngleDeserializer() {
-      super(MinutesAngle.class);
-    }
-
-    @Override
-    protected MinutesAngle construct() {
-      return new MinutesAngle();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SPAT;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ZoneLength.ZoneLengthDeserializer.class)
 public class ZoneLength extends Asn1Integer {
 
   public ZoneLength() {
@@ -38,16 +35,5 @@ public class ZoneLength extends Asn1Integer {
   public ZoneLength(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ZoneLengthDeserializer extends IntegerDeserializer<ZoneLength> {
-    public ZoneLengthDeserializer() {
-      super(ZoneLength.class);
-    }
-
-    @Override
-    protected ZoneLength construct() {
-      return new ZoneLength();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = WiperRate.WiperRateDeserializer.class)
 public class WiperRate extends Asn1Integer {
 
   public WiperRate() {
@@ -38,16 +35,5 @@ public class WiperRate extends Asn1Integer {
   public WiperRate(long value) {
     this();
     this.value = value;
-  }
-
-  public static class WiperRateDeserializer extends IntegerDeserializer<WiperRate> {
-    public WiperRateDeserializer() {
-      super(WiperRate.class);
-    }
-
-    @Override
-    protected WiperRate construct() {
-      return new WiperRate();
-    }
   }
 }

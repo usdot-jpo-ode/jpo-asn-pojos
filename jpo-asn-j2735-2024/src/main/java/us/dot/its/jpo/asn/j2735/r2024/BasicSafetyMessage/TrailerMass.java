@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.BasicSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TrailerMass.TrailerMassDeserializer.class)
 public class TrailerMass extends Asn1Integer {
 
   public TrailerMass() {
@@ -38,16 +35,5 @@ public class TrailerMass extends Asn1Integer {
   public TrailerMass(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TrailerMassDeserializer extends IntegerDeserializer<TrailerMass> {
-    public TrailerMassDeserializer() {
-      super(TrailerMass.class);
-    }
-
-    @Override
-    protected TrailerMass construct() {
-      return new TrailerMass();
-    }
   }
 }

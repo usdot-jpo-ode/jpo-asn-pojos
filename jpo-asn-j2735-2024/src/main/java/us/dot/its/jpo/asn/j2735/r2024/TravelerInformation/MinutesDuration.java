@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.TravelerInformation;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = MinutesDuration.MinutesDurationDeserializer.class)
 public class MinutesDuration extends Asn1Integer {
 
   public MinutesDuration() {
@@ -38,16 +35,5 @@ public class MinutesDuration extends Asn1Integer {
   public MinutesDuration(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MinutesDurationDeserializer extends IntegerDeserializer<MinutesDuration> {
-    public MinutesDurationDeserializer() {
-      super(MinutesDuration.class);
-    }
-
-    @Override
-    protected MinutesDuration construct() {
-      return new MinutesDuration();
-    }
   }
 }

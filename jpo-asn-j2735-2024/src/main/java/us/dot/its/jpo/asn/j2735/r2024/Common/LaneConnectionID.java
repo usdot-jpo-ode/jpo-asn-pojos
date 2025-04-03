@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = LaneConnectionID.LaneConnectionIDDeserializer.class)
 public class LaneConnectionID extends Asn1Integer {
 
   public LaneConnectionID() {
@@ -38,16 +35,5 @@ public class LaneConnectionID extends Asn1Integer {
   public LaneConnectionID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LaneConnectionIDDeserializer extends IntegerDeserializer<LaneConnectionID> {
-    public LaneConnectionIDDeserializer() {
-      super(LaneConnectionID.class);
-    }
-
-    @Override
-    protected LaneConnectionID construct() {
-      return new LaneConnectionID();
-    }
   }
 }

@@ -81,15 +81,7 @@ public class AInteger extends Asn1Integer {
     this.value = value;
   }
 
-  public static class AIntegerDeserializer extends IntegerDeserializer<AInteger> {
-    public AIntegerDeserializer() {
-      super(AInteger.class);
-    }
-
-    @Override
-    protected AInteger construct() {
-      return new AInteger();
-    }
+ 
   }
 
 }
