@@ -13,8 +13,16 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
  */
 public class BitstringSerializer extends StdSerializer<Asn1Bitstring> {
 
-    protected BitstringSerializer() {
+    protected final boolean humanReadableJson;
+
+    public BitstringSerializer() {
         super(Asn1Bitstring.class);
+        this.humanReadableJson = false;
+    }
+
+    public BitstringSerializer(boolean humanReadableJson) {
+        super(Asn1Bitstring.class);
+        this.humanReadableJson = humanReadableJson;
     }
 
     @Override
@@ -23,8 +31,19 @@ public class BitstringSerializer extends StdSerializer<Asn1Bitstring> {
             // XER serializes enums as binary
             jsonGenerator.writeString(asn1Bitstring.binaryString());
         } else {
-            // JER serializes enums as hex
-            jsonGenerator.writeString(asn1Bitstring.hexString());
+            if (humanReadableJson) {
+                // ODE JSON dialect serializes bitstrings as verbose maps
+                jsonGenerator.writeStartObject();
+                for (int i = 0; i < asn1Bitstring.size(); i++) {
+                    String name = asn1Bitstring.name(i);
+                    boolean isSet = asn1Bitstring.get(i);
+                    jsonGenerator.writeBooleanField(name, isSet);
+                }
+                jsonGenerator.writeEndObject();
+            } else {
+                // JER serializes enums as hex
+                jsonGenerator.writeString(asn1Bitstring.hexString());
+            }
         }
     }
 }
