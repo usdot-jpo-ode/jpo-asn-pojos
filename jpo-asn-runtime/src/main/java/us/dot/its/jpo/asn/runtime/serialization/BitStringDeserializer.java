@@ -20,21 +20,8 @@ public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends Std
 
     protected abstract T construct();
 
-    protected boolean humanReadableJson;
-
     protected BitStringDeserializer(Class<?> valueClass) {
         super(valueClass);
-        this.humanReadableJson = false;
-    }
-
-    public BitStringDeserializer(Class<?> valueClass, boolean humanReadableJson) {
-        super(valueClass);
-        this.humanReadableJson = humanReadableJson;
-    }
-
-    public BitStringDeserializer<T> humanReadableJson() {
-        this.humanReadableJson = true;
-        return this;
     }
 
     @Override
@@ -45,7 +32,7 @@ public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends Std
             String str = jsonParser.getText();
             bitstring.fromBinaryString(str);
         } else {
-            if (humanReadableJson) {
+            if (jsonParser.getCodec() instanceof OdeCustomJsonMapper customMapper && customMapper.isHumanReadableJsonBitstrings()) {
                 // ODE JSON dialect: read verbose map
                 TypeReference<Map<String, Boolean>> boolMapType = new TypeReference<>() {};
                 Map<String, Boolean> map = jsonParser.readValueAs(boolMapType);
