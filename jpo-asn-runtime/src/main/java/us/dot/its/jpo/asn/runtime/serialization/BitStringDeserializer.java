@@ -20,7 +20,7 @@ public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends Std
 
     protected abstract T construct();
 
-    protected final boolean humanReadableJson;
+    protected boolean humanReadableJson;
 
     protected BitStringDeserializer(Class<?> valueClass) {
         super(valueClass);
@@ -30,6 +30,11 @@ public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends Std
     public BitStringDeserializer(Class<?> valueClass, boolean humanReadableJson) {
         super(valueClass);
         this.humanReadableJson = humanReadableJson;
+    }
+
+    public BitStringDeserializer<T> humanReadableJson() {
+        this.humanReadableJson = true;
+        return this;
     }
 
     @Override
