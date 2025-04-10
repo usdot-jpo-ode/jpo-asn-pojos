@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = BumperHeight.BumperHeightDeserializer.class)
 public class BumperHeight extends Asn1Integer {
 
   public BumperHeight() {
@@ -38,16 +35,5 @@ public class BumperHeight extends Asn1Integer {
   public BumperHeight(long value) {
     this();
     this.value = value;
-  }
-
-  public static class BumperHeightDeserializer extends IntegerDeserializer<BumperHeight> {
-    public BumperHeightDeserializer() {
-      super(BumperHeight.class);
-    }
-
-    @Override
-    protected BumperHeight construct() {
-      return new BumperHeight();
-    }
   }
 }

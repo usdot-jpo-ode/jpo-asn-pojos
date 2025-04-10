@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TrailerWeight.TrailerWeightDeserializer.class)
 public class TrailerWeight extends Asn1Integer {
 
   public TrailerWeight() {
@@ -38,16 +35,5 @@ public class TrailerWeight extends Asn1Integer {
   public TrailerWeight(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TrailerWeightDeserializer extends IntegerDeserializer<TrailerWeight> {
-    public TrailerWeightDeserializer() {
-      super(TrailerWeight.class);
-    }
-
-    @Override
-    protected TrailerWeight construct() {
-      return new TrailerWeight();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.NTCIP;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = EssPrecipRate.EssPrecipRateDeserializer.class)
 public class EssPrecipRate extends Asn1Integer {
 
   public EssPrecipRate() {
@@ -38,16 +35,5 @@ public class EssPrecipRate extends Asn1Integer {
   public EssPrecipRate(long value) {
     this();
     this.value = value;
-  }
-
-  public static class EssPrecipRateDeserializer extends IntegerDeserializer<EssPrecipRate> {
-    public EssPrecipRateDeserializer() {
-      super(EssPrecipRate.class);
-    }
-
-    @Override
-    protected EssPrecipRate construct() {
-      return new EssPrecipRate();
-    }
   }
 }

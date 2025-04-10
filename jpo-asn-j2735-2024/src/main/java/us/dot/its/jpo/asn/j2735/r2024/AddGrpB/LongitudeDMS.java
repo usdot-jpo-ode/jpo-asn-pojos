@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = LongitudeDMS.LongitudeDMSDeserializer.class)
 public class LongitudeDMS extends Asn1Integer {
 
   public LongitudeDMS() {
@@ -38,16 +35,5 @@ public class LongitudeDMS extends Asn1Integer {
   public LongitudeDMS(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LongitudeDMSDeserializer extends IntegerDeserializer<LongitudeDMS> {
-    public LongitudeDMSDeserializer() {
-      super(LongitudeDMS.class);
-    }
-
-    @Override
-    protected LongitudeDMS construct() {
-      return new LongitudeDMS();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TimeOffset.TimeOffsetDeserializer.class)
 public class TimeOffset extends Asn1Integer {
 
   public TimeOffset() {
@@ -38,16 +35,5 @@ public class TimeOffset extends Asn1Integer {
   public TimeOffset(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TimeOffsetDeserializer extends IntegerDeserializer<TimeOffset> {
-    public TimeOffsetDeserializer() {
-      super(TimeOffset.class);
-    }
-
-    @Override
-    protected TimeOffset construct() {
-      return new TimeOffset();
-    }
   }
 }

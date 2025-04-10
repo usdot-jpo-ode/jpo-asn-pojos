@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = MergeDivergeNodeAngle.MergeDivergeNodeAngleDeserializer.class)
 public class MergeDivergeNodeAngle extends Asn1Integer {
 
   public MergeDivergeNodeAngle() {
@@ -38,17 +35,5 @@ public class MergeDivergeNodeAngle extends Asn1Integer {
   public MergeDivergeNodeAngle(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MergeDivergeNodeAngleDeserializer
-      extends IntegerDeserializer<MergeDivergeNodeAngle> {
-    public MergeDivergeNodeAngleDeserializer() {
-      super(MergeDivergeNodeAngle.class);
-    }
-
-    @Override
-    protected MergeDivergeNodeAngle construct() {
-      return new MergeDivergeNodeAngle();
-    }
   }
 }
