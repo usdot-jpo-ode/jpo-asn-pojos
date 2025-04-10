@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ClassificationConfidence.ClassificationConfidenceDeserializer.class)
 public class ClassificationConfidence extends Asn1Integer {
 
   public ClassificationConfidence() {
@@ -38,17 +35,5 @@ public class ClassificationConfidence extends Asn1Integer {
   public ClassificationConfidence(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ClassificationConfidenceDeserializer
-      extends IntegerDeserializer<ClassificationConfidence> {
-    public ClassificationConfidenceDeserializer() {
-      super(ClassificationConfidence.class);
-    }
-
-    @Override
-    protected ClassificationConfidence construct() {
-      return new ClassificationConfidence();
-    }
   }
 }

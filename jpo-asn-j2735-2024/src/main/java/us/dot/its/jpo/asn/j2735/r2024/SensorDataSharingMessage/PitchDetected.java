@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = PitchDetected.PitchDetectedDeserializer.class)
 public class PitchDetected extends Asn1Integer {
 
   public PitchDetected() {
@@ -38,16 +35,5 @@ public class PitchDetected extends Asn1Integer {
   public PitchDetected(long value) {
     this();
     this.value = value;
-  }
-
-  public static class PitchDetectedDeserializer extends IntegerDeserializer<PitchDetected> {
-    public PitchDetectedDeserializer() {
-      super(PitchDetected.class);
-    }
-
-    @Override
-    protected PitchDetected construct() {
-      return new PitchDetected();
-    }
   }
 }

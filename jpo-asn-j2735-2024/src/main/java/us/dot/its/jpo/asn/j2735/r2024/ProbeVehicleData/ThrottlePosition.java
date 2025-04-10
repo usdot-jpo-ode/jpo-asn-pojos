@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ThrottlePosition.ThrottlePositionDeserializer.class)
 public class ThrottlePosition extends Asn1Integer {
 
   public ThrottlePosition() {
@@ -38,16 +35,5 @@ public class ThrottlePosition extends Asn1Integer {
   public ThrottlePosition(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ThrottlePositionDeserializer extends IntegerDeserializer<ThrottlePosition> {
-    public ThrottlePositionDeserializer() {
-      super(ThrottlePosition.class);
-    }
-
-    @Override
-    protected ThrottlePosition construct() {
-      return new ThrottlePosition();
-    }
   }
 }

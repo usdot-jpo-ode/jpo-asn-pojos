@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.NMEAcorrections;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = NMEA_MsgType.NMEA_MsgTypeDeserializer.class)
 public class NMEA_MsgType extends Asn1Integer {
 
   public NMEA_MsgType() {
@@ -38,16 +35,5 @@ public class NMEA_MsgType extends Asn1Integer {
   public NMEA_MsgType(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NMEA_MsgTypeDeserializer extends IntegerDeserializer<NMEA_MsgType> {
-    public NMEA_MsgTypeDeserializer() {
-      super(NMEA_MsgType.class);
-    }
-
-    @Override
-    protected NMEA_MsgType construct() {
-      return new NMEA_MsgType();
-    }
   }
 }

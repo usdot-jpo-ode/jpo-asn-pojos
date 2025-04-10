@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = BrakePedalPosition.BrakePedalPositionDeserializer.class)
 public class BrakePedalPosition extends Asn1Integer {
 
   public BrakePedalPosition() {
@@ -38,17 +35,5 @@ public class BrakePedalPosition extends Asn1Integer {
   public BrakePedalPosition(long value) {
     this();
     this.value = value;
-  }
-
-  public static class BrakePedalPositionDeserializer
-      extends IntegerDeserializer<BrakePedalPosition> {
-    public BrakePedalPositionDeserializer() {
-      super(BrakePedalPosition.class);
-    }
-
-    @Override
-    protected BrakePedalPosition construct() {
-      return new BrakePedalPosition();
-    }
   }
 }
