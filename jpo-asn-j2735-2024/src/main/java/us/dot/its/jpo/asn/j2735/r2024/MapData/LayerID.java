@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.MapData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = LayerID.LayerIDDeserializer.class)
 public class LayerID extends Asn1Integer {
 
   public LayerID() {
@@ -38,16 +35,5 @@ public class LayerID extends Asn1Integer {
   public LayerID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LayerIDDeserializer extends IntegerDeserializer<LayerID> {
-    public LayerIDDeserializer() {
-      super(LayerID.class);
-    }
-
-    @Override
-    protected LayerID construct() {
-      return new LayerID();
-    }
   }
 }

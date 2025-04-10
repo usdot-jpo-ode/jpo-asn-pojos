@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = RegionId.RegionIdDeserializer.class)
 public class RegionId extends Asn1Integer {
 
   public RegionId() {
@@ -38,16 +35,5 @@ public class RegionId extends Asn1Integer {
   public RegionId(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RegionIdDeserializer extends IntegerDeserializer<RegionId> {
-    public RegionIdDeserializer() {
-      super(RegionId.class);
-    }
-
-    @Override
-    protected RegionId construct() {
-      return new RegionId();
-    }
   }
 }

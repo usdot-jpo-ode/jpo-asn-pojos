@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TimeRemaining.TimeRemainingDeserializer.class)
 public class TimeRemaining extends Asn1Integer {
 
   public TimeRemaining() {
@@ -38,16 +35,5 @@ public class TimeRemaining extends Asn1Integer {
   public TimeRemaining(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TimeRemainingDeserializer extends IntegerDeserializer<TimeRemaining> {
-    public TimeRemainingDeserializer() {
-      super(TimeRemaining.class);
-    }
-
-    @Override
-    protected TimeRemaining construct() {
-      return new TimeRemaining();
-    }
   }
 }

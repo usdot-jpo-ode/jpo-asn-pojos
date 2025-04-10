@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DegreesLong.DegreesLongDeserializer.class)
 public class DegreesLong extends Asn1Integer {
 
   public DegreesLong() {
@@ -38,16 +35,5 @@ public class DegreesLong extends Asn1Integer {
   public DegreesLong(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DegreesLongDeserializer extends IntegerDeserializer<DegreesLong> {
-    public DegreesLongDeserializer() {
-      super(DegreesLong.class);
-    }
-
-    @Override
-    protected DegreesLong construct() {
-      return new DegreesLong();
-    }
   }
 }
