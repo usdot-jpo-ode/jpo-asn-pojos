@@ -87,6 +87,22 @@ public abstract class Asn1Bitstring implements Asn1Type {
         }
     }
 
+    /**
+     * Set the corresponding bit from the bitstring based on the name value.
+     *
+     * @param name The name String value for the corresponding bit in the bitstring.
+     * @param value The value for the bit to be set.
+     */
+    public void set(String name, boolean value) {
+        for (int i = 0; i < size; i++) {
+            if (name(i).equals(name)) {
+                set(i, value);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Unknown name " + name);
+    }
+
     public String binaryString() {
 
         // Write extension bits if the number of named bits is larger than the "size" and
@@ -186,6 +202,11 @@ public abstract class Asn1Bitstring implements Asn1Type {
         }
     }
 
+    /**
+     * Get the name representing the requested index.
+     *
+     * @param index The index value of the bitstring being requested.
+     */
     public String name(int index) {
         if (index < 0 || index >= size()) {
             throw new IllegalArgumentException(String.format("Index %s out of range %s-%s", index, 0, size()));
