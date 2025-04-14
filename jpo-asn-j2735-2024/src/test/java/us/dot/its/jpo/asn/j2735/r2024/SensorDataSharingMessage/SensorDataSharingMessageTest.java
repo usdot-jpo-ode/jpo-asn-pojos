@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
+import org.junit.jupiter.api.Test;
 import us.dot.its.jpo.asn.j2735.r2024.BaseSerializeTest;
 import java.io.IOException;
 import java.util.List;
@@ -40,6 +41,17 @@ public class SensorDataSharingMessageTest extends BaseSerializeTest<SensorDataSh
     assertThat(sdsm, notNullValue());
     String roundTripJson = toJson(sdsm);
     assertThat(roundTripJson, jsonEquals(json));
+  }
+
+  @Test
+  public void canDeserializeJsonWithVariableLengthBitstringFormat() throws IOException {
+    final String resourceDir = "/us/dot/its/jpo/asn/j2735/r2024/SensorDataSharingMessage/json-var-bitstring-test/";
+    final String varBitstringJson = loadResource(resourceDir + "sdsm6_var_bitstring.json");
+    SensorDataSharingMessage sdsm = fromJson(varBitstringJson);
+    assertThat(sdsm, notNullValue());
+    final String roundTripJson = toJson(sdsm);
+    final String expectedJson = loadResource(resourceDir + "sdsm6_fixed_bitstring.json");
+    assertThat(roundTripJson, jsonEquals(expectedJson));
   }
 
   private static Stream<Arguments> getXmlResources() {
