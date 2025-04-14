@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TotalMass.TotalMassDeserializer.class)
 public class TotalMass extends Asn1Integer {
 
   public TotalMass() {
@@ -38,16 +35,5 @@ public class TotalMass extends Asn1Integer {
   public TotalMass(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TotalMassDeserializer extends IntegerDeserializer<TotalMass> {
-    public TotalMassDeserializer() {
-      super(TotalMass.class);
-    }
-
-    @Override
-    protected TotalMass construct() {
-      return new TotalMass();
-    }
   }
 }

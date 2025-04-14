@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Tolerance.ToleranceDeserializer.class)
 public class Tolerance extends Asn1Integer {
 
   public Tolerance() {
@@ -38,16 +35,5 @@ public class Tolerance extends Asn1Integer {
   public Tolerance(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ToleranceDeserializer extends IntegerDeserializer<Tolerance> {
-    public ToleranceDeserializer() {
-      super(Tolerance.class);
-    }
-
-    @Override
-    protected Tolerance construct() {
-      return new Tolerance();
-    }
   }
 }

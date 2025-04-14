@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Yaw.YawDeserializer.class)
 public class Yaw extends Asn1Integer {
 
   public Yaw() {
@@ -38,16 +35,5 @@ public class Yaw extends Asn1Integer {
   public Yaw(long value) {
     this();
     this.value = value;
-  }
-
-  public static class YawDeserializer extends IntegerDeserializer<Yaw> {
-    public YawDeserializer() {
-      super(Yaw.class);
-    }
-
-    @Override
-    protected Yaw construct() {
-      return new Yaw();
-    }
   }
 }

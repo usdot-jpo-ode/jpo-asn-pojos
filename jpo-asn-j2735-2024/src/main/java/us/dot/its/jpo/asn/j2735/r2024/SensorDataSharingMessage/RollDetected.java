@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = RollDetected.RollDetectedDeserializer.class)
 public class RollDetected extends Asn1Integer {
 
   public RollDetected() {
@@ -38,16 +35,5 @@ public class RollDetected extends Asn1Integer {
   public RollDetected(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RollDetectedDeserializer extends IntegerDeserializer<RollDetected> {
-    public RollDetectedDeserializer() {
-      super(RollDetected.class);
-    }
-
-    @Override
-    protected RollDetected construct() {
-      return new RollDetected();
-    }
   }
 }

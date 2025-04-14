@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DHour.DHourDeserializer.class)
 public class DHour extends Asn1Integer {
 
   public DHour() {
@@ -38,16 +35,5 @@ public class DHour extends Asn1Integer {
   public DHour(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DHourDeserializer extends IntegerDeserializer<DHour> {
-    public DHourDeserializer() {
-      super(DHour.class);
-    }
-
-    @Override
-    protected DHour construct() {
-      return new DHour();
-    }
   }
 }

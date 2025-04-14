@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Confidence.ConfidenceDeserializer.class)
 public class Confidence extends Asn1Integer {
 
   public Confidence() {
@@ -38,16 +35,5 @@ public class Confidence extends Asn1Integer {
   public Confidence(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ConfidenceDeserializer extends IntegerDeserializer<Confidence> {
-    public ConfidenceDeserializer() {
-      super(Confidence.class);
-    }
-
-    @Override
-    protected Confidence construct() {
-      return new Confidence();
-    }
   }
 }

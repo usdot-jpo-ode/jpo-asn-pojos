@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = LatOffset.LatOffsetDeserializer.class)
 public class LatOffset extends Asn1Integer {
 
   public LatOffset() {
@@ -38,16 +35,5 @@ public class LatOffset extends Asn1Integer {
   public LatOffset(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LatOffsetDeserializer extends IntegerDeserializer<LatOffset> {
-    public LatOffsetDeserializer() {
-      super(LatOffset.class);
-    }
-
-    @Override
-    protected LatOffset construct() {
-      return new LatOffset();
-    }
   }
 }

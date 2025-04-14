@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = RoadGrade.RoadGradeDeserializer.class)
 public class RoadGrade extends Asn1Integer {
 
   public RoadGrade() {
@@ -38,16 +35,5 @@ public class RoadGrade extends Asn1Integer {
   public RoadGrade(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RoadGradeDeserializer extends IntegerDeserializer<RoadGrade> {
-    public RoadGradeDeserializer() {
-      super(RoadGrade.class);
-    }
-
-    @Override
-    protected RoadGrade construct() {
-      return new RoadGrade();
-    }
   }
 }

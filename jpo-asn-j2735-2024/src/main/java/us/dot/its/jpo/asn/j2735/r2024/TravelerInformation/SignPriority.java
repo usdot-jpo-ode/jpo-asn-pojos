@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.TravelerInformation;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SignPriority.SignPriorityDeserializer.class)
 public class SignPriority extends Asn1Integer {
 
   public SignPriority() {
@@ -38,16 +35,5 @@ public class SignPriority extends Asn1Integer {
   public SignPriority(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SignPriorityDeserializer extends IntegerDeserializer<SignPriority> {
-    public SignPriorityDeserializer() {
-      super(SignPriority.class);
-    }
-
-    @Override
-    protected SignPriority construct() {
-      return new SignPriority();
-    }
   }
 }

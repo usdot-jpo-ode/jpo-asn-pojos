@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SteeringWheelAngle.SteeringWheelAngleDeserializer.class)
 public class SteeringWheelAngle extends Asn1Integer {
 
   public SteeringWheelAngle() {
@@ -38,17 +35,5 @@ public class SteeringWheelAngle extends Asn1Integer {
   public SteeringWheelAngle(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SteeringWheelAngleDeserializer
-      extends IntegerDeserializer<SteeringWheelAngle> {
-    public SteeringWheelAngleDeserializer() {
-      super(SteeringWheelAngle.class);
-    }
-
-    @Override
-    protected SteeringWheelAngle construct() {
-      return new SteeringWheelAngle();
-    }
   }
 }

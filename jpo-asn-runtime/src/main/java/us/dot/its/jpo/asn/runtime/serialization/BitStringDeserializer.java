@@ -2,10 +2,13 @@ package us.dot.its.jpo.asn.runtime.serialization;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.IOException;
+import java.util.Map;
+import java.util.Map.Entry;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
 /**
@@ -23,14 +26,24 @@ public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends Std
 
     @Override
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        String str = jsonParser.getText();
         T bitstring = construct();
         if (jsonParser.getCodec() instanceof XmlMapper) {
             // XML: binary
+            String str = jsonParser.getText();
             bitstring.fromBinaryString(str);
         } else {
-            // JSON: hex
-            bitstring.fromHexString(str);
+            if (jsonParser.getCodec() instanceof OdeCustomJsonMapper customMapper && customMapper.isHumanReadableJsonBitstrings()) {
+                // ODE JSON dialect: read verbose map
+                TypeReference<Map<String, Boolean>> boolMapType = new TypeReference<>() {};
+                Map<String, Boolean> map = jsonParser.readValueAs(boolMapType);
+                for (Entry<String, Boolean> keyValue : map.entrySet()) {
+                    bitstring.set(keyValue.getKey(), keyValue.getValue());
+                }
+            } else {
+                // JSON: hex
+                String str = jsonParser.getText();
+                bitstring.fromHexString(str);
+            }
         }
         return bitstring;
     }

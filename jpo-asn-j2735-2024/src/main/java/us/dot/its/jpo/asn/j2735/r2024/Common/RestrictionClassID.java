@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = RestrictionClassID.RestrictionClassIDDeserializer.class)
 public class RestrictionClassID extends Asn1Integer {
 
   public RestrictionClassID() {
@@ -38,17 +35,5 @@ public class RestrictionClassID extends Asn1Integer {
   public RestrictionClassID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RestrictionClassIDDeserializer
-      extends IntegerDeserializer<RestrictionClassID> {
-    public RestrictionClassIDDeserializer() {
-      super(RestrictionClassID.class);
-    }
-
-    @Override
-    protected RestrictionClassID construct() {
-      return new RestrictionClassID();
-    }
   }
 }

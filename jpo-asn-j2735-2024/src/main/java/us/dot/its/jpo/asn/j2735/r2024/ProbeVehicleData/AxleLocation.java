@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = AxleLocation.AxleLocationDeserializer.class)
 public class AxleLocation extends Asn1Integer {
 
   public AxleLocation() {
@@ -38,16 +35,5 @@ public class AxleLocation extends Asn1Integer {
   public AxleLocation(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AxleLocationDeserializer extends IntegerDeserializer<AxleLocation> {
-    public AxleLocationDeserializer() {
-      super(AxleLocation.class);
-    }
-
-    @Override
-    protected AxleLocation construct() {
-      return new AxleLocation();
-    }
   }
 }

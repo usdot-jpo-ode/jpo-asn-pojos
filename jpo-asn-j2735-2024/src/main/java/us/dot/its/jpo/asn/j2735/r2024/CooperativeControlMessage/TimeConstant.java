@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TimeConstant.TimeConstantDeserializer.class)
 public class TimeConstant extends Asn1Integer {
 
   public TimeConstant() {
@@ -38,16 +35,5 @@ public class TimeConstant extends Asn1Integer {
   public TimeConstant(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TimeConstantDeserializer extends IntegerDeserializer<TimeConstant> {
-    public TimeConstantDeserializer() {
-      super(TimeConstant.class);
-    }
-
-    @Override
-    protected TimeConstant construct() {
-      return new TimeConstant();
-    }
   }
 }

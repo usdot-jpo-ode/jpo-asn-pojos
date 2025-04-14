@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = VehicleHeight.VehicleHeightDeserializer.class)
 public class VehicleHeight extends Asn1Integer {
 
   public VehicleHeight() {
@@ -38,16 +35,5 @@ public class VehicleHeight extends Asn1Integer {
   public VehicleHeight(long value) {
     this();
     this.value = value;
-  }
-
-  public static class VehicleHeightDeserializer extends IntegerDeserializer<VehicleHeight> {
-    public VehicleHeightDeserializer() {
-      super(VehicleHeight.class);
-    }
-
-    @Override
-    protected VehicleHeight construct() {
-      return new VehicleHeight();
-    }
   }
 }

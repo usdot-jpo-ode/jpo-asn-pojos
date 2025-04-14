@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.PersonalSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = PersonalClusterRadius.PersonalClusterRadiusDeserializer.class)
 public class PersonalClusterRadius extends Asn1Integer {
 
   public PersonalClusterRadius() {
@@ -38,17 +35,5 @@ public class PersonalClusterRadius extends Asn1Integer {
   public PersonalClusterRadius(long value) {
     this();
     this.value = value;
-  }
-
-  public static class PersonalClusterRadiusDeserializer
-      extends IntegerDeserializer<PersonalClusterRadius> {
-    public PersonalClusterRadiusDeserializer() {
-      super(PersonalClusterRadius.class);
-    }
-
-    @Override
-    protected PersonalClusterRadius construct() {
-      return new PersonalClusterRadius();
-    }
   }
 }

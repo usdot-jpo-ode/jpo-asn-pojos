@@ -23,12 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using = SteeringWheelAngleRateOfChange.SteeringWheelAngleRateOfChangeDeserializer.class)
 public class SteeringWheelAngleRateOfChange extends Asn1Integer {
 
   public SteeringWheelAngleRateOfChange() {
@@ -39,17 +35,5 @@ public class SteeringWheelAngleRateOfChange extends Asn1Integer {
   public SteeringWheelAngleRateOfChange(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SteeringWheelAngleRateOfChangeDeserializer
-      extends IntegerDeserializer<SteeringWheelAngleRateOfChange> {
-    public SteeringWheelAngleRateOfChangeDeserializer() {
-      super(SteeringWheelAngleRateOfChange.class);
-    }
-
-    @Override
-    protected SteeringWheelAngleRateOfChange construct() {
-      return new SteeringWheelAngleRateOfChange();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DriveAxleTemperature.DriveAxleTemperatureDeserializer.class)
 public class DriveAxleTemperature extends Asn1Integer {
 
   public DriveAxleTemperature() {
@@ -38,17 +35,5 @@ public class DriveAxleTemperature extends Asn1Integer {
   public DriveAxleTemperature(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DriveAxleTemperatureDeserializer
-      extends IntegerDeserializer<DriveAxleTemperature> {
-    public DriveAxleTemperatureDeserializer() {
-      super(DriveAxleTemperature.class);
-    }
-
-    @Override
-    protected DriveAxleTemperature construct() {
-      return new DriveAxleTemperature();
-    }
   }
 }
