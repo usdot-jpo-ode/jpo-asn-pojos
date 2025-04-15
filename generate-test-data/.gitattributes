@@ -1,0 +1,4 @@
+converter-* binary
+convert-* binary
+testgen-cli binary
+**/*.bin binary

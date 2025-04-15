@@ -119,27 +119,31 @@ JER:
 ./converter-debug -p MessageFrame -iuper -ojer bsm_mf_noext_01.bin > bsm_mf.json
 ```
 
-### v2x
+### convert-v2x
 
-A custom CLI with generated code from the `vlm_master` branch of the [mouse07410 fork](https://github.com/mouse07410/asn1c), pulled on 2025-04-14, which contains updates to the JER implementation that aren't present in the USDOT fork.  Specifically, it contains changes to the implementation of variable length bitstring encodings in JER.
+A custom CLI with generated code from the `vlm_master` branch of the [mouse07410 fork](https://github.com/mouse07410/asn1c), which contains updates to the JER implementation that aren't present in the USDOT fork.  Specifically, it contains changes to the implementation of variable length bitstring encodings in JER.
 
+Produces and accepts Canonical XER, Minified JER, and hex encoded UPER.
+
+
+#### Usage:
+```bash
+ ./convert-v2x [from-encoding] [to-encoding] [PDU]
+``` 
+
+ where 'from-encoding' and 'to-encoding' can be 'uper', 'xer', or 'jer'. Reads one line of text from stdin. Accepts UPER as hex encoded text.
+
+#### Examples:
+
+Convert a file containing a hex encoded UPER MessageFrame to JER:
+```bash
+cat data.hex | ./convert-v2x uper jer MessageFrame > data.json
 ```
-Usage:
- ./v2x [from-encoding] [to-encoding] [PDU]
-
- where 'from-encoding' and 'to-encoding' can be 'uper', 'xer', or 'jer'.
- Reads one line of text from stdin
- Accepts UPER as hex encoded text.
-
-Examples:
-
-  Convert a file containing a hex encoded UPER MessageFrame to JER:
-  $ cat data.hex | ./v2x uper jer MessageFrame > data.json
-
-  Convert a file containing a SPAT with no MessageFrame from canonical XER to JER:
-  $ cat data.xml | ./v2x xer jer SPAT > data.json
-
+Convert a file containing a SPAT with no MessageFrame from canonical XER to JER:
+```bash
+cat data.xml | ./convert-v2x xer jer SPAT > data.json
 ```
+
 
 ## Erlang converter
 
