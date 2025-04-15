@@ -52,6 +52,7 @@ public abstract class Reg_IntersectionState<TValue> extends RegionalExtension<TV
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class Reg_IntersectionStateDeserializer
       extends ParameterizedTypeDeserializer<Reg_IntersectionState> {
     public Reg_IntersectionStateDeserializer() {
