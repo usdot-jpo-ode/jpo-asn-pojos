@@ -29,19 +29,9 @@ public class ManeuverSharingAndCoordinatingMessageTest
     assertThat(roundTripXml, isIdenticalTo(xml).ignoreWhitespace().ignoreElementContentWhitespace());
   }
 
-//  @ParameterizedTest
-//  @MethodSource("getJsonResources")
-//  public void canRoundTripJson(String resourcePath) throws IOException {
-//    String json = loadResource(resourcePath);
-//    var msg = fromJson(json);
-//    assertThat(msg, notNullValue());
-//    final String roundTripJson = toJson(msg);
-//    assertThat(roundTripJson, jsonEquals(json));
-//  }
-
   @ParameterizedTest
-  @MethodSource("getJsonResourcesVariableLengthBitstring")
-  public void canRoundTripJson_VariableLengthBitstrings(String resourcePath) throws IOException {
+  @MethodSource("getJsonResources")
+  public void canRoundTripJson(String resourcePath) throws IOException {
     String json = loadResource(resourcePath);
     var msg = fromJson(json);
     assertThat(msg, notNullValue());
@@ -49,15 +39,15 @@ public class ManeuverSharingAndCoordinatingMessageTest
     assertThat(roundTripJson, jsonEquals(json));
   }
 
+
+
   private static Stream<Arguments> getXmlResources() {
     return getResources("/us/dot/its/jpo/asn/j2735/r2024/ManeuverSharingAndCoordinatingMessage/xml");
   }
 
-//  private static Stream<Arguments> getJsonResources() {
-//    return getResources("/us/dot/its/jpo/asn/j2735/r2024/ManeuverSharingAndCoordinatingMessage/json");
-//  }
-
-  private static Stream<Arguments> getJsonResourcesVariableLengthBitstring() {
-    return getResources("/us/dot/its/jpo/asn/j2735/r2024/ManeuverSharingAndCoordinatingMessage/json-var-bitstring");
+  private static Stream<Arguments> getJsonResources() {
+    return getResources("/us/dot/its/jpo/asn/j2735/r2024/ManeuverSharingAndCoordinatingMessage/json");
   }
+
+
 }

@@ -68,7 +68,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
         return upperBound;
     }
 
-    private boolean variableSize() {
+    public boolean variableSize() {
         return names.length == 0 || size != upperBound || hasExtensionMarker;
     }
 

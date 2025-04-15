@@ -65,7 +65,7 @@ public class BitstringSerializer extends StdSerializer<Asn1Bitstring> {
         //   * Sec 7.2.2 - states that extensible subtype constraints are NOT JER-visible
         //   * Sec 24.1 to 24.3 - Defines the encoding for fixed and variable-length BIT STRINGs
         //
-        if (asn1Bitstring.hasExtensionMarker() || asn1Bitstring.size() != asn1Bitstring.upperBound()) {
+        if (asn1Bitstring.variableSize()) {
             // Variable-size format
             jsonGenerator.writeStartObject();
             jsonGenerator.writeStringField("value", asn1Bitstring.hexString());
