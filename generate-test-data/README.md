@@ -34,12 +34,14 @@ And check that the files rwm.xml and rwm_rt.xml contain the same XML.
 
 ## asn1c Converters
 
-This directory contains three converters created with the [VLM asn1c](https://github.com/vlm/asn1c)
+This directory contains several converters created with the [VLM asn1c](https://github.com/vlm/asn1c)
 compiler (using the [usdot fork](https://github.com/usdot-fhwa-stol/usdot-asn1c) of the
 [mouse07410 fork](https://github.com/mouse07410/asn1c)). These are command line tools that work in
 WSL/Ubuntu.
 
 ### converter-junktest
+
+The generated converter example compiled with the `vlm_master` branch of the usdot fork [usdot fork](https://github.com/usdot-fhwa-stol/usdot-asn1c).
 
 Compiled with the "JUNKTEST" flag that allows generating random data.  
 Uses the `asn_random_fill` api function. It was compiled with the -no-gen-JER and -no-gen-UPER,
@@ -82,6 +84,8 @@ To generate a SensorDataSharingMessage (this segfaults about half the time):
 
 ### converter-all
 
+The generated converter example compiled with the `vlm_master` branch of the usdot fork [usdot fork](https://github.com/usdot-fhwa-stol/usdot-asn1c).
+
 Compiled with all encodings. This can be used to convert between UPER, BASIC XER, and JER.
 
 This converter uses BASIC XER. For message frames that contain octet strings, the hex strings need
@@ -95,6 +99,8 @@ Example. To convert the above SDSM XER to JER:
 ```
 
 ### converter-debug
+
+The generated converter example compiled with the `vlm_master` branch of the usdot fork [usdot fork](https://github.com/usdot-fhwa-stol/usdot-asn1c).
 
 Compiled with verbose debug output enabled, and CANONICAL XML support.
 
@@ -111,6 +117,28 @@ JER:
 ```bash
 ./converter-debug -p MessageFrame -iuper -oxer bsm_mf_noext_01.bin > bsm_mf.xml
 ./converter-debug -p MessageFrame -iuper -ojer bsm_mf_noext_01.bin > bsm_mf.json
+```
+
+### v2x
+
+A custom CLI with generated code from the `vlm_master` branch of the [mouse07410 fork](https://github.com/mouse07410/asn1c), pulled on 2025-04-14, which contains updates to the JER implementation that aren't present in the USDOT fork.  Specifically, it contains changes to the implementation of variable length bitstring encodings in JER.
+
+```
+Usage:
+ ./v2x [from-encoding] [to-encoding] [PDU]
+
+ where 'from-encoding' and 'to-encoding' can be 'uper', 'xer', or 'jer'.
+ Reads one line of text from stdin
+ Accepts UPER as hex encoded text.
+
+Examples:
+
+  Convert a file containing a hex encoded UPER MessageFrame to JER:
+  $ cat data.hex | ./v2x uper jer MessageFrame > data.json
+
+  Convert a file containing a SPAT with no MessageFrame from canonical XER to JER:
+  $ cat data.xml | ./v2x xer jer SPAT > data.json
+
 ```
 
 ## Erlang converter
