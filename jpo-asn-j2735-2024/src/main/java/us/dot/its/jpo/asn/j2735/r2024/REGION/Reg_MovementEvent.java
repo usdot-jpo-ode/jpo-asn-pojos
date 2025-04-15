@@ -50,6 +50,7 @@ public abstract class Reg_MovementEvent<TValue> extends RegionalExtension<TValue
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class Reg_MovementEventDeserializer
       extends ParameterizedTypeDeserializer<Reg_MovementEvent> {
     public Reg_MovementEventDeserializer() {

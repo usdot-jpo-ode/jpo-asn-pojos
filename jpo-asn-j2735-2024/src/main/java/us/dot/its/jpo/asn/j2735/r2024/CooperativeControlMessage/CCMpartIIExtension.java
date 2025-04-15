@@ -60,6 +60,7 @@ public abstract class CCMpartIIExtension<TValue> extends CCMPartIIcontent<TValue
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class CCMpartIIExtensionDeserializer
       extends ParameterizedTypeDeserializer<CCMpartIIExtension> {
     public CCMpartIIExtensionDeserializer() {
