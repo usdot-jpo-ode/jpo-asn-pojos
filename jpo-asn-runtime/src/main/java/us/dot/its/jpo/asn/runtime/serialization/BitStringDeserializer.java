@@ -72,12 +72,13 @@ public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends Std
         TreeNode node = jsonParser.getCodec().readTree(jsonParser);
         if (node instanceof ObjectNode objectNode) {
             log.trace("Bitstring encoded as objectNode {}", objectNode);
-            if (objectNode.has("value")) {
+            if (objectNode.has("value") && objectNode.has("length")) {
                 String hexValue = objectNode.get("value").asText();
-                bitstring.fromHexString(hexValue);
+                int bitLength = objectNode.get("length").asInt();
+                bitstring.fromHexString(hexValue, bitLength);
             } else {
                 throw MismatchedInputException.from(jsonParser, getValueType(),
-                    String.format("Object node missing 'value' field in JSON encoding for bitstring: %s",
+                    String.format("Object node missing 'value' or 'length' field in JSON encoding for bitstring: %s",
                         objectNode));
             }
         } else if (node instanceof TextNode textNode) {
