@@ -68,8 +68,12 @@ public abstract class Asn1Bitstring implements Asn1Type {
         return upperBound;
     }
 
+    public boolean noNamedValues() {
+        return names.length == 0;
+    }
+
     public boolean variableSize() {
-        return names.length == 0 || size != upperBound || hasExtensionMarker;
+        return size != upperBound || hasExtensionMarker;
     }
 
     public int actualSize() {
@@ -121,7 +125,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
 
         // Write extension bits if the number of named bits is larger than the "size" and
         // those bits are set
-        final int resolvedSize = (names.length == 0) ? actualSize : sizeWithExtensions();
+        final int resolvedSize = noNamedValues() ? actualSize : sizeWithExtensions();
 
         char[] chars = new char[resolvedSize];
         for (int i = 0; i < resolvedSize; i++) {
@@ -144,7 +148,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public String hexString() {
-        final int resolvedSize = (names.length == 0) ? actualSize : sizeWithExtensions();
+        final int resolvedSize = variableSize() ? (noNamedValues() ? actualSize : sizeWithExtensions()) : size;
         HexFormat hex = HexFormat.of().withUpperCase();
         int expectedNumBytes = (resolvedSize + 7) / 8;
         byte[] bytes = reverseBits(bits.toByteArray());
@@ -169,7 +173,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
 
         // Read all bits in the string if there are no named bits, or if the size is variable or
         // extensible
-        if (names.length == 0 || size != upperBound) {
+        if (noNamedValues() || variableSize()) {
             for (int i = 0; i < chars.length; i++) {
                 char c = chars[i];
                 set(i, c == '1');
@@ -212,8 +216,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
         bits.clear();
         bits.or(newBits);
 
-        // If there are no named bits, or the size is not fixed, or an extensible marker is present,
-        // set the actual size
+        // If the size is not fixed, or an extensible marker is present, set the actual size
         if (variableSize()) {
             if (length != null) {
                 // A length is specified, use it

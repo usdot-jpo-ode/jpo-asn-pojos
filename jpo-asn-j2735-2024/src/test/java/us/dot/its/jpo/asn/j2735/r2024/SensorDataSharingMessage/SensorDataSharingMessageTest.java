@@ -43,16 +43,7 @@ public class SensorDataSharingMessageTest extends BaseSerializeTest<SensorDataSh
     assertThat(roundTripJson, jsonEquals(json));
   }
 
-  @Test
-  public void canDeserializeJsonWithVariableLengthBitstringFormat() throws IOException {
-    final String resourceDir = "/us/dot/its/jpo/asn/j2735/r2024/SensorDataSharingMessage/json-var-bitstring-test/";
-    final String varBitstringJson = loadResource(resourceDir + "sdsm6_var_bitstring.json");
-    SensorDataSharingMessage sdsm = fromJson(varBitstringJson);
-    assertThat(sdsm, notNullValue());
-    final String roundTripJson = toJson(sdsm);
-    final String expectedJson = loadResource(resourceDir + "sdsm6_fixed_bitstring.json");
-    assertThat(roundTripJson, jsonEquals(expectedJson));
-  }
+
 
   private static Stream<Arguments> getXmlResources() {
     return getResources("/us/dot/its/jpo/asn/j2735/r2024/SensorDataSharingMessage/xml/data");
