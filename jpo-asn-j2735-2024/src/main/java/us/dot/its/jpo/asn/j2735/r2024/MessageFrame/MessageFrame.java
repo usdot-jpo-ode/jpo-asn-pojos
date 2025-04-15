@@ -282,6 +282,7 @@ public abstract class MessageFrame<TValue> extends Asn1Sequence {
     return true;
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class MessageFrameDeserializer extends ParameterizedTypeDeserializer<MessageFrame> {
     public MessageFrameDeserializer() {
       super(MessageFrame.class);
