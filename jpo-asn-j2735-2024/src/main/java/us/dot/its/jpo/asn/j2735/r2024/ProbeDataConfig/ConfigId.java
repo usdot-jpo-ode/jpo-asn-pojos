@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeDataConfig;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ConfigId.ConfigIdDeserializer.class)
 public class ConfigId extends Asn1Integer {
 
   public ConfigId() {
@@ -38,16 +35,5 @@ public class ConfigId extends Asn1Integer {
   public ConfigId(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ConfigIdDeserializer extends IntegerDeserializer<ConfigId> {
-    public ConfigIdDeserializer() {
-      super(ConfigId.class);
-    }
-
-    @Override
-    protected ConfigId construct() {
-      return new ConfigId();
-    }
   }
 }

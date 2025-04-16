@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = NTCIPEssDewpointTemp.NTCIPEssDewpointTempDeserializer.class)
 public class NTCIPEssDewpointTemp extends Asn1Integer {
 
   public NTCIPEssDewpointTemp() {
@@ -38,17 +35,5 @@ public class NTCIPEssDewpointTemp extends Asn1Integer {
   public NTCIPEssDewpointTemp(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPEssDewpointTempDeserializer
-      extends IntegerDeserializer<NTCIPEssDewpointTemp> {
-    public NTCIPEssDewpointTempDeserializer() {
-      super(NTCIPEssDewpointTemp.class);
-    }
-
-    @Override
-    protected NTCIPEssDewpointTemp construct() {
-      return new NTCIPEssDewpointTemp();
-    }
   }
 }

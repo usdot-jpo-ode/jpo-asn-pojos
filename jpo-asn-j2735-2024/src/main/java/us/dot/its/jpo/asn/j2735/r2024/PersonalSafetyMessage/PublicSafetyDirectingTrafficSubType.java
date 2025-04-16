@@ -92,7 +92,7 @@ public class PublicSafetyDirectingTrafficSubType extends Asn1Bitstring {
   public PublicSafetyDirectingTrafficSubType() {
     super(
         7,
-        false,
+        true,
         new String[] {
           "unavailable",
           "policeAndTrafficOfficers",

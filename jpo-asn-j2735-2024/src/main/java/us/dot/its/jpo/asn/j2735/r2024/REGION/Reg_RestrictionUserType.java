@@ -52,6 +52,7 @@ public abstract class Reg_RestrictionUserType<TValue> extends RegionalExtension<
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class Reg_RestrictionUserTypeDeserializer
       extends ParameterizedTypeDeserializer<Reg_RestrictionUserType> {
     public Reg_RestrictionUserTypeDeserializer() {

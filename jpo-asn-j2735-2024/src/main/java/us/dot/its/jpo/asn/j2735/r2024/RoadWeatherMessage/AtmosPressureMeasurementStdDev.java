@@ -23,12 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using = AtmosPressureMeasurementStdDev.AtmosPressureMeasurementStdDevDeserializer.class)
 public class AtmosPressureMeasurementStdDev extends Asn1Integer {
 
   public AtmosPressureMeasurementStdDev() {
@@ -39,17 +35,5 @@ public class AtmosPressureMeasurementStdDev extends Asn1Integer {
   public AtmosPressureMeasurementStdDev(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AtmosPressureMeasurementStdDevDeserializer
-      extends IntegerDeserializer<AtmosPressureMeasurementStdDev> {
-    public AtmosPressureMeasurementStdDevDeserializer() {
-      super(AtmosPressureMeasurementStdDev.class);
-    }
-
-    @Override
-    protected AtmosPressureMeasurementStdDev construct() {
-      return new AtmosPressureMeasurementStdDev();
-    }
   }
 }

@@ -23,12 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using = SurfaceTempMeasurementStdDev.SurfaceTempMeasurementStdDevDeserializer.class)
 public class SurfaceTempMeasurementStdDev extends Asn1Integer {
 
   public SurfaceTempMeasurementStdDev() {
@@ -39,17 +35,5 @@ public class SurfaceTempMeasurementStdDev extends Asn1Integer {
   public SurfaceTempMeasurementStdDev(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SurfaceTempMeasurementStdDevDeserializer
-      extends IntegerDeserializer<SurfaceTempMeasurementStdDev> {
-    public SurfaceTempMeasurementStdDevDeserializer() {
-      super(SurfaceTempMeasurementStdDev.class);
-    }
-
-    @Override
-    protected SurfaceTempMeasurementStdDev construct() {
-      return new SurfaceTempMeasurementStdDev();
-    }
   }
 }

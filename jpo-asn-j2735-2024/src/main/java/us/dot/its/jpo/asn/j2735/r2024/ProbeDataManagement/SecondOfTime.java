@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeDataManagement;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SecondOfTime.SecondOfTimeDeserializer.class)
 public class SecondOfTime extends Asn1Integer {
 
   public SecondOfTime() {
@@ -38,16 +35,5 @@ public class SecondOfTime extends Asn1Integer {
   public SecondOfTime(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SecondOfTimeDeserializer extends IntegerDeserializer<SecondOfTime> {
-    public SecondOfTimeDeserializer() {
-      super(SecondOfTime.class);
-    }
-
-    @Override
-    protected SecondOfTime construct() {
-      return new SecondOfTime();
-    }
   }
 }

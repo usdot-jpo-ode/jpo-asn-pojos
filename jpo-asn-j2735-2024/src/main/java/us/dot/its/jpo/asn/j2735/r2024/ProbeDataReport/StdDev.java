@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeDataReport;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = StdDev.StdDevDeserializer.class)
 public class StdDev extends Asn1Integer {
 
   public StdDev() {
@@ -38,16 +35,5 @@ public class StdDev extends Asn1Integer {
   public StdDev(long value) {
     this();
     this.value = value;
-  }
-
-  public static class StdDevDeserializer extends IntegerDeserializer<StdDev> {
-    public StdDevDeserializer() {
-      super(StdDev.class);
-    }
-
-    @Override
-    protected StdDev construct() {
-      return new StdDev();
-    }
   }
 }

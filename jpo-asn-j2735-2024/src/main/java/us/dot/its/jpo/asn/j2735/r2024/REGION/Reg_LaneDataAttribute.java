@@ -52,6 +52,7 @@ public abstract class Reg_LaneDataAttribute<TValue> extends RegionalExtension<TV
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class Reg_LaneDataAttributeDeserializer
       extends ParameterizedTypeDeserializer<Reg_LaneDataAttribute> {
     public Reg_LaneDataAttributeDeserializer() {
