@@ -99,7 +99,7 @@ public class TrafficLightControllerStatus extends Asn1Bitstring {
   public TrafficLightControllerStatus() {
     super(
         8,
-        false,
+        true,
         new String[] {
           "conflict",
           "center-comm-error",

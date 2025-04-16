@@ -99,7 +99,7 @@ public class CCMFaultMode extends Asn1Bitstring {
   public CCMFaultMode() {
     super(
         8,
-        false,
+        true,
         new String[] {
           "unavailable",
           "commFault",

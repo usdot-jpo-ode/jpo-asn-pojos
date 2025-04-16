@@ -83,7 +83,7 @@ public class PublicSafetyAndRoadWorkerActivity extends Asn1Bitstring {
   public PublicSafetyAndRoadWorkerActivity() {
     super(
         6,
-        false,
+        true,
         new String[] {
           "unavailable",
           "workingOnRoad",
