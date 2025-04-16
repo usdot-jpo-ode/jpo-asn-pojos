@@ -64,6 +64,22 @@ public abstract class Asn1Bitstring implements Asn1Type {
         return size;
     }
 
+    public int upperBound() {
+        return upperBound;
+    }
+
+    public boolean noNamedValues() {
+        return names.length == 0;
+    }
+
+    public boolean variableSize() {
+        return size != upperBound || hasExtensionMarker;
+    }
+
+    public int actualSize() {
+        return variableSize() ? actualSize : size;
+    }
+
     /**
      * Indicates whether the SIZE constraint of this BIT STRING has an extension marker
      *
@@ -81,9 +97,11 @@ public abstract class Asn1Bitstring implements Asn1Type {
     public void set(int bitIndex, boolean value) {
         bits.set(bitIndex, value);
 
-        // Update actual size if no named bits
-        if (names.length == 0 && actualSize < bitIndex + 1) {
-            actualSize = bitIndex + 1;
+        // Update actual size
+        if (variableSize()) {
+            if (actualSize < bitIndex + 1) {
+                actualSize = bitIndex + 1;
+            }
         }
     }
 
@@ -107,7 +125,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
 
         // Write extension bits if the number of named bits is larger than the "size" and
         // those bits are set
-        final int resolvedSize = (names.length == 0) ? actualSize : sizeWithExtensions();
+        final int resolvedSize = noNamedValues() ? actualSize : sizeWithExtensions();
 
         char[] chars = new char[resolvedSize];
         for (int i = 0; i < resolvedSize; i++) {
@@ -130,7 +148,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public String hexString() {
-        final int resolvedSize = (names.length == 0) ? actualSize : sizeWithExtensions();
+        final int resolvedSize = variableSize() ? (noNamedValues() ? actualSize : sizeWithExtensions()) : size;
         HexFormat hex = HexFormat.of().withUpperCase();
         int expectedNumBytes = (resolvedSize + 7) / 8;
         byte[] bytes = reverseBits(bits.toByteArray());
@@ -153,8 +171,9 @@ public abstract class Asn1Bitstring implements Asn1Type {
             throw new IllegalArgumentException("String too short: " + str + " (expected " + size + " bits) but got (" + chars.length + " bits)");
         }
 
-        // Read all bits in the string if there are no named bits
-        if (names.length == 0) {
+        // Read all bits in the string if there are no named bits, or if the size is variable or
+        // extensible
+        if (noNamedValues() || variableSize()) {
             for (int i = 0; i < chars.length; i++) {
                 char c = chars[i];
                 set(i, c == '1');
@@ -183,6 +202,10 @@ public abstract class Asn1Bitstring implements Asn1Type {
     }
 
     public void fromHexString(String str) {
+        fromHexString(str, null);
+    }
+
+    public void fromHexString(String str, Integer length) {
         if (str == null) {
             bits.clear();
             return;
@@ -193,12 +216,15 @@ public abstract class Asn1Bitstring implements Asn1Type {
         bits.clear();
         bits.or(newBits);
 
-        // If no named bits, set the actual size
-        if (names.length == 0) {
-            // We should check the JSON for the size field: Not yet supported since we are initially
-            // mainly concerned with deserializing XML.  For now sizes that aren't multiples
-            // of 8 won't round trip correctly for JSON.
-            actualSize = bytes.length * 8;
+        // If the size is not fixed, or an extensible marker is present, set the actual size
+        if (variableSize()) {
+            if (length != null) {
+                // A length is specified, use it
+                actualSize = length;
+            } else {
+                // Length not specified, use the number of bits in the hex
+                actualSize = bytes.length * 8;
+            }
         }
     }
 

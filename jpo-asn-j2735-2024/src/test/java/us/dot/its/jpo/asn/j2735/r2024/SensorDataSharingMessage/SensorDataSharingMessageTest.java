@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
+import org.junit.jupiter.api.Test;
 import us.dot.its.jpo.asn.j2735.r2024.BaseSerializeTest;
 import java.io.IOException;
 import java.util.List;
@@ -41,6 +42,8 @@ public class SensorDataSharingMessageTest extends BaseSerializeTest<SensorDataSh
     String roundTripJson = toJson(sdsm);
     assertThat(roundTripJson, jsonEquals(json));
   }
+
+
 
   private static Stream<Arguments> getXmlResources() {
     return getResources("/us/dot/its/jpo/asn/j2735/r2024/SensorDataSharingMessage/xml/data");
