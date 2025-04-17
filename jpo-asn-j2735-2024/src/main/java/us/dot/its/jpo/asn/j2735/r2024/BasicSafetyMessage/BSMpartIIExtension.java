@@ -60,6 +60,7 @@ public abstract class BSMpartIIExtension<TValue> extends PartIIcontent<TValue> {
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class BSMpartIIExtensionDeserializer
       extends ParameterizedTypeDeserializer<BSMpartIIExtension> {
     public BSMpartIIExtensionDeserializer() {

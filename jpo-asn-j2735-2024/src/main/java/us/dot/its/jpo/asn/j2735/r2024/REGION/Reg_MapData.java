@@ -48,6 +48,7 @@ public abstract class Reg_MapData<TValue> extends RegionalExtension<TValue> {
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class Reg_MapDataDeserializer extends ParameterizedTypeDeserializer<Reg_MapData> {
     public Reg_MapDataDeserializer() {
       super(Reg_MapData.class);
