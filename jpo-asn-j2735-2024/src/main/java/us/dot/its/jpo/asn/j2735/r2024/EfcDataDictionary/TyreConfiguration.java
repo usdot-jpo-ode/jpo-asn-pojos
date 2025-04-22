@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TyreConfiguration.TyreConfigurationDeserializer.class)
 public class TyreConfiguration extends Asn1Integer {
 
   public TyreConfiguration() {
@@ -38,16 +35,5 @@ public class TyreConfiguration extends Asn1Integer {
   public TyreConfiguration(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TyreConfigurationDeserializer extends IntegerDeserializer<TyreConfiguration> {
-    public TyreConfigurationDeserializer() {
-      super(TyreConfiguration.class);
-    }
-
-    @Override
-    protected TyreConfiguration construct() {
-      return new TyreConfiguration();
-    }
   }
 }

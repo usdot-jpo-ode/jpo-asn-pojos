@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = FutureCharacteristics.FutureCharacteristicsDeserializer.class)
 public class FutureCharacteristics extends Asn1Integer {
 
   public FutureCharacteristics() {
@@ -38,17 +35,5 @@ public class FutureCharacteristics extends Asn1Integer {
   public FutureCharacteristics(long value) {
     this();
     this.value = value;
-  }
-
-  public static class FutureCharacteristicsDeserializer
-      extends IntegerDeserializer<FutureCharacteristics> {
-    public FutureCharacteristicsDeserializer() {
-      super(FutureCharacteristics.class);
-    }
-
-    @Override
-    protected FutureCharacteristics construct() {
-      return new FutureCharacteristics();
-    }
   }
 }

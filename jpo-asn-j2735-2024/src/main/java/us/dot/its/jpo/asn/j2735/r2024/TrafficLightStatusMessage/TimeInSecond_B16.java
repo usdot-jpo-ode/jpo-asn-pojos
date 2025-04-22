@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.TrafficLightStatusMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TimeInSecond_B16.TimeInSecond_B16Deserializer.class)
 public class TimeInSecond_B16 extends Asn1Integer {
 
   public TimeInSecond_B16() {
@@ -38,16 +35,5 @@ public class TimeInSecond_B16 extends Asn1Integer {
   public TimeInSecond_B16(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TimeInSecond_B16Deserializer extends IntegerDeserializer<TimeInSecond_B16> {
-    public TimeInSecond_B16Deserializer() {
-      super(TimeInSecond_B16.class);
-    }
-
-    @Override
-    protected TimeInSecond_B16 construct() {
-      return new TimeInSecond_B16();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Count.CountDeserializer.class)
 public class Count extends Asn1Integer {
 
   public Count() {
@@ -38,16 +35,5 @@ public class Count extends Asn1Integer {
   public Count(long value) {
     this();
     this.value = value;
-  }
-
-  public static class CountDeserializer extends IntegerDeserializer<Count> {
-    public CountDeserializer() {
-      super(Count.class);
-    }
-
-    @Override
-    protected Count construct() {
-      return new Count();
-    }
   }
 }
