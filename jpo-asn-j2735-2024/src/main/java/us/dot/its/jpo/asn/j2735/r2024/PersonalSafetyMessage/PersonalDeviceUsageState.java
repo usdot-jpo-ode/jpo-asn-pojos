@@ -107,7 +107,7 @@ public class PersonalDeviceUsageState extends Asn1Bitstring {
   public PersonalDeviceUsageState() {
     super(
         9,
-        false,
+        true,
         new String[] {
           "unavailable",
           "other",

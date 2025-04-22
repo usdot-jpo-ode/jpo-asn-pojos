@@ -42,6 +42,8 @@ public class SensorDataSharingMessageTest extends BaseSerializeTest<SensorDataSh
     assertThat(roundTripJson, jsonEquals(json));
   }
 
+
+
   private static Stream<Arguments> getXmlResources() {
     return getResources("/us/dot/its/jpo/asn/j2735/r2024/SensorDataSharingMessage/xml/data");
   }
