@@ -5,25 +5,44 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
 import us.dot.its.jpo.asn.runtime.types.Asn1Null;
 
-public class NullDeserializer extends StdDeserializer<Asn1Null> {
+@Slf4j
+public class NullDeserializer<T extends Asn1Null> extends StdDeserializer<T> {
 
-  protected NullDeserializer() {
+  protected Asn1Null construct() {
+    return new Asn1Null();
+  }
+
+  public NullDeserializer() {
     super(Asn1Null.class);
   }
 
-  @Override
-  public Asn1Null deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
-      throws IOException, JacksonException {
-    if (!(jsonParser.getCodec() instanceof XmlMapper)) {
-      // JSON: Rad the null value
-      TreeNode node = jsonParser.getCodec().readTree(jsonParser);
-      System.out.printf("node: %s\n", node);
-    }
-    // XML: Nothing to read
-    return new Asn1Null();
+  protected NullDeserializer(Class<T> valueType) {
+    super(valueType);
   }
+
+  // Override getNullValue:
+  // This is used by JER to construct the Asn1Null object instead of Java null.
+  @SuppressWarnings({"unchecked"})
+  @Override
+  public T getNullValue(DeserializationContext deserializationContext) {
+    log.info("JSON null value, constructing a {}", handledType());
+    return (T) construct();
+  }
+
+  @SuppressWarnings({"unchecked"})
+  @Override
+  public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+      throws IOException, JacksonException {
+    // Used by XER only, JER never calls this.
+    // Read the empty node
+    TreeNode node = jsonParser.getCodec().readTree(jsonParser);
+    log.info("node: {}", node);
+    return (T) construct();
+  }
+
+
 }

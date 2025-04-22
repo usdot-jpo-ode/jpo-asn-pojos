@@ -18,8 +18,8 @@ import org.junit.jupiter.params.provider.Arguments;
 @Slf4j
 public abstract class BaseSerializeTest<T> {
 
-  private final static XmlMapper xmlMapper = new XmlMapper();
-  private final static ObjectMapper jsonMapper = new ObjectMapper();
+  protected final static XmlMapper xmlMapper = new XmlMapper();
+  protected final static ObjectMapper jsonMapper = new ObjectMapper();
   private final Class<T> clazz;
 
   public BaseSerializeTest(Class<T> clazz) {
@@ -39,6 +39,7 @@ public abstract class BaseSerializeTest<T> {
   }
 
   protected T fromXml(String xml) throws IOException {
+    log.info(clazz.getSimpleName());
     T object = xmlMapper.readValue(xml, clazz);
     log.debug(object.toString());
     return object;
@@ -46,7 +47,7 @@ public abstract class BaseSerializeTest<T> {
 
   protected T fromJson(String json) throws IOException {
     T object = jsonMapper.readValue(json, clazz);
-    log.debug(object.toString());
+    log.debug("{}", object);
     return object;
   }
 
