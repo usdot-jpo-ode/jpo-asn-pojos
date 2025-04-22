@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.TravelerInformation;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = OffsetLL_B22.OffsetLL_B22Deserializer.class)
 public class OffsetLL_B22 extends Asn1Integer {
 
   public OffsetLL_B22() {
@@ -38,16 +35,5 @@ public class OffsetLL_B22 extends Asn1Integer {
   public OffsetLL_B22(long value) {
     this();
     this.value = value;
-  }
-
-  public static class OffsetLL_B22Deserializer extends IntegerDeserializer<OffsetLL_B22> {
-    public OffsetLL_B22Deserializer() {
-      super(OffsetLL_B22.class);
-    }
-
-    @Override
-    protected OffsetLL_B22 construct() {
-      return new OffsetLL_B22();
-    }
   }
 }

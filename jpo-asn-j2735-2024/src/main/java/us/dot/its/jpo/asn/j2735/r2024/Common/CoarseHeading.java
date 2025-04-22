@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = CoarseHeading.CoarseHeadingDeserializer.class)
 public class CoarseHeading extends Asn1Integer {
 
   public CoarseHeading() {
@@ -38,16 +35,5 @@ public class CoarseHeading extends Asn1Integer {
   public CoarseHeading(long value) {
     this();
     this.value = value;
-  }
-
-  public static class CoarseHeadingDeserializer extends IntegerDeserializer<CoarseHeading> {
-    public CoarseHeadingDeserializer() {
-      super(CoarseHeading.class);
-    }
-
-    @Override
-    protected CoarseHeading construct() {
-      return new CoarseHeading();
-    }
   }
 }

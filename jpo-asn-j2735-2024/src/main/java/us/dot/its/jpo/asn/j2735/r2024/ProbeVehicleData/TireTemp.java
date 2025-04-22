@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeVehicleData;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TireTemp.TireTempDeserializer.class)
 public class TireTemp extends Asn1Integer {
 
   public TireTemp() {
@@ -38,16 +35,5 @@ public class TireTemp extends Asn1Integer {
   public TireTemp(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TireTempDeserializer extends IntegerDeserializer<TireTemp> {
-    public TireTempDeserializer() {
-      super(TireTemp.class);
-    }
-
-    @Override
-    protected TireTemp construct() {
-      return new TireTemp();
-    }
   }
 }

@@ -52,6 +52,7 @@ public abstract class Reg_ConnectionManeuverAssist<TValue> extends RegionalExten
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class Reg_ConnectionManeuverAssistDeserializer
       extends ParameterizedTypeDeserializer<Reg_ConnectionManeuverAssist> {
     public Reg_ConnectionManeuverAssistDeserializer() {

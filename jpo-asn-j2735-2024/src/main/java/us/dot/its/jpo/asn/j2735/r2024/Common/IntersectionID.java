@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = IntersectionID.IntersectionIDDeserializer.class)
 public class IntersectionID extends Asn1Integer {
 
   public IntersectionID() {
@@ -38,16 +35,5 @@ public class IntersectionID extends Asn1Integer {
   public IntersectionID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class IntersectionIDDeserializer extends IntegerDeserializer<IntersectionID> {
-    public IntersectionIDDeserializer() {
-      super(IntersectionID.class);
-    }
-
-    @Override
-    protected IntersectionID construct() {
-      return new IntersectionID();
-    }
   }
 }

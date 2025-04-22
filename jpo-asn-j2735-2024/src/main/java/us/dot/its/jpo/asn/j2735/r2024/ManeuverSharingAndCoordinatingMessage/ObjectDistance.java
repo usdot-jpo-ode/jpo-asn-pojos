@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ManeuverSharingAndCoordinatingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ObjectDistance.ObjectDistanceDeserializer.class)
 public class ObjectDistance extends Asn1Integer {
 
   public ObjectDistance() {
@@ -38,16 +35,5 @@ public class ObjectDistance extends Asn1Integer {
   public ObjectDistance(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ObjectDistanceDeserializer extends IntegerDeserializer<ObjectDistance> {
-    public ObjectDistanceDeserializer() {
-      super(ObjectDistance.class);
-    }
-
-    @Override
-    protected ObjectDistance construct() {
-      return new ObjectDistance();
-    }
   }
 }

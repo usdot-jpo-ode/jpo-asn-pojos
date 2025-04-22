@@ -51,6 +51,7 @@ public abstract class Reg_Position3D<TValue> extends RegionalExtension<TValue> {
     super(id, name);
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class Reg_Position3DDeserializer
       extends ParameterizedTypeDeserializer<Reg_Position3D> {
     public Reg_Position3DDeserializer() {

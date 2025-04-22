@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.TravelerInformation;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Zoom.ZoomDeserializer.class)
 public class Zoom extends Asn1Integer {
 
   public Zoom() {
@@ -38,16 +35,5 @@ public class Zoom extends Asn1Integer {
   public Zoom(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ZoomDeserializer extends IntegerDeserializer<Zoom> {
-    public ZoomDeserializer() {
-      super(Zoom.class);
-    }
-
-    @Override
-    protected Zoom construct() {
-      return new Zoom();
-    }
   }
 }

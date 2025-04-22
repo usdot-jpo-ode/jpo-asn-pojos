@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.NMEAcorrections;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ObjectCount.ObjectCountDeserializer.class)
 public class ObjectCount extends Asn1Integer {
 
   public ObjectCount() {
@@ -38,16 +35,5 @@ public class ObjectCount extends Asn1Integer {
   public ObjectCount(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ObjectCountDeserializer extends IntegerDeserializer<ObjectCount> {
-    public ObjectCountDeserializer() {
-      super(ObjectCount.class);
-    }
-
-    @Override
-    protected ObjectCount construct() {
-      return new ObjectCount();
-    }
   }
 }

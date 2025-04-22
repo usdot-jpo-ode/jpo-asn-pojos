@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ManeuverSharingAndCoordinatingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TRRLength.TRRLengthDeserializer.class)
 public class TRRLength extends Asn1Integer {
 
   public TRRLength() {
@@ -38,16 +35,5 @@ public class TRRLength extends Asn1Integer {
   public TRRLength(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TRRLengthDeserializer extends IntegerDeserializer<TRRLength> {
-    public TRRLengthDeserializer() {
-      super(TRRLength.class);
-    }
-
-    @Override
-    protected TRRLength construct() {
-      return new TRRLength();
-    }
   }
 }

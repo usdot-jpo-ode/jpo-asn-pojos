@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.BasicSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import us.dot.its.jpo.asn.j2735.r2024.Common.Angle;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = ObstacleDirection.ObstacleDirectionDeserializer.class)
 public class ObstacleDirection extends Angle {
 
   public ObstacleDirection() {
@@ -38,16 +35,5 @@ public class ObstacleDirection extends Angle {
   public ObstacleDirection(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ObstacleDirectionDeserializer extends IntegerDeserializer<ObstacleDirection> {
-    public ObstacleDirectionDeserializer() {
-      super(ObstacleDirection.class);
-    }
-
-    @Override
-    protected ObstacleDirection construct() {
-      return new ObstacleDirection();
-    }
   }
 }

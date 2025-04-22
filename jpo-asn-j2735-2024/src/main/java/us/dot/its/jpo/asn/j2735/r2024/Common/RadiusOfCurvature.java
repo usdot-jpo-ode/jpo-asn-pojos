@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = RadiusOfCurvature.RadiusOfCurvatureDeserializer.class)
 public class RadiusOfCurvature extends Asn1Integer {
 
   public RadiusOfCurvature() {
@@ -38,16 +35,5 @@ public class RadiusOfCurvature extends Asn1Integer {
   public RadiusOfCurvature(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RadiusOfCurvatureDeserializer extends IntegerDeserializer<RadiusOfCurvature> {
-    public RadiusOfCurvatureDeserializer() {
-      super(RadiusOfCurvature.class);
-    }
-
-    @Override
-    protected RadiusOfCurvature construct() {
-      return new RadiusOfCurvature();
-    }
   }
 }

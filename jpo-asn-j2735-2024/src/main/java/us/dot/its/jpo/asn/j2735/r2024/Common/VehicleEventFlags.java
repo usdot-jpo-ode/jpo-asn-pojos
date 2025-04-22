@@ -145,21 +145,21 @@ public class VehicleEventFlags extends Asn1Bitstring {
     super(
         13,
         true,
-        new String[]{
-            "eventHazardLights",
-            "eventStopLineViolation",
-            "eventABSactivated",
-            "eventTractionControlLoss",
-            "eventStabilityControlactivated",
-            "eventHazardousMaterials",
-            "eventReserved1",
-            "eventHardBraking",
-            "eventLightsChanged",
-            "eventWipersChanged",
-            "eventFlatTire",
-            "eventDisabledVehicle",
-            "eventAirBagDeployment",
-            "eventJackKnife"
+        new String[] {
+          "eventHazardLights",
+          "eventStopLineViolation",
+          "eventABSactivated",
+          "eventTractionControlLoss",
+          "eventStabilityControlactivated",
+          "eventHazardousMaterials",
+          "eventReserved1",
+          "eventHardBraking",
+          "eventLightsChanged",
+          "eventWipersChanged",
+          "eventFlatTire",
+          "eventDisabledVehicle",
+          "eventAirBagDeployment",
+          "eventJackKnife"
         });
   }
 

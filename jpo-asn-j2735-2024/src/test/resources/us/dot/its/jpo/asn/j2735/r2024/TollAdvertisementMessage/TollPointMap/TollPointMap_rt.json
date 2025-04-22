@@ -328,7 +328,10 @@
                 "directionalUse": "C0",
                 "sharedWith": "1CC0",
                 "laneType": {
-                    "vehicle": "27"
+                    "vehicle": {
+                        "value": "27",
+                        "length": 8
+                    }
                 }
             },
             "maneuvers": "BB60",

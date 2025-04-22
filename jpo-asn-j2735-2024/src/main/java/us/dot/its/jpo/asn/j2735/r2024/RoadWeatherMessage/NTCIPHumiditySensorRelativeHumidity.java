@@ -23,13 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using =
-        NTCIPHumiditySensorRelativeHumidity.NTCIPHumiditySensorRelativeHumidityDeserializer.class)
 public class NTCIPHumiditySensorRelativeHumidity extends Asn1Integer {
 
   public NTCIPHumiditySensorRelativeHumidity() {
@@ -40,17 +35,5 @@ public class NTCIPHumiditySensorRelativeHumidity extends Asn1Integer {
   public NTCIPHumiditySensorRelativeHumidity(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPHumiditySensorRelativeHumidityDeserializer
-      extends IntegerDeserializer<NTCIPHumiditySensorRelativeHumidity> {
-    public NTCIPHumiditySensorRelativeHumidityDeserializer() {
-      super(NTCIPHumiditySensorRelativeHumidity.class);
-    }
-
-    @Override
-    protected NTCIPHumiditySensorRelativeHumidity construct() {
-      return new NTCIPHumiditySensorRelativeHumidity();
-    }
   }
 }

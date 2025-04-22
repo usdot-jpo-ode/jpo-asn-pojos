@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ObjectID.ObjectIDDeserializer.class)
 public class ObjectID extends Asn1Integer {
 
   public ObjectID() {
@@ -38,16 +35,5 @@ public class ObjectID extends Asn1Integer {
   public ObjectID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ObjectIDDeserializer extends IntegerDeserializer<ObjectID> {
-    public ObjectIDDeserializer() {
-      super(ObjectID.class);
-    }
-
-    @Override
-    protected ObjectID construct() {
-      return new ObjectID();
-    }
   }
 }

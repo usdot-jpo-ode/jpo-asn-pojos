@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.NTCIP;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = EssMobileFriction.EssMobileFrictionDeserializer.class)
 public class EssMobileFriction extends Asn1Integer {
 
   public EssMobileFriction() {
@@ -38,16 +35,5 @@ public class EssMobileFriction extends Asn1Integer {
   public EssMobileFriction(long value) {
     this();
     this.value = value;
-  }
-
-  public static class EssMobileFrictionDeserializer extends IntegerDeserializer<EssMobileFriction> {
-    public EssMobileFrictionDeserializer() {
-      super(EssMobileFriction.class);
-    }
-
-    @Override
-    protected EssMobileFriction construct() {
-      return new EssMobileFriction();
-    }
   }
 }

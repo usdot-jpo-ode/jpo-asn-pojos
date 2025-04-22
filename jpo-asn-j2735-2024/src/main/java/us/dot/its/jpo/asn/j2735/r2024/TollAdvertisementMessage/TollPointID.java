@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.TollAdvertisementMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TollPointID.TollPointIDDeserializer.class)
 public class TollPointID extends Asn1Integer {
 
   public TollPointID() {
@@ -38,16 +35,5 @@ public class TollPointID extends Asn1Integer {
   public TollPointID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TollPointIDDeserializer extends IntegerDeserializer<TollPointID> {
-    public TollPointIDDeserializer() {
-      super(TollPointID.class);
-    }
-
-    @Override
-    protected TollPointID construct() {
-      return new TollPointID();
-    }
   }
 }

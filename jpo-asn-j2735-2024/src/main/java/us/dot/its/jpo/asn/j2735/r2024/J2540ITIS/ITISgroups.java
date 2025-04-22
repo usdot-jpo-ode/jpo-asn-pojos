@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ITISgroups.ITISgroupsDeserializer.class)
 public class ITISgroups extends Asn1Integer {
 
   public ITISgroups() {
@@ -38,16 +35,5 @@ public class ITISgroups extends Asn1Integer {
   public ITISgroups(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ITISgroupsDeserializer extends IntegerDeserializer<ITISgroups> {
-    public ITISgroupsDeserializer() {
-      super(ITISgroups.class);
-    }
-
-    @Override
-    protected ITISgroups construct() {
-      return new ITISgroups();
-    }
   }
 }

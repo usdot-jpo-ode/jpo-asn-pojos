@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeDataManagement;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TermTime.TermTimeDeserializer.class)
 public class TermTime extends Asn1Integer {
 
   public TermTime() {
@@ -38,16 +35,5 @@ public class TermTime extends Asn1Integer {
   public TermTime(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TermTimeDeserializer extends IntegerDeserializer<TermTime> {
-    public TermTimeDeserializer() {
-      super(TermTime.class);
-    }
-
-    @Override
-    protected TermTime construct() {
-      return new TermTime();
-    }
   }
 }

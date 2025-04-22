@@ -23,12 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using = NTCIPEssPavementTreatmentLatitude.NTCIPEssPavementTreatmentLatitudeDeserializer.class)
 public class NTCIPEssPavementTreatmentLatitude extends Asn1Integer {
 
   public NTCIPEssPavementTreatmentLatitude() {
@@ -39,17 +35,5 @@ public class NTCIPEssPavementTreatmentLatitude extends Asn1Integer {
   public NTCIPEssPavementTreatmentLatitude(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPEssPavementTreatmentLatitudeDeserializer
-      extends IntegerDeserializer<NTCIPEssPavementTreatmentLatitude> {
-    public NTCIPEssPavementTreatmentLatitudeDeserializer() {
-      super(NTCIPEssPavementTreatmentLatitude.class);
-    }
-
-    @Override
-    protected NTCIPEssPavementTreatmentLatitude construct() {
-      return new NTCIPEssPavementTreatmentLatitude();
-    }
   }
 }

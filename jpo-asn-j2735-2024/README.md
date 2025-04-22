@@ -2,6 +2,72 @@
 
 This is a Java library with the 2024 POJOs.
 
+## Scope of the J2735/2024 specification
+
+The J2735/2024 specification can be downloaded for free from here: https://www.sae.org/standards/content/j2735_202409/. The standard is organized as a set of messages which are transmitted in message frames.  Each message is defined in an ASN.1 module, which includes a top-level message type plus "data frame" and "data element" types.  In many cases, the modules are interrelated and import data elements from other modules. This implementation includes Java classes for all the message types in the standard and all the data frames and data elements that the messages depend on. 
+
+The download bundle for the specification includes a set of ASN.1 files and a PDF document. The ASN.1 files contain a complete specification of the machine-readable data encodings. The PDF document contains human-readable normative and informative text describing how to interpret and use the messages. The POJOs in this repository were generated directly and solely from the ASN.1 files, using a new ASN.1 compiler.  The structure of Java packages in this implementation directly reflects the module structure and naming in the ASN.1 files.  The additional human-readable text and comments in the documentation was not included in the generated POJOs in any way, as the Java classes here are solely a strict implementation of the ASN.1 data structures.  Many of the messages in the standard have additional documentation available in other related standards, and some are placeholders for future use, as noted below.  
+
+The J2735/2024 standard includes the following message types.
+
+* **MessageFrame (FRAME)**
+* **BasicSafetyMessage (BSM)**
+* **CommonSafetyRequest (CSR)**
+* **CooperativeControlMessage (CCM)**
+  * See also [SAE J2945/6](https://www.sae.org/standards/content/j2945/6_202310/)
+* **EmergencyVehicleAlert (EVA)**
+* **IntersectionCollisionAvoidance (ICA)**
+* **ManeuverSharingAndCoordinatingMessage (MSCM)**
+  * See also [SAE J3186](https://www.sae.org/standards/content/j3186_202303/)
+* **MapData (MAP)**
+* **NMEAcorrections (NMEA)**
+* **PersonalSafetyMessage (PSM)**
+* **PersonalSafetyMessage2 (PSM2)** 
+  * Placeholder for future use
+* **ProbeDataConfigMessage (PDC)**
+  * See also [SAE J2945/C](https://www.sae.org/standards/content/j2945/c_202206/)
+* **ProbeDataManagement (PDM)**
+* **ProbeDataReportMessage (PDR)**
+  * See also [SAE J2945/C](https://www.sae.org/standards/content/j2945/c_202206/)
+* **ProbeVehicleData (PVD)**
+* **RoadGeometryAndAttributes (RGA)** 
+  * Placeholder for future use
+* **RoadSafetyMessage (RSM)** 
+  * See also [SAE J2945/4](https://www.sae.org/standards/content/j2945/4_202305/).  Note that the `J2735_202409.pdf` document states that RSMs are for "future use".  This appears to be a typo because the complete ASN.1 specification for them is included in the download bundle.  This repository contains a complete implementation of RSMs in Java.
+* **RoadSideAlert (RSA)**
+* **RoadUserChargingConfigMessage (RUCCM)**
+  * See also [SAE 3217/R](https://www.sae.org/standards/content/j3217/r_202401/)
+* **RoadUserChargingReportMessage (RUCRM)**
+  * See also [SAE 3217/R](https://www.sae.org/standards/content/j3217/r_202401/)
+* **RoadWeatherMessage (RWM)**
+  * See also [SAE 2945/3](https://www.sae.org/standards/content/j2945/3_202201/)
+* **RTCMcorrections (RTCM)**
+* **SensorDataSharingMessage (SDSM)**
+  * See also [SAE J3224](https://www.sae.org/standards/content/j3224_202208/)
+* **SignalControlAndPrioritizationRequest (SCPR)**
+  * Placeholder for future use
+* **SignalControlAndPrioritizationStatus (SCPS)**
+  * Placeholder for future use
+* **SignalPhaseAndTiming (SPAT)**
+* **SignalRequestMessage (SRM)**
+* **SignalStatusMessage (SSM)**
+* **TollAdvertisementMessage (TAM)**
+  * See also [SAE J3217](https://www.sae.org/standards/content/j3217_202206/)
+* **TollUsageAckMessage (TUMack)**
+  * See also [SAE J3217](https://www.sae.org/standards/content/j3217_202206/)
+* **TollUsageMessage (TUM)**
+  * See also [SAE J3217](https://www.sae.org/standards/content/j3217_202206/)
+* **TrafficLightStatusMessage (TLSM)**
+* **TrafficSignalPhaseAndTiming (TSPAT)**
+  * Placeholder for future use
+* **TravelerInformation Message (TIM)**
+* **TestMessages 00-15**
+
+
+  
+
+
+
 ## Design notes
 
 ### Goals

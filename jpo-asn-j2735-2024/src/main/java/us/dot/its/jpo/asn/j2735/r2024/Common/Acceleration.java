@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Acceleration.AccelerationDeserializer.class)
 public class Acceleration extends Asn1Integer {
 
   public Acceleration() {
@@ -38,16 +35,5 @@ public class Acceleration extends Asn1Integer {
   public Acceleration(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AccelerationDeserializer extends IntegerDeserializer<Acceleration> {
-    public AccelerationDeserializer() {
-      super(Acceleration.class);
-    }
-
-    @Override
-    protected Acceleration construct() {
-      return new Acceleration();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SecondsAngle.SecondsAngleDeserializer.class)
 public class SecondsAngle extends Asn1Integer {
 
   public SecondsAngle() {
@@ -38,16 +35,5 @@ public class SecondsAngle extends Asn1Integer {
   public SecondsAngle(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SecondsAngleDeserializer extends IntegerDeserializer<SecondsAngle> {
-    public SecondsAngleDeserializer() {
-      super(SecondsAngle.class);
-    }
-
-    @Override
-    protected SecondsAngle construct() {
-      return new SecondsAngle();
-    }
   }
 }

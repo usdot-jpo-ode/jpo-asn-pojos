@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ProbeDataManagement;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = GrossDistance.GrossDistanceDeserializer.class)
 public class GrossDistance extends Asn1Integer {
 
   public GrossDistance() {
@@ -38,16 +35,5 @@ public class GrossDistance extends Asn1Integer {
   public GrossDistance(long value) {
     this();
     this.value = value;
-  }
-
-  public static class GrossDistanceDeserializer extends IntegerDeserializer<GrossDistance> {
-    public GrossDistanceDeserializer() {
-      super(GrossDistance.class);
-    }
-
-    @Override
-    protected GrossDistance construct() {
-      return new GrossDistance();
-    }
   }
 }

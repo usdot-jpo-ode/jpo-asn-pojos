@@ -23,12 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using = NTCIPWindSensorGustDirection.NTCIPWindSensorGustDirectionDeserializer.class)
 public class NTCIPWindSensorGustDirection extends Asn1Integer {
 
   public NTCIPWindSensorGustDirection() {
@@ -39,17 +35,5 @@ public class NTCIPWindSensorGustDirection extends Asn1Integer {
   public NTCIPWindSensorGustDirection(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPWindSensorGustDirectionDeserializer
-      extends IntegerDeserializer<NTCIPWindSensorGustDirection> {
-    public NTCIPWindSensorGustDirectionDeserializer() {
-      super(NTCIPWindSensorGustDirection.class);
-    }
-
-    @Override
-    protected NTCIPWindSensorGustDirection construct() {
-      return new NTCIPWindSensorGustDirection();
-    }
   }
 }

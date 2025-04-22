@@ -105,7 +105,7 @@ public class ExteriorLights extends Asn1Bitstring {
   public ExteriorLights() {
     super(
         9,
-        false,
+        true,
         new String[] {
           "lowBeamHeadlightsOn",
           "highBeamHeadlightsOn",
