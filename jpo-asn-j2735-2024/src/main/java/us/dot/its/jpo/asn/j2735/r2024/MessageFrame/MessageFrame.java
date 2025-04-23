@@ -25,9 +25,7 @@ package us.dot.its.jpo.asn.j2735.r2024.MessageFrame;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes.IdType;
 import us.dot.its.jpo.asn.runtime.serialization.ParameterizedTypeDeserializer;
@@ -284,6 +282,7 @@ public abstract class MessageFrame<TValue> extends Asn1Sequence {
     return true;
   }
 
+  @java.lang.SuppressWarnings("rawtypes")
   public static class MessageFrameDeserializer extends ParameterizedTypeDeserializer<MessageFrame> {
     public MessageFrameDeserializer() {
       super(MessageFrame.class);

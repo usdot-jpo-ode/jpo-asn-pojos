@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = WinterDrivingRestrictions.WinterDrivingRestrictionsDeserializer.class)
 public class WinterDrivingRestrictions extends Asn1Integer {
 
   public WinterDrivingRestrictions() {
@@ -38,17 +35,5 @@ public class WinterDrivingRestrictions extends Asn1Integer {
   public WinterDrivingRestrictions(long value) {
     this();
     this.value = value;
-  }
-
-  public static class WinterDrivingRestrictionsDeserializer
-      extends IntegerDeserializer<WinterDrivingRestrictions> {
-    public WinterDrivingRestrictionsDeserializer() {
-      super(WinterDrivingRestrictions.class);
-    }
-
-    @Override
-    protected WinterDrivingRestrictions construct() {
-      return new WinterDrivingRestrictions();
-    }
   }
 }

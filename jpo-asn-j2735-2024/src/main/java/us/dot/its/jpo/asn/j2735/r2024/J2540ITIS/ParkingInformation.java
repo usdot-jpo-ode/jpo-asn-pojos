@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ParkingInformation.ParkingInformationDeserializer.class)
 public class ParkingInformation extends Asn1Integer {
 
   public ParkingInformation() {
@@ -38,17 +35,5 @@ public class ParkingInformation extends Asn1Integer {
   public ParkingInformation(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ParkingInformationDeserializer
-      extends IntegerDeserializer<ParkingInformation> {
-    public ParkingInformationDeserializer() {
-      super(ParkingInformation.class);
-    }
-
-    @Override
-    protected ParkingInformation construct() {
-      return new ParkingInformation();
-    }
   }
 }

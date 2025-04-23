@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Year.YearDeserializer.class)
 public class Year extends Asn1Integer {
 
   public Year() {
@@ -38,16 +35,5 @@ public class Year extends Asn1Integer {
   public Year(long value) {
     this();
     this.value = value;
-  }
-
-  public static class YearDeserializer extends IntegerDeserializer<Year> {
-    public YearDeserializer() {
-      super(Year.class);
-    }
-
-    @Override
-    protected Year construct() {
-      return new Year();
-    }
   }
 }

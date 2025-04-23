@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Winds.WindsDeserializer.class)
 public class Winds extends Asn1Integer {
 
   public Winds() {
@@ -38,16 +35,5 @@ public class Winds extends Asn1Integer {
   public Winds(long value) {
     this();
     this.value = value;
-  }
-
-  public static class WindsDeserializer extends IntegerDeserializer<Winds> {
-    public WindsDeserializer() {
-      super(Winds.class);
-    }
-
-    @Override
-    protected Winds construct() {
-      return new Winds();
-    }
   }
 }

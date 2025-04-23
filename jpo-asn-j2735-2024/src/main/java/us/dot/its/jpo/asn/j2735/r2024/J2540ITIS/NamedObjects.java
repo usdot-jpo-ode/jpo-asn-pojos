@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = NamedObjects.NamedObjectsDeserializer.class)
 public class NamedObjects extends Asn1Integer {
 
   public NamedObjects() {
@@ -38,16 +35,5 @@ public class NamedObjects extends Asn1Integer {
   public NamedObjects(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NamedObjectsDeserializer extends IntegerDeserializer<NamedObjects> {
-    public NamedObjectsDeserializer() {
-      super(NamedObjects.class);
-    }
-
-    @Override
-    protected NamedObjects construct() {
-      return new NamedObjects();
-    }
   }
 }

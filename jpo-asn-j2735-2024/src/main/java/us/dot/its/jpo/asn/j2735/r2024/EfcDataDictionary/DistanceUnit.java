@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DistanceUnit.DistanceUnitDeserializer.class)
 public class DistanceUnit extends Asn1Integer {
 
   public DistanceUnit() {
@@ -38,16 +35,5 @@ public class DistanceUnit extends Asn1Integer {
   public DistanceUnit(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DistanceUnitDeserializer extends IntegerDeserializer<DistanceUnit> {
-    public DistanceUnitDeserializer() {
-      super(DistanceUnit.class);
-    }
-
-    @Override
-    protected DistanceUnit construct() {
-      return new DistanceUnit();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ResponderGroupAffected.ResponderGroupAffectedDeserializer.class)
 public class ResponderGroupAffected extends Asn1Integer {
 
   public ResponderGroupAffected() {
@@ -38,17 +35,5 @@ public class ResponderGroupAffected extends Asn1Integer {
   public ResponderGroupAffected(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ResponderGroupAffectedDeserializer
-      extends IntegerDeserializer<ResponderGroupAffected> {
-    public ResponderGroupAffectedDeserializer() {
-      super(ResponderGroupAffected.class);
-    }
-
-    @Override
-    protected ResponderGroupAffected construct() {
-      return new ResponderGroupAffected();
-    }
   }
 }

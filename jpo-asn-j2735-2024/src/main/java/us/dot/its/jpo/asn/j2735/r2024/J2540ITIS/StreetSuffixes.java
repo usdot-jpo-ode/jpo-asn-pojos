@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = StreetSuffixes.StreetSuffixesDeserializer.class)
 public class StreetSuffixes extends Asn1Integer {
 
   public StreetSuffixes() {
@@ -38,16 +35,5 @@ public class StreetSuffixes extends Asn1Integer {
   public StreetSuffixes(long value) {
     this();
     this.value = value;
-  }
-
-  public static class StreetSuffixesDeserializer extends IntegerDeserializer<StreetSuffixes> {
-    public StreetSuffixesDeserializer() {
-      super(StreetSuffixes.class);
-    }
-
-    @Override
-    protected StreetSuffixes construct() {
-      return new StreetSuffixes();
-    }
   }
 }

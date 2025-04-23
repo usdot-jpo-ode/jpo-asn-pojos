@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TenthSecond.TenthSecondDeserializer.class)
 public class TenthSecond extends Asn1Integer {
 
   public TenthSecond() {
@@ -38,16 +35,5 @@ public class TenthSecond extends Asn1Integer {
   public TenthSecond(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TenthSecondDeserializer extends IntegerDeserializer<TenthSecond> {
-    public TenthSecondDeserializer() {
-      super(TenthSecond.class);
-    }
-
-    @Override
-    protected TenthSecond construct() {
-      return new TenthSecond();
-    }
   }
 }

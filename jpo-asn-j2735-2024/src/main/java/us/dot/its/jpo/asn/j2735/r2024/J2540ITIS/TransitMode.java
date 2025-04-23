@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TransitMode.TransitModeDeserializer.class)
 public class TransitMode extends Asn1Integer {
 
   public TransitMode() {
@@ -38,16 +35,5 @@ public class TransitMode extends Asn1Integer {
   public TransitMode(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TransitModeDeserializer extends IntegerDeserializer<TransitMode> {
-    public TransitModeDeserializer() {
-      super(TransitMode.class);
-    }
-
-    @Override
-    protected TransitMode construct() {
-      return new TransitMode();
-    }
   }
 }

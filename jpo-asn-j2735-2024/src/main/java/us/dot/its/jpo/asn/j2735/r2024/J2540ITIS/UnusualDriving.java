@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = UnusualDriving.UnusualDrivingDeserializer.class)
 public class UnusualDriving extends Asn1Integer {
 
   public UnusualDriving() {
@@ -38,16 +35,5 @@ public class UnusualDriving extends Asn1Integer {
   public UnusualDriving(long value) {
     this();
     this.value = value;
-  }
-
-  public static class UnusualDrivingDeserializer extends IntegerDeserializer<UnusualDriving> {
-    public UnusualDrivingDeserializer() {
-      super(UnusualDriving.class);
-    }
-
-    @Override
-    protected UnusualDriving construct() {
-      return new UnusualDriving();
-    }
   }
 }

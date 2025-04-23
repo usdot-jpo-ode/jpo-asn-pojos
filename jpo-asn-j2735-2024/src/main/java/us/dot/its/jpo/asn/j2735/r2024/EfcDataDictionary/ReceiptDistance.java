@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = ReceiptDistance.ReceiptDistanceDeserializer.class)
 public class ReceiptDistance extends Int3Unsigned {
 
   public ReceiptDistance() {
@@ -37,16 +34,5 @@ public class ReceiptDistance extends Int3Unsigned {
   public ReceiptDistance(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ReceiptDistanceDeserializer extends IntegerDeserializer<ReceiptDistance> {
-    public ReceiptDistanceDeserializer() {
-      super(ReceiptDistance.class);
-    }
-
-    @Override
-    protected ReceiptDistance construct() {
-      return new ReceiptDistance();
-    }
   }
 }

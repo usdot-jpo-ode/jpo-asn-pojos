@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = UserClassId.UserClassIdDeserializer.class)
 public class UserClassId extends Int1Unsigned {
 
   public UserClassId() {
@@ -37,16 +34,5 @@ public class UserClassId extends Int1Unsigned {
   public UserClassId(long value) {
     this();
     this.value = value;
-  }
-
-  public static class UserClassIdDeserializer extends IntegerDeserializer<UserClassId> {
-    public UserClassIdDeserializer() {
-      super(UserClassId.class);
-    }
-
-    @Override
-    protected UserClassId construct() {
-      return new UserClassId();
-    }
   }
 }

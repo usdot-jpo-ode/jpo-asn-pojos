@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = SportingEvents.SportingEventsDeserializer.class)
 public class SportingEvents extends Asn1Integer {
 
   public SportingEvents() {
@@ -38,16 +35,5 @@ public class SportingEvents extends Asn1Integer {
   public SportingEvents(long value) {
     this();
     this.value = value;
-  }
-
-  public static class SportingEventsDeserializer extends IntegerDeserializer<SportingEvents> {
-    public SportingEventsDeserializer() {
-      super(SportingEvents.class);
-    }
-
-    @Override
-    protected SportingEvents construct() {
-      return new SportingEvents();
-    }
   }
 }

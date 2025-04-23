@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = LargeNumbers.LargeNumbersDeserializer.class)
 public class LargeNumbers extends Asn1Integer {
 
   public LargeNumbers() {
@@ -38,16 +35,5 @@ public class LargeNumbers extends Asn1Integer {
   public LargeNumbers(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LargeNumbersDeserializer extends IntegerDeserializer<LargeNumbers> {
-    public LargeNumbersDeserializer() {
-      super(LargeNumbers.class);
-    }
-
-    @Override
-    protected LargeNumbers construct() {
-      return new LargeNumbers();
-    }
   }
 }

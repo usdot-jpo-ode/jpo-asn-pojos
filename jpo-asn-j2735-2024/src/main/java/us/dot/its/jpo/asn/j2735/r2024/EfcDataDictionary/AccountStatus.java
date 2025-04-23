@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = AccountStatus.AccountStatusDeserializer.class)
 public class AccountStatus extends Asn1Integer {
 
   public AccountStatus() {
@@ -38,16 +35,5 @@ public class AccountStatus extends Asn1Integer {
   public AccountStatus(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AccountStatusDeserializer extends IntegerDeserializer<AccountStatus> {
-    public AccountStatusDeserializer() {
-      super(AccountStatus.class);
-    }
-
-    @Override
-    protected AccountStatus construct() {
-      return new AccountStatus();
-    }
   }
 }

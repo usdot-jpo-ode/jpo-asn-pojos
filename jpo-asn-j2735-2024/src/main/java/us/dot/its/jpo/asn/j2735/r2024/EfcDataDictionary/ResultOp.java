@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ResultOp.ResultOpDeserializer.class)
 public class ResultOp extends Asn1Integer {
 
   public ResultOp() {
@@ -38,16 +35,5 @@ public class ResultOp extends Asn1Integer {
   public ResultOp(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ResultOpDeserializer extends IntegerDeserializer<ResultOp> {
-    public ResultOpDeserializer() {
-      super(ResultOp.class);
-    }
-
-    @Override
-    protected ResultOp construct() {
-      return new ResultOp();
-    }
   }
 }

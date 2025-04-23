@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = WeatherConditions.WeatherConditionsDeserializer.class)
 public class WeatherConditions extends Asn1Integer {
 
   public WeatherConditions() {
@@ -38,16 +35,5 @@ public class WeatherConditions extends Asn1Integer {
   public WeatherConditions(long value) {
     this();
     this.value = value;
-  }
-
-  public static class WeatherConditionsDeserializer extends IntegerDeserializer<WeatherConditions> {
-    public WeatherConditionsDeserializer() {
-      super(WeatherConditions.class);
-    }
-
-    @Override
-    protected WeatherConditions construct() {
-      return new WeatherConditions();
-    }
   }
 }

@@ -23,10 +23,7 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 
-@JsonDeserialize(using = LocationClassId.LocationClassIdDeserializer.class)
 public class LocationClassId extends Int4Unsigned {
 
   public LocationClassId() {
@@ -37,16 +34,5 @@ public class LocationClassId extends Int4Unsigned {
   public LocationClassId(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LocationClassIdDeserializer extends IntegerDeserializer<LocationClassId> {
-    public LocationClassIdDeserializer() {
-      super(LocationClassId.class);
-    }
-
-    @Override
-    protected LocationClassId construct() {
-      return new LocationClassId();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DetectionMode.DetectionModeDeserializer.class)
 public class DetectionMode extends Asn1Integer {
 
   public DetectionMode() {
@@ -38,16 +35,5 @@ public class DetectionMode extends Asn1Integer {
   public DetectionMode(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DetectionModeDeserializer extends IntegerDeserializer<DetectionMode> {
-    public DetectionModeDeserializer() {
-      super(DetectionMode.class);
-    }
-
-    @Override
-    protected DetectionMode construct() {
-      return new DetectionMode();
-    }
   }
 }

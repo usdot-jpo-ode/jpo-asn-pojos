@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ValidManeuvers.ValidManeuversDeserializer.class)
 public class ValidManeuvers extends Asn1Integer {
 
   public ValidManeuvers() {
@@ -38,16 +35,5 @@ public class ValidManeuvers extends Asn1Integer {
   public ValidManeuvers(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ValidManeuversDeserializer extends IntegerDeserializer<ValidManeuvers> {
-    public ValidManeuversDeserializer() {
-      super(ValidManeuvers.class);
-    }
-
-    @Override
-    protected ValidManeuvers construct() {
-      return new ValidManeuvers();
-    }
   }
 }

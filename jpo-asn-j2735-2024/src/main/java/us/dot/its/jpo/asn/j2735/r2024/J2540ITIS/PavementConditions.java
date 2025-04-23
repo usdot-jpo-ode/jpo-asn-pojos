@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = PavementConditions.PavementConditionsDeserializer.class)
 public class PavementConditions extends Asn1Integer {
 
   public PavementConditions() {
@@ -38,17 +35,5 @@ public class PavementConditions extends Asn1Integer {
   public PavementConditions(long value) {
     this();
     this.value = value;
-  }
-
-  public static class PavementConditionsDeserializer
-      extends IntegerDeserializer<PavementConditions> {
-    public PavementConditionsDeserializer() {
-      super(PavementConditions.class);
-    }
-
-    @Override
-    protected PavementConditions construct() {
-      return new PavementConditions();
-    }
   }
 }
