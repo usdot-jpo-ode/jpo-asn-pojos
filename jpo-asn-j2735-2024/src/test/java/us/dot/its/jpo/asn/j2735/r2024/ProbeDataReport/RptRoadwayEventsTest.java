@@ -25,7 +25,7 @@ public class RptRoadwayEventsTest extends BaseSerializeTest<RptRoadwayEvents> {
   @ParameterizedTest
   @MethodSource("xmlValues")
   public void canRoundTripXml(final String xer) throws IOException {
-    log.info("canRoundTripXml {}", xer);
+    log.debug("canRoundTripXml {}", xer);
     RptRoadwayEvents msg = fromXml(xer);
     assertThat(msg, notNullValue());
     final String roundTripXml = toXml(msg);
@@ -36,7 +36,7 @@ public class RptRoadwayEventsTest extends BaseSerializeTest<RptRoadwayEvents> {
   @ParameterizedTest
   @MethodSource("jsonValues")
   public void canRoundTripJson(final String jer) throws IOException {
-    log.info("canRoundTripJson {}", jer);
+    log.debug("canRoundTripJson {}", jer);
     RptRoadwayEvents msg = fromJson(jer);
     assertThat(msg, notNullValue());
     final String roundTripJson = toJson(msg);
@@ -73,7 +73,29 @@ public class RptRoadwayEventsTest extends BaseSerializeTest<RptRoadwayEvents> {
   static Stream<Arguments> jsonValues() {
     var nullChoiceStream = Arrays.stream(nullChoices())
         .map(choice -> Arguments.of(wrapJson(choice)));
-    return nullChoiceStream;
+    return Stream.concat(nullChoiceStream,
+        Stream.of(
+            Arguments.of("""
+                {
+                  "adverseRoadSurface": {
+                    "meanVerticalVariation": 4968,
+                    "verticalVariationStdDev": 4493,
+                    "meanHorizontalVariation": 13712,
+                    "horizontalVariationStdDev": 4731
+                  }
+                }
+                """),
+            Arguments.of("""
+                {
+                  "trfsigEncounters": {
+                    "intersectionID": 48835,
+                    "trafficMetrics": {
+                      "trfsigApproachDelay": null
+                    }
+                  }
+                }
+                """)
+        ));
   }
 
   static String[] nullChoices() {
