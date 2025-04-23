@@ -2,7 +2,6 @@ package us.dot.its.jpo.asn.j2735.r2024.PersonalSafetyMessage2;
 
 import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
