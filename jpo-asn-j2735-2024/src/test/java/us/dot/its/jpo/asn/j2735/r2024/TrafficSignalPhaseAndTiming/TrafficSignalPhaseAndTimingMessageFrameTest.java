@@ -1,4 +1,4 @@
-package us.dot.its.jpo.asn.j2735.r2024.PersonalSafetyMessage2;
+package us.dot.its.jpo.asn.j2735.r2024.TrafficSignalPhaseAndTiming;
 
 import static net.javacrumbs.jsonunit.JsonMatchers.jsonEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -9,18 +9,19 @@ import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import us.dot.its.jpo.asn.j2735.r2024.BaseSerializeTest;
+import us.dot.its.jpo.asn.j2735.r2024.PersonalSafetyMessage2.PersonalSafetyMessage2MessageFrame;
 
 @Slf4j
-public class PersonalSafetyMessage2MessageFrameTest extends
-    BaseSerializeTest<PersonalSafetyMessage2MessageFrame> {
+public class TrafficSignalPhaseAndTimingMessageFrameTest
+  extends BaseSerializeTest<TrafficSignalPhaseAndTimingMessageFrame> {
 
-  public PersonalSafetyMessage2MessageFrameTest() {
-    super(PersonalSafetyMessage2MessageFrame.class);
+  public TrafficSignalPhaseAndTimingMessageFrameTest() {
+    super(TrafficSignalPhaseAndTimingMessageFrame.class);
   }
 
   @Test
   public void canRoundTripXml() throws IOException {
-    PersonalSafetyMessage2MessageFrame msg = fromXml(XER);
+    TrafficSignalPhaseAndTimingMessageFrame msg = fromXml(XER);
     assertThat(msg, notNullValue());
     final String roundTripXml = toXml(msg);
     assertThat(roundTripXml, isIdenticalTo(XER).ignoreWhitespace().ignoreWhitespace());
@@ -29,7 +30,7 @@ public class PersonalSafetyMessage2MessageFrameTest extends
 
   @Test
   public void canRoundTripJson() throws IOException {
-    PersonalSafetyMessage2MessageFrame msg = fromJson(JER);
+    TrafficSignalPhaseAndTimingMessageFrame msg = fromJson(JER);
     assertThat(msg, notNullValue());
     final String roundTripJson = toJson(msg);
     assertThat(roundTripJson, jsonEquals(JER));
@@ -38,21 +39,19 @@ public class PersonalSafetyMessage2MessageFrameTest extends
 
   final static String XER = """
       <MessageFrame>
-        <messageId>44</messageId>
+        <messageId>45</messageId>
         <value>
-          <PersonalSafetyMessage2></PersonalSafetyMessage2>
+          <TrafficSignalPhaseAndTiming></TrafficSignalPhaseAndTiming>
         </value>
       </MessageFrame>
       """;
 
   final static String JER = """
       {
-        "messageId": 44,
+        "messageId": 45,
         "value": {
-          "PersonalSafetyMessage2": null
+          "TrafficSignalPhaseAndTiming": null
         }
       }
       """;
-
-
 }
