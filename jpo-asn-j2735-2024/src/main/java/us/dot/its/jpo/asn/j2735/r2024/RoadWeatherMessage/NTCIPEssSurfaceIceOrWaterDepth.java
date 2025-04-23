@@ -23,12 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(
-    using = NTCIPEssSurfaceIceOrWaterDepth.NTCIPEssSurfaceIceOrWaterDepthDeserializer.class)
 public class NTCIPEssSurfaceIceOrWaterDepth extends Asn1Integer {
 
   public NTCIPEssSurfaceIceOrWaterDepth() {
@@ -39,17 +35,5 @@ public class NTCIPEssSurfaceIceOrWaterDepth extends Asn1Integer {
   public NTCIPEssSurfaceIceOrWaterDepth(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPEssSurfaceIceOrWaterDepthDeserializer
-      extends IntegerDeserializer<NTCIPEssSurfaceIceOrWaterDepth> {
-    public NTCIPEssSurfaceIceOrWaterDepthDeserializer() {
-      super(NTCIPEssSurfaceIceOrWaterDepth.class);
-    }
-
-    @Override
-    protected NTCIPEssSurfaceIceOrWaterDepth construct() {
-      return new NTCIPEssSurfaceIceOrWaterDepth();
-    }
   }
 }

@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = NTCIPEssVisibility.NTCIPEssVisibilityDeserializer.class)
 public class NTCIPEssVisibility extends Asn1Integer {
 
   public NTCIPEssVisibility() {
@@ -38,17 +35,5 @@ public class NTCIPEssVisibility extends Asn1Integer {
   public NTCIPEssVisibility(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPEssVisibilityDeserializer
-      extends IntegerDeserializer<NTCIPEssVisibility> {
-    public NTCIPEssVisibilityDeserializer() {
-      super(NTCIPEssVisibility.class);
-    }
-
-    @Override
-    protected NTCIPEssVisibility construct() {
-      return new NTCIPEssVisibility();
-    }
   }
 }

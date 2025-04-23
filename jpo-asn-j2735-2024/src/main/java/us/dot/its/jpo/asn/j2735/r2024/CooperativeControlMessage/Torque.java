@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Torque.TorqueDeserializer.class)
 public class Torque extends Asn1Integer {
 
   public Torque() {
@@ -38,16 +35,5 @@ public class Torque extends Asn1Integer {
   public Torque(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TorqueDeserializer extends IntegerDeserializer<Torque> {
-    public TorqueDeserializer() {
-      super(Torque.class);
-    }
-
-    @Override
-    protected Torque construct() {
-      return new Torque();
-    }
   }
 }

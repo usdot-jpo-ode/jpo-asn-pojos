@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = VehicleMass.VehicleMassDeserializer.class)
 public class VehicleMass extends Asn1Integer {
 
   public VehicleMass() {
@@ -38,16 +35,5 @@ public class VehicleMass extends Asn1Integer {
   public VehicleMass(long value) {
     this();
     this.value = value;
-  }
-
-  public static class VehicleMassDeserializer extends IntegerDeserializer<VehicleMass> {
-    public VehicleMassDeserializer() {
-      super(VehicleMass.class);
-    }
-
-    @Override
-    protected VehicleMass construct() {
-      return new VehicleMass();
-    }
   }
 }

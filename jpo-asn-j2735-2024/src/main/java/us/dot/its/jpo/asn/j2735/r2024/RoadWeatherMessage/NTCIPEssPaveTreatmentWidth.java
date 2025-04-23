@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = NTCIPEssPaveTreatmentWidth.NTCIPEssPaveTreatmentWidthDeserializer.class)
 public class NTCIPEssPaveTreatmentWidth extends Asn1Integer {
 
   public NTCIPEssPaveTreatmentWidth() {
@@ -38,17 +35,5 @@ public class NTCIPEssPaveTreatmentWidth extends Asn1Integer {
   public NTCIPEssPaveTreatmentWidth(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPEssPaveTreatmentWidthDeserializer
-      extends IntegerDeserializer<NTCIPEssPaveTreatmentWidth> {
-    public NTCIPEssPaveTreatmentWidthDeserializer() {
-      super(NTCIPEssPaveTreatmentWidth.class);
-    }
-
-    @Override
-    protected NTCIPEssPaveTreatmentWidth construct() {
-      return new NTCIPEssPaveTreatmentWidth();
-    }
   }
 }

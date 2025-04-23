@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DDay.DDayDeserializer.class)
 public class DDay extends Asn1Integer {
 
   public DDay() {
@@ -38,16 +35,5 @@ public class DDay extends Asn1Integer {
   public DDay(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DDayDeserializer extends IntegerDeserializer<DDay> {
-    public DDayDeserializer() {
-      super(DDay.class);
-    }
-
-    @Override
-    protected DDay construct() {
-      return new DDay();
-    }
   }
 }

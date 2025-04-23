@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = BankAngle.BankAngleDeserializer.class)
 public class BankAngle extends Asn1Integer {
 
   public BankAngle() {
@@ -38,16 +35,5 @@ public class BankAngle extends Asn1Integer {
   public BankAngle(long value) {
     this();
     this.value = value;
-  }
-
-  public static class BankAngleDeserializer extends IntegerDeserializer<BankAngle> {
-    public BankAngleDeserializer() {
-      super(BankAngle.class);
-    }
-
-    @Override
-    protected BankAngle construct() {
-      return new BankAngle();
-    }
   }
 }

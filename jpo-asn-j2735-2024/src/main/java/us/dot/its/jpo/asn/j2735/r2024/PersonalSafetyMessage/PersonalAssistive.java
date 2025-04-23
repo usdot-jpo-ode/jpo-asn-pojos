@@ -83,7 +83,7 @@ public class PersonalAssistive extends Asn1Bitstring {
   public PersonalAssistive() {
     super(
         6,
-        false,
+        true,
         new String[] {"unavailable", "otherType", "vision", "hearing", "movement", "cognition"});
   }
 

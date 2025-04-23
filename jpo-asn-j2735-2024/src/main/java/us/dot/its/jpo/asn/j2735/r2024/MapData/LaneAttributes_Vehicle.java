@@ -99,7 +99,7 @@ public class LaneAttributes_Vehicle extends Asn1Bitstring {
   public LaneAttributes_Vehicle() {
     super(
         8,
-        false,
+        true,
         new String[] {
           "isVehicleRevocableLane",
           "isVehicleFlyOverLane",

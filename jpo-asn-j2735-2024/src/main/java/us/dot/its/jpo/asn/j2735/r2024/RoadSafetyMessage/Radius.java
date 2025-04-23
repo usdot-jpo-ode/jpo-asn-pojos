@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Radius.RadiusDeserializer.class)
 public class Radius extends Asn1Integer {
 
   public Radius() {
@@ -38,16 +35,5 @@ public class Radius extends Asn1Integer {
   public Radius(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RadiusDeserializer extends IntegerDeserializer<Radius> {
-    public RadiusDeserializer() {
-      super(Radius.class);
-    }
-
-    @Override
-    protected Radius construct() {
-      return new Radius();
-    }
   }
 }

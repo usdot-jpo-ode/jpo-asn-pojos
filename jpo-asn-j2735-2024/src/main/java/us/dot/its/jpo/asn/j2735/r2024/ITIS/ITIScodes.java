@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ITIScodes.ITIScodesDeserializer.class)
 public class ITIScodes extends Asn1Integer {
 
   public ITIScodes() {
@@ -38,16 +35,5 @@ public class ITIScodes extends Asn1Integer {
   public ITIScodes(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ITIScodesDeserializer extends IntegerDeserializer<ITIScodes> {
-    public ITIScodesDeserializer() {
-      super(ITIScodes.class);
-    }
-
-    @Override
-    protected ITIScodes construct() {
-      return new ITIScodes();
-    }
   }
 }

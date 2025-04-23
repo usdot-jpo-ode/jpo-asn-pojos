@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.MessageFrame;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = DSRCmsgID.DSRCmsgIDDeserializer.class)
 public class DSRCmsgID extends Asn1Integer {
 
   public DSRCmsgID() {
@@ -38,16 +35,5 @@ public class DSRCmsgID extends Asn1Integer {
   public DSRCmsgID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class DSRCmsgIDDeserializer extends IntegerDeserializer<DSRCmsgID> {
-    public DSRCmsgIDDeserializer() {
-      super(DSRCmsgID.class);
-    }
-
-    @Override
-    protected DSRCmsgID construct() {
-      return new DSRCmsgID();
-    }
   }
 }

@@ -22,6 +22,22 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.TrafficSignalPhaseAndTiming;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import us.dot.its.jpo.asn.runtime.serialization.NullDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Null;
 
-public class TrafficSignalPhaseAndTiming extends Asn1Null {}
+@JsonDeserialize(using = TrafficSignalPhaseAndTiming.TrafficSignalPhaseAndTimingDeserializer.class)
+public class TrafficSignalPhaseAndTiming extends Asn1Null {
+
+  public static class TrafficSignalPhaseAndTimingDeserializer
+      extends NullDeserializer<TrafficSignalPhaseAndTiming> {
+    public TrafficSignalPhaseAndTimingDeserializer() {
+      super(TrafficSignalPhaseAndTiming.class);
+    }
+
+    @Override
+    protected TrafficSignalPhaseAndTiming construct() {
+      return new TrafficSignalPhaseAndTiming();
+    }
+  }
+}

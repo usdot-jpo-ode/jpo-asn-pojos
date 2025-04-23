@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ObstacleDistance.ObstacleDistanceDeserializer.class)
 public class ObstacleDistance extends Asn1Integer {
 
   public ObstacleDistance() {
@@ -38,16 +35,5 @@ public class ObstacleDistance extends Asn1Integer {
   public ObstacleDistance(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ObstacleDistanceDeserializer extends IntegerDeserializer<ObstacleDistance> {
-    public ObstacleDistanceDeserializer() {
-      super(ObstacleDistance.class);
-    }
-
-    @Override
-    protected ObstacleDistance construct() {
-      return new ObstacleDistance();
-    }
   }
 }

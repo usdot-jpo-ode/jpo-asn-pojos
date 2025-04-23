@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.TrafficLightStatusMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TrafficLightDirectionCode.TrafficLightDirectionCodeDeserializer.class)
 public class TrafficLightDirectionCode extends Asn1Integer {
 
   public TrafficLightDirectionCode() {
@@ -38,17 +35,5 @@ public class TrafficLightDirectionCode extends Asn1Integer {
   public TrafficLightDirectionCode(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TrafficLightDirectionCodeDeserializer
-      extends IntegerDeserializer<TrafficLightDirectionCode> {
-    public TrafficLightDirectionCodeDeserializer() {
-      super(TrafficLightDirectionCode.class);
-    }
-
-    @Override
-    protected TrafficLightDirectionCode construct() {
-      return new TrafficLightDirectionCode();
-    }
   }
 }

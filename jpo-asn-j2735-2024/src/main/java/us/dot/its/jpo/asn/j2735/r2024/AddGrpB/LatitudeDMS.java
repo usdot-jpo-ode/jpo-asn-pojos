@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.AddGrpB;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = LatitudeDMS.LatitudeDMSDeserializer.class)
 public class LatitudeDMS extends Asn1Integer {
 
   public LatitudeDMS() {
@@ -38,16 +35,5 @@ public class LatitudeDMS extends Asn1Integer {
   public LatitudeDMS(long value) {
     this();
     this.value = value;
-  }
-
-  public static class LatitudeDMSDeserializer extends IntegerDeserializer<LatitudeDMS> {
-    public LatitudeDMSDeserializer() {
-      super(LatitudeDMS.class);
-    }
-
-    @Override
-    protected LatitudeDMS construct() {
-      return new LatitudeDMS();
-    }
   }
 }

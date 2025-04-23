@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ElevOffset.ElevOffsetDeserializer.class)
 public class ElevOffset extends Asn1Integer {
 
   public ElevOffset() {
@@ -38,16 +35,5 @@ public class ElevOffset extends Asn1Integer {
   public ElevOffset(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ElevOffsetDeserializer extends IntegerDeserializer<ElevOffset> {
-    public ElevOffsetDeserializer() {
-      super(ElevOffset.class);
-    }
-
-    @Override
-    protected ElevOffset construct() {
-      return new ElevOffset();
-    }
   }
 }

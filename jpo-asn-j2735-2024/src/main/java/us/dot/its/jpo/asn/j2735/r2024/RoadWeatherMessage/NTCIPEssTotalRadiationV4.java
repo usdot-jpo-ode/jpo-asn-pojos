@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = NTCIPEssTotalRadiationV4.NTCIPEssTotalRadiationV4Deserializer.class)
 public class NTCIPEssTotalRadiationV4 extends Asn1Integer {
 
   public NTCIPEssTotalRadiationV4() {
@@ -38,17 +35,5 @@ public class NTCIPEssTotalRadiationV4 extends Asn1Integer {
   public NTCIPEssTotalRadiationV4(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPEssTotalRadiationV4Deserializer
-      extends IntegerDeserializer<NTCIPEssTotalRadiationV4> {
-    public NTCIPEssTotalRadiationV4Deserializer() {
-      super(NTCIPEssTotalRadiationV4.class);
-    }
-
-    @Override
-    protected NTCIPEssTotalRadiationV4 construct() {
-      return new NTCIPEssTotalRadiationV4();
-    }
   }
 }

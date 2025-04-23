@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = TrailerType.TrailerTypeDeserializer.class)
 public class TrailerType extends Asn1Integer {
 
   public TrailerType() {
@@ -38,16 +35,5 @@ public class TrailerType extends Asn1Integer {
   public TrailerType(long value) {
     this();
     this.value = value;
-  }
-
-  public static class TrailerTypeDeserializer extends IntegerDeserializer<TrailerType> {
-    public TrailerTypeDeserializer() {
-      super(TrailerType.class);
-    }
-
-    @Override
-    protected TrailerType construct() {
-      return new TrailerType();
-    }
   }
 }

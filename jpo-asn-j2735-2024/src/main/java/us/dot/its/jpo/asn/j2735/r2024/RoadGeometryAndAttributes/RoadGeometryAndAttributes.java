@@ -22,6 +22,22 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.RoadGeometryAndAttributes;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import us.dot.its.jpo.asn.runtime.serialization.NullDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Null;
 
-public class RoadGeometryAndAttributes extends Asn1Null {}
+@JsonDeserialize(using = RoadGeometryAndAttributes.RoadGeometryAndAttributesDeserializer.class)
+public class RoadGeometryAndAttributes extends Asn1Null {
+
+  public static class RoadGeometryAndAttributesDeserializer
+      extends NullDeserializer<RoadGeometryAndAttributes> {
+    public RoadGeometryAndAttributesDeserializer() {
+      super(RoadGeometryAndAttributes.class);
+    }
+
+    @Override
+    protected RoadGeometryAndAttributes construct() {
+      return new RoadGeometryAndAttributes();
+    }
+  }
+}

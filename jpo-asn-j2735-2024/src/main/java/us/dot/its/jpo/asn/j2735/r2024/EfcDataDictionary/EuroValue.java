@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = EuroValue.EuroValueDeserializer.class)
 public class EuroValue extends Asn1Integer {
 
   public EuroValue() {
@@ -38,16 +35,5 @@ public class EuroValue extends Asn1Integer {
   public EuroValue(long value) {
     this();
     this.value = value;
-  }
-
-  public static class EuroValueDeserializer extends IntegerDeserializer<EuroValue> {
-    public EuroValueDeserializer() {
-      super(EuroValue.class);
-    }
-
-    @Override
-    protected EuroValue construct() {
-      return new EuroValue();
-    }
   }
 }

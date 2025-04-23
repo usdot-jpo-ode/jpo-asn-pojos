@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = MaxAvailableDeceleration.MaxAvailableDecelerationDeserializer.class)
 public class MaxAvailableDeceleration extends Asn1Integer {
 
   public MaxAvailableDeceleration() {
@@ -38,17 +35,5 @@ public class MaxAvailableDeceleration extends Asn1Integer {
   public MaxAvailableDeceleration(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MaxAvailableDecelerationDeserializer
-      extends IntegerDeserializer<MaxAvailableDeceleration> {
-    public MaxAvailableDecelerationDeserializer() {
-      super(MaxAvailableDeceleration.class);
-    }
-
-    @Override
-    protected MaxAvailableDeceleration construct() {
-      return new MaxAvailableDeceleration();
-    }
   }
 }

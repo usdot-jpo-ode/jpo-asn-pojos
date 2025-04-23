@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = HeadingDeg.HeadingDegDeserializer.class)
 public class HeadingDeg extends Asn1Integer {
 
   public HeadingDeg() {
@@ -38,16 +35,5 @@ public class HeadingDeg extends Asn1Integer {
   public HeadingDeg(long value) {
     this();
     this.value = value;
-  }
-
-  public static class HeadingDegDeserializer extends IntegerDeserializer<HeadingDeg> {
-    public HeadingDegDeserializer() {
-      super(HeadingDeg.class);
-    }
-
-    @Override
-    protected HeadingDeg construct() {
-      return new HeadingDeg();
-    }
   }
 }

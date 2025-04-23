@@ -99,7 +99,7 @@ public class TrafficLightOperationStatus extends Asn1Bitstring {
   public TrafficLightOperationStatus() {
     super(
         8,
-        false,
+        true,
         new String[] {
           "manual",
           "flashing",

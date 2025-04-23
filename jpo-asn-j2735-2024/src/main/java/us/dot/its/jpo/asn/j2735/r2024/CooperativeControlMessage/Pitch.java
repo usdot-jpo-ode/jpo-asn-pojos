@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = Pitch.PitchDeserializer.class)
 public class Pitch extends Asn1Integer {
 
   public Pitch() {
@@ -38,16 +35,5 @@ public class Pitch extends Asn1Integer {
   public Pitch(long value) {
     this();
     this.value = value;
-  }
-
-  public static class PitchDeserializer extends IntegerDeserializer<Pitch> {
-    public PitchDeserializer() {
-      super(Pitch.class);
-    }
-
-    @Override
-    protected Pitch construct() {
-      return new Pitch();
-    }
   }
 }

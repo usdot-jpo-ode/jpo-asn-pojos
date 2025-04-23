@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = MeasurementTimeOffset.MeasurementTimeOffsetDeserializer.class)
 public class MeasurementTimeOffset extends Asn1Integer {
 
   public MeasurementTimeOffset() {
@@ -38,17 +35,5 @@ public class MeasurementTimeOffset extends Asn1Integer {
   public MeasurementTimeOffset(long value) {
     this();
     this.value = value;
-  }
-
-  public static class MeasurementTimeOffsetDeserializer
-      extends IntegerDeserializer<MeasurementTimeOffset> {
-    public MeasurementTimeOffsetDeserializer() {
-      super(MeasurementTimeOffset.class);
-    }
-
-    @Override
-    protected MeasurementTimeOffset construct() {
-      return new MeasurementTimeOffset();
-    }
   }
 }

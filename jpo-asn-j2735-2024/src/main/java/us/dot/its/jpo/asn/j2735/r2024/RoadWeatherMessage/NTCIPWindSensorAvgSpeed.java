@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.RoadWeatherMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = NTCIPWindSensorAvgSpeed.NTCIPWindSensorAvgSpeedDeserializer.class)
 public class NTCIPWindSensorAvgSpeed extends Asn1Integer {
 
   public NTCIPWindSensorAvgSpeed() {
@@ -38,17 +35,5 @@ public class NTCIPWindSensorAvgSpeed extends Asn1Integer {
   public NTCIPWindSensorAvgSpeed(long value) {
     this();
     this.value = value;
-  }
-
-  public static class NTCIPWindSensorAvgSpeedDeserializer
-      extends IntegerDeserializer<NTCIPWindSensorAvgSpeed> {
-    public NTCIPWindSensorAvgSpeedDeserializer() {
-      super(NTCIPWindSensorAvgSpeed.class);
-    }
-
-    @Override
-    protected NTCIPWindSensorAvgSpeed construct() {
-      return new NTCIPWindSensorAvgSpeed();
-    }
   }
 }

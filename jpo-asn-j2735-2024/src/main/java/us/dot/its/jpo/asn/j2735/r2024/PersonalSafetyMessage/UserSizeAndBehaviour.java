@@ -75,7 +75,7 @@ public class UserSizeAndBehaviour extends Asn1Bitstring {
   public UserSizeAndBehaviour() {
     super(
         5,
-        false,
+        true,
         new String[] {
           "unavailable", "smallStature", "largeStature", "erraticMoving", "slowMoving"
         });

@@ -22,6 +22,22 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.PersonalSafetyMessage2;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import us.dot.its.jpo.asn.runtime.serialization.NullDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Null;
 
-public class PersonalSafetyMessage2 extends Asn1Null {}
+@JsonDeserialize(using = PersonalSafetyMessage2.PersonalSafetyMessage2Deserializer.class)
+public class PersonalSafetyMessage2 extends Asn1Null {
+
+  public static class PersonalSafetyMessage2Deserializer
+      extends NullDeserializer<PersonalSafetyMessage2> {
+    public PersonalSafetyMessage2Deserializer() {
+      super(PersonalSafetyMessage2.class);
+    }
+
+    @Override
+    protected PersonalSafetyMessage2 construct() {
+      return new PersonalSafetyMessage2();
+    }
+  }
+}

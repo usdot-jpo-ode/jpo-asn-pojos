@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = OffsetLL_B18.OffsetLL_B18Deserializer.class)
 public class OffsetLL_B18 extends Asn1Integer {
 
   public OffsetLL_B18() {
@@ -38,16 +35,5 @@ public class OffsetLL_B18 extends Asn1Integer {
   public OffsetLL_B18(long value) {
     this();
     this.value = value;
-  }
-
-  public static class OffsetLL_B18Deserializer extends IntegerDeserializer<OffsetLL_B18> {
-    public OffsetLL_B18Deserializer() {
-      super(OffsetLL_B18.class);
-    }
-
-    @Override
-    protected OffsetLL_B18 construct() {
-      return new OffsetLL_B18();
-    }
   }
 }

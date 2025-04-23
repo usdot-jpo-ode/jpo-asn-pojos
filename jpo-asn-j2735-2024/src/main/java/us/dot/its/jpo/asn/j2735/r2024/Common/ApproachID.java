@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = ApproachID.ApproachIDDeserializer.class)
 public class ApproachID extends Asn1Integer {
 
   public ApproachID() {
@@ -38,16 +35,5 @@ public class ApproachID extends Asn1Integer {
   public ApproachID(long value) {
     this();
     this.value = value;
-  }
-
-  public static class ApproachIDDeserializer extends IntegerDeserializer<ApproachID> {
-    public ApproachIDDeserializer() {
-      super(ApproachID.class);
-    }
-
-    @Override
-    protected ApproachID construct() {
-      return new ApproachID();
-    }
   }
 }

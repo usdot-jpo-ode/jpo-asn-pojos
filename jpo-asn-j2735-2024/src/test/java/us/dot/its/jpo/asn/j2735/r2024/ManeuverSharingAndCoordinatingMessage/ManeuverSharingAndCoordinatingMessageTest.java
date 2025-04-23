@@ -39,6 +39,8 @@ public class ManeuverSharingAndCoordinatingMessageTest
     assertThat(roundTripJson, jsonEquals(json));
   }
 
+
+
   private static Stream<Arguments> getXmlResources() {
     return getResources("/us/dot/its/jpo/asn/j2735/r2024/ManeuverSharingAndCoordinatingMessage/xml");
   }
@@ -46,4 +48,6 @@ public class ManeuverSharingAndCoordinatingMessageTest
   private static Stream<Arguments> getJsonResources() {
     return getResources("/us/dot/its/jpo/asn/j2735/r2024/ManeuverSharingAndCoordinatingMessage/json");
   }
+
+
 }

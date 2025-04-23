@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = AmbientAirPressure.AmbientAirPressureDeserializer.class)
 public class AmbientAirPressure extends Asn1Integer {
 
   public AmbientAirPressure() {
@@ -38,17 +35,5 @@ public class AmbientAirPressure extends Asn1Integer {
   public AmbientAirPressure(long value) {
     this();
     this.value = value;
-  }
-
-  public static class AmbientAirPressureDeserializer
-      extends IntegerDeserializer<AmbientAirPressure> {
-    public AmbientAirPressureDeserializer() {
-      super(AmbientAirPressure.class);
-    }
-
-    @Override
-    protected AmbientAirPressure construct() {
-      return new AmbientAirPressure();
-    }
   }
 }

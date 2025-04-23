@@ -23,11 +23,8 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.IntegerDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
-@JsonDeserialize(using = RollRate.RollRateDeserializer.class)
 public class RollRate extends Asn1Integer {
 
   public RollRate() {
@@ -38,16 +35,5 @@ public class RollRate extends Asn1Integer {
   public RollRate(long value) {
     this();
     this.value = value;
-  }
-
-  public static class RollRateDeserializer extends IntegerDeserializer<RollRate> {
-    public RollRateDeserializer() {
-      super(RollRate.class);
-    }
-
-    @Override
-    protected RollRate construct() {
-      return new RollRate();
-    }
   }
 }
