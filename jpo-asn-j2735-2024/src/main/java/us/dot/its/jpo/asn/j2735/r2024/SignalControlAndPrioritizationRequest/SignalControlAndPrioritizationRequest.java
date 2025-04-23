@@ -22,6 +22,25 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.SignalControlAndPrioritizationRequest;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import us.dot.its.jpo.asn.runtime.serialization.NullDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Null;
 
-public class SignalControlAndPrioritizationRequest extends Asn1Null {}
+@JsonDeserialize(
+    using =
+        SignalControlAndPrioritizationRequest.SignalControlAndPrioritizationRequestDeserializer
+            .class)
+public class SignalControlAndPrioritizationRequest extends Asn1Null {
+
+  public static class SignalControlAndPrioritizationRequestDeserializer
+      extends NullDeserializer<SignalControlAndPrioritizationRequest> {
+    public SignalControlAndPrioritizationRequestDeserializer() {
+      super(SignalControlAndPrioritizationRequest.class);
+    }
+
+    @Override
+    protected SignalControlAndPrioritizationRequest construct() {
+      return new SignalControlAndPrioritizationRequest();
+    }
+  }
+}
