@@ -12,6 +12,7 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 import us.dot.its.jpo.asn.runtime.types.Asn1Enumerated;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
+import us.dot.its.jpo.asn.runtime.types.Asn1Null;
 import us.dot.its.jpo.asn.runtime.types.Asn1ObjectIdentifier;
 import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
 import us.dot.its.jpo.asn.runtime.types.Asn1RelativeOID;
@@ -79,6 +80,8 @@ public abstract class RandomGenerator<T extends Asn1Type> {
       return new OctetStringGenerator(options);
     } else if (Asn1Boolean.class.isAssignableFrom(type)) {
       return new BooleanGenerator(options);
+    } else if (Asn1Null.class.isAssignableFrom(type)) {
+      return new NullGenerator(options);
     } else {
       System.err.printf("No RandomGenerator found for type %s%n", type.getName());
       return null;
