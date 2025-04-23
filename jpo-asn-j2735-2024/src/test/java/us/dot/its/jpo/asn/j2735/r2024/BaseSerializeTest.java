@@ -39,7 +39,7 @@ public abstract class BaseSerializeTest<T> {
   }
 
   protected T fromXml(String xml) throws IOException {
-    log.info(clazz.getSimpleName());
+    log.debug(clazz.getSimpleName());
     T object = xmlMapper.readValue(xml, clazz);
     log.debug(object.toString());
     return object;

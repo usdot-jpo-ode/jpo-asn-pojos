@@ -29,7 +29,7 @@ public class NullDeserializer<T extends Asn1Null> extends StdDeserializer<T> {
   @SuppressWarnings({"unchecked"})
   @Override
   public T getNullValue(DeserializationContext deserializationContext) {
-    log.info("JSON null value, constructing a {}", handledType());
+    log.trace("JSON null value, constructing a {}", handledType());
     return (T) construct();
   }
 
@@ -40,7 +40,7 @@ public class NullDeserializer<T extends Asn1Null> extends StdDeserializer<T> {
     // Used by XER only, JER never calls this.
     // Read the empty node
     TreeNode node = jsonParser.getCodec().readTree(jsonParser);
-    log.info("node: {}", node);
+    log.trace("node: {}", node);
     return (T) construct();
   }
 
