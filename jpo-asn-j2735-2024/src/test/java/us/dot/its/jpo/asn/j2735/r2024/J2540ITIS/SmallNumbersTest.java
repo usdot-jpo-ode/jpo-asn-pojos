@@ -3,13 +3,13 @@ package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 import org.junit.jupiter.api.Test;
 import us.dot.its.jpo.asn.j2735.r2024.BaseNamedIntegerTest;
 
-public class ITIScodesTest extends BaseNamedIntegerTest<ITIScodes> {
+public class SmallNumbersTest extends BaseNamedIntegerTest<SmallNumbers> {
 
-  final long value = 257L;
-  final String name = "stopped-traffic";
+  final long value = 12545L;
+  final String name = "n1";
 
-  protected ITIScodesTest() {
-    super(ITIScodes.class);
+  protected SmallNumbersTest() {
+    super(SmallNumbers.class);
   }
 
   @Test

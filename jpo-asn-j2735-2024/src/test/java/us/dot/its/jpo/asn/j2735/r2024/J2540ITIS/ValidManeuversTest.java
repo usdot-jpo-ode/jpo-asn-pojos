@@ -3,13 +3,13 @@ package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 import org.junit.jupiter.api.Test;
 import us.dot.its.jpo.asn.j2735.r2024.BaseNamedIntegerTest;
 
-public class ITIScodesTest extends BaseNamedIntegerTest<ITIScodes> {
+public class ValidManeuversTest extends BaseNamedIntegerTest<ValidManeuvers> {
 
-  final long value = 257L;
-  final String name = "stopped-traffic";
+  final long value = 11292L;
+  final String name = "prohibit-L45-S-R45-Allowed-LU-LT-RT-RU";
 
-  protected ITIScodesTest() {
-    super(ITIScodes.class);
+  protected ValidManeuversTest() {
+    super(ValidManeuvers.class);
   }
 
   @Test
