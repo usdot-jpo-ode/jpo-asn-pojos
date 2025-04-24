@@ -65,16 +65,16 @@ jacocoTestReport {
         classDirectories = files(classDirectories.files.collect {
             fileTree(dir: it, excludes: [
 
-                    // Exclude modules with few types of interest
-                    '**/EfcDataDictionary/**',
-                    '**/J2540ITIS/**',
-
-                    // Exclude null message types
-                    '**/PersonalSafetyMessage2/**',
-                    '**/RoadGeometryAndAttributes/**',
-                    '**/SignalControlAndPrioritizationRequest/**',
-                    '**/SignalControlAndPrioritizationStatus/**',
-                    '**/TrafficSignalPhaseAndTiming/**'
+//                    // Exclude modules with few types of interest
+//                    '**/EfcDataDictionary/**',
+//                    '**/J2540ITIS/**',
+//
+//                    // Exclude null message types
+//                    '**/PersonalSafetyMessage2/**',
+//                    '**/RoadGeometryAndAttributes/**',
+//                    '**/SignalControlAndPrioritizationRequest/**',
+//                    '**/SignalControlAndPrioritizationStatus/**',
+//                    '**/TrafficSignalPhaseAndTiming/**'
 
 
             ])
