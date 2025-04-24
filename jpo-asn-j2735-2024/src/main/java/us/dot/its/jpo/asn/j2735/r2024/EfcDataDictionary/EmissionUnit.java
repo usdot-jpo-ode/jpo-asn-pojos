@@ -23,9 +23,20 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class EmissionUnit extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(new SimpleEntry<>("mgPerKm", 0L), new SimpleEntry<>("mgPerKwh", 1L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public EmissionUnit() {
     super(0L, 1L);
@@ -35,5 +46,22 @@ public class EmissionUnit extends Asn1Integer {
   public EmissionUnit(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<EmissionUnit> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(EmissionUnit::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

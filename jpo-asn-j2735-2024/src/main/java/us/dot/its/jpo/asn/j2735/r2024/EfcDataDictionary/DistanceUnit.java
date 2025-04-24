@@ -23,9 +23,29 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class DistanceUnit extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("kilometres", 0L),
+          new SimpleEntry<>("miles", 1L),
+          new SimpleEntry<>("metres", 2L),
+          new SimpleEntry<>("yards", 3L),
+          new SimpleEntry<>("feet", 4L),
+          new SimpleEntry<>("decimetres", 5L),
+          new SimpleEntry<>("quartermetres", 6L),
+          new SimpleEntry<>("centimeters", 7L),
+          new SimpleEntry<>("millimeters", 8L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public DistanceUnit() {
     super(0L, 255L);
@@ -35,5 +55,22 @@ public class DistanceUnit extends Asn1Integer {
   public DistanceUnit(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<DistanceUnit> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(DistanceUnit::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

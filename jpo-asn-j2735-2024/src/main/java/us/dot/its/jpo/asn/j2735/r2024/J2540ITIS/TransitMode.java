@@ -23,9 +23,46 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class TransitMode extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("travel", 8961L),
+          new SimpleEntry<>("transit", 8962L),
+          new SimpleEntry<>("bus", 8963L),
+          new SimpleEntry<>("trolleybus", 8964L),
+          new SimpleEntry<>("rail", 8965L),
+          new SimpleEntry<>("commuter-rail", 8966L),
+          new SimpleEntry<>("subway", 8967L),
+          new SimpleEntry<>("rapid-transit", 8968L),
+          new SimpleEntry<>("light-rail", 8969L),
+          new SimpleEntry<>("streetcar", 8970L),
+          new SimpleEntry<>("dial-a-ride", 8971L),
+          new SimpleEntry<>("park-and-ride", 8972L),
+          new SimpleEntry<>("shuttle", 8973L),
+          new SimpleEntry<>("free-shuttle", 8974L),
+          new SimpleEntry<>("airport-shuttle", 8975L),
+          new SimpleEntry<>("taxies", 8976L),
+          new SimpleEntry<>("ferry", 8977L),
+          new SimpleEntry<>("passenger-ferry", 8978L),
+          new SimpleEntry<>("vehicle-ferry", 8979L),
+          new SimpleEntry<>("aerial-tramway", 8980L),
+          new SimpleEntry<>("automated-guideway", 8981L),
+          new SimpleEntry<>("cable-cars", 8982L),
+          new SimpleEntry<>("monorail", 8983L),
+          new SimpleEntry<>("air-travel", 8984L),
+          new SimpleEntry<>("hitch-hitching", 8985L),
+          new SimpleEntry<>("walk", 8986L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public TransitMode() {
     super(0L, 65535L);
@@ -35,5 +72,22 @@ public class TransitMode extends Asn1Integer {
   public TransitMode(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<TransitMode> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(TransitMode::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

@@ -23,9 +23,43 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Temperature extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("maximum-temperature", 5633L),
+          new SimpleEntry<>("temperature", 5634L),
+          new SimpleEntry<>("minimum-temperature", 5635L),
+          new SimpleEntry<>("current-temperature", 5636L),
+          new SimpleEntry<>("heat-index", 5637L),
+          new SimpleEntry<>("extreme-heat", 5638L),
+          new SimpleEntry<>("hot", 5639L),
+          new SimpleEntry<>("hotter", 5640L),
+          new SimpleEntry<>("heat", 5641L),
+          new SimpleEntry<>("warmer", 5642L),
+          new SimpleEntry<>("warm", 5643L),
+          new SimpleEntry<>("mild", 5644L),
+          new SimpleEntry<>("cool", 5645L),
+          new SimpleEntry<>("cooler", 5646L),
+          new SimpleEntry<>("cold", 5647L),
+          new SimpleEntry<>("colder", 5648L),
+          new SimpleEntry<>("very-cold", 5649L),
+          new SimpleEntry<>("extreme-cold", 5650L),
+          new SimpleEntry<>("wind-chill", 5651L),
+          new SimpleEntry<>("dewpoint", 5652L),
+          new SimpleEntry<>("relative-humidity", 5653L),
+          new SimpleEntry<>("temperatures-close-to-the-seasonal-norm", 5758L),
+          new SimpleEntry<>("less-extreme-temperatures", 5759L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public Temperature() {
     super(0L, 65535L);
@@ -35,5 +69,22 @@ public class Temperature extends Asn1Integer {
   public Temperature(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<Temperature> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(Temperature::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

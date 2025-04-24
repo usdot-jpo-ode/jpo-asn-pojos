@@ -23,9 +23,72 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AccidentsAndIncidents extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("accident", 513L),
+          new SimpleEntry<>("serious-accident", 514L),
+          new SimpleEntry<>("injury-accident", 515L),
+          new SimpleEntry<>("minor-accident", 516L),
+          new SimpleEntry<>("multi-vehicle-accident", 517L),
+          new SimpleEntry<>("numerous-accidents", 518L),
+          new SimpleEntry<>("accident-involving-a-bicycle", 519L),
+          new SimpleEntry<>("accident-involving-a-bus", 520L),
+          new SimpleEntry<>("accident-involving-a-motorcycle", 521L),
+          new SimpleEntry<>("accident-involving-a-pedestrian", 522L),
+          new SimpleEntry<>("accident-involving-a-train", 523L),
+          new SimpleEntry<>("accident-involving-a-truck", 524L),
+          new SimpleEntry<>("accident-involving-a-semi-trailer", 562L),
+          new SimpleEntry<>("accident-involving-hazardous-materials", 525L),
+          new SimpleEntry<>("earlier-accident", 526L),
+          new SimpleEntry<>("medical-emergency", 527L),
+          new SimpleEntry<>("secondary-accident", 528L),
+          new SimpleEntry<>("rescue-and-recovery-work-REMOVED", 529L),
+          new SimpleEntry<>("accident-investigation-work", 530L),
+          new SimpleEntry<>("incident", 531L),
+          new SimpleEntry<>("stalled-vehicle", 532L),
+          new SimpleEntry<>("abandoned-vehicle", 533L),
+          new SimpleEntry<>("disabled-vehicle", 534L),
+          new SimpleEntry<>("disabled-truck", 535L),
+          new SimpleEntry<>("disabled-semi-trailer", 536L),
+          new SimpleEntry<>("disabled-bus", 537L),
+          new SimpleEntry<>("disabled-train", 538L),
+          new SimpleEntry<>("vehicle-spun-out", 539L),
+          new SimpleEntry<>("vehicle-on-fire", 540L),
+          new SimpleEntry<>("vehicle-in-water", 541L),
+          new SimpleEntry<>("vehicles-slowing-to-look-at-accident", 542L),
+          new SimpleEntry<>("jackknifed-semi-trailer", 543L),
+          new SimpleEntry<>("jackknifed-trailer-home", 544L),
+          new SimpleEntry<>("jackknifed-trailer", 545L),
+          new SimpleEntry<>("spillage-occurring-from-moving-vehicle", 546L),
+          new SimpleEntry<>("acid-spill", 547L),
+          new SimpleEntry<>("chemical-spill", 548L),
+          new SimpleEntry<>("fuel-spill", 549L),
+          new SimpleEntry<>("hazardous-materials-spill", 550L),
+          new SimpleEntry<>("oil-spill", 551L),
+          new SimpleEntry<>("spilled-load", 552L),
+          new SimpleEntry<>("toxic-spill", 553L),
+          new SimpleEntry<>("overturned-vehicle", 554L),
+          new SimpleEntry<>("overturned-truck", 555L),
+          new SimpleEntry<>("overturned-semi-trailer", 556L),
+          new SimpleEntry<>("overturned-bus", 557L),
+          new SimpleEntry<>("derailed-train", 558L),
+          new SimpleEntry<>("stuck-vehicle", 559L),
+          new SimpleEntry<>("truck-stuck-under-bridge", 560L),
+          new SimpleEntry<>("bus-stuck-under-bridge", 561L),
+          new SimpleEntry<>("accident-cleared", 638L),
+          new SimpleEntry<>("incident-cleared", 639L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public AccidentsAndIncidents() {
     super(0L, 65535L);
@@ -35,5 +98,22 @@ public class AccidentsAndIncidents extends Asn1Integer {
   public AccidentsAndIncidents(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<AccidentsAndIncidents> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(AccidentsAndIncidents::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

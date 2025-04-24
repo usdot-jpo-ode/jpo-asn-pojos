@@ -23,9 +23,70 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WarningAdvice extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("risk", 6913L),
+          new SimpleEntry<>("watch", 6914L),
+          new SimpleEntry<>("warning", 6915L),
+          new SimpleEntry<>("alert", 6916L),
+          new SimpleEntry<>("danger", 6917L),
+          new SimpleEntry<>("danger-of-explosion", 6918L),
+          new SimpleEntry<>("danger-of-fire", 6919L),
+          new SimpleEntry<>("extra-police-patrols-in-operation", 6920L),
+          new SimpleEntry<>("look-out-for-vehicles-stopped-under-bridges", 6921L),
+          new SimpleEntry<>("increased-risk-of-accident", 6922L),
+          new SimpleEntry<>("rescue-and-recovery-work-in-progress-at-sceneREMOVED", 6923L),
+          new SimpleEntry<>("police-at-scene", 6924L),
+          new SimpleEntry<>("emergency-vehicles-at-scene", 6925L),
+          new SimpleEntry<>("traffic-being-directed-around-accident-area", 6926L),
+          new SimpleEntry<>("police-directing-traffic", 6927L),
+          new SimpleEntry<>("rescue-workers-directing-traffic", 6928L),
+          new SimpleEntry<>("repairs-in-progress", 6929L),
+          new SimpleEntry<>("pilot-car-in-operation", 6930L),
+          new SimpleEntry<>("look-out-for-flagger", 6931L),
+          new SimpleEntry<>("look-out-for-workers", 6952L),
+          new SimpleEntry<>("police-checks-in-operation", 6932L),
+          new SimpleEntry<>("truck-check-point", 6937L),
+          new SimpleEntry<>("lockdown", 6935L),
+          new SimpleEntry<>("security-check-point", 6936L),
+          new SimpleEntry<>("single-occupancy-vehicle-check-point", 6938L),
+          new SimpleEntry<>("mandatory-speed-limit-in-force", 6933L),
+          new SimpleEntry<>("speed-limit-in-force-for-heavy-vehicles", 6934L),
+          new SimpleEntry<>("behind-you", 6950L),
+          new SimpleEntry<>("ride-with-traffic", 6953L),
+          new SimpleEntry<>("prepare-to-evacuate-area", 6954L),
+          new SimpleEntry<>("avoid", 6955L),
+          new SimpleEntry<>("look", 6939L),
+          new SimpleEntry<>("photo-enforced", 6940L),
+          new SimpleEntry<>("traffic-signs", 6951L),
+          new SimpleEntry<>("traffic-laws", 6941L),
+          new SimpleEntry<>("use-low-gear", 6942L),
+          new SimpleEntry<>("bridge-ices-before-road", 6943L),
+          new SimpleEntry<>("speed-checked-by-radar", 6944L),
+          new SimpleEntry<>("speed-checked-by-aircraft", 6945L),
+          new SimpleEntry<>("fines", 6946L),
+          new SimpleEntry<>("fines-higher", 6947L),
+          new SimpleEntry<>("fines-doubled", 6948L),
+          new SimpleEntry<>("fines-tripled", 6949L),
+          new SimpleEntry<>("evacuation-canceled", 7033L),
+          new SimpleEntry<>("warning-canceled", 7034L),
+          new SimpleEntry<>("watch-canceled", 7035L),
+          new SimpleEntry<>("alert-canceled", 7036L),
+          new SimpleEntry<>("ended", 7037L),
+          new SimpleEntry<>("cleared", 7038L),
+          new SimpleEntry<>("canceled", 7039L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public WarningAdvice() {
     super(0L, 65535L);
@@ -35,5 +96,22 @@ public class WarningAdvice extends Asn1Integer {
   public WarningAdvice(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<WarningAdvice> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(WarningAdvice::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

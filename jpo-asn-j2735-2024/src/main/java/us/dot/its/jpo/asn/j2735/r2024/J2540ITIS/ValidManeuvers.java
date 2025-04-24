@@ -23,9 +23,148 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ValidManeuvers extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("prohibit-None-Allowed-LU-LT-L45-S-R45-RT-RU", 11264L),
+          new SimpleEntry<>("prohibit-RU-Allowed-LU-LT-L45-S-R45-RT", 11265L),
+          new SimpleEntry<>("prohibit-RT-Allowed-LU-LT-L45-S-R45-RU", 11266L),
+          new SimpleEntry<>("prohibit-RT-RU-Allowed-LU-LT-L45-S-R45", 11267L),
+          new SimpleEntry<>("prohibit-R45-Allowed-LU-LT-L45-S-RT-RU", 11268L),
+          new SimpleEntry<>("prohibit-R45-RU-Allowed-LU-LT-L45-S-RT", 11269L),
+          new SimpleEntry<>("prohibit-R45-RT-Allowed-LU-LT-L45-S-RU", 11270L),
+          new SimpleEntry<>("prohibit-R45-RT-RU-Allowed-LU-LT-L45-S", 11271L),
+          new SimpleEntry<>("prohibit-S-Allowed-LU-LT-L45-R45-RT-RU", 11272L),
+          new SimpleEntry<>("prohibit-S-RU-Allowed-LU-LT-L45-R45-RT", 11273L),
+          new SimpleEntry<>("prohibit-S-RT-Allowed-LU-LT-L45-R45-RU", 11274L),
+          new SimpleEntry<>("prohibit-S-RT-RU-Allowed-LU-LT-L45-R45", 11275L),
+          new SimpleEntry<>("prohibit-S-R45-Allowed-LU-LT-L45-RT-RU", 11276L),
+          new SimpleEntry<>("prohibit-S-R45-RU-Allowed-LU-LT-L45-RT", 11277L),
+          new SimpleEntry<>("prohibit-S-R45-RT-Allowed-LU-LT-L45-RU", 11278L),
+          new SimpleEntry<>("prohibit-S-R45-RT-RU-Allowed-LU-LT-L45", 11279L),
+          new SimpleEntry<>("prohibit-L45-Allowed-LU-LT-S-R45-RT-RU", 11280L),
+          new SimpleEntry<>("prohibit-L45-RU-Allowed-LU-LT-S-R45-RT", 11281L),
+          new SimpleEntry<>("prohibit-L45-RT-Allowed-LU-LT-S-R45-RU", 11282L),
+          new SimpleEntry<>("prohibit-L45-RT-RU-Allowed-LU-LT-S-R45", 11283L),
+          new SimpleEntry<>("prohibit-L45-R45-Allowed-LU-LT-S-RT-RU", 11284L),
+          new SimpleEntry<>("prohibit-L45-R45-RU-Allowed-LU-LT-S-RT", 11285L),
+          new SimpleEntry<>("prohibit-L45-R45-RT-Allowed-LU-LT-S-RU", 11286L),
+          new SimpleEntry<>("prohibit-L45-R45-RT-RU-Allowed-LU-LT-S", 11287L),
+          new SimpleEntry<>("prohibit-L45-S-Allowed-LU-LT-R45-RT-RU", 11288L),
+          new SimpleEntry<>("prohibit-L45-S-RU-Allowed-LU-LT-R45-RT", 11289L),
+          new SimpleEntry<>("prohibit-L45-S-RT-Allowed-LU-LT-R45-RU", 11290L),
+          new SimpleEntry<>("prohibit-L45-S-RT-RU-Allowed-LU-LT-R45", 11291L),
+          new SimpleEntry<>("prohibit-L45-S-R45-Allowed-LU-LT-RT-RU", 11292L),
+          new SimpleEntry<>("prohibit-L45-S-R45-RU-Allowed-LU-LT-RT", 11293L),
+          new SimpleEntry<>("prohibit-L45-S-R45-RT-Allowed-LU-LT-RU", 11294L),
+          new SimpleEntry<>("prohibit-L45-S-R45-RT-RU-Allowed-LU-LT", 11295L),
+          new SimpleEntry<>("prohibit-LT-Allowed-LU-L45-S-R45-RT-RU", 11296L),
+          new SimpleEntry<>("prohibit-LT-RU-Allowed-LU-L45-S-R45-RT", 11297L),
+          new SimpleEntry<>("prohibit-LT-RT-Allowed-LU-L45-S-R45-RU", 11298L),
+          new SimpleEntry<>("prohibit-LT-RT-RU-Allowed-LU-L45-S-R45", 11299L),
+          new SimpleEntry<>("prohibit-LT-R45-Allowed-LU-L45-S-RT-RU", 11300L),
+          new SimpleEntry<>("prohibit-LT-R45-RU-Allowed-LU-L45-S-RT", 11301L),
+          new SimpleEntry<>("prohibit-LT-R45-RT-Allowed-LU-L45-S-RU", 11302L),
+          new SimpleEntry<>("prohibit-LT-R45-RT-RU-Allowed-LU-L45-S", 11303L),
+          new SimpleEntry<>("prohibit-LT-S-Allowed-LU-L45-R45-RT-RU", 11304L),
+          new SimpleEntry<>("prohibit-LT-S-RU-Allowed-LU-L45-R45-RT", 11305L),
+          new SimpleEntry<>("prohibit-LT-S-RT-Allowed-LU-L45-R45-RU", 11306L),
+          new SimpleEntry<>("prohibit-LT-S-RT-RU-Allowed-LU-L45-R45", 11307L),
+          new SimpleEntry<>("prohibit-LT-S-R45-Allowed-LU-L45-RT-RU", 11308L),
+          new SimpleEntry<>("prohibit-LT-S-R45-RU-Allowed-LU-L45-RT", 11309L),
+          new SimpleEntry<>("prohibit-LT-S-R45-RT-Allowed-LU-L45-RU", 11310L),
+          new SimpleEntry<>("prohibit-LT-S-R45-RT-RU-Allowed-LU-L45", 11311L),
+          new SimpleEntry<>("prohibit-LT-L45-Allowed-LU-S-R45-RT-RU", 11312L),
+          new SimpleEntry<>("prohibit-LT-L45-RU-Allowed-LU-S-R45-RT", 11313L),
+          new SimpleEntry<>("prohibit-LT-L45-RT-Allowed-LU-S-R45-RU", 11314L),
+          new SimpleEntry<>("prohibit-LT-L45-RT-RU-Allowed-LU-S-R45", 11315L),
+          new SimpleEntry<>("prohibit-LT-L45-R45-Allowed-LU-S-RT-RU", 11316L),
+          new SimpleEntry<>("prohibit-LT-L45-R45-RU-Allowed-LU-S-RT", 11317L),
+          new SimpleEntry<>("prohibit-LT-L45-R45-RT-Allowed-LU-S-RU", 11318L),
+          new SimpleEntry<>("prohibit-LT-L45-R45-RT-RU-Allowed-LU-S", 11319L),
+          new SimpleEntry<>("prohibit-LT-L45-S-Allowed-LU-R45-RT-RU", 11320L),
+          new SimpleEntry<>("prohibit-LT-L45-S-RU-Allowed-LU-R45-RT", 11321L),
+          new SimpleEntry<>("prohibit-LT-L45-S-RT-Allowed-LU-R45-RU", 11322L),
+          new SimpleEntry<>("prohibit-LT-L45-S-RT-RU-Allowed-LU-R45", 11323L),
+          new SimpleEntry<>("prohibit-LT-L45-S-R45-Allowed-LU-RT-RU", 11324L),
+          new SimpleEntry<>("prohibit-LT-L45-S-R45-RU-Allowed-LU-RT", 11325L),
+          new SimpleEntry<>("prohibit-LT-L45-S-R45-RT-Allowed-LU-RU", 11326L),
+          new SimpleEntry<>("prohibit-LT-L45-S-R45-RT-RU-Allowed-LU", 11327L),
+          new SimpleEntry<>("prohibit-LU-Allowed-LT-L45-S-R45-RT-RU", 11328L),
+          new SimpleEntry<>("prohibit-LU-RU-Allowed-LT-L45-S-R45-RT", 11329L),
+          new SimpleEntry<>("prohibit-LU-RT-Allowed-LT-L45-S-R45-RU", 11330L),
+          new SimpleEntry<>("prohibit-LU-RT-RU-Allowed-LT-L45-S-R45", 11331L),
+          new SimpleEntry<>("prohibit-LU-R45-Allowed-LT-L45-S-RT-RU", 11332L),
+          new SimpleEntry<>("prohibit-LU-R45-RU-Allowed-LT-L45-S-RT", 11333L),
+          new SimpleEntry<>("prohibit-LU-R45-RT-Allowed-LT-L45-S-RU", 11334L),
+          new SimpleEntry<>("prohibit-LU-R45-RT-RU-Allowed-LT-L45-S", 11335L),
+          new SimpleEntry<>("prohibit-LU-S-Allowed-LT-L45-R45-RT-RU", 11336L),
+          new SimpleEntry<>("prohibit-LU-S-RU-Allowed-LT-L45-R45-RT", 11337L),
+          new SimpleEntry<>("prohibit-LU-S-RT-Allowed-LT-L45-R45-RU", 11338L),
+          new SimpleEntry<>("prohibit-LU-S-RT-RU-Allowed-LT-L45-R45", 11339L),
+          new SimpleEntry<>("prohibit-LU-S-R45-Allowed-LT-L45-RT-RU", 11340L),
+          new SimpleEntry<>("prohibit-LU-S-R45-RU-Allowed-LT-L45-RT", 11341L),
+          new SimpleEntry<>("prohibit-LU-S-R45-RT-Allowed-LT-L45-RU", 11342L),
+          new SimpleEntry<>("prohibit-LU-S-R45-RT-RU-Allowed-LT-L45", 11343L),
+          new SimpleEntry<>("prohibit-LU-L45-Allowed-LT-S-R45-RT-RU", 11344L),
+          new SimpleEntry<>("prohibit-LU-L45-RU-Allowed-LT-S-R45-RT", 11345L),
+          new SimpleEntry<>("prohibit-LU-L45-RT-Allowed-LT-S-R45-RU", 11346L),
+          new SimpleEntry<>("prohibit-LU-L45-RT-RU-Allowed-LT-S-R45", 11347L),
+          new SimpleEntry<>("prohibit-LU-L45-R45-Allowed-LT-S-RT-RU", 11348L),
+          new SimpleEntry<>("prohibit-LU-L45-R45-RU-Allowed-LT-S-RT", 11349L),
+          new SimpleEntry<>("prohibit-LU-L45-R45-RT-Allowed-LT-S-RU", 11350L),
+          new SimpleEntry<>("prohibit-LU-L45-R45-RT-RU-Allowed-LT-S", 11351L),
+          new SimpleEntry<>("prohibit-LU-L45-S-Allowed-LT-R45-RT-RU", 11352L),
+          new SimpleEntry<>("prohibit-LU-L45-S-RU-Allowed-LT-R45-RT", 11353L),
+          new SimpleEntry<>("prohibit-LU-L45-S-RT-Allowed-LT-R45-RU", 11354L),
+          new SimpleEntry<>("prohibit-LU-L45-S-RT-RU-Allowed-LT-R45", 11355L),
+          new SimpleEntry<>("prohibit-LU-L45-S-R45-Allowed-LT-RT-RU", 11356L),
+          new SimpleEntry<>("prohibit-LU-L45-S-R45-RU-Allowed-LT-RT", 11357L),
+          new SimpleEntry<>("prohibit-LU-L45-S-R45-RT-Allowed-LT-RU", 11358L),
+          new SimpleEntry<>("prohibit-LU-L45-S-R45-RT-RU-Allowed-LT", 11359L),
+          new SimpleEntry<>("prohibit-LU-LT-Allowed-L45-S-R45-RT-RU", 11360L),
+          new SimpleEntry<>("prohibit-LU-LT-RU-Allowed-L45-S-R45-RT", 11361L),
+          new SimpleEntry<>("prohibit-LU-LT-RT-Allowed-L45-S-R45-RU", 11362L),
+          new SimpleEntry<>("prohibit-LU-LT-RT-RU-Allowed-L45-S-R45", 11363L),
+          new SimpleEntry<>("prohibit-LU-LT-R45-Allowed-L45-S-RT-RU", 11364L),
+          new SimpleEntry<>("prohibit-LU-LT-R45-RU-Allowed-L45-S-RT", 11365L),
+          new SimpleEntry<>("prohibit-LU-LT-R45-RT-Allowed-L45-S-RU", 11366L),
+          new SimpleEntry<>("prohibit-LU-LT-R45-RT-RU-Allowed-L45-S", 11367L),
+          new SimpleEntry<>("prohibit-LU-LT-S-Allowed-L45-R45-RT-RU", 11368L),
+          new SimpleEntry<>("prohibit-LU-LT-S-RU-Allowed-L45-R45-RT", 11369L),
+          new SimpleEntry<>("prohibit-LU-LT-S-RT-Allowed-L45-R45-RU", 11370L),
+          new SimpleEntry<>("prohibit-LU-LT-S-RT-RU-Allowed-L45-R45", 11371L),
+          new SimpleEntry<>("prohibit-LU-LT-S-R45-Allowed-L45-RT-RU", 11372L),
+          new SimpleEntry<>("prohibit-LU-LT-S-R45-RU-Allowed-L45-RT", 11373L),
+          new SimpleEntry<>("prohibit-LU-LT-S-R45-RT-Allowed-L45-RU", 11374L),
+          new SimpleEntry<>("prohibit-LU-LT-S-R45-RT-RU-Allowed-L45", 11375L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-Allowed-S-R45-RT-RU", 11376L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-RU-Allowed-S-R45-RT", 11377L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-RT-Allowed-S-R45-RU", 11378L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-RT-RU-Allowed-S-R45", 11379L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-R45-Allowed-S-RT-RU", 11380L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-R45-RU-Allowed-S-RT", 11381L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-R45-RT-Allowed-S-RU", 11382L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-R45-RT-RU-Allowed-S", 11383L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-Allowed-R45-RT-RU", 11384L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-RU-Allowed-R45-RT", 11385L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-RT-Allowed-R45-RU", 11386L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-RT-RU-Allowed-R45", 11387L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-Allowed-RT-RU", 11388L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-RU-Allowed-RT", 11389L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-RT-Allowed-RU", 11390L),
+          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-RT-RU-Allowed-None", 11391L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public ValidManeuvers() {
     super(0L, 65535L);
@@ -35,5 +174,22 @@ public class ValidManeuvers extends Asn1Integer {
   public ValidManeuvers(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<ValidManeuvers> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(ValidManeuvers::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

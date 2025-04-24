@@ -23,9 +23,98 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class RoadsideAssets extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("none", 10496L),
+          new SimpleEntry<>("light-pole", 10497L),
+          new SimpleEntry<>("utility-pole", 10498L),
+          new SimpleEntry<>("gantry-way", 10499L),
+          new SimpleEntry<>("sign-support", 10500L),
+          new SimpleEntry<>("signal-pole", 10501L),
+          new SimpleEntry<>("signage-public", 10502L),
+          new SimpleEntry<>("signage-private", 10503L),
+          new SimpleEntry<>("overhead-sign", 10568L),
+          new SimpleEntry<>("ground-sign", 10569L),
+          new SimpleEntry<>("cones", 10504L),
+          new SimpleEntry<>("cones-post-type", 10505L),
+          new SimpleEntry<>("cones-glue-post", 10506L),
+          new SimpleEntry<>("cones-other", 10507L),
+          new SimpleEntry<>("barriers", 10508L),
+          new SimpleEntry<>("barrier-Aframe", 10509L),
+          new SimpleEntry<>("barriers-heavy-duty", 10510L),
+          new SimpleEntry<>("barricade-type-III", 10511L),
+          new SimpleEntry<>("barricade-small", 10512L),
+          new SimpleEntry<>("solid-barrier", 10565L),
+          new SimpleEntry<>("moveable-barrier", 10566L),
+          new SimpleEntry<>("barricade-lights", 10513L),
+          new SimpleEntry<>("beacon", 10514L),
+          new SimpleEntry<>("t-stand", 10515L),
+          new SimpleEntry<>("a-stand", 10516L),
+          new SimpleEntry<>("drums", 10517L),
+          new SimpleEntry<>("sand-barrel", 10567L),
+          new SimpleEntry<>("impact-attenuator", 10518L),
+          new SimpleEntry<>("barricade-tape", 10519L),
+          new SimpleEntry<>("safety-fence", 10520L),
+          new SimpleEntry<>("temp-pavement-markings", 10521L),
+          new SimpleEntry<>("speed-bumps", 10522L),
+          new SimpleEntry<>("temp-curbs", 10523L),
+          new SimpleEntry<>("parking-blocks", 10524L),
+          new SimpleEntry<>("signboard-fixed", 10525L),
+          new SimpleEntry<>("signboard-portable", 10526L),
+          new SimpleEntry<>("stripe", 10572L),
+          new SimpleEntry<>("island", 10573L),
+          new SimpleEntry<>("har", 10527L),
+          new SimpleEntry<>("har-AM", 10528L),
+          new SimpleEntry<>("har-FM", 10529L),
+          new SimpleEntry<>("har-DSRC", 10530L),
+          new SimpleEntry<>("traffic-light", 10531L),
+          new SimpleEntry<>("lane-control-signal", 10532L),
+          new SimpleEntry<>("traffic-detector", 10533L),
+          new SimpleEntry<>("vehicle-detector", 10534L),
+          new SimpleEntry<>("system-alarm", 10535L),
+          new SimpleEntry<>("arrow-board", 10536L),
+          new SimpleEntry<>("fixed-VMS", 10537L),
+          new SimpleEntry<>("mobile-VMS", 10538L),
+          new SimpleEntry<>("ramp-control", 10539L),
+          new SimpleEntry<>("gate-control", 10540L),
+          new SimpleEntry<>("temporary-traffic-light", 10541L),
+          new SimpleEntry<>("over-height-warning-system", 10542L),
+          new SimpleEntry<>("over-weight-warning-system", 10543L),
+          new SimpleEntry<>("emergency-telephones", 10544L),
+          new SimpleEntry<>("railroad-crossing-equipment", 10545L),
+          new SimpleEntry<>("tunnel-ventilation", 10546L),
+          new SimpleEntry<>("ccTV", 10547L),
+          new SimpleEntry<>("environmental-sensor", 10548L),
+          new SimpleEntry<>("emergency-signal", 10570L),
+          new SimpleEntry<>("countdown-pedestrian-sign", 10571L),
+          new SimpleEntry<>("switch", 10549L),
+          new SimpleEntry<>("signal", 10550L),
+          new SimpleEntry<>("third-rail", 10551L),
+          new SimpleEntry<>("overhead-power", 10552L),
+          new SimpleEntry<>("concrete-tie", 10553L),
+          new SimpleEntry<>("wooden-tie", 10554L),
+          new SimpleEntry<>("manhole-cover", 10559L),
+          new SimpleEntry<>("culvert", 10560L),
+          new SimpleEntry<>("escalator", 10555L),
+          new SimpleEntry<>("elevator", 10556L),
+          new SimpleEntry<>("snow-poles", 10561L),
+          new SimpleEntry<>("track", 10557L),
+          new SimpleEntry<>("guide-poles", 10562L),
+          new SimpleEntry<>("drawbridge", 10558L),
+          new SimpleEntry<>("expansion-joint", 10563L),
+          new SimpleEntry<>("shifted-plate", 10564L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public RoadsideAssets() {
     super(0L, 65535L);
@@ -35,5 +124,22 @@ public class RoadsideAssets extends Asn1Integer {
   public RoadsideAssets(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<RoadsideAssets> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(RoadsideAssets::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

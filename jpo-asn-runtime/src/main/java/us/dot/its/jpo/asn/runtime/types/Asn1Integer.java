@@ -2,65 +2,71 @@ package us.dot.its.jpo.asn.runtime.types;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Objects;
+import java.util.Optional;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * Represents an ASN.1 INTEGER type, and is also used as a base class for INTEGER type
- * assignments with or without size constraints.
+ * Represents an ASN.1 INTEGER type, and is also used as a base class for INTEGER type assignments
+ * with or without size constraints.
  */
 public class Asn1Integer implements Asn1Type, Comparable<Asn1Integer> {
 
-    protected long value;
-    final long lowerBound;
-    final long upperBound;
+  @Setter
+  protected long value;
+  @Getter
+  final long lowerBound;
+  @Getter
+  final long upperBound;
 
-    public Asn1Integer(long lowerBound, long upperBound) {
-        this.lowerBound = lowerBound;
-        this.upperBound = upperBound;
+  public Asn1Integer(long lowerBound, long upperBound) {
+    this.lowerBound = lowerBound;
+    this.upperBound = upperBound;
+  }
+
+  @JsonValue
+  public long getValue() {
+    return value;
+  }
+
+  public int intValue() {
+    return (int) value;
+  }
+
+  @Override
+  public int compareTo(Asn1Integer other) {
+    if (other == null) {
+      return -1;
     }
+    return Long.compare(value, other.value);
+  }
 
-    @JsonValue
-    public long getValue() {
-        return value;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    public void setValue(long value) {
-        this.value = value;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    Asn1Integer that = (Asn1Integer) o;
+    return value == that.value;
+  }
 
-    public int intValue() {
-        return (int)value;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(value);
+  }
 
-    @Override
-    public int compareTo(Asn1Integer other) {
-        if (other == null) return -1;
-        return Long.compare(value, other.value);
-    }
+  @Override
+  public String toString() {
+    return Long.toString(value);
+  }
 
-    public long getLowerBound() {
-        return lowerBound;
-    }
-
-    public long getUpperBound() {
-        return upperBound;
-    }
+  public Optional<String> name() {
+    return Optional.empty();
+  }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Asn1Integer that = (Asn1Integer) o;
-        return value == that.value;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(value);
-    }
-
-    @Override
-    public String toString() {
-        return Long.toString(value);
-    }
 }

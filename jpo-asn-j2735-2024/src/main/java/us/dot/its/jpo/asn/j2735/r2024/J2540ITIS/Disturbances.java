@@ -23,9 +23,57 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Disturbances extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("assault", 3329L),
+          new SimpleEntry<>("crime", 3330L),
+          new SimpleEntry<>("robbery", 3331L),
+          new SimpleEntry<>("fare-dispute", 3332L),
+          new SimpleEntry<>("shooting", 3333L),
+          new SimpleEntry<>("gunfire-on-roadway", 3334L),
+          new SimpleEntry<>("suicide", 3335L),
+          new SimpleEntry<>("fight", 3336L),
+          new SimpleEntry<>("gang-fight", 3337L),
+          new SimpleEntry<>("person-harassment", 3338L),
+          new SimpleEntry<>("person-injured", 3339L),
+          new SimpleEntry<>("sick-customer", 3363L),
+          new SimpleEntry<>("unruly-passenger", 3340L),
+          new SimpleEntry<>("person-intoxicated", 3341L),
+          new SimpleEntry<>("crowd-control-problem", 3342L),
+          new SimpleEntry<>("demonstration", 3343L),
+          new SimpleEntry<>("march", 3344L),
+          new SimpleEntry<>("public-disturbance", 3345L),
+          new SimpleEntry<>("riot", 3346L),
+          new SimpleEntry<>("civil-unrest", 3347L),
+          new SimpleEntry<>("civil-emergency", 3348L),
+          new SimpleEntry<>("strike", 3349L),
+          new SimpleEntry<>("public-transit-strike", 3350L),
+          new SimpleEntry<>("stampede", 3351L),
+          new SimpleEntry<>("teargas-used", 3352L),
+          new SimpleEntry<>("security-alert", 3353L),
+          new SimpleEntry<>("security-incident", 3354L),
+          new SimpleEntry<>("checkpoint", 3355L),
+          new SimpleEntry<>("bomb-alert", 3356L),
+          new SimpleEntry<>("terrorist-incident", 3357L),
+          new SimpleEntry<>("high-velocity-shell-fire", 3358L),
+          new SimpleEntry<>("explosives-in-use", 3359L),
+          new SimpleEntry<>("air-raid", 3360L),
+          new SimpleEntry<>("weapons-of-mass-destruction-threat", 3361L),
+          new SimpleEntry<>("military-operations", 3362L),
+          new SimpleEntry<>("security-problem-cleared", 3454L),
+          new SimpleEntry<>("traffic-disturbance-cleared", 3455L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public Disturbances() {
     super(0L, 65535L);
@@ -35,5 +83,22 @@ public class Disturbances extends Asn1Integer {
   public Disturbances(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<Disturbances> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(Disturbances::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

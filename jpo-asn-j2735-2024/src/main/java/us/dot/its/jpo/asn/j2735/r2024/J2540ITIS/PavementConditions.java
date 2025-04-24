@@ -23,9 +23,75 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class PavementConditions extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("impassable", 5889L),
+          new SimpleEntry<>("almost-impassable", 5890L),
+          new SimpleEntry<>("passable-with-care", 5891L),
+          new SimpleEntry<>("passable", 5892L),
+          new SimpleEntry<>("surface-water-hazard", 5893L),
+          new SimpleEntry<>("danger-of-hydroplaning", 5894L),
+          new SimpleEntry<>("wet-pavement", 5895L),
+          new SimpleEntry<>("treated-pavement", 5896L),
+          new SimpleEntry<>("slippery", 5897L),
+          new SimpleEntry<>("low-ground-clearance", 5938L),
+          new SimpleEntry<>("at-grade-level-crossing", 5937L),
+          new SimpleEntry<>("mud-on-roadway", 5898L),
+          new SimpleEntry<>("leaves-on-roadway", 5899L),
+          new SimpleEntry<>("loose-sand-on-roadway", 5900L),
+          new SimpleEntry<>("loose-gravel", 5901L),
+          new SimpleEntry<>("fuel-on-roadway", 5902L),
+          new SimpleEntry<>("oil-on-roadway", 5903L),
+          new SimpleEntry<>("road-surface-in-poor-condition", 5904L),
+          new SimpleEntry<>("melting-tar", 5905L),
+          new SimpleEntry<>("uneven-lanes", 5935L),
+          new SimpleEntry<>("rough-road", 5931L),
+          new SimpleEntry<>("rough-crossing", 5936L),
+          new SimpleEntry<>("ice", 5906L),
+          new SimpleEntry<>("icy-patches", 5907L),
+          new SimpleEntry<>("black-ice", 5908L),
+          new SimpleEntry<>("ice-pellets-on-roadway", 5909L),
+          new SimpleEntry<>("ice-build-up", 5910L),
+          new SimpleEntry<>("freezing-rain", 5911L),
+          new SimpleEntry<>("wet-and-icy-roads", 5912L),
+          new SimpleEntry<>("slush", 5914L),
+          new SimpleEntry<>("melting-snow", 5913L),
+          new SimpleEntry<>("frozen-slush", 5915L),
+          new SimpleEntry<>("snow-on-roadway", 5916L),
+          new SimpleEntry<>("packed-snow", 5917L),
+          new SimpleEntry<>("packed-snow-patches", 5918L),
+          new SimpleEntry<>("plowed-snow", 5919L),
+          new SimpleEntry<>("wet-snow", 5920L),
+          new SimpleEntry<>("fresh-snow", 5921L),
+          new SimpleEntry<>("powder-snow", 5922L),
+          new SimpleEntry<>("granular-snow", 5923L),
+          new SimpleEntry<>("frozen-snow", 5924L),
+          new SimpleEntry<>("crusted-snow", 5925L),
+          new SimpleEntry<>("deep-snow", 5926L),
+          new SimpleEntry<>("snow-drifts", 5927L),
+          new SimpleEntry<>("drifting-snow", 5928L),
+          new SimpleEntry<>("expected-snow-accumulation", 5929L),
+          new SimpleEntry<>("current-snow-accumulation", 5930L),
+          new SimpleEntry<>("sand", 5932L),
+          new SimpleEntry<>("gravel", 5933L),
+          new SimpleEntry<>("paved", 5934L),
+          new SimpleEntry<>("dry-pavement", 6011L),
+          new SimpleEntry<>("snow-cleared", 6012L),
+          new SimpleEntry<>("pavement-conditions-improved", 6013L),
+          new SimpleEntry<>("skid-hazard-reduced", 6014L),
+          new SimpleEntry<>("pavement-conditions-cleared", 6015L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public PavementConditions() {
     super(0L, 65535L);
@@ -35,5 +101,22 @@ public class PavementConditions extends Asn1Integer {
   public PavementConditions(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<PavementConditions> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(PavementConditions::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

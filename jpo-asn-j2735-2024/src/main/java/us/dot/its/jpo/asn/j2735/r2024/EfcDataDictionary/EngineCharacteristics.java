@@ -23,9 +23,74 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class EngineCharacteristics extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("noEntry", 0L),
+          new SimpleEntry<>("noEngine", 1L),
+          new SimpleEntry<>("petrolUnleaded", 2L),
+          new SimpleEntry<>("petrolLeaded", 3L),
+          new SimpleEntry<>("diesel", 4L),
+          new SimpleEntry<>("lpg", 5L),
+          new SimpleEntry<>("battery", 6L),
+          new SimpleEntry<>("solar", 7L),
+          new SimpleEntry<>("hybrid", 8L),
+          new SimpleEntry<>("hydrogen", 9L),
+          new SimpleEntry<>("multiFuel", 10L),
+          new SimpleEntry<>("bivalentPetrolLpg", 11L),
+          new SimpleEntry<>("bivalentPetrolCng", 12L),
+          new SimpleEntry<>("combinedPetrolElectric", 13L),
+          new SimpleEntry<>("cng", 14L),
+          new SimpleEntry<>("lng", 15L),
+          new SimpleEntry<>("combinedDieselElectric", 16L),
+          new SimpleEntry<>("combinedHydrogenElectric", 17L),
+          new SimpleEntry<>("bivalentHydrogenPetrol", 18L),
+          new SimpleEntry<>("bivalentHydrogenPetrolElectricEngine", 19L),
+          new SimpleEntry<>("fuelCellHydrogen", 20L),
+          new SimpleEntry<>("fuelCellPetrol", 21L),
+          new SimpleEntry<>("fuelCellMethanol", 22L),
+          new SimpleEntry<>("fuelCellEthanol", 23L),
+          new SimpleEntry<>("fuelCellDiesel", 24L),
+          new SimpleEntry<>("combinedMultiFuelElectricEngine", 25L),
+          new SimpleEntry<>("combinedCngElectricEngine", 26L),
+          new SimpleEntry<>("combinedLngElectricEngine", 27L),
+          new SimpleEntry<>("petrolEthanol", 28L),
+          new SimpleEntry<>("combinedLpgElectricEngine", 29L),
+          new SimpleEntry<>("hybridPetrolExternalBattery", 30L),
+          new SimpleEntry<>("hybridDieselExternalBattery", 31L),
+          new SimpleEntry<>("hybridLpgExternalBattery", 32L),
+          new SimpleEntry<>("hybridHydrogenExternalBattery", 33L),
+          new SimpleEntry<>("hybridMultiFuelExternalBattery", 34L),
+          new SimpleEntry<>("hybridCngExternalBattery", 35L),
+          new SimpleEntry<>("hybridLngExternalBattery", 36L),
+          new SimpleEntry<>("hybridBivalentHydrogenPetrolExternalBattery", 37L),
+          new SimpleEntry<>("hydrogenCng", 38L),
+          new SimpleEntry<>("hydrogenLng", 39L),
+          new SimpleEntry<>("hybridHydrogenCngExternalBattery", 40L),
+          new SimpleEntry<>("hybridHydrogenLngExternalBattery", 41L),
+          new SimpleEntry<>("ethanol", 42L),
+          new SimpleEntry<>("hybridFuelCellHydrogen", 43L),
+          new SimpleEntry<>("hybridFuelCellHydrogenExternalBattery", 44L),
+          new SimpleEntry<>("dualFuelLngDiesel", 45L),
+          new SimpleEntry<>("electricExternal", 46L),
+          new SimpleEntry<>("biogas", 47L),
+          new SimpleEntry<>("bioDiesel", 48L),
+          new SimpleEntry<>("bioPetrol", 49L),
+          new SimpleEntry<>("bivalentPetrolBiogas", 50L),
+          new SimpleEntry<>("combinedBiogasElectricEngine", 51L),
+          new SimpleEntry<>("dualFuelCngDiesel", 52L),
+          new SimpleEntry<>("other", 255L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public EngineCharacteristics() {
     super(0L, 255L);
@@ -35,5 +100,22 @@ public class EngineCharacteristics extends Asn1Integer {
   public EngineCharacteristics(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<EngineCharacteristics> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(EngineCharacteristics::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

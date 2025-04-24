@@ -23,9 +23,33 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WinterDrivingRestrictions extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("winter-equipment-recommended", 6145L),
+          new SimpleEntry<>("winter-equipment-required", 6146L),
+          new SimpleEntry<>("snow-chains-recommended", 6147L),
+          new SimpleEntry<>("snow-chains-required", 6148L),
+          new SimpleEntry<>("snow-chains-prohibited", 6149L),
+          new SimpleEntry<>("studded-tires-prohibited", 6150L),
+          new SimpleEntry<>("snow-tires-recommended", 6151L),
+          new SimpleEntry<>("snow-tires-required", 6152L),
+          new SimpleEntry<>("four-wheel-drive-recommended", 6153L),
+          new SimpleEntry<>("four-wheel-drive-required", 6154L),
+          new SimpleEntry<>("snow-tires-or-chains-recommended", 6155L),
+          new SimpleEntry<>("snow-tires-or-chains-required", 6156L),
+          new SimpleEntry<>("winter-driving-requirements-lifted", 6271L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public WinterDrivingRestrictions() {
     super(0L, 65535L);
@@ -35,5 +59,22 @@ public class WinterDrivingRestrictions extends Asn1Integer {
   public WinterDrivingRestrictions(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<WinterDrivingRestrictions> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(WinterDrivingRestrictions::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

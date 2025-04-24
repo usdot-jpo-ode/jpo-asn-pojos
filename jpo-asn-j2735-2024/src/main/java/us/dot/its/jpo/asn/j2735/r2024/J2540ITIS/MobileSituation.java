@@ -23,9 +23,42 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class MobileSituation extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("abnormal-load", 2049L),
+          new SimpleEntry<>("wide-load", 2050L),
+          new SimpleEntry<>("long-load", 2051L),
+          new SimpleEntry<>("slow-vehicle", 2052L),
+          new SimpleEntry<>("farm-equipment", 2053L),
+          new SimpleEntry<>("horse-drawn-vehicles", 2054L),
+          new SimpleEntry<>("overheight-load", 2055L),
+          new SimpleEntry<>("overweight-load", 2056L),
+          new SimpleEntry<>("tracked-vehicle", 2057L),
+          new SimpleEntry<>("vehicle-carrying-hazardous-materials", 2058L),
+          new SimpleEntry<>("slow-moving-maintenance-vehicle", 2059L),
+          new SimpleEntry<>("convoy", 2060L),
+          new SimpleEntry<>("military-convoy", 2061L),
+          new SimpleEntry<>("refugee-convoy", 2062L),
+          new SimpleEntry<>("motorcade", 2063L),
+          new SimpleEntry<>("mobile-situation-repositioning", 2064L),
+          new SimpleEntry<>("winter-maintenance-vehicles", 2065L),
+          new SimpleEntry<>("snowplows", 2066L),
+          new SimpleEntry<>("slow-moving-maintenance-vehicle-warning-cleared", 2172L),
+          new SimpleEntry<>("exceptional-load-warning-cleared", 2173L),
+          new SimpleEntry<>("hazardous-load-warning-cleared", 2174L),
+          new SimpleEntry<>("convoy-cleared", 2175L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public MobileSituation() {
     super(0L, 65535L);
@@ -35,5 +68,22 @@ public class MobileSituation extends Asn1Integer {
   public MobileSituation(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<MobileSituation> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(MobileSituation::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

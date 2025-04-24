@@ -23,9 +23,62 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class RegulatoryAndWarningSigns extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("regulatory-sign", 12289L),
+          new SimpleEntry<>("warning-sign", 12290L),
+          new SimpleEntry<>("information-sign", 12291L),
+          new SimpleEntry<>("construction-sign", 12292L),
+          new SimpleEntry<>("guide-sign", 12293L),
+          new SimpleEntry<>("stop", 12294L),
+          new SimpleEntry<>("yield", 12295L),
+          new SimpleEntry<>("caution", 12330L),
+          new SimpleEntry<>("temporary", 12331L),
+          new SimpleEntry<>("to-oncoming-traffic", 12296L),
+          new SimpleEntry<>("four-way", 12297L),
+          new SimpleEntry<>("all-way", 12298L),
+          new SimpleEntry<>("one-way", 12329L),
+          new SimpleEntry<>("zone", 12299L),
+          new SimpleEntry<>("narrows", 12300L),
+          new SimpleEntry<>("widens", 12301L),
+          new SimpleEntry<>("reduced", 12302L),
+          new SimpleEntry<>("combined", 12303L),
+          new SimpleEntry<>("minimum", 12304L),
+          new SimpleEntry<>("maximum", 12305L),
+          new SimpleEntry<>("divided-road", 12306L),
+          new SimpleEntry<>("double-arrow", 12307L),
+          new SimpleEntry<>("dead-end", 12308L),
+          new SimpleEntry<>("no-outlet", 12309L),
+          new SimpleEntry<>("wrong-way", 12310L),
+          new SimpleEntry<>("do-not-enter", 12314L),
+          new SimpleEntry<>("nDetour", 12312L),
+          new SimpleEntry<>("chevron", 12313L),
+          new SimpleEntry<>("t-intersection-to-the-side", 12315L),
+          new SimpleEntry<>("t-intersection-oncoming", 12316L),
+          new SimpleEntry<>("y-intersection-to-the-side", 12317L),
+          new SimpleEntry<>("y-intersection-oncoming", 12318L),
+          new SimpleEntry<>("four-way-divided-highway-crossing", 12319L),
+          new SimpleEntry<>("t-way-divided-highway-crossing", 12320L),
+          new SimpleEntry<>("light-rail-divided-highway-crossing", 12321L),
+          new SimpleEntry<>("light-rail-t-divided-highway-crossing", 12322L),
+          new SimpleEntry<>("side-road-to-right", 12323L),
+          new SimpleEntry<>("side-road-to-left", 12324L),
+          new SimpleEntry<>("side-road-to-right-at-angle", 12325L),
+          new SimpleEntry<>("side-road-to-left-at-angle", 12326L),
+          new SimpleEntry<>("entering-roadway-merge", 12327L),
+          new SimpleEntry<>("entering-roadway-added-lane", 12328L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public RegulatoryAndWarningSigns() {
     super(0L, 65535L);
@@ -35,5 +88,22 @@ public class RegulatoryAndWarningSigns extends Asn1Integer {
   public RegulatoryAndWarningSigns(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<RegulatoryAndWarningSigns> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(RegulatoryAndWarningSigns::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

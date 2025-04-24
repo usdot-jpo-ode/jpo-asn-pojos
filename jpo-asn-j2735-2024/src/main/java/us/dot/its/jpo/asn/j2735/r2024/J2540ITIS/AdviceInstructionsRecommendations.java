@@ -23,9 +23,57 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AdviceInstructionsRecommendations extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("drive-carefully", 7169L),
+          new SimpleEntry<>("drive-with-extreme-caution", 7170L),
+          new SimpleEntry<>("approach-with-care", 7171L),
+          new SimpleEntry<>("keep-your-distance", 7172L),
+          new SimpleEntry<>("increase-normal-following-distance", 7173L),
+          new SimpleEntry<>("test-your-brakes", 7174L),
+          new SimpleEntry<>("cross-intersection-with-care", 7175L),
+          new SimpleEntry<>("pass-with-care", 7176L),
+          new SimpleEntry<>("pass", 7200L),
+          new SimpleEntry<>("use-low-beam-headlights", 7177L),
+          new SimpleEntry<>("use-fog-lights", 7178L),
+          new SimpleEntry<>("use-hazard-warning-lights", 7179L),
+          new SimpleEntry<>("do-not-leave-your-vehicle", 7180L),
+          new SimpleEntry<>("leave-your-vehicle-and-proceed-to-next-safe-place", 7181L),
+          new SimpleEntry<>("turn-off-engine", 7182L),
+          new SimpleEntry<>("close-all-windows-turn-off-heater-air-conditioner-and-vents", 7183L),
+          new SimpleEntry<>("turn-off-air-conditioner-to-prevent-engine-overheating", 7184L),
+          new SimpleEntry<>("turn-off-mobile-phones-and-two-way-radios", 7185L),
+          new SimpleEntry<>("prepare-to-stop", 7186L),
+          new SimpleEntry<>("be-prepared-to-stop", 7201L),
+          new SimpleEntry<>("stop-at-next-rest-area", 7187L),
+          new SimpleEntry<>("stop-at-next-safe-place", 7188L),
+          new SimpleEntry<>("only-travel-if-absolutely-necessary", 7189L),
+          new SimpleEntry<>("drive-to-another-service-area", 7190L),
+          new SimpleEntry<>("use-through-traffic-lanes", 7191L),
+          new SimpleEntry<>("use-local-traffic-lanes", 7192L),
+          new SimpleEntry<>("use-left-hand-parallel-roadway", 7193L),
+          new SimpleEntry<>("use-right-hand-parallel-roadway", 7194L),
+          new SimpleEntry<>("use-heavy-vehicle-lane", 7195L),
+          new SimpleEntry<>("observe-recommended-speed", 7196L),
+          new SimpleEntry<>("signals-sequenced-for-speed", 7202L),
+          new SimpleEntry<>("maintain-top-safe-speed", 7203L),
+          new SimpleEntry<>("facing-traffic", 7197L),
+          new SimpleEntry<>("push-button", 7198L),
+          new SimpleEntry<>("to-cross-street", 7199L),
+          new SimpleEntry<>("evacuate-area-voluntarily", 7204L),
+          new SimpleEntry<>("shelter-in-place", 7205L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public AdviceInstructionsRecommendations() {
     super(0L, 65535L);
@@ -35,5 +83,22 @@ public class AdviceInstructionsRecommendations extends Asn1Integer {
   public AdviceInstructionsRecommendations(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<AdviceInstructionsRecommendations> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(AdviceInstructionsRecommendations::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

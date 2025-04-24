@@ -23,9 +23,43 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class SpecialEvents extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("major-event", 3841L),
+          new SimpleEntry<>("airshow", 3842L),
+          new SimpleEntry<>("hot-air-ballooning", 3843L),
+          new SimpleEntry<>("concert", 3844L),
+          new SimpleEntry<>("state-occasion", 3845L),
+          new SimpleEntry<>("vIP-visit", 3846L),
+          new SimpleEntry<>("show", 3847L),
+          new SimpleEntry<>("festival", 3848L),
+          new SimpleEntry<>("exhibition", 3849L),
+          new SimpleEntry<>("performing-arts", 3850L),
+          new SimpleEntry<>("outdoor-market", 3851L),
+          new SimpleEntry<>("fair", 3852L),
+          new SimpleEntry<>("carnival", 3853L),
+          new SimpleEntry<>("fireworks-display", 3854L),
+          new SimpleEntry<>("trade-expo", 3855L),
+          new SimpleEntry<>("movie-filming", 3856L),
+          new SimpleEntry<>("presidential-visit", 3857L),
+          new SimpleEntry<>("parade", 3858L),
+          new SimpleEntry<>("procession", 3859L),
+          new SimpleEntry<>("funeral-procession", 3860L),
+          new SimpleEntry<>("crowd", 3861L),
+          new SimpleEntry<>("holiday-traffic-crowds", 3862L),
+          new SimpleEntry<>("event-ended", 3967L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public SpecialEvents() {
     super(0L, 65535L);
@@ -35,5 +69,22 @@ public class SpecialEvents extends Asn1Integer {
   public SpecialEvents(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<SpecialEvents> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(SpecialEvents::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

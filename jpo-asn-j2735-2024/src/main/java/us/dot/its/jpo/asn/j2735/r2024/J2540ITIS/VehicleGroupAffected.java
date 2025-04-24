@@ -23,9 +23,65 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class VehicleGroupAffected extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("all-vehicles", 9217L),
+          new SimpleEntry<>("bicycles", 9218L),
+          new SimpleEntry<>("motorcycles", 9219L),
+          new SimpleEntry<>("cars", 9220L),
+          new SimpleEntry<>("light-vehicles", 9221L),
+          new SimpleEntry<>("cars-and-light-vehicles", 9222L),
+          new SimpleEntry<>("cars-with-trailers", 9223L),
+          new SimpleEntry<>("cars-with-recreational-trailers", 9224L),
+          new SimpleEntry<>("vehicles-with-trailers", 9225L),
+          new SimpleEntry<>("heavy-vehicles", 9226L),
+          new SimpleEntry<>("trucks", 9227L),
+          new SimpleEntry<>("buses", 9228L),
+          new SimpleEntry<>("articulated-buses", 9229L),
+          new SimpleEntry<>("school-buses", 9230L),
+          new SimpleEntry<>("vehicles-with-semi-trailers", 9231L),
+          new SimpleEntry<>("vehicles-with-double-trailers", 9232L),
+          new SimpleEntry<>("high-profile-vehicles", 9233L),
+          new SimpleEntry<>("wide-vehicles", 9234L),
+          new SimpleEntry<>("long-vehicles", 9235L),
+          new SimpleEntry<>("hazardous-loads", 9236L),
+          new SimpleEntry<>("exceptional-loads", 9237L),
+          new SimpleEntry<>("abnormal-loads", 9238L),
+          new SimpleEntry<>("convoys", 9239L),
+          new SimpleEntry<>("maintenance-vehicles", 9240L),
+          new SimpleEntry<>("delivery-vehicles", 9241L),
+          new SimpleEntry<>("vehicles-with-even-numbered-license-plates", 9242L),
+          new SimpleEntry<>("vehicles-with-odd-numbered-license-plates", 9243L),
+          new SimpleEntry<>("vehicles-with-parking-permits", 9244L),
+          new SimpleEntry<>("vehicles-with-catalytic-converters", 9245L),
+          new SimpleEntry<>("vehicles-without-catalytic-converters", 9246L),
+          new SimpleEntry<>("gas-powered-vehicles", 9247L),
+          new SimpleEntry<>("diesel-powered-vehicles", 9248L),
+          new SimpleEntry<>("lPG-vehicles", 9249L),
+          new SimpleEntry<>("military-convoys", 9250L),
+          new SimpleEntry<>("military-vehicles", 9251L),
+          new SimpleEntry<>("electric-powered-vehicles", 9252L),
+          new SimpleEntry<>("hybrid-powered-vehicles", 9253L),
+          new SimpleEntry<>("inherently-low-emission-vehicles", 9254L),
+          new SimpleEntry<>("commercial-vehicles", 9255L),
+          new SimpleEntry<>("runaway-vehicles", 9256L),
+          new SimpleEntry<>("vehicles-with-lugs", 9257L),
+          new SimpleEntry<>("motor-driven-cycles", 9258L),
+          new SimpleEntry<>("recreational-vehicles", 9259L),
+          new SimpleEntry<>("non-motorized-vehicles", 9260L),
+          new SimpleEntry<>("traffic", 9261L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public VehicleGroupAffected() {
     super(0L, 65535L);
@@ -35,5 +91,22 @@ public class VehicleGroupAffected extends Asn1Integer {
   public VehicleGroupAffected(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<VehicleGroupAffected> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(VehicleGroupAffected::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

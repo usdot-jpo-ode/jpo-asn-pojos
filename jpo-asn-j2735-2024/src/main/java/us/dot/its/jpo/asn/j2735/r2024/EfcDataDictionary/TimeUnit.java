@@ -23,9 +23,25 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class TimeUnit extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("seconds", 0L),
+          new SimpleEntry<>("minutes", 1L),
+          new SimpleEntry<>("hours", 2L),
+          new SimpleEntry<>("days", 3L),
+          new SimpleEntry<>("months", 4L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public TimeUnit() {
     super(0L, 255L);
@@ -35,5 +51,22 @@ public class TimeUnit extends Asn1Integer {
   public TimeUnit(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<TimeUnit> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(TimeUnit::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

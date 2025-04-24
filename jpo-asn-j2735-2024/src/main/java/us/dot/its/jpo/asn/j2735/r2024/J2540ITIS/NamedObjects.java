@@ -23,9 +23,45 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class NamedObjects extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("name-follows", 11777L),
+          new SimpleEntry<>("freeway", 11778L),
+          new SimpleEntry<>("us-Route", 11779L),
+          new SimpleEntry<>("state-Route", 11780L),
+          new SimpleEntry<>("interstate", 11781L),
+          new SimpleEntry<>("business-Loop", 11782L),
+          new SimpleEntry<>("spur", 11797L),
+          new SimpleEntry<>("junction", 11798L),
+          new SimpleEntry<>("alternative", 11783L),
+          new SimpleEntry<>("county-Route", 11784L),
+          new SimpleEntry<>("forest-Route", 11785L),
+          new SimpleEntry<>("farm-to-Market-Route", 11786L),
+          new SimpleEntry<>("eisenhower-Interstate-System", 11787L),
+          new SimpleEntry<>("americas-Byways", 11788L),
+          new SimpleEntry<>("national-Network-Route", 11789L),
+          new SimpleEntry<>("scenic-Area", 11790L),
+          new SimpleEntry<>("parking-Area", 11791L),
+          new SimpleEntry<>("weight-Station", 11792L),
+          new SimpleEntry<>("road", 11793L),
+          new SimpleEntry<>("exit", 11794L),
+          new SimpleEntry<>("historical-route", 11795L),
+          new SimpleEntry<>("state-line", 11796L),
+          new SimpleEntry<>("bicycle-route", 11799L),
+          new SimpleEntry<>("bicycle-interstate-route", 11800L),
+          new SimpleEntry<>("national-park", 11801L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public NamedObjects() {
     super(0L, 65535L);
@@ -35,5 +71,22 @@ public class NamedObjects extends Asn1Integer {
   public NamedObjects(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<NamedObjects> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(NamedObjects::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

@@ -23,9 +23,38 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Closures extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("closed-to-traffic", 769L),
+          new SimpleEntry<>("closed", 770L),
+          new SimpleEntry<>("closed-ahead", 771L),
+          new SimpleEntry<>("closed-intermittently", 772L),
+          new SimpleEntry<>("closed-for-repairs", 773L),
+          new SimpleEntry<>("closed-for-the-season", 774L),
+          new SimpleEntry<>("blocked", 775L),
+          new SimpleEntry<>("blocked-ahead", 776L),
+          new SimpleEntry<>("reduced-to-one-lane", 777L),
+          new SimpleEntry<>("reduced-to-two-lanes", 778L),
+          new SimpleEntry<>("reduced-to-three-lanes", 779L),
+          new SimpleEntry<>("collapse", 780L),
+          new SimpleEntry<>("out", 781L),
+          new SimpleEntry<>("open-to-traffic", 891L),
+          new SimpleEntry<>("open", 892L),
+          new SimpleEntry<>("reopened-to-traffic", 893L),
+          new SimpleEntry<>("clearing", 894L),
+          new SimpleEntry<>("cleared-from-road", 895L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public Closures() {
     super(0L, 65535L);
@@ -35,5 +64,22 @@ public class Closures extends Asn1Integer {
   public Closures(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<Closures> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(Closures::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

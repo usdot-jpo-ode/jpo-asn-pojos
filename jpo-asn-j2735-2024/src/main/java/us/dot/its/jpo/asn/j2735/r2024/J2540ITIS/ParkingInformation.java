@@ -23,9 +23,54 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ParkingInformation extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("normal-parking-restrictions-lifted", 4097L),
+          new SimpleEntry<>("parking-meter-restrictions-lifted", 4098L),
+          new SimpleEntry<>("special-parking-restrictions-in-force", 4099L),
+          new SimpleEntry<>("full-parking-lot", 4100L),
+          new SimpleEntry<>("full-parking-garage", 4101L),
+          new SimpleEntry<>("all-parking-lots-full", 4102L),
+          new SimpleEntry<>("no-parking-spaces-available", 4103L),
+          new SimpleEntry<>("only-a-few-spaces-available", 4104L),
+          new SimpleEntry<>("spaces-available", 4105L),
+          new SimpleEntry<>("no-parking", 4106L),
+          new SimpleEntry<>("parking-on-one-side-of-street-only", 4107L),
+          new SimpleEntry<>("parking-on-both-sides-of-street", 4108L),
+          new SimpleEntry<>("parallel-parking-only", 4109L),
+          new SimpleEntry<>("parking-meters-not-available", 4110L),
+          new SimpleEntry<>("use-of-parking-meters-restricted", 4111L),
+          new SimpleEntry<>("event-parking", 4112L),
+          new SimpleEntry<>("handicapped-parking", 4113L),
+          new SimpleEntry<>("long-term-parking", 4114L),
+          new SimpleEntry<>("overnight-parking", 4115L),
+          new SimpleEntry<>("short-term-parking", 4116L),
+          new SimpleEntry<>("parking-by-permit-only", 4117L),
+          new SimpleEntry<>("emergency-parking-only", 4118L),
+          new SimpleEntry<>("emergency-stopping-only", 4119L),
+          new SimpleEntry<>("parking", 4120L),
+          new SimpleEntry<>("stopping", 4121L),
+          new SimpleEntry<>("standing", 4122L),
+          new SimpleEntry<>("tow-away-zone", 4123L),
+          new SimpleEntry<>("school-zone", 4124L),
+          new SimpleEntry<>("speed-zone", 4125L),
+          new SimpleEntry<>("loading-zone", 4126L),
+          new SimpleEntry<>("state-law", 4127L),
+          new SimpleEntry<>("van-accessible", 4128L),
+          new SimpleEntry<>("special-parking-restrictions-lifted", 4222L),
+          new SimpleEntry<>("no-parking-information-available", 4223L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public ParkingInformation() {
     super(0L, 65535L);
@@ -35,5 +80,22 @@ public class ParkingInformation extends Asn1Integer {
   public ParkingInformation(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<ParkingInformation> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(ParkingInformation::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

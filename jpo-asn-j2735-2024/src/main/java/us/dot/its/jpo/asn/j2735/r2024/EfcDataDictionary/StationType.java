@@ -23,9 +23,36 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class StationType extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("unspecified", 0L),
+          new SimpleEntry<>("closedEntryWithPayment", 1L),
+          new SimpleEntry<>("closedEntryWithoutPayment", 2L),
+          new SimpleEntry<>("closedTransit", 3L),
+          new SimpleEntry<>("closedExit", 4L),
+          new SimpleEntry<>("closedCredit", 5L),
+          new SimpleEntry<>("mixed", 6L),
+          new SimpleEntry<>("passage", 7L),
+          new SimpleEntry<>("checkpoint", 8L),
+          new SimpleEntry<>("reload", 9L),
+          new SimpleEntry<>("reservedForFutureCENUse1", 10L),
+          new SimpleEntry<>("reservedForFutureCENUse2", 11L),
+          new SimpleEntry<>("reservedForFutureCENUse3", 12L),
+          new SimpleEntry<>("reservedForFutureCENUse4", 13L),
+          new SimpleEntry<>("privateUse5", 14L),
+          new SimpleEntry<>("privateUse6", 15L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public StationType() {
     super(0L, 15L);
@@ -35,5 +62,22 @@ public class StationType extends Asn1Integer {
   public StationType(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<StationType> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(StationType::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

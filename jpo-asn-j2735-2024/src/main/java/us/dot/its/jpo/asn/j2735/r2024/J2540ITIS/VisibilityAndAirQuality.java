@@ -23,9 +23,54 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class VisibilityAndAirQuality extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("dense-fog", 5377L),
+          new SimpleEntry<>("fog", 5378L),
+          new SimpleEntry<>("patchy-fog", 5379L),
+          new SimpleEntry<>("freezing-fog", 5380L),
+          new SimpleEntry<>("ice-fog", 5405L),
+          new SimpleEntry<>("mist", 5381L),
+          new SimpleEntry<>("haze", 5382L),
+          new SimpleEntry<>("visibility-reduced", 5383L),
+          new SimpleEntry<>("visibility-blocked", 5404L),
+          new SimpleEntry<>("white-out", 5384L),
+          new SimpleEntry<>("blowing-snow", 5385L),
+          new SimpleEntry<>("smoke-hazard", 5386L),
+          new SimpleEntry<>("spray-hazard", 5387L),
+          new SimpleEntry<>("low-sun-glare", 5388L),
+          new SimpleEntry<>("snow-glare", 5389L),
+          new SimpleEntry<>("blowing-dust", 5390L),
+          new SimpleEntry<>("blowing-sand", 5391L),
+          new SimpleEntry<>("dust-storms", 5392L),
+          new SimpleEntry<>("sandstorms", 5393L),
+          new SimpleEntry<>("air-quality-good", 5394L),
+          new SimpleEntry<>("air-quality-fair", 5395L),
+          new SimpleEntry<>("air-quality-poor", 5396L),
+          new SimpleEntry<>("air-quality-very-poor", 5397L),
+          new SimpleEntry<>("severe-exhaust-pollution", 5398L),
+          new SimpleEntry<>("smog-alert", 5399L),
+          new SimpleEntry<>("pollen-count-high", 5400L),
+          new SimpleEntry<>("pollen-count-medium", 5401L),
+          new SimpleEntry<>("pollen-count-low", 5402L),
+          new SimpleEntry<>("swarms-of-insects", 5403L),
+          new SimpleEntry<>("fog-clearing", 5499L),
+          new SimpleEntry<>("visibility-improved", 5500L),
+          new SimpleEntry<>("fog-forecast-withdrawn", 5501L),
+          new SimpleEntry<>("pollution-alert-ended", 5502L),
+          new SimpleEntry<>("air-quality-improved", 5503L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public VisibilityAndAirQuality() {
     super(0L, 65535L);
@@ -35,5 +80,22 @@ public class VisibilityAndAirQuality extends Asn1Integer {
   public VisibilityAndAirQuality(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<VisibilityAndAirQuality> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(VisibilityAndAirQuality::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

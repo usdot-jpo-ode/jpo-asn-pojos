@@ -23,9 +23,60 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Obstruction extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("obstruction-on-roadway", 1281L),
+          new SimpleEntry<>("object-on-roadway", 1282L),
+          new SimpleEntry<>("objects-falling-from-moving-vehicle", 1283L),
+          new SimpleEntry<>("debris-on-roadway", 1284L),
+          new SimpleEntry<>("storm-damage", 1285L),
+          new SimpleEntry<>("people-on-roadway", 1286L),
+          new SimpleEntry<>("bicyclists-on-roadway", 1287L),
+          new SimpleEntry<>("sightseers-obstructing-access", 1288L),
+          new SimpleEntry<>("large-numbers-of-visitors", 1289L),
+          new SimpleEntry<>("animal-on-roadway", 1290L),
+          new SimpleEntry<>("large-animal-on-roadway", 1291L),
+          new SimpleEntry<>("herd-of-animals-on-roadway", 1292L),
+          new SimpleEntry<>("animal-struck", 1293L),
+          new SimpleEntry<>("advertising-signs", 1315L),
+          new SimpleEntry<>("fallen-trees", 1294L),
+          new SimpleEntry<>("over-turned-trees", 1311L),
+          new SimpleEntry<>("tree-limbs", 1312L),
+          new SimpleEntry<>("utility-pole-down", 1314L),
+          new SimpleEntry<>("downed-power-lines", 1295L),
+          new SimpleEntry<>("downed-cables", 1296L),
+          new SimpleEntry<>("subsidence", 1297L),
+          new SimpleEntry<>("road-surface-collapse", 1298L),
+          new SimpleEntry<>("frost-jacking", 1317L),
+          new SimpleEntry<>("frost-heave", 1316L),
+          new SimpleEntry<>("pavement-buckled", 1299L),
+          new SimpleEntry<>("pothole", 1300L),
+          new SimpleEntry<>("flooding", 1301L),
+          new SimpleEntry<>("broken-water-main", 1302L),
+          new SimpleEntry<>("collapsed-sewer", 1303L),
+          new SimpleEntry<>("wash-out", 1319L),
+          new SimpleEntry<>("washboard", 1318L),
+          new SimpleEntry<>("sewer-overflow", 1304L),
+          new SimpleEntry<>("gas-leak", 1305L),
+          new SimpleEntry<>("snowmelt", 1306L),
+          new SimpleEntry<>("mudslide", 1307L),
+          new SimpleEntry<>("avalanche", 1308L),
+          new SimpleEntry<>("rockfall", 1309L),
+          new SimpleEntry<>("landslide", 1310L),
+          new SimpleEntry<>("clearance-work", 1406L),
+          new SimpleEntry<>("obstruction-cleared", 1407L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public Obstruction() {
     super(0L, 65535L);
@@ -35,5 +86,22 @@ public class Obstruction extends Asn1Integer {
   public Obstruction(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<Obstruction> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(Obstruction::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

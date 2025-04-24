@@ -23,9 +23,45 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class SportingEvents extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("sports-event", 3585L),
+          new SimpleEntry<>("game", 3586L),
+          new SimpleEntry<>("tournament", 3587L),
+          new SimpleEntry<>("track-and-field-event", 3588L),
+          new SimpleEntry<>("baseball-game", 3589L),
+          new SimpleEntry<>("basketball-game", 3590L),
+          new SimpleEntry<>("boxing-match", 3591L),
+          new SimpleEntry<>("football-game", 3592L),
+          new SimpleEntry<>("soccer-game", 3593L),
+          new SimpleEntry<>("golf-tournament", 3594L),
+          new SimpleEntry<>("hockey-game", 3595L),
+          new SimpleEntry<>("tennis-tournament", 3596L),
+          new SimpleEntry<>("wrestling-match", 3597L),
+          new SimpleEntry<>("road-race", 3598L),
+          new SimpleEntry<>("automobile-race", 3599L),
+          new SimpleEntry<>("bicycle-race", 3600L),
+          new SimpleEntry<>("race-event", 3601L),
+          new SimpleEntry<>("marathon", 3602L),
+          new SimpleEntry<>("horse-show", 3603L),
+          new SimpleEntry<>("rodeo", 3604L),
+          new SimpleEntry<>("water-sports-event", 3605L),
+          new SimpleEntry<>("winter-sports-event", 3606L),
+          new SimpleEntry<>("skating-event", 3607L),
+          new SimpleEntry<>("dog-sled-race", 3608L),
+          new SimpleEntry<>("sporting-event-ended", 3711L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public SportingEvents() {
     super(0L, 65535L);
@@ -35,5 +71,22 @@ public class SportingEvents extends Asn1Integer {
   public SportingEvents(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<SportingEvents> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(SportingEvents::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

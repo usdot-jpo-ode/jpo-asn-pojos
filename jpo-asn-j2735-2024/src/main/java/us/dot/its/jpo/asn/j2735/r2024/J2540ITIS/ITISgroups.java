@@ -23,9 +23,73 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ITISgroups extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("trafficConditions", 1L),
+          new SimpleEntry<>("accidentsAndIncidents", 2L),
+          new SimpleEntry<>("closures", 3L),
+          new SimpleEntry<>("roadwork", 4L),
+          new SimpleEntry<>("obstruction", 5L),
+          new SimpleEntry<>("delayStatusCancellation", 6L),
+          new SimpleEntry<>("unusualDriving", 7L),
+          new SimpleEntry<>("mobileSituation", 8L),
+          new SimpleEntry<>("deviceStatus", 9L),
+          new SimpleEntry<>("restrictionClass", 10L),
+          new SimpleEntry<>("incidentResponseStatus", 11L),
+          new SimpleEntry<>("disasters", 12L),
+          new SimpleEntry<>("disturbances", 13L),
+          new SimpleEntry<>("sportingEvents", 14L),
+          new SimpleEntry<>("specialEvents", 15L),
+          new SimpleEntry<>("parkingInformation", 16L),
+          new SimpleEntry<>("systemInformation", 17L),
+          new SimpleEntry<>("weatherConditions", 18L),
+          new SimpleEntry<>("precipitation", 19L),
+          new SimpleEntry<>("winds", 20L),
+          new SimpleEntry<>("visibilityAndAirQuality", 21L),
+          new SimpleEntry<>("temperature", 22L),
+          new SimpleEntry<>("pavementConditions", 23L),
+          new SimpleEntry<>("winterDrivingRestrictions", 24L),
+          new SimpleEntry<>("winterDrivingIndex", 25L),
+          new SimpleEntry<>("suggestionAdvice", 26L),
+          new SimpleEntry<>("warningAdvice", 27L),
+          new SimpleEntry<>("adviceInstructionsRecommendations", 28L),
+          new SimpleEntry<>("adviceInstructionsMandatory", 29L),
+          new SimpleEntry<>("qualifiers", 30L),
+          new SimpleEntry<>("genericLocations", 31L),
+          new SimpleEntry<>("laneRoadway", 32L),
+          new SimpleEntry<>("alternateRoute", 33L),
+          new SimpleEntry<>("units", 34L),
+          new SimpleEntry<>("transitMode", 35L),
+          new SimpleEntry<>("vehicleGroupAffected", 36L),
+          new SimpleEntry<>("travelerGroupAffected", 37L),
+          new SimpleEntry<>("responderGroupAffected", 38L),
+          new SimpleEntry<>("incidentResponseEquipment", 39L),
+          new SimpleEntry<>("assetStatus", 40L),
+          new SimpleEntry<>("roadsideAssets", 41L),
+          new SimpleEntry<>("transitOperations", 42L),
+          new SimpleEntry<>("objects", 43L),
+          new SimpleEntry<>("validManeuvers", 44L),
+          new SimpleEntry<>("largeNumbers", 45L),
+          new SimpleEntry<>("namedObjects", 46L),
+          new SimpleEntry<>("recreationalObjectsAndActivities", 47L),
+          new SimpleEntry<>("regulatoryAndWarningSigns", 48L),
+          new SimpleEntry<>("smallNumbers", 49L),
+          new SimpleEntry<>("states", 50L),
+          new SimpleEntry<>("structures", 51L),
+          new SimpleEntry<>("streetSuffixes", 52L),
+          new SimpleEntry<>("mUTCDLocations", 53L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public ITISgroups() {
     super(0L, 255L);
@@ -35,5 +99,22 @@ public class ITISgroups extends Asn1Integer {
   public ITISgroups(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<ITISgroups> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(ITISgroups::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

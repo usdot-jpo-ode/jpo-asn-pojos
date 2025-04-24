@@ -23,9 +23,83 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class RecreationalObjectsAndActivities extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("bear-viewing-area", 12033L),
+          new SimpleEntry<>("deer-viewing-area", 12034L),
+          new SimpleEntry<>("drinking-water", 12035L),
+          new SimpleEntry<>("environmental-study-area", 12036L),
+          new SimpleEntry<>("falling-rocks", 12037L),
+          new SimpleEntry<>("firearms", 12038L),
+          new SimpleEntry<>("leashed-pets", 12039L),
+          new SimpleEntry<>("point-of-interest", 12040L),
+          new SimpleEntry<>("smoking", 12041L),
+          new SimpleEntry<>("dog", 12042L),
+          new SimpleEntry<>("tent-camping", 12043L),
+          new SimpleEntry<>("trailer-camping", 12044L),
+          new SimpleEntry<>("first-aid", 12045L),
+          new SimpleEntry<>("handicapped", 12046L),
+          new SimpleEntry<>("mechanic", 12047L),
+          new SimpleEntry<>("trailer-sanitary-station", 12048L),
+          new SimpleEntry<>("viewing-area", 12049L),
+          new SimpleEntry<>("scenic-overlook", 12095L),
+          new SimpleEntry<>("campfire", 12050L),
+          new SimpleEntry<>("locker", 12051L),
+          new SimpleEntry<>("sleeping", 12052L),
+          new SimpleEntry<>("trail", 12053L),
+          new SimpleEntry<>("climbing", 12054L),
+          new SimpleEntry<>("rock-climbing", 12055L),
+          new SimpleEntry<>("hunting", 12056L),
+          new SimpleEntry<>("playground", 12057L),
+          new SimpleEntry<>("rock-collecting", 12058L),
+          new SimpleEntry<>("spelunking", 12059L),
+          new SimpleEntry<>("bicycle-trail", 12060L),
+          new SimpleEntry<>("hiking-trail", 12061L),
+          new SimpleEntry<>("horse-trail", 12062L),
+          new SimpleEntry<>("trail-interpretive-auto", 12063L),
+          new SimpleEntry<>("trail-interpretive-pedestrian", 12064L),
+          new SimpleEntry<>("trail-road-for-4WD-vehicles", 12065L),
+          new SimpleEntry<>("trail-for-trail-bikes", 12066L),
+          new SimpleEntry<>("archer", 12067L),
+          new SimpleEntry<>("hang-glider", 12068L),
+          new SimpleEntry<>("boat-tours", 12069L),
+          new SimpleEntry<>("canoeing", 12070L),
+          new SimpleEntry<>("diving", 12071L),
+          new SimpleEntry<>("scuba-diving", 12072L),
+          new SimpleEntry<>("fishing", 12073L),
+          new SimpleEntry<>("marine-recreation-area", 12074L),
+          new SimpleEntry<>("motorboating", 12075L),
+          new SimpleEntry<>("boat-ramp", 12076L),
+          new SimpleEntry<>("rowboating", 12077L),
+          new SimpleEntry<>("sailboating", 12078L),
+          new SimpleEntry<>("water-skiing", 12079L),
+          new SimpleEntry<>("surfing", 12080L),
+          new SimpleEntry<>("swimming", 12081L),
+          new SimpleEntry<>("wading", 12082L),
+          new SimpleEntry<>("hand-launch", 12083L),
+          new SimpleEntry<>("kayak", 12084L),
+          new SimpleEntry<>("wind-surf", 12085L),
+          new SimpleEntry<>("ice-skating", 12086L),
+          new SimpleEntry<>("ski-jumping", 12087L),
+          new SimpleEntry<>("bobbing", 12088L),
+          new SimpleEntry<>("cross-country-skiing", 12089L),
+          new SimpleEntry<>("downhill-skiing", 12090L),
+          new SimpleEntry<>("sledding", 12091L),
+          new SimpleEntry<>("snowmobiling", 12092L),
+          new SimpleEntry<>("snowshoeing", 12093L),
+          new SimpleEntry<>("winter-recreation-area", 12094L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public RecreationalObjectsAndActivities() {
     super(0L, 65535L);
@@ -35,5 +109,22 @@ public class RecreationalObjectsAndActivities extends Asn1Integer {
   public RecreationalObjectsAndActivities(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<RecreationalObjectsAndActivities> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(RecreationalObjectsAndActivities::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

@@ -23,9 +23,37 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class IncidentResponseStatus extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("unconfirmed-report", 2817L),
+          new SimpleEntry<>("initial-response-en-route", 2818L),
+          new SimpleEntry<>("follow-up-response-en-route", 2819L),
+          new SimpleEntry<>("initial-response-on-scene", 2820L),
+          new SimpleEntry<>("follow-up-response-on-scene", 2821L),
+          new SimpleEntry<>("confirmed-report", 2822L),
+          new SimpleEntry<>("scene-is-unsecured-at-this-time", 2823L),
+          new SimpleEntry<>("response-scene-secured", 2824L),
+          new SimpleEntry<>("rescue-and-recovery-work-in-progress", 2825L),
+          new SimpleEntry<>("extraction-in-progress", 2826L),
+          new SimpleEntry<>("clearance-work-in-progress", 2827L),
+          new SimpleEntry<>("body-removal-operations", 2828L),
+          new SimpleEntry<>("fire-containment-contained", 2829L),
+          new SimpleEntry<>("fire-containment-not-contained", 2830L),
+          new SimpleEntry<>("event-cleared", 2831L),
+          new SimpleEntry<>("traffic-clearing", 2832L),
+          new SimpleEntry<>("incident-closed", 2833L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public IncidentResponseStatus() {
     super(0L, 65535L);
@@ -35,5 +63,22 @@ public class IncidentResponseStatus extends Asn1Integer {
   public IncidentResponseStatus(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<IncidentResponseStatus> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(IncidentResponseStatus::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

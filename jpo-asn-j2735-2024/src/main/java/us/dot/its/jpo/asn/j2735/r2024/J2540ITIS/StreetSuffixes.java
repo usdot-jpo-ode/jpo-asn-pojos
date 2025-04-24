@@ -23,9 +23,165 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class StreetSuffixes extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("alley", 13313L),
+          new SimpleEntry<>("annex", 13314L),
+          new SimpleEntry<>("arcade", 13315L),
+          new SimpleEntry<>("avenue", 13316L),
+          new SimpleEntry<>("bayoo", 13317L),
+          new SimpleEntry<>("beach", 13318L),
+          new SimpleEntry<>("bend", 13319L),
+          new SimpleEntry<>("bluff", 13320L),
+          new SimpleEntry<>("bottom", 13321L),
+          new SimpleEntry<>("boulevard", 13322L),
+          new SimpleEntry<>("branch", 13323L),
+          new SimpleEntry<>("nBridge", 13324L),
+          new SimpleEntry<>("brook", 13325L),
+          new SimpleEntry<>("burg", 13326L),
+          new SimpleEntry<>("bypass", 13327L),
+          new SimpleEntry<>("camp", 13328L),
+          new SimpleEntry<>("canyon", 13329L),
+          new SimpleEntry<>("cape", 13330L),
+          new SimpleEntry<>("causeway", 13331L),
+          new SimpleEntry<>("nCenter", 13332L),
+          new SimpleEntry<>("circle", 13333L),
+          new SimpleEntry<>("cliff", 13334L),
+          new SimpleEntry<>("club", 13335L),
+          new SimpleEntry<>("common", 13336L),
+          new SimpleEntry<>("corner", 13337L),
+          new SimpleEntry<>("course", 13338L),
+          new SimpleEntry<>("court", 13339L),
+          new SimpleEntry<>("cove", 13340L),
+          new SimpleEntry<>("creek", 13341L),
+          new SimpleEntry<>("crescent", 13342L),
+          new SimpleEntry<>("crest", 13343L),
+          new SimpleEntry<>("nCrossing", 13344L),
+          new SimpleEntry<>("crossroad", 13345L),
+          new SimpleEntry<>("curve", 13346L),
+          new SimpleEntry<>("dale", 13347L),
+          new SimpleEntry<>("nDam", 13348L),
+          new SimpleEntry<>("divide", 13349L),
+          new SimpleEntry<>("drive", 13350L),
+          new SimpleEntry<>("estate", 13351L),
+          new SimpleEntry<>("expressway", 13352L),
+          new SimpleEntry<>("extension", 13353L),
+          new SimpleEntry<>("fall", 13354L),
+          new SimpleEntry<>("nFerry", 13355L),
+          new SimpleEntry<>("field", 13356L),
+          new SimpleEntry<>("flat", 13357L),
+          new SimpleEntry<>("ford", 13358L),
+          new SimpleEntry<>("forest", 13359L),
+          new SimpleEntry<>("forge", 13360L),
+          new SimpleEntry<>("fork", 13361L),
+          new SimpleEntry<>("fort", 13362L),
+          new SimpleEntry<>("nFreeway", 13363L),
+          new SimpleEntry<>("garden", 13364L),
+          new SimpleEntry<>("gateway", 13365L),
+          new SimpleEntry<>("glen", 13366L),
+          new SimpleEntry<>("green", 13367L),
+          new SimpleEntry<>("grove", 13368L),
+          new SimpleEntry<>("harbor", 13369L),
+          new SimpleEntry<>("haven", 13370L),
+          new SimpleEntry<>("heights", 13371L),
+          new SimpleEntry<>("highway", 13372L),
+          new SimpleEntry<>("nHill", 13373L),
+          new SimpleEntry<>("hollow", 13374L),
+          new SimpleEntry<>("inlet", 13375L),
+          new SimpleEntry<>("nIsland", 13376L),
+          new SimpleEntry<>("isle", 13377L),
+          new SimpleEntry<>("nJunction", 13378L),
+          new SimpleEntry<>("key", 13379L),
+          new SimpleEntry<>("knoll", 13380L),
+          new SimpleEntry<>("lake", 13381L),
+          new SimpleEntry<>("land", 13382L),
+          new SimpleEntry<>("landing", 13383L),
+          new SimpleEntry<>("nLane", 13384L),
+          new SimpleEntry<>("light", 13385L),
+          new SimpleEntry<>("loaf", 13386L),
+          new SimpleEntry<>("lock", 13387L),
+          new SimpleEntry<>("lodge", 13388L),
+          new SimpleEntry<>("loop", 13389L),
+          new SimpleEntry<>("mall", 13390L),
+          new SimpleEntry<>("manor", 13391L),
+          new SimpleEntry<>("meadow", 13392L),
+          new SimpleEntry<>("mews", 13393L),
+          new SimpleEntry<>("mill", 13394L),
+          new SimpleEntry<>("mission", 13395L),
+          new SimpleEntry<>("motorway", 13396L),
+          new SimpleEntry<>("mount", 13397L),
+          new SimpleEntry<>("mountain", 13398L),
+          new SimpleEntry<>("neck", 13399L),
+          new SimpleEntry<>("orchard", 13400L),
+          new SimpleEntry<>("oval", 13401L),
+          new SimpleEntry<>("nOverpass", 13402L),
+          new SimpleEntry<>("park", 13403L),
+          new SimpleEntry<>("parkway", 13404L),
+          new SimpleEntry<>("nPass", 13405L),
+          new SimpleEntry<>("passage", 13406L),
+          new SimpleEntry<>("path", 13407L),
+          new SimpleEntry<>("pike", 13408L),
+          new SimpleEntry<>("pine", 13409L),
+          new SimpleEntry<>("plains", 13410L),
+          new SimpleEntry<>("plaza", 13411L),
+          new SimpleEntry<>("point", 13412L),
+          new SimpleEntry<>("port", 13413L),
+          new SimpleEntry<>("prairie", 13414L),
+          new SimpleEntry<>("radial", 13415L),
+          new SimpleEntry<>("ramp", 13416L),
+          new SimpleEntry<>("ranch", 13417L),
+          new SimpleEntry<>("rapid", 13418L),
+          new SimpleEntry<>("rest", 13419L),
+          new SimpleEntry<>("ridge", 13420L),
+          new SimpleEntry<>("river", 13421L),
+          new SimpleEntry<>("nRoad", 13422L),
+          new SimpleEntry<>("route", 13423L),
+          new SimpleEntry<>("row", 13424L),
+          new SimpleEntry<>("rue", 13425L),
+          new SimpleEntry<>("run", 13426L),
+          new SimpleEntry<>("shoal", 13427L),
+          new SimpleEntry<>("shore", 13428L),
+          new SimpleEntry<>("skyway", 13429L),
+          new SimpleEntry<>("spring", 13430L),
+          new SimpleEntry<>("nSpur", 13431L),
+          new SimpleEntry<>("square", 13432L),
+          new SimpleEntry<>("nStation", 13433L),
+          new SimpleEntry<>("stravenue", 13434L),
+          new SimpleEntry<>("stream", 13435L),
+          new SimpleEntry<>("street", 13436L),
+          new SimpleEntry<>("summit", 13437L),
+          new SimpleEntry<>("terrace", 13438L),
+          new SimpleEntry<>("throughway", 13439L),
+          new SimpleEntry<>("trace", 13440L),
+          new SimpleEntry<>("nTrack", 13441L),
+          new SimpleEntry<>("trafficway", 13442L),
+          new SimpleEntry<>("nTrail", 13443L),
+          new SimpleEntry<>("nTunnel", 13444L),
+          new SimpleEntry<>("turnpike", 13445L),
+          new SimpleEntry<>("nUnderpass", 13446L),
+          new SimpleEntry<>("union", 13447L),
+          new SimpleEntry<>("valley", 13448L),
+          new SimpleEntry<>("viaduct", 13449L),
+          new SimpleEntry<>("view", 13450L),
+          new SimpleEntry<>("village", 13451L),
+          new SimpleEntry<>("ville", 13452L),
+          new SimpleEntry<>("vista", 13453L),
+          new SimpleEntry<>("nWalk", 13454L),
+          new SimpleEntry<>("wall", 13455L),
+          new SimpleEntry<>("way", 13456L),
+          new SimpleEntry<>("well", 13457L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public StreetSuffixes() {
     super(0L, 65535L);
@@ -35,5 +191,22 @@ public class StreetSuffixes extends Asn1Integer {
   public StreetSuffixes(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<StreetSuffixes> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(StreetSuffixes::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

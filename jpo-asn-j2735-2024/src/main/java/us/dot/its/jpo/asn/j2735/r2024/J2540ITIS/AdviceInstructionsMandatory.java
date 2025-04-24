@@ -23,9 +23,51 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AdviceInstructionsMandatory extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("keep-to-the-right", 7425L),
+          new SimpleEntry<>("keep-to-the-left", 7426L),
+          new SimpleEntry<>("use-right-lane", 7427L),
+          new SimpleEntry<>("use-left-lane", 7428L),
+          new SimpleEntry<>("stay-in-lane", 7450L),
+          new SimpleEntry<>("merge", 7451L),
+          new SimpleEntry<>("heavy-vehicles-use-right-lane", 7429L),
+          new SimpleEntry<>("heavy-vehicles-use-left-lane", 7430L),
+          new SimpleEntry<>("observe-signals", 7431L),
+          new SimpleEntry<>("observe-signs", 7432L),
+          new SimpleEntry<>("no-passing", 7433L),
+          new SimpleEntry<>("no-smoking", 7434L),
+          new SimpleEntry<>("no-open-flames", 7435L),
+          new SimpleEntry<>("use-shoulder-as-lane", 7436L),
+          new SimpleEntry<>("do-not-drive-on-the-shoulder", 7437L),
+          new SimpleEntry<>("allow-emergency-vehicles-to-pass", 7438L),
+          new SimpleEntry<>("clear-a-lane-for-emergency-vehicles", 7439L),
+          new SimpleEntry<>("pull-over-to-the-edge-of-the-roadway", 7440L),
+          new SimpleEntry<>("wait-for-escort-vehicle", 7441L),
+          new SimpleEntry<>("in-emergency-wait-for-police-patrol", 7442L),
+          new SimpleEntry<>("reduce-your-speed", 7443L),
+          new SimpleEntry<>("observe-speed-limits", 7444L),
+          new SimpleEntry<>("check-point", 7445L),
+          new SimpleEntry<>("entry-requirements", 7446L),
+          new SimpleEntry<>("insurance-requirements", 7447L),
+          new SimpleEntry<>("firearms-requirements", 7448L),
+          new SimpleEntry<>("pet-requirements", 7449L),
+          new SimpleEntry<>("slower-traffic-keep-right", 7452L),
+          new SimpleEntry<>("keep-off", 7453L),
+          new SimpleEntry<>("evacuate-area-immediately", 7454L),
+          new SimpleEntry<>("shoulder-travel-no-longer-allowed", 7547L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public AdviceInstructionsMandatory() {
     super(0L, 65535L);
@@ -35,5 +77,22 @@ public class AdviceInstructionsMandatory extends Asn1Integer {
   public AdviceInstructionsMandatory(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<AdviceInstructionsMandatory> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(AdviceInstructionsMandatory::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

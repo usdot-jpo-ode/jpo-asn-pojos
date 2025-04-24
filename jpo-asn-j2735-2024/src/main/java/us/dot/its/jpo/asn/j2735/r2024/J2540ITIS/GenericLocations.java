@@ -23,9 +23,117 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class GenericLocations extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("on-bridges", 7937L),
+          new SimpleEntry<>("in-tunnels", 7938L),
+          new SimpleEntry<>("entering-or-leaving-tunnels", 7939L),
+          new SimpleEntry<>("on-ramps", 7940L),
+          new SimpleEntry<>("in-road-construction-area", 7941L),
+          new SimpleEntry<>("around-a-curve", 7942L),
+          new SimpleEntry<>("on-curve", 8026L),
+          new SimpleEntry<>("on-tracks", 8009L),
+          new SimpleEntry<>("in-street", 8025L),
+          new SimpleEntry<>("shoulder", 8027L),
+          new SimpleEntry<>("on-minor-roads", 7943L),
+          new SimpleEntry<>("in-the-opposing-lanes", 7944L),
+          new SimpleEntry<>("adjacent-to-roadway", 7945L),
+          new SimpleEntry<>("across-tracks", 8024L),
+          new SimpleEntry<>("on-bend", 7946L),
+          new SimpleEntry<>("intersection", 8032L),
+          new SimpleEntry<>("entire-intersection", 7947L),
+          new SimpleEntry<>("in-the-median", 7948L),
+          new SimpleEntry<>("moved-to-side-of-road", 7949L),
+          new SimpleEntry<>("moved-to-shoulder", 7950L),
+          new SimpleEntry<>("on-the-roadway", 7951L),
+          new SimpleEntry<>("dip", 8010L),
+          new SimpleEntry<>("traffic-circle", 8011L),
+          new SimpleEntry<>("crossover", 8028L),
+          new SimpleEntry<>("cross-road", 8029L),
+          new SimpleEntry<>("side-road", 8030L),
+          new SimpleEntry<>("to", 8014L),
+          new SimpleEntry<>("by", 8015L),
+          new SimpleEntry<>("through", 8016L),
+          new SimpleEntry<>("area-of", 8017L),
+          new SimpleEntry<>("under", 8018L),
+          new SimpleEntry<>("over", 8019L),
+          new SimpleEntry<>("from", 8020L),
+          new SimpleEntry<>("approaching", 8021L),
+          new SimpleEntry<>("entering-at", 8022L),
+          new SimpleEntry<>("exiting-at", 8023L),
+          new SimpleEntry<>("in-shaded-areas", 7952L),
+          new SimpleEntry<>("in-low-lying-areas", 7953L),
+          new SimpleEntry<>("in-the-downtown-area", 7954L),
+          new SimpleEntry<>("in-the-inner-city-area", 7955L),
+          new SimpleEntry<>("in-parts", 7956L),
+          new SimpleEntry<>("in-some-places", 7957L),
+          new SimpleEntry<>("in-the-ditch", 7958L),
+          new SimpleEntry<>("in-the-valley", 7959L),
+          new SimpleEntry<>("on-hill-top", 7960L),
+          new SimpleEntry<>("near-the-foothills", 7961L),
+          new SimpleEntry<>("at-high-altitudes", 7962L),
+          new SimpleEntry<>("near-the-lake", 7963L),
+          new SimpleEntry<>("near-the-shore", 7964L),
+          new SimpleEntry<>("nearby-basin", 8008L),
+          new SimpleEntry<>("over-the-crest-of-a-hill", 7965L),
+          new SimpleEntry<>("other-than-on-the-roadway", 7966L),
+          new SimpleEntry<>("near-the-beach", 7967L),
+          new SimpleEntry<>("near-beach-access-point", 7968L),
+          new SimpleEntry<>("mountain-pass", 8006L),
+          new SimpleEntry<>("lower-level", 7969L),
+          new SimpleEntry<>("upper-level", 7970L),
+          new SimpleEntry<>("coast", 8034L),
+          new SimpleEntry<>("airport", 7971L),
+          new SimpleEntry<>("concourse", 7972L),
+          new SimpleEntry<>("gate", 7973L),
+          new SimpleEntry<>("baggage-claim", 7974L),
+          new SimpleEntry<>("customs-point", 7975L),
+          new SimpleEntry<>("reservation-center", 8007L),
+          new SimpleEntry<>("station", 7976L),
+          new SimpleEntry<>("platform", 7977L),
+          new SimpleEntry<>("dock", 7978L),
+          new SimpleEntry<>("depot", 7979L),
+          new SimpleEntry<>("ev-charging-point", 7980L),
+          new SimpleEntry<>("information-welcome-point", 7981L),
+          new SimpleEntry<>("at-rest-area", 7982L),
+          new SimpleEntry<>("at-service-area", 7983L),
+          new SimpleEntry<>("at-weigh-station", 7984L),
+          new SimpleEntry<>("roadside-park", 8033L),
+          new SimpleEntry<>("picnic-areas", 7985L),
+          new SimpleEntry<>("rest-area", 7986L),
+          new SimpleEntry<>("service-stations", 7987L),
+          new SimpleEntry<>("toilets", 7988L),
+          new SimpleEntry<>("bus-stop", 8031L),
+          new SimpleEntry<>("park-and-ride-lot", 8012L),
+          new SimpleEntry<>("on-the-right", 7989L),
+          new SimpleEntry<>("on-the-left", 7990L),
+          new SimpleEntry<>("in-the-center", 7991L),
+          new SimpleEntry<>("in-the-opposite-direction", 7992L),
+          new SimpleEntry<>("cross-traffic", 7993L),
+          new SimpleEntry<>("northbound-traffic", 7994L),
+          new SimpleEntry<>("eastbound-traffic", 7995L),
+          new SimpleEntry<>("southbound-traffic", 7996L),
+          new SimpleEntry<>("westbound-traffic", 7997L),
+          new SimpleEntry<>("north", 7998L),
+          new SimpleEntry<>("south", 7999L),
+          new SimpleEntry<>("east", 8000L),
+          new SimpleEntry<>("west", 8001L),
+          new SimpleEntry<>("northeast", 8002L),
+          new SimpleEntry<>("northwest", 8003L),
+          new SimpleEntry<>("southeast", 8004L),
+          new SimpleEntry<>("southwest", 8005L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public GenericLocations() {
     super(0L, 65535L);
@@ -35,5 +143,22 @@ public class GenericLocations extends Asn1Integer {
   public GenericLocations(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<GenericLocations> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(GenericLocations::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

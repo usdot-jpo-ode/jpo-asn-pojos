@@ -23,9 +23,35 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ResponderGroupAffected extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("emergency-vehicle-units", 9729L),
+          new SimpleEntry<>("federal-law-enforcement-units", 9730L),
+          new SimpleEntry<>("state-police-units", 9731L),
+          new SimpleEntry<>("county-police-units", 9732L),
+          new SimpleEntry<>("local-police-units", 9733L),
+          new SimpleEntry<>("ambulance-units", 9734L),
+          new SimpleEntry<>("rescue-units", 9735L),
+          new SimpleEntry<>("fire-units", 9736L),
+          new SimpleEntry<>("hAZMAT-units", 9737L),
+          new SimpleEntry<>("light-tow-unit", 9738L),
+          new SimpleEntry<>("heavy-tow-unit", 9739L),
+          new SimpleEntry<>("private-tow-units", 9743L),
+          new SimpleEntry<>("freeway-service-patrols", 9740L),
+          new SimpleEntry<>("transportation-response-units", 9741L),
+          new SimpleEntry<>("private-contractor-response-units", 9742L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public ResponderGroupAffected() {
     super(0L, 65535L);
@@ -35,5 +61,22 @@ public class ResponderGroupAffected extends Asn1Integer {
   public ResponderGroupAffected(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<ResponderGroupAffected> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(ResponderGroupAffected::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

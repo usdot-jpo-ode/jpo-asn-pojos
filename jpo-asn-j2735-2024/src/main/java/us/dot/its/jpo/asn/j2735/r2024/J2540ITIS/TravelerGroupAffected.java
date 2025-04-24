@@ -23,9 +23,35 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class TravelerGroupAffected extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("through-traffic", 9473L),
+          new SimpleEntry<>("holiday-traffic", 9474L),
+          new SimpleEntry<>("residents", 9475L),
+          new SimpleEntry<>("visitors", 9476L),
+          new SimpleEntry<>("long-distance-traffic", 9477L),
+          new SimpleEntry<>("local-traffic", 9478L),
+          new SimpleEntry<>("regional-traffic", 9479L),
+          new SimpleEntry<>("arrivals", 9480L),
+          new SimpleEntry<>("departures", 9481L),
+          new SimpleEntry<>("airline-travelers", 9482L),
+          new SimpleEntry<>("commuter-airline-travelers", 9483L),
+          new SimpleEntry<>("domestic-airline-travelers", 9484L),
+          new SimpleEntry<>("international-airline-travelers", 9485L),
+          new SimpleEntry<>("pedestrians", 9486L),
+          new SimpleEntry<>("bicyclists", 9487L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public TravelerGroupAffected() {
     super(0L, 65535L);
@@ -35,5 +61,22 @@ public class TravelerGroupAffected extends Asn1Integer {
   public TravelerGroupAffected(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<TravelerGroupAffected> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(TravelerGroupAffected::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

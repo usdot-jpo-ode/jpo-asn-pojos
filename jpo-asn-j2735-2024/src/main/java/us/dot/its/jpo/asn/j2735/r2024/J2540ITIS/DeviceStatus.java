@@ -23,9 +23,61 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class DeviceStatus extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("lane-control-signs-not-working", 2305L),
+          new SimpleEntry<>("lane-control-signs-working-incorrectly", 2306L),
+          new SimpleEntry<>("lane-control-signs-operating", 2307L),
+          new SimpleEntry<>("variable-message-signs-not-working", 2308L),
+          new SimpleEntry<>("variable-message-signs-working-incorrectly", 2309L),
+          new SimpleEntry<>("variable-message-signs-operating", 2310L),
+          new SimpleEntry<>("emergency-telephones-not-working", 2311L),
+          new SimpleEntry<>("emergency-telephone-number-not-working", 2312L),
+          new SimpleEntry<>("traffic-lights-not-working", 2313L),
+          new SimpleEntry<>("traffic-lights-working-incorrectly", 2314L),
+          new SimpleEntry<>("ramp-control-signals-not-working", 2315L),
+          new SimpleEntry<>("ramp-control-signals-working-incorrectly", 2316L),
+          new SimpleEntry<>("temporary-traffic-lights-not-working", 2317L),
+          new SimpleEntry<>("temporary-traffic-lights-working-incorrectly", 2318L),
+          new SimpleEntry<>("traffic-signal-control-computer-not-working", 2319L),
+          new SimpleEntry<>("traffic-signal-timings-changed", 2320L),
+          new SimpleEntry<>("overheight-warning-system-triggered", 2321L),
+          new SimpleEntry<>("equipment-failure", 2322L),
+          new SimpleEntry<>("railroad-crossing-equipment-failure", 2323L),
+          new SimpleEntry<>("tunnel-ventilation-not-working", 2324L),
+          new SimpleEntry<>("power-failure", 2325L),
+          new SimpleEntry<>("widespread-power-outages", 2326L),
+          new SimpleEntry<>("technical-problems", 2327L),
+          new SimpleEntry<>("sign-down", 2328L),
+          new SimpleEntry<>("lines-in-road-faded", 2329L),
+          new SimpleEntry<>("damaged-light-standard", 2330L),
+          new SimpleEntry<>("traffic-signal-stuck-on-flash", 2331L),
+          new SimpleEntry<>("guide-rail", 2332L),
+          new SimpleEntry<>("fencing", 2333L),
+          new SimpleEntry<>("light-standard-hanging-by-wires", 2334L),
+          new SimpleEntry<>("call-box", 2335L),
+          new SimpleEntry<>("signal-cabinet", 2336L),
+          new SimpleEntry<>("detector", 2337L),
+          new SimpleEntry<>("improper-use-of-State-vehicle-or-equipment", 2338L),
+          new SimpleEntry<>("bulb-out", 2339L),
+          new SimpleEntry<>("not-yet-operational", 2340L),
+          new SimpleEntry<>("not-yet-installed", 2341L),
+          new SimpleEntry<>("electronic-signs-repaired", 2428L),
+          new SimpleEntry<>("emergency-call-facilities-restored", 2429L),
+          new SimpleEntry<>("traffic-signals-repaired", 2430L),
+          new SimpleEntry<>("railroad-crossing-equipment-now-working-normally", 2431L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public DeviceStatus() {
     super(0L, 65535L);
@@ -35,5 +87,22 @@ public class DeviceStatus extends Asn1Integer {
   public DeviceStatus(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<DeviceStatus> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(DeviceStatus::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

@@ -23,9 +23,93 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class IncidentResponseEquipment extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("ground-fire-suppression", 9985L),
+          new SimpleEntry<>("heavy-ground-equipment", 9986L),
+          new SimpleEntry<>("aircraft", 9988L),
+          new SimpleEntry<>("marine-equipment", 9989L),
+          new SimpleEntry<>("support-equipment", 9990L),
+          new SimpleEntry<>("medical-rescue-unit", 9991L),
+          new SimpleEntry<>("other", 9993L),
+          new SimpleEntry<>("ground-fire-suppression-other", 9994L),
+          new SimpleEntry<>("engine", 9995L),
+          new SimpleEntry<>("truck-or-aerial", 9996L),
+          new SimpleEntry<>("quint", 9997L),
+          new SimpleEntry<>("tanker-pumper-combination", 9998L),
+          new SimpleEntry<>("brush-truck", 10000L),
+          new SimpleEntry<>("aircraft-rescue-firefighting", 10001L),
+          new SimpleEntry<>("heavy-ground-equipment-other", 10004L),
+          new SimpleEntry<>("dozer-or-plow", 10005L),
+          new SimpleEntry<>("tractor", 10006L),
+          new SimpleEntry<>("tanker-or-tender", 10008L),
+          new SimpleEntry<>("aircraft-other", 10024L),
+          new SimpleEntry<>("aircraft-fixed-wing-tanker", 10025L),
+          new SimpleEntry<>("helitanker", 10026L),
+          new SimpleEntry<>("helicopter", 10027L),
+          new SimpleEntry<>("marine-equipment-other", 10034L),
+          new SimpleEntry<>("fire-boat-with-pump", 10035L),
+          new SimpleEntry<>("boat-no-pump", 10036L),
+          new SimpleEntry<>("support-apparatus-other", 10044L),
+          new SimpleEntry<>("breathing-apparatus-support", 10045L),
+          new SimpleEntry<>("light-and-air-unit", 10046L),
+          new SimpleEntry<>("medical-rescue-unit-other", 10054L),
+          new SimpleEntry<>("rescue-unit", 10055L),
+          new SimpleEntry<>("urban-search-rescue-unit", 10056L),
+          new SimpleEntry<>("high-angle-rescue", 10057L),
+          new SimpleEntry<>("crash-fire-rescue", 10058L),
+          new SimpleEntry<>("bLS-unit", 10059L),
+          new SimpleEntry<>("aLS-unit", 10060L),
+          new SimpleEntry<>("mobile-command-post", 10075L),
+          new SimpleEntry<>("chief-officer-car", 10076L),
+          new SimpleEntry<>("hAZMAT-unit", 10077L),
+          new SimpleEntry<>("type-i-hand-crew", 10078L),
+          new SimpleEntry<>("type-ii-hand-crew", 10079L),
+          new SimpleEntry<>("privately-owned-vehicle", 10083L),
+          new SimpleEntry<>("other-apparatus-resource", 10084L),
+          new SimpleEntry<>("ambulance", 10085L),
+          new SimpleEntry<>("bomb-squad-van", 10086L),
+          new SimpleEntry<>("combine-harvester", 10087L),
+          new SimpleEntry<>("construction-vehicle", 10088L),
+          new SimpleEntry<>("farm-tractor", 10089L),
+          new SimpleEntry<>("grass-cutting-machines", 10090L),
+          new SimpleEntry<>("hAZMAT-containment-tow", 10091L),
+          new SimpleEntry<>("heavy-tow", 10092L),
+          new SimpleEntry<>("light-tow", 10094L),
+          new SimpleEntry<>("flatbed-tow", 10114L),
+          new SimpleEntry<>("hedge-cutting-machines", 10093L),
+          new SimpleEntry<>("mobile-crane", 10095L),
+          new SimpleEntry<>("refuse-collection-vehicle", 10096L),
+          new SimpleEntry<>("resurfacing-vehicle", 10097L),
+          new SimpleEntry<>("road-sweeper", 10098L),
+          new SimpleEntry<>("survey-crews", 10115L),
+          new SimpleEntry<>("roadside-litter-collection-crews", 10099L),
+          new SimpleEntry<>("salvage-vehicle", 10100L),
+          new SimpleEntry<>("sand-truck", 10101L),
+          new SimpleEntry<>("snowplow", 10102L),
+          new SimpleEntry<>("steam-roller", 10103L),
+          new SimpleEntry<>("swat-team-van", 10104L),
+          new SimpleEntry<>("track-laying-vehicle", 10105L),
+          new SimpleEntry<>("unknown-vehicle", 10106L),
+          new SimpleEntry<>("white-lining-vehicle", 10107L),
+          new SimpleEntry<>("dump-truck", 10108L),
+          new SimpleEntry<>("supervisor-vehicle", 10109L),
+          new SimpleEntry<>("snow-blower", 10110L),
+          new SimpleEntry<>("rotary-snow-blower", 10111L),
+          new SimpleEntry<>("road-grader", 10112L),
+          new SimpleEntry<>("steam-truck", 10113L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public IncidentResponseEquipment() {
     super(0L, 65535L);
@@ -35,5 +119,22 @@ public class IncidentResponseEquipment extends Asn1Integer {
   public IncidentResponseEquipment(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<IncidentResponseEquipment> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(IncidentResponseEquipment::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

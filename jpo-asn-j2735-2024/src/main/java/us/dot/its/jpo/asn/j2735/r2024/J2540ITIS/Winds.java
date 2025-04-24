@@ -23,9 +23,35 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Winds extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("tornado", 5121L),
+          new SimpleEntry<>("hurricane", 5122L),
+          new SimpleEntry<>("hurricane-force-winds", 5123L),
+          new SimpleEntry<>("tropical-storm", 5124L),
+          new SimpleEntry<>("gale-force-winds", 5125L),
+          new SimpleEntry<>("storm-force-winds", 5126L),
+          new SimpleEntry<>("strong-winds", 5127L),
+          new SimpleEntry<>("moderate-winds", 5128L),
+          new SimpleEntry<>("light-winds", 5129L),
+          new SimpleEntry<>("calm", 5130L),
+          new SimpleEntry<>("gusty-winds", 5131L),
+          new SimpleEntry<>("crosswinds", 5132L),
+          new SimpleEntry<>("windy", 5133L),
+          new SimpleEntry<>("strong-winds-have-eased", 5246L),
+          new SimpleEntry<>("strong-wind-forecast-withdrawn", 5247L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public Winds() {
     super(0L, 65535L);
@@ -35,5 +61,22 @@ public class Winds extends Asn1Integer {
   public Winds(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<Winds> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(Winds::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

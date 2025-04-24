@@ -23,9 +23,83 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Units extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("square-feet", 8705L),
+          new SimpleEntry<>("square-meters", 8706L),
+          new SimpleEntry<>("acres", 8707L),
+          new SimpleEntry<>("hectares", 8708L),
+          new SimpleEntry<>("inches", 8709L),
+          new SimpleEntry<>("feet", 8710L),
+          new SimpleEntry<>("mile", 8711L),
+          new SimpleEntry<>("miles", 8712L),
+          new SimpleEntry<>("nautical-miles", 8713L),
+          new SimpleEntry<>("millimeters", 8714L),
+          new SimpleEntry<>("meters", 8715L),
+          new SimpleEntry<>("kilometer", 8716L),
+          new SimpleEntry<>("kilometers", 8717L),
+          new SimpleEntry<>("feet-per-second", 8718L),
+          new SimpleEntry<>("meters-per-second", 8719L),
+          new SimpleEntry<>("mPH", 8720L),
+          new SimpleEntry<>("kPH", 8721L),
+          new SimpleEntry<>("knots", 8722L),
+          new SimpleEntry<>("elevation", 8766L),
+          new SimpleEntry<>("aM", 8723L),
+          new SimpleEntry<>("pM", 8724L),
+          new SimpleEntry<>("holiday", 8726L),
+          new SimpleEntry<>("seconds", 8727L),
+          new SimpleEntry<>("minutes", 8728L),
+          new SimpleEntry<>("hours", 8729L),
+          new SimpleEntry<>("days", 8730L),
+          new SimpleEntry<>("weeks", 8731L),
+          new SimpleEntry<>("months", 8732L),
+          new SimpleEntry<>("other-times", 8767L),
+          new SimpleEntry<>("nSunday", 8758L),
+          new SimpleEntry<>("nMonday", 8759L),
+          new SimpleEntry<>("nTuesday", 8760L),
+          new SimpleEntry<>("nWednesday", 8761L),
+          new SimpleEntry<>("nThursday", 8762L),
+          new SimpleEntry<>("nFriday", 8763L),
+          new SimpleEntry<>("nSaturday", 8764L),
+          new SimpleEntry<>("weekdays", 8765L),
+          new SimpleEntry<>("weekends", 8725L),
+          new SimpleEntry<>("degrees-Angle", 8733L),
+          new SimpleEntry<>("degrees-Celsius", 8734L),
+          new SimpleEntry<>("degrees-Fahrenheit", 8735L),
+          new SimpleEntry<>("grams", 8736L),
+          new SimpleEntry<>("kilograms", 8737L),
+          new SimpleEntry<>("ounces", 8738L),
+          new SimpleEntry<>("pounds", 8739L),
+          new SimpleEntry<>("tons", 8740L),
+          new SimpleEntry<>("fluid-ounces", 8741L),
+          new SimpleEntry<>("gallons", 8742L),
+          new SimpleEntry<>("milliliters", 8743L),
+          new SimpleEntry<>("liters", 8744L),
+          new SimpleEntry<>("kilograms-per-lane-mile", 8745L),
+          new SimpleEntry<>("tons-per-lane-mile", 8746L),
+          new SimpleEntry<>("dollar", 8747L),
+          new SimpleEntry<>("percent", 8748L),
+          new SimpleEntry<>("grade", 8757L),
+          new SimpleEntry<>("time-delimiter", 8749L),
+          new SimpleEntry<>("dollars", 8750L),
+          new SimpleEntry<>("flight-number", 8751L),
+          new SimpleEntry<>("person-people", 8752L),
+          new SimpleEntry<>("response-plan", 8753L),
+          new SimpleEntry<>("placard-type", 8754L),
+          new SimpleEntry<>("placard-number", 8755L),
+          new SimpleEntry<>("fM", 8756L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public Units() {
     super(0L, 65535L);
@@ -35,5 +109,22 @@ public class Units extends Asn1Integer {
   public Units(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<Units> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(Units::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

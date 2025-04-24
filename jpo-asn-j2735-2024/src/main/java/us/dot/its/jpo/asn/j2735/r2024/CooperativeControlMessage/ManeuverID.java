@@ -23,9 +23,52 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ManeuverID extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("unavailable", 0L),
+          new SimpleEntry<>("stayAtRestManCtl", 1L),
+          new SimpleEntry<>("stayAtRestAutoLonCtl", 2L),
+          new SimpleEntry<>("autoSpdCtlFollowRefTrafAccel", 4L),
+          new SimpleEntry<>("transManToAutoSpdCtl", 5L),
+          new SimpleEntry<>("stringForm", 6L),
+          new SimpleEntry<>("autoJoinString", 7L),
+          new SimpleEntry<>("autoCtl", 8L),
+          new SimpleEntry<>("increaseGapAutoCtl", 9L),
+          new SimpleEntry<>("leftLnChgEndString", 10L),
+          new SimpleEntry<>("rightLnChgEndString", 11L),
+          new SimpleEntry<>("virtualGapIncDiffLane", 12L),
+          new SimpleEntry<>("virtualGapRedDiffLane", 13L),
+          new SimpleEntry<>("emgcyIncInterVehDistToStop", 14L),
+          new SimpleEntry<>("vehMrgToStringFrmOnramp", 15L),
+          new SimpleEntry<>("leftLnChgJoinString", 16L),
+          new SimpleEntry<>("rightLnChgJoinString", 17L),
+          new SimpleEntry<>("collisionAvoidLnChgOnly", 19L),
+          new SimpleEntry<>("collisionAvoidLnChgWthSpdRed", 20L),
+          new SimpleEntry<>("collisionAvoidEmgcyStp", 21L),
+          new SimpleEntry<>("autoDecelFollowSpdProfile", 28L),
+          new SimpleEntry<>("stoppingClosedloopVehFollowCtl", 31L),
+          new SimpleEntry<>("stoppngOpenloopDecelCmd", 32L),
+          new SimpleEntry<>("brakeToStopManCtl", 33L),
+          new SimpleEntry<>("incGapContString", 34L),
+          new SimpleEntry<>("incGapRedSpdToStp", 35L),
+          new SimpleEntry<>("cruiseCtl", 36L),
+          new SimpleEntry<>("adapCruiseCtl", 41L),
+          new SimpleEntry<>("coopAdapCruiseCtl", 42L),
+          new SimpleEntry<>("manCtl", 46L),
+          new SimpleEntry<>("coordAutoBrkForStringWthSvcBrkEngBrk", 47L),
+          new SimpleEntry<>("emgcyBrkForStringOnePlusVehWthSvcBrk", 48L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public ManeuverID() {
     super(0L, 255L);
@@ -35,5 +78,22 @@ public class ManeuverID extends Asn1Integer {
   public ManeuverID(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<ManeuverID> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(ManeuverID::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

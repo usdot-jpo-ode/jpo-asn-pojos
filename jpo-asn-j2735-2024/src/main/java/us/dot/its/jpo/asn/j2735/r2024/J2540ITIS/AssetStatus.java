@@ -23,9 +23,39 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AssetStatus extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("unknown-status", 10240L),
+          new SimpleEntry<>("ready-for-use", 10241L),
+          new SimpleEntry<>("working-normally", 10242L),
+          new SimpleEntry<>("working-autonomously", 10243L),
+          new SimpleEntry<>("working-incorrectly", 10244L),
+          new SimpleEntry<>("not-working", 10245L),
+          new SimpleEntry<>("normal-maintenance", 10246L),
+          new SimpleEntry<>("in-route-to-use", 10247L),
+          new SimpleEntry<>("returning-from-use", 10248L),
+          new SimpleEntry<>("out-of-service", 10249L),
+          new SimpleEntry<>("off-duty", 10250L),
+          new SimpleEntry<>("on-patrol", 10251L),
+          new SimpleEntry<>("on-call", 10252L),
+          new SimpleEntry<>("on-break", 10253L),
+          new SimpleEntry<>("mandatory-time-off", 10254L),
+          new SimpleEntry<>("low-on-fuel", 10255L),
+          new SimpleEntry<>("low-on-water", 10256L),
+          new SimpleEntry<>("low-charge", 10257L),
+          new SimpleEntry<>("missing", 10258L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public AssetStatus() {
     super(0L, 65535L);
@@ -35,5 +65,22 @@ public class AssetStatus extends Asn1Integer {
   public AssetStatus(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<AssetStatus> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(AssetStatus::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

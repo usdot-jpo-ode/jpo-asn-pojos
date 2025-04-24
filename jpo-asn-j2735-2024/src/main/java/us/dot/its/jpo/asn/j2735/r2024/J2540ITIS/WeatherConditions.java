@@ -23,9 +23,48 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WeatherConditions extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("overcast", 4609L),
+          new SimpleEntry<>("cloudy", 4610L),
+          new SimpleEntry<>("mostly-cloudy", 4611L),
+          new SimpleEntry<>("partly-cloudy", 4612L),
+          new SimpleEntry<>("partly-sunny", 4613L),
+          new SimpleEntry<>("mostly-sunny", 4614L),
+          new SimpleEntry<>("sunny", 4615L),
+          new SimpleEntry<>("fair-skies", 4616L),
+          new SimpleEntry<>("clear-skies", 4617L),
+          new SimpleEntry<>("mostly-clear", 4618L),
+          new SimpleEntry<>("mostly-dry", 4619L),
+          new SimpleEntry<>("dry", 4620L),
+          new SimpleEntry<>("uV-index-very-high", 4621L),
+          new SimpleEntry<>("uV-index-high", 4622L),
+          new SimpleEntry<>("uV-index-moderate", 4623L),
+          new SimpleEntry<>("uV-index-low", 4624L),
+          new SimpleEntry<>("uV-index-very-low", 4625L),
+          new SimpleEntry<>("barometric-pressure", 4626L),
+          new SimpleEntry<>("ozone-alert", 4627L),
+          new SimpleEntry<>("lighting-unknown", 4628L),
+          new SimpleEntry<>("artificial-exterior-light", 4629L),
+          new SimpleEntry<>("artificial-interior-light", 4630L),
+          new SimpleEntry<>("darkness", 4631L),
+          new SimpleEntry<>("dusk", 4632L),
+          new SimpleEntry<>("dawn", 4633L),
+          new SimpleEntry<>("moonlight", 4634L),
+          new SimpleEntry<>("daylight", 4635L),
+          new SimpleEntry<>("weather-forecast-withdrawn", 4735L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public WeatherConditions() {
     super(0L, 65535L);
@@ -35,5 +74,22 @@ public class WeatherConditions extends Asn1Integer {
   public WeatherConditions(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<WeatherConditions> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(WeatherConditions::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

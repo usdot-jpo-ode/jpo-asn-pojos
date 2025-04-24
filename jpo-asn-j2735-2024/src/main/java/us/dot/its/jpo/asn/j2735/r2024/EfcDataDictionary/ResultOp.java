@@ -23,9 +23,46 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ResultOp extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("correctTransaction", 0L),
+          new SimpleEntry<>("obeStatusNotAccepted", 1L),
+          new SimpleEntry<>("equipmentStatusNotAccepted", 2L),
+          new SimpleEntry<>("contractNotInWhiteList", 3L),
+          new SimpleEntry<>("contractIdentifierInBlackList", 4L),
+          new SimpleEntry<>("contractIdentifierNotCorrect", 5L),
+          new SimpleEntry<>("expiredContract", 6L),
+          new SimpleEntry<>("contractRestrictionsNotFulfilled", 7L),
+          new SimpleEntry<>("claimedVehicleCharacteristicsNotValid", 8L),
+          new SimpleEntry<>("vehicleClassAuthenticationFailed", 9L),
+          new SimpleEntry<>("entryVehicleClassDifferentFromExitVehicleClass", 10L),
+          new SimpleEntry<>("entryReceiptMissing", 11L),
+          new SimpleEntry<>("entryReceiptNotValid", 12L),
+          new SimpleEntry<>("entryTollStationNotValid", 13L),
+          new SimpleEntry<>("equipmentNotCertified", 14L),
+          new SimpleEntry<>("timeDifference", 15L),
+          new SimpleEntry<>("accessCredentialsNotAccepted", 16L),
+          new SimpleEntry<>("contractAuthenticatorNotAccepted", 17L),
+          new SimpleEntry<>("receiptAuthenticatorNotAccepted", 18L),
+          new SimpleEntry<>("claimedVehicleCharacteristicsMissing", 19L),
+          new SimpleEntry<>("paymentMeansNotAccepted", 20L),
+          new SimpleEntry<>("paymentAuthenticatorNotAccepted", 21L),
+          new SimpleEntry<>("paymentMeansInBlackList", 22L),
+          new SimpleEntry<>("paymentMeansNotCorrect", 23L),
+          new SimpleEntry<>("expiredPaymentMeans", 24L),
+          new SimpleEntry<>("paymentMeansRestrictionsNotFulfilled", 25L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public ResultOp() {
     super(0L, 255L);
@@ -35,5 +72,22 @@ public class ResultOp extends Asn1Integer {
   public ResultOp(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<ResultOp> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(ResultOp::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

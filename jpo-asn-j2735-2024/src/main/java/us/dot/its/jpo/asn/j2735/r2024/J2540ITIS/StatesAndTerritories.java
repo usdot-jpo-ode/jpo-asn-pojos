@@ -23,9 +23,76 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class StatesAndTerritories extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("alabama", 12801L),
+          new SimpleEntry<>("alaska", 12802L),
+          new SimpleEntry<>("american-Samoa", 12803L),
+          new SimpleEntry<>("arizona", 12804L),
+          new SimpleEntry<>("arkansas", 12805L),
+          new SimpleEntry<>("california", 12806L),
+          new SimpleEntry<>("colorado", 12807L),
+          new SimpleEntry<>("connecticut", 12808L),
+          new SimpleEntry<>("delaware", 12809L),
+          new SimpleEntry<>("district-of-Columbia", 12810L),
+          new SimpleEntry<>("florida", 12811L),
+          new SimpleEntry<>("georgia", 12812L),
+          new SimpleEntry<>("guam", 12813L),
+          new SimpleEntry<>("hawaii", 12814L),
+          new SimpleEntry<>("idaho", 12815L),
+          new SimpleEntry<>("illinois", 12816L),
+          new SimpleEntry<>("indiana", 12817L),
+          new SimpleEntry<>("iowa", 12818L),
+          new SimpleEntry<>("kansas", 12819L),
+          new SimpleEntry<>("kentucky", 12820L),
+          new SimpleEntry<>("louisiana", 12821L),
+          new SimpleEntry<>("maine", 12822L),
+          new SimpleEntry<>("maryland", 12823L),
+          new SimpleEntry<>("massachusetts", 12824L),
+          new SimpleEntry<>("michigan", 12825L),
+          new SimpleEntry<>("minnesota", 12826L),
+          new SimpleEntry<>("mississippi", 12827L),
+          new SimpleEntry<>("missouri", 12828L),
+          new SimpleEntry<>("montana", 12829L),
+          new SimpleEntry<>("nebraska", 12830L),
+          new SimpleEntry<>("nevada", 12831L),
+          new SimpleEntry<>("new-Hampshire", 12832L),
+          new SimpleEntry<>("new-Jersey", 12833L),
+          new SimpleEntry<>("new-Mexico", 12834L),
+          new SimpleEntry<>("new-York", 12835L),
+          new SimpleEntry<>("north-Carolina", 12836L),
+          new SimpleEntry<>("north-Dakota", 12837L),
+          new SimpleEntry<>("northern-Marianas-Islands", 12838L),
+          new SimpleEntry<>("ohio", 12839L),
+          new SimpleEntry<>("oklahoma", 12840L),
+          new SimpleEntry<>("oregon", 12841L),
+          new SimpleEntry<>("pennsylvania", 12842L),
+          new SimpleEntry<>("puerto-rico", 12843L),
+          new SimpleEntry<>("rhode-Island", 12844L),
+          new SimpleEntry<>("south-Carolina", 12845L),
+          new SimpleEntry<>("south-Dakota", 12846L),
+          new SimpleEntry<>("tennessee", 12847L),
+          new SimpleEntry<>("texas", 12848L),
+          new SimpleEntry<>("utah", 12849L),
+          new SimpleEntry<>("vermont", 12850L),
+          new SimpleEntry<>("virginia", 12851L),
+          new SimpleEntry<>("virgin-Islands", 12852L),
+          new SimpleEntry<>("washington", 12853L),
+          new SimpleEntry<>("west-Virginia", 12854L),
+          new SimpleEntry<>("wisconsin", 12855L),
+          new SimpleEntry<>("wyoming", 12856L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public StatesAndTerritories() {
     super(0L, 65535L);
@@ -35,5 +102,22 @@ public class StatesAndTerritories extends Asn1Integer {
   public StatesAndTerritories(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<StatesAndTerritories> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(StatesAndTerritories::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

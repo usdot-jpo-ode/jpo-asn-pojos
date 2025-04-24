@@ -23,9 +23,110 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class LargeNumbers extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("n1-16th", 11521L),
+          new SimpleEntry<>("n1-10th", 11522L),
+          new SimpleEntry<>("n1-8th", 11523L),
+          new SimpleEntry<>("n1-4th", 11524L),
+          new SimpleEntry<>("n1-3rd", 11525L),
+          new SimpleEntry<>("n1-2", 11526L),
+          new SimpleEntry<>("n3-4", 11527L),
+          new SimpleEntry<>("n300", 11531L),
+          new SimpleEntry<>("n350", 11532L),
+          new SimpleEntry<>("n400", 11533L),
+          new SimpleEntry<>("n450", 11534L),
+          new SimpleEntry<>("n500", 11535L),
+          new SimpleEntry<>("n550", 11536L),
+          new SimpleEntry<>("n600", 11537L),
+          new SimpleEntry<>("n650", 11538L),
+          new SimpleEntry<>("n700", 11539L),
+          new SimpleEntry<>("n750", 11540L),
+          new SimpleEntry<>("n800", 11541L),
+          new SimpleEntry<>("n850", 11542L),
+          new SimpleEntry<>("n900", 11543L),
+          new SimpleEntry<>("n950", 11544L),
+          new SimpleEntry<>("n1000", 11545L),
+          new SimpleEntry<>("n1100", 11546L),
+          new SimpleEntry<>("n1200", 11547L),
+          new SimpleEntry<>("n1300", 11548L),
+          new SimpleEntry<>("n1400", 11549L),
+          new SimpleEntry<>("n1500", 11550L),
+          new SimpleEntry<>("n1600", 11551L),
+          new SimpleEntry<>("n1700", 11552L),
+          new SimpleEntry<>("n1800", 11553L),
+          new SimpleEntry<>("n1900", 11554L),
+          new SimpleEntry<>("n2000", 11555L),
+          new SimpleEntry<>("n2100", 11556L),
+          new SimpleEntry<>("n2200", 11557L),
+          new SimpleEntry<>("n2300", 11558L),
+          new SimpleEntry<>("n2400", 11559L),
+          new SimpleEntry<>("n2500", 11560L),
+          new SimpleEntry<>("n2600", 11561L),
+          new SimpleEntry<>("n2700", 11562L),
+          new SimpleEntry<>("n2800", 11563L),
+          new SimpleEntry<>("n2900", 11564L),
+          new SimpleEntry<>("n3000", 11565L),
+          new SimpleEntry<>("n3500", 11566L),
+          new SimpleEntry<>("n4000", 11567L),
+          new SimpleEntry<>("n4500", 11568L),
+          new SimpleEntry<>("n5000", 11569L),
+          new SimpleEntry<>("n5500", 11570L),
+          new SimpleEntry<>("n6000", 11571L),
+          new SimpleEntry<>("n6500", 11572L),
+          new SimpleEntry<>("n7000", 11573L),
+          new SimpleEntry<>("n7500", 11574L),
+          new SimpleEntry<>("n8000", 11575L),
+          new SimpleEntry<>("n8500", 11576L),
+          new SimpleEntry<>("n9000", 11577L),
+          new SimpleEntry<>("n9500", 11578L),
+          new SimpleEntry<>("n10000", 11579L),
+          new SimpleEntry<>("n11000", 11580L),
+          new SimpleEntry<>("n12000", 11581L),
+          new SimpleEntry<>("n13000", 11582L),
+          new SimpleEntry<>("n14000", 11583L),
+          new SimpleEntry<>("n15000", 11584L),
+          new SimpleEntry<>("n16000", 11585L),
+          new SimpleEntry<>("n17000", 11586L),
+          new SimpleEntry<>("n18000", 11587L),
+          new SimpleEntry<>("n19000", 11588L),
+          new SimpleEntry<>("n20000", 11589L),
+          new SimpleEntry<>("n21000", 11590L),
+          new SimpleEntry<>("n22000", 11591L),
+          new SimpleEntry<>("n23000", 11592L),
+          new SimpleEntry<>("n24000", 11593L),
+          new SimpleEntry<>("n25000", 11594L),
+          new SimpleEntry<>("n26000", 11595L),
+          new SimpleEntry<>("n27000", 11596L),
+          new SimpleEntry<>("n28000", 11597L),
+          new SimpleEntry<>("n29000", 11598L),
+          new SimpleEntry<>("n30000", 11599L),
+          new SimpleEntry<>("n35000", 11600L),
+          new SimpleEntry<>("n40000", 11601L),
+          new SimpleEntry<>("n45000", 11602L),
+          new SimpleEntry<>("n50000", 11603L),
+          new SimpleEntry<>("n55000", 11604L),
+          new SimpleEntry<>("n60000", 11605L),
+          new SimpleEntry<>("n65000", 11606L),
+          new SimpleEntry<>("n70000", 11607L),
+          new SimpleEntry<>("n75000", 11608L),
+          new SimpleEntry<>("n80000", 11609L),
+          new SimpleEntry<>("n85000", 11610L),
+          new SimpleEntry<>("n90000", 11611L),
+          new SimpleEntry<>("n95000", 11612L),
+          new SimpleEntry<>("n100000", 11613L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public LargeNumbers() {
     super(0L, 65535L);
@@ -35,5 +136,22 @@ public class LargeNumbers extends Asn1Integer {
   public LargeNumbers(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<LargeNumbers> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(LargeNumbers::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }

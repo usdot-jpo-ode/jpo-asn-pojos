@@ -23,9 +23,26 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WinterDrivingIndex extends Asn1Integer {
+
+  private static final Map<String, Long> nameValueMap =
+      Map.ofEntries(
+          new SimpleEntry<>("driving-conditions-good", 6401L),
+          new SimpleEntry<>("driving-conditions-fair", 6402L),
+          new SimpleEntry<>("difficult-driving-conditions", 6403L),
+          new SimpleEntry<>("very-difficult-driving-conditions", 6404L),
+          new SimpleEntry<>("hazardous-driving-conditions", 6405L),
+          new SimpleEntry<>("extremely-hazardous-driving-conditions", 6406L));
+  private static final Map<Long, String> valueNameMap =
+      nameValueMap.entrySet().stream()
+          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
 
   public WinterDrivingIndex() {
     super(0L, 65535L);
@@ -35,5 +52,22 @@ public class WinterDrivingIndex extends Asn1Integer {
   public WinterDrivingIndex(long value) {
     this();
     this.value = value;
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(valueNameMap.get(value));
+  }
+
+  public static Optional<WinterDrivingIndex> named(String name) {
+    return Optional.ofNullable(nameValueMap.get(name)).map(WinterDrivingIndex::new);
+  }
+
+  public static Set<String> names() {
+    return nameValueMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return valueNameMap.keySet();
   }
 }
