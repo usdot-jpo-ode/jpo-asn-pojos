@@ -23,48 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WeatherConditions extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("overcast", 4609L),
-          new SimpleEntry<>("cloudy", 4610L),
-          new SimpleEntry<>("mostly-cloudy", 4611L),
-          new SimpleEntry<>("partly-cloudy", 4612L),
-          new SimpleEntry<>("partly-sunny", 4613L),
-          new SimpleEntry<>("mostly-sunny", 4614L),
-          new SimpleEntry<>("sunny", 4615L),
-          new SimpleEntry<>("fair-skies", 4616L),
-          new SimpleEntry<>("clear-skies", 4617L),
-          new SimpleEntry<>("mostly-clear", 4618L),
-          new SimpleEntry<>("mostly-dry", 4619L),
-          new SimpleEntry<>("dry", 4620L),
-          new SimpleEntry<>("uV-index-very-high", 4621L),
-          new SimpleEntry<>("uV-index-high", 4622L),
-          new SimpleEntry<>("uV-index-moderate", 4623L),
-          new SimpleEntry<>("uV-index-low", 4624L),
-          new SimpleEntry<>("uV-index-very-low", 4625L),
-          new SimpleEntry<>("barometric-pressure", 4626L),
-          new SimpleEntry<>("ozone-alert", 4627L),
-          new SimpleEntry<>("lighting-unknown", 4628L),
-          new SimpleEntry<>("artificial-exterior-light", 4629L),
-          new SimpleEntry<>("artificial-interior-light", 4630L),
-          new SimpleEntry<>("darkness", 4631L),
-          new SimpleEntry<>("dusk", 4632L),
-          new SimpleEntry<>("dawn", 4633L),
-          new SimpleEntry<>("moonlight", 4634L),
-          new SimpleEntry<>("daylight", 4635L),
-          new SimpleEntry<>("weather-forecast-withdrawn", 4735L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public WeatherConditions() {
     super(0L, 65535L);
@@ -76,20 +44,61 @@ public class WeatherConditions extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("overcast", 4609L);
+      mapBuilder.put("cloudy", 4610L);
+      mapBuilder.put("mostly-cloudy", 4611L);
+      mapBuilder.put("partly-cloudy", 4612L);
+      mapBuilder.put("partly-sunny", 4613L);
+      mapBuilder.put("mostly-sunny", 4614L);
+      mapBuilder.put("sunny", 4615L);
+      mapBuilder.put("fair-skies", 4616L);
+      mapBuilder.put("clear-skies", 4617L);
+      mapBuilder.put("mostly-clear", 4618L);
+      mapBuilder.put("mostly-dry", 4619L);
+      mapBuilder.put("dry", 4620L);
+      mapBuilder.put("uV-index-very-high", 4621L);
+      mapBuilder.put("uV-index-high", 4622L);
+      mapBuilder.put("uV-index-moderate", 4623L);
+      mapBuilder.put("uV-index-low", 4624L);
+      mapBuilder.put("uV-index-very-low", 4625L);
+      mapBuilder.put("barometric-pressure", 4626L);
+      mapBuilder.put("ozone-alert", 4627L);
+      mapBuilder.put("lighting-unknown", 4628L);
+      mapBuilder.put("artificial-exterior-light", 4629L);
+      mapBuilder.put("artificial-interior-light", 4630L);
+      mapBuilder.put("darkness", 4631L);
+      mapBuilder.put("dusk", 4632L);
+      mapBuilder.put("dawn", 4633L);
+      mapBuilder.put("moonlight", 4634L);
+      mapBuilder.put("daylight", 4635L);
+      mapBuilder.put("weather-forecast-withdrawn", 4735L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<WeatherConditions> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(WeatherConditions::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(WeatherConditions::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

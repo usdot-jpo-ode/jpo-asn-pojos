@@ -23,45 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class SportingEvents extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("sports-event", 3585L),
-          new SimpleEntry<>("game", 3586L),
-          new SimpleEntry<>("tournament", 3587L),
-          new SimpleEntry<>("track-and-field-event", 3588L),
-          new SimpleEntry<>("baseball-game", 3589L),
-          new SimpleEntry<>("basketball-game", 3590L),
-          new SimpleEntry<>("boxing-match", 3591L),
-          new SimpleEntry<>("football-game", 3592L),
-          new SimpleEntry<>("soccer-game", 3593L),
-          new SimpleEntry<>("golf-tournament", 3594L),
-          new SimpleEntry<>("hockey-game", 3595L),
-          new SimpleEntry<>("tennis-tournament", 3596L),
-          new SimpleEntry<>("wrestling-match", 3597L),
-          new SimpleEntry<>("road-race", 3598L),
-          new SimpleEntry<>("automobile-race", 3599L),
-          new SimpleEntry<>("bicycle-race", 3600L),
-          new SimpleEntry<>("race-event", 3601L),
-          new SimpleEntry<>("marathon", 3602L),
-          new SimpleEntry<>("horse-show", 3603L),
-          new SimpleEntry<>("rodeo", 3604L),
-          new SimpleEntry<>("water-sports-event", 3605L),
-          new SimpleEntry<>("winter-sports-event", 3606L),
-          new SimpleEntry<>("skating-event", 3607L),
-          new SimpleEntry<>("dog-sled-race", 3608L),
-          new SimpleEntry<>("sporting-event-ended", 3711L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public SportingEvents() {
     super(0L, 65535L);
@@ -73,20 +44,58 @@ public class SportingEvents extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("sports-event", 3585L);
+      mapBuilder.put("game", 3586L);
+      mapBuilder.put("tournament", 3587L);
+      mapBuilder.put("track-and-field-event", 3588L);
+      mapBuilder.put("baseball-game", 3589L);
+      mapBuilder.put("basketball-game", 3590L);
+      mapBuilder.put("boxing-match", 3591L);
+      mapBuilder.put("football-game", 3592L);
+      mapBuilder.put("soccer-game", 3593L);
+      mapBuilder.put("golf-tournament", 3594L);
+      mapBuilder.put("hockey-game", 3595L);
+      mapBuilder.put("tennis-tournament", 3596L);
+      mapBuilder.put("wrestling-match", 3597L);
+      mapBuilder.put("road-race", 3598L);
+      mapBuilder.put("automobile-race", 3599L);
+      mapBuilder.put("bicycle-race", 3600L);
+      mapBuilder.put("race-event", 3601L);
+      mapBuilder.put("marathon", 3602L);
+      mapBuilder.put("horse-show", 3603L);
+      mapBuilder.put("rodeo", 3604L);
+      mapBuilder.put("water-sports-event", 3605L);
+      mapBuilder.put("winter-sports-event", 3606L);
+      mapBuilder.put("skating-event", 3607L);
+      mapBuilder.put("dog-sled-race", 3608L);
+      mapBuilder.put("sporting-event-ended", 3711L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<SportingEvents> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(SportingEvents::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(SportingEvents::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

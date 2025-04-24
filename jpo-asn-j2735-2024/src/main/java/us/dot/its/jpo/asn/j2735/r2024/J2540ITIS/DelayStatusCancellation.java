@@ -23,56 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class DelayStatusCancellation extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("delays", 1537L),
-          new SimpleEntry<>("short-delays", 1538L),
-          new SimpleEntry<>("long-delays", 1539L),
-          new SimpleEntry<>("very-long-delays", 1540L),
-          new SimpleEntry<>("delays-of-uncertain-duration", 1541L),
-          new SimpleEntry<>("delayed-until-further-notice", 1542L),
-          new SimpleEntry<>("busy", 1543L),
-          new SimpleEntry<>("very-busy", 1544L),
-          new SimpleEntry<>("crowded", 1545L),
-          new SimpleEntry<>("overcrowded", 1546L),
-          new SimpleEntry<>("cancellations", 1547L),
-          new SimpleEntry<>("route-canceled-and-no-replacement", 1548L),
-          new SimpleEntry<>("service-canceled", 1549L),
-          new SimpleEntry<>("service-suspended", 1550L),
-          new SimpleEntry<>("service-withdrawn", 1551L),
-          new SimpleEntry<>("service-fully-booked", 1552L),
-          new SimpleEntry<>("all-services-fully-booked", 1553L),
-          new SimpleEntry<>("next-departure", 1554L),
-          new SimpleEntry<>("next-arrival", 1555L),
-          new SimpleEntry<>("very-frequent-service", 1556L),
-          new SimpleEntry<>("frequent-service", 1557L),
-          new SimpleEntry<>("fairly-frequent-service", 1558L),
-          new SimpleEntry<>("regular-service", 1559L),
-          new SimpleEntry<>("irregular-service", 1560L),
-          new SimpleEntry<>("not-operating", 1561L),
-          new SimpleEntry<>("system-busy", 1562L),
-          new SimpleEntry<>("system-very-busy", 1563L),
-          new SimpleEntry<>("system-crowded", 1564L),
-          new SimpleEntry<>("system-overcrowded", 1565L),
-          new SimpleEntry<>("deleted-travel-time", 1566L),
-          new SimpleEntry<>("headway", 1567L),
-          new SimpleEntry<>("extra-services-in-operation", 1568L),
-          new SimpleEntry<>("delays-clearing", 1660L),
-          new SimpleEntry<>("delays-cleared", 1661L),
-          new SimpleEntry<>("normal-services-resumed", 1662L),
-          new SimpleEntry<>("operating", 1663L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public DelayStatusCancellation() {
     super(0L, 65535L);
@@ -84,20 +44,69 @@ public class DelayStatusCancellation extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("delays", 1537L);
+      mapBuilder.put("short-delays", 1538L);
+      mapBuilder.put("long-delays", 1539L);
+      mapBuilder.put("very-long-delays", 1540L);
+      mapBuilder.put("delays-of-uncertain-duration", 1541L);
+      mapBuilder.put("delayed-until-further-notice", 1542L);
+      mapBuilder.put("busy", 1543L);
+      mapBuilder.put("very-busy", 1544L);
+      mapBuilder.put("crowded", 1545L);
+      mapBuilder.put("overcrowded", 1546L);
+      mapBuilder.put("cancellations", 1547L);
+      mapBuilder.put("route-canceled-and-no-replacement", 1548L);
+      mapBuilder.put("service-canceled", 1549L);
+      mapBuilder.put("service-suspended", 1550L);
+      mapBuilder.put("service-withdrawn", 1551L);
+      mapBuilder.put("service-fully-booked", 1552L);
+      mapBuilder.put("all-services-fully-booked", 1553L);
+      mapBuilder.put("next-departure", 1554L);
+      mapBuilder.put("next-arrival", 1555L);
+      mapBuilder.put("very-frequent-service", 1556L);
+      mapBuilder.put("frequent-service", 1557L);
+      mapBuilder.put("fairly-frequent-service", 1558L);
+      mapBuilder.put("regular-service", 1559L);
+      mapBuilder.put("irregular-service", 1560L);
+      mapBuilder.put("not-operating", 1561L);
+      mapBuilder.put("system-busy", 1562L);
+      mapBuilder.put("system-very-busy", 1563L);
+      mapBuilder.put("system-crowded", 1564L);
+      mapBuilder.put("system-overcrowded", 1565L);
+      mapBuilder.put("deleted-travel-time", 1566L);
+      mapBuilder.put("headway", 1567L);
+      mapBuilder.put("extra-services-in-operation", 1568L);
+      mapBuilder.put("delays-clearing", 1660L);
+      mapBuilder.put("delays-cleared", 1661L);
+      mapBuilder.put("normal-services-resumed", 1662L);
+      mapBuilder.put("operating", 1663L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<DelayStatusCancellation> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(DelayStatusCancellation::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(DelayStatusCancellation::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

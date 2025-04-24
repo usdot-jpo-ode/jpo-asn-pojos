@@ -23,37 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class IncidentResponseStatus extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("unconfirmed-report", 2817L),
-          new SimpleEntry<>("initial-response-en-route", 2818L),
-          new SimpleEntry<>("follow-up-response-en-route", 2819L),
-          new SimpleEntry<>("initial-response-on-scene", 2820L),
-          new SimpleEntry<>("follow-up-response-on-scene", 2821L),
-          new SimpleEntry<>("confirmed-report", 2822L),
-          new SimpleEntry<>("scene-is-unsecured-at-this-time", 2823L),
-          new SimpleEntry<>("response-scene-secured", 2824L),
-          new SimpleEntry<>("rescue-and-recovery-work-in-progress", 2825L),
-          new SimpleEntry<>("extraction-in-progress", 2826L),
-          new SimpleEntry<>("clearance-work-in-progress", 2827L),
-          new SimpleEntry<>("body-removal-operations", 2828L),
-          new SimpleEntry<>("fire-containment-contained", 2829L),
-          new SimpleEntry<>("fire-containment-not-contained", 2830L),
-          new SimpleEntry<>("event-cleared", 2831L),
-          new SimpleEntry<>("traffic-clearing", 2832L),
-          new SimpleEntry<>("incident-closed", 2833L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public IncidentResponseStatus() {
     super(0L, 65535L);
@@ -65,20 +44,50 @@ public class IncidentResponseStatus extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("unconfirmed-report", 2817L);
+      mapBuilder.put("initial-response-en-route", 2818L);
+      mapBuilder.put("follow-up-response-en-route", 2819L);
+      mapBuilder.put("initial-response-on-scene", 2820L);
+      mapBuilder.put("follow-up-response-on-scene", 2821L);
+      mapBuilder.put("confirmed-report", 2822L);
+      mapBuilder.put("scene-is-unsecured-at-this-time", 2823L);
+      mapBuilder.put("response-scene-secured", 2824L);
+      mapBuilder.put("rescue-and-recovery-work-in-progress", 2825L);
+      mapBuilder.put("extraction-in-progress", 2826L);
+      mapBuilder.put("clearance-work-in-progress", 2827L);
+      mapBuilder.put("body-removal-operations", 2828L);
+      mapBuilder.put("fire-containment-contained", 2829L);
+      mapBuilder.put("fire-containment-not-contained", 2830L);
+      mapBuilder.put("event-cleared", 2831L);
+      mapBuilder.put("traffic-clearing", 2832L);
+      mapBuilder.put("incident-closed", 2833L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<IncidentResponseStatus> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(IncidentResponseStatus::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(IncidentResponseStatus::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

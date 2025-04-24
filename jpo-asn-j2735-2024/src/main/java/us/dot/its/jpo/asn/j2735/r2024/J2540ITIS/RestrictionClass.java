@@ -23,61 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class RestrictionClass extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("restrictions", 2561L),
-          new SimpleEntry<>("ramp-restrictions", 2562L),
-          new SimpleEntry<>("truck-restriction", 2563L),
-          new SimpleEntry<>("speed-restriction", 2564L),
-          new SimpleEntry<>("noise-restriction", 2565L),
-          new SimpleEntry<>("traffic-regulations-have-been-changed", 2566L),
-          new SimpleEntry<>("local-access-only", 2567L),
-          new SimpleEntry<>("no-trailers", 2568L),
-          new SimpleEntry<>("no-high-profile-vehicles", 2569L),
-          new SimpleEntry<>("hazardous-materials-truck-restriction", 2570L),
-          new SimpleEntry<>("no-through-traffic", 2571L),
-          new SimpleEntry<>("no-motor-vehicles", 2572L),
-          new SimpleEntry<>("width-limit", 2573L),
-          new SimpleEntry<>("height-limit", 2574L),
-          new SimpleEntry<>("length-limit", 2575L),
-          new SimpleEntry<>("axle-load-limit", 2576L),
-          new SimpleEntry<>("gross-weight-limit", 2577L),
-          new SimpleEntry<>("axle-count-limit", 2578L),
-          new SimpleEntry<>("carpool-lane-available", 2579L),
-          new SimpleEntry<>("carpool-restrictions-changed", 2580L),
-          new SimpleEntry<>("hOV-2-no-single-occupant-vehicles", 2581L),
-          new SimpleEntry<>("hOV-3-no-vehicles-with-less-than-three-occupants", 2582L),
-          new SimpleEntry<>("bus-lane-available-for-all-vehicles", 2583L),
-          new SimpleEntry<>("truck-lane-available-for-all-vehicles", 2584L),
-          new SimpleEntry<>("permits-call-in-basis", 2585L),
-          new SimpleEntry<>("permits-temporarily-closed", 2586L),
-          new SimpleEntry<>("permits-closed", 2587L),
-          new SimpleEntry<>("road-use-permits-required", 2588L),
-          new SimpleEntry<>("permits-open", 2675L),
-          new SimpleEntry<>("restrictions-for-high-profile-vehicles-lifted", 2676L),
-          new SimpleEntry<>("width-limit-lifted", 2677L),
-          new SimpleEntry<>("height-limit-lifted", 2678L),
-          new SimpleEntry<>("length-limit-lifted", 2679L),
-          new SimpleEntry<>("axle-load-limit-lifted", 2680L),
-          new SimpleEntry<>("weight-limit-lifted", 2681L),
-          new SimpleEntry<>("axle-count-limit-lifted", 2682L),
-          new SimpleEntry<>("carpool-restrictions-lifted", 2683L),
-          new SimpleEntry<>("lane-restrictions-lifted", 2684L),
-          new SimpleEntry<>("ramp-restrictions-lifted", 2685L),
-          new SimpleEntry<>("motor-vehicle-restrictions-lifted", 2686L),
-          new SimpleEntry<>("restrictions-lifted", 2687L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public RestrictionClass() {
     super(0L, 65535L);
@@ -89,20 +44,74 @@ public class RestrictionClass extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("restrictions", 2561L);
+      mapBuilder.put("ramp-restrictions", 2562L);
+      mapBuilder.put("truck-restriction", 2563L);
+      mapBuilder.put("speed-restriction", 2564L);
+      mapBuilder.put("noise-restriction", 2565L);
+      mapBuilder.put("traffic-regulations-have-been-changed", 2566L);
+      mapBuilder.put("local-access-only", 2567L);
+      mapBuilder.put("no-trailers", 2568L);
+      mapBuilder.put("no-high-profile-vehicles", 2569L);
+      mapBuilder.put("hazardous-materials-truck-restriction", 2570L);
+      mapBuilder.put("no-through-traffic", 2571L);
+      mapBuilder.put("no-motor-vehicles", 2572L);
+      mapBuilder.put("width-limit", 2573L);
+      mapBuilder.put("height-limit", 2574L);
+      mapBuilder.put("length-limit", 2575L);
+      mapBuilder.put("axle-load-limit", 2576L);
+      mapBuilder.put("gross-weight-limit", 2577L);
+      mapBuilder.put("axle-count-limit", 2578L);
+      mapBuilder.put("carpool-lane-available", 2579L);
+      mapBuilder.put("carpool-restrictions-changed", 2580L);
+      mapBuilder.put("hOV-2-no-single-occupant-vehicles", 2581L);
+      mapBuilder.put("hOV-3-no-vehicles-with-less-than-three-occupants", 2582L);
+      mapBuilder.put("bus-lane-available-for-all-vehicles", 2583L);
+      mapBuilder.put("truck-lane-available-for-all-vehicles", 2584L);
+      mapBuilder.put("permits-call-in-basis", 2585L);
+      mapBuilder.put("permits-temporarily-closed", 2586L);
+      mapBuilder.put("permits-closed", 2587L);
+      mapBuilder.put("road-use-permits-required", 2588L);
+      mapBuilder.put("permits-open", 2675L);
+      mapBuilder.put("restrictions-for-high-profile-vehicles-lifted", 2676L);
+      mapBuilder.put("width-limit-lifted", 2677L);
+      mapBuilder.put("height-limit-lifted", 2678L);
+      mapBuilder.put("length-limit-lifted", 2679L);
+      mapBuilder.put("axle-load-limit-lifted", 2680L);
+      mapBuilder.put("weight-limit-lifted", 2681L);
+      mapBuilder.put("axle-count-limit-lifted", 2682L);
+      mapBuilder.put("carpool-restrictions-lifted", 2683L);
+      mapBuilder.put("lane-restrictions-lifted", 2684L);
+      mapBuilder.put("ramp-restrictions-lifted", 2685L);
+      mapBuilder.put("motor-vehicle-restrictions-lifted", 2686L);
+      mapBuilder.put("restrictions-lifted", 2687L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<RestrictionClass> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(RestrictionClass::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(RestrictionClass::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

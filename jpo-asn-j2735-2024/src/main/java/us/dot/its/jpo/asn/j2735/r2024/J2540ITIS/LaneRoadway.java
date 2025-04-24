@@ -23,81 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class LaneRoadway extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("all-roadways", 8193L),
-          new SimpleEntry<>("through-lanes", 8194L),
-          new SimpleEntry<>("left-lane", 8195L),
-          new SimpleEntry<>("right-lane", 8196L),
-          new SimpleEntry<>("center-lane", 8197L),
-          new SimpleEntry<>("middle-lanes", 8198L),
-          new SimpleEntry<>("middle-two-lanes", 8199L),
-          new SimpleEntry<>("right-turning-lanes", 8200L),
-          new SimpleEntry<>("left-turning-lanes", 8201L),
-          new SimpleEntry<>("upper-deck-lanes", 8236L),
-          new SimpleEntry<>("lower-deck-lanes", 8237L),
-          new SimpleEntry<>("reversible-lanes", 8238L),
-          new SimpleEntry<>("right-exit-lanes", 8239L),
-          new SimpleEntry<>("left-exit-lanes", 8240L),
-          new SimpleEntry<>("right-merging-lanes", 8241L),
-          new SimpleEntry<>("left-merging-lanes", 8242L),
-          new SimpleEntry<>("right-exit-ramp", 8202L),
-          new SimpleEntry<>("right-second-exit-ramp", 8243L),
-          new SimpleEntry<>("right-entrance-ramp", 8203L),
-          new SimpleEntry<>("right-second-entrance-ramp", 8245L),
-          new SimpleEntry<>("left-exit-ramp", 8204L),
-          new SimpleEntry<>("left-second-exit-ramp", 8244L),
-          new SimpleEntry<>("left-entrance-ramp", 8205L),
-          new SimpleEntry<>("left-second-entrance-ramp", 8246L),
-          new SimpleEntry<>("escape-ramp", 8234L),
-          new SimpleEntry<>("hard-shoulder", 8206L),
-          new SimpleEntry<>("soft-shoulder", 8207L),
-          new SimpleEntry<>("right-shoulder", 8208L),
-          new SimpleEntry<>("left-shoulder", 8209L),
-          new SimpleEntry<>("median", 8252L),
-          new SimpleEntry<>("sidewalk", 8251L),
-          new SimpleEntry<>("highways", 8235L),
-          new SimpleEntry<>("right-hand-parallel-lanes", 8210L),
-          new SimpleEntry<>("left-hand-parallel-lanes", 8211L),
-          new SimpleEntry<>("connecting-lanes", 8212L),
-          new SimpleEntry<>("express-lanes", 8213L),
-          new SimpleEntry<>("local-lanes", 8214L),
-          new SimpleEntry<>("toll-lanes", 8215L),
-          new SimpleEntry<>("electronic-toll-lanes", 8216L),
-          new SimpleEntry<>("toll-plaza", 8217L),
-          new SimpleEntry<>("inspection-lane", 8218L),
-          new SimpleEntry<>("hOV-lanes", 8219L),
-          new SimpleEntry<>("bus-lanes", 8220L),
-          new SimpleEntry<>("carpool-lanes", 8221L),
-          new SimpleEntry<>("truck-lanes", 8222L),
-          new SimpleEntry<>("emergency-lanes", 8223L),
-          new SimpleEntry<>("passing-lanes", 8224L),
-          new SimpleEntry<>("climbing-lanes", 8225L),
-          new SimpleEntry<>("slow-lane", 8226L),
-          new SimpleEntry<>("service-road", 8227L),
-          new SimpleEntry<>("cycle-lane", 8228L),
-          new SimpleEntry<>("tracks", 8250L),
-          new SimpleEntry<>("bridge", 8229L),
-          new SimpleEntry<>("overpass", 8230L),
-          new SimpleEntry<>("elevated-lanes", 8231L),
-          new SimpleEntry<>("underpass", 8232L),
-          new SimpleEntry<>("tunnel", 8233L),
-          new SimpleEntry<>("all-exit-lanes", 8247L),
-          new SimpleEntry<>("all-entry-lanes", 8248L),
-          new SimpleEntry<>("either-shoulder", 8249L),
-          new SimpleEntry<>("shoulder-work", 8253L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public LaneRoadway() {
     super(0L, 65535L);
@@ -109,20 +44,94 @@ public class LaneRoadway extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("all-roadways", 8193L);
+      mapBuilder.put("through-lanes", 8194L);
+      mapBuilder.put("left-lane", 8195L);
+      mapBuilder.put("right-lane", 8196L);
+      mapBuilder.put("center-lane", 8197L);
+      mapBuilder.put("middle-lanes", 8198L);
+      mapBuilder.put("middle-two-lanes", 8199L);
+      mapBuilder.put("right-turning-lanes", 8200L);
+      mapBuilder.put("left-turning-lanes", 8201L);
+      mapBuilder.put("upper-deck-lanes", 8236L);
+      mapBuilder.put("lower-deck-lanes", 8237L);
+      mapBuilder.put("reversible-lanes", 8238L);
+      mapBuilder.put("right-exit-lanes", 8239L);
+      mapBuilder.put("left-exit-lanes", 8240L);
+      mapBuilder.put("right-merging-lanes", 8241L);
+      mapBuilder.put("left-merging-lanes", 8242L);
+      mapBuilder.put("right-exit-ramp", 8202L);
+      mapBuilder.put("right-second-exit-ramp", 8243L);
+      mapBuilder.put("right-entrance-ramp", 8203L);
+      mapBuilder.put("right-second-entrance-ramp", 8245L);
+      mapBuilder.put("left-exit-ramp", 8204L);
+      mapBuilder.put("left-second-exit-ramp", 8244L);
+      mapBuilder.put("left-entrance-ramp", 8205L);
+      mapBuilder.put("left-second-entrance-ramp", 8246L);
+      mapBuilder.put("escape-ramp", 8234L);
+      mapBuilder.put("hard-shoulder", 8206L);
+      mapBuilder.put("soft-shoulder", 8207L);
+      mapBuilder.put("right-shoulder", 8208L);
+      mapBuilder.put("left-shoulder", 8209L);
+      mapBuilder.put("median", 8252L);
+      mapBuilder.put("sidewalk", 8251L);
+      mapBuilder.put("highways", 8235L);
+      mapBuilder.put("right-hand-parallel-lanes", 8210L);
+      mapBuilder.put("left-hand-parallel-lanes", 8211L);
+      mapBuilder.put("connecting-lanes", 8212L);
+      mapBuilder.put("express-lanes", 8213L);
+      mapBuilder.put("local-lanes", 8214L);
+      mapBuilder.put("toll-lanes", 8215L);
+      mapBuilder.put("electronic-toll-lanes", 8216L);
+      mapBuilder.put("toll-plaza", 8217L);
+      mapBuilder.put("inspection-lane", 8218L);
+      mapBuilder.put("hOV-lanes", 8219L);
+      mapBuilder.put("bus-lanes", 8220L);
+      mapBuilder.put("carpool-lanes", 8221L);
+      mapBuilder.put("truck-lanes", 8222L);
+      mapBuilder.put("emergency-lanes", 8223L);
+      mapBuilder.put("passing-lanes", 8224L);
+      mapBuilder.put("climbing-lanes", 8225L);
+      mapBuilder.put("slow-lane", 8226L);
+      mapBuilder.put("service-road", 8227L);
+      mapBuilder.put("cycle-lane", 8228L);
+      mapBuilder.put("tracks", 8250L);
+      mapBuilder.put("bridge", 8229L);
+      mapBuilder.put("overpass", 8230L);
+      mapBuilder.put("elevated-lanes", 8231L);
+      mapBuilder.put("underpass", 8232L);
+      mapBuilder.put("tunnel", 8233L);
+      mapBuilder.put("all-exit-lanes", 8247L);
+      mapBuilder.put("all-entry-lanes", 8248L);
+      mapBuilder.put("either-shoulder", 8249L);
+      mapBuilder.put("shoulder-work", 8253L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<LaneRoadway> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(LaneRoadway::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(LaneRoadway::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

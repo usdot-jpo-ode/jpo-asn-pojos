@@ -23,42 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class SuggestionAdvice extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("why-not-ride-share", 6657L),
-          new SimpleEntry<>("is-this-your-no-ride-day", 6658L),
-          new SimpleEntry<>("why-not-use-transit", 6659L),
-          new SimpleEntry<>("why-not-park-and-ride", 6660L),
-          new SimpleEntry<>("why-not-try-paratransit", 6661L),
-          new SimpleEntry<>("why-not-travel-by-rail", 6662L),
-          new SimpleEntry<>("why-not-use-the-subway", 6663L),
-          new SimpleEntry<>("why-not-try-rapid-transit", 6664L),
-          new SimpleEntry<>("why-not-travel-by-bus", 6665L),
-          new SimpleEntry<>("your-parking-ticket-covers-the-return-ride", 6666L),
-          new SimpleEntry<>("avoid-the-rush-hour", 6667L),
-          new SimpleEntry<>("do-not-allow-unnecessary-gaps", 6668L),
-          new SimpleEntry<>("follow-the-vehicle-in-front-smoothly", 6669L),
-          new SimpleEntry<>("do-not-slow-down-unnecessarily", 6670L),
-          new SimpleEntry<>("watch-for-muggers", 6671L),
-          new SimpleEntry<>("watch-for-pickpockets", 6672L),
-          new SimpleEntry<>("watch-for-thieves", 6673L),
-          new SimpleEntry<>("sorry-for-any-delay", 6674L),
-          new SimpleEntry<>("thank-you-for-your-understanding", 6675L),
-          new SimpleEntry<>("we-appreciate-your-patience", 6676L),
-          new SimpleEntry<>("we-are-grateful-for-your-cooperation", 6677L),
-          new SimpleEntry<>("share-the-road", 6678L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public SuggestionAdvice() {
     super(0L, 65535L);
@@ -70,20 +44,55 @@ public class SuggestionAdvice extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("why-not-ride-share", 6657L);
+      mapBuilder.put("is-this-your-no-ride-day", 6658L);
+      mapBuilder.put("why-not-use-transit", 6659L);
+      mapBuilder.put("why-not-park-and-ride", 6660L);
+      mapBuilder.put("why-not-try-paratransit", 6661L);
+      mapBuilder.put("why-not-travel-by-rail", 6662L);
+      mapBuilder.put("why-not-use-the-subway", 6663L);
+      mapBuilder.put("why-not-try-rapid-transit", 6664L);
+      mapBuilder.put("why-not-travel-by-bus", 6665L);
+      mapBuilder.put("your-parking-ticket-covers-the-return-ride", 6666L);
+      mapBuilder.put("avoid-the-rush-hour", 6667L);
+      mapBuilder.put("do-not-allow-unnecessary-gaps", 6668L);
+      mapBuilder.put("follow-the-vehicle-in-front-smoothly", 6669L);
+      mapBuilder.put("do-not-slow-down-unnecessarily", 6670L);
+      mapBuilder.put("watch-for-muggers", 6671L);
+      mapBuilder.put("watch-for-pickpockets", 6672L);
+      mapBuilder.put("watch-for-thieves", 6673L);
+      mapBuilder.put("sorry-for-any-delay", 6674L);
+      mapBuilder.put("thank-you-for-your-understanding", 6675L);
+      mapBuilder.put("we-appreciate-your-patience", 6676L);
+      mapBuilder.put("we-are-grateful-for-your-cooperation", 6677L);
+      mapBuilder.put("share-the-road", 6678L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<SuggestionAdvice> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(SuggestionAdvice::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(SuggestionAdvice::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

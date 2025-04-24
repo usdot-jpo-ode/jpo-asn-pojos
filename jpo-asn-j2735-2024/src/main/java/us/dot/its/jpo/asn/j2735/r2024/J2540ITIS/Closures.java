@@ -23,38 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Closures extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("closed-to-traffic", 769L),
-          new SimpleEntry<>("closed", 770L),
-          new SimpleEntry<>("closed-ahead", 771L),
-          new SimpleEntry<>("closed-intermittently", 772L),
-          new SimpleEntry<>("closed-for-repairs", 773L),
-          new SimpleEntry<>("closed-for-the-season", 774L),
-          new SimpleEntry<>("blocked", 775L),
-          new SimpleEntry<>("blocked-ahead", 776L),
-          new SimpleEntry<>("reduced-to-one-lane", 777L),
-          new SimpleEntry<>("reduced-to-two-lanes", 778L),
-          new SimpleEntry<>("reduced-to-three-lanes", 779L),
-          new SimpleEntry<>("collapse", 780L),
-          new SimpleEntry<>("out", 781L),
-          new SimpleEntry<>("open-to-traffic", 891L),
-          new SimpleEntry<>("open", 892L),
-          new SimpleEntry<>("reopened-to-traffic", 893L),
-          new SimpleEntry<>("clearing", 894L),
-          new SimpleEntry<>("cleared-from-road", 895L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public Closures() {
     super(0L, 65535L);
@@ -66,20 +44,51 @@ public class Closures extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("closed-to-traffic", 769L);
+      mapBuilder.put("closed", 770L);
+      mapBuilder.put("closed-ahead", 771L);
+      mapBuilder.put("closed-intermittently", 772L);
+      mapBuilder.put("closed-for-repairs", 773L);
+      mapBuilder.put("closed-for-the-season", 774L);
+      mapBuilder.put("blocked", 775L);
+      mapBuilder.put("blocked-ahead", 776L);
+      mapBuilder.put("reduced-to-one-lane", 777L);
+      mapBuilder.put("reduced-to-two-lanes", 778L);
+      mapBuilder.put("reduced-to-three-lanes", 779L);
+      mapBuilder.put("collapse", 780L);
+      mapBuilder.put("out", 781L);
+      mapBuilder.put("open-to-traffic", 891L);
+      mapBuilder.put("open", 892L);
+      mapBuilder.put("reopened-to-traffic", 893L);
+      mapBuilder.put("clearing", 894L);
+      mapBuilder.put("cleared-from-road", 895L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<Closures> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(Closures::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Closures::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

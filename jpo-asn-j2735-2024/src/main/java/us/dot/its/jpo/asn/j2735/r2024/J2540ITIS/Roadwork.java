@@ -23,64 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Roadwork extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("road-construction", 1025L),
-          new SimpleEntry<>("major-road-construction", 1026L),
-          new SimpleEntry<>("long-term-road-construction", 1027L),
-          new SimpleEntry<>("construction-work", 1028L),
-          new SimpleEntry<>("paving-operations", 1029L),
-          new SimpleEntry<>("work-in-the-median", 1030L),
-          new SimpleEntry<>("road-reconstruction", 1031L),
-          new SimpleEntry<>("opposing-traffic", 1032L),
-          new SimpleEntry<>("narrow-lanes", 1033L),
-          new SimpleEntry<>("construction-traffic-merging", 1034L),
-          new SimpleEntry<>("single-line-traffic-alternating-directions", 1035L),
-          new SimpleEntry<>("road-maintenance-operations", 1036L),
-          new SimpleEntry<>("road-marking-operations", 1037L),
-          new SimpleEntry<>("road-widening", 1061L),
-          new SimpleEntry<>("cracks", 1052L),
-          new SimpleEntry<>("crack-REMOVE", 1058L),
-          new SimpleEntry<>("bumps", 1053L),
-          new SimpleEntry<>("drop-off", 1059L),
-          new SimpleEntry<>("storm-drain", 1054L),
-          new SimpleEntry<>("bridge-maintenance-operations", 1038L),
-          new SimpleEntry<>("bridge-construction", 1039L),
-          new SimpleEntry<>("bridge-demolition-work", 1040L),
-          new SimpleEntry<>("seismic-retrofit", 1060L),
-          new SimpleEntry<>("overgrown-grass", 1055L),
-          new SimpleEntry<>("overgrown-brushshrubs", 1056L),
-          new SimpleEntry<>("overgrown-trees", 1057L),
-          new SimpleEntry<>("blasting", 1041L),
-          new SimpleEntry<>("avalanche-control-activities", 1042L),
-          new SimpleEntry<>("water-main-work", 1043L),
-          new SimpleEntry<>("gas-main-work", 1044L),
-          new SimpleEntry<>("work-on-underground-cables", 1045L),
-          new SimpleEntry<>("work-on-underground-services", 1046L),
-          new SimpleEntry<>("new-road-construction-layout", 1047L),
-          new SimpleEntry<>("new-road-layout", 1048L),
-          new SimpleEntry<>("temporary-lane-markings", 1049L),
-          new SimpleEntry<>("temporary-traffic-lights", 1050L),
-          new SimpleEntry<>("emergency-maintenance", 1051L),
-          new SimpleEntry<>("utility-work", 1062L),
-          new SimpleEntry<>("road-maintenance-cleared", 1146L),
-          new SimpleEntry<>("normal-road-layout-restored", 1147L),
-          new SimpleEntry<>("road-work-clearance-in-progress", 1148L),
-          new SimpleEntry<>("road-construction-cleared", 1149L),
-          new SimpleEntry<>("normal-traffic-lanes-restored", 1150L),
-          new SimpleEntry<>("road-work-cleared", 1151L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public Roadwork() {
     super(0L, 65535L);
@@ -92,20 +44,77 @@ public class Roadwork extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("road-construction", 1025L);
+      mapBuilder.put("major-road-construction", 1026L);
+      mapBuilder.put("long-term-road-construction", 1027L);
+      mapBuilder.put("construction-work", 1028L);
+      mapBuilder.put("paving-operations", 1029L);
+      mapBuilder.put("work-in-the-median", 1030L);
+      mapBuilder.put("road-reconstruction", 1031L);
+      mapBuilder.put("opposing-traffic", 1032L);
+      mapBuilder.put("narrow-lanes", 1033L);
+      mapBuilder.put("construction-traffic-merging", 1034L);
+      mapBuilder.put("single-line-traffic-alternating-directions", 1035L);
+      mapBuilder.put("road-maintenance-operations", 1036L);
+      mapBuilder.put("road-marking-operations", 1037L);
+      mapBuilder.put("road-widening", 1061L);
+      mapBuilder.put("cracks", 1052L);
+      mapBuilder.put("crack-REMOVE", 1058L);
+      mapBuilder.put("bumps", 1053L);
+      mapBuilder.put("drop-off", 1059L);
+      mapBuilder.put("storm-drain", 1054L);
+      mapBuilder.put("bridge-maintenance-operations", 1038L);
+      mapBuilder.put("bridge-construction", 1039L);
+      mapBuilder.put("bridge-demolition-work", 1040L);
+      mapBuilder.put("seismic-retrofit", 1060L);
+      mapBuilder.put("overgrown-grass", 1055L);
+      mapBuilder.put("overgrown-brushshrubs", 1056L);
+      mapBuilder.put("overgrown-trees", 1057L);
+      mapBuilder.put("blasting", 1041L);
+      mapBuilder.put("avalanche-control-activities", 1042L);
+      mapBuilder.put("water-main-work", 1043L);
+      mapBuilder.put("gas-main-work", 1044L);
+      mapBuilder.put("work-on-underground-cables", 1045L);
+      mapBuilder.put("work-on-underground-services", 1046L);
+      mapBuilder.put("new-road-construction-layout", 1047L);
+      mapBuilder.put("new-road-layout", 1048L);
+      mapBuilder.put("temporary-lane-markings", 1049L);
+      mapBuilder.put("temporary-traffic-lights", 1050L);
+      mapBuilder.put("emergency-maintenance", 1051L);
+      mapBuilder.put("utility-work", 1062L);
+      mapBuilder.put("road-maintenance-cleared", 1146L);
+      mapBuilder.put("normal-road-layout-restored", 1147L);
+      mapBuilder.put("road-work-clearance-in-progress", 1148L);
+      mapBuilder.put("road-construction-cleared", 1149L);
+      mapBuilder.put("normal-traffic-lanes-restored", 1150L);
+      mapBuilder.put("road-work-cleared", 1151L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<Roadwork> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(Roadwork::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Roadwork::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

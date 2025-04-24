@@ -23,76 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class StatesAndTerritories extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("alabama", 12801L),
-          new SimpleEntry<>("alaska", 12802L),
-          new SimpleEntry<>("american-Samoa", 12803L),
-          new SimpleEntry<>("arizona", 12804L),
-          new SimpleEntry<>("arkansas", 12805L),
-          new SimpleEntry<>("california", 12806L),
-          new SimpleEntry<>("colorado", 12807L),
-          new SimpleEntry<>("connecticut", 12808L),
-          new SimpleEntry<>("delaware", 12809L),
-          new SimpleEntry<>("district-of-Columbia", 12810L),
-          new SimpleEntry<>("florida", 12811L),
-          new SimpleEntry<>("georgia", 12812L),
-          new SimpleEntry<>("guam", 12813L),
-          new SimpleEntry<>("hawaii", 12814L),
-          new SimpleEntry<>("idaho", 12815L),
-          new SimpleEntry<>("illinois", 12816L),
-          new SimpleEntry<>("indiana", 12817L),
-          new SimpleEntry<>("iowa", 12818L),
-          new SimpleEntry<>("kansas", 12819L),
-          new SimpleEntry<>("kentucky", 12820L),
-          new SimpleEntry<>("louisiana", 12821L),
-          new SimpleEntry<>("maine", 12822L),
-          new SimpleEntry<>("maryland", 12823L),
-          new SimpleEntry<>("massachusetts", 12824L),
-          new SimpleEntry<>("michigan", 12825L),
-          new SimpleEntry<>("minnesota", 12826L),
-          new SimpleEntry<>("mississippi", 12827L),
-          new SimpleEntry<>("missouri", 12828L),
-          new SimpleEntry<>("montana", 12829L),
-          new SimpleEntry<>("nebraska", 12830L),
-          new SimpleEntry<>("nevada", 12831L),
-          new SimpleEntry<>("new-Hampshire", 12832L),
-          new SimpleEntry<>("new-Jersey", 12833L),
-          new SimpleEntry<>("new-Mexico", 12834L),
-          new SimpleEntry<>("new-York", 12835L),
-          new SimpleEntry<>("north-Carolina", 12836L),
-          new SimpleEntry<>("north-Dakota", 12837L),
-          new SimpleEntry<>("northern-Marianas-Islands", 12838L),
-          new SimpleEntry<>("ohio", 12839L),
-          new SimpleEntry<>("oklahoma", 12840L),
-          new SimpleEntry<>("oregon", 12841L),
-          new SimpleEntry<>("pennsylvania", 12842L),
-          new SimpleEntry<>("puerto-rico", 12843L),
-          new SimpleEntry<>("rhode-Island", 12844L),
-          new SimpleEntry<>("south-Carolina", 12845L),
-          new SimpleEntry<>("south-Dakota", 12846L),
-          new SimpleEntry<>("tennessee", 12847L),
-          new SimpleEntry<>("texas", 12848L),
-          new SimpleEntry<>("utah", 12849L),
-          new SimpleEntry<>("vermont", 12850L),
-          new SimpleEntry<>("virginia", 12851L),
-          new SimpleEntry<>("virgin-Islands", 12852L),
-          new SimpleEntry<>("washington", 12853L),
-          new SimpleEntry<>("west-Virginia", 12854L),
-          new SimpleEntry<>("wisconsin", 12855L),
-          new SimpleEntry<>("wyoming", 12856L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public StatesAndTerritories() {
     super(0L, 65535L);
@@ -104,20 +44,89 @@ public class StatesAndTerritories extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("alabama", 12801L);
+      mapBuilder.put("alaska", 12802L);
+      mapBuilder.put("american-Samoa", 12803L);
+      mapBuilder.put("arizona", 12804L);
+      mapBuilder.put("arkansas", 12805L);
+      mapBuilder.put("california", 12806L);
+      mapBuilder.put("colorado", 12807L);
+      mapBuilder.put("connecticut", 12808L);
+      mapBuilder.put("delaware", 12809L);
+      mapBuilder.put("district-of-Columbia", 12810L);
+      mapBuilder.put("florida", 12811L);
+      mapBuilder.put("georgia", 12812L);
+      mapBuilder.put("guam", 12813L);
+      mapBuilder.put("hawaii", 12814L);
+      mapBuilder.put("idaho", 12815L);
+      mapBuilder.put("illinois", 12816L);
+      mapBuilder.put("indiana", 12817L);
+      mapBuilder.put("iowa", 12818L);
+      mapBuilder.put("kansas", 12819L);
+      mapBuilder.put("kentucky", 12820L);
+      mapBuilder.put("louisiana", 12821L);
+      mapBuilder.put("maine", 12822L);
+      mapBuilder.put("maryland", 12823L);
+      mapBuilder.put("massachusetts", 12824L);
+      mapBuilder.put("michigan", 12825L);
+      mapBuilder.put("minnesota", 12826L);
+      mapBuilder.put("mississippi", 12827L);
+      mapBuilder.put("missouri", 12828L);
+      mapBuilder.put("montana", 12829L);
+      mapBuilder.put("nebraska", 12830L);
+      mapBuilder.put("nevada", 12831L);
+      mapBuilder.put("new-Hampshire", 12832L);
+      mapBuilder.put("new-Jersey", 12833L);
+      mapBuilder.put("new-Mexico", 12834L);
+      mapBuilder.put("new-York", 12835L);
+      mapBuilder.put("north-Carolina", 12836L);
+      mapBuilder.put("north-Dakota", 12837L);
+      mapBuilder.put("northern-Marianas-Islands", 12838L);
+      mapBuilder.put("ohio", 12839L);
+      mapBuilder.put("oklahoma", 12840L);
+      mapBuilder.put("oregon", 12841L);
+      mapBuilder.put("pennsylvania", 12842L);
+      mapBuilder.put("puerto-rico", 12843L);
+      mapBuilder.put("rhode-Island", 12844L);
+      mapBuilder.put("south-Carolina", 12845L);
+      mapBuilder.put("south-Dakota", 12846L);
+      mapBuilder.put("tennessee", 12847L);
+      mapBuilder.put("texas", 12848L);
+      mapBuilder.put("utah", 12849L);
+      mapBuilder.put("vermont", 12850L);
+      mapBuilder.put("virginia", 12851L);
+      mapBuilder.put("virgin-Islands", 12852L);
+      mapBuilder.put("washington", 12853L);
+      mapBuilder.put("west-Virginia", 12854L);
+      mapBuilder.put("wisconsin", 12855L);
+      mapBuilder.put("wyoming", 12856L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<StatesAndTerritories> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(StatesAndTerritories::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(StatesAndTerritories::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

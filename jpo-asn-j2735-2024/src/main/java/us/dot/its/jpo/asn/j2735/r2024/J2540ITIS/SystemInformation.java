@@ -23,36 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class SystemInformation extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("information-available-on-radio", 4353L),
-          new SimpleEntry<>("information-available-on-TV", 4354L),
-          new SimpleEntry<>("call-to-get-information", 4355L),
-          new SimpleEntry<>("information-available-via-Internet", 4356L),
-          new SimpleEntry<>("test-message", 4357L),
-          new SimpleEntry<>("no-information-available", 4358L),
-          new SimpleEntry<>("null-description", 4359L),
-          new SimpleEntry<>("police-assistance", 4361L),
-          new SimpleEntry<>("police-monitor-CB", 4362L),
-          new SimpleEntry<>("emergency-notification", 4363L),
-          new SimpleEntry<>("in-emergency-dial-911", 4364L),
-          new SimpleEntry<>("travel-Info-call-511", 4365L),
-          new SimpleEntry<>("car-pool-information", 4366L),
-          new SimpleEntry<>("information-service-resumed", 4478L),
-          new SimpleEntry<>("information-service-is-being-suspended", 4360L),
-          new SimpleEntry<>("message-canceled", 4479L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public SystemInformation() {
     super(0L, 65535L);
@@ -64,20 +44,49 @@ public class SystemInformation extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("information-available-on-radio", 4353L);
+      mapBuilder.put("information-available-on-TV", 4354L);
+      mapBuilder.put("call-to-get-information", 4355L);
+      mapBuilder.put("information-available-via-Internet", 4356L);
+      mapBuilder.put("test-message", 4357L);
+      mapBuilder.put("no-information-available", 4358L);
+      mapBuilder.put("null-description", 4359L);
+      mapBuilder.put("police-assistance", 4361L);
+      mapBuilder.put("police-monitor-CB", 4362L);
+      mapBuilder.put("emergency-notification", 4363L);
+      mapBuilder.put("in-emergency-dial-911", 4364L);
+      mapBuilder.put("travel-Info-call-511", 4365L);
+      mapBuilder.put("car-pool-information", 4366L);
+      mapBuilder.put("information-service-resumed", 4478L);
+      mapBuilder.put("information-service-is-being-suspended", 4360L);
+      mapBuilder.put("message-canceled", 4479L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<SystemInformation> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(SystemInformation::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(SystemInformation::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

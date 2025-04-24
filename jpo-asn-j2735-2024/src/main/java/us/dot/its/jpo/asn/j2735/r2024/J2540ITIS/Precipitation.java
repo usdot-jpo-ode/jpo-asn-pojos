@@ -23,46 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Precipitation extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("severe-weather", 4865L),
-          new SimpleEntry<>("blizzard", 4866L),
-          new SimpleEntry<>("heavy-snow", 4867L),
-          new SimpleEntry<>("snow", 4868L),
-          new SimpleEntry<>("light-snow", 4869L),
-          new SimpleEntry<>("snow-showers", 4870L),
-          new SimpleEntry<>("winter-storm", 4871L),
-          new SimpleEntry<>("ice-glaze", 4872L),
-          new SimpleEntry<>("heavy-frost", 4873L),
-          new SimpleEntry<>("frost", 4874L),
-          new SimpleEntry<>("ice-storm", 4875L),
-          new SimpleEntry<>("sleet", 4876L),
-          new SimpleEntry<>("rain-and-snow-mixed", 4877L),
-          new SimpleEntry<>("rain-changing-to-snow", 4878L),
-          new SimpleEntry<>("damaging-hail", 4879L),
-          new SimpleEntry<>("hail", 4880L),
-          new SimpleEntry<>("thunderstorms", 4881L),
-          new SimpleEntry<>("thundershowers", 4882L),
-          new SimpleEntry<>("extremely-heavy-downpour", 4883L),
-          new SimpleEntry<>("heavy-rain", 4884L),
-          new SimpleEntry<>("rain", 4885L),
-          new SimpleEntry<>("light-rain", 4886L),
-          new SimpleEntry<>("drizzle", 4887L),
-          new SimpleEntry<>("showers", 4888L),
-          new SimpleEntry<>("dew", 4889L),
-          new SimpleEntry<>("precipitation-cleared", 4991L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public Precipitation() {
     super(0L, 65535L);
@@ -74,20 +44,59 @@ public class Precipitation extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("severe-weather", 4865L);
+      mapBuilder.put("blizzard", 4866L);
+      mapBuilder.put("heavy-snow", 4867L);
+      mapBuilder.put("snow", 4868L);
+      mapBuilder.put("light-snow", 4869L);
+      mapBuilder.put("snow-showers", 4870L);
+      mapBuilder.put("winter-storm", 4871L);
+      mapBuilder.put("ice-glaze", 4872L);
+      mapBuilder.put("heavy-frost", 4873L);
+      mapBuilder.put("frost", 4874L);
+      mapBuilder.put("ice-storm", 4875L);
+      mapBuilder.put("sleet", 4876L);
+      mapBuilder.put("rain-and-snow-mixed", 4877L);
+      mapBuilder.put("rain-changing-to-snow", 4878L);
+      mapBuilder.put("damaging-hail", 4879L);
+      mapBuilder.put("hail", 4880L);
+      mapBuilder.put("thunderstorms", 4881L);
+      mapBuilder.put("thundershowers", 4882L);
+      mapBuilder.put("extremely-heavy-downpour", 4883L);
+      mapBuilder.put("heavy-rain", 4884L);
+      mapBuilder.put("rain", 4885L);
+      mapBuilder.put("light-rain", 4886L);
+      mapBuilder.put("drizzle", 4887L);
+      mapBuilder.put("showers", 4888L);
+      mapBuilder.put("dew", 4889L);
+      mapBuilder.put("precipitation-cleared", 4991L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<Precipitation> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(Precipitation::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Precipitation::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

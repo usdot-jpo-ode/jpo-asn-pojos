@@ -23,57 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Disturbances extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("assault", 3329L),
-          new SimpleEntry<>("crime", 3330L),
-          new SimpleEntry<>("robbery", 3331L),
-          new SimpleEntry<>("fare-dispute", 3332L),
-          new SimpleEntry<>("shooting", 3333L),
-          new SimpleEntry<>("gunfire-on-roadway", 3334L),
-          new SimpleEntry<>("suicide", 3335L),
-          new SimpleEntry<>("fight", 3336L),
-          new SimpleEntry<>("gang-fight", 3337L),
-          new SimpleEntry<>("person-harassment", 3338L),
-          new SimpleEntry<>("person-injured", 3339L),
-          new SimpleEntry<>("sick-customer", 3363L),
-          new SimpleEntry<>("unruly-passenger", 3340L),
-          new SimpleEntry<>("person-intoxicated", 3341L),
-          new SimpleEntry<>("crowd-control-problem", 3342L),
-          new SimpleEntry<>("demonstration", 3343L),
-          new SimpleEntry<>("march", 3344L),
-          new SimpleEntry<>("public-disturbance", 3345L),
-          new SimpleEntry<>("riot", 3346L),
-          new SimpleEntry<>("civil-unrest", 3347L),
-          new SimpleEntry<>("civil-emergency", 3348L),
-          new SimpleEntry<>("strike", 3349L),
-          new SimpleEntry<>("public-transit-strike", 3350L),
-          new SimpleEntry<>("stampede", 3351L),
-          new SimpleEntry<>("teargas-used", 3352L),
-          new SimpleEntry<>("security-alert", 3353L),
-          new SimpleEntry<>("security-incident", 3354L),
-          new SimpleEntry<>("checkpoint", 3355L),
-          new SimpleEntry<>("bomb-alert", 3356L),
-          new SimpleEntry<>("terrorist-incident", 3357L),
-          new SimpleEntry<>("high-velocity-shell-fire", 3358L),
-          new SimpleEntry<>("explosives-in-use", 3359L),
-          new SimpleEntry<>("air-raid", 3360L),
-          new SimpleEntry<>("weapons-of-mass-destruction-threat", 3361L),
-          new SimpleEntry<>("military-operations", 3362L),
-          new SimpleEntry<>("security-problem-cleared", 3454L),
-          new SimpleEntry<>("traffic-disturbance-cleared", 3455L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public Disturbances() {
     super(0L, 65535L);
@@ -85,20 +44,70 @@ public class Disturbances extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("assault", 3329L);
+      mapBuilder.put("crime", 3330L);
+      mapBuilder.put("robbery", 3331L);
+      mapBuilder.put("fare-dispute", 3332L);
+      mapBuilder.put("shooting", 3333L);
+      mapBuilder.put("gunfire-on-roadway", 3334L);
+      mapBuilder.put("suicide", 3335L);
+      mapBuilder.put("fight", 3336L);
+      mapBuilder.put("gang-fight", 3337L);
+      mapBuilder.put("person-harassment", 3338L);
+      mapBuilder.put("person-injured", 3339L);
+      mapBuilder.put("sick-customer", 3363L);
+      mapBuilder.put("unruly-passenger", 3340L);
+      mapBuilder.put("person-intoxicated", 3341L);
+      mapBuilder.put("crowd-control-problem", 3342L);
+      mapBuilder.put("demonstration", 3343L);
+      mapBuilder.put("march", 3344L);
+      mapBuilder.put("public-disturbance", 3345L);
+      mapBuilder.put("riot", 3346L);
+      mapBuilder.put("civil-unrest", 3347L);
+      mapBuilder.put("civil-emergency", 3348L);
+      mapBuilder.put("strike", 3349L);
+      mapBuilder.put("public-transit-strike", 3350L);
+      mapBuilder.put("stampede", 3351L);
+      mapBuilder.put("teargas-used", 3352L);
+      mapBuilder.put("security-alert", 3353L);
+      mapBuilder.put("security-incident", 3354L);
+      mapBuilder.put("checkpoint", 3355L);
+      mapBuilder.put("bomb-alert", 3356L);
+      mapBuilder.put("terrorist-incident", 3357L);
+      mapBuilder.put("high-velocity-shell-fire", 3358L);
+      mapBuilder.put("explosives-in-use", 3359L);
+      mapBuilder.put("air-raid", 3360L);
+      mapBuilder.put("weapons-of-mass-destruction-threat", 3361L);
+      mapBuilder.put("military-operations", 3362L);
+      mapBuilder.put("security-problem-cleared", 3454L);
+      mapBuilder.put("traffic-disturbance-cleared", 3455L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<Disturbances> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(Disturbances::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Disturbances::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

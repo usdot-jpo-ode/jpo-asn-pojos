@@ -23,57 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AdviceInstructionsRecommendations extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("drive-carefully", 7169L),
-          new SimpleEntry<>("drive-with-extreme-caution", 7170L),
-          new SimpleEntry<>("approach-with-care", 7171L),
-          new SimpleEntry<>("keep-your-distance", 7172L),
-          new SimpleEntry<>("increase-normal-following-distance", 7173L),
-          new SimpleEntry<>("test-your-brakes", 7174L),
-          new SimpleEntry<>("cross-intersection-with-care", 7175L),
-          new SimpleEntry<>("pass-with-care", 7176L),
-          new SimpleEntry<>("pass", 7200L),
-          new SimpleEntry<>("use-low-beam-headlights", 7177L),
-          new SimpleEntry<>("use-fog-lights", 7178L),
-          new SimpleEntry<>("use-hazard-warning-lights", 7179L),
-          new SimpleEntry<>("do-not-leave-your-vehicle", 7180L),
-          new SimpleEntry<>("leave-your-vehicle-and-proceed-to-next-safe-place", 7181L),
-          new SimpleEntry<>("turn-off-engine", 7182L),
-          new SimpleEntry<>("close-all-windows-turn-off-heater-air-conditioner-and-vents", 7183L),
-          new SimpleEntry<>("turn-off-air-conditioner-to-prevent-engine-overheating", 7184L),
-          new SimpleEntry<>("turn-off-mobile-phones-and-two-way-radios", 7185L),
-          new SimpleEntry<>("prepare-to-stop", 7186L),
-          new SimpleEntry<>("be-prepared-to-stop", 7201L),
-          new SimpleEntry<>("stop-at-next-rest-area", 7187L),
-          new SimpleEntry<>("stop-at-next-safe-place", 7188L),
-          new SimpleEntry<>("only-travel-if-absolutely-necessary", 7189L),
-          new SimpleEntry<>("drive-to-another-service-area", 7190L),
-          new SimpleEntry<>("use-through-traffic-lanes", 7191L),
-          new SimpleEntry<>("use-local-traffic-lanes", 7192L),
-          new SimpleEntry<>("use-left-hand-parallel-roadway", 7193L),
-          new SimpleEntry<>("use-right-hand-parallel-roadway", 7194L),
-          new SimpleEntry<>("use-heavy-vehicle-lane", 7195L),
-          new SimpleEntry<>("observe-recommended-speed", 7196L),
-          new SimpleEntry<>("signals-sequenced-for-speed", 7202L),
-          new SimpleEntry<>("maintain-top-safe-speed", 7203L),
-          new SimpleEntry<>("facing-traffic", 7197L),
-          new SimpleEntry<>("push-button", 7198L),
-          new SimpleEntry<>("to-cross-street", 7199L),
-          new SimpleEntry<>("evacuate-area-voluntarily", 7204L),
-          new SimpleEntry<>("shelter-in-place", 7205L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public AdviceInstructionsRecommendations() {
     super(0L, 65535L);
@@ -85,20 +44,71 @@ public class AdviceInstructionsRecommendations extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("drive-carefully", 7169L);
+      mapBuilder.put("drive-with-extreme-caution", 7170L);
+      mapBuilder.put("approach-with-care", 7171L);
+      mapBuilder.put("keep-your-distance", 7172L);
+      mapBuilder.put("increase-normal-following-distance", 7173L);
+      mapBuilder.put("test-your-brakes", 7174L);
+      mapBuilder.put("cross-intersection-with-care", 7175L);
+      mapBuilder.put("pass-with-care", 7176L);
+      mapBuilder.put("pass", 7200L);
+      mapBuilder.put("use-low-beam-headlights", 7177L);
+      mapBuilder.put("use-fog-lights", 7178L);
+      mapBuilder.put("use-hazard-warning-lights", 7179L);
+      mapBuilder.put("do-not-leave-your-vehicle", 7180L);
+      mapBuilder.put("leave-your-vehicle-and-proceed-to-next-safe-place", 7181L);
+      mapBuilder.put("turn-off-engine", 7182L);
+      mapBuilder.put("close-all-windows-turn-off-heater-air-conditioner-and-vents", 7183L);
+      mapBuilder.put("turn-off-air-conditioner-to-prevent-engine-overheating", 7184L);
+      mapBuilder.put("turn-off-mobile-phones-and-two-way-radios", 7185L);
+      mapBuilder.put("prepare-to-stop", 7186L);
+      mapBuilder.put("be-prepared-to-stop", 7201L);
+      mapBuilder.put("stop-at-next-rest-area", 7187L);
+      mapBuilder.put("stop-at-next-safe-place", 7188L);
+      mapBuilder.put("only-travel-if-absolutely-necessary", 7189L);
+      mapBuilder.put("drive-to-another-service-area", 7190L);
+      mapBuilder.put("use-through-traffic-lanes", 7191L);
+      mapBuilder.put("use-local-traffic-lanes", 7192L);
+      mapBuilder.put("use-left-hand-parallel-roadway", 7193L);
+      mapBuilder.put("use-right-hand-parallel-roadway", 7194L);
+      mapBuilder.put("use-heavy-vehicle-lane", 7195L);
+      mapBuilder.put("observe-recommended-speed", 7196L);
+      mapBuilder.put("signals-sequenced-for-speed", 7202L);
+      mapBuilder.put("maintain-top-safe-speed", 7203L);
+      mapBuilder.put("facing-traffic", 7197L);
+      mapBuilder.put("push-button", 7198L);
+      mapBuilder.put("to-cross-street", 7199L);
+      mapBuilder.put("evacuate-area-voluntarily", 7204L);
+      mapBuilder.put("shelter-in-place", 7205L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<AdviceInstructionsRecommendations> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(AdviceInstructionsRecommendations::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name))
+        .map(AdviceInstructionsRecommendations::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

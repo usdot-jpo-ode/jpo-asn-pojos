@@ -23,54 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ParkingInformation extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("normal-parking-restrictions-lifted", 4097L),
-          new SimpleEntry<>("parking-meter-restrictions-lifted", 4098L),
-          new SimpleEntry<>("special-parking-restrictions-in-force", 4099L),
-          new SimpleEntry<>("full-parking-lot", 4100L),
-          new SimpleEntry<>("full-parking-garage", 4101L),
-          new SimpleEntry<>("all-parking-lots-full", 4102L),
-          new SimpleEntry<>("no-parking-spaces-available", 4103L),
-          new SimpleEntry<>("only-a-few-spaces-available", 4104L),
-          new SimpleEntry<>("spaces-available", 4105L),
-          new SimpleEntry<>("no-parking", 4106L),
-          new SimpleEntry<>("parking-on-one-side-of-street-only", 4107L),
-          new SimpleEntry<>("parking-on-both-sides-of-street", 4108L),
-          new SimpleEntry<>("parallel-parking-only", 4109L),
-          new SimpleEntry<>("parking-meters-not-available", 4110L),
-          new SimpleEntry<>("use-of-parking-meters-restricted", 4111L),
-          new SimpleEntry<>("event-parking", 4112L),
-          new SimpleEntry<>("handicapped-parking", 4113L),
-          new SimpleEntry<>("long-term-parking", 4114L),
-          new SimpleEntry<>("overnight-parking", 4115L),
-          new SimpleEntry<>("short-term-parking", 4116L),
-          new SimpleEntry<>("parking-by-permit-only", 4117L),
-          new SimpleEntry<>("emergency-parking-only", 4118L),
-          new SimpleEntry<>("emergency-stopping-only", 4119L),
-          new SimpleEntry<>("parking", 4120L),
-          new SimpleEntry<>("stopping", 4121L),
-          new SimpleEntry<>("standing", 4122L),
-          new SimpleEntry<>("tow-away-zone", 4123L),
-          new SimpleEntry<>("school-zone", 4124L),
-          new SimpleEntry<>("speed-zone", 4125L),
-          new SimpleEntry<>("loading-zone", 4126L),
-          new SimpleEntry<>("state-law", 4127L),
-          new SimpleEntry<>("van-accessible", 4128L),
-          new SimpleEntry<>("special-parking-restrictions-lifted", 4222L),
-          new SimpleEntry<>("no-parking-information-available", 4223L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public ParkingInformation() {
     super(0L, 65535L);
@@ -82,20 +44,67 @@ public class ParkingInformation extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("normal-parking-restrictions-lifted", 4097L);
+      mapBuilder.put("parking-meter-restrictions-lifted", 4098L);
+      mapBuilder.put("special-parking-restrictions-in-force", 4099L);
+      mapBuilder.put("full-parking-lot", 4100L);
+      mapBuilder.put("full-parking-garage", 4101L);
+      mapBuilder.put("all-parking-lots-full", 4102L);
+      mapBuilder.put("no-parking-spaces-available", 4103L);
+      mapBuilder.put("only-a-few-spaces-available", 4104L);
+      mapBuilder.put("spaces-available", 4105L);
+      mapBuilder.put("no-parking", 4106L);
+      mapBuilder.put("parking-on-one-side-of-street-only", 4107L);
+      mapBuilder.put("parking-on-both-sides-of-street", 4108L);
+      mapBuilder.put("parallel-parking-only", 4109L);
+      mapBuilder.put("parking-meters-not-available", 4110L);
+      mapBuilder.put("use-of-parking-meters-restricted", 4111L);
+      mapBuilder.put("event-parking", 4112L);
+      mapBuilder.put("handicapped-parking", 4113L);
+      mapBuilder.put("long-term-parking", 4114L);
+      mapBuilder.put("overnight-parking", 4115L);
+      mapBuilder.put("short-term-parking", 4116L);
+      mapBuilder.put("parking-by-permit-only", 4117L);
+      mapBuilder.put("emergency-parking-only", 4118L);
+      mapBuilder.put("emergency-stopping-only", 4119L);
+      mapBuilder.put("parking", 4120L);
+      mapBuilder.put("stopping", 4121L);
+      mapBuilder.put("standing", 4122L);
+      mapBuilder.put("tow-away-zone", 4123L);
+      mapBuilder.put("school-zone", 4124L);
+      mapBuilder.put("speed-zone", 4125L);
+      mapBuilder.put("loading-zone", 4126L);
+      mapBuilder.put("state-law", 4127L);
+      mapBuilder.put("van-accessible", 4128L);
+      mapBuilder.put("special-parking-restrictions-lifted", 4222L);
+      mapBuilder.put("no-parking-information-available", 4223L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<ParkingInformation> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(ParkingInformation::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(ParkingInformation::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

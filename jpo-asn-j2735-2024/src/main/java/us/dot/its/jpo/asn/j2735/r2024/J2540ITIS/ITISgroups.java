@@ -23,73 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ITISgroups extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("trafficConditions", 1L),
-          new SimpleEntry<>("accidentsAndIncidents", 2L),
-          new SimpleEntry<>("closures", 3L),
-          new SimpleEntry<>("roadwork", 4L),
-          new SimpleEntry<>("obstruction", 5L),
-          new SimpleEntry<>("delayStatusCancellation", 6L),
-          new SimpleEntry<>("unusualDriving", 7L),
-          new SimpleEntry<>("mobileSituation", 8L),
-          new SimpleEntry<>("deviceStatus", 9L),
-          new SimpleEntry<>("restrictionClass", 10L),
-          new SimpleEntry<>("incidentResponseStatus", 11L),
-          new SimpleEntry<>("disasters", 12L),
-          new SimpleEntry<>("disturbances", 13L),
-          new SimpleEntry<>("sportingEvents", 14L),
-          new SimpleEntry<>("specialEvents", 15L),
-          new SimpleEntry<>("parkingInformation", 16L),
-          new SimpleEntry<>("systemInformation", 17L),
-          new SimpleEntry<>("weatherConditions", 18L),
-          new SimpleEntry<>("precipitation", 19L),
-          new SimpleEntry<>("winds", 20L),
-          new SimpleEntry<>("visibilityAndAirQuality", 21L),
-          new SimpleEntry<>("temperature", 22L),
-          new SimpleEntry<>("pavementConditions", 23L),
-          new SimpleEntry<>("winterDrivingRestrictions", 24L),
-          new SimpleEntry<>("winterDrivingIndex", 25L),
-          new SimpleEntry<>("suggestionAdvice", 26L),
-          new SimpleEntry<>("warningAdvice", 27L),
-          new SimpleEntry<>("adviceInstructionsRecommendations", 28L),
-          new SimpleEntry<>("adviceInstructionsMandatory", 29L),
-          new SimpleEntry<>("qualifiers", 30L),
-          new SimpleEntry<>("genericLocations", 31L),
-          new SimpleEntry<>("laneRoadway", 32L),
-          new SimpleEntry<>("alternateRoute", 33L),
-          new SimpleEntry<>("units", 34L),
-          new SimpleEntry<>("transitMode", 35L),
-          new SimpleEntry<>("vehicleGroupAffected", 36L),
-          new SimpleEntry<>("travelerGroupAffected", 37L),
-          new SimpleEntry<>("responderGroupAffected", 38L),
-          new SimpleEntry<>("incidentResponseEquipment", 39L),
-          new SimpleEntry<>("assetStatus", 40L),
-          new SimpleEntry<>("roadsideAssets", 41L),
-          new SimpleEntry<>("transitOperations", 42L),
-          new SimpleEntry<>("objects", 43L),
-          new SimpleEntry<>("validManeuvers", 44L),
-          new SimpleEntry<>("largeNumbers", 45L),
-          new SimpleEntry<>("namedObjects", 46L),
-          new SimpleEntry<>("recreationalObjectsAndActivities", 47L),
-          new SimpleEntry<>("regulatoryAndWarningSigns", 48L),
-          new SimpleEntry<>("smallNumbers", 49L),
-          new SimpleEntry<>("states", 50L),
-          new SimpleEntry<>("structures", 51L),
-          new SimpleEntry<>("streetSuffixes", 52L),
-          new SimpleEntry<>("mUTCDLocations", 53L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public ITISgroups() {
     super(0L, 255L);
@@ -101,20 +44,86 @@ public class ITISgroups extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("trafficConditions", 1L);
+      mapBuilder.put("accidentsAndIncidents", 2L);
+      mapBuilder.put("closures", 3L);
+      mapBuilder.put("roadwork", 4L);
+      mapBuilder.put("obstruction", 5L);
+      mapBuilder.put("delayStatusCancellation", 6L);
+      mapBuilder.put("unusualDriving", 7L);
+      mapBuilder.put("mobileSituation", 8L);
+      mapBuilder.put("deviceStatus", 9L);
+      mapBuilder.put("restrictionClass", 10L);
+      mapBuilder.put("incidentResponseStatus", 11L);
+      mapBuilder.put("disasters", 12L);
+      mapBuilder.put("disturbances", 13L);
+      mapBuilder.put("sportingEvents", 14L);
+      mapBuilder.put("specialEvents", 15L);
+      mapBuilder.put("parkingInformation", 16L);
+      mapBuilder.put("systemInformation", 17L);
+      mapBuilder.put("weatherConditions", 18L);
+      mapBuilder.put("precipitation", 19L);
+      mapBuilder.put("winds", 20L);
+      mapBuilder.put("visibilityAndAirQuality", 21L);
+      mapBuilder.put("temperature", 22L);
+      mapBuilder.put("pavementConditions", 23L);
+      mapBuilder.put("winterDrivingRestrictions", 24L);
+      mapBuilder.put("winterDrivingIndex", 25L);
+      mapBuilder.put("suggestionAdvice", 26L);
+      mapBuilder.put("warningAdvice", 27L);
+      mapBuilder.put("adviceInstructionsRecommendations", 28L);
+      mapBuilder.put("adviceInstructionsMandatory", 29L);
+      mapBuilder.put("qualifiers", 30L);
+      mapBuilder.put("genericLocations", 31L);
+      mapBuilder.put("laneRoadway", 32L);
+      mapBuilder.put("alternateRoute", 33L);
+      mapBuilder.put("units", 34L);
+      mapBuilder.put("transitMode", 35L);
+      mapBuilder.put("vehicleGroupAffected", 36L);
+      mapBuilder.put("travelerGroupAffected", 37L);
+      mapBuilder.put("responderGroupAffected", 38L);
+      mapBuilder.put("incidentResponseEquipment", 39L);
+      mapBuilder.put("assetStatus", 40L);
+      mapBuilder.put("roadsideAssets", 41L);
+      mapBuilder.put("transitOperations", 42L);
+      mapBuilder.put("objects", 43L);
+      mapBuilder.put("validManeuvers", 44L);
+      mapBuilder.put("largeNumbers", 45L);
+      mapBuilder.put("namedObjects", 46L);
+      mapBuilder.put("recreationalObjectsAndActivities", 47L);
+      mapBuilder.put("regulatoryAndWarningSigns", 48L);
+      mapBuilder.put("smallNumbers", 49L);
+      mapBuilder.put("states", 50L);
+      mapBuilder.put("structures", 51L);
+      mapBuilder.put("streetSuffixes", 52L);
+      mapBuilder.put("mUTCDLocations", 53L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<ITISgroups> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(ITISgroups::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(ITISgroups::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

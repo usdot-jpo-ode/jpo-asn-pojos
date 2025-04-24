@@ -23,51 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AdviceInstructionsMandatory extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("keep-to-the-right", 7425L),
-          new SimpleEntry<>("keep-to-the-left", 7426L),
-          new SimpleEntry<>("use-right-lane", 7427L),
-          new SimpleEntry<>("use-left-lane", 7428L),
-          new SimpleEntry<>("stay-in-lane", 7450L),
-          new SimpleEntry<>("merge", 7451L),
-          new SimpleEntry<>("heavy-vehicles-use-right-lane", 7429L),
-          new SimpleEntry<>("heavy-vehicles-use-left-lane", 7430L),
-          new SimpleEntry<>("observe-signals", 7431L),
-          new SimpleEntry<>("observe-signs", 7432L),
-          new SimpleEntry<>("no-passing", 7433L),
-          new SimpleEntry<>("no-smoking", 7434L),
-          new SimpleEntry<>("no-open-flames", 7435L),
-          new SimpleEntry<>("use-shoulder-as-lane", 7436L),
-          new SimpleEntry<>("do-not-drive-on-the-shoulder", 7437L),
-          new SimpleEntry<>("allow-emergency-vehicles-to-pass", 7438L),
-          new SimpleEntry<>("clear-a-lane-for-emergency-vehicles", 7439L),
-          new SimpleEntry<>("pull-over-to-the-edge-of-the-roadway", 7440L),
-          new SimpleEntry<>("wait-for-escort-vehicle", 7441L),
-          new SimpleEntry<>("in-emergency-wait-for-police-patrol", 7442L),
-          new SimpleEntry<>("reduce-your-speed", 7443L),
-          new SimpleEntry<>("observe-speed-limits", 7444L),
-          new SimpleEntry<>("check-point", 7445L),
-          new SimpleEntry<>("entry-requirements", 7446L),
-          new SimpleEntry<>("insurance-requirements", 7447L),
-          new SimpleEntry<>("firearms-requirements", 7448L),
-          new SimpleEntry<>("pet-requirements", 7449L),
-          new SimpleEntry<>("slower-traffic-keep-right", 7452L),
-          new SimpleEntry<>("keep-off", 7453L),
-          new SimpleEntry<>("evacuate-area-immediately", 7454L),
-          new SimpleEntry<>("shoulder-travel-no-longer-allowed", 7547L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public AdviceInstructionsMandatory() {
     super(0L, 65535L);
@@ -79,20 +44,64 @@ public class AdviceInstructionsMandatory extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("keep-to-the-right", 7425L);
+      mapBuilder.put("keep-to-the-left", 7426L);
+      mapBuilder.put("use-right-lane", 7427L);
+      mapBuilder.put("use-left-lane", 7428L);
+      mapBuilder.put("stay-in-lane", 7450L);
+      mapBuilder.put("merge", 7451L);
+      mapBuilder.put("heavy-vehicles-use-right-lane", 7429L);
+      mapBuilder.put("heavy-vehicles-use-left-lane", 7430L);
+      mapBuilder.put("observe-signals", 7431L);
+      mapBuilder.put("observe-signs", 7432L);
+      mapBuilder.put("no-passing", 7433L);
+      mapBuilder.put("no-smoking", 7434L);
+      mapBuilder.put("no-open-flames", 7435L);
+      mapBuilder.put("use-shoulder-as-lane", 7436L);
+      mapBuilder.put("do-not-drive-on-the-shoulder", 7437L);
+      mapBuilder.put("allow-emergency-vehicles-to-pass", 7438L);
+      mapBuilder.put("clear-a-lane-for-emergency-vehicles", 7439L);
+      mapBuilder.put("pull-over-to-the-edge-of-the-roadway", 7440L);
+      mapBuilder.put("wait-for-escort-vehicle", 7441L);
+      mapBuilder.put("in-emergency-wait-for-police-patrol", 7442L);
+      mapBuilder.put("reduce-your-speed", 7443L);
+      mapBuilder.put("observe-speed-limits", 7444L);
+      mapBuilder.put("check-point", 7445L);
+      mapBuilder.put("entry-requirements", 7446L);
+      mapBuilder.put("insurance-requirements", 7447L);
+      mapBuilder.put("firearms-requirements", 7448L);
+      mapBuilder.put("pet-requirements", 7449L);
+      mapBuilder.put("slower-traffic-keep-right", 7452L);
+      mapBuilder.put("keep-off", 7453L);
+      mapBuilder.put("evacuate-area-immediately", 7454L);
+      mapBuilder.put("shoulder-travel-no-longer-allowed", 7547L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<AdviceInstructionsMandatory> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(AdviceInstructionsMandatory::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(AdviceInstructionsMandatory::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

@@ -23,43 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AlternateRoute extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("detour-where-possible", 8449L),
-          new SimpleEntry<>("no-detour-available", 8450L),
-          new SimpleEntry<>("follow-signs", 8451L),
-          new SimpleEntry<>("follow-detour-signs", 8452L),
-          new SimpleEntry<>("follow-special-detour-markers", 8453L),
-          new SimpleEntry<>("do-not-follow-detour-signs", 8454L),
-          new SimpleEntry<>("detour-in-operation", 8455L),
-          new SimpleEntry<>("follow-local-detour", 8456L),
-          new SimpleEntry<>("compulsory-detour-in-operation", 8457L),
-          new SimpleEntry<>("no-suitable-detour-available", 8458L),
-          new SimpleEntry<>("detour-is-no-longer-recommended", 8459L),
-          new SimpleEntry<>("local-drivers-are-recommended-to-avoid-the-area", 8460L),
-          new SimpleEntry<>("trucks-are-recommended-to-avoid-the-area", 8461L),
-          new SimpleEntry<>("consider-alternate-route", 8462L),
-          new SimpleEntry<>("consider-alternate-parking", 8463L),
-          new SimpleEntry<>("consider-alternate-destination", 8464L),
-          new SimpleEntry<>("consider-alternate-area", 8465L),
-          new SimpleEntry<>("snow-route", 8466L),
-          new SimpleEntry<>("emergency-snow-route", 8467L),
-          new SimpleEntry<>("evacuation-route", 8468L),
-          new SimpleEntry<>("truck-route", 8469L),
-          new SimpleEntry<>("hazardous-materials-route", 8470L),
-          new SimpleEntry<>("detour", 8471L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public AlternateRoute() {
     super(0L, 65535L);
@@ -71,20 +44,56 @@ public class AlternateRoute extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("detour-where-possible", 8449L);
+      mapBuilder.put("no-detour-available", 8450L);
+      mapBuilder.put("follow-signs", 8451L);
+      mapBuilder.put("follow-detour-signs", 8452L);
+      mapBuilder.put("follow-special-detour-markers", 8453L);
+      mapBuilder.put("do-not-follow-detour-signs", 8454L);
+      mapBuilder.put("detour-in-operation", 8455L);
+      mapBuilder.put("follow-local-detour", 8456L);
+      mapBuilder.put("compulsory-detour-in-operation", 8457L);
+      mapBuilder.put("no-suitable-detour-available", 8458L);
+      mapBuilder.put("detour-is-no-longer-recommended", 8459L);
+      mapBuilder.put("local-drivers-are-recommended-to-avoid-the-area", 8460L);
+      mapBuilder.put("trucks-are-recommended-to-avoid-the-area", 8461L);
+      mapBuilder.put("consider-alternate-route", 8462L);
+      mapBuilder.put("consider-alternate-parking", 8463L);
+      mapBuilder.put("consider-alternate-destination", 8464L);
+      mapBuilder.put("consider-alternate-area", 8465L);
+      mapBuilder.put("snow-route", 8466L);
+      mapBuilder.put("emergency-snow-route", 8467L);
+      mapBuilder.put("evacuation-route", 8468L);
+      mapBuilder.put("truck-route", 8469L);
+      mapBuilder.put("hazardous-materials-route", 8470L);
+      mapBuilder.put("detour", 8471L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<AlternateRoute> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(AlternateRoute::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(AlternateRoute::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

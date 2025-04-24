@@ -23,45 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class NamedObjects extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("name-follows", 11777L),
-          new SimpleEntry<>("freeway", 11778L),
-          new SimpleEntry<>("us-Route", 11779L),
-          new SimpleEntry<>("state-Route", 11780L),
-          new SimpleEntry<>("interstate", 11781L),
-          new SimpleEntry<>("business-Loop", 11782L),
-          new SimpleEntry<>("spur", 11797L),
-          new SimpleEntry<>("junction", 11798L),
-          new SimpleEntry<>("alternative", 11783L),
-          new SimpleEntry<>("county-Route", 11784L),
-          new SimpleEntry<>("forest-Route", 11785L),
-          new SimpleEntry<>("farm-to-Market-Route", 11786L),
-          new SimpleEntry<>("eisenhower-Interstate-System", 11787L),
-          new SimpleEntry<>("americas-Byways", 11788L),
-          new SimpleEntry<>("national-Network-Route", 11789L),
-          new SimpleEntry<>("scenic-Area", 11790L),
-          new SimpleEntry<>("parking-Area", 11791L),
-          new SimpleEntry<>("weight-Station", 11792L),
-          new SimpleEntry<>("road", 11793L),
-          new SimpleEntry<>("exit", 11794L),
-          new SimpleEntry<>("historical-route", 11795L),
-          new SimpleEntry<>("state-line", 11796L),
-          new SimpleEntry<>("bicycle-route", 11799L),
-          new SimpleEntry<>("bicycle-interstate-route", 11800L),
-          new SimpleEntry<>("national-park", 11801L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public NamedObjects() {
     super(0L, 65535L);
@@ -73,20 +44,58 @@ public class NamedObjects extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("name-follows", 11777L);
+      mapBuilder.put("freeway", 11778L);
+      mapBuilder.put("us-Route", 11779L);
+      mapBuilder.put("state-Route", 11780L);
+      mapBuilder.put("interstate", 11781L);
+      mapBuilder.put("business-Loop", 11782L);
+      mapBuilder.put("spur", 11797L);
+      mapBuilder.put("junction", 11798L);
+      mapBuilder.put("alternative", 11783L);
+      mapBuilder.put("county-Route", 11784L);
+      mapBuilder.put("forest-Route", 11785L);
+      mapBuilder.put("farm-to-Market-Route", 11786L);
+      mapBuilder.put("eisenhower-Interstate-System", 11787L);
+      mapBuilder.put("americas-Byways", 11788L);
+      mapBuilder.put("national-Network-Route", 11789L);
+      mapBuilder.put("scenic-Area", 11790L);
+      mapBuilder.put("parking-Area", 11791L);
+      mapBuilder.put("weight-Station", 11792L);
+      mapBuilder.put("road", 11793L);
+      mapBuilder.put("exit", 11794L);
+      mapBuilder.put("historical-route", 11795L);
+      mapBuilder.put("state-line", 11796L);
+      mapBuilder.put("bicycle-route", 11799L);
+      mapBuilder.put("bicycle-interstate-route", 11800L);
+      mapBuilder.put("national-park", 11801L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<NamedObjects> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(NamedObjects::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(NamedObjects::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

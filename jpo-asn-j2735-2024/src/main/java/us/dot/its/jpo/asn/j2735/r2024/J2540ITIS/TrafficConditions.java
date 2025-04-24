@@ -23,41 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class TrafficConditions extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("stopped-traffic", 257L),
-          new SimpleEntry<>("stop-and-go-traffic", 258L),
-          new SimpleEntry<>("slow-traffic", 259L),
-          new SimpleEntry<>("heavy-traffic", 260L),
-          new SimpleEntry<>("traffic-building", 261L),
-          new SimpleEntry<>("long-queues", 262L),
-          new SimpleEntry<>("traffic-congestion", 263L),
-          new SimpleEntry<>("traffic-lighter-than-normal", 264L),
-          new SimpleEntry<>("traffic-heavier-than-normal", 265L),
-          new SimpleEntry<>("traffic-much-heavier-than-normal", 266L),
-          new SimpleEntry<>("current-speed", 267L),
-          new SimpleEntry<>("speed-limit", 268L),
-          new SimpleEntry<>("travel-time", 269L),
-          new SimpleEntry<>("merging-traffic", 272L),
-          new SimpleEntry<>("contraflow", 273L),
-          new SimpleEntry<>("contraflow-canceled", 378L),
-          new SimpleEntry<>("traffic-flowing-freely", 379L),
-          new SimpleEntry<>("traffic-easing", 380L),
-          new SimpleEntry<>("traffic-returned-to-normal", 381L),
-          new SimpleEntry<>("no-problems-to-report", 382L),
-          new SimpleEntry<>("traffic-congestion-cleared", 383L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public TrafficConditions() {
     super(0L, 65535L);
@@ -69,20 +44,54 @@ public class TrafficConditions extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("stopped-traffic", 257L);
+      mapBuilder.put("stop-and-go-traffic", 258L);
+      mapBuilder.put("slow-traffic", 259L);
+      mapBuilder.put("heavy-traffic", 260L);
+      mapBuilder.put("traffic-building", 261L);
+      mapBuilder.put("long-queues", 262L);
+      mapBuilder.put("traffic-congestion", 263L);
+      mapBuilder.put("traffic-lighter-than-normal", 264L);
+      mapBuilder.put("traffic-heavier-than-normal", 265L);
+      mapBuilder.put("traffic-much-heavier-than-normal", 266L);
+      mapBuilder.put("current-speed", 267L);
+      mapBuilder.put("speed-limit", 268L);
+      mapBuilder.put("travel-time", 269L);
+      mapBuilder.put("merging-traffic", 272L);
+      mapBuilder.put("contraflow", 273L);
+      mapBuilder.put("contraflow-canceled", 378L);
+      mapBuilder.put("traffic-flowing-freely", 379L);
+      mapBuilder.put("traffic-easing", 380L);
+      mapBuilder.put("traffic-returned-to-normal", 381L);
+      mapBuilder.put("no-problems-to-report", 382L);
+      mapBuilder.put("traffic-congestion-cleared", 383L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<TrafficConditions> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(TrafficConditions::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(TrafficConditions::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

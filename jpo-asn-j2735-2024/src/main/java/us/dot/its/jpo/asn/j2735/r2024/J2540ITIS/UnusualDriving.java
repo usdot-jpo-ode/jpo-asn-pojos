@@ -23,28 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class UnusualDriving extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("vehicle-traveling-wrong-way", 1793L),
-          new SimpleEntry<>("reckless-driver", 1794L),
-          new SimpleEntry<>("prohibited-vehicle-on-roadway", 1795L),
-          new SimpleEntry<>("emergency-vehicles-on-roadway", 1796L),
-          new SimpleEntry<>("high-speed-emergency-vehicles", 1797L),
-          new SimpleEntry<>("high-speed-chase", 1798L),
-          new SimpleEntry<>("dangerous-vehicle-warning-cleared", 1918L),
-          new SimpleEntry<>("emergency-vehicle-warning-cleared", 1919L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public UnusualDriving() {
     super(0L, 65535L);
@@ -56,20 +44,41 @@ public class UnusualDriving extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("vehicle-traveling-wrong-way", 1793L);
+      mapBuilder.put("reckless-driver", 1794L);
+      mapBuilder.put("prohibited-vehicle-on-roadway", 1795L);
+      mapBuilder.put("emergency-vehicles-on-roadway", 1796L);
+      mapBuilder.put("high-speed-emergency-vehicles", 1797L);
+      mapBuilder.put("high-speed-chase", 1798L);
+      mapBuilder.put("dangerous-vehicle-warning-cleared", 1918L);
+      mapBuilder.put("emergency-vehicle-warning-cleared", 1919L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<UnusualDriving> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(UnusualDriving::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(UnusualDriving::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

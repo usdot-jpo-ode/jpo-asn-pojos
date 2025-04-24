@@ -23,39 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AssetStatus extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("unknown-status", 10240L),
-          new SimpleEntry<>("ready-for-use", 10241L),
-          new SimpleEntry<>("working-normally", 10242L),
-          new SimpleEntry<>("working-autonomously", 10243L),
-          new SimpleEntry<>("working-incorrectly", 10244L),
-          new SimpleEntry<>("not-working", 10245L),
-          new SimpleEntry<>("normal-maintenance", 10246L),
-          new SimpleEntry<>("in-route-to-use", 10247L),
-          new SimpleEntry<>("returning-from-use", 10248L),
-          new SimpleEntry<>("out-of-service", 10249L),
-          new SimpleEntry<>("off-duty", 10250L),
-          new SimpleEntry<>("on-patrol", 10251L),
-          new SimpleEntry<>("on-call", 10252L),
-          new SimpleEntry<>("on-break", 10253L),
-          new SimpleEntry<>("mandatory-time-off", 10254L),
-          new SimpleEntry<>("low-on-fuel", 10255L),
-          new SimpleEntry<>("low-on-water", 10256L),
-          new SimpleEntry<>("low-charge", 10257L),
-          new SimpleEntry<>("missing", 10258L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public AssetStatus() {
     super(0L, 65535L);
@@ -67,20 +44,52 @@ public class AssetStatus extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("unknown-status", 10240L);
+      mapBuilder.put("ready-for-use", 10241L);
+      mapBuilder.put("working-normally", 10242L);
+      mapBuilder.put("working-autonomously", 10243L);
+      mapBuilder.put("working-incorrectly", 10244L);
+      mapBuilder.put("not-working", 10245L);
+      mapBuilder.put("normal-maintenance", 10246L);
+      mapBuilder.put("in-route-to-use", 10247L);
+      mapBuilder.put("returning-from-use", 10248L);
+      mapBuilder.put("out-of-service", 10249L);
+      mapBuilder.put("off-duty", 10250L);
+      mapBuilder.put("on-patrol", 10251L);
+      mapBuilder.put("on-call", 10252L);
+      mapBuilder.put("on-break", 10253L);
+      mapBuilder.put("mandatory-time-off", 10254L);
+      mapBuilder.put("low-on-fuel", 10255L);
+      mapBuilder.put("low-on-water", 10256L);
+      mapBuilder.put("low-charge", 10257L);
+      mapBuilder.put("missing", 10258L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<AssetStatus> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(AssetStatus::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(AssetStatus::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

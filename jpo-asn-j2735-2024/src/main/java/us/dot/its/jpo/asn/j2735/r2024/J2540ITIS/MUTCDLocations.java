@@ -23,89 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class MUTCDLocations extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("ahead", 13569L),
-          new SimpleEntry<>("here", 13570L),
-          new SimpleEntry<>("here-to", 13571L),
-          new SimpleEntry<>("here-to-alley", 13572L),
-          new SimpleEntry<>("here-to-corner", 13573L),
-          new SimpleEntry<>("here-to-sign", 13574L),
-          new SimpleEntry<>("between-signs", 13575L),
-          new SimpleEntry<>("between", 13633L),
-          new SimpleEntry<>("this-side-of-street", 13576L),
-          new SimpleEntry<>("this-side-of-sign", 13577L),
-          new SimpleEntry<>("right", 13579L),
-          new SimpleEntry<>("left", 13580L),
-          new SimpleEntry<>("begin-point", 13581L),
-          new SimpleEntry<>("next", 13582L),
-          new SimpleEntry<>("starting-start", 13611L),
-          new SimpleEntry<>("ends-end", 13583L),
-          new SimpleEntry<>("other-Side", 13584L),
-          new SimpleEntry<>("crossing", 13585L),
-          new SimpleEntry<>("crosswalks", 13586L),
-          new SimpleEntry<>("center-strip", 13587L),
-          new SimpleEntry<>("lane", 13588L),
-          new SimpleEntry<>("shelter", 13634L),
-          new SimpleEntry<>("center", 13635L),
-          new SimpleEntry<>("hill", 13589L),
-          new SimpleEntry<>("both-ways-left-and-right", 13590L),
-          new SimpleEntry<>("both-ways-45-degree-angle-tilting-right", 13591L),
-          new SimpleEntry<>("both-ways-45-degree-angle-tilting-left", 13592L),
-          new SimpleEntry<>("both-directions-of-travel", 13593L),
-          new SimpleEntry<>("left-arrow", 13610L),
-          new SimpleEntry<>("left-turn", 13594L),
-          new SimpleEntry<>("left-45-degree-arrow", 13595L),
-          new SimpleEntry<>("left-45-degree-turn", 13596L),
-          new SimpleEntry<>("ahead-and-to-the-left", 13597L),
-          new SimpleEntry<>("ahead-and-to-the-left-at-a-45-degree-angle", 13598L),
-          new SimpleEntry<>("right-arrow", 13609L),
-          new SimpleEntry<>("right-turn", 13599L),
-          new SimpleEntry<>("right-45-degree-arrow", 13600L),
-          new SimpleEntry<>("right-45-degree-turn", 13601L),
-          new SimpleEntry<>("ahead-and-to-the-right", 13602L),
-          new SimpleEntry<>("ahead-and-to-the-right-at-a-45-degree-angle", 13603L),
-          new SimpleEntry<>("downward-left-45-degree", 13604L),
-          new SimpleEntry<>("downward-right-45-degree", 13605L),
-          new SimpleEntry<>("downward-left-and-right-45-degree", 13606L),
-          new SimpleEntry<>("reverse-turn-to-right", 13636L),
-          new SimpleEntry<>("reverse-turn-to-left", 13637L),
-          new SimpleEntry<>("reverse-curve-to-right", 13638L),
-          new SimpleEntry<>("reverse-curve-to-left", 13639L),
-          new SimpleEntry<>("two-lane-reverse-curve-to-right", 13623L),
-          new SimpleEntry<>("two-lane-reverse-curve-to-left", 13624L),
-          new SimpleEntry<>("three-lane-reverse-curve-to-right", 13625L),
-          new SimpleEntry<>("three-lane-reverse-curve-to-left", 13626L),
-          new SimpleEntry<>("winding-road-to-right", 13640L),
-          new SimpleEntry<>("winding-road-to-left", 13641L),
-          new SimpleEntry<>("chevron-right", 13613L),
-          new SimpleEntry<>("chevron-left", 13614L),
-          new SimpleEntry<>("right-turn-with-junction", 13615L),
-          new SimpleEntry<>("left-turn-with-junction", 13616L),
-          new SimpleEntry<>("hairpin-right", 13617L),
-          new SimpleEntry<>("hairpin-left", 13618L),
-          new SimpleEntry<>("truck-rollover-right", 13619L),
-          new SimpleEntry<>("truck-rollover-left", 13620L),
-          new SimpleEntry<>("n270-degree-turn-right", 13621L),
-          new SimpleEntry<>("n270-degree-turn-left", 13622L),
-          new SimpleEntry<>("double-reverse-curve-to-right", 13627L),
-          new SimpleEntry<>("double-reverse-curve-to-left", 13628L),
-          new SimpleEntry<>("two-lane-double-reverse-curve-to-right", 13629L),
-          new SimpleEntry<>("two-lane-double-reverse-curve-to-left", 13630L),
-          new SimpleEntry<>("three-lane-double-reverse-curve-to-right", 13631L),
-          new SimpleEntry<>("three-lane-double-reverse-curve-to-left", 13632L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public MUTCDLocations() {
     super(0L, 65535L);
@@ -117,20 +44,102 @@ public class MUTCDLocations extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("ahead", 13569L);
+      mapBuilder.put("here", 13570L);
+      mapBuilder.put("here-to", 13571L);
+      mapBuilder.put("here-to-alley", 13572L);
+      mapBuilder.put("here-to-corner", 13573L);
+      mapBuilder.put("here-to-sign", 13574L);
+      mapBuilder.put("between-signs", 13575L);
+      mapBuilder.put("between", 13633L);
+      mapBuilder.put("this-side-of-street", 13576L);
+      mapBuilder.put("this-side-of-sign", 13577L);
+      mapBuilder.put("right", 13579L);
+      mapBuilder.put("left", 13580L);
+      mapBuilder.put("begin-point", 13581L);
+      mapBuilder.put("next", 13582L);
+      mapBuilder.put("starting-start", 13611L);
+      mapBuilder.put("ends-end", 13583L);
+      mapBuilder.put("other-Side", 13584L);
+      mapBuilder.put("crossing", 13585L);
+      mapBuilder.put("crosswalks", 13586L);
+      mapBuilder.put("center-strip", 13587L);
+      mapBuilder.put("lane", 13588L);
+      mapBuilder.put("shelter", 13634L);
+      mapBuilder.put("center", 13635L);
+      mapBuilder.put("hill", 13589L);
+      mapBuilder.put("both-ways-left-and-right", 13590L);
+      mapBuilder.put("both-ways-45-degree-angle-tilting-right", 13591L);
+      mapBuilder.put("both-ways-45-degree-angle-tilting-left", 13592L);
+      mapBuilder.put("both-directions-of-travel", 13593L);
+      mapBuilder.put("left-arrow", 13610L);
+      mapBuilder.put("left-turn", 13594L);
+      mapBuilder.put("left-45-degree-arrow", 13595L);
+      mapBuilder.put("left-45-degree-turn", 13596L);
+      mapBuilder.put("ahead-and-to-the-left", 13597L);
+      mapBuilder.put("ahead-and-to-the-left-at-a-45-degree-angle", 13598L);
+      mapBuilder.put("right-arrow", 13609L);
+      mapBuilder.put("right-turn", 13599L);
+      mapBuilder.put("right-45-degree-arrow", 13600L);
+      mapBuilder.put("right-45-degree-turn", 13601L);
+      mapBuilder.put("ahead-and-to-the-right", 13602L);
+      mapBuilder.put("ahead-and-to-the-right-at-a-45-degree-angle", 13603L);
+      mapBuilder.put("downward-left-45-degree", 13604L);
+      mapBuilder.put("downward-right-45-degree", 13605L);
+      mapBuilder.put("downward-left-and-right-45-degree", 13606L);
+      mapBuilder.put("reverse-turn-to-right", 13636L);
+      mapBuilder.put("reverse-turn-to-left", 13637L);
+      mapBuilder.put("reverse-curve-to-right", 13638L);
+      mapBuilder.put("reverse-curve-to-left", 13639L);
+      mapBuilder.put("two-lane-reverse-curve-to-right", 13623L);
+      mapBuilder.put("two-lane-reverse-curve-to-left", 13624L);
+      mapBuilder.put("three-lane-reverse-curve-to-right", 13625L);
+      mapBuilder.put("three-lane-reverse-curve-to-left", 13626L);
+      mapBuilder.put("winding-road-to-right", 13640L);
+      mapBuilder.put("winding-road-to-left", 13641L);
+      mapBuilder.put("chevron-right", 13613L);
+      mapBuilder.put("chevron-left", 13614L);
+      mapBuilder.put("right-turn-with-junction", 13615L);
+      mapBuilder.put("left-turn-with-junction", 13616L);
+      mapBuilder.put("hairpin-right", 13617L);
+      mapBuilder.put("hairpin-left", 13618L);
+      mapBuilder.put("truck-rollover-right", 13619L);
+      mapBuilder.put("truck-rollover-left", 13620L);
+      mapBuilder.put("n270-degree-turn-right", 13621L);
+      mapBuilder.put("n270-degree-turn-left", 13622L);
+      mapBuilder.put("double-reverse-curve-to-right", 13627L);
+      mapBuilder.put("double-reverse-curve-to-left", 13628L);
+      mapBuilder.put("two-lane-double-reverse-curve-to-right", 13629L);
+      mapBuilder.put("two-lane-double-reverse-curve-to-left", 13630L);
+      mapBuilder.put("three-lane-double-reverse-curve-to-right", 13631L);
+      mapBuilder.put("three-lane-double-reverse-curve-to-left", 13632L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<MUTCDLocations> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(MUTCDLocations::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(MUTCDLocations::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

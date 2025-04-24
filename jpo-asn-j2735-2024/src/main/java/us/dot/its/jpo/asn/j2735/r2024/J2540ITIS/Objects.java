@@ -23,74 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Objects extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("unknown-object", 11009L),
-          new SimpleEntry<>("tire", 11010L),
-          new SimpleEntry<>("rim", 11011L),
-          new SimpleEntry<>("retread", 11012L),
-          new SimpleEntry<>("trash", 11013L),
-          new SimpleEntry<>("cargo", 11014L),
-          new SimpleEntry<>("diesel", 11015L),
-          new SimpleEntry<>("gasoline", 11016L),
-          new SimpleEntry<>("anti-freeze", 11017L),
-          new SimpleEntry<>("propane-gas", 11061L),
-          new SimpleEntry<>("alternative-fuel", 11060L),
-          new SimpleEntry<>("seat-belts", 11018L),
-          new SimpleEntry<>("litter-container", 11019L),
-          new SimpleEntry<>("all-Terrain-vehicle", 11020L),
-          new SimpleEntry<>("seaplane", 11021L),
-          new SimpleEntry<>("chairlift", 11022L),
-          new SimpleEntry<>("fishing-pier", 11023L),
-          new SimpleEntry<>("telephone", 11025L),
-          new SimpleEntry<>("railroad-cross-buck", 11024L),
-          new SimpleEntry<>("horn", 11048L),
-          new SimpleEntry<>("train", 11047L),
-          new SimpleEntry<>("deer", 11049L),
-          new SimpleEntry<>("horse", 11051L),
-          new SimpleEntry<>("cattle", 11050L),
-          new SimpleEntry<>("golf-cart", 11052L),
-          new SimpleEntry<>("services", 11056L),
-          new SimpleEntry<>("motorist-services", 11059L),
-          new SimpleEntry<>("food-services", 11053L),
-          new SimpleEntry<>("roadside-table", 11055L),
-          new SimpleEntry<>("ambulance-staging-point", 11054L),
-          new SimpleEntry<>("fallout", 11026L),
-          new SimpleEntry<>("medical", 11027L),
-          new SimpleEntry<>("chemical", 11028L),
-          new SimpleEntry<>("welfare", 11029L),
-          new SimpleEntry<>("decontamination", 11063L),
-          new SimpleEntry<>("evacuation", 11030L),
-          new SimpleEntry<>("registration", 11062L),
-          new SimpleEntry<>("emergency", 11064L),
-          new SimpleEntry<>("left-arrow-signal", 11031L),
-          new SimpleEntry<>("ahead-arrow-signal", 11032L),
-          new SimpleEntry<>("right-arrow-signal", 11033L),
-          new SimpleEntry<>("green-light-signal", 11034L),
-          new SimpleEntry<>("green-arrow-signal", 11035L),
-          new SimpleEntry<>("yellow-light-signal", 11036L),
-          new SimpleEntry<>("yellow-arrow-signal", 11037L),
-          new SimpleEntry<>("red-light-signal", 11038L),
-          new SimpleEntry<>("red-arrow-signal", 11039L),
-          new SimpleEntry<>("extended-green-signal", 11040L),
-          new SimpleEntry<>("advance-arrow-signal", 11041L),
-          new SimpleEntry<>("pedestrian-Signal-Stop", 11042L),
-          new SimpleEntry<>("pedestrian-Signal-Caution", 11043L),
-          new SimpleEntry<>("pedestrian-Signal-Walk", 11044L),
-          new SimpleEntry<>("pedestrian-Signal-Light", 11045L),
-          new SimpleEntry<>("pedestrian-Signal-Time-Display", 11046L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public Objects() {
     super(0L, 65535L);
@@ -102,20 +44,87 @@ public class Objects extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("unknown-object", 11009L);
+      mapBuilder.put("tire", 11010L);
+      mapBuilder.put("rim", 11011L);
+      mapBuilder.put("retread", 11012L);
+      mapBuilder.put("trash", 11013L);
+      mapBuilder.put("cargo", 11014L);
+      mapBuilder.put("diesel", 11015L);
+      mapBuilder.put("gasoline", 11016L);
+      mapBuilder.put("anti-freeze", 11017L);
+      mapBuilder.put("propane-gas", 11061L);
+      mapBuilder.put("alternative-fuel", 11060L);
+      mapBuilder.put("seat-belts", 11018L);
+      mapBuilder.put("litter-container", 11019L);
+      mapBuilder.put("all-Terrain-vehicle", 11020L);
+      mapBuilder.put("seaplane", 11021L);
+      mapBuilder.put("chairlift", 11022L);
+      mapBuilder.put("fishing-pier", 11023L);
+      mapBuilder.put("telephone", 11025L);
+      mapBuilder.put("railroad-cross-buck", 11024L);
+      mapBuilder.put("horn", 11048L);
+      mapBuilder.put("train", 11047L);
+      mapBuilder.put("deer", 11049L);
+      mapBuilder.put("horse", 11051L);
+      mapBuilder.put("cattle", 11050L);
+      mapBuilder.put("golf-cart", 11052L);
+      mapBuilder.put("services", 11056L);
+      mapBuilder.put("motorist-services", 11059L);
+      mapBuilder.put("food-services", 11053L);
+      mapBuilder.put("roadside-table", 11055L);
+      mapBuilder.put("ambulance-staging-point", 11054L);
+      mapBuilder.put("fallout", 11026L);
+      mapBuilder.put("medical", 11027L);
+      mapBuilder.put("chemical", 11028L);
+      mapBuilder.put("welfare", 11029L);
+      mapBuilder.put("decontamination", 11063L);
+      mapBuilder.put("evacuation", 11030L);
+      mapBuilder.put("registration", 11062L);
+      mapBuilder.put("emergency", 11064L);
+      mapBuilder.put("left-arrow-signal", 11031L);
+      mapBuilder.put("ahead-arrow-signal", 11032L);
+      mapBuilder.put("right-arrow-signal", 11033L);
+      mapBuilder.put("green-light-signal", 11034L);
+      mapBuilder.put("green-arrow-signal", 11035L);
+      mapBuilder.put("yellow-light-signal", 11036L);
+      mapBuilder.put("yellow-arrow-signal", 11037L);
+      mapBuilder.put("red-light-signal", 11038L);
+      mapBuilder.put("red-arrow-signal", 11039L);
+      mapBuilder.put("extended-green-signal", 11040L);
+      mapBuilder.put("advance-arrow-signal", 11041L);
+      mapBuilder.put("pedestrian-Signal-Stop", 11042L);
+      mapBuilder.put("pedestrian-Signal-Caution", 11043L);
+      mapBuilder.put("pedestrian-Signal-Walk", 11044L);
+      mapBuilder.put("pedestrian-Signal-Light", 11045L);
+      mapBuilder.put("pedestrian-Signal-Time-Display", 11046L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<Objects> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(Objects::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Objects::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

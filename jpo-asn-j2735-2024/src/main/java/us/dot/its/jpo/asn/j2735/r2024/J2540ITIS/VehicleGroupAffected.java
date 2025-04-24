@@ -23,65 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class VehicleGroupAffected extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("all-vehicles", 9217L),
-          new SimpleEntry<>("bicycles", 9218L),
-          new SimpleEntry<>("motorcycles", 9219L),
-          new SimpleEntry<>("cars", 9220L),
-          new SimpleEntry<>("light-vehicles", 9221L),
-          new SimpleEntry<>("cars-and-light-vehicles", 9222L),
-          new SimpleEntry<>("cars-with-trailers", 9223L),
-          new SimpleEntry<>("cars-with-recreational-trailers", 9224L),
-          new SimpleEntry<>("vehicles-with-trailers", 9225L),
-          new SimpleEntry<>("heavy-vehicles", 9226L),
-          new SimpleEntry<>("trucks", 9227L),
-          new SimpleEntry<>("buses", 9228L),
-          new SimpleEntry<>("articulated-buses", 9229L),
-          new SimpleEntry<>("school-buses", 9230L),
-          new SimpleEntry<>("vehicles-with-semi-trailers", 9231L),
-          new SimpleEntry<>("vehicles-with-double-trailers", 9232L),
-          new SimpleEntry<>("high-profile-vehicles", 9233L),
-          new SimpleEntry<>("wide-vehicles", 9234L),
-          new SimpleEntry<>("long-vehicles", 9235L),
-          new SimpleEntry<>("hazardous-loads", 9236L),
-          new SimpleEntry<>("exceptional-loads", 9237L),
-          new SimpleEntry<>("abnormal-loads", 9238L),
-          new SimpleEntry<>("convoys", 9239L),
-          new SimpleEntry<>("maintenance-vehicles", 9240L),
-          new SimpleEntry<>("delivery-vehicles", 9241L),
-          new SimpleEntry<>("vehicles-with-even-numbered-license-plates", 9242L),
-          new SimpleEntry<>("vehicles-with-odd-numbered-license-plates", 9243L),
-          new SimpleEntry<>("vehicles-with-parking-permits", 9244L),
-          new SimpleEntry<>("vehicles-with-catalytic-converters", 9245L),
-          new SimpleEntry<>("vehicles-without-catalytic-converters", 9246L),
-          new SimpleEntry<>("gas-powered-vehicles", 9247L),
-          new SimpleEntry<>("diesel-powered-vehicles", 9248L),
-          new SimpleEntry<>("lPG-vehicles", 9249L),
-          new SimpleEntry<>("military-convoys", 9250L),
-          new SimpleEntry<>("military-vehicles", 9251L),
-          new SimpleEntry<>("electric-powered-vehicles", 9252L),
-          new SimpleEntry<>("hybrid-powered-vehicles", 9253L),
-          new SimpleEntry<>("inherently-low-emission-vehicles", 9254L),
-          new SimpleEntry<>("commercial-vehicles", 9255L),
-          new SimpleEntry<>("runaway-vehicles", 9256L),
-          new SimpleEntry<>("vehicles-with-lugs", 9257L),
-          new SimpleEntry<>("motor-driven-cycles", 9258L),
-          new SimpleEntry<>("recreational-vehicles", 9259L),
-          new SimpleEntry<>("non-motorized-vehicles", 9260L),
-          new SimpleEntry<>("traffic", 9261L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public VehicleGroupAffected() {
     super(0L, 65535L);
@@ -93,20 +44,78 @@ public class VehicleGroupAffected extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("all-vehicles", 9217L);
+      mapBuilder.put("bicycles", 9218L);
+      mapBuilder.put("motorcycles", 9219L);
+      mapBuilder.put("cars", 9220L);
+      mapBuilder.put("light-vehicles", 9221L);
+      mapBuilder.put("cars-and-light-vehicles", 9222L);
+      mapBuilder.put("cars-with-trailers", 9223L);
+      mapBuilder.put("cars-with-recreational-trailers", 9224L);
+      mapBuilder.put("vehicles-with-trailers", 9225L);
+      mapBuilder.put("heavy-vehicles", 9226L);
+      mapBuilder.put("trucks", 9227L);
+      mapBuilder.put("buses", 9228L);
+      mapBuilder.put("articulated-buses", 9229L);
+      mapBuilder.put("school-buses", 9230L);
+      mapBuilder.put("vehicles-with-semi-trailers", 9231L);
+      mapBuilder.put("vehicles-with-double-trailers", 9232L);
+      mapBuilder.put("high-profile-vehicles", 9233L);
+      mapBuilder.put("wide-vehicles", 9234L);
+      mapBuilder.put("long-vehicles", 9235L);
+      mapBuilder.put("hazardous-loads", 9236L);
+      mapBuilder.put("exceptional-loads", 9237L);
+      mapBuilder.put("abnormal-loads", 9238L);
+      mapBuilder.put("convoys", 9239L);
+      mapBuilder.put("maintenance-vehicles", 9240L);
+      mapBuilder.put("delivery-vehicles", 9241L);
+      mapBuilder.put("vehicles-with-even-numbered-license-plates", 9242L);
+      mapBuilder.put("vehicles-with-odd-numbered-license-plates", 9243L);
+      mapBuilder.put("vehicles-with-parking-permits", 9244L);
+      mapBuilder.put("vehicles-with-catalytic-converters", 9245L);
+      mapBuilder.put("vehicles-without-catalytic-converters", 9246L);
+      mapBuilder.put("gas-powered-vehicles", 9247L);
+      mapBuilder.put("diesel-powered-vehicles", 9248L);
+      mapBuilder.put("lPG-vehicles", 9249L);
+      mapBuilder.put("military-convoys", 9250L);
+      mapBuilder.put("military-vehicles", 9251L);
+      mapBuilder.put("electric-powered-vehicles", 9252L);
+      mapBuilder.put("hybrid-powered-vehicles", 9253L);
+      mapBuilder.put("inherently-low-emission-vehicles", 9254L);
+      mapBuilder.put("commercial-vehicles", 9255L);
+      mapBuilder.put("runaway-vehicles", 9256L);
+      mapBuilder.put("vehicles-with-lugs", 9257L);
+      mapBuilder.put("motor-driven-cycles", 9258L);
+      mapBuilder.put("recreational-vehicles", 9259L);
+      mapBuilder.put("non-motorized-vehicles", 9260L);
+      mapBuilder.put("traffic", 9261L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<VehicleGroupAffected> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(VehicleGroupAffected::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(VehicleGroupAffected::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

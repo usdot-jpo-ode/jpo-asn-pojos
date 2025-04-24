@@ -23,35 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class TravelerGroupAffected extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("through-traffic", 9473L),
-          new SimpleEntry<>("holiday-traffic", 9474L),
-          new SimpleEntry<>("residents", 9475L),
-          new SimpleEntry<>("visitors", 9476L),
-          new SimpleEntry<>("long-distance-traffic", 9477L),
-          new SimpleEntry<>("local-traffic", 9478L),
-          new SimpleEntry<>("regional-traffic", 9479L),
-          new SimpleEntry<>("arrivals", 9480L),
-          new SimpleEntry<>("departures", 9481L),
-          new SimpleEntry<>("airline-travelers", 9482L),
-          new SimpleEntry<>("commuter-airline-travelers", 9483L),
-          new SimpleEntry<>("domestic-airline-travelers", 9484L),
-          new SimpleEntry<>("international-airline-travelers", 9485L),
-          new SimpleEntry<>("pedestrians", 9486L),
-          new SimpleEntry<>("bicyclists", 9487L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public TravelerGroupAffected() {
     super(0L, 65535L);
@@ -63,20 +44,48 @@ public class TravelerGroupAffected extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("through-traffic", 9473L);
+      mapBuilder.put("holiday-traffic", 9474L);
+      mapBuilder.put("residents", 9475L);
+      mapBuilder.put("visitors", 9476L);
+      mapBuilder.put("long-distance-traffic", 9477L);
+      mapBuilder.put("local-traffic", 9478L);
+      mapBuilder.put("regional-traffic", 9479L);
+      mapBuilder.put("arrivals", 9480L);
+      mapBuilder.put("departures", 9481L);
+      mapBuilder.put("airline-travelers", 9482L);
+      mapBuilder.put("commuter-airline-travelers", 9483L);
+      mapBuilder.put("domestic-airline-travelers", 9484L);
+      mapBuilder.put("international-airline-travelers", 9485L);
+      mapBuilder.put("pedestrians", 9486L);
+      mapBuilder.put("bicyclists", 9487L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<TravelerGroupAffected> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(TravelerGroupAffected::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(TravelerGroupAffected::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

@@ -23,60 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Obstruction extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("obstruction-on-roadway", 1281L),
-          new SimpleEntry<>("object-on-roadway", 1282L),
-          new SimpleEntry<>("objects-falling-from-moving-vehicle", 1283L),
-          new SimpleEntry<>("debris-on-roadway", 1284L),
-          new SimpleEntry<>("storm-damage", 1285L),
-          new SimpleEntry<>("people-on-roadway", 1286L),
-          new SimpleEntry<>("bicyclists-on-roadway", 1287L),
-          new SimpleEntry<>("sightseers-obstructing-access", 1288L),
-          new SimpleEntry<>("large-numbers-of-visitors", 1289L),
-          new SimpleEntry<>("animal-on-roadway", 1290L),
-          new SimpleEntry<>("large-animal-on-roadway", 1291L),
-          new SimpleEntry<>("herd-of-animals-on-roadway", 1292L),
-          new SimpleEntry<>("animal-struck", 1293L),
-          new SimpleEntry<>("advertising-signs", 1315L),
-          new SimpleEntry<>("fallen-trees", 1294L),
-          new SimpleEntry<>("over-turned-trees", 1311L),
-          new SimpleEntry<>("tree-limbs", 1312L),
-          new SimpleEntry<>("utility-pole-down", 1314L),
-          new SimpleEntry<>("downed-power-lines", 1295L),
-          new SimpleEntry<>("downed-cables", 1296L),
-          new SimpleEntry<>("subsidence", 1297L),
-          new SimpleEntry<>("road-surface-collapse", 1298L),
-          new SimpleEntry<>("frost-jacking", 1317L),
-          new SimpleEntry<>("frost-heave", 1316L),
-          new SimpleEntry<>("pavement-buckled", 1299L),
-          new SimpleEntry<>("pothole", 1300L),
-          new SimpleEntry<>("flooding", 1301L),
-          new SimpleEntry<>("broken-water-main", 1302L),
-          new SimpleEntry<>("collapsed-sewer", 1303L),
-          new SimpleEntry<>("wash-out", 1319L),
-          new SimpleEntry<>("washboard", 1318L),
-          new SimpleEntry<>("sewer-overflow", 1304L),
-          new SimpleEntry<>("gas-leak", 1305L),
-          new SimpleEntry<>("snowmelt", 1306L),
-          new SimpleEntry<>("mudslide", 1307L),
-          new SimpleEntry<>("avalanche", 1308L),
-          new SimpleEntry<>("rockfall", 1309L),
-          new SimpleEntry<>("landslide", 1310L),
-          new SimpleEntry<>("clearance-work", 1406L),
-          new SimpleEntry<>("obstruction-cleared", 1407L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public Obstruction() {
     super(0L, 65535L);
@@ -88,20 +44,73 @@ public class Obstruction extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("obstruction-on-roadway", 1281L);
+      mapBuilder.put("object-on-roadway", 1282L);
+      mapBuilder.put("objects-falling-from-moving-vehicle", 1283L);
+      mapBuilder.put("debris-on-roadway", 1284L);
+      mapBuilder.put("storm-damage", 1285L);
+      mapBuilder.put("people-on-roadway", 1286L);
+      mapBuilder.put("bicyclists-on-roadway", 1287L);
+      mapBuilder.put("sightseers-obstructing-access", 1288L);
+      mapBuilder.put("large-numbers-of-visitors", 1289L);
+      mapBuilder.put("animal-on-roadway", 1290L);
+      mapBuilder.put("large-animal-on-roadway", 1291L);
+      mapBuilder.put("herd-of-animals-on-roadway", 1292L);
+      mapBuilder.put("animal-struck", 1293L);
+      mapBuilder.put("advertising-signs", 1315L);
+      mapBuilder.put("fallen-trees", 1294L);
+      mapBuilder.put("over-turned-trees", 1311L);
+      mapBuilder.put("tree-limbs", 1312L);
+      mapBuilder.put("utility-pole-down", 1314L);
+      mapBuilder.put("downed-power-lines", 1295L);
+      mapBuilder.put("downed-cables", 1296L);
+      mapBuilder.put("subsidence", 1297L);
+      mapBuilder.put("road-surface-collapse", 1298L);
+      mapBuilder.put("frost-jacking", 1317L);
+      mapBuilder.put("frost-heave", 1316L);
+      mapBuilder.put("pavement-buckled", 1299L);
+      mapBuilder.put("pothole", 1300L);
+      mapBuilder.put("flooding", 1301L);
+      mapBuilder.put("broken-water-main", 1302L);
+      mapBuilder.put("collapsed-sewer", 1303L);
+      mapBuilder.put("wash-out", 1319L);
+      mapBuilder.put("washboard", 1318L);
+      mapBuilder.put("sewer-overflow", 1304L);
+      mapBuilder.put("gas-leak", 1305L);
+      mapBuilder.put("snowmelt", 1306L);
+      mapBuilder.put("mudslide", 1307L);
+      mapBuilder.put("avalanche", 1308L);
+      mapBuilder.put("rockfall", 1309L);
+      mapBuilder.put("landslide", 1310L);
+      mapBuilder.put("clearance-work", 1406L);
+      mapBuilder.put("obstruction-cleared", 1407L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<Obstruction> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(Obstruction::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Obstruction::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

@@ -23,35 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Winds extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("tornado", 5121L),
-          new SimpleEntry<>("hurricane", 5122L),
-          new SimpleEntry<>("hurricane-force-winds", 5123L),
-          new SimpleEntry<>("tropical-storm", 5124L),
-          new SimpleEntry<>("gale-force-winds", 5125L),
-          new SimpleEntry<>("storm-force-winds", 5126L),
-          new SimpleEntry<>("strong-winds", 5127L),
-          new SimpleEntry<>("moderate-winds", 5128L),
-          new SimpleEntry<>("light-winds", 5129L),
-          new SimpleEntry<>("calm", 5130L),
-          new SimpleEntry<>("gusty-winds", 5131L),
-          new SimpleEntry<>("crosswinds", 5132L),
-          new SimpleEntry<>("windy", 5133L),
-          new SimpleEntry<>("strong-winds-have-eased", 5246L),
-          new SimpleEntry<>("strong-wind-forecast-withdrawn", 5247L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public Winds() {
     super(0L, 65535L);
@@ -63,20 +44,48 @@ public class Winds extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("tornado", 5121L);
+      mapBuilder.put("hurricane", 5122L);
+      mapBuilder.put("hurricane-force-winds", 5123L);
+      mapBuilder.put("tropical-storm", 5124L);
+      mapBuilder.put("gale-force-winds", 5125L);
+      mapBuilder.put("storm-force-winds", 5126L);
+      mapBuilder.put("strong-winds", 5127L);
+      mapBuilder.put("moderate-winds", 5128L);
+      mapBuilder.put("light-winds", 5129L);
+      mapBuilder.put("calm", 5130L);
+      mapBuilder.put("gusty-winds", 5131L);
+      mapBuilder.put("crosswinds", 5132L);
+      mapBuilder.put("windy", 5133L);
+      mapBuilder.put("strong-winds-have-eased", 5246L);
+      mapBuilder.put("strong-wind-forecast-withdrawn", 5247L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<Winds> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(Winds::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Winds::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }

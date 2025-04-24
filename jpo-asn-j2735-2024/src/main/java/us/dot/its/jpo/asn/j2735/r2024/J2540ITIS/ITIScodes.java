@@ -23,2476 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ITIScodes extends Asn1Integer {
 
-  private static final Map<String, Long> nameValueMap =
-      Map.ofEntries(
-          new SimpleEntry<>("stopped-traffic", 257L),
-          new SimpleEntry<>("stop-and-go-traffic", 258L),
-          new SimpleEntry<>("slow-traffic", 259L),
-          new SimpleEntry<>("heavy-traffic", 260L),
-          new SimpleEntry<>("traffic-building", 261L),
-          new SimpleEntry<>("long-queues", 262L),
-          new SimpleEntry<>("traffic-congestion", 263L),
-          new SimpleEntry<>("traffic-lighter-than-normal", 264L),
-          new SimpleEntry<>("traffic-heavier-than-normal", 265L),
-          new SimpleEntry<>("traffic-much-heavier-than-normal", 266L),
-          new SimpleEntry<>("current-speed", 267L),
-          new SimpleEntry<>("speed-limit", 268L),
-          new SimpleEntry<>("travel-time", 269L),
-          new SimpleEntry<>("merging-traffic", 272L),
-          new SimpleEntry<>("contraflow", 273L),
-          new SimpleEntry<>("contraflow-canceled", 378L),
-          new SimpleEntry<>("traffic-flowing-freely", 379L),
-          new SimpleEntry<>("traffic-easing", 380L),
-          new SimpleEntry<>("traffic-returned-to-normal", 381L),
-          new SimpleEntry<>("no-problems-to-report", 382L),
-          new SimpleEntry<>("traffic-congestion-cleared", 383L),
-          new SimpleEntry<>("accident", 513L),
-          new SimpleEntry<>("serious-accident", 514L),
-          new SimpleEntry<>("injury-accident", 515L),
-          new SimpleEntry<>("minor-accident", 516L),
-          new SimpleEntry<>("multi-vehicle-accident", 517L),
-          new SimpleEntry<>("numerous-accidents", 518L),
-          new SimpleEntry<>("accident-involving-a-bicycle", 519L),
-          new SimpleEntry<>("accident-involving-a-bus", 520L),
-          new SimpleEntry<>("accident-involving-a-motorcycle", 521L),
-          new SimpleEntry<>("accident-involving-a-pedestrian", 522L),
-          new SimpleEntry<>("accident-involving-a-train", 523L),
-          new SimpleEntry<>("accident-involving-a-truck", 524L),
-          new SimpleEntry<>("accident-involving-a-semi-trailer", 562L),
-          new SimpleEntry<>("accident-involving-hazardous-materials", 525L),
-          new SimpleEntry<>("earlier-accident", 526L),
-          new SimpleEntry<>("medical-emergency", 527L),
-          new SimpleEntry<>("secondary-accident", 528L),
-          new SimpleEntry<>("rescue-and-recovery-work-REMOVED", 529L),
-          new SimpleEntry<>("accident-investigation-work", 530L),
-          new SimpleEntry<>("incident", 531L),
-          new SimpleEntry<>("stalled-vehicle", 532L),
-          new SimpleEntry<>("abandoned-vehicle", 533L),
-          new SimpleEntry<>("disabled-vehicle", 534L),
-          new SimpleEntry<>("disabled-truck", 535L),
-          new SimpleEntry<>("disabled-semi-trailer", 536L),
-          new SimpleEntry<>("disabled-bus", 537L),
-          new SimpleEntry<>("disabled-train", 538L),
-          new SimpleEntry<>("vehicle-spun-out", 539L),
-          new SimpleEntry<>("vehicle-on-fire", 540L),
-          new SimpleEntry<>("vehicle-in-water", 541L),
-          new SimpleEntry<>("vehicles-slowing-to-look-at-accident", 542L),
-          new SimpleEntry<>("jackknifed-semi-trailer", 543L),
-          new SimpleEntry<>("jackknifed-trailer-home", 544L),
-          new SimpleEntry<>("jackknifed-trailer", 545L),
-          new SimpleEntry<>("spillage-occurring-from-moving-vehicle", 546L),
-          new SimpleEntry<>("acid-spill", 547L),
-          new SimpleEntry<>("chemical-spill", 548L),
-          new SimpleEntry<>("fuel-spill", 549L),
-          new SimpleEntry<>("hazardous-materials-spill", 550L),
-          new SimpleEntry<>("oil-spill", 551L),
-          new SimpleEntry<>("spilled-load", 552L),
-          new SimpleEntry<>("toxic-spill", 553L),
-          new SimpleEntry<>("overturned-vehicle", 554L),
-          new SimpleEntry<>("overturned-truck", 555L),
-          new SimpleEntry<>("overturned-semi-trailer", 556L),
-          new SimpleEntry<>("overturned-bus", 557L),
-          new SimpleEntry<>("derailed-train", 558L),
-          new SimpleEntry<>("stuck-vehicle", 559L),
-          new SimpleEntry<>("truck-stuck-under-bridge", 560L),
-          new SimpleEntry<>("bus-stuck-under-bridge", 561L),
-          new SimpleEntry<>("accident-cleared", 638L),
-          new SimpleEntry<>("incident-cleared", 639L),
-          new SimpleEntry<>("closed-to-traffic", 769L),
-          new SimpleEntry<>("closed", 770L),
-          new SimpleEntry<>("closed-ahead", 771L),
-          new SimpleEntry<>("closed-intermittently", 772L),
-          new SimpleEntry<>("closed-for-repairs", 773L),
-          new SimpleEntry<>("closed-for-the-season", 774L),
-          new SimpleEntry<>("blocked", 775L),
-          new SimpleEntry<>("blocked-ahead", 776L),
-          new SimpleEntry<>("reduced-to-one-lane", 777L),
-          new SimpleEntry<>("reduced-to-two-lanes", 778L),
-          new SimpleEntry<>("reduced-to-three-lanes", 779L),
-          new SimpleEntry<>("collapse", 780L),
-          new SimpleEntry<>("out", 781L),
-          new SimpleEntry<>("open-to-traffic", 891L),
-          new SimpleEntry<>("open", 892L),
-          new SimpleEntry<>("reopened-to-traffic", 893L),
-          new SimpleEntry<>("clearing", 894L),
-          new SimpleEntry<>("cleared-from-road", 895L),
-          new SimpleEntry<>("road-construction", 1025L),
-          new SimpleEntry<>("major-road-construction", 1026L),
-          new SimpleEntry<>("long-term-road-construction", 1027L),
-          new SimpleEntry<>("construction-work", 1028L),
-          new SimpleEntry<>("paving-operations", 1029L),
-          new SimpleEntry<>("work-in-the-median", 1030L),
-          new SimpleEntry<>("road-reconstruction", 1031L),
-          new SimpleEntry<>("opposing-traffic", 1032L),
-          new SimpleEntry<>("narrow-lanes", 1033L),
-          new SimpleEntry<>("construction-traffic-merging", 1034L),
-          new SimpleEntry<>("single-line-traffic-alternating-directions", 1035L),
-          new SimpleEntry<>("road-maintenance-operations", 1036L),
-          new SimpleEntry<>("road-marking-operations", 1037L),
-          new SimpleEntry<>("road-widening", 1061L),
-          new SimpleEntry<>("cracks", 1052L),
-          new SimpleEntry<>("crack-REMOVE", 1058L),
-          new SimpleEntry<>("bumps", 1053L),
-          new SimpleEntry<>("drop-off", 1059L),
-          new SimpleEntry<>("storm-drain", 1054L),
-          new SimpleEntry<>("bridge-maintenance-operations", 1038L),
-          new SimpleEntry<>("bridge-construction", 1039L),
-          new SimpleEntry<>("bridge-demolition-work", 1040L),
-          new SimpleEntry<>("seismic-retrofit", 1060L),
-          new SimpleEntry<>("overgrown-grass", 1055L),
-          new SimpleEntry<>("overgrown-brushshrubs", 1056L),
-          new SimpleEntry<>("overgrown-trees", 1057L),
-          new SimpleEntry<>("blasting", 1041L),
-          new SimpleEntry<>("avalanche-control-activities", 1042L),
-          new SimpleEntry<>("water-main-work", 1043L),
-          new SimpleEntry<>("gas-main-work", 1044L),
-          new SimpleEntry<>("work-on-underground-cables", 1045L),
-          new SimpleEntry<>("work-on-underground-services", 1046L),
-          new SimpleEntry<>("new-road-construction-layout", 1047L),
-          new SimpleEntry<>("new-road-layout", 1048L),
-          new SimpleEntry<>("temporary-lane-markings", 1049L),
-          new SimpleEntry<>("temporary-traffic-lights", 1050L),
-          new SimpleEntry<>("emergency-maintenance", 1051L),
-          new SimpleEntry<>("utility-work", 1062L),
-          new SimpleEntry<>("road-maintenance-cleared", 1146L),
-          new SimpleEntry<>("normal-road-layout-restored", 1147L),
-          new SimpleEntry<>("road-work-clearance-in-progress", 1148L),
-          new SimpleEntry<>("road-construction-cleared", 1149L),
-          new SimpleEntry<>("normal-traffic-lanes-restored", 1150L),
-          new SimpleEntry<>("road-work-cleared", 1151L),
-          new SimpleEntry<>("obstruction-on-roadway", 1281L),
-          new SimpleEntry<>("object-on-roadway", 1282L),
-          new SimpleEntry<>("objects-falling-from-moving-vehicle", 1283L),
-          new SimpleEntry<>("debris-on-roadway", 1284L),
-          new SimpleEntry<>("storm-damage", 1285L),
-          new SimpleEntry<>("people-on-roadway", 1286L),
-          new SimpleEntry<>("bicyclists-on-roadway", 1287L),
-          new SimpleEntry<>("sightseers-obstructing-access", 1288L),
-          new SimpleEntry<>("large-numbers-of-visitors", 1289L),
-          new SimpleEntry<>("animal-on-roadway", 1290L),
-          new SimpleEntry<>("large-animal-on-roadway", 1291L),
-          new SimpleEntry<>("herd-of-animals-on-roadway", 1292L),
-          new SimpleEntry<>("animal-struck", 1293L),
-          new SimpleEntry<>("advertising-signs", 1315L),
-          new SimpleEntry<>("fallen-trees", 1294L),
-          new SimpleEntry<>("over-turned-trees", 1311L),
-          new SimpleEntry<>("tree-limbs", 1312L),
-          new SimpleEntry<>("utility-pole-down", 1314L),
-          new SimpleEntry<>("downed-power-lines", 1295L),
-          new SimpleEntry<>("downed-cables", 1296L),
-          new SimpleEntry<>("subsidence", 1297L),
-          new SimpleEntry<>("road-surface-collapse", 1298L),
-          new SimpleEntry<>("frost-jacking", 1317L),
-          new SimpleEntry<>("frost-heave", 1316L),
-          new SimpleEntry<>("pavement-buckled", 1299L),
-          new SimpleEntry<>("pothole", 1300L),
-          new SimpleEntry<>("flooding", 1301L),
-          new SimpleEntry<>("broken-water-main", 1302L),
-          new SimpleEntry<>("collapsed-sewer", 1303L),
-          new SimpleEntry<>("wash-out", 1319L),
-          new SimpleEntry<>("washboard", 1318L),
-          new SimpleEntry<>("sewer-overflow", 1304L),
-          new SimpleEntry<>("gas-leak", 1305L),
-          new SimpleEntry<>("snowmelt", 1306L),
-          new SimpleEntry<>("mudslide", 1307L),
-          new SimpleEntry<>("avalanche", 1308L),
-          new SimpleEntry<>("rockfall", 1309L),
-          new SimpleEntry<>("landslide", 1310L),
-          new SimpleEntry<>("clearance-work", 1406L),
-          new SimpleEntry<>("obstruction-cleared", 1407L),
-          new SimpleEntry<>("delays", 1537L),
-          new SimpleEntry<>("short-delays", 1538L),
-          new SimpleEntry<>("long-delays", 1539L),
-          new SimpleEntry<>("very-long-delays", 1540L),
-          new SimpleEntry<>("delays-of-uncertain-duration", 1541L),
-          new SimpleEntry<>("delayed-until-further-notice", 1542L),
-          new SimpleEntry<>("busy", 1543L),
-          new SimpleEntry<>("very-busy", 1544L),
-          new SimpleEntry<>("crowded", 1545L),
-          new SimpleEntry<>("overcrowded", 1546L),
-          new SimpleEntry<>("cancellations", 1547L),
-          new SimpleEntry<>("route-canceled-and-no-replacement", 1548L),
-          new SimpleEntry<>("service-canceled", 1549L),
-          new SimpleEntry<>("service-suspended", 1550L),
-          new SimpleEntry<>("service-withdrawn", 1551L),
-          new SimpleEntry<>("service-fully-booked", 1552L),
-          new SimpleEntry<>("all-services-fully-booked", 1553L),
-          new SimpleEntry<>("next-departure", 1554L),
-          new SimpleEntry<>("next-arrival", 1555L),
-          new SimpleEntry<>("very-frequent-service", 1556L),
-          new SimpleEntry<>("frequent-service", 1557L),
-          new SimpleEntry<>("fairly-frequent-service", 1558L),
-          new SimpleEntry<>("regular-service", 1559L),
-          new SimpleEntry<>("irregular-service", 1560L),
-          new SimpleEntry<>("not-operating", 1561L),
-          new SimpleEntry<>("system-busy", 1562L),
-          new SimpleEntry<>("system-very-busy", 1563L),
-          new SimpleEntry<>("system-crowded", 1564L),
-          new SimpleEntry<>("system-overcrowded", 1565L),
-          new SimpleEntry<>("deleted-travel-time", 1566L),
-          new SimpleEntry<>("headway", 1567L),
-          new SimpleEntry<>("extra-services-in-operation", 1568L),
-          new SimpleEntry<>("delays-clearing", 1660L),
-          new SimpleEntry<>("delays-cleared", 1661L),
-          new SimpleEntry<>("normal-services-resumed", 1662L),
-          new SimpleEntry<>("operating", 1663L),
-          new SimpleEntry<>("vehicle-traveling-wrong-way", 1793L),
-          new SimpleEntry<>("reckless-driver", 1794L),
-          new SimpleEntry<>("prohibited-vehicle-on-roadway", 1795L),
-          new SimpleEntry<>("emergency-vehicles-on-roadway", 1796L),
-          new SimpleEntry<>("high-speed-emergency-vehicles", 1797L),
-          new SimpleEntry<>("high-speed-chase", 1798L),
-          new SimpleEntry<>("dangerous-vehicle-warning-cleared", 1918L),
-          new SimpleEntry<>("emergency-vehicle-warning-cleared", 1919L),
-          new SimpleEntry<>("abnormal-load", 2049L),
-          new SimpleEntry<>("wide-load", 2050L),
-          new SimpleEntry<>("long-load", 2051L),
-          new SimpleEntry<>("slow-vehicle", 2052L),
-          new SimpleEntry<>("farm-equipment", 2053L),
-          new SimpleEntry<>("horse-drawn-vehicles", 2054L),
-          new SimpleEntry<>("overheight-load", 2055L),
-          new SimpleEntry<>("overweight-load", 2056L),
-          new SimpleEntry<>("tracked-vehicle", 2057L),
-          new SimpleEntry<>("vehicle-carrying-hazardous-materials", 2058L),
-          new SimpleEntry<>("slow-moving-maintenance-vehicle", 2059L),
-          new SimpleEntry<>("convoy", 2060L),
-          new SimpleEntry<>("military-convoy", 2061L),
-          new SimpleEntry<>("refugee-convoy", 2062L),
-          new SimpleEntry<>("motorcade", 2063L),
-          new SimpleEntry<>("mobile-situation-repositioning", 2064L),
-          new SimpleEntry<>("winter-maintenance-vehicles", 2065L),
-          new SimpleEntry<>("snowplows", 2066L),
-          new SimpleEntry<>("slow-moving-maintenance-vehicle-warning-cleared", 2172L),
-          new SimpleEntry<>("exceptional-load-warning-cleared", 2173L),
-          new SimpleEntry<>("hazardous-load-warning-cleared", 2174L),
-          new SimpleEntry<>("convoy-cleared", 2175L),
-          new SimpleEntry<>("lane-control-signs-not-working", 2305L),
-          new SimpleEntry<>("lane-control-signs-working-incorrectly", 2306L),
-          new SimpleEntry<>("lane-control-signs-operating", 2307L),
-          new SimpleEntry<>("variable-message-signs-not-working", 2308L),
-          new SimpleEntry<>("variable-message-signs-working-incorrectly", 2309L),
-          new SimpleEntry<>("variable-message-signs-operating", 2310L),
-          new SimpleEntry<>("emergency-telephones-not-working", 2311L),
-          new SimpleEntry<>("emergency-telephone-number-not-working", 2312L),
-          new SimpleEntry<>("traffic-lights-not-working", 2313L),
-          new SimpleEntry<>("traffic-lights-working-incorrectly", 2314L),
-          new SimpleEntry<>("ramp-control-signals-not-working", 2315L),
-          new SimpleEntry<>("ramp-control-signals-working-incorrectly", 2316L),
-          new SimpleEntry<>("temporary-traffic-lights-not-working", 2317L),
-          new SimpleEntry<>("temporary-traffic-lights-working-incorrectly", 2318L),
-          new SimpleEntry<>("traffic-signal-control-computer-not-working", 2319L),
-          new SimpleEntry<>("traffic-signal-timings-changed", 2320L),
-          new SimpleEntry<>("overheight-warning-system-triggered", 2321L),
-          new SimpleEntry<>("equipment-failure", 2322L),
-          new SimpleEntry<>("railroad-crossing-equipment-failure", 2323L),
-          new SimpleEntry<>("tunnel-ventilation-not-working", 2324L),
-          new SimpleEntry<>("power-failure", 2325L),
-          new SimpleEntry<>("widespread-power-outages", 2326L),
-          new SimpleEntry<>("technical-problems", 2327L),
-          new SimpleEntry<>("sign-down", 2328L),
-          new SimpleEntry<>("lines-in-road-faded", 2329L),
-          new SimpleEntry<>("damaged-light-standard", 2330L),
-          new SimpleEntry<>("traffic-signal-stuck-on-flash", 2331L),
-          new SimpleEntry<>("guide-rail", 2332L),
-          new SimpleEntry<>("fencing", 2333L),
-          new SimpleEntry<>("light-standard-hanging-by-wires", 2334L),
-          new SimpleEntry<>("call-box", 2335L),
-          new SimpleEntry<>("signal-cabinet", 2336L),
-          new SimpleEntry<>("detector", 2337L),
-          new SimpleEntry<>("improper-use-of-State-vehicle-or-equipment", 2338L),
-          new SimpleEntry<>("bulb-out", 2339L),
-          new SimpleEntry<>("not-yet-operational", 2340L),
-          new SimpleEntry<>("not-yet-installed", 2341L),
-          new SimpleEntry<>("electronic-signs-repaired", 2428L),
-          new SimpleEntry<>("emergency-call-facilities-restored", 2429L),
-          new SimpleEntry<>("traffic-signals-repaired", 2430L),
-          new SimpleEntry<>("railroad-crossing-equipment-now-working-normally", 2431L),
-          new SimpleEntry<>("restrictions", 2561L),
-          new SimpleEntry<>("ramp-restrictions", 2562L),
-          new SimpleEntry<>("truck-restriction", 2563L),
-          new SimpleEntry<>("speed-restriction", 2564L),
-          new SimpleEntry<>("noise-restriction", 2565L),
-          new SimpleEntry<>("traffic-regulations-have-been-changed", 2566L),
-          new SimpleEntry<>("local-access-only", 2567L),
-          new SimpleEntry<>("no-trailers", 2568L),
-          new SimpleEntry<>("no-high-profile-vehicles", 2569L),
-          new SimpleEntry<>("hazardous-materials-truck-restriction", 2570L),
-          new SimpleEntry<>("no-through-traffic", 2571L),
-          new SimpleEntry<>("no-motor-vehicles", 2572L),
-          new SimpleEntry<>("width-limit", 2573L),
-          new SimpleEntry<>("height-limit", 2574L),
-          new SimpleEntry<>("length-limit", 2575L),
-          new SimpleEntry<>("axle-load-limit", 2576L),
-          new SimpleEntry<>("gross-weight-limit", 2577L),
-          new SimpleEntry<>("axle-count-limit", 2578L),
-          new SimpleEntry<>("carpool-lane-available", 2579L),
-          new SimpleEntry<>("carpool-restrictions-changed", 2580L),
-          new SimpleEntry<>("hOV-2-no-single-occupant-vehicles", 2581L),
-          new SimpleEntry<>("hOV-3-no-vehicles-with-less-than-three-occupants", 2582L),
-          new SimpleEntry<>("bus-lane-available-for-all-vehicles", 2583L),
-          new SimpleEntry<>("truck-lane-available-for-all-vehicles", 2584L),
-          new SimpleEntry<>("permits-call-in-basis", 2585L),
-          new SimpleEntry<>("permits-temporarily-closed", 2586L),
-          new SimpleEntry<>("permits-closed", 2587L),
-          new SimpleEntry<>("road-use-permits-required", 2588L),
-          new SimpleEntry<>("permits-open", 2675L),
-          new SimpleEntry<>("restrictions-for-high-profile-vehicles-lifted", 2676L),
-          new SimpleEntry<>("width-limit-lifted", 2677L),
-          new SimpleEntry<>("height-limit-lifted", 2678L),
-          new SimpleEntry<>("length-limit-lifted", 2679L),
-          new SimpleEntry<>("axle-load-limit-lifted", 2680L),
-          new SimpleEntry<>("weight-limit-lifted", 2681L),
-          new SimpleEntry<>("axle-count-limit-lifted", 2682L),
-          new SimpleEntry<>("carpool-restrictions-lifted", 2683L),
-          new SimpleEntry<>("lane-restrictions-lifted", 2684L),
-          new SimpleEntry<>("ramp-restrictions-lifted", 2685L),
-          new SimpleEntry<>("motor-vehicle-restrictions-lifted", 2686L),
-          new SimpleEntry<>("restrictions-lifted", 2687L),
-          new SimpleEntry<>("unconfirmed-report", 2817L),
-          new SimpleEntry<>("initial-response-en-route", 2818L),
-          new SimpleEntry<>("follow-up-response-en-route", 2819L),
-          new SimpleEntry<>("initial-response-on-scene", 2820L),
-          new SimpleEntry<>("follow-up-response-on-scene", 2821L),
-          new SimpleEntry<>("confirmed-report", 2822L),
-          new SimpleEntry<>("scene-is-unsecured-at-this-time", 2823L),
-          new SimpleEntry<>("response-scene-secured", 2824L),
-          new SimpleEntry<>("rescue-and-recovery-work-in-progress", 2825L),
-          new SimpleEntry<>("extraction-in-progress", 2826L),
-          new SimpleEntry<>("clearance-work-in-progress", 2827L),
-          new SimpleEntry<>("body-removal-operations", 2828L),
-          new SimpleEntry<>("fire-containment-contained", 2829L),
-          new SimpleEntry<>("fire-containment-not-contained", 2830L),
-          new SimpleEntry<>("event-cleared", 2831L),
-          new SimpleEntry<>("traffic-clearing", 2832L),
-          new SimpleEntry<>("incident-closed", 2833L),
-          new SimpleEntry<>("flash-flood", 3073L),
-          new SimpleEntry<>("major-flood", 3074L),
-          new SimpleEntry<>("reservoir-failure", 3075L),
-          new SimpleEntry<>("levee-failure", 3076L),
-          new SimpleEntry<>("tsunami", 3077L),
-          new SimpleEntry<>("tidal-wave", 3078L),
-          new SimpleEntry<>("volcanic-eruption", 3079L),
-          new SimpleEntry<>("ash-fall", 3080L),
-          new SimpleEntry<>("lava-flow", 3081L),
-          new SimpleEntry<>("serious-fire", 3082L),
-          new SimpleEntry<>("forest-fire", 3083L),
-          new SimpleEntry<>("wildfire", 3084L),
-          new SimpleEntry<>("building-fire", 3085L),
-          new SimpleEntry<>("brush-fire", 3086L),
-          new SimpleEntry<>("grass-fire", 3087L),
-          new SimpleEntry<>("fire-danger-extreme", 3088L),
-          new SimpleEntry<>("fire-danger-very-high", 3089L),
-          new SimpleEntry<>("fire-danger-high", 3090L),
-          new SimpleEntry<>("fire-danger-medium", 3091L),
-          new SimpleEntry<>("fire-danger-low", 3092L),
-          new SimpleEntry<>("earthquake-damage", 3093L),
-          new SimpleEntry<>("air-crash", 3094L),
-          new SimpleEntry<>("rail-crash", 3095L),
-          new SimpleEntry<>("toxic-release", 3096L),
-          new SimpleEntry<>("toxic-leak", 3097L),
-          new SimpleEntry<>("radioactive-release", 3098L),
-          new SimpleEntry<>("radiation-hazard", 3099L),
-          new SimpleEntry<>("reactor-leakage", 3100L),
-          new SimpleEntry<>("explosion", 3101L),
-          new SimpleEntry<>("major-hazardous-materials-fire", 3102L),
-          new SimpleEntry<>("major-hazardous-materials-release", 3103L),
-          new SimpleEntry<>("disaster-cleared", 3199L),
-          new SimpleEntry<>("assault", 3329L),
-          new SimpleEntry<>("crime", 3330L),
-          new SimpleEntry<>("robbery", 3331L),
-          new SimpleEntry<>("fare-dispute", 3332L),
-          new SimpleEntry<>("shooting", 3333L),
-          new SimpleEntry<>("gunfire-on-roadway", 3334L),
-          new SimpleEntry<>("suicide", 3335L),
-          new SimpleEntry<>("fight", 3336L),
-          new SimpleEntry<>("gang-fight", 3337L),
-          new SimpleEntry<>("person-harassment", 3338L),
-          new SimpleEntry<>("person-injured", 3339L),
-          new SimpleEntry<>("sick-customer", 3363L),
-          new SimpleEntry<>("unruly-passenger", 3340L),
-          new SimpleEntry<>("person-intoxicated", 3341L),
-          new SimpleEntry<>("crowd-control-problem", 3342L),
-          new SimpleEntry<>("demonstration", 3343L),
-          new SimpleEntry<>("march", 3344L),
-          new SimpleEntry<>("public-disturbance", 3345L),
-          new SimpleEntry<>("riot", 3346L),
-          new SimpleEntry<>("civil-unrest", 3347L),
-          new SimpleEntry<>("civil-emergency", 3348L),
-          new SimpleEntry<>("strike", 3349L),
-          new SimpleEntry<>("public-transit-strike", 3350L),
-          new SimpleEntry<>("stampede", 3351L),
-          new SimpleEntry<>("teargas-used", 3352L),
-          new SimpleEntry<>("security-alert", 3353L),
-          new SimpleEntry<>("security-incident", 3354L),
-          new SimpleEntry<>("checkpoint", 3355L),
-          new SimpleEntry<>("bomb-alert", 3356L),
-          new SimpleEntry<>("terrorist-incident", 3357L),
-          new SimpleEntry<>("high-velocity-shell-fire", 3358L),
-          new SimpleEntry<>("explosives-in-use", 3359L),
-          new SimpleEntry<>("air-raid", 3360L),
-          new SimpleEntry<>("weapons-of-mass-destruction-threat", 3361L),
-          new SimpleEntry<>("military-operations", 3362L),
-          new SimpleEntry<>("security-problem-cleared", 3454L),
-          new SimpleEntry<>("traffic-disturbance-cleared", 3455L),
-          new SimpleEntry<>("sports-event", 3585L),
-          new SimpleEntry<>("game", 3586L),
-          new SimpleEntry<>("tournament", 3587L),
-          new SimpleEntry<>("track-and-field-event", 3588L),
-          new SimpleEntry<>("baseball-game", 3589L),
-          new SimpleEntry<>("basketball-game", 3590L),
-          new SimpleEntry<>("boxing-match", 3591L),
-          new SimpleEntry<>("football-game", 3592L),
-          new SimpleEntry<>("soccer-game", 3593L),
-          new SimpleEntry<>("golf-tournament", 3594L),
-          new SimpleEntry<>("hockey-game", 3595L),
-          new SimpleEntry<>("tennis-tournament", 3596L),
-          new SimpleEntry<>("wrestling-match", 3597L),
-          new SimpleEntry<>("road-race", 3598L),
-          new SimpleEntry<>("automobile-race", 3599L),
-          new SimpleEntry<>("bicycle-race", 3600L),
-          new SimpleEntry<>("race-event", 3601L),
-          new SimpleEntry<>("marathon", 3602L),
-          new SimpleEntry<>("horse-show", 3603L),
-          new SimpleEntry<>("rodeo", 3604L),
-          new SimpleEntry<>("water-sports-event", 3605L),
-          new SimpleEntry<>("winter-sports-event", 3606L),
-          new SimpleEntry<>("skating-event", 3607L),
-          new SimpleEntry<>("dog-sled-race", 3608L),
-          new SimpleEntry<>("sporting-event-ended", 3711L),
-          new SimpleEntry<>("major-event", 3841L),
-          new SimpleEntry<>("airshow", 3842L),
-          new SimpleEntry<>("hot-air-ballooning", 3843L),
-          new SimpleEntry<>("concert", 3844L),
-          new SimpleEntry<>("state-occasion", 3845L),
-          new SimpleEntry<>("vIP-visit", 3846L),
-          new SimpleEntry<>("show", 3847L),
-          new SimpleEntry<>("festival", 3848L),
-          new SimpleEntry<>("exhibition", 3849L),
-          new SimpleEntry<>("performing-arts", 3850L),
-          new SimpleEntry<>("outdoor-market", 3851L),
-          new SimpleEntry<>("fair", 3852L),
-          new SimpleEntry<>("carnival", 3853L),
-          new SimpleEntry<>("fireworks-display", 3854L),
-          new SimpleEntry<>("trade-expo", 3855L),
-          new SimpleEntry<>("movie-filming", 3856L),
-          new SimpleEntry<>("presidential-visit", 3857L),
-          new SimpleEntry<>("parade", 3858L),
-          new SimpleEntry<>("procession", 3859L),
-          new SimpleEntry<>("funeral-procession", 3860L),
-          new SimpleEntry<>("crowd", 3861L),
-          new SimpleEntry<>("holiday-traffic-crowds", 3862L),
-          new SimpleEntry<>("event-ended", 3967L),
-          new SimpleEntry<>("normal-parking-restrictions-lifted", 4097L),
-          new SimpleEntry<>("parking-meter-restrictions-lifted", 4098L),
-          new SimpleEntry<>("special-parking-restrictions-in-force", 4099L),
-          new SimpleEntry<>("full-parking-lot", 4100L),
-          new SimpleEntry<>("full-parking-garage", 4101L),
-          new SimpleEntry<>("all-parking-lots-full", 4102L),
-          new SimpleEntry<>("no-parking-spaces-available", 4103L),
-          new SimpleEntry<>("only-a-few-spaces-available", 4104L),
-          new SimpleEntry<>("spaces-available", 4105L),
-          new SimpleEntry<>("no-parking", 4106L),
-          new SimpleEntry<>("parking-on-one-side-of-street-only", 4107L),
-          new SimpleEntry<>("parking-on-both-sides-of-street", 4108L),
-          new SimpleEntry<>("parallel-parking-only", 4109L),
-          new SimpleEntry<>("parking-meters-not-available", 4110L),
-          new SimpleEntry<>("use-of-parking-meters-restricted", 4111L),
-          new SimpleEntry<>("event-parking", 4112L),
-          new SimpleEntry<>("handicapped-parking", 4113L),
-          new SimpleEntry<>("long-term-parking", 4114L),
-          new SimpleEntry<>("overnight-parking", 4115L),
-          new SimpleEntry<>("short-term-parking", 4116L),
-          new SimpleEntry<>("parking-by-permit-only", 4117L),
-          new SimpleEntry<>("emergency-parking-only", 4118L),
-          new SimpleEntry<>("emergency-stopping-only", 4119L),
-          new SimpleEntry<>("parking", 4120L),
-          new SimpleEntry<>("stopping", 4121L),
-          new SimpleEntry<>("standing", 4122L),
-          new SimpleEntry<>("tow-away-zone", 4123L),
-          new SimpleEntry<>("school-zone", 4124L),
-          new SimpleEntry<>("speed-zone", 4125L),
-          new SimpleEntry<>("loading-zone", 4126L),
-          new SimpleEntry<>("state-law", 4127L),
-          new SimpleEntry<>("van-accessible", 4128L),
-          new SimpleEntry<>("special-parking-restrictions-lifted", 4222L),
-          new SimpleEntry<>("no-parking-information-available", 4223L),
-          new SimpleEntry<>("information-available-on-radio", 4353L),
-          new SimpleEntry<>("information-available-on-TV", 4354L),
-          new SimpleEntry<>("call-to-get-information", 4355L),
-          new SimpleEntry<>("information-available-via-Internet", 4356L),
-          new SimpleEntry<>("test-message", 4357L),
-          new SimpleEntry<>("no-information-available", 4358L),
-          new SimpleEntry<>("null-description", 4359L),
-          new SimpleEntry<>("police-assistance", 4361L),
-          new SimpleEntry<>("police-monitor-CB", 4362L),
-          new SimpleEntry<>("emergency-notification", 4363L),
-          new SimpleEntry<>("in-emergency-dial-911", 4364L),
-          new SimpleEntry<>("travel-Info-call-511", 4365L),
-          new SimpleEntry<>("car-pool-information", 4366L),
-          new SimpleEntry<>("information-service-resumed", 4478L),
-          new SimpleEntry<>("information-service-is-being-suspended", 4360L),
-          new SimpleEntry<>("message-canceled", 4479L),
-          new SimpleEntry<>("overcast", 4609L),
-          new SimpleEntry<>("cloudy", 4610L),
-          new SimpleEntry<>("mostly-cloudy", 4611L),
-          new SimpleEntry<>("partly-cloudy", 4612L),
-          new SimpleEntry<>("partly-sunny", 4613L),
-          new SimpleEntry<>("mostly-sunny", 4614L),
-          new SimpleEntry<>("sunny", 4615L),
-          new SimpleEntry<>("fair-skies", 4616L),
-          new SimpleEntry<>("clear-skies", 4617L),
-          new SimpleEntry<>("mostly-clear", 4618L),
-          new SimpleEntry<>("mostly-dry", 4619L),
-          new SimpleEntry<>("dry", 4620L),
-          new SimpleEntry<>("uV-index-very-high", 4621L),
-          new SimpleEntry<>("uV-index-high", 4622L),
-          new SimpleEntry<>("uV-index-moderate", 4623L),
-          new SimpleEntry<>("uV-index-low", 4624L),
-          new SimpleEntry<>("uV-index-very-low", 4625L),
-          new SimpleEntry<>("barometric-pressure", 4626L),
-          new SimpleEntry<>("ozone-alert", 4627L),
-          new SimpleEntry<>("lighting-unknown", 4628L),
-          new SimpleEntry<>("artificial-exterior-light", 4629L),
-          new SimpleEntry<>("artificial-interior-light", 4630L),
-          new SimpleEntry<>("darkness", 4631L),
-          new SimpleEntry<>("dusk", 4632L),
-          new SimpleEntry<>("dawn", 4633L),
-          new SimpleEntry<>("moonlight", 4634L),
-          new SimpleEntry<>("daylight", 4635L),
-          new SimpleEntry<>("weather-forecast-withdrawn", 4735L),
-          new SimpleEntry<>("severe-weather", 4865L),
-          new SimpleEntry<>("blizzard", 4866L),
-          new SimpleEntry<>("heavy-snow", 4867L),
-          new SimpleEntry<>("snow", 4868L),
-          new SimpleEntry<>("light-snow", 4869L),
-          new SimpleEntry<>("snow-showers", 4870L),
-          new SimpleEntry<>("winter-storm", 4871L),
-          new SimpleEntry<>("ice-glaze", 4872L),
-          new SimpleEntry<>("heavy-frost", 4873L),
-          new SimpleEntry<>("frost", 4874L),
-          new SimpleEntry<>("ice-storm", 4875L),
-          new SimpleEntry<>("sleet", 4876L),
-          new SimpleEntry<>("rain-and-snow-mixed", 4877L),
-          new SimpleEntry<>("rain-changing-to-snow", 4878L),
-          new SimpleEntry<>("damaging-hail", 4879L),
-          new SimpleEntry<>("hail", 4880L),
-          new SimpleEntry<>("thunderstorms", 4881L),
-          new SimpleEntry<>("thundershowers", 4882L),
-          new SimpleEntry<>("extremely-heavy-downpour", 4883L),
-          new SimpleEntry<>("heavy-rain", 4884L),
-          new SimpleEntry<>("rain", 4885L),
-          new SimpleEntry<>("light-rain", 4886L),
-          new SimpleEntry<>("drizzle", 4887L),
-          new SimpleEntry<>("showers", 4888L),
-          new SimpleEntry<>("dew", 4889L),
-          new SimpleEntry<>("precipitation-cleared", 4991L),
-          new SimpleEntry<>("tornado", 5121L),
-          new SimpleEntry<>("hurricane", 5122L),
-          new SimpleEntry<>("hurricane-force-winds", 5123L),
-          new SimpleEntry<>("tropical-storm", 5124L),
-          new SimpleEntry<>("gale-force-winds", 5125L),
-          new SimpleEntry<>("storm-force-winds", 5126L),
-          new SimpleEntry<>("strong-winds", 5127L),
-          new SimpleEntry<>("moderate-winds", 5128L),
-          new SimpleEntry<>("light-winds", 5129L),
-          new SimpleEntry<>("calm", 5130L),
-          new SimpleEntry<>("gusty-winds", 5131L),
-          new SimpleEntry<>("crosswinds", 5132L),
-          new SimpleEntry<>("windy", 5133L),
-          new SimpleEntry<>("strong-winds-have-eased", 5246L),
-          new SimpleEntry<>("strong-wind-forecast-withdrawn", 5247L),
-          new SimpleEntry<>("dense-fog", 5377L),
-          new SimpleEntry<>("fog", 5378L),
-          new SimpleEntry<>("patchy-fog", 5379L),
-          new SimpleEntry<>("freezing-fog", 5380L),
-          new SimpleEntry<>("ice-fog", 5405L),
-          new SimpleEntry<>("mist", 5381L),
-          new SimpleEntry<>("haze", 5382L),
-          new SimpleEntry<>("visibility-reduced", 5383L),
-          new SimpleEntry<>("visibility-blocked", 5404L),
-          new SimpleEntry<>("white-out", 5384L),
-          new SimpleEntry<>("blowing-snow", 5385L),
-          new SimpleEntry<>("smoke-hazard", 5386L),
-          new SimpleEntry<>("spray-hazard", 5387L),
-          new SimpleEntry<>("low-sun-glare", 5388L),
-          new SimpleEntry<>("snow-glare", 5389L),
-          new SimpleEntry<>("blowing-dust", 5390L),
-          new SimpleEntry<>("blowing-sand", 5391L),
-          new SimpleEntry<>("dust-storms", 5392L),
-          new SimpleEntry<>("sandstorms", 5393L),
-          new SimpleEntry<>("air-quality-good", 5394L),
-          new SimpleEntry<>("air-quality-fair", 5395L),
-          new SimpleEntry<>("air-quality-poor", 5396L),
-          new SimpleEntry<>("air-quality-very-poor", 5397L),
-          new SimpleEntry<>("severe-exhaust-pollution", 5398L),
-          new SimpleEntry<>("smog-alert", 5399L),
-          new SimpleEntry<>("pollen-count-high", 5400L),
-          new SimpleEntry<>("pollen-count-medium", 5401L),
-          new SimpleEntry<>("pollen-count-low", 5402L),
-          new SimpleEntry<>("swarms-of-insects", 5403L),
-          new SimpleEntry<>("fog-clearing", 5499L),
-          new SimpleEntry<>("visibility-improved", 5500L),
-          new SimpleEntry<>("fog-forecast-withdrawn", 5501L),
-          new SimpleEntry<>("pollution-alert-ended", 5502L),
-          new SimpleEntry<>("air-quality-improved", 5503L),
-          new SimpleEntry<>("maximum-temperature", 5633L),
-          new SimpleEntry<>("temperature", 5634L),
-          new SimpleEntry<>("minimum-temperature", 5635L),
-          new SimpleEntry<>("current-temperature", 5636L),
-          new SimpleEntry<>("heat-index", 5637L),
-          new SimpleEntry<>("extreme-heat", 5638L),
-          new SimpleEntry<>("hot", 5639L),
-          new SimpleEntry<>("hotter", 5640L),
-          new SimpleEntry<>("heat", 5641L),
-          new SimpleEntry<>("warmer", 5642L),
-          new SimpleEntry<>("warm", 5643L),
-          new SimpleEntry<>("mild", 5644L),
-          new SimpleEntry<>("cool", 5645L),
-          new SimpleEntry<>("cooler", 5646L),
-          new SimpleEntry<>("cold", 5647L),
-          new SimpleEntry<>("colder", 5648L),
-          new SimpleEntry<>("very-cold", 5649L),
-          new SimpleEntry<>("extreme-cold", 5650L),
-          new SimpleEntry<>("wind-chill", 5651L),
-          new SimpleEntry<>("dewpoint", 5652L),
-          new SimpleEntry<>("relative-humidity", 5653L),
-          new SimpleEntry<>("temperatures-close-to-the-seasonal-norm", 5758L),
-          new SimpleEntry<>("less-extreme-temperatures", 5759L),
-          new SimpleEntry<>("impassable", 5889L),
-          new SimpleEntry<>("almost-impassable", 5890L),
-          new SimpleEntry<>("passable-with-care", 5891L),
-          new SimpleEntry<>("passable", 5892L),
-          new SimpleEntry<>("surface-water-hazard", 5893L),
-          new SimpleEntry<>("danger-of-hydroplaning", 5894L),
-          new SimpleEntry<>("wet-pavement", 5895L),
-          new SimpleEntry<>("treated-pavement", 5896L),
-          new SimpleEntry<>("slippery", 5897L),
-          new SimpleEntry<>("low-ground-clearance", 5938L),
-          new SimpleEntry<>("at-grade-level-crossing", 5937L),
-          new SimpleEntry<>("mud-on-roadway", 5898L),
-          new SimpleEntry<>("leaves-on-roadway", 5899L),
-          new SimpleEntry<>("loose-sand-on-roadway", 5900L),
-          new SimpleEntry<>("loose-gravel", 5901L),
-          new SimpleEntry<>("fuel-on-roadway", 5902L),
-          new SimpleEntry<>("oil-on-roadway", 5903L),
-          new SimpleEntry<>("road-surface-in-poor-condition", 5904L),
-          new SimpleEntry<>("melting-tar", 5905L),
-          new SimpleEntry<>("uneven-lanes", 5935L),
-          new SimpleEntry<>("rough-road", 5931L),
-          new SimpleEntry<>("rough-crossing", 5936L),
-          new SimpleEntry<>("ice", 5906L),
-          new SimpleEntry<>("icy-patches", 5907L),
-          new SimpleEntry<>("black-ice", 5908L),
-          new SimpleEntry<>("ice-pellets-on-roadway", 5909L),
-          new SimpleEntry<>("ice-build-up", 5910L),
-          new SimpleEntry<>("freezing-rain", 5911L),
-          new SimpleEntry<>("wet-and-icy-roads", 5912L),
-          new SimpleEntry<>("slush", 5914L),
-          new SimpleEntry<>("melting-snow", 5913L),
-          new SimpleEntry<>("frozen-slush", 5915L),
-          new SimpleEntry<>("snow-on-roadway", 5916L),
-          new SimpleEntry<>("packed-snow", 5917L),
-          new SimpleEntry<>("packed-snow-patches", 5918L),
-          new SimpleEntry<>("plowed-snow", 5919L),
-          new SimpleEntry<>("wet-snow", 5920L),
-          new SimpleEntry<>("fresh-snow", 5921L),
-          new SimpleEntry<>("powder-snow", 5922L),
-          new SimpleEntry<>("granular-snow", 5923L),
-          new SimpleEntry<>("frozen-snow", 5924L),
-          new SimpleEntry<>("crusted-snow", 5925L),
-          new SimpleEntry<>("deep-snow", 5926L),
-          new SimpleEntry<>("snow-drifts", 5927L),
-          new SimpleEntry<>("drifting-snow", 5928L),
-          new SimpleEntry<>("expected-snow-accumulation", 5929L),
-          new SimpleEntry<>("current-snow-accumulation", 5930L),
-          new SimpleEntry<>("sand", 5932L),
-          new SimpleEntry<>("gravel", 5933L),
-          new SimpleEntry<>("paved", 5934L),
-          new SimpleEntry<>("dry-pavement", 6011L),
-          new SimpleEntry<>("snow-cleared", 6012L),
-          new SimpleEntry<>("pavement-conditions-improved", 6013L),
-          new SimpleEntry<>("skid-hazard-reduced", 6014L),
-          new SimpleEntry<>("pavement-conditions-cleared", 6015L),
-          new SimpleEntry<>("winter-equipment-recommended", 6145L),
-          new SimpleEntry<>("winter-equipment-required", 6146L),
-          new SimpleEntry<>("snow-chains-recommended", 6147L),
-          new SimpleEntry<>("snow-chains-required", 6148L),
-          new SimpleEntry<>("snow-chains-prohibited", 6149L),
-          new SimpleEntry<>("studded-tires-prohibited", 6150L),
-          new SimpleEntry<>("snow-tires-recommended", 6151L),
-          new SimpleEntry<>("snow-tires-required", 6152L),
-          new SimpleEntry<>("four-wheel-drive-recommended", 6153L),
-          new SimpleEntry<>("four-wheel-drive-required", 6154L),
-          new SimpleEntry<>("snow-tires-or-chains-recommended", 6155L),
-          new SimpleEntry<>("snow-tires-or-chains-required", 6156L),
-          new SimpleEntry<>("winter-driving-requirements-lifted", 6271L),
-          new SimpleEntry<>("driving-conditions-good", 6401L),
-          new SimpleEntry<>("driving-conditions-fair", 6402L),
-          new SimpleEntry<>("difficult-driving-conditions", 6403L),
-          new SimpleEntry<>("very-difficult-driving-conditions", 6404L),
-          new SimpleEntry<>("hazardous-driving-conditions", 6405L),
-          new SimpleEntry<>("extremely-hazardous-driving-conditions", 6406L),
-          new SimpleEntry<>("why-not-ride-share", 6657L),
-          new SimpleEntry<>("is-this-your-no-ride-day", 6658L),
-          new SimpleEntry<>("why-not-use-transit", 6659L),
-          new SimpleEntry<>("why-not-park-and-ride", 6660L),
-          new SimpleEntry<>("why-not-try-paratransit", 6661L),
-          new SimpleEntry<>("why-not-travel-by-rail", 6662L),
-          new SimpleEntry<>("why-not-use-the-subway", 6663L),
-          new SimpleEntry<>("why-not-try-rapid-transit", 6664L),
-          new SimpleEntry<>("why-not-travel-by-bus", 6665L),
-          new SimpleEntry<>("your-parking-ticket-covers-the-return-ride", 6666L),
-          new SimpleEntry<>("avoid-the-rush-hour", 6667L),
-          new SimpleEntry<>("do-not-allow-unnecessary-gaps", 6668L),
-          new SimpleEntry<>("follow-the-vehicle-in-front-smoothly", 6669L),
-          new SimpleEntry<>("do-not-slow-down-unnecessarily", 6670L),
-          new SimpleEntry<>("watch-for-muggers", 6671L),
-          new SimpleEntry<>("watch-for-pickpockets", 6672L),
-          new SimpleEntry<>("watch-for-thieves", 6673L),
-          new SimpleEntry<>("sorry-for-any-delay", 6674L),
-          new SimpleEntry<>("thank-you-for-your-understanding", 6675L),
-          new SimpleEntry<>("we-appreciate-your-patience", 6676L),
-          new SimpleEntry<>("we-are-grateful-for-your-cooperation", 6677L),
-          new SimpleEntry<>("share-the-road", 6678L),
-          new SimpleEntry<>("risk", 6913L),
-          new SimpleEntry<>("watch", 6914L),
-          new SimpleEntry<>("warning", 6915L),
-          new SimpleEntry<>("alert", 6916L),
-          new SimpleEntry<>("danger", 6917L),
-          new SimpleEntry<>("danger-of-explosion", 6918L),
-          new SimpleEntry<>("danger-of-fire", 6919L),
-          new SimpleEntry<>("extra-police-patrols-in-operation", 6920L),
-          new SimpleEntry<>("look-out-for-vehicles-stopped-under-bridges", 6921L),
-          new SimpleEntry<>("increased-risk-of-accident", 6922L),
-          new SimpleEntry<>("rescue-and-recovery-work-in-progress-at-sceneREMOVED", 6923L),
-          new SimpleEntry<>("police-at-scene", 6924L),
-          new SimpleEntry<>("emergency-vehicles-at-scene", 6925L),
-          new SimpleEntry<>("traffic-being-directed-around-accident-area", 6926L),
-          new SimpleEntry<>("police-directing-traffic", 6927L),
-          new SimpleEntry<>("rescue-workers-directing-traffic", 6928L),
-          new SimpleEntry<>("repairs-in-progress", 6929L),
-          new SimpleEntry<>("pilot-car-in-operation", 6930L),
-          new SimpleEntry<>("look-out-for-flagger", 6931L),
-          new SimpleEntry<>("look-out-for-workers", 6952L),
-          new SimpleEntry<>("police-checks-in-operation", 6932L),
-          new SimpleEntry<>("truck-check-point", 6937L),
-          new SimpleEntry<>("lockdown", 6935L),
-          new SimpleEntry<>("security-check-point", 6936L),
-          new SimpleEntry<>("single-occupancy-vehicle-check-point", 6938L),
-          new SimpleEntry<>("mandatory-speed-limit-in-force", 6933L),
-          new SimpleEntry<>("speed-limit-in-force-for-heavy-vehicles", 6934L),
-          new SimpleEntry<>("behind-you", 6950L),
-          new SimpleEntry<>("ride-with-traffic", 6953L),
-          new SimpleEntry<>("prepare-to-evacuate-area", 6954L),
-          new SimpleEntry<>("avoid", 6955L),
-          new SimpleEntry<>("look", 6939L),
-          new SimpleEntry<>("photo-enforced", 6940L),
-          new SimpleEntry<>("traffic-signs", 6951L),
-          new SimpleEntry<>("traffic-laws", 6941L),
-          new SimpleEntry<>("use-low-gear", 6942L),
-          new SimpleEntry<>("bridge-ices-before-road", 6943L),
-          new SimpleEntry<>("speed-checked-by-radar", 6944L),
-          new SimpleEntry<>("speed-checked-by-aircraft", 6945L),
-          new SimpleEntry<>("fines", 6946L),
-          new SimpleEntry<>("fines-higher", 6947L),
-          new SimpleEntry<>("fines-doubled", 6948L),
-          new SimpleEntry<>("fines-tripled", 6949L),
-          new SimpleEntry<>("evacuation-canceled", 7033L),
-          new SimpleEntry<>("warning-canceled", 7034L),
-          new SimpleEntry<>("watch-canceled", 7035L),
-          new SimpleEntry<>("alert-canceled", 7036L),
-          new SimpleEntry<>("ended", 7037L),
-          new SimpleEntry<>("cleared", 7038L),
-          new SimpleEntry<>("canceled", 7039L),
-          new SimpleEntry<>("drive-carefully", 7169L),
-          new SimpleEntry<>("drive-with-extreme-caution", 7170L),
-          new SimpleEntry<>("approach-with-care", 7171L),
-          new SimpleEntry<>("keep-your-distance", 7172L),
-          new SimpleEntry<>("increase-normal-following-distance", 7173L),
-          new SimpleEntry<>("test-your-brakes", 7174L),
-          new SimpleEntry<>("cross-intersection-with-care", 7175L),
-          new SimpleEntry<>("pass-with-care", 7176L),
-          new SimpleEntry<>("pass", 7200L),
-          new SimpleEntry<>("use-low-beam-headlights", 7177L),
-          new SimpleEntry<>("use-fog-lights", 7178L),
-          new SimpleEntry<>("use-hazard-warning-lights", 7179L),
-          new SimpleEntry<>("do-not-leave-your-vehicle", 7180L),
-          new SimpleEntry<>("leave-your-vehicle-and-proceed-to-next-safe-place", 7181L),
-          new SimpleEntry<>("turn-off-engine", 7182L),
-          new SimpleEntry<>("close-all-windows-turn-off-heater-air-conditioner-and-vents", 7183L),
-          new SimpleEntry<>("turn-off-air-conditioner-to-prevent-engine-overheating", 7184L),
-          new SimpleEntry<>("turn-off-mobile-phones-and-two-way-radios", 7185L),
-          new SimpleEntry<>("prepare-to-stop", 7186L),
-          new SimpleEntry<>("be-prepared-to-stop", 7201L),
-          new SimpleEntry<>("stop-at-next-rest-area", 7187L),
-          new SimpleEntry<>("stop-at-next-safe-place", 7188L),
-          new SimpleEntry<>("only-travel-if-absolutely-necessary", 7189L),
-          new SimpleEntry<>("drive-to-another-service-area", 7190L),
-          new SimpleEntry<>("use-through-traffic-lanes", 7191L),
-          new SimpleEntry<>("use-local-traffic-lanes", 7192L),
-          new SimpleEntry<>("use-left-hand-parallel-roadway", 7193L),
-          new SimpleEntry<>("use-right-hand-parallel-roadway", 7194L),
-          new SimpleEntry<>("use-heavy-vehicle-lane", 7195L),
-          new SimpleEntry<>("observe-recommended-speed", 7196L),
-          new SimpleEntry<>("signals-sequenced-for-speed", 7202L),
-          new SimpleEntry<>("maintain-top-safe-speed", 7203L),
-          new SimpleEntry<>("facing-traffic", 7197L),
-          new SimpleEntry<>("push-button", 7198L),
-          new SimpleEntry<>("to-cross-street", 7199L),
-          new SimpleEntry<>("evacuate-area-voluntarily", 7204L),
-          new SimpleEntry<>("shelter-in-place", 7205L),
-          new SimpleEntry<>("keep-to-the-right", 7425L),
-          new SimpleEntry<>("keep-to-the-left", 7426L),
-          new SimpleEntry<>("use-right-lane", 7427L),
-          new SimpleEntry<>("use-left-lane", 7428L),
-          new SimpleEntry<>("stay-in-lane", 7450L),
-          new SimpleEntry<>("merge", 7451L),
-          new SimpleEntry<>("heavy-vehicles-use-right-lane", 7429L),
-          new SimpleEntry<>("heavy-vehicles-use-left-lane", 7430L),
-          new SimpleEntry<>("observe-signals", 7431L),
-          new SimpleEntry<>("observe-signs", 7432L),
-          new SimpleEntry<>("no-passing", 7433L),
-          new SimpleEntry<>("no-smoking", 7434L),
-          new SimpleEntry<>("no-open-flames", 7435L),
-          new SimpleEntry<>("use-shoulder-as-lane", 7436L),
-          new SimpleEntry<>("do-not-drive-on-the-shoulder", 7437L),
-          new SimpleEntry<>("allow-emergency-vehicles-to-pass", 7438L),
-          new SimpleEntry<>("clear-a-lane-for-emergency-vehicles", 7439L),
-          new SimpleEntry<>("pull-over-to-the-edge-of-the-roadway", 7440L),
-          new SimpleEntry<>("wait-for-escort-vehicle", 7441L),
-          new SimpleEntry<>("in-emergency-wait-for-police-patrol", 7442L),
-          new SimpleEntry<>("reduce-your-speed", 7443L),
-          new SimpleEntry<>("observe-speed-limits", 7444L),
-          new SimpleEntry<>("check-point", 7445L),
-          new SimpleEntry<>("entry-requirements", 7446L),
-          new SimpleEntry<>("insurance-requirements", 7447L),
-          new SimpleEntry<>("firearms-requirements", 7448L),
-          new SimpleEntry<>("pet-requirements", 7449L),
-          new SimpleEntry<>("slower-traffic-keep-right", 7452L),
-          new SimpleEntry<>("keep-off", 7453L),
-          new SimpleEntry<>("evacuate-area-immediately", 7454L),
-          new SimpleEntry<>("shoulder-travel-no-longer-allowed", 7547L),
-          new SimpleEntry<>("above", 7681L),
-          new SimpleEntry<>("below", 7682L),
-          new SimpleEntry<>("in", 7683L),
-          new SimpleEntry<>("around", 7684L),
-          new SimpleEntry<>("after", 7685L),
-          new SimpleEntry<>("before", 7686L),
-          new SimpleEntry<>("at", 7687L),
-          new SimpleEntry<>("on", 7688L),
-          new SimpleEntry<>("near", 7689L),
-          new SimpleEntry<>("from-the", 7690L),
-          new SimpleEntry<>("terminal", 7691L),
-          new SimpleEntry<>("falling-slowly", 7692L),
-          new SimpleEntry<>("falling", 7693L),
-          new SimpleEntry<>("falling-quickly", 7694L),
-          new SimpleEntry<>("rising-slowly", 7695L),
-          new SimpleEntry<>("rising", 7696L),
-          new SimpleEntry<>("rising-quickly", 7697L),
-          new SimpleEntry<>("steady", 7698L),
-          new SimpleEntry<>("likely", 7699L),
-          new SimpleEntry<>("changing-to", 7700L),
-          new SimpleEntry<>("mostly", 7701L),
-          new SimpleEntry<>("partly", 7702L),
-          new SimpleEntry<>("minus", 7703L),
-          new SimpleEntry<>("weather-ended", 7704L),
-          new SimpleEntry<>("expected", 7705L),
-          new SimpleEntry<>("low", 7706L),
-          new SimpleEntry<>("mid", 7707L),
-          new SimpleEntry<>("high", 7708L),
-          new SimpleEntry<>("upper", 7709L),
-          new SimpleEntry<>("middle", 7765L),
-          new SimpleEntry<>("lower", 7764L),
-          new SimpleEntry<>("unseasonably", 7710L),
-          new SimpleEntry<>("reported", 7711L),
-          new SimpleEntry<>("advice", 7712L),
-          new SimpleEntry<>("due-to", 7713L),
-          new SimpleEntry<>("proceed-to", 7714L),
-          new SimpleEntry<>("transferred-to", 7715L),
-          new SimpleEntry<>("use", 7716L),
-          new SimpleEntry<>("affecting", 7717L),
-          new SimpleEntry<>("blocking", 7718L),
-          new SimpleEntry<>("connecting", 7719L),
-          new SimpleEntry<>("finished", 7720L),
-          new SimpleEntry<>("for", 7721L),
-          new SimpleEntry<>("or", 7722L),
-          new SimpleEntry<>("and", 7723L),
-          new SimpleEntry<>("later", 7724L),
-          new SimpleEntry<>("level", 7725L),
-          new SimpleEntry<>("shortly", 7726L),
-          new SimpleEntry<>("soon", 7727L),
-          new SimpleEntry<>("service", 7728L),
-          new SimpleEntry<>("graffiti", 7733L),
-          new SimpleEntry<>("damaged", 7729L),
-          new SimpleEntry<>("out-of-order", 7730L),
-          new SimpleEntry<>("on-State-right-of-way", 7732L),
-          new SimpleEntry<>("found-property", 7734L),
-          new SimpleEntry<>("vandalism", 7731L),
-          new SimpleEntry<>("major", 7766L),
-          new SimpleEntry<>("minor", 7767L),
-          new SimpleEntry<>("begin-time", 7735L),
-          new SimpleEntry<>("added", 7736L),
-          new SimpleEntry<>("end-time", 7737L),
-          new SimpleEntry<>("no", 7738L),
-          new SimpleEntry<>("do-not", 7739L),
-          new SimpleEntry<>("block", 7740L),
-          new SimpleEntry<>("except", 7741L),
-          new SimpleEntry<>("day", 7742L),
-          new SimpleEntry<>("night", 7743L),
-          new SimpleEntry<>("any-time", 7744L),
-          new SimpleEntry<>("has", 7745L),
-          new SimpleEntry<>("must", 7757L),
-          new SimpleEntry<>("may-have", 7746L),
-          new SimpleEntry<>("may-exceed", 7759L),
-          new SimpleEntry<>("only", 7747L),
-          new SimpleEntry<>("lifted", 7748L),
-          new SimpleEntry<>("empty", 7749L),
-          new SimpleEntry<>("turning", 7750L),
-          new SimpleEntry<>("u-turn", 7751L),
-          new SimpleEntry<>("wait-for", 7752L),
-          new SimpleEntry<>("when-flashing", 7753L),
-          new SimpleEntry<>("duration", 7754L),
-          new SimpleEntry<>("cross", 7755L),
-          new SimpleEntry<>("when-wet", 7756L),
-          new SimpleEntry<>("oncoming", 7758L),
-          new SimpleEntry<>("to-request", 7760L),
-          new SimpleEntry<>("exempt", 7761L),
-          new SimpleEntry<>("skewed", 7762L),
-          new SimpleEntry<>("when-children-are-present", 7763L),
-          new SimpleEntry<>("on-bridges", 7937L),
-          new SimpleEntry<>("in-tunnels", 7938L),
-          new SimpleEntry<>("entering-or-leaving-tunnels", 7939L),
-          new SimpleEntry<>("on-ramps", 7940L),
-          new SimpleEntry<>("in-road-construction-area", 7941L),
-          new SimpleEntry<>("around-a-curve", 7942L),
-          new SimpleEntry<>("on-curve", 8026L),
-          new SimpleEntry<>("on-tracks", 8009L),
-          new SimpleEntry<>("in-street", 8025L),
-          new SimpleEntry<>("shoulder", 8027L),
-          new SimpleEntry<>("on-minor-roads", 7943L),
-          new SimpleEntry<>("in-the-opposing-lanes", 7944L),
-          new SimpleEntry<>("adjacent-to-roadway", 7945L),
-          new SimpleEntry<>("across-tracks", 8024L),
-          new SimpleEntry<>("on-bend", 7946L),
-          new SimpleEntry<>("intersection", 8032L),
-          new SimpleEntry<>("entire-intersection", 7947L),
-          new SimpleEntry<>("in-the-median", 7948L),
-          new SimpleEntry<>("moved-to-side-of-road", 7949L),
-          new SimpleEntry<>("moved-to-shoulder", 7950L),
-          new SimpleEntry<>("on-the-roadway", 7951L),
-          new SimpleEntry<>("dip", 8010L),
-          new SimpleEntry<>("traffic-circle", 8011L),
-          new SimpleEntry<>("crossover", 8028L),
-          new SimpleEntry<>("cross-road", 8029L),
-          new SimpleEntry<>("side-road", 8030L),
-          new SimpleEntry<>("to", 8014L),
-          new SimpleEntry<>("by", 8015L),
-          new SimpleEntry<>("through", 8016L),
-          new SimpleEntry<>("area-of", 8017L),
-          new SimpleEntry<>("under", 8018L),
-          new SimpleEntry<>("over", 8019L),
-          new SimpleEntry<>("from", 8020L),
-          new SimpleEntry<>("approaching", 8021L),
-          new SimpleEntry<>("entering-at", 8022L),
-          new SimpleEntry<>("exiting-at", 8023L),
-          new SimpleEntry<>("in-shaded-areas", 7952L),
-          new SimpleEntry<>("in-low-lying-areas", 7953L),
-          new SimpleEntry<>("in-the-downtown-area", 7954L),
-          new SimpleEntry<>("in-the-inner-city-area", 7955L),
-          new SimpleEntry<>("in-parts", 7956L),
-          new SimpleEntry<>("in-some-places", 7957L),
-          new SimpleEntry<>("in-the-ditch", 7958L),
-          new SimpleEntry<>("in-the-valley", 7959L),
-          new SimpleEntry<>("on-hill-top", 7960L),
-          new SimpleEntry<>("near-the-foothills", 7961L),
-          new SimpleEntry<>("at-high-altitudes", 7962L),
-          new SimpleEntry<>("near-the-lake", 7963L),
-          new SimpleEntry<>("near-the-shore", 7964L),
-          new SimpleEntry<>("nearby-basin", 8008L),
-          new SimpleEntry<>("over-the-crest-of-a-hill", 7965L),
-          new SimpleEntry<>("other-than-on-the-roadway", 7966L),
-          new SimpleEntry<>("near-the-beach", 7967L),
-          new SimpleEntry<>("near-beach-access-point", 7968L),
-          new SimpleEntry<>("mountain-pass", 8006L),
-          new SimpleEntry<>("lower-level", 7969L),
-          new SimpleEntry<>("upper-level", 7970L),
-          new SimpleEntry<>("coast", 8034L),
-          new SimpleEntry<>("airport", 7971L),
-          new SimpleEntry<>("concourse", 7972L),
-          new SimpleEntry<>("gate", 7973L),
-          new SimpleEntry<>("baggage-claim", 7974L),
-          new SimpleEntry<>("customs-point", 7975L),
-          new SimpleEntry<>("reservation-center", 8007L),
-          new SimpleEntry<>("station", 7976L),
-          new SimpleEntry<>("platform", 7977L),
-          new SimpleEntry<>("dock", 7978L),
-          new SimpleEntry<>("depot", 7979L),
-          new SimpleEntry<>("ev-charging-point", 7980L),
-          new SimpleEntry<>("information-welcome-point", 7981L),
-          new SimpleEntry<>("at-rest-area", 7982L),
-          new SimpleEntry<>("at-service-area", 7983L),
-          new SimpleEntry<>("at-weigh-station", 7984L),
-          new SimpleEntry<>("roadside-park", 8033L),
-          new SimpleEntry<>("picnic-areas", 7985L),
-          new SimpleEntry<>("rest-area", 7986L),
-          new SimpleEntry<>("service-stations", 7987L),
-          new SimpleEntry<>("toilets", 7988L),
-          new SimpleEntry<>("bus-stop", 8031L),
-          new SimpleEntry<>("park-and-ride-lot", 8012L),
-          new SimpleEntry<>("on-the-right", 7989L),
-          new SimpleEntry<>("on-the-left", 7990L),
-          new SimpleEntry<>("in-the-center", 7991L),
-          new SimpleEntry<>("in-the-opposite-direction", 7992L),
-          new SimpleEntry<>("cross-traffic", 7993L),
-          new SimpleEntry<>("northbound-traffic", 7994L),
-          new SimpleEntry<>("eastbound-traffic", 7995L),
-          new SimpleEntry<>("southbound-traffic", 7996L),
-          new SimpleEntry<>("westbound-traffic", 7997L),
-          new SimpleEntry<>("north", 7998L),
-          new SimpleEntry<>("south", 7999L),
-          new SimpleEntry<>("east", 8000L),
-          new SimpleEntry<>("west", 8001L),
-          new SimpleEntry<>("northeast", 8002L),
-          new SimpleEntry<>("northwest", 8003L),
-          new SimpleEntry<>("southeast", 8004L),
-          new SimpleEntry<>("southwest", 8005L),
-          new SimpleEntry<>("all-roadways", 8193L),
-          new SimpleEntry<>("through-lanes", 8194L),
-          new SimpleEntry<>("left-lane", 8195L),
-          new SimpleEntry<>("right-lane", 8196L),
-          new SimpleEntry<>("center-lane", 8197L),
-          new SimpleEntry<>("middle-lanes", 8198L),
-          new SimpleEntry<>("middle-two-lanes", 8199L),
-          new SimpleEntry<>("right-turning-lanes", 8200L),
-          new SimpleEntry<>("left-turning-lanes", 8201L),
-          new SimpleEntry<>("upper-deck-lanes", 8236L),
-          new SimpleEntry<>("lower-deck-lanes", 8237L),
-          new SimpleEntry<>("reversible-lanes", 8238L),
-          new SimpleEntry<>("right-exit-lanes", 8239L),
-          new SimpleEntry<>("left-exit-lanes", 8240L),
-          new SimpleEntry<>("right-merging-lanes", 8241L),
-          new SimpleEntry<>("left-merging-lanes", 8242L),
-          new SimpleEntry<>("right-exit-ramp", 8202L),
-          new SimpleEntry<>("right-second-exit-ramp", 8243L),
-          new SimpleEntry<>("right-entrance-ramp", 8203L),
-          new SimpleEntry<>("right-second-entrance-ramp", 8245L),
-          new SimpleEntry<>("left-exit-ramp", 8204L),
-          new SimpleEntry<>("left-second-exit-ramp", 8244L),
-          new SimpleEntry<>("left-entrance-ramp", 8205L),
-          new SimpleEntry<>("left-second-entrance-ramp", 8246L),
-          new SimpleEntry<>("escape-ramp", 8234L),
-          new SimpleEntry<>("hard-shoulder", 8206L),
-          new SimpleEntry<>("soft-shoulder", 8207L),
-          new SimpleEntry<>("right-shoulder", 8208L),
-          new SimpleEntry<>("left-shoulder", 8209L),
-          new SimpleEntry<>("median", 8252L),
-          new SimpleEntry<>("sidewalk", 8251L),
-          new SimpleEntry<>("highways", 8235L),
-          new SimpleEntry<>("right-hand-parallel-lanes", 8210L),
-          new SimpleEntry<>("left-hand-parallel-lanes", 8211L),
-          new SimpleEntry<>("connecting-lanes", 8212L),
-          new SimpleEntry<>("express-lanes", 8213L),
-          new SimpleEntry<>("local-lanes", 8214L),
-          new SimpleEntry<>("toll-lanes", 8215L),
-          new SimpleEntry<>("electronic-toll-lanes", 8216L),
-          new SimpleEntry<>("toll-plaza", 8217L),
-          new SimpleEntry<>("inspection-lane", 8218L),
-          new SimpleEntry<>("hOV-lanes", 8219L),
-          new SimpleEntry<>("bus-lanes", 8220L),
-          new SimpleEntry<>("carpool-lanes", 8221L),
-          new SimpleEntry<>("truck-lanes", 8222L),
-          new SimpleEntry<>("emergency-lanes", 8223L),
-          new SimpleEntry<>("passing-lanes", 8224L),
-          new SimpleEntry<>("climbing-lanes", 8225L),
-          new SimpleEntry<>("slow-lane", 8226L),
-          new SimpleEntry<>("service-road", 8227L),
-          new SimpleEntry<>("cycle-lane", 8228L),
-          new SimpleEntry<>("tracks", 8250L),
-          new SimpleEntry<>("bridge", 8229L),
-          new SimpleEntry<>("overpass", 8230L),
-          new SimpleEntry<>("elevated-lanes", 8231L),
-          new SimpleEntry<>("underpass", 8232L),
-          new SimpleEntry<>("tunnel", 8233L),
-          new SimpleEntry<>("all-exit-lanes", 8247L),
-          new SimpleEntry<>("all-entry-lanes", 8248L),
-          new SimpleEntry<>("either-shoulder", 8249L),
-          new SimpleEntry<>("shoulder-work", 8253L),
-          new SimpleEntry<>("detour-where-possible", 8449L),
-          new SimpleEntry<>("no-detour-available", 8450L),
-          new SimpleEntry<>("follow-signs", 8451L),
-          new SimpleEntry<>("follow-detour-signs", 8452L),
-          new SimpleEntry<>("follow-special-detour-markers", 8453L),
-          new SimpleEntry<>("do-not-follow-detour-signs", 8454L),
-          new SimpleEntry<>("detour-in-operation", 8455L),
-          new SimpleEntry<>("follow-local-detour", 8456L),
-          new SimpleEntry<>("compulsory-detour-in-operation", 8457L),
-          new SimpleEntry<>("no-suitable-detour-available", 8458L),
-          new SimpleEntry<>("detour-is-no-longer-recommended", 8459L),
-          new SimpleEntry<>("local-drivers-are-recommended-to-avoid-the-area", 8460L),
-          new SimpleEntry<>("trucks-are-recommended-to-avoid-the-area", 8461L),
-          new SimpleEntry<>("consider-alternate-route", 8462L),
-          new SimpleEntry<>("consider-alternate-parking", 8463L),
-          new SimpleEntry<>("consider-alternate-destination", 8464L),
-          new SimpleEntry<>("consider-alternate-area", 8465L),
-          new SimpleEntry<>("snow-route", 8466L),
-          new SimpleEntry<>("emergency-snow-route", 8467L),
-          new SimpleEntry<>("evacuation-route", 8468L),
-          new SimpleEntry<>("truck-route", 8469L),
-          new SimpleEntry<>("hazardous-materials-route", 8470L),
-          new SimpleEntry<>("detour", 8471L),
-          new SimpleEntry<>("square-feet", 8705L),
-          new SimpleEntry<>("square-meters", 8706L),
-          new SimpleEntry<>("acres", 8707L),
-          new SimpleEntry<>("hectares", 8708L),
-          new SimpleEntry<>("inches", 8709L),
-          new SimpleEntry<>("feet", 8710L),
-          new SimpleEntry<>("mile", 8711L),
-          new SimpleEntry<>("miles", 8712L),
-          new SimpleEntry<>("nautical-miles", 8713L),
-          new SimpleEntry<>("millimeters", 8714L),
-          new SimpleEntry<>("meters", 8715L),
-          new SimpleEntry<>("kilometer", 8716L),
-          new SimpleEntry<>("kilometers", 8717L),
-          new SimpleEntry<>("feet-per-second", 8718L),
-          new SimpleEntry<>("meters-per-second", 8719L),
-          new SimpleEntry<>("mPH", 8720L),
-          new SimpleEntry<>("kPH", 8721L),
-          new SimpleEntry<>("knots", 8722L),
-          new SimpleEntry<>("elevation", 8766L),
-          new SimpleEntry<>("aM", 8723L),
-          new SimpleEntry<>("pM", 8724L),
-          new SimpleEntry<>("holiday", 8726L),
-          new SimpleEntry<>("seconds", 8727L),
-          new SimpleEntry<>("minutes", 8728L),
-          new SimpleEntry<>("hours", 8729L),
-          new SimpleEntry<>("days", 8730L),
-          new SimpleEntry<>("weeks", 8731L),
-          new SimpleEntry<>("months", 8732L),
-          new SimpleEntry<>("other-times", 8767L),
-          new SimpleEntry<>("nSunday", 8758L),
-          new SimpleEntry<>("nMonday", 8759L),
-          new SimpleEntry<>("nTuesday", 8760L),
-          new SimpleEntry<>("nWednesday", 8761L),
-          new SimpleEntry<>("nThursday", 8762L),
-          new SimpleEntry<>("nFriday", 8763L),
-          new SimpleEntry<>("nSaturday", 8764L),
-          new SimpleEntry<>("weekdays", 8765L),
-          new SimpleEntry<>("weekends", 8725L),
-          new SimpleEntry<>("degrees-Angle", 8733L),
-          new SimpleEntry<>("degrees-Celsius", 8734L),
-          new SimpleEntry<>("degrees-Fahrenheit", 8735L),
-          new SimpleEntry<>("grams", 8736L),
-          new SimpleEntry<>("kilograms", 8737L),
-          new SimpleEntry<>("ounces", 8738L),
-          new SimpleEntry<>("pounds", 8739L),
-          new SimpleEntry<>("tons", 8740L),
-          new SimpleEntry<>("fluid-ounces", 8741L),
-          new SimpleEntry<>("gallons", 8742L),
-          new SimpleEntry<>("milliliters", 8743L),
-          new SimpleEntry<>("liters", 8744L),
-          new SimpleEntry<>("kilograms-per-lane-mile", 8745L),
-          new SimpleEntry<>("tons-per-lane-mile", 8746L),
-          new SimpleEntry<>("dollar", 8747L),
-          new SimpleEntry<>("percent", 8748L),
-          new SimpleEntry<>("grade", 8757L),
-          new SimpleEntry<>("time-delimiter", 8749L),
-          new SimpleEntry<>("dollars", 8750L),
-          new SimpleEntry<>("flight-number", 8751L),
-          new SimpleEntry<>("person-people", 8752L),
-          new SimpleEntry<>("response-plan", 8753L),
-          new SimpleEntry<>("placard-type", 8754L),
-          new SimpleEntry<>("placard-number", 8755L),
-          new SimpleEntry<>("fM", 8756L),
-          new SimpleEntry<>("travel", 8961L),
-          new SimpleEntry<>("transit", 8962L),
-          new SimpleEntry<>("bus", 8963L),
-          new SimpleEntry<>("trolleybus", 8964L),
-          new SimpleEntry<>("rail", 8965L),
-          new SimpleEntry<>("commuter-rail", 8966L),
-          new SimpleEntry<>("subway", 8967L),
-          new SimpleEntry<>("rapid-transit", 8968L),
-          new SimpleEntry<>("light-rail", 8969L),
-          new SimpleEntry<>("streetcar", 8970L),
-          new SimpleEntry<>("dial-a-ride", 8971L),
-          new SimpleEntry<>("park-and-ride", 8972L),
-          new SimpleEntry<>("shuttle", 8973L),
-          new SimpleEntry<>("free-shuttle", 8974L),
-          new SimpleEntry<>("airport-shuttle", 8975L),
-          new SimpleEntry<>("taxies", 8976L),
-          new SimpleEntry<>("ferry", 8977L),
-          new SimpleEntry<>("passenger-ferry", 8978L),
-          new SimpleEntry<>("vehicle-ferry", 8979L),
-          new SimpleEntry<>("aerial-tramway", 8980L),
-          new SimpleEntry<>("automated-guideway", 8981L),
-          new SimpleEntry<>("cable-cars", 8982L),
-          new SimpleEntry<>("monorail", 8983L),
-          new SimpleEntry<>("air-travel", 8984L),
-          new SimpleEntry<>("hitch-hitching", 8985L),
-          new SimpleEntry<>("walk", 8986L),
-          new SimpleEntry<>("all-vehicles", 9217L),
-          new SimpleEntry<>("bicycles", 9218L),
-          new SimpleEntry<>("motorcycles", 9219L),
-          new SimpleEntry<>("cars", 9220L),
-          new SimpleEntry<>("light-vehicles", 9221L),
-          new SimpleEntry<>("cars-and-light-vehicles", 9222L),
-          new SimpleEntry<>("cars-with-trailers", 9223L),
-          new SimpleEntry<>("cars-with-recreational-trailers", 9224L),
-          new SimpleEntry<>("vehicles-with-trailers", 9225L),
-          new SimpleEntry<>("heavy-vehicles", 9226L),
-          new SimpleEntry<>("trucks", 9227L),
-          new SimpleEntry<>("buses", 9228L),
-          new SimpleEntry<>("articulated-buses", 9229L),
-          new SimpleEntry<>("school-buses", 9230L),
-          new SimpleEntry<>("vehicles-with-semi-trailers", 9231L),
-          new SimpleEntry<>("vehicles-with-double-trailers", 9232L),
-          new SimpleEntry<>("high-profile-vehicles", 9233L),
-          new SimpleEntry<>("wide-vehicles", 9234L),
-          new SimpleEntry<>("long-vehicles", 9235L),
-          new SimpleEntry<>("hazardous-loads", 9236L),
-          new SimpleEntry<>("exceptional-loads", 9237L),
-          new SimpleEntry<>("abnormal-loads", 9238L),
-          new SimpleEntry<>("convoys", 9239L),
-          new SimpleEntry<>("maintenance-vehicles", 9240L),
-          new SimpleEntry<>("delivery-vehicles", 9241L),
-          new SimpleEntry<>("vehicles-with-even-numbered-license-plates", 9242L),
-          new SimpleEntry<>("vehicles-with-odd-numbered-license-plates", 9243L),
-          new SimpleEntry<>("vehicles-with-parking-permits", 9244L),
-          new SimpleEntry<>("vehicles-with-catalytic-converters", 9245L),
-          new SimpleEntry<>("vehicles-without-catalytic-converters", 9246L),
-          new SimpleEntry<>("gas-powered-vehicles", 9247L),
-          new SimpleEntry<>("diesel-powered-vehicles", 9248L),
-          new SimpleEntry<>("lPG-vehicles", 9249L),
-          new SimpleEntry<>("military-convoys", 9250L),
-          new SimpleEntry<>("military-vehicles", 9251L),
-          new SimpleEntry<>("electric-powered-vehicles", 9252L),
-          new SimpleEntry<>("hybrid-powered-vehicles", 9253L),
-          new SimpleEntry<>("inherently-low-emission-vehicles", 9254L),
-          new SimpleEntry<>("commercial-vehicles", 9255L),
-          new SimpleEntry<>("runaway-vehicles", 9256L),
-          new SimpleEntry<>("vehicles-with-lugs", 9257L),
-          new SimpleEntry<>("motor-driven-cycles", 9258L),
-          new SimpleEntry<>("recreational-vehicles", 9259L),
-          new SimpleEntry<>("non-motorized-vehicles", 9260L),
-          new SimpleEntry<>("traffic", 9261L),
-          new SimpleEntry<>("through-traffic", 9473L),
-          new SimpleEntry<>("holiday-traffic", 9474L),
-          new SimpleEntry<>("residents", 9475L),
-          new SimpleEntry<>("visitors", 9476L),
-          new SimpleEntry<>("long-distance-traffic", 9477L),
-          new SimpleEntry<>("local-traffic", 9478L),
-          new SimpleEntry<>("regional-traffic", 9479L),
-          new SimpleEntry<>("arrivals", 9480L),
-          new SimpleEntry<>("departures", 9481L),
-          new SimpleEntry<>("airline-travelers", 9482L),
-          new SimpleEntry<>("commuter-airline-travelers", 9483L),
-          new SimpleEntry<>("domestic-airline-travelers", 9484L),
-          new SimpleEntry<>("international-airline-travelers", 9485L),
-          new SimpleEntry<>("pedestrians", 9486L),
-          new SimpleEntry<>("bicyclists", 9487L),
-          new SimpleEntry<>("emergency-vehicle-units", 9729L),
-          new SimpleEntry<>("federal-law-enforcement-units", 9730L),
-          new SimpleEntry<>("state-police-units", 9731L),
-          new SimpleEntry<>("county-police-units", 9732L),
-          new SimpleEntry<>("local-police-units", 9733L),
-          new SimpleEntry<>("ambulance-units", 9734L),
-          new SimpleEntry<>("rescue-units", 9735L),
-          new SimpleEntry<>("fire-units", 9736L),
-          new SimpleEntry<>("hAZMAT-units", 9737L),
-          new SimpleEntry<>("light-tow-unit", 9738L),
-          new SimpleEntry<>("heavy-tow-unit", 9739L),
-          new SimpleEntry<>("private-tow-units", 9743L),
-          new SimpleEntry<>("freeway-service-patrols", 9740L),
-          new SimpleEntry<>("transportation-response-units", 9741L),
-          new SimpleEntry<>("private-contractor-response-units", 9742L),
-          new SimpleEntry<>("ground-fire-suppression", 9985L),
-          new SimpleEntry<>("heavy-ground-equipment", 9986L),
-          new SimpleEntry<>("aircraft", 9988L),
-          new SimpleEntry<>("marine-equipment", 9989L),
-          new SimpleEntry<>("support-equipment", 9990L),
-          new SimpleEntry<>("medical-rescue-unit", 9991L),
-          new SimpleEntry<>("other", 9993L),
-          new SimpleEntry<>("ground-fire-suppression-other", 9994L),
-          new SimpleEntry<>("engine", 9995L),
-          new SimpleEntry<>("truck-or-aerial", 9996L),
-          new SimpleEntry<>("quint", 9997L),
-          new SimpleEntry<>("tanker-pumper-combination", 9998L),
-          new SimpleEntry<>("brush-truck", 10000L),
-          new SimpleEntry<>("aircraft-rescue-firefighting", 10001L),
-          new SimpleEntry<>("heavy-ground-equipment-other", 10004L),
-          new SimpleEntry<>("dozer-or-plow", 10005L),
-          new SimpleEntry<>("tractor", 10006L),
-          new SimpleEntry<>("tanker-or-tender", 10008L),
-          new SimpleEntry<>("aircraft-other", 10024L),
-          new SimpleEntry<>("aircraft-fixed-wing-tanker", 10025L),
-          new SimpleEntry<>("helitanker", 10026L),
-          new SimpleEntry<>("helicopter", 10027L),
-          new SimpleEntry<>("marine-equipment-other", 10034L),
-          new SimpleEntry<>("fire-boat-with-pump", 10035L),
-          new SimpleEntry<>("boat-no-pump", 10036L),
-          new SimpleEntry<>("support-apparatus-other", 10044L),
-          new SimpleEntry<>("breathing-apparatus-support", 10045L),
-          new SimpleEntry<>("light-and-air-unit", 10046L),
-          new SimpleEntry<>("medical-rescue-unit-other", 10054L),
-          new SimpleEntry<>("rescue-unit", 10055L),
-          new SimpleEntry<>("urban-search-rescue-unit", 10056L),
-          new SimpleEntry<>("high-angle-rescue", 10057L),
-          new SimpleEntry<>("crash-fire-rescue", 10058L),
-          new SimpleEntry<>("bLS-unit", 10059L),
-          new SimpleEntry<>("aLS-unit", 10060L),
-          new SimpleEntry<>("mobile-command-post", 10075L),
-          new SimpleEntry<>("chief-officer-car", 10076L),
-          new SimpleEntry<>("hAZMAT-unit", 10077L),
-          new SimpleEntry<>("type-i-hand-crew", 10078L),
-          new SimpleEntry<>("type-ii-hand-crew", 10079L),
-          new SimpleEntry<>("privately-owned-vehicle", 10083L),
-          new SimpleEntry<>("other-apparatus-resource", 10084L),
-          new SimpleEntry<>("ambulance", 10085L),
-          new SimpleEntry<>("bomb-squad-van", 10086L),
-          new SimpleEntry<>("combine-harvester", 10087L),
-          new SimpleEntry<>("construction-vehicle", 10088L),
-          new SimpleEntry<>("farm-tractor", 10089L),
-          new SimpleEntry<>("grass-cutting-machines", 10090L),
-          new SimpleEntry<>("hAZMAT-containment-tow", 10091L),
-          new SimpleEntry<>("heavy-tow", 10092L),
-          new SimpleEntry<>("light-tow", 10094L),
-          new SimpleEntry<>("flatbed-tow", 10114L),
-          new SimpleEntry<>("hedge-cutting-machines", 10093L),
-          new SimpleEntry<>("mobile-crane", 10095L),
-          new SimpleEntry<>("refuse-collection-vehicle", 10096L),
-          new SimpleEntry<>("resurfacing-vehicle", 10097L),
-          new SimpleEntry<>("road-sweeper", 10098L),
-          new SimpleEntry<>("roadside-litter-collection-crews", 10099L),
-          new SimpleEntry<>("survey-crews", 10115L),
-          new SimpleEntry<>("salvage-vehicle", 10100L),
-          new SimpleEntry<>("sand-truck", 10101L),
-          new SimpleEntry<>("snowplow", 10102L),
-          new SimpleEntry<>("steam-roller", 10103L),
-          new SimpleEntry<>("swat-team-van", 10104L),
-          new SimpleEntry<>("track-laying-vehicle", 10105L),
-          new SimpleEntry<>("unknown-vehicle", 10106L),
-          new SimpleEntry<>("white-lining-vehicle", 10107L),
-          new SimpleEntry<>("dump-truck", 10108L),
-          new SimpleEntry<>("supervisor-vehicle", 10109L),
-          new SimpleEntry<>("snow-blower", 10110L),
-          new SimpleEntry<>("rotary-snow-blower", 10111L),
-          new SimpleEntry<>("road-grader", 10112L),
-          new SimpleEntry<>("steam-truck", 10113L),
-          new SimpleEntry<>("unknown-status", 10240L),
-          new SimpleEntry<>("ready-for-use", 10241L),
-          new SimpleEntry<>("working-normally", 10242L),
-          new SimpleEntry<>("working-autonomously", 10243L),
-          new SimpleEntry<>("working-incorrectly", 10244L),
-          new SimpleEntry<>("not-working", 10245L),
-          new SimpleEntry<>("normal-maintenance", 10246L),
-          new SimpleEntry<>("in-route-to-use", 10247L),
-          new SimpleEntry<>("returning-from-use", 10248L),
-          new SimpleEntry<>("out-of-service", 10249L),
-          new SimpleEntry<>("off-duty", 10250L),
-          new SimpleEntry<>("on-patrol", 10251L),
-          new SimpleEntry<>("on-call", 10252L),
-          new SimpleEntry<>("on-break", 10253L),
-          new SimpleEntry<>("mandatory-time-off", 10254L),
-          new SimpleEntry<>("low-on-fuel", 10255L),
-          new SimpleEntry<>("low-on-water", 10256L),
-          new SimpleEntry<>("low-charge", 10257L),
-          new SimpleEntry<>("missing", 10258L),
-          new SimpleEntry<>("none", 10496L),
-          new SimpleEntry<>("light-pole", 10497L),
-          new SimpleEntry<>("utility-pole", 10498L),
-          new SimpleEntry<>("gantry-way", 10499L),
-          new SimpleEntry<>("sign-support", 10500L),
-          new SimpleEntry<>("signal-pole", 10501L),
-          new SimpleEntry<>("signage-public", 10502L),
-          new SimpleEntry<>("signage-private", 10503L),
-          new SimpleEntry<>("overhead-sign", 10568L),
-          new SimpleEntry<>("ground-sign", 10569L),
-          new SimpleEntry<>("cones", 10504L),
-          new SimpleEntry<>("cones-post-type", 10505L),
-          new SimpleEntry<>("cones-glue-post", 10506L),
-          new SimpleEntry<>("cones-other", 10507L),
-          new SimpleEntry<>("barriers", 10508L),
-          new SimpleEntry<>("barrier-Aframe", 10509L),
-          new SimpleEntry<>("barriers-heavy-duty", 10510L),
-          new SimpleEntry<>("barricade-type-III", 10511L),
-          new SimpleEntry<>("barricade-small", 10512L),
-          new SimpleEntry<>("solid-barrier", 10565L),
-          new SimpleEntry<>("moveable-barrier", 10566L),
-          new SimpleEntry<>("barricade-lights", 10513L),
-          new SimpleEntry<>("beacon", 10514L),
-          new SimpleEntry<>("t-stand", 10515L),
-          new SimpleEntry<>("a-stand", 10516L),
-          new SimpleEntry<>("drums", 10517L),
-          new SimpleEntry<>("sand-barrel", 10567L),
-          new SimpleEntry<>("impact-attenuator", 10518L),
-          new SimpleEntry<>("barricade-tape", 10519L),
-          new SimpleEntry<>("safety-fence", 10520L),
-          new SimpleEntry<>("temp-pavement-markings", 10521L),
-          new SimpleEntry<>("speed-bumps", 10522L),
-          new SimpleEntry<>("temp-curbs", 10523L),
-          new SimpleEntry<>("parking-blocks", 10524L),
-          new SimpleEntry<>("signboard-fixed", 10525L),
-          new SimpleEntry<>("signboard-portable", 10526L),
-          new SimpleEntry<>("stripe", 10572L),
-          new SimpleEntry<>("island", 10573L),
-          new SimpleEntry<>("har", 10527L),
-          new SimpleEntry<>("har-AM", 10528L),
-          new SimpleEntry<>("har-FM", 10529L),
-          new SimpleEntry<>("har-DSRC", 10530L),
-          new SimpleEntry<>("traffic-light", 10531L),
-          new SimpleEntry<>("lane-control-signal", 10532L),
-          new SimpleEntry<>("traffic-detector", 10533L),
-          new SimpleEntry<>("vehicle-detector", 10534L),
-          new SimpleEntry<>("system-alarm", 10535L),
-          new SimpleEntry<>("arrow-board", 10536L),
-          new SimpleEntry<>("fixed-VMS", 10537L),
-          new SimpleEntry<>("mobile-VMS", 10538L),
-          new SimpleEntry<>("ramp-control", 10539L),
-          new SimpleEntry<>("gate-control", 10540L),
-          new SimpleEntry<>("temporary-traffic-light", 10541L),
-          new SimpleEntry<>("over-height-warning-system", 10542L),
-          new SimpleEntry<>("over-weight-warning-system", 10543L),
-          new SimpleEntry<>("emergency-telephones", 10544L),
-          new SimpleEntry<>("railroad-crossing-equipment", 10545L),
-          new SimpleEntry<>("tunnel-ventilation", 10546L),
-          new SimpleEntry<>("ccTV", 10547L),
-          new SimpleEntry<>("environmental-sensor", 10548L),
-          new SimpleEntry<>("emergency-signal", 10570L),
-          new SimpleEntry<>("countdown-pedestrian-sign", 10571L),
-          new SimpleEntry<>("switch", 10549L),
-          new SimpleEntry<>("signal", 10550L),
-          new SimpleEntry<>("third-rail", 10551L),
-          new SimpleEntry<>("overhead-power", 10552L),
-          new SimpleEntry<>("concrete-tie", 10553L),
-          new SimpleEntry<>("wooden-tie", 10554L),
-          new SimpleEntry<>("manhole-cover", 10559L),
-          new SimpleEntry<>("culvert", 10560L),
-          new SimpleEntry<>("escalator", 10555L),
-          new SimpleEntry<>("elevator", 10556L),
-          new SimpleEntry<>("snow-poles", 10561L),
-          new SimpleEntry<>("track", 10557L),
-          new SimpleEntry<>("guide-poles", 10562L),
-          new SimpleEntry<>("drawbridge", 10558L),
-          new SimpleEntry<>("expansion-joint", 10563L),
-          new SimpleEntry<>("shifted-plate", 10564L),
-          new SimpleEntry<>("unknown-transit-problem", 10753L),
-          new SimpleEntry<>("sleeping-customer", 10754L),
-          new SimpleEntry<>("assault-on-passenger", 10755L),
-          new SimpleEntry<>("assault-on-employee", 10756L),
-          new SimpleEntry<>("broken-seat", 10757L),
-          new SimpleEntry<>("bus-alarm", 10758L),
-          new SimpleEntry<>("crime-or-drug-deal", 10759L),
-          new SimpleEntry<>("eating-on-board", 10760L),
-          new SimpleEntry<>("equipment-problem-with-air-conditioning", 10761L),
-          new SimpleEntry<>("equipment-problem-with-air-system", 10762L),
-          new SimpleEntry<>("equipment-problem-with-brakes", 10763L),
-          new SimpleEntry<>("equipment-problem-with-chassis-or-suspension", 10764L),
-          new SimpleEntry<>("equipment-problem-with-cooling-system", 10765L),
-          new SimpleEntry<>("equipment-problem-with-doors", 10766L),
-          new SimpleEntry<>("equipment-problem-with-electrical", 10767L),
-          new SimpleEntry<>("equipment-problem-with-engine", 10768L),
-          new SimpleEntry<>("equipment-problem-with-exterior-or-body", 10769L),
-          new SimpleEntry<>("equipment-problem-with-fare-collection", 10770L),
-          new SimpleEntry<>("equipment-problem-with-fuel-or-exhaust", 10771L),
-          new SimpleEntry<>("equipment-problem-with-horn", 10772L),
-          new SimpleEntry<>("equipment-problem-with-interior", 10773L),
-          new SimpleEntry<>("equipment-problem-with-liftkneeling", 10774L),
-          new SimpleEntry<>("equipment-problem-with-lights", 10775L),
-          new SimpleEntry<>("equipment-problem-with-lubrication", 10776L),
-          new SimpleEntry<>("equipment-problem-with-radio-or-communication", 10777L),
-          new SimpleEntry<>("equipment-problem-with-signs", 10778L),
-          new SimpleEntry<>("equipment-problem-with-steering", 10779L),
-          new SimpleEntry<>("equipment-problem-with-tires", 10780L),
-          new SimpleEntry<>("equipment-problem-with-transmission", 10781L),
-          new SimpleEntry<>("equipment-problem-with-unknown-alarm", 10782L),
-          new SimpleEntry<>("equipment-problem-with-wipers", 10783L),
-          new SimpleEntry<>("fare-dispute-expired-pass", 10784L),
-          new SimpleEntry<>("fare-dispute-expired-transfer", 10785L),
-          new SimpleEntry<>("fare-dispute-expired-upgrade", 10786L),
-          new SimpleEntry<>("fare-dispute-other", 10787L),
-          new SimpleEntry<>("fare-dispute-refuses-to-pay", 10788L),
-          new SimpleEntry<>("lift-passenger-cycle-completed", 10789L),
-          new SimpleEntry<>("lift-passenger-ready-to-alight", 10790L),
-          new SimpleEntry<>("lift-passenger-ready-to-board", 10791L),
-          new SimpleEntry<>("lost-article", 10792L),
-          new SimpleEntry<>("objects-thrown", 10793L),
-          new SimpleEntry<>("passenger-accident-alighting", 10794L),
-          new SimpleEntry<>("passenger-accident-boarding", 10795L),
-          new SimpleEntry<>("passenger-accident-fallen-on-board", 10796L),
-          new SimpleEntry<>("passenger-load", 10797L),
-          new SimpleEntry<>("passenger-accident-other", 10798L),
-          new SimpleEntry<>("passenger-sick-or-injured", 10799L),
-          new SimpleEntry<>("right-of-way", 10800L),
-          new SimpleEntry<>("theft", 10801L),
-          new SimpleEntry<>("theft-of-service", 10802L),
-          new SimpleEntry<>("waiting-to-get-relief-for-schedule-break", 10803L),
-          new SimpleEntry<>("waiting-to-get-relief-after-run-is-finished", 10804L),
-          new SimpleEntry<>("waiting-to-provide-relief", 10805L),
-          new SimpleEntry<>("unknown-object", 11009L),
-          new SimpleEntry<>("tire", 11010L),
-          new SimpleEntry<>("rim", 11011L),
-          new SimpleEntry<>("retread", 11012L),
-          new SimpleEntry<>("trash", 11013L),
-          new SimpleEntry<>("cargo", 11014L),
-          new SimpleEntry<>("diesel", 11015L),
-          new SimpleEntry<>("gasoline", 11016L),
-          new SimpleEntry<>("anti-freeze", 11017L),
-          new SimpleEntry<>("propane-gas", 11061L),
-          new SimpleEntry<>("alternative-fuel", 11060L),
-          new SimpleEntry<>("seat-belts", 11018L),
-          new SimpleEntry<>("litter-container", 11019L),
-          new SimpleEntry<>("all-Terrain-vehicle", 11020L),
-          new SimpleEntry<>("seaplane", 11021L),
-          new SimpleEntry<>("chairlift", 11022L),
-          new SimpleEntry<>("fishing-pier", 11023L),
-          new SimpleEntry<>("telephone", 11025L),
-          new SimpleEntry<>("railroad-cross-buck", 11024L),
-          new SimpleEntry<>("horn", 11048L),
-          new SimpleEntry<>("train", 11047L),
-          new SimpleEntry<>("deer", 11049L),
-          new SimpleEntry<>("horse", 11051L),
-          new SimpleEntry<>("cattle", 11050L),
-          new SimpleEntry<>("golf-cart", 11052L),
-          new SimpleEntry<>("services", 11056L),
-          new SimpleEntry<>("motorist-services", 11059L),
-          new SimpleEntry<>("food-services", 11053L),
-          new SimpleEntry<>("roadside-table", 11055L),
-          new SimpleEntry<>("ambulance-staging-point", 11054L),
-          new SimpleEntry<>("fallout", 11026L),
-          new SimpleEntry<>("medical", 11027L),
-          new SimpleEntry<>("chemical", 11028L),
-          new SimpleEntry<>("welfare", 11029L),
-          new SimpleEntry<>("decontamination", 11063L),
-          new SimpleEntry<>("evacuation", 11030L),
-          new SimpleEntry<>("registration", 11062L),
-          new SimpleEntry<>("emergency", 11064L),
-          new SimpleEntry<>("left-arrow-signal", 11031L),
-          new SimpleEntry<>("ahead-arrow-signal", 11032L),
-          new SimpleEntry<>("right-arrow-signal", 11033L),
-          new SimpleEntry<>("green-light-signal", 11034L),
-          new SimpleEntry<>("green-arrow-signal", 11035L),
-          new SimpleEntry<>("yellow-light-signal", 11036L),
-          new SimpleEntry<>("yellow-arrow-signal", 11037L),
-          new SimpleEntry<>("red-light-signal", 11038L),
-          new SimpleEntry<>("red-arrow-signal", 11039L),
-          new SimpleEntry<>("extended-green-signal", 11040L),
-          new SimpleEntry<>("advance-arrow-signal", 11041L),
-          new SimpleEntry<>("pedestrian-Signal-Stop", 11042L),
-          new SimpleEntry<>("pedestrian-Signal-Caution", 11043L),
-          new SimpleEntry<>("pedestrian-Signal-Walk", 11044L),
-          new SimpleEntry<>("pedestrian-Signal-Light", 11045L),
-          new SimpleEntry<>("pedestrian-Signal-Time-Display", 11046L),
-          new SimpleEntry<>("prohibit-None-Allowed-LU-LT-L45-S-R45-RT-RU", 11264L),
-          new SimpleEntry<>("prohibit-RU-Allowed-LU-LT-L45-S-R45-RT", 11265L),
-          new SimpleEntry<>("prohibit-RT-Allowed-LU-LT-L45-S-R45-RU", 11266L),
-          new SimpleEntry<>("prohibit-RT-RU-Allowed-LU-LT-L45-S-R45", 11267L),
-          new SimpleEntry<>("prohibit-R45-Allowed-LU-LT-L45-S-RT-RU", 11268L),
-          new SimpleEntry<>("prohibit-R45-RU-Allowed-LU-LT-L45-S-RT", 11269L),
-          new SimpleEntry<>("prohibit-R45-RT-Allowed-LU-LT-L45-S-RU", 11270L),
-          new SimpleEntry<>("prohibit-R45-RT-RU-Allowed-LU-LT-L45-S", 11271L),
-          new SimpleEntry<>("prohibit-S-Allowed-LU-LT-L45-R45-RT-RU", 11272L),
-          new SimpleEntry<>("prohibit-S-RU-Allowed-LU-LT-L45-R45-RT", 11273L),
-          new SimpleEntry<>("prohibit-S-RT-Allowed-LU-LT-L45-R45-RU", 11274L),
-          new SimpleEntry<>("prohibit-S-RT-RU-Allowed-LU-LT-L45-R45", 11275L),
-          new SimpleEntry<>("prohibit-S-R45-Allowed-LU-LT-L45-RT-RU", 11276L),
-          new SimpleEntry<>("prohibit-S-R45-RU-Allowed-LU-LT-L45-RT", 11277L),
-          new SimpleEntry<>("prohibit-S-R45-RT-Allowed-LU-LT-L45-RU", 11278L),
-          new SimpleEntry<>("prohibit-S-R45-RT-RU-Allowed-LU-LT-L45", 11279L),
-          new SimpleEntry<>("prohibit-L45-Allowed-LU-LT-S-R45-RT-RU", 11280L),
-          new SimpleEntry<>("prohibit-L45-RU-Allowed-LU-LT-S-R45-RT", 11281L),
-          new SimpleEntry<>("prohibit-L45-RT-Allowed-LU-LT-S-R45-RU", 11282L),
-          new SimpleEntry<>("prohibit-L45-RT-RU-Allowed-LU-LT-S-R45", 11283L),
-          new SimpleEntry<>("prohibit-L45-R45-Allowed-LU-LT-S-RT-RU", 11284L),
-          new SimpleEntry<>("prohibit-L45-R45-RU-Allowed-LU-LT-S-RT", 11285L),
-          new SimpleEntry<>("prohibit-L45-R45-RT-Allowed-LU-LT-S-RU", 11286L),
-          new SimpleEntry<>("prohibit-L45-R45-RT-RU-Allowed-LU-LT-S", 11287L),
-          new SimpleEntry<>("prohibit-L45-S-Allowed-LU-LT-R45-RT-RU", 11288L),
-          new SimpleEntry<>("prohibit-L45-S-RU-Allowed-LU-LT-R45-RT", 11289L),
-          new SimpleEntry<>("prohibit-L45-S-RT-Allowed-LU-LT-R45-RU", 11290L),
-          new SimpleEntry<>("prohibit-L45-S-RT-RU-Allowed-LU-LT-R45", 11291L),
-          new SimpleEntry<>("prohibit-L45-S-R45-Allowed-LU-LT-RT-RU", 11292L),
-          new SimpleEntry<>("prohibit-L45-S-R45-RU-Allowed-LU-LT-RT", 11293L),
-          new SimpleEntry<>("prohibit-L45-S-R45-RT-Allowed-LU-LT-RU", 11294L),
-          new SimpleEntry<>("prohibit-L45-S-R45-RT-RU-Allowed-LU-LT", 11295L),
-          new SimpleEntry<>("prohibit-LT-Allowed-LU-L45-S-R45-RT-RU", 11296L),
-          new SimpleEntry<>("prohibit-LT-RU-Allowed-LU-L45-S-R45-RT", 11297L),
-          new SimpleEntry<>("prohibit-LT-RT-Allowed-LU-L45-S-R45-RU", 11298L),
-          new SimpleEntry<>("prohibit-LT-RT-RU-Allowed-LU-L45-S-R45", 11299L),
-          new SimpleEntry<>("prohibit-LT-R45-Allowed-LU-L45-S-RT-RU", 11300L),
-          new SimpleEntry<>("prohibit-LT-R45-RU-Allowed-LU-L45-S-RT", 11301L),
-          new SimpleEntry<>("prohibit-LT-R45-RT-Allowed-LU-L45-S-RU", 11302L),
-          new SimpleEntry<>("prohibit-LT-R45-RT-RU-Allowed-LU-L45-S", 11303L),
-          new SimpleEntry<>("prohibit-LT-S-Allowed-LU-L45-R45-RT-RU", 11304L),
-          new SimpleEntry<>("prohibit-LT-S-RU-Allowed-LU-L45-R45-RT", 11305L),
-          new SimpleEntry<>("prohibit-LT-S-RT-Allowed-LU-L45-R45-RU", 11306L),
-          new SimpleEntry<>("prohibit-LT-S-RT-RU-Allowed-LU-L45-R45", 11307L),
-          new SimpleEntry<>("prohibit-LT-S-R45-Allowed-LU-L45-RT-RU", 11308L),
-          new SimpleEntry<>("prohibit-LT-S-R45-RU-Allowed-LU-L45-RT", 11309L),
-          new SimpleEntry<>("prohibit-LT-S-R45-RT-Allowed-LU-L45-RU", 11310L),
-          new SimpleEntry<>("prohibit-LT-S-R45-RT-RU-Allowed-LU-L45", 11311L),
-          new SimpleEntry<>("prohibit-LT-L45-Allowed-LU-S-R45-RT-RU", 11312L),
-          new SimpleEntry<>("prohibit-LT-L45-RU-Allowed-LU-S-R45-RT", 11313L),
-          new SimpleEntry<>("prohibit-LT-L45-RT-Allowed-LU-S-R45-RU", 11314L),
-          new SimpleEntry<>("prohibit-LT-L45-RT-RU-Allowed-LU-S-R45", 11315L),
-          new SimpleEntry<>("prohibit-LT-L45-R45-Allowed-LU-S-RT-RU", 11316L),
-          new SimpleEntry<>("prohibit-LT-L45-R45-RU-Allowed-LU-S-RT", 11317L),
-          new SimpleEntry<>("prohibit-LT-L45-R45-RT-Allowed-LU-S-RU", 11318L),
-          new SimpleEntry<>("prohibit-LT-L45-R45-RT-RU-Allowed-LU-S", 11319L),
-          new SimpleEntry<>("prohibit-LT-L45-S-Allowed-LU-R45-RT-RU", 11320L),
-          new SimpleEntry<>("prohibit-LT-L45-S-RU-Allowed-LU-R45-RT", 11321L),
-          new SimpleEntry<>("prohibit-LT-L45-S-RT-Allowed-LU-R45-RU", 11322L),
-          new SimpleEntry<>("prohibit-LT-L45-S-RT-RU-Allowed-LU-R45", 11323L),
-          new SimpleEntry<>("prohibit-LT-L45-S-R45-Allowed-LU-RT-RU", 11324L),
-          new SimpleEntry<>("prohibit-LT-L45-S-R45-RU-Allowed-LU-RT", 11325L),
-          new SimpleEntry<>("prohibit-LT-L45-S-R45-RT-Allowed-LU-RU", 11326L),
-          new SimpleEntry<>("prohibit-LT-L45-S-R45-RT-RU-Allowed-LU", 11327L),
-          new SimpleEntry<>("prohibit-LU-Allowed-LT-L45-S-R45-RT-RU", 11328L),
-          new SimpleEntry<>("prohibit-LU-RU-Allowed-LT-L45-S-R45-RT", 11329L),
-          new SimpleEntry<>("prohibit-LU-RT-Allowed-LT-L45-S-R45-RU", 11330L),
-          new SimpleEntry<>("prohibit-LU-RT-RU-Allowed-LT-L45-S-R45", 11331L),
-          new SimpleEntry<>("prohibit-LU-R45-Allowed-LT-L45-S-RT-RU", 11332L),
-          new SimpleEntry<>("prohibit-LU-R45-RU-Allowed-LT-L45-S-RT", 11333L),
-          new SimpleEntry<>("prohibit-LU-R45-RT-Allowed-LT-L45-S-RU", 11334L),
-          new SimpleEntry<>("prohibit-LU-R45-RT-RU-Allowed-LT-L45-S", 11335L),
-          new SimpleEntry<>("prohibit-LU-S-Allowed-LT-L45-R45-RT-RU", 11336L),
-          new SimpleEntry<>("prohibit-LU-S-RU-Allowed-LT-L45-R45-RT", 11337L),
-          new SimpleEntry<>("prohibit-LU-S-RT-Allowed-LT-L45-R45-RU", 11338L),
-          new SimpleEntry<>("prohibit-LU-S-RT-RU-Allowed-LT-L45-R45", 11339L),
-          new SimpleEntry<>("prohibit-LU-S-R45-Allowed-LT-L45-RT-RU", 11340L),
-          new SimpleEntry<>("prohibit-LU-S-R45-RU-Allowed-LT-L45-RT", 11341L),
-          new SimpleEntry<>("prohibit-LU-S-R45-RT-Allowed-LT-L45-RU", 11342L),
-          new SimpleEntry<>("prohibit-LU-S-R45-RT-RU-Allowed-LT-L45", 11343L),
-          new SimpleEntry<>("prohibit-LU-L45-Allowed-LT-S-R45-RT-RU", 11344L),
-          new SimpleEntry<>("prohibit-LU-L45-RU-Allowed-LT-S-R45-RT", 11345L),
-          new SimpleEntry<>("prohibit-LU-L45-RT-Allowed-LT-S-R45-RU", 11346L),
-          new SimpleEntry<>("prohibit-LU-L45-RT-RU-Allowed-LT-S-R45", 11347L),
-          new SimpleEntry<>("prohibit-LU-L45-R45-Allowed-LT-S-RT-RU", 11348L),
-          new SimpleEntry<>("prohibit-LU-L45-R45-RU-Allowed-LT-S-RT", 11349L),
-          new SimpleEntry<>("prohibit-LU-L45-R45-RT-Allowed-LT-S-RU", 11350L),
-          new SimpleEntry<>("prohibit-LU-L45-R45-RT-RU-Allowed-LT-S", 11351L),
-          new SimpleEntry<>("prohibit-LU-L45-S-Allowed-LT-R45-RT-RU", 11352L),
-          new SimpleEntry<>("prohibit-LU-L45-S-RU-Allowed-LT-R45-RT", 11353L),
-          new SimpleEntry<>("prohibit-LU-L45-S-RT-Allowed-LT-R45-RU", 11354L),
-          new SimpleEntry<>("prohibit-LU-L45-S-RT-RU-Allowed-LT-R45", 11355L),
-          new SimpleEntry<>("prohibit-LU-L45-S-R45-Allowed-LT-RT-RU", 11356L),
-          new SimpleEntry<>("prohibit-LU-L45-S-R45-RU-Allowed-LT-RT", 11357L),
-          new SimpleEntry<>("prohibit-LU-L45-S-R45-RT-Allowed-LT-RU", 11358L),
-          new SimpleEntry<>("prohibit-LU-L45-S-R45-RT-RU-Allowed-LT", 11359L),
-          new SimpleEntry<>("prohibit-LU-LT-Allowed-L45-S-R45-RT-RU", 11360L),
-          new SimpleEntry<>("prohibit-LU-LT-RU-Allowed-L45-S-R45-RT", 11361L),
-          new SimpleEntry<>("prohibit-LU-LT-RT-Allowed-L45-S-R45-RU", 11362L),
-          new SimpleEntry<>("prohibit-LU-LT-RT-RU-Allowed-L45-S-R45", 11363L),
-          new SimpleEntry<>("prohibit-LU-LT-R45-Allowed-L45-S-RT-RU", 11364L),
-          new SimpleEntry<>("prohibit-LU-LT-R45-RU-Allowed-L45-S-RT", 11365L),
-          new SimpleEntry<>("prohibit-LU-LT-R45-RT-Allowed-L45-S-RU", 11366L),
-          new SimpleEntry<>("prohibit-LU-LT-R45-RT-RU-Allowed-L45-S", 11367L),
-          new SimpleEntry<>("prohibit-LU-LT-S-Allowed-L45-R45-RT-RU", 11368L),
-          new SimpleEntry<>("prohibit-LU-LT-S-RU-Allowed-L45-R45-RT", 11369L),
-          new SimpleEntry<>("prohibit-LU-LT-S-RT-Allowed-L45-R45-RU", 11370L),
-          new SimpleEntry<>("prohibit-LU-LT-S-RT-RU-Allowed-L45-R45", 11371L),
-          new SimpleEntry<>("prohibit-LU-LT-S-R45-Allowed-L45-RT-RU", 11372L),
-          new SimpleEntry<>("prohibit-LU-LT-S-R45-RU-Allowed-L45-RT", 11373L),
-          new SimpleEntry<>("prohibit-LU-LT-S-R45-RT-Allowed-L45-RU", 11374L),
-          new SimpleEntry<>("prohibit-LU-LT-S-R45-RT-RU-Allowed-L45", 11375L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-Allowed-S-R45-RT-RU", 11376L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-RU-Allowed-S-R45-RT", 11377L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-RT-Allowed-S-R45-RU", 11378L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-RT-RU-Allowed-S-R45", 11379L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-R45-Allowed-S-RT-RU", 11380L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-R45-RU-Allowed-S-RT", 11381L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-R45-RT-Allowed-S-RU", 11382L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-R45-RT-RU-Allowed-S", 11383L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-Allowed-R45-RT-RU", 11384L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-RU-Allowed-R45-RT", 11385L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-RT-Allowed-R45-RU", 11386L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-RT-RU-Allowed-R45", 11387L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-Allowed-RT-RU", 11388L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-RU-Allowed-RT", 11389L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-RT-Allowed-RU", 11390L),
-          new SimpleEntry<>("prohibit-LU-LT-L45-S-R45-RT-RU-Allowed-None", 11391L),
-          new SimpleEntry<>("n1-16th", 11521L),
-          new SimpleEntry<>("n1-10th", 11522L),
-          new SimpleEntry<>("n1-8th", 11523L),
-          new SimpleEntry<>("n1-4th", 11524L),
-          new SimpleEntry<>("n1-3rd", 11525L),
-          new SimpleEntry<>("n1-2", 11526L),
-          new SimpleEntry<>("n3-4", 11527L),
-          new SimpleEntry<>("n300", 11531L),
-          new SimpleEntry<>("n350", 11532L),
-          new SimpleEntry<>("n400", 11533L),
-          new SimpleEntry<>("n450", 11534L),
-          new SimpleEntry<>("n500", 11535L),
-          new SimpleEntry<>("n550", 11536L),
-          new SimpleEntry<>("n600", 11537L),
-          new SimpleEntry<>("n650", 11538L),
-          new SimpleEntry<>("n700", 11539L),
-          new SimpleEntry<>("n750", 11540L),
-          new SimpleEntry<>("n800", 11541L),
-          new SimpleEntry<>("n850", 11542L),
-          new SimpleEntry<>("n900", 11543L),
-          new SimpleEntry<>("n950", 11544L),
-          new SimpleEntry<>("n1000", 11545L),
-          new SimpleEntry<>("n1100", 11546L),
-          new SimpleEntry<>("n1200", 11547L),
-          new SimpleEntry<>("n1300", 11548L),
-          new SimpleEntry<>("n1400", 11549L),
-          new SimpleEntry<>("n1500", 11550L),
-          new SimpleEntry<>("n1600", 11551L),
-          new SimpleEntry<>("n1700", 11552L),
-          new SimpleEntry<>("n1800", 11553L),
-          new SimpleEntry<>("n1900", 11554L),
-          new SimpleEntry<>("n2000", 11555L),
-          new SimpleEntry<>("n2100", 11556L),
-          new SimpleEntry<>("n2200", 11557L),
-          new SimpleEntry<>("n2300", 11558L),
-          new SimpleEntry<>("n2400", 11559L),
-          new SimpleEntry<>("n2500", 11560L),
-          new SimpleEntry<>("n2600", 11561L),
-          new SimpleEntry<>("n2700", 11562L),
-          new SimpleEntry<>("n2800", 11563L),
-          new SimpleEntry<>("n2900", 11564L),
-          new SimpleEntry<>("n3000", 11565L),
-          new SimpleEntry<>("n3500", 11566L),
-          new SimpleEntry<>("n4000", 11567L),
-          new SimpleEntry<>("n4500", 11568L),
-          new SimpleEntry<>("n5000", 11569L),
-          new SimpleEntry<>("n5500", 11570L),
-          new SimpleEntry<>("n6000", 11571L),
-          new SimpleEntry<>("n6500", 11572L),
-          new SimpleEntry<>("n7000", 11573L),
-          new SimpleEntry<>("n7500", 11574L),
-          new SimpleEntry<>("n8000", 11575L),
-          new SimpleEntry<>("n8500", 11576L),
-          new SimpleEntry<>("n9000", 11577L),
-          new SimpleEntry<>("n9500", 11578L),
-          new SimpleEntry<>("n10000", 11579L),
-          new SimpleEntry<>("n11000", 11580L),
-          new SimpleEntry<>("n12000", 11581L),
-          new SimpleEntry<>("n13000", 11582L),
-          new SimpleEntry<>("n14000", 11583L),
-          new SimpleEntry<>("n15000", 11584L),
-          new SimpleEntry<>("n16000", 11585L),
-          new SimpleEntry<>("n17000", 11586L),
-          new SimpleEntry<>("n18000", 11587L),
-          new SimpleEntry<>("n19000", 11588L),
-          new SimpleEntry<>("n20000", 11589L),
-          new SimpleEntry<>("n21000", 11590L),
-          new SimpleEntry<>("n22000", 11591L),
-          new SimpleEntry<>("n23000", 11592L),
-          new SimpleEntry<>("n24000", 11593L),
-          new SimpleEntry<>("n25000", 11594L),
-          new SimpleEntry<>("n26000", 11595L),
-          new SimpleEntry<>("n27000", 11596L),
-          new SimpleEntry<>("n28000", 11597L),
-          new SimpleEntry<>("n29000", 11598L),
-          new SimpleEntry<>("n30000", 11599L),
-          new SimpleEntry<>("n35000", 11600L),
-          new SimpleEntry<>("n40000", 11601L),
-          new SimpleEntry<>("n45000", 11602L),
-          new SimpleEntry<>("n50000", 11603L),
-          new SimpleEntry<>("n55000", 11604L),
-          new SimpleEntry<>("n60000", 11605L),
-          new SimpleEntry<>("n65000", 11606L),
-          new SimpleEntry<>("n70000", 11607L),
-          new SimpleEntry<>("n75000", 11608L),
-          new SimpleEntry<>("n80000", 11609L),
-          new SimpleEntry<>("n85000", 11610L),
-          new SimpleEntry<>("n90000", 11611L),
-          new SimpleEntry<>("n95000", 11612L),
-          new SimpleEntry<>("n100000", 11613L),
-          new SimpleEntry<>("name-follows", 11777L),
-          new SimpleEntry<>("freeway", 11778L),
-          new SimpleEntry<>("us-Route", 11779L),
-          new SimpleEntry<>("state-Route", 11780L),
-          new SimpleEntry<>("interstate", 11781L),
-          new SimpleEntry<>("business-Loop", 11782L),
-          new SimpleEntry<>("spur", 11797L),
-          new SimpleEntry<>("junction", 11798L),
-          new SimpleEntry<>("alternative", 11783L),
-          new SimpleEntry<>("county-Route", 11784L),
-          new SimpleEntry<>("forest-Route", 11785L),
-          new SimpleEntry<>("farm-to-Market-Route", 11786L),
-          new SimpleEntry<>("eisenhower-Interstate-System", 11787L),
-          new SimpleEntry<>("americas-Byways", 11788L),
-          new SimpleEntry<>("national-Network-Route", 11789L),
-          new SimpleEntry<>("scenic-Area", 11790L),
-          new SimpleEntry<>("parking-Area", 11791L),
-          new SimpleEntry<>("weight-Station", 11792L),
-          new SimpleEntry<>("road", 11793L),
-          new SimpleEntry<>("exit", 11794L),
-          new SimpleEntry<>("historical-route", 11795L),
-          new SimpleEntry<>("state-line", 11796L),
-          new SimpleEntry<>("bicycle-route", 11799L),
-          new SimpleEntry<>("bicycle-interstate-route", 11800L),
-          new SimpleEntry<>("national-park", 11801L),
-          new SimpleEntry<>("bear-viewing-area", 12033L),
-          new SimpleEntry<>("deer-viewing-area", 12034L),
-          new SimpleEntry<>("drinking-water", 12035L),
-          new SimpleEntry<>("environmental-study-area", 12036L),
-          new SimpleEntry<>("falling-rocks", 12037L),
-          new SimpleEntry<>("firearms", 12038L),
-          new SimpleEntry<>("leashed-pets", 12039L),
-          new SimpleEntry<>("point-of-interest", 12040L),
-          new SimpleEntry<>("smoking", 12041L),
-          new SimpleEntry<>("dog", 12042L),
-          new SimpleEntry<>("tent-camping", 12043L),
-          new SimpleEntry<>("trailer-camping", 12044L),
-          new SimpleEntry<>("first-aid", 12045L),
-          new SimpleEntry<>("handicapped", 12046L),
-          new SimpleEntry<>("mechanic", 12047L),
-          new SimpleEntry<>("trailer-sanitary-station", 12048L),
-          new SimpleEntry<>("viewing-area", 12049L),
-          new SimpleEntry<>("scenic-overlook", 12095L),
-          new SimpleEntry<>("campfire", 12050L),
-          new SimpleEntry<>("locker", 12051L),
-          new SimpleEntry<>("sleeping", 12052L),
-          new SimpleEntry<>("trail", 12053L),
-          new SimpleEntry<>("climbing", 12054L),
-          new SimpleEntry<>("rock-climbing", 12055L),
-          new SimpleEntry<>("hunting", 12056L),
-          new SimpleEntry<>("playground", 12057L),
-          new SimpleEntry<>("rock-collecting", 12058L),
-          new SimpleEntry<>("spelunking", 12059L),
-          new SimpleEntry<>("bicycle-trail", 12060L),
-          new SimpleEntry<>("hiking-trail", 12061L),
-          new SimpleEntry<>("horse-trail", 12062L),
-          new SimpleEntry<>("trail-interpretive-auto", 12063L),
-          new SimpleEntry<>("trail-interpretive-pedestrian", 12064L),
-          new SimpleEntry<>("trail-road-for-4WD-vehicles", 12065L),
-          new SimpleEntry<>("trail-for-trail-bikes", 12066L),
-          new SimpleEntry<>("archer", 12067L),
-          new SimpleEntry<>("hang-glider", 12068L),
-          new SimpleEntry<>("boat-tours", 12069L),
-          new SimpleEntry<>("canoeing", 12070L),
-          new SimpleEntry<>("diving", 12071L),
-          new SimpleEntry<>("scuba-diving", 12072L),
-          new SimpleEntry<>("fishing", 12073L),
-          new SimpleEntry<>("marine-recreation-area", 12074L),
-          new SimpleEntry<>("motorboating", 12075L),
-          new SimpleEntry<>("boat-ramp", 12076L),
-          new SimpleEntry<>("rowboating", 12077L),
-          new SimpleEntry<>("sailboating", 12078L),
-          new SimpleEntry<>("water-skiing", 12079L),
-          new SimpleEntry<>("surfing", 12080L),
-          new SimpleEntry<>("swimming", 12081L),
-          new SimpleEntry<>("wading", 12082L),
-          new SimpleEntry<>("hand-launch", 12083L),
-          new SimpleEntry<>("kayak", 12084L),
-          new SimpleEntry<>("wind-surf", 12085L),
-          new SimpleEntry<>("ice-skating", 12086L),
-          new SimpleEntry<>("ski-jumping", 12087L),
-          new SimpleEntry<>("bobbing", 12088L),
-          new SimpleEntry<>("cross-country-skiing", 12089L),
-          new SimpleEntry<>("downhill-skiing", 12090L),
-          new SimpleEntry<>("sledding", 12091L),
-          new SimpleEntry<>("snowmobiling", 12092L),
-          new SimpleEntry<>("snowshoeing", 12093L),
-          new SimpleEntry<>("winter-recreation-area", 12094L),
-          new SimpleEntry<>("regulatory-sign", 12289L),
-          new SimpleEntry<>("warning-sign", 12290L),
-          new SimpleEntry<>("information-sign", 12291L),
-          new SimpleEntry<>("construction-sign", 12292L),
-          new SimpleEntry<>("guide-sign", 12293L),
-          new SimpleEntry<>("stop", 12294L),
-          new SimpleEntry<>("yield", 12295L),
-          new SimpleEntry<>("caution", 12330L),
-          new SimpleEntry<>("temporary", 12331L),
-          new SimpleEntry<>("to-oncoming-traffic", 12296L),
-          new SimpleEntry<>("four-way", 12297L),
-          new SimpleEntry<>("all-way", 12298L),
-          new SimpleEntry<>("one-way", 12329L),
-          new SimpleEntry<>("zone", 12299L),
-          new SimpleEntry<>("narrows", 12300L),
-          new SimpleEntry<>("widens", 12301L),
-          new SimpleEntry<>("reduced", 12302L),
-          new SimpleEntry<>("combined", 12303L),
-          new SimpleEntry<>("minimum", 12304L),
-          new SimpleEntry<>("maximum", 12305L),
-          new SimpleEntry<>("divided-road", 12306L),
-          new SimpleEntry<>("double-arrow", 12307L),
-          new SimpleEntry<>("dead-end", 12308L),
-          new SimpleEntry<>("no-outlet", 12309L),
-          new SimpleEntry<>("wrong-way", 12310L),
-          new SimpleEntry<>("do-not-enter", 12314L),
-          new SimpleEntry<>("nDetour", 12312L),
-          new SimpleEntry<>("chevron", 12313L),
-          new SimpleEntry<>("t-intersection-to-the-side", 12315L),
-          new SimpleEntry<>("t-intersection-oncoming", 12316L),
-          new SimpleEntry<>("y-intersection-to-the-side", 12317L),
-          new SimpleEntry<>("y-intersection-oncoming", 12318L),
-          new SimpleEntry<>("four-way-divided-highway-crossing", 12319L),
-          new SimpleEntry<>("t-way-divided-highway-crossing", 12320L),
-          new SimpleEntry<>("light-rail-divided-highway-crossing", 12321L),
-          new SimpleEntry<>("light-rail-t-divided-highway-crossing", 12322L),
-          new SimpleEntry<>("side-road-to-right", 12323L),
-          new SimpleEntry<>("side-road-to-left", 12324L),
-          new SimpleEntry<>("side-road-to-right-at-angle", 12325L),
-          new SimpleEntry<>("side-road-to-left-at-angle", 12326L),
-          new SimpleEntry<>("entering-roadway-merge", 12327L),
-          new SimpleEntry<>("entering-roadway-added-lane", 12328L),
-          new SimpleEntry<>("n1", 12545L),
-          new SimpleEntry<>("n2", 12546L),
-          new SimpleEntry<>("n3", 12547L),
-          new SimpleEntry<>("n4", 12548L),
-          new SimpleEntry<>("n5", 12549L),
-          new SimpleEntry<>("n6", 12550L),
-          new SimpleEntry<>("n7", 12551L),
-          new SimpleEntry<>("n8", 12552L),
-          new SimpleEntry<>("n9", 12553L),
-          new SimpleEntry<>("n10", 12554L),
-          new SimpleEntry<>("n11", 12555L),
-          new SimpleEntry<>("n12", 12556L),
-          new SimpleEntry<>("n13", 12557L),
-          new SimpleEntry<>("n14", 12558L),
-          new SimpleEntry<>("n15", 12559L),
-          new SimpleEntry<>("n16", 12560L),
-          new SimpleEntry<>("n17", 12561L),
-          new SimpleEntry<>("n18", 12562L),
-          new SimpleEntry<>("n19", 12563L),
-          new SimpleEntry<>("n20", 12564L),
-          new SimpleEntry<>("n21", 12565L),
-          new SimpleEntry<>("n22", 12566L),
-          new SimpleEntry<>("n23", 12567L),
-          new SimpleEntry<>("n24", 12568L),
-          new SimpleEntry<>("n25", 12569L),
-          new SimpleEntry<>("n26", 12570L),
-          new SimpleEntry<>("n27", 12571L),
-          new SimpleEntry<>("n28", 12572L),
-          new SimpleEntry<>("n29", 12573L),
-          new SimpleEntry<>("n30", 12574L),
-          new SimpleEntry<>("n31", 12575L),
-          new SimpleEntry<>("n32", 12576L),
-          new SimpleEntry<>("n33", 12577L),
-          new SimpleEntry<>("n34", 12578L),
-          new SimpleEntry<>("n35", 12579L),
-          new SimpleEntry<>("n36", 12580L),
-          new SimpleEntry<>("n37", 12581L),
-          new SimpleEntry<>("n38", 12582L),
-          new SimpleEntry<>("n39", 12583L),
-          new SimpleEntry<>("n40", 12584L),
-          new SimpleEntry<>("n41", 12585L),
-          new SimpleEntry<>("n42", 12586L),
-          new SimpleEntry<>("n43", 12587L),
-          new SimpleEntry<>("n44", 12588L),
-          new SimpleEntry<>("n45", 12589L),
-          new SimpleEntry<>("n46", 12590L),
-          new SimpleEntry<>("n47", 12591L),
-          new SimpleEntry<>("n48", 12592L),
-          new SimpleEntry<>("n49", 12593L),
-          new SimpleEntry<>("n50", 12594L),
-          new SimpleEntry<>("n51", 12595L),
-          new SimpleEntry<>("n52", 12596L),
-          new SimpleEntry<>("n53", 12597L),
-          new SimpleEntry<>("n54", 12598L),
-          new SimpleEntry<>("n55", 12599L),
-          new SimpleEntry<>("n56", 12600L),
-          new SimpleEntry<>("n57", 12601L),
-          new SimpleEntry<>("n58", 12602L),
-          new SimpleEntry<>("n59", 12603L),
-          new SimpleEntry<>("n60", 12604L),
-          new SimpleEntry<>("n61", 12605L),
-          new SimpleEntry<>("n62", 12606L),
-          new SimpleEntry<>("n63", 12607L),
-          new SimpleEntry<>("n64", 12608L),
-          new SimpleEntry<>("n65", 12609L),
-          new SimpleEntry<>("n66", 12610L),
-          new SimpleEntry<>("n67", 12611L),
-          new SimpleEntry<>("n68", 12612L),
-          new SimpleEntry<>("n69", 12613L),
-          new SimpleEntry<>("n70", 12614L),
-          new SimpleEntry<>("n71", 12615L),
-          new SimpleEntry<>("n72", 12616L),
-          new SimpleEntry<>("n73", 12617L),
-          new SimpleEntry<>("n74", 12618L),
-          new SimpleEntry<>("n75", 12619L),
-          new SimpleEntry<>("n76", 12620L),
-          new SimpleEntry<>("n77", 12621L),
-          new SimpleEntry<>("n78", 12622L),
-          new SimpleEntry<>("n79", 12623L),
-          new SimpleEntry<>("n80", 12624L),
-          new SimpleEntry<>("n81", 12625L),
-          new SimpleEntry<>("n82", 12626L),
-          new SimpleEntry<>("n83", 12627L),
-          new SimpleEntry<>("n84", 12628L),
-          new SimpleEntry<>("n85", 12629L),
-          new SimpleEntry<>("n86", 12630L),
-          new SimpleEntry<>("n87", 12631L),
-          new SimpleEntry<>("n88", 12632L),
-          new SimpleEntry<>("n89", 12633L),
-          new SimpleEntry<>("n90", 12634L),
-          new SimpleEntry<>("n91", 12635L),
-          new SimpleEntry<>("n92", 12636L),
-          new SimpleEntry<>("n93", 12637L),
-          new SimpleEntry<>("n94", 12638L),
-          new SimpleEntry<>("n95", 12639L),
-          new SimpleEntry<>("n96", 12640L),
-          new SimpleEntry<>("n97", 12641L),
-          new SimpleEntry<>("n98", 12642L),
-          new SimpleEntry<>("n99", 12643L),
-          new SimpleEntry<>("n100", 12644L),
-          new SimpleEntry<>("n101", 12645L),
-          new SimpleEntry<>("n102", 12646L),
-          new SimpleEntry<>("n103", 12647L),
-          new SimpleEntry<>("n104", 12648L),
-          new SimpleEntry<>("n105", 12649L),
-          new SimpleEntry<>("n106", 12650L),
-          new SimpleEntry<>("n107", 12651L),
-          new SimpleEntry<>("n108", 12652L),
-          new SimpleEntry<>("n109", 12653L),
-          new SimpleEntry<>("n110", 12654L),
-          new SimpleEntry<>("n111", 12655L),
-          new SimpleEntry<>("n112", 12656L),
-          new SimpleEntry<>("n113", 12657L),
-          new SimpleEntry<>("n114", 12658L),
-          new SimpleEntry<>("n115", 12659L),
-          new SimpleEntry<>("n116", 12660L),
-          new SimpleEntry<>("n117", 12661L),
-          new SimpleEntry<>("n118", 12662L),
-          new SimpleEntry<>("n119", 12663L),
-          new SimpleEntry<>("n120", 12664L),
-          new SimpleEntry<>("n121", 12665L),
-          new SimpleEntry<>("n122", 12666L),
-          new SimpleEntry<>("n123", 12667L),
-          new SimpleEntry<>("n124", 12668L),
-          new SimpleEntry<>("n125", 12669L),
-          new SimpleEntry<>("n126", 12670L),
-          new SimpleEntry<>("n127", 12671L),
-          new SimpleEntry<>("n128", 12672L),
-          new SimpleEntry<>("n129", 12673L),
-          new SimpleEntry<>("n130", 12674L),
-          new SimpleEntry<>("n131", 12675L),
-          new SimpleEntry<>("n132", 12676L),
-          new SimpleEntry<>("n133", 12677L),
-          new SimpleEntry<>("n134", 12678L),
-          new SimpleEntry<>("n135", 12679L),
-          new SimpleEntry<>("n136", 12680L),
-          new SimpleEntry<>("n137", 12681L),
-          new SimpleEntry<>("n138", 12682L),
-          new SimpleEntry<>("n139", 12683L),
-          new SimpleEntry<>("n140", 12684L),
-          new SimpleEntry<>("n141", 12685L),
-          new SimpleEntry<>("n142", 12686L),
-          new SimpleEntry<>("n143", 12687L),
-          new SimpleEntry<>("n144", 12688L),
-          new SimpleEntry<>("n145", 12689L),
-          new SimpleEntry<>("n146", 12690L),
-          new SimpleEntry<>("n147", 12691L),
-          new SimpleEntry<>("n148", 12692L),
-          new SimpleEntry<>("n149", 12693L),
-          new SimpleEntry<>("n150", 12694L),
-          new SimpleEntry<>("n151", 12695L),
-          new SimpleEntry<>("n152", 12696L),
-          new SimpleEntry<>("n153", 12697L),
-          new SimpleEntry<>("n154", 12698L),
-          new SimpleEntry<>("n155", 12699L),
-          new SimpleEntry<>("n156", 12700L),
-          new SimpleEntry<>("n157", 12701L),
-          new SimpleEntry<>("n158", 12702L),
-          new SimpleEntry<>("n159", 12703L),
-          new SimpleEntry<>("n160", 12704L),
-          new SimpleEntry<>("n161", 12705L),
-          new SimpleEntry<>("n162", 12706L),
-          new SimpleEntry<>("n163", 12707L),
-          new SimpleEntry<>("n164", 12708L),
-          new SimpleEntry<>("n165", 12709L),
-          new SimpleEntry<>("n166", 12710L),
-          new SimpleEntry<>("n167", 12711L),
-          new SimpleEntry<>("n168", 12712L),
-          new SimpleEntry<>("n169", 12713L),
-          new SimpleEntry<>("n170", 12714L),
-          new SimpleEntry<>("n171", 12715L),
-          new SimpleEntry<>("n172", 12716L),
-          new SimpleEntry<>("n173", 12717L),
-          new SimpleEntry<>("n174", 12718L),
-          new SimpleEntry<>("n175", 12719L),
-          new SimpleEntry<>("n176", 12720L),
-          new SimpleEntry<>("n177", 12721L),
-          new SimpleEntry<>("n178", 12722L),
-          new SimpleEntry<>("n179", 12723L),
-          new SimpleEntry<>("n180", 12724L),
-          new SimpleEntry<>("n181", 12725L),
-          new SimpleEntry<>("n182", 12726L),
-          new SimpleEntry<>("n183", 12727L),
-          new SimpleEntry<>("n184", 12728L),
-          new SimpleEntry<>("n185", 12729L),
-          new SimpleEntry<>("n186", 12730L),
-          new SimpleEntry<>("n187", 12731L),
-          new SimpleEntry<>("n188", 12732L),
-          new SimpleEntry<>("n189", 12733L),
-          new SimpleEntry<>("n190", 12734L),
-          new SimpleEntry<>("n191", 12735L),
-          new SimpleEntry<>("n192", 12736L),
-          new SimpleEntry<>("n193", 12737L),
-          new SimpleEntry<>("n194", 12738L),
-          new SimpleEntry<>("n195", 12739L),
-          new SimpleEntry<>("n196", 12740L),
-          new SimpleEntry<>("n197", 12741L),
-          new SimpleEntry<>("n198", 12742L),
-          new SimpleEntry<>("n199", 12743L),
-          new SimpleEntry<>("n200", 12744L),
-          new SimpleEntry<>("n201", 12745L),
-          new SimpleEntry<>("n202", 12746L),
-          new SimpleEntry<>("n203", 12747L),
-          new SimpleEntry<>("n204", 12748L),
-          new SimpleEntry<>("n205", 12749L),
-          new SimpleEntry<>("n206", 12750L),
-          new SimpleEntry<>("n207", 12751L),
-          new SimpleEntry<>("n208", 12752L),
-          new SimpleEntry<>("n209", 12753L),
-          new SimpleEntry<>("n210", 12754L),
-          new SimpleEntry<>("n211", 12755L),
-          new SimpleEntry<>("n212", 12756L),
-          new SimpleEntry<>("n213", 12757L),
-          new SimpleEntry<>("n214", 12758L),
-          new SimpleEntry<>("n215", 12759L),
-          new SimpleEntry<>("n216", 12760L),
-          new SimpleEntry<>("n217", 12761L),
-          new SimpleEntry<>("n218", 12762L),
-          new SimpleEntry<>("n219", 12763L),
-          new SimpleEntry<>("n220", 12764L),
-          new SimpleEntry<>("n221", 12765L),
-          new SimpleEntry<>("n222", 12766L),
-          new SimpleEntry<>("n223", 12767L),
-          new SimpleEntry<>("n224", 12768L),
-          new SimpleEntry<>("n225", 12769L),
-          new SimpleEntry<>("n226", 12770L),
-          new SimpleEntry<>("n227", 12771L),
-          new SimpleEntry<>("n228", 12772L),
-          new SimpleEntry<>("n229", 12773L),
-          new SimpleEntry<>("n230", 12774L),
-          new SimpleEntry<>("n231", 12775L),
-          new SimpleEntry<>("n232", 12776L),
-          new SimpleEntry<>("n233", 12777L),
-          new SimpleEntry<>("n234", 12778L),
-          new SimpleEntry<>("n235", 12779L),
-          new SimpleEntry<>("n236", 12780L),
-          new SimpleEntry<>("n237", 12781L),
-          new SimpleEntry<>("n238", 12782L),
-          new SimpleEntry<>("n239", 12783L),
-          new SimpleEntry<>("n240", 12784L),
-          new SimpleEntry<>("n241", 12785L),
-          new SimpleEntry<>("n242", 12786L),
-          new SimpleEntry<>("n243", 12787L),
-          new SimpleEntry<>("n244", 12788L),
-          new SimpleEntry<>("n245", 12789L),
-          new SimpleEntry<>("n246", 12790L),
-          new SimpleEntry<>("n247", 12791L),
-          new SimpleEntry<>("n248", 12792L),
-          new SimpleEntry<>("n249", 12793L),
-          new SimpleEntry<>("n250", 12794L),
-          new SimpleEntry<>("n251", 12795L),
-          new SimpleEntry<>("n252", 12796L),
-          new SimpleEntry<>("n253", 12797L),
-          new SimpleEntry<>("n254", 12798L),
-          new SimpleEntry<>("n255", 12799L),
-          new SimpleEntry<>("alabama", 12801L),
-          new SimpleEntry<>("alaska", 12802L),
-          new SimpleEntry<>("american-Samoa", 12803L),
-          new SimpleEntry<>("arizona", 12804L),
-          new SimpleEntry<>("arkansas", 12805L),
-          new SimpleEntry<>("california", 12806L),
-          new SimpleEntry<>("colorado", 12807L),
-          new SimpleEntry<>("connecticut", 12808L),
-          new SimpleEntry<>("delaware", 12809L),
-          new SimpleEntry<>("district-of-Columbia", 12810L),
-          new SimpleEntry<>("florida", 12811L),
-          new SimpleEntry<>("georgia", 12812L),
-          new SimpleEntry<>("guam", 12813L),
-          new SimpleEntry<>("hawaii", 12814L),
-          new SimpleEntry<>("idaho", 12815L),
-          new SimpleEntry<>("illinois", 12816L),
-          new SimpleEntry<>("indiana", 12817L),
-          new SimpleEntry<>("iowa", 12818L),
-          new SimpleEntry<>("kansas", 12819L),
-          new SimpleEntry<>("kentucky", 12820L),
-          new SimpleEntry<>("louisiana", 12821L),
-          new SimpleEntry<>("maine", 12822L),
-          new SimpleEntry<>("maryland", 12823L),
-          new SimpleEntry<>("massachusetts", 12824L),
-          new SimpleEntry<>("michigan", 12825L),
-          new SimpleEntry<>("minnesota", 12826L),
-          new SimpleEntry<>("mississippi", 12827L),
-          new SimpleEntry<>("missouri", 12828L),
-          new SimpleEntry<>("montana", 12829L),
-          new SimpleEntry<>("nebraska", 12830L),
-          new SimpleEntry<>("nevada", 12831L),
-          new SimpleEntry<>("new-Hampshire", 12832L),
-          new SimpleEntry<>("new-Jersey", 12833L),
-          new SimpleEntry<>("new-Mexico", 12834L),
-          new SimpleEntry<>("new-York", 12835L),
-          new SimpleEntry<>("north-Carolina", 12836L),
-          new SimpleEntry<>("north-Dakota", 12837L),
-          new SimpleEntry<>("northern-Marianas-Islands", 12838L),
-          new SimpleEntry<>("ohio", 12839L),
-          new SimpleEntry<>("oklahoma", 12840L),
-          new SimpleEntry<>("oregon", 12841L),
-          new SimpleEntry<>("pennsylvania", 12842L),
-          new SimpleEntry<>("puerto-rico", 12843L),
-          new SimpleEntry<>("rhode-Island", 12844L),
-          new SimpleEntry<>("south-Carolina", 12845L),
-          new SimpleEntry<>("south-Dakota", 12846L),
-          new SimpleEntry<>("tennessee", 12847L),
-          new SimpleEntry<>("texas", 12848L),
-          new SimpleEntry<>("utah", 12849L),
-          new SimpleEntry<>("vermont", 12850L),
-          new SimpleEntry<>("virginia", 12851L),
-          new SimpleEntry<>("virgin-Islands", 12852L),
-          new SimpleEntry<>("washington", 12853L),
-          new SimpleEntry<>("west-Virginia", 12854L),
-          new SimpleEntry<>("wisconsin", 12855L),
-          new SimpleEntry<>("wyoming", 12856L),
-          new SimpleEntry<>("rest-room", 13057L),
-          new SimpleEntry<>("mens-rest-room", 13058L),
-          new SimpleEntry<>("womens-rest-room", 13059L),
-          new SimpleEntry<>("family-rest-room", 13060L),
-          new SimpleEntry<>("dam", 13061L),
-          new SimpleEntry<>("fish-hatchery", 13062L),
-          new SimpleEntry<>("information", 13063L),
-          new SimpleEntry<>("lighthouse", 13064L),
-          new SimpleEntry<>("lookout-tower", 13065L),
-          new SimpleEntry<>("ranger-station", 13066L),
-          new SimpleEntry<>("grocery-store", 13068L),
-          new SimpleEntry<>("lodging", 13069L),
-          new SimpleEntry<>("post-office", 13070L),
-          new SimpleEntry<>("picnic-shelter", 13072L),
-          new SimpleEntry<>("group-camping", 13073L),
-          new SimpleEntry<>("group-picnicking", 13074L),
-          new SimpleEntry<>("n24-hour-pharmacy", 13075L),
-          new SimpleEntry<>("kennel", 13076L),
-          new SimpleEntry<>("laundry-facilities", 13077L),
-          new SimpleEntry<>("shower-facilities", 13078L),
-          new SimpleEntry<>("amphitheater", 13079L),
-          new SimpleEntry<>("stable", 13080L),
-          new SimpleEntry<>("hospital", 13081L),
-          new SimpleEntry<>("emergency-medical-service-point", 13082L),
-          new SimpleEntry<>("library", 13083L),
-          new SimpleEntry<>("recycling-collection-center", 13084L),
-          new SimpleEntry<>("school", 13085L),
-          new SimpleEntry<>("alley", 13313L),
-          new SimpleEntry<>("annex", 13314L),
-          new SimpleEntry<>("arcade", 13315L),
-          new SimpleEntry<>("avenue", 13316L),
-          new SimpleEntry<>("bayoo", 13317L),
-          new SimpleEntry<>("beach", 13318L),
-          new SimpleEntry<>("bend", 13319L),
-          new SimpleEntry<>("bluff", 13320L),
-          new SimpleEntry<>("bottom", 13321L),
-          new SimpleEntry<>("boulevard", 13322L),
-          new SimpleEntry<>("branch", 13323L),
-          new SimpleEntry<>("nBridge", 13324L),
-          new SimpleEntry<>("brook", 13325L),
-          new SimpleEntry<>("burg", 13326L),
-          new SimpleEntry<>("bypass", 13327L),
-          new SimpleEntry<>("camp", 13328L),
-          new SimpleEntry<>("canyon", 13329L),
-          new SimpleEntry<>("cape", 13330L),
-          new SimpleEntry<>("causeway", 13331L),
-          new SimpleEntry<>("nCenter", 13332L),
-          new SimpleEntry<>("circle", 13333L),
-          new SimpleEntry<>("cliff", 13334L),
-          new SimpleEntry<>("club", 13335L),
-          new SimpleEntry<>("common", 13336L),
-          new SimpleEntry<>("corner", 13337L),
-          new SimpleEntry<>("course", 13338L),
-          new SimpleEntry<>("court", 13339L),
-          new SimpleEntry<>("cove", 13340L),
-          new SimpleEntry<>("creek", 13341L),
-          new SimpleEntry<>("crescent", 13342L),
-          new SimpleEntry<>("crest", 13343L),
-          new SimpleEntry<>("nCrossing", 13344L),
-          new SimpleEntry<>("crossroad", 13345L),
-          new SimpleEntry<>("curve", 13346L),
-          new SimpleEntry<>("dale", 13347L),
-          new SimpleEntry<>("nDam", 13348L),
-          new SimpleEntry<>("divide", 13349L),
-          new SimpleEntry<>("drive", 13350L),
-          new SimpleEntry<>("estate", 13351L),
-          new SimpleEntry<>("expressway", 13352L),
-          new SimpleEntry<>("extension", 13353L),
-          new SimpleEntry<>("fall", 13354L),
-          new SimpleEntry<>("nFerry", 13355L),
-          new SimpleEntry<>("field", 13356L),
-          new SimpleEntry<>("flat", 13357L),
-          new SimpleEntry<>("ford", 13358L),
-          new SimpleEntry<>("forest", 13359L),
-          new SimpleEntry<>("forge", 13360L),
-          new SimpleEntry<>("fork", 13361L),
-          new SimpleEntry<>("fort", 13362L),
-          new SimpleEntry<>("nFreeway", 13363L),
-          new SimpleEntry<>("garden", 13364L),
-          new SimpleEntry<>("gateway", 13365L),
-          new SimpleEntry<>("glen", 13366L),
-          new SimpleEntry<>("green", 13367L),
-          new SimpleEntry<>("grove", 13368L),
-          new SimpleEntry<>("harbor", 13369L),
-          new SimpleEntry<>("haven", 13370L),
-          new SimpleEntry<>("heights", 13371L),
-          new SimpleEntry<>("highway", 13372L),
-          new SimpleEntry<>("nHill", 13373L),
-          new SimpleEntry<>("hollow", 13374L),
-          new SimpleEntry<>("inlet", 13375L),
-          new SimpleEntry<>("nIsland", 13376L),
-          new SimpleEntry<>("isle", 13377L),
-          new SimpleEntry<>("nJunction", 13378L),
-          new SimpleEntry<>("key", 13379L),
-          new SimpleEntry<>("knoll", 13380L),
-          new SimpleEntry<>("lake", 13381L),
-          new SimpleEntry<>("land", 13382L),
-          new SimpleEntry<>("landing", 13383L),
-          new SimpleEntry<>("nLane", 13384L),
-          new SimpleEntry<>("light", 13385L),
-          new SimpleEntry<>("loaf", 13386L),
-          new SimpleEntry<>("lock", 13387L),
-          new SimpleEntry<>("lodge", 13388L),
-          new SimpleEntry<>("loop", 13389L),
-          new SimpleEntry<>("mall", 13390L),
-          new SimpleEntry<>("manor", 13391L),
-          new SimpleEntry<>("meadow", 13392L),
-          new SimpleEntry<>("mews", 13393L),
-          new SimpleEntry<>("mill", 13394L),
-          new SimpleEntry<>("mission", 13395L),
-          new SimpleEntry<>("motorway", 13396L),
-          new SimpleEntry<>("mount", 13397L),
-          new SimpleEntry<>("mountain", 13398L),
-          new SimpleEntry<>("neck", 13399L),
-          new SimpleEntry<>("orchard", 13400L),
-          new SimpleEntry<>("oval", 13401L),
-          new SimpleEntry<>("nOverpass", 13402L),
-          new SimpleEntry<>("park", 13403L),
-          new SimpleEntry<>("parkway", 13404L),
-          new SimpleEntry<>("nPass", 13405L),
-          new SimpleEntry<>("passage", 13406L),
-          new SimpleEntry<>("path", 13407L),
-          new SimpleEntry<>("pike", 13408L),
-          new SimpleEntry<>("pine", 13409L),
-          new SimpleEntry<>("plains", 13410L),
-          new SimpleEntry<>("plaza", 13411L),
-          new SimpleEntry<>("point", 13412L),
-          new SimpleEntry<>("port", 13413L),
-          new SimpleEntry<>("prairie", 13414L),
-          new SimpleEntry<>("radial", 13415L),
-          new SimpleEntry<>("ramp", 13416L),
-          new SimpleEntry<>("ranch", 13417L),
-          new SimpleEntry<>("rapid", 13418L),
-          new SimpleEntry<>("rest", 13419L),
-          new SimpleEntry<>("ridge", 13420L),
-          new SimpleEntry<>("river", 13421L),
-          new SimpleEntry<>("nRoad", 13422L),
-          new SimpleEntry<>("route", 13423L),
-          new SimpleEntry<>("row", 13424L),
-          new SimpleEntry<>("rue", 13425L),
-          new SimpleEntry<>("run", 13426L),
-          new SimpleEntry<>("shoal", 13427L),
-          new SimpleEntry<>("shore", 13428L),
-          new SimpleEntry<>("skyway", 13429L),
-          new SimpleEntry<>("spring", 13430L),
-          new SimpleEntry<>("nSpur", 13431L),
-          new SimpleEntry<>("square", 13432L),
-          new SimpleEntry<>("nStation", 13433L),
-          new SimpleEntry<>("stravenue", 13434L),
-          new SimpleEntry<>("stream", 13435L),
-          new SimpleEntry<>("street", 13436L),
-          new SimpleEntry<>("summit", 13437L),
-          new SimpleEntry<>("terrace", 13438L),
-          new SimpleEntry<>("throughway", 13439L),
-          new SimpleEntry<>("trace", 13440L),
-          new SimpleEntry<>("nTrack", 13441L),
-          new SimpleEntry<>("trafficway", 13442L),
-          new SimpleEntry<>("nTrail", 13443L),
-          new SimpleEntry<>("nTunnel", 13444L),
-          new SimpleEntry<>("turnpike", 13445L),
-          new SimpleEntry<>("nUnderpass", 13446L),
-          new SimpleEntry<>("union", 13447L),
-          new SimpleEntry<>("valley", 13448L),
-          new SimpleEntry<>("viaduct", 13449L),
-          new SimpleEntry<>("view", 13450L),
-          new SimpleEntry<>("village", 13451L),
-          new SimpleEntry<>("ville", 13452L),
-          new SimpleEntry<>("vista", 13453L),
-          new SimpleEntry<>("nWalk", 13454L),
-          new SimpleEntry<>("wall", 13455L),
-          new SimpleEntry<>("way", 13456L),
-          new SimpleEntry<>("well", 13457L),
-          new SimpleEntry<>("ahead", 13569L),
-          new SimpleEntry<>("here", 13570L),
-          new SimpleEntry<>("here-to", 13571L),
-          new SimpleEntry<>("here-to-alley", 13572L),
-          new SimpleEntry<>("here-to-corner", 13573L),
-          new SimpleEntry<>("here-to-sign", 13574L),
-          new SimpleEntry<>("between-signs", 13575L),
-          new SimpleEntry<>("between", 13633L),
-          new SimpleEntry<>("this-side-of-street", 13576L),
-          new SimpleEntry<>("this-side-of-sign", 13577L),
-          new SimpleEntry<>("right", 13579L),
-          new SimpleEntry<>("left", 13580L),
-          new SimpleEntry<>("begin-point", 13581L),
-          new SimpleEntry<>("next", 13582L),
-          new SimpleEntry<>("starting-start", 13611L),
-          new SimpleEntry<>("ends-end", 13583L),
-          new SimpleEntry<>("other-Side", 13584L),
-          new SimpleEntry<>("crossing", 13585L),
-          new SimpleEntry<>("crosswalks", 13586L),
-          new SimpleEntry<>("center-strip", 13587L),
-          new SimpleEntry<>("lane", 13588L),
-          new SimpleEntry<>("shelter", 13634L),
-          new SimpleEntry<>("center", 13635L),
-          new SimpleEntry<>("hill", 13589L),
-          new SimpleEntry<>("both-ways-left-and-right", 13590L),
-          new SimpleEntry<>("both-ways-45-degree-angle-tilting-right", 13591L),
-          new SimpleEntry<>("both-ways-45-degree-angle-tilting-left", 13592L),
-          new SimpleEntry<>("both-directions-of-travel", 13593L),
-          new SimpleEntry<>("left-arrow", 13610L),
-          new SimpleEntry<>("left-turn", 13594L),
-          new SimpleEntry<>("left-45-degree-arrow", 13595L),
-          new SimpleEntry<>("left-45-degree-turn", 13596L),
-          new SimpleEntry<>("ahead-and-to-the-left", 13597L),
-          new SimpleEntry<>("ahead-and-to-the-left-at-a-45-degree-angle", 13598L),
-          new SimpleEntry<>("right-arrow", 13609L),
-          new SimpleEntry<>("right-turn", 13599L),
-          new SimpleEntry<>("right-45-degree-arrow", 13600L),
-          new SimpleEntry<>("right-45-degree-turn", 13601L),
-          new SimpleEntry<>("ahead-and-to-the-right", 13602L),
-          new SimpleEntry<>("ahead-and-to-the-right-at-a-45-degree-angle", 13603L),
-          new SimpleEntry<>("downward-left-45-degree", 13604L),
-          new SimpleEntry<>("downward-right-45-degree", 13605L),
-          new SimpleEntry<>("downward-left-and-right-45-degree", 13606L),
-          new SimpleEntry<>("reverse-turn-to-right", 13636L),
-          new SimpleEntry<>("reverse-turn-to-left", 13637L),
-          new SimpleEntry<>("reverse-curve-to-right", 13638L),
-          new SimpleEntry<>("reverse-curve-to-left", 13639L),
-          new SimpleEntry<>("two-lane-reverse-curve-to-right", 13623L),
-          new SimpleEntry<>("two-lane-reverse-curve-to-left", 13624L),
-          new SimpleEntry<>("three-lane-reverse-curve-to-right", 13625L),
-          new SimpleEntry<>("three-lane-reverse-curve-to-left", 13626L),
-          new SimpleEntry<>("winding-road-to-right", 13640L),
-          new SimpleEntry<>("winding-road-to-left", 13641L),
-          new SimpleEntry<>("chevron-right", 13613L),
-          new SimpleEntry<>("chevron-left", 13614L),
-          new SimpleEntry<>("right-turn-with-junction", 13615L),
-          new SimpleEntry<>("left-turn-with-junction", 13616L),
-          new SimpleEntry<>("hairpin-right", 13617L),
-          new SimpleEntry<>("hairpin-left", 13618L),
-          new SimpleEntry<>("truck-rollover-right", 13619L),
-          new SimpleEntry<>("truck-rollover-left", 13620L),
-          new SimpleEntry<>("n270-degree-turn-right", 13621L),
-          new SimpleEntry<>("n270-degree-turn-left", 13622L),
-          new SimpleEntry<>("double-reverse-curve-to-right", 13627L),
-          new SimpleEntry<>("double-reverse-curve-to-left", 13628L),
-          new SimpleEntry<>("two-lane-double-reverse-curve-to-right", 13629L),
-          new SimpleEntry<>("two-lane-double-reverse-curve-to-left", 13630L),
-          new SimpleEntry<>("three-lane-double-reverse-curve-to-right", 13631L),
-          new SimpleEntry<>("three-lane-double-reverse-curve-to-left", 13632L));
-  private static final Map<Long, String> valueNameMap =
-      nameValueMap.entrySet().stream()
-          .collect(Collectors.toUnmodifiableMap(Map.Entry::getValue, Map.Entry::getKey));
+  private static final NamedValues namedValues = new NamedValues();
 
   public ITIScodes() {
     super(0L, 65535L);
@@ -2504,20 +44,2489 @@ public class ITIScodes extends Asn1Integer {
     this.value = value;
   }
 
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("stopped-traffic", 257L);
+      mapBuilder.put("stop-and-go-traffic", 258L);
+      mapBuilder.put("slow-traffic", 259L);
+      mapBuilder.put("heavy-traffic", 260L);
+      mapBuilder.put("traffic-building", 261L);
+      mapBuilder.put("long-queues", 262L);
+      mapBuilder.put("traffic-congestion", 263L);
+      mapBuilder.put("traffic-lighter-than-normal", 264L);
+      mapBuilder.put("traffic-heavier-than-normal", 265L);
+      mapBuilder.put("traffic-much-heavier-than-normal", 266L);
+      mapBuilder.put("current-speed", 267L);
+      mapBuilder.put("speed-limit", 268L);
+      mapBuilder.put("travel-time", 269L);
+      mapBuilder.put("merging-traffic", 272L);
+      mapBuilder.put("contraflow", 273L);
+      mapBuilder.put("contraflow-canceled", 378L);
+      mapBuilder.put("traffic-flowing-freely", 379L);
+      mapBuilder.put("traffic-easing", 380L);
+      mapBuilder.put("traffic-returned-to-normal", 381L);
+      mapBuilder.put("no-problems-to-report", 382L);
+      mapBuilder.put("traffic-congestion-cleared", 383L);
+      mapBuilder.put("accident", 513L);
+      mapBuilder.put("serious-accident", 514L);
+      mapBuilder.put("injury-accident", 515L);
+      mapBuilder.put("minor-accident", 516L);
+      mapBuilder.put("multi-vehicle-accident", 517L);
+      mapBuilder.put("numerous-accidents", 518L);
+      mapBuilder.put("accident-involving-a-bicycle", 519L);
+      mapBuilder.put("accident-involving-a-bus", 520L);
+      mapBuilder.put("accident-involving-a-motorcycle", 521L);
+      mapBuilder.put("accident-involving-a-pedestrian", 522L);
+      mapBuilder.put("accident-involving-a-train", 523L);
+      mapBuilder.put("accident-involving-a-truck", 524L);
+      mapBuilder.put("accident-involving-a-semi-trailer", 562L);
+      mapBuilder.put("accident-involving-hazardous-materials", 525L);
+      mapBuilder.put("earlier-accident", 526L);
+      mapBuilder.put("medical-emergency", 527L);
+      mapBuilder.put("secondary-accident", 528L);
+      mapBuilder.put("rescue-and-recovery-work-REMOVED", 529L);
+      mapBuilder.put("accident-investigation-work", 530L);
+      mapBuilder.put("incident", 531L);
+      mapBuilder.put("stalled-vehicle", 532L);
+      mapBuilder.put("abandoned-vehicle", 533L);
+      mapBuilder.put("disabled-vehicle", 534L);
+      mapBuilder.put("disabled-truck", 535L);
+      mapBuilder.put("disabled-semi-trailer", 536L);
+      mapBuilder.put("disabled-bus", 537L);
+      mapBuilder.put("disabled-train", 538L);
+      mapBuilder.put("vehicle-spun-out", 539L);
+      mapBuilder.put("vehicle-on-fire", 540L);
+      mapBuilder.put("vehicle-in-water", 541L);
+      mapBuilder.put("vehicles-slowing-to-look-at-accident", 542L);
+      mapBuilder.put("jackknifed-semi-trailer", 543L);
+      mapBuilder.put("jackknifed-trailer-home", 544L);
+      mapBuilder.put("jackknifed-trailer", 545L);
+      mapBuilder.put("spillage-occurring-from-moving-vehicle", 546L);
+      mapBuilder.put("acid-spill", 547L);
+      mapBuilder.put("chemical-spill", 548L);
+      mapBuilder.put("fuel-spill", 549L);
+      mapBuilder.put("hazardous-materials-spill", 550L);
+      mapBuilder.put("oil-spill", 551L);
+      mapBuilder.put("spilled-load", 552L);
+      mapBuilder.put("toxic-spill", 553L);
+      mapBuilder.put("overturned-vehicle", 554L);
+      mapBuilder.put("overturned-truck", 555L);
+      mapBuilder.put("overturned-semi-trailer", 556L);
+      mapBuilder.put("overturned-bus", 557L);
+      mapBuilder.put("derailed-train", 558L);
+      mapBuilder.put("stuck-vehicle", 559L);
+      mapBuilder.put("truck-stuck-under-bridge", 560L);
+      mapBuilder.put("bus-stuck-under-bridge", 561L);
+      mapBuilder.put("accident-cleared", 638L);
+      mapBuilder.put("incident-cleared", 639L);
+      mapBuilder.put("closed-to-traffic", 769L);
+      mapBuilder.put("closed", 770L);
+      mapBuilder.put("closed-ahead", 771L);
+      mapBuilder.put("closed-intermittently", 772L);
+      mapBuilder.put("closed-for-repairs", 773L);
+      mapBuilder.put("closed-for-the-season", 774L);
+      mapBuilder.put("blocked", 775L);
+      mapBuilder.put("blocked-ahead", 776L);
+      mapBuilder.put("reduced-to-one-lane", 777L);
+      mapBuilder.put("reduced-to-two-lanes", 778L);
+      mapBuilder.put("reduced-to-three-lanes", 779L);
+      mapBuilder.put("collapse", 780L);
+      mapBuilder.put("out", 781L);
+      mapBuilder.put("open-to-traffic", 891L);
+      mapBuilder.put("open", 892L);
+      mapBuilder.put("reopened-to-traffic", 893L);
+      mapBuilder.put("clearing", 894L);
+      mapBuilder.put("cleared-from-road", 895L);
+      mapBuilder.put("road-construction", 1025L);
+      mapBuilder.put("major-road-construction", 1026L);
+      mapBuilder.put("long-term-road-construction", 1027L);
+      mapBuilder.put("construction-work", 1028L);
+      mapBuilder.put("paving-operations", 1029L);
+      mapBuilder.put("work-in-the-median", 1030L);
+      mapBuilder.put("road-reconstruction", 1031L);
+      mapBuilder.put("opposing-traffic", 1032L);
+      mapBuilder.put("narrow-lanes", 1033L);
+      mapBuilder.put("construction-traffic-merging", 1034L);
+      mapBuilder.put("single-line-traffic-alternating-directions", 1035L);
+      mapBuilder.put("road-maintenance-operations", 1036L);
+      mapBuilder.put("road-marking-operations", 1037L);
+      mapBuilder.put("road-widening", 1061L);
+      mapBuilder.put("cracks", 1052L);
+      mapBuilder.put("crack-REMOVE", 1058L);
+      mapBuilder.put("bumps", 1053L);
+      mapBuilder.put("drop-off", 1059L);
+      mapBuilder.put("storm-drain", 1054L);
+      mapBuilder.put("bridge-maintenance-operations", 1038L);
+      mapBuilder.put("bridge-construction", 1039L);
+      mapBuilder.put("bridge-demolition-work", 1040L);
+      mapBuilder.put("seismic-retrofit", 1060L);
+      mapBuilder.put("overgrown-grass", 1055L);
+      mapBuilder.put("overgrown-brushshrubs", 1056L);
+      mapBuilder.put("overgrown-trees", 1057L);
+      mapBuilder.put("blasting", 1041L);
+      mapBuilder.put("avalanche-control-activities", 1042L);
+      mapBuilder.put("water-main-work", 1043L);
+      mapBuilder.put("gas-main-work", 1044L);
+      mapBuilder.put("work-on-underground-cables", 1045L);
+      mapBuilder.put("work-on-underground-services", 1046L);
+      mapBuilder.put("new-road-construction-layout", 1047L);
+      mapBuilder.put("new-road-layout", 1048L);
+      mapBuilder.put("temporary-lane-markings", 1049L);
+      mapBuilder.put("temporary-traffic-lights", 1050L);
+      mapBuilder.put("emergency-maintenance", 1051L);
+      mapBuilder.put("utility-work", 1062L);
+      mapBuilder.put("road-maintenance-cleared", 1146L);
+      mapBuilder.put("normal-road-layout-restored", 1147L);
+      mapBuilder.put("road-work-clearance-in-progress", 1148L);
+      mapBuilder.put("road-construction-cleared", 1149L);
+      mapBuilder.put("normal-traffic-lanes-restored", 1150L);
+      mapBuilder.put("road-work-cleared", 1151L);
+      mapBuilder.put("obstruction-on-roadway", 1281L);
+      mapBuilder.put("object-on-roadway", 1282L);
+      mapBuilder.put("objects-falling-from-moving-vehicle", 1283L);
+      mapBuilder.put("debris-on-roadway", 1284L);
+      mapBuilder.put("storm-damage", 1285L);
+      mapBuilder.put("people-on-roadway", 1286L);
+      mapBuilder.put("bicyclists-on-roadway", 1287L);
+      mapBuilder.put("sightseers-obstructing-access", 1288L);
+      mapBuilder.put("large-numbers-of-visitors", 1289L);
+      mapBuilder.put("animal-on-roadway", 1290L);
+      mapBuilder.put("large-animal-on-roadway", 1291L);
+      mapBuilder.put("herd-of-animals-on-roadway", 1292L);
+      mapBuilder.put("animal-struck", 1293L);
+      mapBuilder.put("advertising-signs", 1315L);
+      mapBuilder.put("fallen-trees", 1294L);
+      mapBuilder.put("over-turned-trees", 1311L);
+      mapBuilder.put("tree-limbs", 1312L);
+      mapBuilder.put("utility-pole-down", 1314L);
+      mapBuilder.put("downed-power-lines", 1295L);
+      mapBuilder.put("downed-cables", 1296L);
+      mapBuilder.put("subsidence", 1297L);
+      mapBuilder.put("road-surface-collapse", 1298L);
+      mapBuilder.put("frost-jacking", 1317L);
+      mapBuilder.put("frost-heave", 1316L);
+      mapBuilder.put("pavement-buckled", 1299L);
+      mapBuilder.put("pothole", 1300L);
+      mapBuilder.put("flooding", 1301L);
+      mapBuilder.put("broken-water-main", 1302L);
+      mapBuilder.put("collapsed-sewer", 1303L);
+      mapBuilder.put("wash-out", 1319L);
+      mapBuilder.put("washboard", 1318L);
+      mapBuilder.put("sewer-overflow", 1304L);
+      mapBuilder.put("gas-leak", 1305L);
+      mapBuilder.put("snowmelt", 1306L);
+      mapBuilder.put("mudslide", 1307L);
+      mapBuilder.put("avalanche", 1308L);
+      mapBuilder.put("rockfall", 1309L);
+      mapBuilder.put("landslide", 1310L);
+      mapBuilder.put("clearance-work", 1406L);
+      mapBuilder.put("obstruction-cleared", 1407L);
+      mapBuilder.put("delays", 1537L);
+      mapBuilder.put("short-delays", 1538L);
+      mapBuilder.put("long-delays", 1539L);
+      mapBuilder.put("very-long-delays", 1540L);
+      mapBuilder.put("delays-of-uncertain-duration", 1541L);
+      mapBuilder.put("delayed-until-further-notice", 1542L);
+      mapBuilder.put("busy", 1543L);
+      mapBuilder.put("very-busy", 1544L);
+      mapBuilder.put("crowded", 1545L);
+      mapBuilder.put("overcrowded", 1546L);
+      mapBuilder.put("cancellations", 1547L);
+      mapBuilder.put("route-canceled-and-no-replacement", 1548L);
+      mapBuilder.put("service-canceled", 1549L);
+      mapBuilder.put("service-suspended", 1550L);
+      mapBuilder.put("service-withdrawn", 1551L);
+      mapBuilder.put("service-fully-booked", 1552L);
+      mapBuilder.put("all-services-fully-booked", 1553L);
+      mapBuilder.put("next-departure", 1554L);
+      mapBuilder.put("next-arrival", 1555L);
+      mapBuilder.put("very-frequent-service", 1556L);
+      mapBuilder.put("frequent-service", 1557L);
+      mapBuilder.put("fairly-frequent-service", 1558L);
+      mapBuilder.put("regular-service", 1559L);
+      mapBuilder.put("irregular-service", 1560L);
+      mapBuilder.put("not-operating", 1561L);
+      mapBuilder.put("system-busy", 1562L);
+      mapBuilder.put("system-very-busy", 1563L);
+      mapBuilder.put("system-crowded", 1564L);
+      mapBuilder.put("system-overcrowded", 1565L);
+      mapBuilder.put("deleted-travel-time", 1566L);
+      mapBuilder.put("headway", 1567L);
+      mapBuilder.put("extra-services-in-operation", 1568L);
+      mapBuilder.put("delays-clearing", 1660L);
+      mapBuilder.put("delays-cleared", 1661L);
+      mapBuilder.put("normal-services-resumed", 1662L);
+      mapBuilder.put("operating", 1663L);
+      mapBuilder.put("vehicle-traveling-wrong-way", 1793L);
+      mapBuilder.put("reckless-driver", 1794L);
+      mapBuilder.put("prohibited-vehicle-on-roadway", 1795L);
+      mapBuilder.put("emergency-vehicles-on-roadway", 1796L);
+      mapBuilder.put("high-speed-emergency-vehicles", 1797L);
+      mapBuilder.put("high-speed-chase", 1798L);
+      mapBuilder.put("dangerous-vehicle-warning-cleared", 1918L);
+      mapBuilder.put("emergency-vehicle-warning-cleared", 1919L);
+      mapBuilder.put("abnormal-load", 2049L);
+      mapBuilder.put("wide-load", 2050L);
+      mapBuilder.put("long-load", 2051L);
+      mapBuilder.put("slow-vehicle", 2052L);
+      mapBuilder.put("farm-equipment", 2053L);
+      mapBuilder.put("horse-drawn-vehicles", 2054L);
+      mapBuilder.put("overheight-load", 2055L);
+      mapBuilder.put("overweight-load", 2056L);
+      mapBuilder.put("tracked-vehicle", 2057L);
+      mapBuilder.put("vehicle-carrying-hazardous-materials", 2058L);
+      mapBuilder.put("slow-moving-maintenance-vehicle", 2059L);
+      mapBuilder.put("convoy", 2060L);
+      mapBuilder.put("military-convoy", 2061L);
+      mapBuilder.put("refugee-convoy", 2062L);
+      mapBuilder.put("motorcade", 2063L);
+      mapBuilder.put("mobile-situation-repositioning", 2064L);
+      mapBuilder.put("winter-maintenance-vehicles", 2065L);
+      mapBuilder.put("snowplows", 2066L);
+      mapBuilder.put("slow-moving-maintenance-vehicle-warning-cleared", 2172L);
+      mapBuilder.put("exceptional-load-warning-cleared", 2173L);
+      mapBuilder.put("hazardous-load-warning-cleared", 2174L);
+      mapBuilder.put("convoy-cleared", 2175L);
+      mapBuilder.put("lane-control-signs-not-working", 2305L);
+      mapBuilder.put("lane-control-signs-working-incorrectly", 2306L);
+      mapBuilder.put("lane-control-signs-operating", 2307L);
+      mapBuilder.put("variable-message-signs-not-working", 2308L);
+      mapBuilder.put("variable-message-signs-working-incorrectly", 2309L);
+      mapBuilder.put("variable-message-signs-operating", 2310L);
+      mapBuilder.put("emergency-telephones-not-working", 2311L);
+      mapBuilder.put("emergency-telephone-number-not-working", 2312L);
+      mapBuilder.put("traffic-lights-not-working", 2313L);
+      mapBuilder.put("traffic-lights-working-incorrectly", 2314L);
+      mapBuilder.put("ramp-control-signals-not-working", 2315L);
+      mapBuilder.put("ramp-control-signals-working-incorrectly", 2316L);
+      mapBuilder.put("temporary-traffic-lights-not-working", 2317L);
+      mapBuilder.put("temporary-traffic-lights-working-incorrectly", 2318L);
+      mapBuilder.put("traffic-signal-control-computer-not-working", 2319L);
+      mapBuilder.put("traffic-signal-timings-changed", 2320L);
+      mapBuilder.put("overheight-warning-system-triggered", 2321L);
+      mapBuilder.put("equipment-failure", 2322L);
+      mapBuilder.put("railroad-crossing-equipment-failure", 2323L);
+      mapBuilder.put("tunnel-ventilation-not-working", 2324L);
+      mapBuilder.put("power-failure", 2325L);
+      mapBuilder.put("widespread-power-outages", 2326L);
+      mapBuilder.put("technical-problems", 2327L);
+      mapBuilder.put("sign-down", 2328L);
+      mapBuilder.put("lines-in-road-faded", 2329L);
+      mapBuilder.put("damaged-light-standard", 2330L);
+      mapBuilder.put("traffic-signal-stuck-on-flash", 2331L);
+      mapBuilder.put("guide-rail", 2332L);
+      mapBuilder.put("fencing", 2333L);
+      mapBuilder.put("light-standard-hanging-by-wires", 2334L);
+      mapBuilder.put("call-box", 2335L);
+      mapBuilder.put("signal-cabinet", 2336L);
+      mapBuilder.put("detector", 2337L);
+      mapBuilder.put("improper-use-of-State-vehicle-or-equipment", 2338L);
+      mapBuilder.put("bulb-out", 2339L);
+      mapBuilder.put("not-yet-operational", 2340L);
+      mapBuilder.put("not-yet-installed", 2341L);
+      mapBuilder.put("electronic-signs-repaired", 2428L);
+      mapBuilder.put("emergency-call-facilities-restored", 2429L);
+      mapBuilder.put("traffic-signals-repaired", 2430L);
+      mapBuilder.put("railroad-crossing-equipment-now-working-normally", 2431L);
+      mapBuilder.put("restrictions", 2561L);
+      mapBuilder.put("ramp-restrictions", 2562L);
+      mapBuilder.put("truck-restriction", 2563L);
+      mapBuilder.put("speed-restriction", 2564L);
+      mapBuilder.put("noise-restriction", 2565L);
+      mapBuilder.put("traffic-regulations-have-been-changed", 2566L);
+      mapBuilder.put("local-access-only", 2567L);
+      mapBuilder.put("no-trailers", 2568L);
+      mapBuilder.put("no-high-profile-vehicles", 2569L);
+      mapBuilder.put("hazardous-materials-truck-restriction", 2570L);
+      mapBuilder.put("no-through-traffic", 2571L);
+      mapBuilder.put("no-motor-vehicles", 2572L);
+      mapBuilder.put("width-limit", 2573L);
+      mapBuilder.put("height-limit", 2574L);
+      mapBuilder.put("length-limit", 2575L);
+      mapBuilder.put("axle-load-limit", 2576L);
+      mapBuilder.put("gross-weight-limit", 2577L);
+      mapBuilder.put("axle-count-limit", 2578L);
+      mapBuilder.put("carpool-lane-available", 2579L);
+      mapBuilder.put("carpool-restrictions-changed", 2580L);
+      mapBuilder.put("hOV-2-no-single-occupant-vehicles", 2581L);
+      mapBuilder.put("hOV-3-no-vehicles-with-less-than-three-occupants", 2582L);
+      mapBuilder.put("bus-lane-available-for-all-vehicles", 2583L);
+      mapBuilder.put("truck-lane-available-for-all-vehicles", 2584L);
+      mapBuilder.put("permits-call-in-basis", 2585L);
+      mapBuilder.put("permits-temporarily-closed", 2586L);
+      mapBuilder.put("permits-closed", 2587L);
+      mapBuilder.put("road-use-permits-required", 2588L);
+      mapBuilder.put("permits-open", 2675L);
+      mapBuilder.put("restrictions-for-high-profile-vehicles-lifted", 2676L);
+      mapBuilder.put("width-limit-lifted", 2677L);
+      mapBuilder.put("height-limit-lifted", 2678L);
+      mapBuilder.put("length-limit-lifted", 2679L);
+      mapBuilder.put("axle-load-limit-lifted", 2680L);
+      mapBuilder.put("weight-limit-lifted", 2681L);
+      mapBuilder.put("axle-count-limit-lifted", 2682L);
+      mapBuilder.put("carpool-restrictions-lifted", 2683L);
+      mapBuilder.put("lane-restrictions-lifted", 2684L);
+      mapBuilder.put("ramp-restrictions-lifted", 2685L);
+      mapBuilder.put("motor-vehicle-restrictions-lifted", 2686L);
+      mapBuilder.put("restrictions-lifted", 2687L);
+      mapBuilder.put("unconfirmed-report", 2817L);
+      mapBuilder.put("initial-response-en-route", 2818L);
+      mapBuilder.put("follow-up-response-en-route", 2819L);
+      mapBuilder.put("initial-response-on-scene", 2820L);
+      mapBuilder.put("follow-up-response-on-scene", 2821L);
+      mapBuilder.put("confirmed-report", 2822L);
+      mapBuilder.put("scene-is-unsecured-at-this-time", 2823L);
+      mapBuilder.put("response-scene-secured", 2824L);
+      mapBuilder.put("rescue-and-recovery-work-in-progress", 2825L);
+      mapBuilder.put("extraction-in-progress", 2826L);
+      mapBuilder.put("clearance-work-in-progress", 2827L);
+      mapBuilder.put("body-removal-operations", 2828L);
+      mapBuilder.put("fire-containment-contained", 2829L);
+      mapBuilder.put("fire-containment-not-contained", 2830L);
+      mapBuilder.put("event-cleared", 2831L);
+      mapBuilder.put("traffic-clearing", 2832L);
+      mapBuilder.put("incident-closed", 2833L);
+      mapBuilder.put("flash-flood", 3073L);
+      mapBuilder.put("major-flood", 3074L);
+      mapBuilder.put("reservoir-failure", 3075L);
+      mapBuilder.put("levee-failure", 3076L);
+      mapBuilder.put("tsunami", 3077L);
+      mapBuilder.put("tidal-wave", 3078L);
+      mapBuilder.put("volcanic-eruption", 3079L);
+      mapBuilder.put("ash-fall", 3080L);
+      mapBuilder.put("lava-flow", 3081L);
+      mapBuilder.put("serious-fire", 3082L);
+      mapBuilder.put("forest-fire", 3083L);
+      mapBuilder.put("wildfire", 3084L);
+      mapBuilder.put("building-fire", 3085L);
+      mapBuilder.put("brush-fire", 3086L);
+      mapBuilder.put("grass-fire", 3087L);
+      mapBuilder.put("fire-danger-extreme", 3088L);
+      mapBuilder.put("fire-danger-very-high", 3089L);
+      mapBuilder.put("fire-danger-high", 3090L);
+      mapBuilder.put("fire-danger-medium", 3091L);
+      mapBuilder.put("fire-danger-low", 3092L);
+      mapBuilder.put("earthquake-damage", 3093L);
+      mapBuilder.put("air-crash", 3094L);
+      mapBuilder.put("rail-crash", 3095L);
+      mapBuilder.put("toxic-release", 3096L);
+      mapBuilder.put("toxic-leak", 3097L);
+      mapBuilder.put("radioactive-release", 3098L);
+      mapBuilder.put("radiation-hazard", 3099L);
+      mapBuilder.put("reactor-leakage", 3100L);
+      mapBuilder.put("explosion", 3101L);
+      mapBuilder.put("major-hazardous-materials-fire", 3102L);
+      mapBuilder.put("major-hazardous-materials-release", 3103L);
+      mapBuilder.put("disaster-cleared", 3199L);
+      mapBuilder.put("assault", 3329L);
+      mapBuilder.put("crime", 3330L);
+      mapBuilder.put("robbery", 3331L);
+      mapBuilder.put("fare-dispute", 3332L);
+      mapBuilder.put("shooting", 3333L);
+      mapBuilder.put("gunfire-on-roadway", 3334L);
+      mapBuilder.put("suicide", 3335L);
+      mapBuilder.put("fight", 3336L);
+      mapBuilder.put("gang-fight", 3337L);
+      mapBuilder.put("person-harassment", 3338L);
+      mapBuilder.put("person-injured", 3339L);
+      mapBuilder.put("sick-customer", 3363L);
+      mapBuilder.put("unruly-passenger", 3340L);
+      mapBuilder.put("person-intoxicated", 3341L);
+      mapBuilder.put("crowd-control-problem", 3342L);
+      mapBuilder.put("demonstration", 3343L);
+      mapBuilder.put("march", 3344L);
+      mapBuilder.put("public-disturbance", 3345L);
+      mapBuilder.put("riot", 3346L);
+      mapBuilder.put("civil-unrest", 3347L);
+      mapBuilder.put("civil-emergency", 3348L);
+      mapBuilder.put("strike", 3349L);
+      mapBuilder.put("public-transit-strike", 3350L);
+      mapBuilder.put("stampede", 3351L);
+      mapBuilder.put("teargas-used", 3352L);
+      mapBuilder.put("security-alert", 3353L);
+      mapBuilder.put("security-incident", 3354L);
+      mapBuilder.put("checkpoint", 3355L);
+      mapBuilder.put("bomb-alert", 3356L);
+      mapBuilder.put("terrorist-incident", 3357L);
+      mapBuilder.put("high-velocity-shell-fire", 3358L);
+      mapBuilder.put("explosives-in-use", 3359L);
+      mapBuilder.put("air-raid", 3360L);
+      mapBuilder.put("weapons-of-mass-destruction-threat", 3361L);
+      mapBuilder.put("military-operations", 3362L);
+      mapBuilder.put("security-problem-cleared", 3454L);
+      mapBuilder.put("traffic-disturbance-cleared", 3455L);
+      mapBuilder.put("sports-event", 3585L);
+      mapBuilder.put("game", 3586L);
+      mapBuilder.put("tournament", 3587L);
+      mapBuilder.put("track-and-field-event", 3588L);
+      mapBuilder.put("baseball-game", 3589L);
+      mapBuilder.put("basketball-game", 3590L);
+      mapBuilder.put("boxing-match", 3591L);
+      mapBuilder.put("football-game", 3592L);
+      mapBuilder.put("soccer-game", 3593L);
+      mapBuilder.put("golf-tournament", 3594L);
+      mapBuilder.put("hockey-game", 3595L);
+      mapBuilder.put("tennis-tournament", 3596L);
+      mapBuilder.put("wrestling-match", 3597L);
+      mapBuilder.put("road-race", 3598L);
+      mapBuilder.put("automobile-race", 3599L);
+      mapBuilder.put("bicycle-race", 3600L);
+      mapBuilder.put("race-event", 3601L);
+      mapBuilder.put("marathon", 3602L);
+      mapBuilder.put("horse-show", 3603L);
+      mapBuilder.put("rodeo", 3604L);
+      mapBuilder.put("water-sports-event", 3605L);
+      mapBuilder.put("winter-sports-event", 3606L);
+      mapBuilder.put("skating-event", 3607L);
+      mapBuilder.put("dog-sled-race", 3608L);
+      mapBuilder.put("sporting-event-ended", 3711L);
+      mapBuilder.put("major-event", 3841L);
+      mapBuilder.put("airshow", 3842L);
+      mapBuilder.put("hot-air-ballooning", 3843L);
+      mapBuilder.put("concert", 3844L);
+      mapBuilder.put("state-occasion", 3845L);
+      mapBuilder.put("vIP-visit", 3846L);
+      mapBuilder.put("show", 3847L);
+      mapBuilder.put("festival", 3848L);
+      mapBuilder.put("exhibition", 3849L);
+      mapBuilder.put("performing-arts", 3850L);
+      mapBuilder.put("outdoor-market", 3851L);
+      mapBuilder.put("fair", 3852L);
+      mapBuilder.put("carnival", 3853L);
+      mapBuilder.put("fireworks-display", 3854L);
+      mapBuilder.put("trade-expo", 3855L);
+      mapBuilder.put("movie-filming", 3856L);
+      mapBuilder.put("presidential-visit", 3857L);
+      mapBuilder.put("parade", 3858L);
+      mapBuilder.put("procession", 3859L);
+      mapBuilder.put("funeral-procession", 3860L);
+      mapBuilder.put("crowd", 3861L);
+      mapBuilder.put("holiday-traffic-crowds", 3862L);
+      mapBuilder.put("event-ended", 3967L);
+      mapBuilder.put("normal-parking-restrictions-lifted", 4097L);
+      mapBuilder.put("parking-meter-restrictions-lifted", 4098L);
+      mapBuilder.put("special-parking-restrictions-in-force", 4099L);
+      mapBuilder.put("full-parking-lot", 4100L);
+      mapBuilder.put("full-parking-garage", 4101L);
+      mapBuilder.put("all-parking-lots-full", 4102L);
+      mapBuilder.put("no-parking-spaces-available", 4103L);
+      mapBuilder.put("only-a-few-spaces-available", 4104L);
+      mapBuilder.put("spaces-available", 4105L);
+      mapBuilder.put("no-parking", 4106L);
+      mapBuilder.put("parking-on-one-side-of-street-only", 4107L);
+      mapBuilder.put("parking-on-both-sides-of-street", 4108L);
+      mapBuilder.put("parallel-parking-only", 4109L);
+      mapBuilder.put("parking-meters-not-available", 4110L);
+      mapBuilder.put("use-of-parking-meters-restricted", 4111L);
+      mapBuilder.put("event-parking", 4112L);
+      mapBuilder.put("handicapped-parking", 4113L);
+      mapBuilder.put("long-term-parking", 4114L);
+      mapBuilder.put("overnight-parking", 4115L);
+      mapBuilder.put("short-term-parking", 4116L);
+      mapBuilder.put("parking-by-permit-only", 4117L);
+      mapBuilder.put("emergency-parking-only", 4118L);
+      mapBuilder.put("emergency-stopping-only", 4119L);
+      mapBuilder.put("parking", 4120L);
+      mapBuilder.put("stopping", 4121L);
+      mapBuilder.put("standing", 4122L);
+      mapBuilder.put("tow-away-zone", 4123L);
+      mapBuilder.put("school-zone", 4124L);
+      mapBuilder.put("speed-zone", 4125L);
+      mapBuilder.put("loading-zone", 4126L);
+      mapBuilder.put("state-law", 4127L);
+      mapBuilder.put("van-accessible", 4128L);
+      mapBuilder.put("special-parking-restrictions-lifted", 4222L);
+      mapBuilder.put("no-parking-information-available", 4223L);
+      mapBuilder.put("information-available-on-radio", 4353L);
+      mapBuilder.put("information-available-on-TV", 4354L);
+      mapBuilder.put("call-to-get-information", 4355L);
+      mapBuilder.put("information-available-via-Internet", 4356L);
+      mapBuilder.put("test-message", 4357L);
+      mapBuilder.put("no-information-available", 4358L);
+      mapBuilder.put("null-description", 4359L);
+      mapBuilder.put("police-assistance", 4361L);
+      mapBuilder.put("police-monitor-CB", 4362L);
+      mapBuilder.put("emergency-notification", 4363L);
+      mapBuilder.put("in-emergency-dial-911", 4364L);
+      mapBuilder.put("travel-Info-call-511", 4365L);
+      mapBuilder.put("car-pool-information", 4366L);
+      mapBuilder.put("information-service-resumed", 4478L);
+      mapBuilder.put("information-service-is-being-suspended", 4360L);
+      mapBuilder.put("message-canceled", 4479L);
+      mapBuilder.put("overcast", 4609L);
+      mapBuilder.put("cloudy", 4610L);
+      mapBuilder.put("mostly-cloudy", 4611L);
+      mapBuilder.put("partly-cloudy", 4612L);
+      mapBuilder.put("partly-sunny", 4613L);
+      mapBuilder.put("mostly-sunny", 4614L);
+      mapBuilder.put("sunny", 4615L);
+      mapBuilder.put("fair-skies", 4616L);
+      mapBuilder.put("clear-skies", 4617L);
+      mapBuilder.put("mostly-clear", 4618L);
+      mapBuilder.put("mostly-dry", 4619L);
+      mapBuilder.put("dry", 4620L);
+      mapBuilder.put("uV-index-very-high", 4621L);
+      mapBuilder.put("uV-index-high", 4622L);
+      mapBuilder.put("uV-index-moderate", 4623L);
+      mapBuilder.put("uV-index-low", 4624L);
+      mapBuilder.put("uV-index-very-low", 4625L);
+      mapBuilder.put("barometric-pressure", 4626L);
+      mapBuilder.put("ozone-alert", 4627L);
+      mapBuilder.put("lighting-unknown", 4628L);
+      mapBuilder.put("artificial-exterior-light", 4629L);
+      mapBuilder.put("artificial-interior-light", 4630L);
+      mapBuilder.put("darkness", 4631L);
+      mapBuilder.put("dusk", 4632L);
+      mapBuilder.put("dawn", 4633L);
+      mapBuilder.put("moonlight", 4634L);
+      mapBuilder.put("daylight", 4635L);
+      mapBuilder.put("weather-forecast-withdrawn", 4735L);
+      mapBuilder.put("severe-weather", 4865L);
+      mapBuilder.put("blizzard", 4866L);
+      mapBuilder.put("heavy-snow", 4867L);
+      mapBuilder.put("snow", 4868L);
+      mapBuilder.put("light-snow", 4869L);
+      mapBuilder.put("snow-showers", 4870L);
+      mapBuilder.put("winter-storm", 4871L);
+      mapBuilder.put("ice-glaze", 4872L);
+      mapBuilder.put("heavy-frost", 4873L);
+      mapBuilder.put("frost", 4874L);
+      mapBuilder.put("ice-storm", 4875L);
+      mapBuilder.put("sleet", 4876L);
+      mapBuilder.put("rain-and-snow-mixed", 4877L);
+      mapBuilder.put("rain-changing-to-snow", 4878L);
+      mapBuilder.put("damaging-hail", 4879L);
+      mapBuilder.put("hail", 4880L);
+      mapBuilder.put("thunderstorms", 4881L);
+      mapBuilder.put("thundershowers", 4882L);
+      mapBuilder.put("extremely-heavy-downpour", 4883L);
+      mapBuilder.put("heavy-rain", 4884L);
+      mapBuilder.put("rain", 4885L);
+      mapBuilder.put("light-rain", 4886L);
+      mapBuilder.put("drizzle", 4887L);
+      mapBuilder.put("showers", 4888L);
+      mapBuilder.put("dew", 4889L);
+      mapBuilder.put("precipitation-cleared", 4991L);
+      mapBuilder.put("tornado", 5121L);
+      mapBuilder.put("hurricane", 5122L);
+      mapBuilder.put("hurricane-force-winds", 5123L);
+      mapBuilder.put("tropical-storm", 5124L);
+      mapBuilder.put("gale-force-winds", 5125L);
+      mapBuilder.put("storm-force-winds", 5126L);
+      mapBuilder.put("strong-winds", 5127L);
+      mapBuilder.put("moderate-winds", 5128L);
+      mapBuilder.put("light-winds", 5129L);
+      mapBuilder.put("calm", 5130L);
+      mapBuilder.put("gusty-winds", 5131L);
+      mapBuilder.put("crosswinds", 5132L);
+      mapBuilder.put("windy", 5133L);
+      mapBuilder.put("strong-winds-have-eased", 5246L);
+      mapBuilder.put("strong-wind-forecast-withdrawn", 5247L);
+      mapBuilder.put("dense-fog", 5377L);
+      mapBuilder.put("fog", 5378L);
+      mapBuilder.put("patchy-fog", 5379L);
+      mapBuilder.put("freezing-fog", 5380L);
+      mapBuilder.put("ice-fog", 5405L);
+      mapBuilder.put("mist", 5381L);
+      mapBuilder.put("haze", 5382L);
+      mapBuilder.put("visibility-reduced", 5383L);
+      mapBuilder.put("visibility-blocked", 5404L);
+      mapBuilder.put("white-out", 5384L);
+      mapBuilder.put("blowing-snow", 5385L);
+      mapBuilder.put("smoke-hazard", 5386L);
+      mapBuilder.put("spray-hazard", 5387L);
+      mapBuilder.put("low-sun-glare", 5388L);
+      mapBuilder.put("snow-glare", 5389L);
+      mapBuilder.put("blowing-dust", 5390L);
+      mapBuilder.put("blowing-sand", 5391L);
+      mapBuilder.put("dust-storms", 5392L);
+      mapBuilder.put("sandstorms", 5393L);
+      mapBuilder.put("air-quality-good", 5394L);
+      mapBuilder.put("air-quality-fair", 5395L);
+      mapBuilder.put("air-quality-poor", 5396L);
+      mapBuilder.put("air-quality-very-poor", 5397L);
+      mapBuilder.put("severe-exhaust-pollution", 5398L);
+      mapBuilder.put("smog-alert", 5399L);
+      mapBuilder.put("pollen-count-high", 5400L);
+      mapBuilder.put("pollen-count-medium", 5401L);
+      mapBuilder.put("pollen-count-low", 5402L);
+      mapBuilder.put("swarms-of-insects", 5403L);
+      mapBuilder.put("fog-clearing", 5499L);
+      mapBuilder.put("visibility-improved", 5500L);
+      mapBuilder.put("fog-forecast-withdrawn", 5501L);
+      mapBuilder.put("pollution-alert-ended", 5502L);
+      mapBuilder.put("air-quality-improved", 5503L);
+      mapBuilder.put("maximum-temperature", 5633L);
+      mapBuilder.put("temperature", 5634L);
+      mapBuilder.put("minimum-temperature", 5635L);
+      mapBuilder.put("current-temperature", 5636L);
+      mapBuilder.put("heat-index", 5637L);
+      mapBuilder.put("extreme-heat", 5638L);
+      mapBuilder.put("hot", 5639L);
+      mapBuilder.put("hotter", 5640L);
+      mapBuilder.put("heat", 5641L);
+      mapBuilder.put("warmer", 5642L);
+      mapBuilder.put("warm", 5643L);
+      mapBuilder.put("mild", 5644L);
+      mapBuilder.put("cool", 5645L);
+      mapBuilder.put("cooler", 5646L);
+      mapBuilder.put("cold", 5647L);
+      mapBuilder.put("colder", 5648L);
+      mapBuilder.put("very-cold", 5649L);
+      mapBuilder.put("extreme-cold", 5650L);
+      mapBuilder.put("wind-chill", 5651L);
+      mapBuilder.put("dewpoint", 5652L);
+      mapBuilder.put("relative-humidity", 5653L);
+      mapBuilder.put("temperatures-close-to-the-seasonal-norm", 5758L);
+      mapBuilder.put("less-extreme-temperatures", 5759L);
+      mapBuilder.put("impassable", 5889L);
+      mapBuilder.put("almost-impassable", 5890L);
+      mapBuilder.put("passable-with-care", 5891L);
+      mapBuilder.put("passable", 5892L);
+      mapBuilder.put("surface-water-hazard", 5893L);
+      mapBuilder.put("danger-of-hydroplaning", 5894L);
+      mapBuilder.put("wet-pavement", 5895L);
+      mapBuilder.put("treated-pavement", 5896L);
+      mapBuilder.put("slippery", 5897L);
+      mapBuilder.put("low-ground-clearance", 5938L);
+      mapBuilder.put("at-grade-level-crossing", 5937L);
+      mapBuilder.put("mud-on-roadway", 5898L);
+      mapBuilder.put("leaves-on-roadway", 5899L);
+      mapBuilder.put("loose-sand-on-roadway", 5900L);
+      mapBuilder.put("loose-gravel", 5901L);
+      mapBuilder.put("fuel-on-roadway", 5902L);
+      mapBuilder.put("oil-on-roadway", 5903L);
+      mapBuilder.put("road-surface-in-poor-condition", 5904L);
+      mapBuilder.put("melting-tar", 5905L);
+      mapBuilder.put("uneven-lanes", 5935L);
+      mapBuilder.put("rough-road", 5931L);
+      mapBuilder.put("rough-crossing", 5936L);
+      mapBuilder.put("ice", 5906L);
+      mapBuilder.put("icy-patches", 5907L);
+      mapBuilder.put("black-ice", 5908L);
+      mapBuilder.put("ice-pellets-on-roadway", 5909L);
+      mapBuilder.put("ice-build-up", 5910L);
+      mapBuilder.put("freezing-rain", 5911L);
+      mapBuilder.put("wet-and-icy-roads", 5912L);
+      mapBuilder.put("slush", 5914L);
+      mapBuilder.put("melting-snow", 5913L);
+      mapBuilder.put("frozen-slush", 5915L);
+      mapBuilder.put("snow-on-roadway", 5916L);
+      mapBuilder.put("packed-snow", 5917L);
+      mapBuilder.put("packed-snow-patches", 5918L);
+      mapBuilder.put("plowed-snow", 5919L);
+      mapBuilder.put("wet-snow", 5920L);
+      mapBuilder.put("fresh-snow", 5921L);
+      mapBuilder.put("powder-snow", 5922L);
+      mapBuilder.put("granular-snow", 5923L);
+      mapBuilder.put("frozen-snow", 5924L);
+      mapBuilder.put("crusted-snow", 5925L);
+      mapBuilder.put("deep-snow", 5926L);
+      mapBuilder.put("snow-drifts", 5927L);
+      mapBuilder.put("drifting-snow", 5928L);
+      mapBuilder.put("expected-snow-accumulation", 5929L);
+      mapBuilder.put("current-snow-accumulation", 5930L);
+      mapBuilder.put("sand", 5932L);
+      mapBuilder.put("gravel", 5933L);
+      mapBuilder.put("paved", 5934L);
+      mapBuilder.put("dry-pavement", 6011L);
+      mapBuilder.put("snow-cleared", 6012L);
+      mapBuilder.put("pavement-conditions-improved", 6013L);
+      mapBuilder.put("skid-hazard-reduced", 6014L);
+      mapBuilder.put("pavement-conditions-cleared", 6015L);
+      mapBuilder.put("winter-equipment-recommended", 6145L);
+      mapBuilder.put("winter-equipment-required", 6146L);
+      mapBuilder.put("snow-chains-recommended", 6147L);
+      mapBuilder.put("snow-chains-required", 6148L);
+      mapBuilder.put("snow-chains-prohibited", 6149L);
+      mapBuilder.put("studded-tires-prohibited", 6150L);
+      mapBuilder.put("snow-tires-recommended", 6151L);
+      mapBuilder.put("snow-tires-required", 6152L);
+      mapBuilder.put("four-wheel-drive-recommended", 6153L);
+      mapBuilder.put("four-wheel-drive-required", 6154L);
+      mapBuilder.put("snow-tires-or-chains-recommended", 6155L);
+      mapBuilder.put("snow-tires-or-chains-required", 6156L);
+      mapBuilder.put("winter-driving-requirements-lifted", 6271L);
+      mapBuilder.put("driving-conditions-good", 6401L);
+      mapBuilder.put("driving-conditions-fair", 6402L);
+      mapBuilder.put("difficult-driving-conditions", 6403L);
+      mapBuilder.put("very-difficult-driving-conditions", 6404L);
+      mapBuilder.put("hazardous-driving-conditions", 6405L);
+      mapBuilder.put("extremely-hazardous-driving-conditions", 6406L);
+      mapBuilder.put("why-not-ride-share", 6657L);
+      mapBuilder.put("is-this-your-no-ride-day", 6658L);
+      mapBuilder.put("why-not-use-transit", 6659L);
+      mapBuilder.put("why-not-park-and-ride", 6660L);
+      mapBuilder.put("why-not-try-paratransit", 6661L);
+      mapBuilder.put("why-not-travel-by-rail", 6662L);
+      mapBuilder.put("why-not-use-the-subway", 6663L);
+      mapBuilder.put("why-not-try-rapid-transit", 6664L);
+      mapBuilder.put("why-not-travel-by-bus", 6665L);
+      mapBuilder.put("your-parking-ticket-covers-the-return-ride", 6666L);
+      mapBuilder.put("avoid-the-rush-hour", 6667L);
+      mapBuilder.put("do-not-allow-unnecessary-gaps", 6668L);
+      mapBuilder.put("follow-the-vehicle-in-front-smoothly", 6669L);
+      mapBuilder.put("do-not-slow-down-unnecessarily", 6670L);
+      mapBuilder.put("watch-for-muggers", 6671L);
+      mapBuilder.put("watch-for-pickpockets", 6672L);
+      mapBuilder.put("watch-for-thieves", 6673L);
+      mapBuilder.put("sorry-for-any-delay", 6674L);
+      mapBuilder.put("thank-you-for-your-understanding", 6675L);
+      mapBuilder.put("we-appreciate-your-patience", 6676L);
+      mapBuilder.put("we-are-grateful-for-your-cooperation", 6677L);
+      mapBuilder.put("share-the-road", 6678L);
+      mapBuilder.put("risk", 6913L);
+      mapBuilder.put("watch", 6914L);
+      mapBuilder.put("warning", 6915L);
+      mapBuilder.put("alert", 6916L);
+      mapBuilder.put("danger", 6917L);
+      mapBuilder.put("danger-of-explosion", 6918L);
+      mapBuilder.put("danger-of-fire", 6919L);
+      mapBuilder.put("extra-police-patrols-in-operation", 6920L);
+      mapBuilder.put("look-out-for-vehicles-stopped-under-bridges", 6921L);
+      mapBuilder.put("increased-risk-of-accident", 6922L);
+      mapBuilder.put("rescue-and-recovery-work-in-progress-at-sceneREMOVED", 6923L);
+      mapBuilder.put("police-at-scene", 6924L);
+      mapBuilder.put("emergency-vehicles-at-scene", 6925L);
+      mapBuilder.put("traffic-being-directed-around-accident-area", 6926L);
+      mapBuilder.put("police-directing-traffic", 6927L);
+      mapBuilder.put("rescue-workers-directing-traffic", 6928L);
+      mapBuilder.put("repairs-in-progress", 6929L);
+      mapBuilder.put("pilot-car-in-operation", 6930L);
+      mapBuilder.put("look-out-for-flagger", 6931L);
+      mapBuilder.put("look-out-for-workers", 6952L);
+      mapBuilder.put("police-checks-in-operation", 6932L);
+      mapBuilder.put("truck-check-point", 6937L);
+      mapBuilder.put("lockdown", 6935L);
+      mapBuilder.put("security-check-point", 6936L);
+      mapBuilder.put("single-occupancy-vehicle-check-point", 6938L);
+      mapBuilder.put("mandatory-speed-limit-in-force", 6933L);
+      mapBuilder.put("speed-limit-in-force-for-heavy-vehicles", 6934L);
+      mapBuilder.put("behind-you", 6950L);
+      mapBuilder.put("ride-with-traffic", 6953L);
+      mapBuilder.put("prepare-to-evacuate-area", 6954L);
+      mapBuilder.put("avoid", 6955L);
+      mapBuilder.put("look", 6939L);
+      mapBuilder.put("photo-enforced", 6940L);
+      mapBuilder.put("traffic-signs", 6951L);
+      mapBuilder.put("traffic-laws", 6941L);
+      mapBuilder.put("use-low-gear", 6942L);
+      mapBuilder.put("bridge-ices-before-road", 6943L);
+      mapBuilder.put("speed-checked-by-radar", 6944L);
+      mapBuilder.put("speed-checked-by-aircraft", 6945L);
+      mapBuilder.put("fines", 6946L);
+      mapBuilder.put("fines-higher", 6947L);
+      mapBuilder.put("fines-doubled", 6948L);
+      mapBuilder.put("fines-tripled", 6949L);
+      mapBuilder.put("evacuation-canceled", 7033L);
+      mapBuilder.put("warning-canceled", 7034L);
+      mapBuilder.put("watch-canceled", 7035L);
+      mapBuilder.put("alert-canceled", 7036L);
+      mapBuilder.put("ended", 7037L);
+      mapBuilder.put("cleared", 7038L);
+      mapBuilder.put("canceled", 7039L);
+      mapBuilder.put("drive-carefully", 7169L);
+      mapBuilder.put("drive-with-extreme-caution", 7170L);
+      mapBuilder.put("approach-with-care", 7171L);
+      mapBuilder.put("keep-your-distance", 7172L);
+      mapBuilder.put("increase-normal-following-distance", 7173L);
+      mapBuilder.put("test-your-brakes", 7174L);
+      mapBuilder.put("cross-intersection-with-care", 7175L);
+      mapBuilder.put("pass-with-care", 7176L);
+      mapBuilder.put("pass", 7200L);
+      mapBuilder.put("use-low-beam-headlights", 7177L);
+      mapBuilder.put("use-fog-lights", 7178L);
+      mapBuilder.put("use-hazard-warning-lights", 7179L);
+      mapBuilder.put("do-not-leave-your-vehicle", 7180L);
+      mapBuilder.put("leave-your-vehicle-and-proceed-to-next-safe-place", 7181L);
+      mapBuilder.put("turn-off-engine", 7182L);
+      mapBuilder.put("close-all-windows-turn-off-heater-air-conditioner-and-vents", 7183L);
+      mapBuilder.put("turn-off-air-conditioner-to-prevent-engine-overheating", 7184L);
+      mapBuilder.put("turn-off-mobile-phones-and-two-way-radios", 7185L);
+      mapBuilder.put("prepare-to-stop", 7186L);
+      mapBuilder.put("be-prepared-to-stop", 7201L);
+      mapBuilder.put("stop-at-next-rest-area", 7187L);
+      mapBuilder.put("stop-at-next-safe-place", 7188L);
+      mapBuilder.put("only-travel-if-absolutely-necessary", 7189L);
+      mapBuilder.put("drive-to-another-service-area", 7190L);
+      mapBuilder.put("use-through-traffic-lanes", 7191L);
+      mapBuilder.put("use-local-traffic-lanes", 7192L);
+      mapBuilder.put("use-left-hand-parallel-roadway", 7193L);
+      mapBuilder.put("use-right-hand-parallel-roadway", 7194L);
+      mapBuilder.put("use-heavy-vehicle-lane", 7195L);
+      mapBuilder.put("observe-recommended-speed", 7196L);
+      mapBuilder.put("signals-sequenced-for-speed", 7202L);
+      mapBuilder.put("maintain-top-safe-speed", 7203L);
+      mapBuilder.put("facing-traffic", 7197L);
+      mapBuilder.put("push-button", 7198L);
+      mapBuilder.put("to-cross-street", 7199L);
+      mapBuilder.put("evacuate-area-voluntarily", 7204L);
+      mapBuilder.put("shelter-in-place", 7205L);
+      mapBuilder.put("keep-to-the-right", 7425L);
+      mapBuilder.put("keep-to-the-left", 7426L);
+      mapBuilder.put("use-right-lane", 7427L);
+      mapBuilder.put("use-left-lane", 7428L);
+      mapBuilder.put("stay-in-lane", 7450L);
+      mapBuilder.put("merge", 7451L);
+      mapBuilder.put("heavy-vehicles-use-right-lane", 7429L);
+      mapBuilder.put("heavy-vehicles-use-left-lane", 7430L);
+      mapBuilder.put("observe-signals", 7431L);
+      mapBuilder.put("observe-signs", 7432L);
+      mapBuilder.put("no-passing", 7433L);
+      mapBuilder.put("no-smoking", 7434L);
+      mapBuilder.put("no-open-flames", 7435L);
+      mapBuilder.put("use-shoulder-as-lane", 7436L);
+      mapBuilder.put("do-not-drive-on-the-shoulder", 7437L);
+      mapBuilder.put("allow-emergency-vehicles-to-pass", 7438L);
+      mapBuilder.put("clear-a-lane-for-emergency-vehicles", 7439L);
+      mapBuilder.put("pull-over-to-the-edge-of-the-roadway", 7440L);
+      mapBuilder.put("wait-for-escort-vehicle", 7441L);
+      mapBuilder.put("in-emergency-wait-for-police-patrol", 7442L);
+      mapBuilder.put("reduce-your-speed", 7443L);
+      mapBuilder.put("observe-speed-limits", 7444L);
+      mapBuilder.put("check-point", 7445L);
+      mapBuilder.put("entry-requirements", 7446L);
+      mapBuilder.put("insurance-requirements", 7447L);
+      mapBuilder.put("firearms-requirements", 7448L);
+      mapBuilder.put("pet-requirements", 7449L);
+      mapBuilder.put("slower-traffic-keep-right", 7452L);
+      mapBuilder.put("keep-off", 7453L);
+      mapBuilder.put("evacuate-area-immediately", 7454L);
+      mapBuilder.put("shoulder-travel-no-longer-allowed", 7547L);
+      mapBuilder.put("above", 7681L);
+      mapBuilder.put("below", 7682L);
+      mapBuilder.put("in", 7683L);
+      mapBuilder.put("around", 7684L);
+      mapBuilder.put("after", 7685L);
+      mapBuilder.put("before", 7686L);
+      mapBuilder.put("at", 7687L);
+      mapBuilder.put("on", 7688L);
+      mapBuilder.put("near", 7689L);
+      mapBuilder.put("from-the", 7690L);
+      mapBuilder.put("terminal", 7691L);
+      mapBuilder.put("falling-slowly", 7692L);
+      mapBuilder.put("falling", 7693L);
+      mapBuilder.put("falling-quickly", 7694L);
+      mapBuilder.put("rising-slowly", 7695L);
+      mapBuilder.put("rising", 7696L);
+      mapBuilder.put("rising-quickly", 7697L);
+      mapBuilder.put("steady", 7698L);
+      mapBuilder.put("likely", 7699L);
+      mapBuilder.put("changing-to", 7700L);
+      mapBuilder.put("mostly", 7701L);
+      mapBuilder.put("partly", 7702L);
+      mapBuilder.put("minus", 7703L);
+      mapBuilder.put("weather-ended", 7704L);
+      mapBuilder.put("expected", 7705L);
+      mapBuilder.put("low", 7706L);
+      mapBuilder.put("mid", 7707L);
+      mapBuilder.put("high", 7708L);
+      mapBuilder.put("upper", 7709L);
+      mapBuilder.put("middle", 7765L);
+      mapBuilder.put("lower", 7764L);
+      mapBuilder.put("unseasonably", 7710L);
+      mapBuilder.put("reported", 7711L);
+      mapBuilder.put("advice", 7712L);
+      mapBuilder.put("due-to", 7713L);
+      mapBuilder.put("proceed-to", 7714L);
+      mapBuilder.put("transferred-to", 7715L);
+      mapBuilder.put("use", 7716L);
+      mapBuilder.put("affecting", 7717L);
+      mapBuilder.put("blocking", 7718L);
+      mapBuilder.put("connecting", 7719L);
+      mapBuilder.put("finished", 7720L);
+      mapBuilder.put("for", 7721L);
+      mapBuilder.put("or", 7722L);
+      mapBuilder.put("and", 7723L);
+      mapBuilder.put("later", 7724L);
+      mapBuilder.put("level", 7725L);
+      mapBuilder.put("shortly", 7726L);
+      mapBuilder.put("soon", 7727L);
+      mapBuilder.put("service", 7728L);
+      mapBuilder.put("graffiti", 7733L);
+      mapBuilder.put("damaged", 7729L);
+      mapBuilder.put("out-of-order", 7730L);
+      mapBuilder.put("on-State-right-of-way", 7732L);
+      mapBuilder.put("found-property", 7734L);
+      mapBuilder.put("vandalism", 7731L);
+      mapBuilder.put("major", 7766L);
+      mapBuilder.put("minor", 7767L);
+      mapBuilder.put("begin-time", 7735L);
+      mapBuilder.put("added", 7736L);
+      mapBuilder.put("end-time", 7737L);
+      mapBuilder.put("no", 7738L);
+      mapBuilder.put("do-not", 7739L);
+      mapBuilder.put("block", 7740L);
+      mapBuilder.put("except", 7741L);
+      mapBuilder.put("day", 7742L);
+      mapBuilder.put("night", 7743L);
+      mapBuilder.put("any-time", 7744L);
+      mapBuilder.put("has", 7745L);
+      mapBuilder.put("must", 7757L);
+      mapBuilder.put("may-have", 7746L);
+      mapBuilder.put("may-exceed", 7759L);
+      mapBuilder.put("only", 7747L);
+      mapBuilder.put("lifted", 7748L);
+      mapBuilder.put("empty", 7749L);
+      mapBuilder.put("turning", 7750L);
+      mapBuilder.put("u-turn", 7751L);
+      mapBuilder.put("wait-for", 7752L);
+      mapBuilder.put("when-flashing", 7753L);
+      mapBuilder.put("duration", 7754L);
+      mapBuilder.put("cross", 7755L);
+      mapBuilder.put("when-wet", 7756L);
+      mapBuilder.put("oncoming", 7758L);
+      mapBuilder.put("to-request", 7760L);
+      mapBuilder.put("exempt", 7761L);
+      mapBuilder.put("skewed", 7762L);
+      mapBuilder.put("when-children-are-present", 7763L);
+      mapBuilder.put("on-bridges", 7937L);
+      mapBuilder.put("in-tunnels", 7938L);
+      mapBuilder.put("entering-or-leaving-tunnels", 7939L);
+      mapBuilder.put("on-ramps", 7940L);
+      mapBuilder.put("in-road-construction-area", 7941L);
+      mapBuilder.put("around-a-curve", 7942L);
+      mapBuilder.put("on-curve", 8026L);
+      mapBuilder.put("on-tracks", 8009L);
+      mapBuilder.put("in-street", 8025L);
+      mapBuilder.put("shoulder", 8027L);
+      mapBuilder.put("on-minor-roads", 7943L);
+      mapBuilder.put("in-the-opposing-lanes", 7944L);
+      mapBuilder.put("adjacent-to-roadway", 7945L);
+      mapBuilder.put("across-tracks", 8024L);
+      mapBuilder.put("on-bend", 7946L);
+      mapBuilder.put("intersection", 8032L);
+      mapBuilder.put("entire-intersection", 7947L);
+      mapBuilder.put("in-the-median", 7948L);
+      mapBuilder.put("moved-to-side-of-road", 7949L);
+      mapBuilder.put("moved-to-shoulder", 7950L);
+      mapBuilder.put("on-the-roadway", 7951L);
+      mapBuilder.put("dip", 8010L);
+      mapBuilder.put("traffic-circle", 8011L);
+      mapBuilder.put("crossover", 8028L);
+      mapBuilder.put("cross-road", 8029L);
+      mapBuilder.put("side-road", 8030L);
+      mapBuilder.put("to", 8014L);
+      mapBuilder.put("by", 8015L);
+      mapBuilder.put("through", 8016L);
+      mapBuilder.put("area-of", 8017L);
+      mapBuilder.put("under", 8018L);
+      mapBuilder.put("over", 8019L);
+      mapBuilder.put("from", 8020L);
+      mapBuilder.put("approaching", 8021L);
+      mapBuilder.put("entering-at", 8022L);
+      mapBuilder.put("exiting-at", 8023L);
+      mapBuilder.put("in-shaded-areas", 7952L);
+      mapBuilder.put("in-low-lying-areas", 7953L);
+      mapBuilder.put("in-the-downtown-area", 7954L);
+      mapBuilder.put("in-the-inner-city-area", 7955L);
+      mapBuilder.put("in-parts", 7956L);
+      mapBuilder.put("in-some-places", 7957L);
+      mapBuilder.put("in-the-ditch", 7958L);
+      mapBuilder.put("in-the-valley", 7959L);
+      mapBuilder.put("on-hill-top", 7960L);
+      mapBuilder.put("near-the-foothills", 7961L);
+      mapBuilder.put("at-high-altitudes", 7962L);
+      mapBuilder.put("near-the-lake", 7963L);
+      mapBuilder.put("near-the-shore", 7964L);
+      mapBuilder.put("nearby-basin", 8008L);
+      mapBuilder.put("over-the-crest-of-a-hill", 7965L);
+      mapBuilder.put("other-than-on-the-roadway", 7966L);
+      mapBuilder.put("near-the-beach", 7967L);
+      mapBuilder.put("near-beach-access-point", 7968L);
+      mapBuilder.put("mountain-pass", 8006L);
+      mapBuilder.put("lower-level", 7969L);
+      mapBuilder.put("upper-level", 7970L);
+      mapBuilder.put("coast", 8034L);
+      mapBuilder.put("airport", 7971L);
+      mapBuilder.put("concourse", 7972L);
+      mapBuilder.put("gate", 7973L);
+      mapBuilder.put("baggage-claim", 7974L);
+      mapBuilder.put("customs-point", 7975L);
+      mapBuilder.put("reservation-center", 8007L);
+      mapBuilder.put("station", 7976L);
+      mapBuilder.put("platform", 7977L);
+      mapBuilder.put("dock", 7978L);
+      mapBuilder.put("depot", 7979L);
+      mapBuilder.put("ev-charging-point", 7980L);
+      mapBuilder.put("information-welcome-point", 7981L);
+      mapBuilder.put("at-rest-area", 7982L);
+      mapBuilder.put("at-service-area", 7983L);
+      mapBuilder.put("at-weigh-station", 7984L);
+      mapBuilder.put("roadside-park", 8033L);
+      mapBuilder.put("picnic-areas", 7985L);
+      mapBuilder.put("rest-area", 7986L);
+      mapBuilder.put("service-stations", 7987L);
+      mapBuilder.put("toilets", 7988L);
+      mapBuilder.put("bus-stop", 8031L);
+      mapBuilder.put("park-and-ride-lot", 8012L);
+      mapBuilder.put("on-the-right", 7989L);
+      mapBuilder.put("on-the-left", 7990L);
+      mapBuilder.put("in-the-center", 7991L);
+      mapBuilder.put("in-the-opposite-direction", 7992L);
+      mapBuilder.put("cross-traffic", 7993L);
+      mapBuilder.put("northbound-traffic", 7994L);
+      mapBuilder.put("eastbound-traffic", 7995L);
+      mapBuilder.put("southbound-traffic", 7996L);
+      mapBuilder.put("westbound-traffic", 7997L);
+      mapBuilder.put("north", 7998L);
+      mapBuilder.put("south", 7999L);
+      mapBuilder.put("east", 8000L);
+      mapBuilder.put("west", 8001L);
+      mapBuilder.put("northeast", 8002L);
+      mapBuilder.put("northwest", 8003L);
+      mapBuilder.put("southeast", 8004L);
+      mapBuilder.put("southwest", 8005L);
+      mapBuilder.put("all-roadways", 8193L);
+      mapBuilder.put("through-lanes", 8194L);
+      mapBuilder.put("left-lane", 8195L);
+      mapBuilder.put("right-lane", 8196L);
+      mapBuilder.put("center-lane", 8197L);
+      mapBuilder.put("middle-lanes", 8198L);
+      mapBuilder.put("middle-two-lanes", 8199L);
+      mapBuilder.put("right-turning-lanes", 8200L);
+      mapBuilder.put("left-turning-lanes", 8201L);
+      mapBuilder.put("upper-deck-lanes", 8236L);
+      mapBuilder.put("lower-deck-lanes", 8237L);
+      mapBuilder.put("reversible-lanes", 8238L);
+      mapBuilder.put("right-exit-lanes", 8239L);
+      mapBuilder.put("left-exit-lanes", 8240L);
+      mapBuilder.put("right-merging-lanes", 8241L);
+      mapBuilder.put("left-merging-lanes", 8242L);
+      mapBuilder.put("right-exit-ramp", 8202L);
+      mapBuilder.put("right-second-exit-ramp", 8243L);
+      mapBuilder.put("right-entrance-ramp", 8203L);
+      mapBuilder.put("right-second-entrance-ramp", 8245L);
+      mapBuilder.put("left-exit-ramp", 8204L);
+      mapBuilder.put("left-second-exit-ramp", 8244L);
+      mapBuilder.put("left-entrance-ramp", 8205L);
+      mapBuilder.put("left-second-entrance-ramp", 8246L);
+      mapBuilder.put("escape-ramp", 8234L);
+      mapBuilder.put("hard-shoulder", 8206L);
+      mapBuilder.put("soft-shoulder", 8207L);
+      mapBuilder.put("right-shoulder", 8208L);
+      mapBuilder.put("left-shoulder", 8209L);
+      mapBuilder.put("median", 8252L);
+      mapBuilder.put("sidewalk", 8251L);
+      mapBuilder.put("highways", 8235L);
+      mapBuilder.put("right-hand-parallel-lanes", 8210L);
+      mapBuilder.put("left-hand-parallel-lanes", 8211L);
+      mapBuilder.put("connecting-lanes", 8212L);
+      mapBuilder.put("express-lanes", 8213L);
+      mapBuilder.put("local-lanes", 8214L);
+      mapBuilder.put("toll-lanes", 8215L);
+      mapBuilder.put("electronic-toll-lanes", 8216L);
+      mapBuilder.put("toll-plaza", 8217L);
+      mapBuilder.put("inspection-lane", 8218L);
+      mapBuilder.put("hOV-lanes", 8219L);
+      mapBuilder.put("bus-lanes", 8220L);
+      mapBuilder.put("carpool-lanes", 8221L);
+      mapBuilder.put("truck-lanes", 8222L);
+      mapBuilder.put("emergency-lanes", 8223L);
+      mapBuilder.put("passing-lanes", 8224L);
+      mapBuilder.put("climbing-lanes", 8225L);
+      mapBuilder.put("slow-lane", 8226L);
+      mapBuilder.put("service-road", 8227L);
+      mapBuilder.put("cycle-lane", 8228L);
+      mapBuilder.put("tracks", 8250L);
+      mapBuilder.put("bridge", 8229L);
+      mapBuilder.put("overpass", 8230L);
+      mapBuilder.put("elevated-lanes", 8231L);
+      mapBuilder.put("underpass", 8232L);
+      mapBuilder.put("tunnel", 8233L);
+      mapBuilder.put("all-exit-lanes", 8247L);
+      mapBuilder.put("all-entry-lanes", 8248L);
+      mapBuilder.put("either-shoulder", 8249L);
+      mapBuilder.put("shoulder-work", 8253L);
+      mapBuilder.put("detour-where-possible", 8449L);
+      mapBuilder.put("no-detour-available", 8450L);
+      mapBuilder.put("follow-signs", 8451L);
+      mapBuilder.put("follow-detour-signs", 8452L);
+      mapBuilder.put("follow-special-detour-markers", 8453L);
+      mapBuilder.put("do-not-follow-detour-signs", 8454L);
+      mapBuilder.put("detour-in-operation", 8455L);
+      mapBuilder.put("follow-local-detour", 8456L);
+      mapBuilder.put("compulsory-detour-in-operation", 8457L);
+      mapBuilder.put("no-suitable-detour-available", 8458L);
+      mapBuilder.put("detour-is-no-longer-recommended", 8459L);
+      mapBuilder.put("local-drivers-are-recommended-to-avoid-the-area", 8460L);
+      mapBuilder.put("trucks-are-recommended-to-avoid-the-area", 8461L);
+      mapBuilder.put("consider-alternate-route", 8462L);
+      mapBuilder.put("consider-alternate-parking", 8463L);
+      mapBuilder.put("consider-alternate-destination", 8464L);
+      mapBuilder.put("consider-alternate-area", 8465L);
+      mapBuilder.put("snow-route", 8466L);
+      mapBuilder.put("emergency-snow-route", 8467L);
+      mapBuilder.put("evacuation-route", 8468L);
+      mapBuilder.put("truck-route", 8469L);
+      mapBuilder.put("hazardous-materials-route", 8470L);
+      mapBuilder.put("detour", 8471L);
+      mapBuilder.put("square-feet", 8705L);
+      mapBuilder.put("square-meters", 8706L);
+      mapBuilder.put("acres", 8707L);
+      mapBuilder.put("hectares", 8708L);
+      mapBuilder.put("inches", 8709L);
+      mapBuilder.put("feet", 8710L);
+      mapBuilder.put("mile", 8711L);
+      mapBuilder.put("miles", 8712L);
+      mapBuilder.put("nautical-miles", 8713L);
+      mapBuilder.put("millimeters", 8714L);
+      mapBuilder.put("meters", 8715L);
+      mapBuilder.put("kilometer", 8716L);
+      mapBuilder.put("kilometers", 8717L);
+      mapBuilder.put("feet-per-second", 8718L);
+      mapBuilder.put("meters-per-second", 8719L);
+      mapBuilder.put("mPH", 8720L);
+      mapBuilder.put("kPH", 8721L);
+      mapBuilder.put("knots", 8722L);
+      mapBuilder.put("elevation", 8766L);
+      mapBuilder.put("aM", 8723L);
+      mapBuilder.put("pM", 8724L);
+      mapBuilder.put("holiday", 8726L);
+      mapBuilder.put("seconds", 8727L);
+      mapBuilder.put("minutes", 8728L);
+      mapBuilder.put("hours", 8729L);
+      mapBuilder.put("days", 8730L);
+      mapBuilder.put("weeks", 8731L);
+      mapBuilder.put("months", 8732L);
+      mapBuilder.put("other-times", 8767L);
+      mapBuilder.put("nSunday", 8758L);
+      mapBuilder.put("nMonday", 8759L);
+      mapBuilder.put("nTuesday", 8760L);
+      mapBuilder.put("nWednesday", 8761L);
+      mapBuilder.put("nThursday", 8762L);
+      mapBuilder.put("nFriday", 8763L);
+      mapBuilder.put("nSaturday", 8764L);
+      mapBuilder.put("weekdays", 8765L);
+      mapBuilder.put("weekends", 8725L);
+      mapBuilder.put("degrees-Angle", 8733L);
+      mapBuilder.put("degrees-Celsius", 8734L);
+      mapBuilder.put("degrees-Fahrenheit", 8735L);
+      mapBuilder.put("grams", 8736L);
+      mapBuilder.put("kilograms", 8737L);
+      mapBuilder.put("ounces", 8738L);
+      mapBuilder.put("pounds", 8739L);
+      mapBuilder.put("tons", 8740L);
+      mapBuilder.put("fluid-ounces", 8741L);
+      mapBuilder.put("gallons", 8742L);
+      mapBuilder.put("milliliters", 8743L);
+      mapBuilder.put("liters", 8744L);
+      mapBuilder.put("kilograms-per-lane-mile", 8745L);
+      mapBuilder.put("tons-per-lane-mile", 8746L);
+      mapBuilder.put("dollar", 8747L);
+      mapBuilder.put("percent", 8748L);
+      mapBuilder.put("grade", 8757L);
+      mapBuilder.put("time-delimiter", 8749L);
+      mapBuilder.put("dollars", 8750L);
+      mapBuilder.put("flight-number", 8751L);
+      mapBuilder.put("person-people", 8752L);
+      mapBuilder.put("response-plan", 8753L);
+      mapBuilder.put("placard-type", 8754L);
+      mapBuilder.put("placard-number", 8755L);
+      mapBuilder.put("fM", 8756L);
+      mapBuilder.put("travel", 8961L);
+      mapBuilder.put("transit", 8962L);
+      mapBuilder.put("bus", 8963L);
+      mapBuilder.put("trolleybus", 8964L);
+      mapBuilder.put("rail", 8965L);
+      mapBuilder.put("commuter-rail", 8966L);
+      mapBuilder.put("subway", 8967L);
+      mapBuilder.put("rapid-transit", 8968L);
+      mapBuilder.put("light-rail", 8969L);
+      mapBuilder.put("streetcar", 8970L);
+      mapBuilder.put("dial-a-ride", 8971L);
+      mapBuilder.put("park-and-ride", 8972L);
+      mapBuilder.put("shuttle", 8973L);
+      mapBuilder.put("free-shuttle", 8974L);
+      mapBuilder.put("airport-shuttle", 8975L);
+      mapBuilder.put("taxies", 8976L);
+      mapBuilder.put("ferry", 8977L);
+      mapBuilder.put("passenger-ferry", 8978L);
+      mapBuilder.put("vehicle-ferry", 8979L);
+      mapBuilder.put("aerial-tramway", 8980L);
+      mapBuilder.put("automated-guideway", 8981L);
+      mapBuilder.put("cable-cars", 8982L);
+      mapBuilder.put("monorail", 8983L);
+      mapBuilder.put("air-travel", 8984L);
+      mapBuilder.put("hitch-hitching", 8985L);
+      mapBuilder.put("walk", 8986L);
+      mapBuilder.put("all-vehicles", 9217L);
+      mapBuilder.put("bicycles", 9218L);
+      mapBuilder.put("motorcycles", 9219L);
+      mapBuilder.put("cars", 9220L);
+      mapBuilder.put("light-vehicles", 9221L);
+      mapBuilder.put("cars-and-light-vehicles", 9222L);
+      mapBuilder.put("cars-with-trailers", 9223L);
+      mapBuilder.put("cars-with-recreational-trailers", 9224L);
+      mapBuilder.put("vehicles-with-trailers", 9225L);
+      mapBuilder.put("heavy-vehicles", 9226L);
+      mapBuilder.put("trucks", 9227L);
+      mapBuilder.put("buses", 9228L);
+      mapBuilder.put("articulated-buses", 9229L);
+      mapBuilder.put("school-buses", 9230L);
+      mapBuilder.put("vehicles-with-semi-trailers", 9231L);
+      mapBuilder.put("vehicles-with-double-trailers", 9232L);
+      mapBuilder.put("high-profile-vehicles", 9233L);
+      mapBuilder.put("wide-vehicles", 9234L);
+      mapBuilder.put("long-vehicles", 9235L);
+      mapBuilder.put("hazardous-loads", 9236L);
+      mapBuilder.put("exceptional-loads", 9237L);
+      mapBuilder.put("abnormal-loads", 9238L);
+      mapBuilder.put("convoys", 9239L);
+      mapBuilder.put("maintenance-vehicles", 9240L);
+      mapBuilder.put("delivery-vehicles", 9241L);
+      mapBuilder.put("vehicles-with-even-numbered-license-plates", 9242L);
+      mapBuilder.put("vehicles-with-odd-numbered-license-plates", 9243L);
+      mapBuilder.put("vehicles-with-parking-permits", 9244L);
+      mapBuilder.put("vehicles-with-catalytic-converters", 9245L);
+      mapBuilder.put("vehicles-without-catalytic-converters", 9246L);
+      mapBuilder.put("gas-powered-vehicles", 9247L);
+      mapBuilder.put("diesel-powered-vehicles", 9248L);
+      mapBuilder.put("lPG-vehicles", 9249L);
+      mapBuilder.put("military-convoys", 9250L);
+      mapBuilder.put("military-vehicles", 9251L);
+      mapBuilder.put("electric-powered-vehicles", 9252L);
+      mapBuilder.put("hybrid-powered-vehicles", 9253L);
+      mapBuilder.put("inherently-low-emission-vehicles", 9254L);
+      mapBuilder.put("commercial-vehicles", 9255L);
+      mapBuilder.put("runaway-vehicles", 9256L);
+      mapBuilder.put("vehicles-with-lugs", 9257L);
+      mapBuilder.put("motor-driven-cycles", 9258L);
+      mapBuilder.put("recreational-vehicles", 9259L);
+      mapBuilder.put("non-motorized-vehicles", 9260L);
+      mapBuilder.put("traffic", 9261L);
+      mapBuilder.put("through-traffic", 9473L);
+      mapBuilder.put("holiday-traffic", 9474L);
+      mapBuilder.put("residents", 9475L);
+      mapBuilder.put("visitors", 9476L);
+      mapBuilder.put("long-distance-traffic", 9477L);
+      mapBuilder.put("local-traffic", 9478L);
+      mapBuilder.put("regional-traffic", 9479L);
+      mapBuilder.put("arrivals", 9480L);
+      mapBuilder.put("departures", 9481L);
+      mapBuilder.put("airline-travelers", 9482L);
+      mapBuilder.put("commuter-airline-travelers", 9483L);
+      mapBuilder.put("domestic-airline-travelers", 9484L);
+      mapBuilder.put("international-airline-travelers", 9485L);
+      mapBuilder.put("pedestrians", 9486L);
+      mapBuilder.put("bicyclists", 9487L);
+      mapBuilder.put("emergency-vehicle-units", 9729L);
+      mapBuilder.put("federal-law-enforcement-units", 9730L);
+      mapBuilder.put("state-police-units", 9731L);
+      mapBuilder.put("county-police-units", 9732L);
+      mapBuilder.put("local-police-units", 9733L);
+      mapBuilder.put("ambulance-units", 9734L);
+      mapBuilder.put("rescue-units", 9735L);
+      mapBuilder.put("fire-units", 9736L);
+      mapBuilder.put("hAZMAT-units", 9737L);
+      mapBuilder.put("light-tow-unit", 9738L);
+      mapBuilder.put("heavy-tow-unit", 9739L);
+      mapBuilder.put("private-tow-units", 9743L);
+      mapBuilder.put("freeway-service-patrols", 9740L);
+      mapBuilder.put("transportation-response-units", 9741L);
+      mapBuilder.put("private-contractor-response-units", 9742L);
+      mapBuilder.put("ground-fire-suppression", 9985L);
+      mapBuilder.put("heavy-ground-equipment", 9986L);
+      mapBuilder.put("aircraft", 9988L);
+      mapBuilder.put("marine-equipment", 9989L);
+      mapBuilder.put("support-equipment", 9990L);
+      mapBuilder.put("medical-rescue-unit", 9991L);
+      mapBuilder.put("other", 9993L);
+      mapBuilder.put("ground-fire-suppression-other", 9994L);
+      mapBuilder.put("engine", 9995L);
+      mapBuilder.put("truck-or-aerial", 9996L);
+      mapBuilder.put("quint", 9997L);
+      mapBuilder.put("tanker-pumper-combination", 9998L);
+      mapBuilder.put("brush-truck", 10000L);
+      mapBuilder.put("aircraft-rescue-firefighting", 10001L);
+      mapBuilder.put("heavy-ground-equipment-other", 10004L);
+      mapBuilder.put("dozer-or-plow", 10005L);
+      mapBuilder.put("tractor", 10006L);
+      mapBuilder.put("tanker-or-tender", 10008L);
+      mapBuilder.put("aircraft-other", 10024L);
+      mapBuilder.put("aircraft-fixed-wing-tanker", 10025L);
+      mapBuilder.put("helitanker", 10026L);
+      mapBuilder.put("helicopter", 10027L);
+      mapBuilder.put("marine-equipment-other", 10034L);
+      mapBuilder.put("fire-boat-with-pump", 10035L);
+      mapBuilder.put("boat-no-pump", 10036L);
+      mapBuilder.put("support-apparatus-other", 10044L);
+      mapBuilder.put("breathing-apparatus-support", 10045L);
+      mapBuilder.put("light-and-air-unit", 10046L);
+      mapBuilder.put("medical-rescue-unit-other", 10054L);
+      mapBuilder.put("rescue-unit", 10055L);
+      mapBuilder.put("urban-search-rescue-unit", 10056L);
+      mapBuilder.put("high-angle-rescue", 10057L);
+      mapBuilder.put("crash-fire-rescue", 10058L);
+      mapBuilder.put("bLS-unit", 10059L);
+      mapBuilder.put("aLS-unit", 10060L);
+      mapBuilder.put("mobile-command-post", 10075L);
+      mapBuilder.put("chief-officer-car", 10076L);
+      mapBuilder.put("hAZMAT-unit", 10077L);
+      mapBuilder.put("type-i-hand-crew", 10078L);
+      mapBuilder.put("type-ii-hand-crew", 10079L);
+      mapBuilder.put("privately-owned-vehicle", 10083L);
+      mapBuilder.put("other-apparatus-resource", 10084L);
+      mapBuilder.put("ambulance", 10085L);
+      mapBuilder.put("bomb-squad-van", 10086L);
+      mapBuilder.put("combine-harvester", 10087L);
+      mapBuilder.put("construction-vehicle", 10088L);
+      mapBuilder.put("farm-tractor", 10089L);
+      mapBuilder.put("grass-cutting-machines", 10090L);
+      mapBuilder.put("hAZMAT-containment-tow", 10091L);
+      mapBuilder.put("heavy-tow", 10092L);
+      mapBuilder.put("light-tow", 10094L);
+      mapBuilder.put("flatbed-tow", 10114L);
+      mapBuilder.put("hedge-cutting-machines", 10093L);
+      mapBuilder.put("mobile-crane", 10095L);
+      mapBuilder.put("refuse-collection-vehicle", 10096L);
+      mapBuilder.put("resurfacing-vehicle", 10097L);
+      mapBuilder.put("road-sweeper", 10098L);
+      mapBuilder.put("roadside-litter-collection-crews", 10099L);
+      mapBuilder.put("survey-crews", 10115L);
+      mapBuilder.put("salvage-vehicle", 10100L);
+      mapBuilder.put("sand-truck", 10101L);
+      mapBuilder.put("snowplow", 10102L);
+      mapBuilder.put("steam-roller", 10103L);
+      mapBuilder.put("swat-team-van", 10104L);
+      mapBuilder.put("track-laying-vehicle", 10105L);
+      mapBuilder.put("unknown-vehicle", 10106L);
+      mapBuilder.put("white-lining-vehicle", 10107L);
+      mapBuilder.put("dump-truck", 10108L);
+      mapBuilder.put("supervisor-vehicle", 10109L);
+      mapBuilder.put("snow-blower", 10110L);
+      mapBuilder.put("rotary-snow-blower", 10111L);
+      mapBuilder.put("road-grader", 10112L);
+      mapBuilder.put("steam-truck", 10113L);
+      mapBuilder.put("unknown-status", 10240L);
+      mapBuilder.put("ready-for-use", 10241L);
+      mapBuilder.put("working-normally", 10242L);
+      mapBuilder.put("working-autonomously", 10243L);
+      mapBuilder.put("working-incorrectly", 10244L);
+      mapBuilder.put("not-working", 10245L);
+      mapBuilder.put("normal-maintenance", 10246L);
+      mapBuilder.put("in-route-to-use", 10247L);
+      mapBuilder.put("returning-from-use", 10248L);
+      mapBuilder.put("out-of-service", 10249L);
+      mapBuilder.put("off-duty", 10250L);
+      mapBuilder.put("on-patrol", 10251L);
+      mapBuilder.put("on-call", 10252L);
+      mapBuilder.put("on-break", 10253L);
+      mapBuilder.put("mandatory-time-off", 10254L);
+      mapBuilder.put("low-on-fuel", 10255L);
+      mapBuilder.put("low-on-water", 10256L);
+      mapBuilder.put("low-charge", 10257L);
+      mapBuilder.put("missing", 10258L);
+      mapBuilder.put("none", 10496L);
+      mapBuilder.put("light-pole", 10497L);
+      mapBuilder.put("utility-pole", 10498L);
+      mapBuilder.put("gantry-way", 10499L);
+      mapBuilder.put("sign-support", 10500L);
+      mapBuilder.put("signal-pole", 10501L);
+      mapBuilder.put("signage-public", 10502L);
+      mapBuilder.put("signage-private", 10503L);
+      mapBuilder.put("overhead-sign", 10568L);
+      mapBuilder.put("ground-sign", 10569L);
+      mapBuilder.put("cones", 10504L);
+      mapBuilder.put("cones-post-type", 10505L);
+      mapBuilder.put("cones-glue-post", 10506L);
+      mapBuilder.put("cones-other", 10507L);
+      mapBuilder.put("barriers", 10508L);
+      mapBuilder.put("barrier-Aframe", 10509L);
+      mapBuilder.put("barriers-heavy-duty", 10510L);
+      mapBuilder.put("barricade-type-III", 10511L);
+      mapBuilder.put("barricade-small", 10512L);
+      mapBuilder.put("solid-barrier", 10565L);
+      mapBuilder.put("moveable-barrier", 10566L);
+      mapBuilder.put("barricade-lights", 10513L);
+      mapBuilder.put("beacon", 10514L);
+      mapBuilder.put("t-stand", 10515L);
+      mapBuilder.put("a-stand", 10516L);
+      mapBuilder.put("drums", 10517L);
+      mapBuilder.put("sand-barrel", 10567L);
+      mapBuilder.put("impact-attenuator", 10518L);
+      mapBuilder.put("barricade-tape", 10519L);
+      mapBuilder.put("safety-fence", 10520L);
+      mapBuilder.put("temp-pavement-markings", 10521L);
+      mapBuilder.put("speed-bumps", 10522L);
+      mapBuilder.put("temp-curbs", 10523L);
+      mapBuilder.put("parking-blocks", 10524L);
+      mapBuilder.put("signboard-fixed", 10525L);
+      mapBuilder.put("signboard-portable", 10526L);
+      mapBuilder.put("stripe", 10572L);
+      mapBuilder.put("island", 10573L);
+      mapBuilder.put("har", 10527L);
+      mapBuilder.put("har-AM", 10528L);
+      mapBuilder.put("har-FM", 10529L);
+      mapBuilder.put("har-DSRC", 10530L);
+      mapBuilder.put("traffic-light", 10531L);
+      mapBuilder.put("lane-control-signal", 10532L);
+      mapBuilder.put("traffic-detector", 10533L);
+      mapBuilder.put("vehicle-detector", 10534L);
+      mapBuilder.put("system-alarm", 10535L);
+      mapBuilder.put("arrow-board", 10536L);
+      mapBuilder.put("fixed-VMS", 10537L);
+      mapBuilder.put("mobile-VMS", 10538L);
+      mapBuilder.put("ramp-control", 10539L);
+      mapBuilder.put("gate-control", 10540L);
+      mapBuilder.put("temporary-traffic-light", 10541L);
+      mapBuilder.put("over-height-warning-system", 10542L);
+      mapBuilder.put("over-weight-warning-system", 10543L);
+      mapBuilder.put("emergency-telephones", 10544L);
+      mapBuilder.put("railroad-crossing-equipment", 10545L);
+      mapBuilder.put("tunnel-ventilation", 10546L);
+      mapBuilder.put("ccTV", 10547L);
+      mapBuilder.put("environmental-sensor", 10548L);
+      mapBuilder.put("emergency-signal", 10570L);
+      mapBuilder.put("countdown-pedestrian-sign", 10571L);
+      mapBuilder.put("switch", 10549L);
+      mapBuilder.put("signal", 10550L);
+      mapBuilder.put("third-rail", 10551L);
+      mapBuilder.put("overhead-power", 10552L);
+      mapBuilder.put("concrete-tie", 10553L);
+      mapBuilder.put("wooden-tie", 10554L);
+      mapBuilder.put("manhole-cover", 10559L);
+      mapBuilder.put("culvert", 10560L);
+      mapBuilder.put("escalator", 10555L);
+      mapBuilder.put("elevator", 10556L);
+      mapBuilder.put("snow-poles", 10561L);
+      mapBuilder.put("track", 10557L);
+      mapBuilder.put("guide-poles", 10562L);
+      mapBuilder.put("drawbridge", 10558L);
+      mapBuilder.put("expansion-joint", 10563L);
+      mapBuilder.put("shifted-plate", 10564L);
+      mapBuilder.put("unknown-transit-problem", 10753L);
+      mapBuilder.put("sleeping-customer", 10754L);
+      mapBuilder.put("assault-on-passenger", 10755L);
+      mapBuilder.put("assault-on-employee", 10756L);
+      mapBuilder.put("broken-seat", 10757L);
+      mapBuilder.put("bus-alarm", 10758L);
+      mapBuilder.put("crime-or-drug-deal", 10759L);
+      mapBuilder.put("eating-on-board", 10760L);
+      mapBuilder.put("equipment-problem-with-air-conditioning", 10761L);
+      mapBuilder.put("equipment-problem-with-air-system", 10762L);
+      mapBuilder.put("equipment-problem-with-brakes", 10763L);
+      mapBuilder.put("equipment-problem-with-chassis-or-suspension", 10764L);
+      mapBuilder.put("equipment-problem-with-cooling-system", 10765L);
+      mapBuilder.put("equipment-problem-with-doors", 10766L);
+      mapBuilder.put("equipment-problem-with-electrical", 10767L);
+      mapBuilder.put("equipment-problem-with-engine", 10768L);
+      mapBuilder.put("equipment-problem-with-exterior-or-body", 10769L);
+      mapBuilder.put("equipment-problem-with-fare-collection", 10770L);
+      mapBuilder.put("equipment-problem-with-fuel-or-exhaust", 10771L);
+      mapBuilder.put("equipment-problem-with-horn", 10772L);
+      mapBuilder.put("equipment-problem-with-interior", 10773L);
+      mapBuilder.put("equipment-problem-with-liftkneeling", 10774L);
+      mapBuilder.put("equipment-problem-with-lights", 10775L);
+      mapBuilder.put("equipment-problem-with-lubrication", 10776L);
+      mapBuilder.put("equipment-problem-with-radio-or-communication", 10777L);
+      mapBuilder.put("equipment-problem-with-signs", 10778L);
+      mapBuilder.put("equipment-problem-with-steering", 10779L);
+      mapBuilder.put("equipment-problem-with-tires", 10780L);
+      mapBuilder.put("equipment-problem-with-transmission", 10781L);
+      mapBuilder.put("equipment-problem-with-unknown-alarm", 10782L);
+      mapBuilder.put("equipment-problem-with-wipers", 10783L);
+      mapBuilder.put("fare-dispute-expired-pass", 10784L);
+      mapBuilder.put("fare-dispute-expired-transfer", 10785L);
+      mapBuilder.put("fare-dispute-expired-upgrade", 10786L);
+      mapBuilder.put("fare-dispute-other", 10787L);
+      mapBuilder.put("fare-dispute-refuses-to-pay", 10788L);
+      mapBuilder.put("lift-passenger-cycle-completed", 10789L);
+      mapBuilder.put("lift-passenger-ready-to-alight", 10790L);
+      mapBuilder.put("lift-passenger-ready-to-board", 10791L);
+      mapBuilder.put("lost-article", 10792L);
+      mapBuilder.put("objects-thrown", 10793L);
+      mapBuilder.put("passenger-accident-alighting", 10794L);
+      mapBuilder.put("passenger-accident-boarding", 10795L);
+      mapBuilder.put("passenger-accident-fallen-on-board", 10796L);
+      mapBuilder.put("passenger-load", 10797L);
+      mapBuilder.put("passenger-accident-other", 10798L);
+      mapBuilder.put("passenger-sick-or-injured", 10799L);
+      mapBuilder.put("right-of-way", 10800L);
+      mapBuilder.put("theft", 10801L);
+      mapBuilder.put("theft-of-service", 10802L);
+      mapBuilder.put("waiting-to-get-relief-for-schedule-break", 10803L);
+      mapBuilder.put("waiting-to-get-relief-after-run-is-finished", 10804L);
+      mapBuilder.put("waiting-to-provide-relief", 10805L);
+      mapBuilder.put("unknown-object", 11009L);
+      mapBuilder.put("tire", 11010L);
+      mapBuilder.put("rim", 11011L);
+      mapBuilder.put("retread", 11012L);
+      mapBuilder.put("trash", 11013L);
+      mapBuilder.put("cargo", 11014L);
+      mapBuilder.put("diesel", 11015L);
+      mapBuilder.put("gasoline", 11016L);
+      mapBuilder.put("anti-freeze", 11017L);
+      mapBuilder.put("propane-gas", 11061L);
+      mapBuilder.put("alternative-fuel", 11060L);
+      mapBuilder.put("seat-belts", 11018L);
+      mapBuilder.put("litter-container", 11019L);
+      mapBuilder.put("all-Terrain-vehicle", 11020L);
+      mapBuilder.put("seaplane", 11021L);
+      mapBuilder.put("chairlift", 11022L);
+      mapBuilder.put("fishing-pier", 11023L);
+      mapBuilder.put("telephone", 11025L);
+      mapBuilder.put("railroad-cross-buck", 11024L);
+      mapBuilder.put("horn", 11048L);
+      mapBuilder.put("train", 11047L);
+      mapBuilder.put("deer", 11049L);
+      mapBuilder.put("horse", 11051L);
+      mapBuilder.put("cattle", 11050L);
+      mapBuilder.put("golf-cart", 11052L);
+      mapBuilder.put("services", 11056L);
+      mapBuilder.put("motorist-services", 11059L);
+      mapBuilder.put("food-services", 11053L);
+      mapBuilder.put("roadside-table", 11055L);
+      mapBuilder.put("ambulance-staging-point", 11054L);
+      mapBuilder.put("fallout", 11026L);
+      mapBuilder.put("medical", 11027L);
+      mapBuilder.put("chemical", 11028L);
+      mapBuilder.put("welfare", 11029L);
+      mapBuilder.put("decontamination", 11063L);
+      mapBuilder.put("evacuation", 11030L);
+      mapBuilder.put("registration", 11062L);
+      mapBuilder.put("emergency", 11064L);
+      mapBuilder.put("left-arrow-signal", 11031L);
+      mapBuilder.put("ahead-arrow-signal", 11032L);
+      mapBuilder.put("right-arrow-signal", 11033L);
+      mapBuilder.put("green-light-signal", 11034L);
+      mapBuilder.put("green-arrow-signal", 11035L);
+      mapBuilder.put("yellow-light-signal", 11036L);
+      mapBuilder.put("yellow-arrow-signal", 11037L);
+      mapBuilder.put("red-light-signal", 11038L);
+      mapBuilder.put("red-arrow-signal", 11039L);
+      mapBuilder.put("extended-green-signal", 11040L);
+      mapBuilder.put("advance-arrow-signal", 11041L);
+      mapBuilder.put("pedestrian-Signal-Stop", 11042L);
+      mapBuilder.put("pedestrian-Signal-Caution", 11043L);
+      mapBuilder.put("pedestrian-Signal-Walk", 11044L);
+      mapBuilder.put("pedestrian-Signal-Light", 11045L);
+      mapBuilder.put("pedestrian-Signal-Time-Display", 11046L);
+      mapBuilder.put("prohibit-None-Allowed-LU-LT-L45-S-R45-RT-RU", 11264L);
+      mapBuilder.put("prohibit-RU-Allowed-LU-LT-L45-S-R45-RT", 11265L);
+      mapBuilder.put("prohibit-RT-Allowed-LU-LT-L45-S-R45-RU", 11266L);
+      mapBuilder.put("prohibit-RT-RU-Allowed-LU-LT-L45-S-R45", 11267L);
+      mapBuilder.put("prohibit-R45-Allowed-LU-LT-L45-S-RT-RU", 11268L);
+      mapBuilder.put("prohibit-R45-RU-Allowed-LU-LT-L45-S-RT", 11269L);
+      mapBuilder.put("prohibit-R45-RT-Allowed-LU-LT-L45-S-RU", 11270L);
+      mapBuilder.put("prohibit-R45-RT-RU-Allowed-LU-LT-L45-S", 11271L);
+      mapBuilder.put("prohibit-S-Allowed-LU-LT-L45-R45-RT-RU", 11272L);
+      mapBuilder.put("prohibit-S-RU-Allowed-LU-LT-L45-R45-RT", 11273L);
+      mapBuilder.put("prohibit-S-RT-Allowed-LU-LT-L45-R45-RU", 11274L);
+      mapBuilder.put("prohibit-S-RT-RU-Allowed-LU-LT-L45-R45", 11275L);
+      mapBuilder.put("prohibit-S-R45-Allowed-LU-LT-L45-RT-RU", 11276L);
+      mapBuilder.put("prohibit-S-R45-RU-Allowed-LU-LT-L45-RT", 11277L);
+      mapBuilder.put("prohibit-S-R45-RT-Allowed-LU-LT-L45-RU", 11278L);
+      mapBuilder.put("prohibit-S-R45-RT-RU-Allowed-LU-LT-L45", 11279L);
+      mapBuilder.put("prohibit-L45-Allowed-LU-LT-S-R45-RT-RU", 11280L);
+      mapBuilder.put("prohibit-L45-RU-Allowed-LU-LT-S-R45-RT", 11281L);
+      mapBuilder.put("prohibit-L45-RT-Allowed-LU-LT-S-R45-RU", 11282L);
+      mapBuilder.put("prohibit-L45-RT-RU-Allowed-LU-LT-S-R45", 11283L);
+      mapBuilder.put("prohibit-L45-R45-Allowed-LU-LT-S-RT-RU", 11284L);
+      mapBuilder.put("prohibit-L45-R45-RU-Allowed-LU-LT-S-RT", 11285L);
+      mapBuilder.put("prohibit-L45-R45-RT-Allowed-LU-LT-S-RU", 11286L);
+      mapBuilder.put("prohibit-L45-R45-RT-RU-Allowed-LU-LT-S", 11287L);
+      mapBuilder.put("prohibit-L45-S-Allowed-LU-LT-R45-RT-RU", 11288L);
+      mapBuilder.put("prohibit-L45-S-RU-Allowed-LU-LT-R45-RT", 11289L);
+      mapBuilder.put("prohibit-L45-S-RT-Allowed-LU-LT-R45-RU", 11290L);
+      mapBuilder.put("prohibit-L45-S-RT-RU-Allowed-LU-LT-R45", 11291L);
+      mapBuilder.put("prohibit-L45-S-R45-Allowed-LU-LT-RT-RU", 11292L);
+      mapBuilder.put("prohibit-L45-S-R45-RU-Allowed-LU-LT-RT", 11293L);
+      mapBuilder.put("prohibit-L45-S-R45-RT-Allowed-LU-LT-RU", 11294L);
+      mapBuilder.put("prohibit-L45-S-R45-RT-RU-Allowed-LU-LT", 11295L);
+      mapBuilder.put("prohibit-LT-Allowed-LU-L45-S-R45-RT-RU", 11296L);
+      mapBuilder.put("prohibit-LT-RU-Allowed-LU-L45-S-R45-RT", 11297L);
+      mapBuilder.put("prohibit-LT-RT-Allowed-LU-L45-S-R45-RU", 11298L);
+      mapBuilder.put("prohibit-LT-RT-RU-Allowed-LU-L45-S-R45", 11299L);
+      mapBuilder.put("prohibit-LT-R45-Allowed-LU-L45-S-RT-RU", 11300L);
+      mapBuilder.put("prohibit-LT-R45-RU-Allowed-LU-L45-S-RT", 11301L);
+      mapBuilder.put("prohibit-LT-R45-RT-Allowed-LU-L45-S-RU", 11302L);
+      mapBuilder.put("prohibit-LT-R45-RT-RU-Allowed-LU-L45-S", 11303L);
+      mapBuilder.put("prohibit-LT-S-Allowed-LU-L45-R45-RT-RU", 11304L);
+      mapBuilder.put("prohibit-LT-S-RU-Allowed-LU-L45-R45-RT", 11305L);
+      mapBuilder.put("prohibit-LT-S-RT-Allowed-LU-L45-R45-RU", 11306L);
+      mapBuilder.put("prohibit-LT-S-RT-RU-Allowed-LU-L45-R45", 11307L);
+      mapBuilder.put("prohibit-LT-S-R45-Allowed-LU-L45-RT-RU", 11308L);
+      mapBuilder.put("prohibit-LT-S-R45-RU-Allowed-LU-L45-RT", 11309L);
+      mapBuilder.put("prohibit-LT-S-R45-RT-Allowed-LU-L45-RU", 11310L);
+      mapBuilder.put("prohibit-LT-S-R45-RT-RU-Allowed-LU-L45", 11311L);
+      mapBuilder.put("prohibit-LT-L45-Allowed-LU-S-R45-RT-RU", 11312L);
+      mapBuilder.put("prohibit-LT-L45-RU-Allowed-LU-S-R45-RT", 11313L);
+      mapBuilder.put("prohibit-LT-L45-RT-Allowed-LU-S-R45-RU", 11314L);
+      mapBuilder.put("prohibit-LT-L45-RT-RU-Allowed-LU-S-R45", 11315L);
+      mapBuilder.put("prohibit-LT-L45-R45-Allowed-LU-S-RT-RU", 11316L);
+      mapBuilder.put("prohibit-LT-L45-R45-RU-Allowed-LU-S-RT", 11317L);
+      mapBuilder.put("prohibit-LT-L45-R45-RT-Allowed-LU-S-RU", 11318L);
+      mapBuilder.put("prohibit-LT-L45-R45-RT-RU-Allowed-LU-S", 11319L);
+      mapBuilder.put("prohibit-LT-L45-S-Allowed-LU-R45-RT-RU", 11320L);
+      mapBuilder.put("prohibit-LT-L45-S-RU-Allowed-LU-R45-RT", 11321L);
+      mapBuilder.put("prohibit-LT-L45-S-RT-Allowed-LU-R45-RU", 11322L);
+      mapBuilder.put("prohibit-LT-L45-S-RT-RU-Allowed-LU-R45", 11323L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-Allowed-LU-RT-RU", 11324L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-RU-Allowed-LU-RT", 11325L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-RT-Allowed-LU-RU", 11326L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-RT-RU-Allowed-LU", 11327L);
+      mapBuilder.put("prohibit-LU-Allowed-LT-L45-S-R45-RT-RU", 11328L);
+      mapBuilder.put("prohibit-LU-RU-Allowed-LT-L45-S-R45-RT", 11329L);
+      mapBuilder.put("prohibit-LU-RT-Allowed-LT-L45-S-R45-RU", 11330L);
+      mapBuilder.put("prohibit-LU-RT-RU-Allowed-LT-L45-S-R45", 11331L);
+      mapBuilder.put("prohibit-LU-R45-Allowed-LT-L45-S-RT-RU", 11332L);
+      mapBuilder.put("prohibit-LU-R45-RU-Allowed-LT-L45-S-RT", 11333L);
+      mapBuilder.put("prohibit-LU-R45-RT-Allowed-LT-L45-S-RU", 11334L);
+      mapBuilder.put("prohibit-LU-R45-RT-RU-Allowed-LT-L45-S", 11335L);
+      mapBuilder.put("prohibit-LU-S-Allowed-LT-L45-R45-RT-RU", 11336L);
+      mapBuilder.put("prohibit-LU-S-RU-Allowed-LT-L45-R45-RT", 11337L);
+      mapBuilder.put("prohibit-LU-S-RT-Allowed-LT-L45-R45-RU", 11338L);
+      mapBuilder.put("prohibit-LU-S-RT-RU-Allowed-LT-L45-R45", 11339L);
+      mapBuilder.put("prohibit-LU-S-R45-Allowed-LT-L45-RT-RU", 11340L);
+      mapBuilder.put("prohibit-LU-S-R45-RU-Allowed-LT-L45-RT", 11341L);
+      mapBuilder.put("prohibit-LU-S-R45-RT-Allowed-LT-L45-RU", 11342L);
+      mapBuilder.put("prohibit-LU-S-R45-RT-RU-Allowed-LT-L45", 11343L);
+      mapBuilder.put("prohibit-LU-L45-Allowed-LT-S-R45-RT-RU", 11344L);
+      mapBuilder.put("prohibit-LU-L45-RU-Allowed-LT-S-R45-RT", 11345L);
+      mapBuilder.put("prohibit-LU-L45-RT-Allowed-LT-S-R45-RU", 11346L);
+      mapBuilder.put("prohibit-LU-L45-RT-RU-Allowed-LT-S-R45", 11347L);
+      mapBuilder.put("prohibit-LU-L45-R45-Allowed-LT-S-RT-RU", 11348L);
+      mapBuilder.put("prohibit-LU-L45-R45-RU-Allowed-LT-S-RT", 11349L);
+      mapBuilder.put("prohibit-LU-L45-R45-RT-Allowed-LT-S-RU", 11350L);
+      mapBuilder.put("prohibit-LU-L45-R45-RT-RU-Allowed-LT-S", 11351L);
+      mapBuilder.put("prohibit-LU-L45-S-Allowed-LT-R45-RT-RU", 11352L);
+      mapBuilder.put("prohibit-LU-L45-S-RU-Allowed-LT-R45-RT", 11353L);
+      mapBuilder.put("prohibit-LU-L45-S-RT-Allowed-LT-R45-RU", 11354L);
+      mapBuilder.put("prohibit-LU-L45-S-RT-RU-Allowed-LT-R45", 11355L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-Allowed-LT-RT-RU", 11356L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-RU-Allowed-LT-RT", 11357L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-RT-Allowed-LT-RU", 11358L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-RT-RU-Allowed-LT", 11359L);
+      mapBuilder.put("prohibit-LU-LT-Allowed-L45-S-R45-RT-RU", 11360L);
+      mapBuilder.put("prohibit-LU-LT-RU-Allowed-L45-S-R45-RT", 11361L);
+      mapBuilder.put("prohibit-LU-LT-RT-Allowed-L45-S-R45-RU", 11362L);
+      mapBuilder.put("prohibit-LU-LT-RT-RU-Allowed-L45-S-R45", 11363L);
+      mapBuilder.put("prohibit-LU-LT-R45-Allowed-L45-S-RT-RU", 11364L);
+      mapBuilder.put("prohibit-LU-LT-R45-RU-Allowed-L45-S-RT", 11365L);
+      mapBuilder.put("prohibit-LU-LT-R45-RT-Allowed-L45-S-RU", 11366L);
+      mapBuilder.put("prohibit-LU-LT-R45-RT-RU-Allowed-L45-S", 11367L);
+      mapBuilder.put("prohibit-LU-LT-S-Allowed-L45-R45-RT-RU", 11368L);
+      mapBuilder.put("prohibit-LU-LT-S-RU-Allowed-L45-R45-RT", 11369L);
+      mapBuilder.put("prohibit-LU-LT-S-RT-Allowed-L45-R45-RU", 11370L);
+      mapBuilder.put("prohibit-LU-LT-S-RT-RU-Allowed-L45-R45", 11371L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-Allowed-L45-RT-RU", 11372L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-RU-Allowed-L45-RT", 11373L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-RT-Allowed-L45-RU", 11374L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-RT-RU-Allowed-L45", 11375L);
+      mapBuilder.put("prohibit-LU-LT-L45-Allowed-S-R45-RT-RU", 11376L);
+      mapBuilder.put("prohibit-LU-LT-L45-RU-Allowed-S-R45-RT", 11377L);
+      mapBuilder.put("prohibit-LU-LT-L45-RT-Allowed-S-R45-RU", 11378L);
+      mapBuilder.put("prohibit-LU-LT-L45-RT-RU-Allowed-S-R45", 11379L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-Allowed-S-RT-RU", 11380L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-RU-Allowed-S-RT", 11381L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-RT-Allowed-S-RU", 11382L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-RT-RU-Allowed-S", 11383L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-Allowed-R45-RT-RU", 11384L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-RU-Allowed-R45-RT", 11385L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-RT-Allowed-R45-RU", 11386L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-RT-RU-Allowed-R45", 11387L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-Allowed-RT-RU", 11388L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-RU-Allowed-RT", 11389L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-RT-Allowed-RU", 11390L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-RT-RU-Allowed-None", 11391L);
+      mapBuilder.put("n1-16th", 11521L);
+      mapBuilder.put("n1-10th", 11522L);
+      mapBuilder.put("n1-8th", 11523L);
+      mapBuilder.put("n1-4th", 11524L);
+      mapBuilder.put("n1-3rd", 11525L);
+      mapBuilder.put("n1-2", 11526L);
+      mapBuilder.put("n3-4", 11527L);
+      mapBuilder.put("n300", 11531L);
+      mapBuilder.put("n350", 11532L);
+      mapBuilder.put("n400", 11533L);
+      mapBuilder.put("n450", 11534L);
+      mapBuilder.put("n500", 11535L);
+      mapBuilder.put("n550", 11536L);
+      mapBuilder.put("n600", 11537L);
+      mapBuilder.put("n650", 11538L);
+      mapBuilder.put("n700", 11539L);
+      mapBuilder.put("n750", 11540L);
+      mapBuilder.put("n800", 11541L);
+      mapBuilder.put("n850", 11542L);
+      mapBuilder.put("n900", 11543L);
+      mapBuilder.put("n950", 11544L);
+      mapBuilder.put("n1000", 11545L);
+      mapBuilder.put("n1100", 11546L);
+      mapBuilder.put("n1200", 11547L);
+      mapBuilder.put("n1300", 11548L);
+      mapBuilder.put("n1400", 11549L);
+      mapBuilder.put("n1500", 11550L);
+      mapBuilder.put("n1600", 11551L);
+      mapBuilder.put("n1700", 11552L);
+      mapBuilder.put("n1800", 11553L);
+      mapBuilder.put("n1900", 11554L);
+      mapBuilder.put("n2000", 11555L);
+      mapBuilder.put("n2100", 11556L);
+      mapBuilder.put("n2200", 11557L);
+      mapBuilder.put("n2300", 11558L);
+      mapBuilder.put("n2400", 11559L);
+      mapBuilder.put("n2500", 11560L);
+      mapBuilder.put("n2600", 11561L);
+      mapBuilder.put("n2700", 11562L);
+      mapBuilder.put("n2800", 11563L);
+      mapBuilder.put("n2900", 11564L);
+      mapBuilder.put("n3000", 11565L);
+      mapBuilder.put("n3500", 11566L);
+      mapBuilder.put("n4000", 11567L);
+      mapBuilder.put("n4500", 11568L);
+      mapBuilder.put("n5000", 11569L);
+      mapBuilder.put("n5500", 11570L);
+      mapBuilder.put("n6000", 11571L);
+      mapBuilder.put("n6500", 11572L);
+      mapBuilder.put("n7000", 11573L);
+      mapBuilder.put("n7500", 11574L);
+      mapBuilder.put("n8000", 11575L);
+      mapBuilder.put("n8500", 11576L);
+      mapBuilder.put("n9000", 11577L);
+      mapBuilder.put("n9500", 11578L);
+      mapBuilder.put("n10000", 11579L);
+      mapBuilder.put("n11000", 11580L);
+      mapBuilder.put("n12000", 11581L);
+      mapBuilder.put("n13000", 11582L);
+      mapBuilder.put("n14000", 11583L);
+      mapBuilder.put("n15000", 11584L);
+      mapBuilder.put("n16000", 11585L);
+      mapBuilder.put("n17000", 11586L);
+      mapBuilder.put("n18000", 11587L);
+      mapBuilder.put("n19000", 11588L);
+      mapBuilder.put("n20000", 11589L);
+      mapBuilder.put("n21000", 11590L);
+      mapBuilder.put("n22000", 11591L);
+      mapBuilder.put("n23000", 11592L);
+      mapBuilder.put("n24000", 11593L);
+      mapBuilder.put("n25000", 11594L);
+      mapBuilder.put("n26000", 11595L);
+      mapBuilder.put("n27000", 11596L);
+      mapBuilder.put("n28000", 11597L);
+      mapBuilder.put("n29000", 11598L);
+      mapBuilder.put("n30000", 11599L);
+      mapBuilder.put("n35000", 11600L);
+      mapBuilder.put("n40000", 11601L);
+      mapBuilder.put("n45000", 11602L);
+      mapBuilder.put("n50000", 11603L);
+      mapBuilder.put("n55000", 11604L);
+      mapBuilder.put("n60000", 11605L);
+      mapBuilder.put("n65000", 11606L);
+      mapBuilder.put("n70000", 11607L);
+      mapBuilder.put("n75000", 11608L);
+      mapBuilder.put("n80000", 11609L);
+      mapBuilder.put("n85000", 11610L);
+      mapBuilder.put("n90000", 11611L);
+      mapBuilder.put("n95000", 11612L);
+      mapBuilder.put("n100000", 11613L);
+      mapBuilder.put("name-follows", 11777L);
+      mapBuilder.put("freeway", 11778L);
+      mapBuilder.put("us-Route", 11779L);
+      mapBuilder.put("state-Route", 11780L);
+      mapBuilder.put("interstate", 11781L);
+      mapBuilder.put("business-Loop", 11782L);
+      mapBuilder.put("spur", 11797L);
+      mapBuilder.put("junction", 11798L);
+      mapBuilder.put("alternative", 11783L);
+      mapBuilder.put("county-Route", 11784L);
+      mapBuilder.put("forest-Route", 11785L);
+      mapBuilder.put("farm-to-Market-Route", 11786L);
+      mapBuilder.put("eisenhower-Interstate-System", 11787L);
+      mapBuilder.put("americas-Byways", 11788L);
+      mapBuilder.put("national-Network-Route", 11789L);
+      mapBuilder.put("scenic-Area", 11790L);
+      mapBuilder.put("parking-Area", 11791L);
+      mapBuilder.put("weight-Station", 11792L);
+      mapBuilder.put("road", 11793L);
+      mapBuilder.put("exit", 11794L);
+      mapBuilder.put("historical-route", 11795L);
+      mapBuilder.put("state-line", 11796L);
+      mapBuilder.put("bicycle-route", 11799L);
+      mapBuilder.put("bicycle-interstate-route", 11800L);
+      mapBuilder.put("national-park", 11801L);
+      mapBuilder.put("bear-viewing-area", 12033L);
+      mapBuilder.put("deer-viewing-area", 12034L);
+      mapBuilder.put("drinking-water", 12035L);
+      mapBuilder.put("environmental-study-area", 12036L);
+      mapBuilder.put("falling-rocks", 12037L);
+      mapBuilder.put("firearms", 12038L);
+      mapBuilder.put("leashed-pets", 12039L);
+      mapBuilder.put("point-of-interest", 12040L);
+      mapBuilder.put("smoking", 12041L);
+      mapBuilder.put("dog", 12042L);
+      mapBuilder.put("tent-camping", 12043L);
+      mapBuilder.put("trailer-camping", 12044L);
+      mapBuilder.put("first-aid", 12045L);
+      mapBuilder.put("handicapped", 12046L);
+      mapBuilder.put("mechanic", 12047L);
+      mapBuilder.put("trailer-sanitary-station", 12048L);
+      mapBuilder.put("viewing-area", 12049L);
+      mapBuilder.put("scenic-overlook", 12095L);
+      mapBuilder.put("campfire", 12050L);
+      mapBuilder.put("locker", 12051L);
+      mapBuilder.put("sleeping", 12052L);
+      mapBuilder.put("trail", 12053L);
+      mapBuilder.put("climbing", 12054L);
+      mapBuilder.put("rock-climbing", 12055L);
+      mapBuilder.put("hunting", 12056L);
+      mapBuilder.put("playground", 12057L);
+      mapBuilder.put("rock-collecting", 12058L);
+      mapBuilder.put("spelunking", 12059L);
+      mapBuilder.put("bicycle-trail", 12060L);
+      mapBuilder.put("hiking-trail", 12061L);
+      mapBuilder.put("horse-trail", 12062L);
+      mapBuilder.put("trail-interpretive-auto", 12063L);
+      mapBuilder.put("trail-interpretive-pedestrian", 12064L);
+      mapBuilder.put("trail-road-for-4WD-vehicles", 12065L);
+      mapBuilder.put("trail-for-trail-bikes", 12066L);
+      mapBuilder.put("archer", 12067L);
+      mapBuilder.put("hang-glider", 12068L);
+      mapBuilder.put("boat-tours", 12069L);
+      mapBuilder.put("canoeing", 12070L);
+      mapBuilder.put("diving", 12071L);
+      mapBuilder.put("scuba-diving", 12072L);
+      mapBuilder.put("fishing", 12073L);
+      mapBuilder.put("marine-recreation-area", 12074L);
+      mapBuilder.put("motorboating", 12075L);
+      mapBuilder.put("boat-ramp", 12076L);
+      mapBuilder.put("rowboating", 12077L);
+      mapBuilder.put("sailboating", 12078L);
+      mapBuilder.put("water-skiing", 12079L);
+      mapBuilder.put("surfing", 12080L);
+      mapBuilder.put("swimming", 12081L);
+      mapBuilder.put("wading", 12082L);
+      mapBuilder.put("hand-launch", 12083L);
+      mapBuilder.put("kayak", 12084L);
+      mapBuilder.put("wind-surf", 12085L);
+      mapBuilder.put("ice-skating", 12086L);
+      mapBuilder.put("ski-jumping", 12087L);
+      mapBuilder.put("bobbing", 12088L);
+      mapBuilder.put("cross-country-skiing", 12089L);
+      mapBuilder.put("downhill-skiing", 12090L);
+      mapBuilder.put("sledding", 12091L);
+      mapBuilder.put("snowmobiling", 12092L);
+      mapBuilder.put("snowshoeing", 12093L);
+      mapBuilder.put("winter-recreation-area", 12094L);
+      mapBuilder.put("regulatory-sign", 12289L);
+      mapBuilder.put("warning-sign", 12290L);
+      mapBuilder.put("information-sign", 12291L);
+      mapBuilder.put("construction-sign", 12292L);
+      mapBuilder.put("guide-sign", 12293L);
+      mapBuilder.put("stop", 12294L);
+      mapBuilder.put("yield", 12295L);
+      mapBuilder.put("caution", 12330L);
+      mapBuilder.put("temporary", 12331L);
+      mapBuilder.put("to-oncoming-traffic", 12296L);
+      mapBuilder.put("four-way", 12297L);
+      mapBuilder.put("all-way", 12298L);
+      mapBuilder.put("one-way", 12329L);
+      mapBuilder.put("zone", 12299L);
+      mapBuilder.put("narrows", 12300L);
+      mapBuilder.put("widens", 12301L);
+      mapBuilder.put("reduced", 12302L);
+      mapBuilder.put("combined", 12303L);
+      mapBuilder.put("minimum", 12304L);
+      mapBuilder.put("maximum", 12305L);
+      mapBuilder.put("divided-road", 12306L);
+      mapBuilder.put("double-arrow", 12307L);
+      mapBuilder.put("dead-end", 12308L);
+      mapBuilder.put("no-outlet", 12309L);
+      mapBuilder.put("wrong-way", 12310L);
+      mapBuilder.put("do-not-enter", 12314L);
+      mapBuilder.put("nDetour", 12312L);
+      mapBuilder.put("chevron", 12313L);
+      mapBuilder.put("t-intersection-to-the-side", 12315L);
+      mapBuilder.put("t-intersection-oncoming", 12316L);
+      mapBuilder.put("y-intersection-to-the-side", 12317L);
+      mapBuilder.put("y-intersection-oncoming", 12318L);
+      mapBuilder.put("four-way-divided-highway-crossing", 12319L);
+      mapBuilder.put("t-way-divided-highway-crossing", 12320L);
+      mapBuilder.put("light-rail-divided-highway-crossing", 12321L);
+      mapBuilder.put("light-rail-t-divided-highway-crossing", 12322L);
+      mapBuilder.put("side-road-to-right", 12323L);
+      mapBuilder.put("side-road-to-left", 12324L);
+      mapBuilder.put("side-road-to-right-at-angle", 12325L);
+      mapBuilder.put("side-road-to-left-at-angle", 12326L);
+      mapBuilder.put("entering-roadway-merge", 12327L);
+      mapBuilder.put("entering-roadway-added-lane", 12328L);
+      mapBuilder.put("n1", 12545L);
+      mapBuilder.put("n2", 12546L);
+      mapBuilder.put("n3", 12547L);
+      mapBuilder.put("n4", 12548L);
+      mapBuilder.put("n5", 12549L);
+      mapBuilder.put("n6", 12550L);
+      mapBuilder.put("n7", 12551L);
+      mapBuilder.put("n8", 12552L);
+      mapBuilder.put("n9", 12553L);
+      mapBuilder.put("n10", 12554L);
+      mapBuilder.put("n11", 12555L);
+      mapBuilder.put("n12", 12556L);
+      mapBuilder.put("n13", 12557L);
+      mapBuilder.put("n14", 12558L);
+      mapBuilder.put("n15", 12559L);
+      mapBuilder.put("n16", 12560L);
+      mapBuilder.put("n17", 12561L);
+      mapBuilder.put("n18", 12562L);
+      mapBuilder.put("n19", 12563L);
+      mapBuilder.put("n20", 12564L);
+      mapBuilder.put("n21", 12565L);
+      mapBuilder.put("n22", 12566L);
+      mapBuilder.put("n23", 12567L);
+      mapBuilder.put("n24", 12568L);
+      mapBuilder.put("n25", 12569L);
+      mapBuilder.put("n26", 12570L);
+      mapBuilder.put("n27", 12571L);
+      mapBuilder.put("n28", 12572L);
+      mapBuilder.put("n29", 12573L);
+      mapBuilder.put("n30", 12574L);
+      mapBuilder.put("n31", 12575L);
+      mapBuilder.put("n32", 12576L);
+      mapBuilder.put("n33", 12577L);
+      mapBuilder.put("n34", 12578L);
+      mapBuilder.put("n35", 12579L);
+      mapBuilder.put("n36", 12580L);
+      mapBuilder.put("n37", 12581L);
+      mapBuilder.put("n38", 12582L);
+      mapBuilder.put("n39", 12583L);
+      mapBuilder.put("n40", 12584L);
+      mapBuilder.put("n41", 12585L);
+      mapBuilder.put("n42", 12586L);
+      mapBuilder.put("n43", 12587L);
+      mapBuilder.put("n44", 12588L);
+      mapBuilder.put("n45", 12589L);
+      mapBuilder.put("n46", 12590L);
+      mapBuilder.put("n47", 12591L);
+      mapBuilder.put("n48", 12592L);
+      mapBuilder.put("n49", 12593L);
+      mapBuilder.put("n50", 12594L);
+      mapBuilder.put("n51", 12595L);
+      mapBuilder.put("n52", 12596L);
+      mapBuilder.put("n53", 12597L);
+      mapBuilder.put("n54", 12598L);
+      mapBuilder.put("n55", 12599L);
+      mapBuilder.put("n56", 12600L);
+      mapBuilder.put("n57", 12601L);
+      mapBuilder.put("n58", 12602L);
+      mapBuilder.put("n59", 12603L);
+      mapBuilder.put("n60", 12604L);
+      mapBuilder.put("n61", 12605L);
+      mapBuilder.put("n62", 12606L);
+      mapBuilder.put("n63", 12607L);
+      mapBuilder.put("n64", 12608L);
+      mapBuilder.put("n65", 12609L);
+      mapBuilder.put("n66", 12610L);
+      mapBuilder.put("n67", 12611L);
+      mapBuilder.put("n68", 12612L);
+      mapBuilder.put("n69", 12613L);
+      mapBuilder.put("n70", 12614L);
+      mapBuilder.put("n71", 12615L);
+      mapBuilder.put("n72", 12616L);
+      mapBuilder.put("n73", 12617L);
+      mapBuilder.put("n74", 12618L);
+      mapBuilder.put("n75", 12619L);
+      mapBuilder.put("n76", 12620L);
+      mapBuilder.put("n77", 12621L);
+      mapBuilder.put("n78", 12622L);
+      mapBuilder.put("n79", 12623L);
+      mapBuilder.put("n80", 12624L);
+      mapBuilder.put("n81", 12625L);
+      mapBuilder.put("n82", 12626L);
+      mapBuilder.put("n83", 12627L);
+      mapBuilder.put("n84", 12628L);
+      mapBuilder.put("n85", 12629L);
+      mapBuilder.put("n86", 12630L);
+      mapBuilder.put("n87", 12631L);
+      mapBuilder.put("n88", 12632L);
+      mapBuilder.put("n89", 12633L);
+      mapBuilder.put("n90", 12634L);
+      mapBuilder.put("n91", 12635L);
+      mapBuilder.put("n92", 12636L);
+      mapBuilder.put("n93", 12637L);
+      mapBuilder.put("n94", 12638L);
+      mapBuilder.put("n95", 12639L);
+      mapBuilder.put("n96", 12640L);
+      mapBuilder.put("n97", 12641L);
+      mapBuilder.put("n98", 12642L);
+      mapBuilder.put("n99", 12643L);
+      mapBuilder.put("n100", 12644L);
+      mapBuilder.put("n101", 12645L);
+      mapBuilder.put("n102", 12646L);
+      mapBuilder.put("n103", 12647L);
+      mapBuilder.put("n104", 12648L);
+      mapBuilder.put("n105", 12649L);
+      mapBuilder.put("n106", 12650L);
+      mapBuilder.put("n107", 12651L);
+      mapBuilder.put("n108", 12652L);
+      mapBuilder.put("n109", 12653L);
+      mapBuilder.put("n110", 12654L);
+      mapBuilder.put("n111", 12655L);
+      mapBuilder.put("n112", 12656L);
+      mapBuilder.put("n113", 12657L);
+      mapBuilder.put("n114", 12658L);
+      mapBuilder.put("n115", 12659L);
+      mapBuilder.put("n116", 12660L);
+      mapBuilder.put("n117", 12661L);
+      mapBuilder.put("n118", 12662L);
+      mapBuilder.put("n119", 12663L);
+      mapBuilder.put("n120", 12664L);
+      mapBuilder.put("n121", 12665L);
+      mapBuilder.put("n122", 12666L);
+      mapBuilder.put("n123", 12667L);
+      mapBuilder.put("n124", 12668L);
+      mapBuilder.put("n125", 12669L);
+      mapBuilder.put("n126", 12670L);
+      mapBuilder.put("n127", 12671L);
+      mapBuilder.put("n128", 12672L);
+      mapBuilder.put("n129", 12673L);
+      mapBuilder.put("n130", 12674L);
+      mapBuilder.put("n131", 12675L);
+      mapBuilder.put("n132", 12676L);
+      mapBuilder.put("n133", 12677L);
+      mapBuilder.put("n134", 12678L);
+      mapBuilder.put("n135", 12679L);
+      mapBuilder.put("n136", 12680L);
+      mapBuilder.put("n137", 12681L);
+      mapBuilder.put("n138", 12682L);
+      mapBuilder.put("n139", 12683L);
+      mapBuilder.put("n140", 12684L);
+      mapBuilder.put("n141", 12685L);
+      mapBuilder.put("n142", 12686L);
+      mapBuilder.put("n143", 12687L);
+      mapBuilder.put("n144", 12688L);
+      mapBuilder.put("n145", 12689L);
+      mapBuilder.put("n146", 12690L);
+      mapBuilder.put("n147", 12691L);
+      mapBuilder.put("n148", 12692L);
+      mapBuilder.put("n149", 12693L);
+      mapBuilder.put("n150", 12694L);
+      mapBuilder.put("n151", 12695L);
+      mapBuilder.put("n152", 12696L);
+      mapBuilder.put("n153", 12697L);
+      mapBuilder.put("n154", 12698L);
+      mapBuilder.put("n155", 12699L);
+      mapBuilder.put("n156", 12700L);
+      mapBuilder.put("n157", 12701L);
+      mapBuilder.put("n158", 12702L);
+      mapBuilder.put("n159", 12703L);
+      mapBuilder.put("n160", 12704L);
+      mapBuilder.put("n161", 12705L);
+      mapBuilder.put("n162", 12706L);
+      mapBuilder.put("n163", 12707L);
+      mapBuilder.put("n164", 12708L);
+      mapBuilder.put("n165", 12709L);
+      mapBuilder.put("n166", 12710L);
+      mapBuilder.put("n167", 12711L);
+      mapBuilder.put("n168", 12712L);
+      mapBuilder.put("n169", 12713L);
+      mapBuilder.put("n170", 12714L);
+      mapBuilder.put("n171", 12715L);
+      mapBuilder.put("n172", 12716L);
+      mapBuilder.put("n173", 12717L);
+      mapBuilder.put("n174", 12718L);
+      mapBuilder.put("n175", 12719L);
+      mapBuilder.put("n176", 12720L);
+      mapBuilder.put("n177", 12721L);
+      mapBuilder.put("n178", 12722L);
+      mapBuilder.put("n179", 12723L);
+      mapBuilder.put("n180", 12724L);
+      mapBuilder.put("n181", 12725L);
+      mapBuilder.put("n182", 12726L);
+      mapBuilder.put("n183", 12727L);
+      mapBuilder.put("n184", 12728L);
+      mapBuilder.put("n185", 12729L);
+      mapBuilder.put("n186", 12730L);
+      mapBuilder.put("n187", 12731L);
+      mapBuilder.put("n188", 12732L);
+      mapBuilder.put("n189", 12733L);
+      mapBuilder.put("n190", 12734L);
+      mapBuilder.put("n191", 12735L);
+      mapBuilder.put("n192", 12736L);
+      mapBuilder.put("n193", 12737L);
+      mapBuilder.put("n194", 12738L);
+      mapBuilder.put("n195", 12739L);
+      mapBuilder.put("n196", 12740L);
+      mapBuilder.put("n197", 12741L);
+      mapBuilder.put("n198", 12742L);
+      mapBuilder.put("n199", 12743L);
+      mapBuilder.put("n200", 12744L);
+      mapBuilder.put("n201", 12745L);
+      mapBuilder.put("n202", 12746L);
+      mapBuilder.put("n203", 12747L);
+      mapBuilder.put("n204", 12748L);
+      mapBuilder.put("n205", 12749L);
+      mapBuilder.put("n206", 12750L);
+      mapBuilder.put("n207", 12751L);
+      mapBuilder.put("n208", 12752L);
+      mapBuilder.put("n209", 12753L);
+      mapBuilder.put("n210", 12754L);
+      mapBuilder.put("n211", 12755L);
+      mapBuilder.put("n212", 12756L);
+      mapBuilder.put("n213", 12757L);
+      mapBuilder.put("n214", 12758L);
+      mapBuilder.put("n215", 12759L);
+      mapBuilder.put("n216", 12760L);
+      mapBuilder.put("n217", 12761L);
+      mapBuilder.put("n218", 12762L);
+      mapBuilder.put("n219", 12763L);
+      mapBuilder.put("n220", 12764L);
+      mapBuilder.put("n221", 12765L);
+      mapBuilder.put("n222", 12766L);
+      mapBuilder.put("n223", 12767L);
+      mapBuilder.put("n224", 12768L);
+      mapBuilder.put("n225", 12769L);
+      mapBuilder.put("n226", 12770L);
+      mapBuilder.put("n227", 12771L);
+      mapBuilder.put("n228", 12772L);
+      mapBuilder.put("n229", 12773L);
+      mapBuilder.put("n230", 12774L);
+      mapBuilder.put("n231", 12775L);
+      mapBuilder.put("n232", 12776L);
+      mapBuilder.put("n233", 12777L);
+      mapBuilder.put("n234", 12778L);
+      mapBuilder.put("n235", 12779L);
+      mapBuilder.put("n236", 12780L);
+      mapBuilder.put("n237", 12781L);
+      mapBuilder.put("n238", 12782L);
+      mapBuilder.put("n239", 12783L);
+      mapBuilder.put("n240", 12784L);
+      mapBuilder.put("n241", 12785L);
+      mapBuilder.put("n242", 12786L);
+      mapBuilder.put("n243", 12787L);
+      mapBuilder.put("n244", 12788L);
+      mapBuilder.put("n245", 12789L);
+      mapBuilder.put("n246", 12790L);
+      mapBuilder.put("n247", 12791L);
+      mapBuilder.put("n248", 12792L);
+      mapBuilder.put("n249", 12793L);
+      mapBuilder.put("n250", 12794L);
+      mapBuilder.put("n251", 12795L);
+      mapBuilder.put("n252", 12796L);
+      mapBuilder.put("n253", 12797L);
+      mapBuilder.put("n254", 12798L);
+      mapBuilder.put("n255", 12799L);
+      mapBuilder.put("alabama", 12801L);
+      mapBuilder.put("alaska", 12802L);
+      mapBuilder.put("american-Samoa", 12803L);
+      mapBuilder.put("arizona", 12804L);
+      mapBuilder.put("arkansas", 12805L);
+      mapBuilder.put("california", 12806L);
+      mapBuilder.put("colorado", 12807L);
+      mapBuilder.put("connecticut", 12808L);
+      mapBuilder.put("delaware", 12809L);
+      mapBuilder.put("district-of-Columbia", 12810L);
+      mapBuilder.put("florida", 12811L);
+      mapBuilder.put("georgia", 12812L);
+      mapBuilder.put("guam", 12813L);
+      mapBuilder.put("hawaii", 12814L);
+      mapBuilder.put("idaho", 12815L);
+      mapBuilder.put("illinois", 12816L);
+      mapBuilder.put("indiana", 12817L);
+      mapBuilder.put("iowa", 12818L);
+      mapBuilder.put("kansas", 12819L);
+      mapBuilder.put("kentucky", 12820L);
+      mapBuilder.put("louisiana", 12821L);
+      mapBuilder.put("maine", 12822L);
+      mapBuilder.put("maryland", 12823L);
+      mapBuilder.put("massachusetts", 12824L);
+      mapBuilder.put("michigan", 12825L);
+      mapBuilder.put("minnesota", 12826L);
+      mapBuilder.put("mississippi", 12827L);
+      mapBuilder.put("missouri", 12828L);
+      mapBuilder.put("montana", 12829L);
+      mapBuilder.put("nebraska", 12830L);
+      mapBuilder.put("nevada", 12831L);
+      mapBuilder.put("new-Hampshire", 12832L);
+      mapBuilder.put("new-Jersey", 12833L);
+      mapBuilder.put("new-Mexico", 12834L);
+      mapBuilder.put("new-York", 12835L);
+      mapBuilder.put("north-Carolina", 12836L);
+      mapBuilder.put("north-Dakota", 12837L);
+      mapBuilder.put("northern-Marianas-Islands", 12838L);
+      mapBuilder.put("ohio", 12839L);
+      mapBuilder.put("oklahoma", 12840L);
+      mapBuilder.put("oregon", 12841L);
+      mapBuilder.put("pennsylvania", 12842L);
+      mapBuilder.put("puerto-rico", 12843L);
+      mapBuilder.put("rhode-Island", 12844L);
+      mapBuilder.put("south-Carolina", 12845L);
+      mapBuilder.put("south-Dakota", 12846L);
+      mapBuilder.put("tennessee", 12847L);
+      mapBuilder.put("texas", 12848L);
+      mapBuilder.put("utah", 12849L);
+      mapBuilder.put("vermont", 12850L);
+      mapBuilder.put("virginia", 12851L);
+      mapBuilder.put("virgin-Islands", 12852L);
+      mapBuilder.put("washington", 12853L);
+      mapBuilder.put("west-Virginia", 12854L);
+      mapBuilder.put("wisconsin", 12855L);
+      mapBuilder.put("wyoming", 12856L);
+      mapBuilder.put("rest-room", 13057L);
+      mapBuilder.put("mens-rest-room", 13058L);
+      mapBuilder.put("womens-rest-room", 13059L);
+      mapBuilder.put("family-rest-room", 13060L);
+      mapBuilder.put("dam", 13061L);
+      mapBuilder.put("fish-hatchery", 13062L);
+      mapBuilder.put("information", 13063L);
+      mapBuilder.put("lighthouse", 13064L);
+      mapBuilder.put("lookout-tower", 13065L);
+      mapBuilder.put("ranger-station", 13066L);
+      mapBuilder.put("grocery-store", 13068L);
+      mapBuilder.put("lodging", 13069L);
+      mapBuilder.put("post-office", 13070L);
+      mapBuilder.put("picnic-shelter", 13072L);
+      mapBuilder.put("group-camping", 13073L);
+      mapBuilder.put("group-picnicking", 13074L);
+      mapBuilder.put("n24-hour-pharmacy", 13075L);
+      mapBuilder.put("kennel", 13076L);
+      mapBuilder.put("laundry-facilities", 13077L);
+      mapBuilder.put("shower-facilities", 13078L);
+      mapBuilder.put("amphitheater", 13079L);
+      mapBuilder.put("stable", 13080L);
+      mapBuilder.put("hospital", 13081L);
+      mapBuilder.put("emergency-medical-service-point", 13082L);
+      mapBuilder.put("library", 13083L);
+      mapBuilder.put("recycling-collection-center", 13084L);
+      mapBuilder.put("school", 13085L);
+      mapBuilder.put("alley", 13313L);
+      mapBuilder.put("annex", 13314L);
+      mapBuilder.put("arcade", 13315L);
+      mapBuilder.put("avenue", 13316L);
+      mapBuilder.put("bayoo", 13317L);
+      mapBuilder.put("beach", 13318L);
+      mapBuilder.put("bend", 13319L);
+      mapBuilder.put("bluff", 13320L);
+      mapBuilder.put("bottom", 13321L);
+      mapBuilder.put("boulevard", 13322L);
+      mapBuilder.put("branch", 13323L);
+      mapBuilder.put("nBridge", 13324L);
+      mapBuilder.put("brook", 13325L);
+      mapBuilder.put("burg", 13326L);
+      mapBuilder.put("bypass", 13327L);
+      mapBuilder.put("camp", 13328L);
+      mapBuilder.put("canyon", 13329L);
+      mapBuilder.put("cape", 13330L);
+      mapBuilder.put("causeway", 13331L);
+      mapBuilder.put("nCenter", 13332L);
+      mapBuilder.put("circle", 13333L);
+      mapBuilder.put("cliff", 13334L);
+      mapBuilder.put("club", 13335L);
+      mapBuilder.put("common", 13336L);
+      mapBuilder.put("corner", 13337L);
+      mapBuilder.put("course", 13338L);
+      mapBuilder.put("court", 13339L);
+      mapBuilder.put("cove", 13340L);
+      mapBuilder.put("creek", 13341L);
+      mapBuilder.put("crescent", 13342L);
+      mapBuilder.put("crest", 13343L);
+      mapBuilder.put("nCrossing", 13344L);
+      mapBuilder.put("crossroad", 13345L);
+      mapBuilder.put("curve", 13346L);
+      mapBuilder.put("dale", 13347L);
+      mapBuilder.put("nDam", 13348L);
+      mapBuilder.put("divide", 13349L);
+      mapBuilder.put("drive", 13350L);
+      mapBuilder.put("estate", 13351L);
+      mapBuilder.put("expressway", 13352L);
+      mapBuilder.put("extension", 13353L);
+      mapBuilder.put("fall", 13354L);
+      mapBuilder.put("nFerry", 13355L);
+      mapBuilder.put("field", 13356L);
+      mapBuilder.put("flat", 13357L);
+      mapBuilder.put("ford", 13358L);
+      mapBuilder.put("forest", 13359L);
+      mapBuilder.put("forge", 13360L);
+      mapBuilder.put("fork", 13361L);
+      mapBuilder.put("fort", 13362L);
+      mapBuilder.put("nFreeway", 13363L);
+      mapBuilder.put("garden", 13364L);
+      mapBuilder.put("gateway", 13365L);
+      mapBuilder.put("glen", 13366L);
+      mapBuilder.put("green", 13367L);
+      mapBuilder.put("grove", 13368L);
+      mapBuilder.put("harbor", 13369L);
+      mapBuilder.put("haven", 13370L);
+      mapBuilder.put("heights", 13371L);
+      mapBuilder.put("highway", 13372L);
+      mapBuilder.put("nHill", 13373L);
+      mapBuilder.put("hollow", 13374L);
+      mapBuilder.put("inlet", 13375L);
+      mapBuilder.put("nIsland", 13376L);
+      mapBuilder.put("isle", 13377L);
+      mapBuilder.put("nJunction", 13378L);
+      mapBuilder.put("key", 13379L);
+      mapBuilder.put("knoll", 13380L);
+      mapBuilder.put("lake", 13381L);
+      mapBuilder.put("land", 13382L);
+      mapBuilder.put("landing", 13383L);
+      mapBuilder.put("nLane", 13384L);
+      mapBuilder.put("light", 13385L);
+      mapBuilder.put("loaf", 13386L);
+      mapBuilder.put("lock", 13387L);
+      mapBuilder.put("lodge", 13388L);
+      mapBuilder.put("loop", 13389L);
+      mapBuilder.put("mall", 13390L);
+      mapBuilder.put("manor", 13391L);
+      mapBuilder.put("meadow", 13392L);
+      mapBuilder.put("mews", 13393L);
+      mapBuilder.put("mill", 13394L);
+      mapBuilder.put("mission", 13395L);
+      mapBuilder.put("motorway", 13396L);
+      mapBuilder.put("mount", 13397L);
+      mapBuilder.put("mountain", 13398L);
+      mapBuilder.put("neck", 13399L);
+      mapBuilder.put("orchard", 13400L);
+      mapBuilder.put("oval", 13401L);
+      mapBuilder.put("nOverpass", 13402L);
+      mapBuilder.put("park", 13403L);
+      mapBuilder.put("parkway", 13404L);
+      mapBuilder.put("nPass", 13405L);
+      mapBuilder.put("passage", 13406L);
+      mapBuilder.put("path", 13407L);
+      mapBuilder.put("pike", 13408L);
+      mapBuilder.put("pine", 13409L);
+      mapBuilder.put("plains", 13410L);
+      mapBuilder.put("plaza", 13411L);
+      mapBuilder.put("point", 13412L);
+      mapBuilder.put("port", 13413L);
+      mapBuilder.put("prairie", 13414L);
+      mapBuilder.put("radial", 13415L);
+      mapBuilder.put("ramp", 13416L);
+      mapBuilder.put("ranch", 13417L);
+      mapBuilder.put("rapid", 13418L);
+      mapBuilder.put("rest", 13419L);
+      mapBuilder.put("ridge", 13420L);
+      mapBuilder.put("river", 13421L);
+      mapBuilder.put("nRoad", 13422L);
+      mapBuilder.put("route", 13423L);
+      mapBuilder.put("row", 13424L);
+      mapBuilder.put("rue", 13425L);
+      mapBuilder.put("run", 13426L);
+      mapBuilder.put("shoal", 13427L);
+      mapBuilder.put("shore", 13428L);
+      mapBuilder.put("skyway", 13429L);
+      mapBuilder.put("spring", 13430L);
+      mapBuilder.put("nSpur", 13431L);
+      mapBuilder.put("square", 13432L);
+      mapBuilder.put("nStation", 13433L);
+      mapBuilder.put("stravenue", 13434L);
+      mapBuilder.put("stream", 13435L);
+      mapBuilder.put("street", 13436L);
+      mapBuilder.put("summit", 13437L);
+      mapBuilder.put("terrace", 13438L);
+      mapBuilder.put("throughway", 13439L);
+      mapBuilder.put("trace", 13440L);
+      mapBuilder.put("nTrack", 13441L);
+      mapBuilder.put("trafficway", 13442L);
+      mapBuilder.put("nTrail", 13443L);
+      mapBuilder.put("nTunnel", 13444L);
+      mapBuilder.put("turnpike", 13445L);
+      mapBuilder.put("nUnderpass", 13446L);
+      mapBuilder.put("union", 13447L);
+      mapBuilder.put("valley", 13448L);
+      mapBuilder.put("viaduct", 13449L);
+      mapBuilder.put("view", 13450L);
+      mapBuilder.put("village", 13451L);
+      mapBuilder.put("ville", 13452L);
+      mapBuilder.put("vista", 13453L);
+      mapBuilder.put("nWalk", 13454L);
+      mapBuilder.put("wall", 13455L);
+      mapBuilder.put("way", 13456L);
+      mapBuilder.put("well", 13457L);
+      mapBuilder.put("ahead", 13569L);
+      mapBuilder.put("here", 13570L);
+      mapBuilder.put("here-to", 13571L);
+      mapBuilder.put("here-to-alley", 13572L);
+      mapBuilder.put("here-to-corner", 13573L);
+      mapBuilder.put("here-to-sign", 13574L);
+      mapBuilder.put("between-signs", 13575L);
+      mapBuilder.put("between", 13633L);
+      mapBuilder.put("this-side-of-street", 13576L);
+      mapBuilder.put("this-side-of-sign", 13577L);
+      mapBuilder.put("right", 13579L);
+      mapBuilder.put("left", 13580L);
+      mapBuilder.put("begin-point", 13581L);
+      mapBuilder.put("next", 13582L);
+      mapBuilder.put("starting-start", 13611L);
+      mapBuilder.put("ends-end", 13583L);
+      mapBuilder.put("other-Side", 13584L);
+      mapBuilder.put("crossing", 13585L);
+      mapBuilder.put("crosswalks", 13586L);
+      mapBuilder.put("center-strip", 13587L);
+      mapBuilder.put("lane", 13588L);
+      mapBuilder.put("shelter", 13634L);
+      mapBuilder.put("center", 13635L);
+      mapBuilder.put("hill", 13589L);
+      mapBuilder.put("both-ways-left-and-right", 13590L);
+      mapBuilder.put("both-ways-45-degree-angle-tilting-right", 13591L);
+      mapBuilder.put("both-ways-45-degree-angle-tilting-left", 13592L);
+      mapBuilder.put("both-directions-of-travel", 13593L);
+      mapBuilder.put("left-arrow", 13610L);
+      mapBuilder.put("left-turn", 13594L);
+      mapBuilder.put("left-45-degree-arrow", 13595L);
+      mapBuilder.put("left-45-degree-turn", 13596L);
+      mapBuilder.put("ahead-and-to-the-left", 13597L);
+      mapBuilder.put("ahead-and-to-the-left-at-a-45-degree-angle", 13598L);
+      mapBuilder.put("right-arrow", 13609L);
+      mapBuilder.put("right-turn", 13599L);
+      mapBuilder.put("right-45-degree-arrow", 13600L);
+      mapBuilder.put("right-45-degree-turn", 13601L);
+      mapBuilder.put("ahead-and-to-the-right", 13602L);
+      mapBuilder.put("ahead-and-to-the-right-at-a-45-degree-angle", 13603L);
+      mapBuilder.put("downward-left-45-degree", 13604L);
+      mapBuilder.put("downward-right-45-degree", 13605L);
+      mapBuilder.put("downward-left-and-right-45-degree", 13606L);
+      mapBuilder.put("reverse-turn-to-right", 13636L);
+      mapBuilder.put("reverse-turn-to-left", 13637L);
+      mapBuilder.put("reverse-curve-to-right", 13638L);
+      mapBuilder.put("reverse-curve-to-left", 13639L);
+      mapBuilder.put("two-lane-reverse-curve-to-right", 13623L);
+      mapBuilder.put("two-lane-reverse-curve-to-left", 13624L);
+      mapBuilder.put("three-lane-reverse-curve-to-right", 13625L);
+      mapBuilder.put("three-lane-reverse-curve-to-left", 13626L);
+      mapBuilder.put("winding-road-to-right", 13640L);
+      mapBuilder.put("winding-road-to-left", 13641L);
+      mapBuilder.put("chevron-right", 13613L);
+      mapBuilder.put("chevron-left", 13614L);
+      mapBuilder.put("right-turn-with-junction", 13615L);
+      mapBuilder.put("left-turn-with-junction", 13616L);
+      mapBuilder.put("hairpin-right", 13617L);
+      mapBuilder.put("hairpin-left", 13618L);
+      mapBuilder.put("truck-rollover-right", 13619L);
+      mapBuilder.put("truck-rollover-left", 13620L);
+      mapBuilder.put("n270-degree-turn-right", 13621L);
+      mapBuilder.put("n270-degree-turn-left", 13622L);
+      mapBuilder.put("double-reverse-curve-to-right", 13627L);
+      mapBuilder.put("double-reverse-curve-to-left", 13628L);
+      mapBuilder.put("two-lane-double-reverse-curve-to-right", 13629L);
+      mapBuilder.put("two-lane-double-reverse-curve-to-left", 13630L);
+      mapBuilder.put("three-lane-double-reverse-curve-to-right", 13631L);
+      mapBuilder.put("three-lane-double-reverse-curve-to-left", 13632L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(valueNameMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(value));
   }
 
   public static Optional<ITIScodes> named(String name) {
-    return Optional.ofNullable(nameValueMap.get(name)).map(ITIScodes::new);
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(ITIScodes::new);
   }
 
   public static Set<String> names() {
-    return nameValueMap.keySet();
+    return namedValues.nameMap.keySet();
   }
 
   public static Set<Long> namedValues() {
-    return valueNameMap.keySet();
+    return namedValues.valueMap.keySet();
   }
 }
