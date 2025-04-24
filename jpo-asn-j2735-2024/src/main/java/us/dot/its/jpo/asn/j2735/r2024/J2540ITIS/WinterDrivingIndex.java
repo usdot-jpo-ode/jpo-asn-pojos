@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WinterDrivingIndex extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public WinterDrivingIndex() {
     super(0L, 65535L);
@@ -35,5 +42,41 @@ public class WinterDrivingIndex extends Asn1Integer {
   public WinterDrivingIndex(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("driving-conditions-good", 6401L);
+      mapBuilder.put("driving-conditions-fair", 6402L);
+      mapBuilder.put("difficult-driving-conditions", 6403L);
+      mapBuilder.put("very-difficult-driving-conditions", 6404L);
+      mapBuilder.put("hazardous-driving-conditions", 6405L);
+      mapBuilder.put("extremely-hazardous-driving-conditions", 6406L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<WinterDrivingIndex> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(WinterDrivingIndex::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class EuroValue extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public EuroValue() {
     super(0L, 15L);
@@ -35,5 +42,44 @@ public class EuroValue extends Asn1Integer {
   public EuroValue(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("noEntry", 0L);
+      mapBuilder.put("euro1", 1L);
+      mapBuilder.put("euro2", 2L);
+      mapBuilder.put("euro3", 3L);
+      mapBuilder.put("euro4", 4L);
+      mapBuilder.put("euro5", 5L);
+      mapBuilder.put("euro6", 6L);
+      mapBuilder.put("euro7", 7L);
+      mapBuilder.put("eev", 15L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<EuroValue> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(EuroValue::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

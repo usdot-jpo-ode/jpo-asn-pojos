@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class EngineCharacteristics extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public EngineCharacteristics() {
     super(0L, 255L);
@@ -35,5 +42,89 @@ public class EngineCharacteristics extends Asn1Integer {
   public EngineCharacteristics(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("noEntry", 0L);
+      mapBuilder.put("noEngine", 1L);
+      mapBuilder.put("petrolUnleaded", 2L);
+      mapBuilder.put("petrolLeaded", 3L);
+      mapBuilder.put("diesel", 4L);
+      mapBuilder.put("lpg", 5L);
+      mapBuilder.put("battery", 6L);
+      mapBuilder.put("solar", 7L);
+      mapBuilder.put("hybrid", 8L);
+      mapBuilder.put("hydrogen", 9L);
+      mapBuilder.put("multiFuel", 10L);
+      mapBuilder.put("bivalentPetrolLpg", 11L);
+      mapBuilder.put("bivalentPetrolCng", 12L);
+      mapBuilder.put("combinedPetrolElectric", 13L);
+      mapBuilder.put("cng", 14L);
+      mapBuilder.put("lng", 15L);
+      mapBuilder.put("combinedDieselElectric", 16L);
+      mapBuilder.put("combinedHydrogenElectric", 17L);
+      mapBuilder.put("bivalentHydrogenPetrol", 18L);
+      mapBuilder.put("bivalentHydrogenPetrolElectricEngine", 19L);
+      mapBuilder.put("fuelCellHydrogen", 20L);
+      mapBuilder.put("fuelCellPetrol", 21L);
+      mapBuilder.put("fuelCellMethanol", 22L);
+      mapBuilder.put("fuelCellEthanol", 23L);
+      mapBuilder.put("fuelCellDiesel", 24L);
+      mapBuilder.put("combinedMultiFuelElectricEngine", 25L);
+      mapBuilder.put("combinedCngElectricEngine", 26L);
+      mapBuilder.put("combinedLngElectricEngine", 27L);
+      mapBuilder.put("petrolEthanol", 28L);
+      mapBuilder.put("combinedLpgElectricEngine", 29L);
+      mapBuilder.put("hybridPetrolExternalBattery", 30L);
+      mapBuilder.put("hybridDieselExternalBattery", 31L);
+      mapBuilder.put("hybridLpgExternalBattery", 32L);
+      mapBuilder.put("hybridHydrogenExternalBattery", 33L);
+      mapBuilder.put("hybridMultiFuelExternalBattery", 34L);
+      mapBuilder.put("hybridCngExternalBattery", 35L);
+      mapBuilder.put("hybridLngExternalBattery", 36L);
+      mapBuilder.put("hybridBivalentHydrogenPetrolExternalBattery", 37L);
+      mapBuilder.put("hydrogenCng", 38L);
+      mapBuilder.put("hydrogenLng", 39L);
+      mapBuilder.put("hybridHydrogenCngExternalBattery", 40L);
+      mapBuilder.put("hybridHydrogenLngExternalBattery", 41L);
+      mapBuilder.put("ethanol", 42L);
+      mapBuilder.put("hybridFuelCellHydrogen", 43L);
+      mapBuilder.put("hybridFuelCellHydrogenExternalBattery", 44L);
+      mapBuilder.put("dualFuelLngDiesel", 45L);
+      mapBuilder.put("electricExternal", 46L);
+      mapBuilder.put("biogas", 47L);
+      mapBuilder.put("bioDiesel", 48L);
+      mapBuilder.put("bioPetrol", 49L);
+      mapBuilder.put("bivalentPetrolBiogas", 50L);
+      mapBuilder.put("combinedBiogasElectricEngine", 51L);
+      mapBuilder.put("dualFuelCngDiesel", 52L);
+      mapBuilder.put("other", 255L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<EngineCharacteristics> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(EngineCharacteristics::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

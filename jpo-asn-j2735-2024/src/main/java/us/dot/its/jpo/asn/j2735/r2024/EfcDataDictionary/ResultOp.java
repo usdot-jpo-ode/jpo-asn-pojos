@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ResultOp extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public ResultOp() {
     super(0L, 255L);
@@ -35,5 +42,61 @@ public class ResultOp extends Asn1Integer {
   public ResultOp(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("correctTransaction", 0L);
+      mapBuilder.put("obeStatusNotAccepted", 1L);
+      mapBuilder.put("equipmentStatusNotAccepted", 2L);
+      mapBuilder.put("contractNotInWhiteList", 3L);
+      mapBuilder.put("contractIdentifierInBlackList", 4L);
+      mapBuilder.put("contractIdentifierNotCorrect", 5L);
+      mapBuilder.put("expiredContract", 6L);
+      mapBuilder.put("contractRestrictionsNotFulfilled", 7L);
+      mapBuilder.put("claimedVehicleCharacteristicsNotValid", 8L);
+      mapBuilder.put("vehicleClassAuthenticationFailed", 9L);
+      mapBuilder.put("entryVehicleClassDifferentFromExitVehicleClass", 10L);
+      mapBuilder.put("entryReceiptMissing", 11L);
+      mapBuilder.put("entryReceiptNotValid", 12L);
+      mapBuilder.put("entryTollStationNotValid", 13L);
+      mapBuilder.put("equipmentNotCertified", 14L);
+      mapBuilder.put("timeDifference", 15L);
+      mapBuilder.put("accessCredentialsNotAccepted", 16L);
+      mapBuilder.put("contractAuthenticatorNotAccepted", 17L);
+      mapBuilder.put("receiptAuthenticatorNotAccepted", 18L);
+      mapBuilder.put("claimedVehicleCharacteristicsMissing", 19L);
+      mapBuilder.put("paymentMeansNotAccepted", 20L);
+      mapBuilder.put("paymentAuthenticatorNotAccepted", 21L);
+      mapBuilder.put("paymentMeansInBlackList", 22L);
+      mapBuilder.put("paymentMeansNotCorrect", 23L);
+      mapBuilder.put("expiredPaymentMeans", 24L);
+      mapBuilder.put("paymentMeansRestrictionsNotFulfilled", 25L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<ResultOp> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(ResultOp::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

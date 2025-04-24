@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ValidManeuvers extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public ValidManeuvers() {
     super(0L, 65535L);
@@ -35,5 +42,163 @@ public class ValidManeuvers extends Asn1Integer {
   public ValidManeuvers(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("prohibit-None-Allowed-LU-LT-L45-S-R45-RT-RU", 11264L);
+      mapBuilder.put("prohibit-RU-Allowed-LU-LT-L45-S-R45-RT", 11265L);
+      mapBuilder.put("prohibit-RT-Allowed-LU-LT-L45-S-R45-RU", 11266L);
+      mapBuilder.put("prohibit-RT-RU-Allowed-LU-LT-L45-S-R45", 11267L);
+      mapBuilder.put("prohibit-R45-Allowed-LU-LT-L45-S-RT-RU", 11268L);
+      mapBuilder.put("prohibit-R45-RU-Allowed-LU-LT-L45-S-RT", 11269L);
+      mapBuilder.put("prohibit-R45-RT-Allowed-LU-LT-L45-S-RU", 11270L);
+      mapBuilder.put("prohibit-R45-RT-RU-Allowed-LU-LT-L45-S", 11271L);
+      mapBuilder.put("prohibit-S-Allowed-LU-LT-L45-R45-RT-RU", 11272L);
+      mapBuilder.put("prohibit-S-RU-Allowed-LU-LT-L45-R45-RT", 11273L);
+      mapBuilder.put("prohibit-S-RT-Allowed-LU-LT-L45-R45-RU", 11274L);
+      mapBuilder.put("prohibit-S-RT-RU-Allowed-LU-LT-L45-R45", 11275L);
+      mapBuilder.put("prohibit-S-R45-Allowed-LU-LT-L45-RT-RU", 11276L);
+      mapBuilder.put("prohibit-S-R45-RU-Allowed-LU-LT-L45-RT", 11277L);
+      mapBuilder.put("prohibit-S-R45-RT-Allowed-LU-LT-L45-RU", 11278L);
+      mapBuilder.put("prohibit-S-R45-RT-RU-Allowed-LU-LT-L45", 11279L);
+      mapBuilder.put("prohibit-L45-Allowed-LU-LT-S-R45-RT-RU", 11280L);
+      mapBuilder.put("prohibit-L45-RU-Allowed-LU-LT-S-R45-RT", 11281L);
+      mapBuilder.put("prohibit-L45-RT-Allowed-LU-LT-S-R45-RU", 11282L);
+      mapBuilder.put("prohibit-L45-RT-RU-Allowed-LU-LT-S-R45", 11283L);
+      mapBuilder.put("prohibit-L45-R45-Allowed-LU-LT-S-RT-RU", 11284L);
+      mapBuilder.put("prohibit-L45-R45-RU-Allowed-LU-LT-S-RT", 11285L);
+      mapBuilder.put("prohibit-L45-R45-RT-Allowed-LU-LT-S-RU", 11286L);
+      mapBuilder.put("prohibit-L45-R45-RT-RU-Allowed-LU-LT-S", 11287L);
+      mapBuilder.put("prohibit-L45-S-Allowed-LU-LT-R45-RT-RU", 11288L);
+      mapBuilder.put("prohibit-L45-S-RU-Allowed-LU-LT-R45-RT", 11289L);
+      mapBuilder.put("prohibit-L45-S-RT-Allowed-LU-LT-R45-RU", 11290L);
+      mapBuilder.put("prohibit-L45-S-RT-RU-Allowed-LU-LT-R45", 11291L);
+      mapBuilder.put("prohibit-L45-S-R45-Allowed-LU-LT-RT-RU", 11292L);
+      mapBuilder.put("prohibit-L45-S-R45-RU-Allowed-LU-LT-RT", 11293L);
+      mapBuilder.put("prohibit-L45-S-R45-RT-Allowed-LU-LT-RU", 11294L);
+      mapBuilder.put("prohibit-L45-S-R45-RT-RU-Allowed-LU-LT", 11295L);
+      mapBuilder.put("prohibit-LT-Allowed-LU-L45-S-R45-RT-RU", 11296L);
+      mapBuilder.put("prohibit-LT-RU-Allowed-LU-L45-S-R45-RT", 11297L);
+      mapBuilder.put("prohibit-LT-RT-Allowed-LU-L45-S-R45-RU", 11298L);
+      mapBuilder.put("prohibit-LT-RT-RU-Allowed-LU-L45-S-R45", 11299L);
+      mapBuilder.put("prohibit-LT-R45-Allowed-LU-L45-S-RT-RU", 11300L);
+      mapBuilder.put("prohibit-LT-R45-RU-Allowed-LU-L45-S-RT", 11301L);
+      mapBuilder.put("prohibit-LT-R45-RT-Allowed-LU-L45-S-RU", 11302L);
+      mapBuilder.put("prohibit-LT-R45-RT-RU-Allowed-LU-L45-S", 11303L);
+      mapBuilder.put("prohibit-LT-S-Allowed-LU-L45-R45-RT-RU", 11304L);
+      mapBuilder.put("prohibit-LT-S-RU-Allowed-LU-L45-R45-RT", 11305L);
+      mapBuilder.put("prohibit-LT-S-RT-Allowed-LU-L45-R45-RU", 11306L);
+      mapBuilder.put("prohibit-LT-S-RT-RU-Allowed-LU-L45-R45", 11307L);
+      mapBuilder.put("prohibit-LT-S-R45-Allowed-LU-L45-RT-RU", 11308L);
+      mapBuilder.put("prohibit-LT-S-R45-RU-Allowed-LU-L45-RT", 11309L);
+      mapBuilder.put("prohibit-LT-S-R45-RT-Allowed-LU-L45-RU", 11310L);
+      mapBuilder.put("prohibit-LT-S-R45-RT-RU-Allowed-LU-L45", 11311L);
+      mapBuilder.put("prohibit-LT-L45-Allowed-LU-S-R45-RT-RU", 11312L);
+      mapBuilder.put("prohibit-LT-L45-RU-Allowed-LU-S-R45-RT", 11313L);
+      mapBuilder.put("prohibit-LT-L45-RT-Allowed-LU-S-R45-RU", 11314L);
+      mapBuilder.put("prohibit-LT-L45-RT-RU-Allowed-LU-S-R45", 11315L);
+      mapBuilder.put("prohibit-LT-L45-R45-Allowed-LU-S-RT-RU", 11316L);
+      mapBuilder.put("prohibit-LT-L45-R45-RU-Allowed-LU-S-RT", 11317L);
+      mapBuilder.put("prohibit-LT-L45-R45-RT-Allowed-LU-S-RU", 11318L);
+      mapBuilder.put("prohibit-LT-L45-R45-RT-RU-Allowed-LU-S", 11319L);
+      mapBuilder.put("prohibit-LT-L45-S-Allowed-LU-R45-RT-RU", 11320L);
+      mapBuilder.put("prohibit-LT-L45-S-RU-Allowed-LU-R45-RT", 11321L);
+      mapBuilder.put("prohibit-LT-L45-S-RT-Allowed-LU-R45-RU", 11322L);
+      mapBuilder.put("prohibit-LT-L45-S-RT-RU-Allowed-LU-R45", 11323L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-Allowed-LU-RT-RU", 11324L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-RU-Allowed-LU-RT", 11325L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-RT-Allowed-LU-RU", 11326L);
+      mapBuilder.put("prohibit-LT-L45-S-R45-RT-RU-Allowed-LU", 11327L);
+      mapBuilder.put("prohibit-LU-Allowed-LT-L45-S-R45-RT-RU", 11328L);
+      mapBuilder.put("prohibit-LU-RU-Allowed-LT-L45-S-R45-RT", 11329L);
+      mapBuilder.put("prohibit-LU-RT-Allowed-LT-L45-S-R45-RU", 11330L);
+      mapBuilder.put("prohibit-LU-RT-RU-Allowed-LT-L45-S-R45", 11331L);
+      mapBuilder.put("prohibit-LU-R45-Allowed-LT-L45-S-RT-RU", 11332L);
+      mapBuilder.put("prohibit-LU-R45-RU-Allowed-LT-L45-S-RT", 11333L);
+      mapBuilder.put("prohibit-LU-R45-RT-Allowed-LT-L45-S-RU", 11334L);
+      mapBuilder.put("prohibit-LU-R45-RT-RU-Allowed-LT-L45-S", 11335L);
+      mapBuilder.put("prohibit-LU-S-Allowed-LT-L45-R45-RT-RU", 11336L);
+      mapBuilder.put("prohibit-LU-S-RU-Allowed-LT-L45-R45-RT", 11337L);
+      mapBuilder.put("prohibit-LU-S-RT-Allowed-LT-L45-R45-RU", 11338L);
+      mapBuilder.put("prohibit-LU-S-RT-RU-Allowed-LT-L45-R45", 11339L);
+      mapBuilder.put("prohibit-LU-S-R45-Allowed-LT-L45-RT-RU", 11340L);
+      mapBuilder.put("prohibit-LU-S-R45-RU-Allowed-LT-L45-RT", 11341L);
+      mapBuilder.put("prohibit-LU-S-R45-RT-Allowed-LT-L45-RU", 11342L);
+      mapBuilder.put("prohibit-LU-S-R45-RT-RU-Allowed-LT-L45", 11343L);
+      mapBuilder.put("prohibit-LU-L45-Allowed-LT-S-R45-RT-RU", 11344L);
+      mapBuilder.put("prohibit-LU-L45-RU-Allowed-LT-S-R45-RT", 11345L);
+      mapBuilder.put("prohibit-LU-L45-RT-Allowed-LT-S-R45-RU", 11346L);
+      mapBuilder.put("prohibit-LU-L45-RT-RU-Allowed-LT-S-R45", 11347L);
+      mapBuilder.put("prohibit-LU-L45-R45-Allowed-LT-S-RT-RU", 11348L);
+      mapBuilder.put("prohibit-LU-L45-R45-RU-Allowed-LT-S-RT", 11349L);
+      mapBuilder.put("prohibit-LU-L45-R45-RT-Allowed-LT-S-RU", 11350L);
+      mapBuilder.put("prohibit-LU-L45-R45-RT-RU-Allowed-LT-S", 11351L);
+      mapBuilder.put("prohibit-LU-L45-S-Allowed-LT-R45-RT-RU", 11352L);
+      mapBuilder.put("prohibit-LU-L45-S-RU-Allowed-LT-R45-RT", 11353L);
+      mapBuilder.put("prohibit-LU-L45-S-RT-Allowed-LT-R45-RU", 11354L);
+      mapBuilder.put("prohibit-LU-L45-S-RT-RU-Allowed-LT-R45", 11355L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-Allowed-LT-RT-RU", 11356L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-RU-Allowed-LT-RT", 11357L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-RT-Allowed-LT-RU", 11358L);
+      mapBuilder.put("prohibit-LU-L45-S-R45-RT-RU-Allowed-LT", 11359L);
+      mapBuilder.put("prohibit-LU-LT-Allowed-L45-S-R45-RT-RU", 11360L);
+      mapBuilder.put("prohibit-LU-LT-RU-Allowed-L45-S-R45-RT", 11361L);
+      mapBuilder.put("prohibit-LU-LT-RT-Allowed-L45-S-R45-RU", 11362L);
+      mapBuilder.put("prohibit-LU-LT-RT-RU-Allowed-L45-S-R45", 11363L);
+      mapBuilder.put("prohibit-LU-LT-R45-Allowed-L45-S-RT-RU", 11364L);
+      mapBuilder.put("prohibit-LU-LT-R45-RU-Allowed-L45-S-RT", 11365L);
+      mapBuilder.put("prohibit-LU-LT-R45-RT-Allowed-L45-S-RU", 11366L);
+      mapBuilder.put("prohibit-LU-LT-R45-RT-RU-Allowed-L45-S", 11367L);
+      mapBuilder.put("prohibit-LU-LT-S-Allowed-L45-R45-RT-RU", 11368L);
+      mapBuilder.put("prohibit-LU-LT-S-RU-Allowed-L45-R45-RT", 11369L);
+      mapBuilder.put("prohibit-LU-LT-S-RT-Allowed-L45-R45-RU", 11370L);
+      mapBuilder.put("prohibit-LU-LT-S-RT-RU-Allowed-L45-R45", 11371L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-Allowed-L45-RT-RU", 11372L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-RU-Allowed-L45-RT", 11373L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-RT-Allowed-L45-RU", 11374L);
+      mapBuilder.put("prohibit-LU-LT-S-R45-RT-RU-Allowed-L45", 11375L);
+      mapBuilder.put("prohibit-LU-LT-L45-Allowed-S-R45-RT-RU", 11376L);
+      mapBuilder.put("prohibit-LU-LT-L45-RU-Allowed-S-R45-RT", 11377L);
+      mapBuilder.put("prohibit-LU-LT-L45-RT-Allowed-S-R45-RU", 11378L);
+      mapBuilder.put("prohibit-LU-LT-L45-RT-RU-Allowed-S-R45", 11379L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-Allowed-S-RT-RU", 11380L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-RU-Allowed-S-RT", 11381L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-RT-Allowed-S-RU", 11382L);
+      mapBuilder.put("prohibit-LU-LT-L45-R45-RT-RU-Allowed-S", 11383L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-Allowed-R45-RT-RU", 11384L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-RU-Allowed-R45-RT", 11385L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-RT-Allowed-R45-RU", 11386L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-RT-RU-Allowed-R45", 11387L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-Allowed-RT-RU", 11388L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-RU-Allowed-RT", 11389L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-RT-Allowed-RU", 11390L);
+      mapBuilder.put("prohibit-LU-LT-L45-S-R45-RT-RU-Allowed-None", 11391L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<ValidManeuvers> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(ValidManeuvers::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

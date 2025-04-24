@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Disasters extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public Disasters() {
     super(0L, 65535L);
@@ -35,5 +42,67 @@ public class Disasters extends Asn1Integer {
   public Disasters(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("flash-flood", 3073L);
+      mapBuilder.put("major-flood", 3074L);
+      mapBuilder.put("reservoir-failure", 3075L);
+      mapBuilder.put("levee-failure", 3076L);
+      mapBuilder.put("tsunami", 3077L);
+      mapBuilder.put("tidal-wave", 3078L);
+      mapBuilder.put("volcanic-eruption", 3079L);
+      mapBuilder.put("ash-fall", 3080L);
+      mapBuilder.put("lava-flow", 3081L);
+      mapBuilder.put("serious-fire", 3082L);
+      mapBuilder.put("forest-fire", 3083L);
+      mapBuilder.put("wildfire", 3084L);
+      mapBuilder.put("building-fire", 3085L);
+      mapBuilder.put("brush-fire", 3086L);
+      mapBuilder.put("grass-fire", 3087L);
+      mapBuilder.put("fire-danger-extreme", 3088L);
+      mapBuilder.put("fire-danger-very-high", 3089L);
+      mapBuilder.put("fire-danger-high", 3090L);
+      mapBuilder.put("fire-danger-medium", 3091L);
+      mapBuilder.put("fire-danger-low", 3092L);
+      mapBuilder.put("earthquake-damage", 3093L);
+      mapBuilder.put("air-crash", 3094L);
+      mapBuilder.put("rail-crash", 3095L);
+      mapBuilder.put("toxic-release", 3096L);
+      mapBuilder.put("toxic-leak", 3097L);
+      mapBuilder.put("radioactive-release", 3098L);
+      mapBuilder.put("radiation-hazard", 3099L);
+      mapBuilder.put("reactor-leakage", 3100L);
+      mapBuilder.put("explosion", 3101L);
+      mapBuilder.put("major-hazardous-materials-fire", 3102L);
+      mapBuilder.put("major-hazardous-materials-release", 3103L);
+      mapBuilder.put("disaster-cleared", 3199L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<Disasters> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Disasters::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class LargeNumbers extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public LargeNumbers() {
     super(0L, 65535L);
@@ -35,5 +42,125 @@ public class LargeNumbers extends Asn1Integer {
   public LargeNumbers(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("n1-16th", 11521L);
+      mapBuilder.put("n1-10th", 11522L);
+      mapBuilder.put("n1-8th", 11523L);
+      mapBuilder.put("n1-4th", 11524L);
+      mapBuilder.put("n1-3rd", 11525L);
+      mapBuilder.put("n1-2", 11526L);
+      mapBuilder.put("n3-4", 11527L);
+      mapBuilder.put("n300", 11531L);
+      mapBuilder.put("n350", 11532L);
+      mapBuilder.put("n400", 11533L);
+      mapBuilder.put("n450", 11534L);
+      mapBuilder.put("n500", 11535L);
+      mapBuilder.put("n550", 11536L);
+      mapBuilder.put("n600", 11537L);
+      mapBuilder.put("n650", 11538L);
+      mapBuilder.put("n700", 11539L);
+      mapBuilder.put("n750", 11540L);
+      mapBuilder.put("n800", 11541L);
+      mapBuilder.put("n850", 11542L);
+      mapBuilder.put("n900", 11543L);
+      mapBuilder.put("n950", 11544L);
+      mapBuilder.put("n1000", 11545L);
+      mapBuilder.put("n1100", 11546L);
+      mapBuilder.put("n1200", 11547L);
+      mapBuilder.put("n1300", 11548L);
+      mapBuilder.put("n1400", 11549L);
+      mapBuilder.put("n1500", 11550L);
+      mapBuilder.put("n1600", 11551L);
+      mapBuilder.put("n1700", 11552L);
+      mapBuilder.put("n1800", 11553L);
+      mapBuilder.put("n1900", 11554L);
+      mapBuilder.put("n2000", 11555L);
+      mapBuilder.put("n2100", 11556L);
+      mapBuilder.put("n2200", 11557L);
+      mapBuilder.put("n2300", 11558L);
+      mapBuilder.put("n2400", 11559L);
+      mapBuilder.put("n2500", 11560L);
+      mapBuilder.put("n2600", 11561L);
+      mapBuilder.put("n2700", 11562L);
+      mapBuilder.put("n2800", 11563L);
+      mapBuilder.put("n2900", 11564L);
+      mapBuilder.put("n3000", 11565L);
+      mapBuilder.put("n3500", 11566L);
+      mapBuilder.put("n4000", 11567L);
+      mapBuilder.put("n4500", 11568L);
+      mapBuilder.put("n5000", 11569L);
+      mapBuilder.put("n5500", 11570L);
+      mapBuilder.put("n6000", 11571L);
+      mapBuilder.put("n6500", 11572L);
+      mapBuilder.put("n7000", 11573L);
+      mapBuilder.put("n7500", 11574L);
+      mapBuilder.put("n8000", 11575L);
+      mapBuilder.put("n8500", 11576L);
+      mapBuilder.put("n9000", 11577L);
+      mapBuilder.put("n9500", 11578L);
+      mapBuilder.put("n10000", 11579L);
+      mapBuilder.put("n11000", 11580L);
+      mapBuilder.put("n12000", 11581L);
+      mapBuilder.put("n13000", 11582L);
+      mapBuilder.put("n14000", 11583L);
+      mapBuilder.put("n15000", 11584L);
+      mapBuilder.put("n16000", 11585L);
+      mapBuilder.put("n17000", 11586L);
+      mapBuilder.put("n18000", 11587L);
+      mapBuilder.put("n19000", 11588L);
+      mapBuilder.put("n20000", 11589L);
+      mapBuilder.put("n21000", 11590L);
+      mapBuilder.put("n22000", 11591L);
+      mapBuilder.put("n23000", 11592L);
+      mapBuilder.put("n24000", 11593L);
+      mapBuilder.put("n25000", 11594L);
+      mapBuilder.put("n26000", 11595L);
+      mapBuilder.put("n27000", 11596L);
+      mapBuilder.put("n28000", 11597L);
+      mapBuilder.put("n29000", 11598L);
+      mapBuilder.put("n30000", 11599L);
+      mapBuilder.put("n35000", 11600L);
+      mapBuilder.put("n40000", 11601L);
+      mapBuilder.put("n45000", 11602L);
+      mapBuilder.put("n50000", 11603L);
+      mapBuilder.put("n55000", 11604L);
+      mapBuilder.put("n60000", 11605L);
+      mapBuilder.put("n65000", 11606L);
+      mapBuilder.put("n70000", 11607L);
+      mapBuilder.put("n75000", 11608L);
+      mapBuilder.put("n80000", 11609L);
+      mapBuilder.put("n85000", 11610L);
+      mapBuilder.put("n90000", 11611L);
+      mapBuilder.put("n95000", 11612L);
+      mapBuilder.put("n100000", 11613L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<LargeNumbers> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(LargeNumbers::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

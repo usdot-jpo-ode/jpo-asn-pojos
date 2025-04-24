@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class StreetSuffixes extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public StreetSuffixes() {
     super(0L, 65535L);
@@ -35,5 +42,180 @@ public class StreetSuffixes extends Asn1Integer {
   public StreetSuffixes(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("alley", 13313L);
+      mapBuilder.put("annex", 13314L);
+      mapBuilder.put("arcade", 13315L);
+      mapBuilder.put("avenue", 13316L);
+      mapBuilder.put("bayoo", 13317L);
+      mapBuilder.put("beach", 13318L);
+      mapBuilder.put("bend", 13319L);
+      mapBuilder.put("bluff", 13320L);
+      mapBuilder.put("bottom", 13321L);
+      mapBuilder.put("boulevard", 13322L);
+      mapBuilder.put("branch", 13323L);
+      mapBuilder.put("nBridge", 13324L);
+      mapBuilder.put("brook", 13325L);
+      mapBuilder.put("burg", 13326L);
+      mapBuilder.put("bypass", 13327L);
+      mapBuilder.put("camp", 13328L);
+      mapBuilder.put("canyon", 13329L);
+      mapBuilder.put("cape", 13330L);
+      mapBuilder.put("causeway", 13331L);
+      mapBuilder.put("nCenter", 13332L);
+      mapBuilder.put("circle", 13333L);
+      mapBuilder.put("cliff", 13334L);
+      mapBuilder.put("club", 13335L);
+      mapBuilder.put("common", 13336L);
+      mapBuilder.put("corner", 13337L);
+      mapBuilder.put("course", 13338L);
+      mapBuilder.put("court", 13339L);
+      mapBuilder.put("cove", 13340L);
+      mapBuilder.put("creek", 13341L);
+      mapBuilder.put("crescent", 13342L);
+      mapBuilder.put("crest", 13343L);
+      mapBuilder.put("nCrossing", 13344L);
+      mapBuilder.put("crossroad", 13345L);
+      mapBuilder.put("curve", 13346L);
+      mapBuilder.put("dale", 13347L);
+      mapBuilder.put("nDam", 13348L);
+      mapBuilder.put("divide", 13349L);
+      mapBuilder.put("drive", 13350L);
+      mapBuilder.put("estate", 13351L);
+      mapBuilder.put("expressway", 13352L);
+      mapBuilder.put("extension", 13353L);
+      mapBuilder.put("fall", 13354L);
+      mapBuilder.put("nFerry", 13355L);
+      mapBuilder.put("field", 13356L);
+      mapBuilder.put("flat", 13357L);
+      mapBuilder.put("ford", 13358L);
+      mapBuilder.put("forest", 13359L);
+      mapBuilder.put("forge", 13360L);
+      mapBuilder.put("fork", 13361L);
+      mapBuilder.put("fort", 13362L);
+      mapBuilder.put("nFreeway", 13363L);
+      mapBuilder.put("garden", 13364L);
+      mapBuilder.put("gateway", 13365L);
+      mapBuilder.put("glen", 13366L);
+      mapBuilder.put("green", 13367L);
+      mapBuilder.put("grove", 13368L);
+      mapBuilder.put("harbor", 13369L);
+      mapBuilder.put("haven", 13370L);
+      mapBuilder.put("heights", 13371L);
+      mapBuilder.put("highway", 13372L);
+      mapBuilder.put("nHill", 13373L);
+      mapBuilder.put("hollow", 13374L);
+      mapBuilder.put("inlet", 13375L);
+      mapBuilder.put("nIsland", 13376L);
+      mapBuilder.put("isle", 13377L);
+      mapBuilder.put("nJunction", 13378L);
+      mapBuilder.put("key", 13379L);
+      mapBuilder.put("knoll", 13380L);
+      mapBuilder.put("lake", 13381L);
+      mapBuilder.put("land", 13382L);
+      mapBuilder.put("landing", 13383L);
+      mapBuilder.put("nLane", 13384L);
+      mapBuilder.put("light", 13385L);
+      mapBuilder.put("loaf", 13386L);
+      mapBuilder.put("lock", 13387L);
+      mapBuilder.put("lodge", 13388L);
+      mapBuilder.put("loop", 13389L);
+      mapBuilder.put("mall", 13390L);
+      mapBuilder.put("manor", 13391L);
+      mapBuilder.put("meadow", 13392L);
+      mapBuilder.put("mews", 13393L);
+      mapBuilder.put("mill", 13394L);
+      mapBuilder.put("mission", 13395L);
+      mapBuilder.put("motorway", 13396L);
+      mapBuilder.put("mount", 13397L);
+      mapBuilder.put("mountain", 13398L);
+      mapBuilder.put("neck", 13399L);
+      mapBuilder.put("orchard", 13400L);
+      mapBuilder.put("oval", 13401L);
+      mapBuilder.put("nOverpass", 13402L);
+      mapBuilder.put("park", 13403L);
+      mapBuilder.put("parkway", 13404L);
+      mapBuilder.put("nPass", 13405L);
+      mapBuilder.put("passage", 13406L);
+      mapBuilder.put("path", 13407L);
+      mapBuilder.put("pike", 13408L);
+      mapBuilder.put("pine", 13409L);
+      mapBuilder.put("plains", 13410L);
+      mapBuilder.put("plaza", 13411L);
+      mapBuilder.put("point", 13412L);
+      mapBuilder.put("port", 13413L);
+      mapBuilder.put("prairie", 13414L);
+      mapBuilder.put("radial", 13415L);
+      mapBuilder.put("ramp", 13416L);
+      mapBuilder.put("ranch", 13417L);
+      mapBuilder.put("rapid", 13418L);
+      mapBuilder.put("rest", 13419L);
+      mapBuilder.put("ridge", 13420L);
+      mapBuilder.put("river", 13421L);
+      mapBuilder.put("nRoad", 13422L);
+      mapBuilder.put("route", 13423L);
+      mapBuilder.put("row", 13424L);
+      mapBuilder.put("rue", 13425L);
+      mapBuilder.put("run", 13426L);
+      mapBuilder.put("shoal", 13427L);
+      mapBuilder.put("shore", 13428L);
+      mapBuilder.put("skyway", 13429L);
+      mapBuilder.put("spring", 13430L);
+      mapBuilder.put("nSpur", 13431L);
+      mapBuilder.put("square", 13432L);
+      mapBuilder.put("nStation", 13433L);
+      mapBuilder.put("stravenue", 13434L);
+      mapBuilder.put("stream", 13435L);
+      mapBuilder.put("street", 13436L);
+      mapBuilder.put("summit", 13437L);
+      mapBuilder.put("terrace", 13438L);
+      mapBuilder.put("throughway", 13439L);
+      mapBuilder.put("trace", 13440L);
+      mapBuilder.put("nTrack", 13441L);
+      mapBuilder.put("trafficway", 13442L);
+      mapBuilder.put("nTrail", 13443L);
+      mapBuilder.put("nTunnel", 13444L);
+      mapBuilder.put("turnpike", 13445L);
+      mapBuilder.put("nUnderpass", 13446L);
+      mapBuilder.put("union", 13447L);
+      mapBuilder.put("valley", 13448L);
+      mapBuilder.put("viaduct", 13449L);
+      mapBuilder.put("view", 13450L);
+      mapBuilder.put("village", 13451L);
+      mapBuilder.put("ville", 13452L);
+      mapBuilder.put("vista", 13453L);
+      mapBuilder.put("nWalk", 13454L);
+      mapBuilder.put("wall", 13455L);
+      mapBuilder.put("way", 13456L);
+      mapBuilder.put("well", 13457L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<StreetSuffixes> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(StreetSuffixes::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

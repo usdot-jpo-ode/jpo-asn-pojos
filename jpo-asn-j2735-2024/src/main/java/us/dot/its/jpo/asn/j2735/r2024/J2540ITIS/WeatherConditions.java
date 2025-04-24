@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WeatherConditions extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public WeatherConditions() {
     super(0L, 65535L);
@@ -35,5 +42,63 @@ public class WeatherConditions extends Asn1Integer {
   public WeatherConditions(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("overcast", 4609L);
+      mapBuilder.put("cloudy", 4610L);
+      mapBuilder.put("mostly-cloudy", 4611L);
+      mapBuilder.put("partly-cloudy", 4612L);
+      mapBuilder.put("partly-sunny", 4613L);
+      mapBuilder.put("mostly-sunny", 4614L);
+      mapBuilder.put("sunny", 4615L);
+      mapBuilder.put("fair-skies", 4616L);
+      mapBuilder.put("clear-skies", 4617L);
+      mapBuilder.put("mostly-clear", 4618L);
+      mapBuilder.put("mostly-dry", 4619L);
+      mapBuilder.put("dry", 4620L);
+      mapBuilder.put("uV-index-very-high", 4621L);
+      mapBuilder.put("uV-index-high", 4622L);
+      mapBuilder.put("uV-index-moderate", 4623L);
+      mapBuilder.put("uV-index-low", 4624L);
+      mapBuilder.put("uV-index-very-low", 4625L);
+      mapBuilder.put("barometric-pressure", 4626L);
+      mapBuilder.put("ozone-alert", 4627L);
+      mapBuilder.put("lighting-unknown", 4628L);
+      mapBuilder.put("artificial-exterior-light", 4629L);
+      mapBuilder.put("artificial-interior-light", 4630L);
+      mapBuilder.put("darkness", 4631L);
+      mapBuilder.put("dusk", 4632L);
+      mapBuilder.put("dawn", 4633L);
+      mapBuilder.put("moonlight", 4634L);
+      mapBuilder.put("daylight", 4635L);
+      mapBuilder.put("weather-forecast-withdrawn", 4735L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<WeatherConditions> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(WeatherConditions::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

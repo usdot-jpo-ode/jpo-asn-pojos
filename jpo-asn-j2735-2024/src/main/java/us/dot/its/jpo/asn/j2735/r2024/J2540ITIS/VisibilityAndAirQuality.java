@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class VisibilityAndAirQuality extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public VisibilityAndAirQuality() {
     super(0L, 65535L);
@@ -35,5 +42,69 @@ public class VisibilityAndAirQuality extends Asn1Integer {
   public VisibilityAndAirQuality(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("dense-fog", 5377L);
+      mapBuilder.put("fog", 5378L);
+      mapBuilder.put("patchy-fog", 5379L);
+      mapBuilder.put("freezing-fog", 5380L);
+      mapBuilder.put("ice-fog", 5405L);
+      mapBuilder.put("mist", 5381L);
+      mapBuilder.put("haze", 5382L);
+      mapBuilder.put("visibility-reduced", 5383L);
+      mapBuilder.put("visibility-blocked", 5404L);
+      mapBuilder.put("white-out", 5384L);
+      mapBuilder.put("blowing-snow", 5385L);
+      mapBuilder.put("smoke-hazard", 5386L);
+      mapBuilder.put("spray-hazard", 5387L);
+      mapBuilder.put("low-sun-glare", 5388L);
+      mapBuilder.put("snow-glare", 5389L);
+      mapBuilder.put("blowing-dust", 5390L);
+      mapBuilder.put("blowing-sand", 5391L);
+      mapBuilder.put("dust-storms", 5392L);
+      mapBuilder.put("sandstorms", 5393L);
+      mapBuilder.put("air-quality-good", 5394L);
+      mapBuilder.put("air-quality-fair", 5395L);
+      mapBuilder.put("air-quality-poor", 5396L);
+      mapBuilder.put("air-quality-very-poor", 5397L);
+      mapBuilder.put("severe-exhaust-pollution", 5398L);
+      mapBuilder.put("smog-alert", 5399L);
+      mapBuilder.put("pollen-count-high", 5400L);
+      mapBuilder.put("pollen-count-medium", 5401L);
+      mapBuilder.put("pollen-count-low", 5402L);
+      mapBuilder.put("swarms-of-insects", 5403L);
+      mapBuilder.put("fog-clearing", 5499L);
+      mapBuilder.put("visibility-improved", 5500L);
+      mapBuilder.put("fog-forecast-withdrawn", 5501L);
+      mapBuilder.put("pollution-alert-ended", 5502L);
+      mapBuilder.put("air-quality-improved", 5503L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<VisibilityAndAirQuality> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(VisibilityAndAirQuality::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

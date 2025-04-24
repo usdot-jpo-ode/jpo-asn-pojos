@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class TravelerGroupAffected extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public TravelerGroupAffected() {
     super(0L, 65535L);
@@ -35,5 +42,50 @@ public class TravelerGroupAffected extends Asn1Integer {
   public TravelerGroupAffected(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("through-traffic", 9473L);
+      mapBuilder.put("holiday-traffic", 9474L);
+      mapBuilder.put("residents", 9475L);
+      mapBuilder.put("visitors", 9476L);
+      mapBuilder.put("long-distance-traffic", 9477L);
+      mapBuilder.put("local-traffic", 9478L);
+      mapBuilder.put("regional-traffic", 9479L);
+      mapBuilder.put("arrivals", 9480L);
+      mapBuilder.put("departures", 9481L);
+      mapBuilder.put("airline-travelers", 9482L);
+      mapBuilder.put("commuter-airline-travelers", 9483L);
+      mapBuilder.put("domestic-airline-travelers", 9484L);
+      mapBuilder.put("international-airline-travelers", 9485L);
+      mapBuilder.put("pedestrians", 9486L);
+      mapBuilder.put("bicyclists", 9487L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<TravelerGroupAffected> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(TravelerGroupAffected::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

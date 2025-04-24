@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class RegulatoryAndWarningSigns extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public RegulatoryAndWarningSigns() {
     super(0L, 65535L);
@@ -35,5 +42,77 @@ public class RegulatoryAndWarningSigns extends Asn1Integer {
   public RegulatoryAndWarningSigns(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("regulatory-sign", 12289L);
+      mapBuilder.put("warning-sign", 12290L);
+      mapBuilder.put("information-sign", 12291L);
+      mapBuilder.put("construction-sign", 12292L);
+      mapBuilder.put("guide-sign", 12293L);
+      mapBuilder.put("stop", 12294L);
+      mapBuilder.put("yield", 12295L);
+      mapBuilder.put("caution", 12330L);
+      mapBuilder.put("temporary", 12331L);
+      mapBuilder.put("to-oncoming-traffic", 12296L);
+      mapBuilder.put("four-way", 12297L);
+      mapBuilder.put("all-way", 12298L);
+      mapBuilder.put("one-way", 12329L);
+      mapBuilder.put("zone", 12299L);
+      mapBuilder.put("narrows", 12300L);
+      mapBuilder.put("widens", 12301L);
+      mapBuilder.put("reduced", 12302L);
+      mapBuilder.put("combined", 12303L);
+      mapBuilder.put("minimum", 12304L);
+      mapBuilder.put("maximum", 12305L);
+      mapBuilder.put("divided-road", 12306L);
+      mapBuilder.put("double-arrow", 12307L);
+      mapBuilder.put("dead-end", 12308L);
+      mapBuilder.put("no-outlet", 12309L);
+      mapBuilder.put("wrong-way", 12310L);
+      mapBuilder.put("do-not-enter", 12314L);
+      mapBuilder.put("nDetour", 12312L);
+      mapBuilder.put("chevron", 12313L);
+      mapBuilder.put("t-intersection-to-the-side", 12315L);
+      mapBuilder.put("t-intersection-oncoming", 12316L);
+      mapBuilder.put("y-intersection-to-the-side", 12317L);
+      mapBuilder.put("y-intersection-oncoming", 12318L);
+      mapBuilder.put("four-way-divided-highway-crossing", 12319L);
+      mapBuilder.put("t-way-divided-highway-crossing", 12320L);
+      mapBuilder.put("light-rail-divided-highway-crossing", 12321L);
+      mapBuilder.put("light-rail-t-divided-highway-crossing", 12322L);
+      mapBuilder.put("side-road-to-right", 12323L);
+      mapBuilder.put("side-road-to-left", 12324L);
+      mapBuilder.put("side-road-to-right-at-angle", 12325L);
+      mapBuilder.put("side-road-to-left-at-angle", 12326L);
+      mapBuilder.put("entering-roadway-merge", 12327L);
+      mapBuilder.put("entering-roadway-added-lane", 12328L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<RegulatoryAndWarningSigns> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(RegulatoryAndWarningSigns::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

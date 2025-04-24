@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class AccidentsAndIncidents extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public AccidentsAndIncidents() {
     super(0L, 65535L);
@@ -35,5 +42,87 @@ public class AccidentsAndIncidents extends Asn1Integer {
   public AccidentsAndIncidents(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("accident", 513L);
+      mapBuilder.put("serious-accident", 514L);
+      mapBuilder.put("injury-accident", 515L);
+      mapBuilder.put("minor-accident", 516L);
+      mapBuilder.put("multi-vehicle-accident", 517L);
+      mapBuilder.put("numerous-accidents", 518L);
+      mapBuilder.put("accident-involving-a-bicycle", 519L);
+      mapBuilder.put("accident-involving-a-bus", 520L);
+      mapBuilder.put("accident-involving-a-motorcycle", 521L);
+      mapBuilder.put("accident-involving-a-pedestrian", 522L);
+      mapBuilder.put("accident-involving-a-train", 523L);
+      mapBuilder.put("accident-involving-a-truck", 524L);
+      mapBuilder.put("accident-involving-a-semi-trailer", 562L);
+      mapBuilder.put("accident-involving-hazardous-materials", 525L);
+      mapBuilder.put("earlier-accident", 526L);
+      mapBuilder.put("medical-emergency", 527L);
+      mapBuilder.put("secondary-accident", 528L);
+      mapBuilder.put("rescue-and-recovery-work-REMOVED", 529L);
+      mapBuilder.put("accident-investigation-work", 530L);
+      mapBuilder.put("incident", 531L);
+      mapBuilder.put("stalled-vehicle", 532L);
+      mapBuilder.put("abandoned-vehicle", 533L);
+      mapBuilder.put("disabled-vehicle", 534L);
+      mapBuilder.put("disabled-truck", 535L);
+      mapBuilder.put("disabled-semi-trailer", 536L);
+      mapBuilder.put("disabled-bus", 537L);
+      mapBuilder.put("disabled-train", 538L);
+      mapBuilder.put("vehicle-spun-out", 539L);
+      mapBuilder.put("vehicle-on-fire", 540L);
+      mapBuilder.put("vehicle-in-water", 541L);
+      mapBuilder.put("vehicles-slowing-to-look-at-accident", 542L);
+      mapBuilder.put("jackknifed-semi-trailer", 543L);
+      mapBuilder.put("jackknifed-trailer-home", 544L);
+      mapBuilder.put("jackknifed-trailer", 545L);
+      mapBuilder.put("spillage-occurring-from-moving-vehicle", 546L);
+      mapBuilder.put("acid-spill", 547L);
+      mapBuilder.put("chemical-spill", 548L);
+      mapBuilder.put("fuel-spill", 549L);
+      mapBuilder.put("hazardous-materials-spill", 550L);
+      mapBuilder.put("oil-spill", 551L);
+      mapBuilder.put("spilled-load", 552L);
+      mapBuilder.put("toxic-spill", 553L);
+      mapBuilder.put("overturned-vehicle", 554L);
+      mapBuilder.put("overturned-truck", 555L);
+      mapBuilder.put("overturned-semi-trailer", 556L);
+      mapBuilder.put("overturned-bus", 557L);
+      mapBuilder.put("derailed-train", 558L);
+      mapBuilder.put("stuck-vehicle", 559L);
+      mapBuilder.put("truck-stuck-under-bridge", 560L);
+      mapBuilder.put("bus-stuck-under-bridge", 561L);
+      mapBuilder.put("accident-cleared", 638L);
+      mapBuilder.put("incident-cleared", 639L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<AccidentsAndIncidents> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(AccidentsAndIncidents::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

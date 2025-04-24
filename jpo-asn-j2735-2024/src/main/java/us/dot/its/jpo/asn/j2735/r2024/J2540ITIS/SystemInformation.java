@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class SystemInformation extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public SystemInformation() {
     super(0L, 65535L);
@@ -35,5 +42,51 @@ public class SystemInformation extends Asn1Integer {
   public SystemInformation(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("information-available-on-radio", 4353L);
+      mapBuilder.put("information-available-on-TV", 4354L);
+      mapBuilder.put("call-to-get-information", 4355L);
+      mapBuilder.put("information-available-via-Internet", 4356L);
+      mapBuilder.put("test-message", 4357L);
+      mapBuilder.put("no-information-available", 4358L);
+      mapBuilder.put("null-description", 4359L);
+      mapBuilder.put("police-assistance", 4361L);
+      mapBuilder.put("police-monitor-CB", 4362L);
+      mapBuilder.put("emergency-notification", 4363L);
+      mapBuilder.put("in-emergency-dial-911", 4364L);
+      mapBuilder.put("travel-Info-call-511", 4365L);
+      mapBuilder.put("car-pool-information", 4366L);
+      mapBuilder.put("information-service-resumed", 4478L);
+      mapBuilder.put("information-service-is-being-suspended", 4360L);
+      mapBuilder.put("message-canceled", 4479L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<SystemInformation> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(SystemInformation::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WarningAdvice extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public WarningAdvice() {
     super(0L, 65535L);
@@ -35,5 +42,85 @@ public class WarningAdvice extends Asn1Integer {
   public WarningAdvice(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("risk", 6913L);
+      mapBuilder.put("watch", 6914L);
+      mapBuilder.put("warning", 6915L);
+      mapBuilder.put("alert", 6916L);
+      mapBuilder.put("danger", 6917L);
+      mapBuilder.put("danger-of-explosion", 6918L);
+      mapBuilder.put("danger-of-fire", 6919L);
+      mapBuilder.put("extra-police-patrols-in-operation", 6920L);
+      mapBuilder.put("look-out-for-vehicles-stopped-under-bridges", 6921L);
+      mapBuilder.put("increased-risk-of-accident", 6922L);
+      mapBuilder.put("rescue-and-recovery-work-in-progress-at-sceneREMOVED", 6923L);
+      mapBuilder.put("police-at-scene", 6924L);
+      mapBuilder.put("emergency-vehicles-at-scene", 6925L);
+      mapBuilder.put("traffic-being-directed-around-accident-area", 6926L);
+      mapBuilder.put("police-directing-traffic", 6927L);
+      mapBuilder.put("rescue-workers-directing-traffic", 6928L);
+      mapBuilder.put("repairs-in-progress", 6929L);
+      mapBuilder.put("pilot-car-in-operation", 6930L);
+      mapBuilder.put("look-out-for-flagger", 6931L);
+      mapBuilder.put("look-out-for-workers", 6952L);
+      mapBuilder.put("police-checks-in-operation", 6932L);
+      mapBuilder.put("truck-check-point", 6937L);
+      mapBuilder.put("lockdown", 6935L);
+      mapBuilder.put("security-check-point", 6936L);
+      mapBuilder.put("single-occupancy-vehicle-check-point", 6938L);
+      mapBuilder.put("mandatory-speed-limit-in-force", 6933L);
+      mapBuilder.put("speed-limit-in-force-for-heavy-vehicles", 6934L);
+      mapBuilder.put("behind-you", 6950L);
+      mapBuilder.put("ride-with-traffic", 6953L);
+      mapBuilder.put("prepare-to-evacuate-area", 6954L);
+      mapBuilder.put("avoid", 6955L);
+      mapBuilder.put("look", 6939L);
+      mapBuilder.put("photo-enforced", 6940L);
+      mapBuilder.put("traffic-signs", 6951L);
+      mapBuilder.put("traffic-laws", 6941L);
+      mapBuilder.put("use-low-gear", 6942L);
+      mapBuilder.put("bridge-ices-before-road", 6943L);
+      mapBuilder.put("speed-checked-by-radar", 6944L);
+      mapBuilder.put("speed-checked-by-aircraft", 6945L);
+      mapBuilder.put("fines", 6946L);
+      mapBuilder.put("fines-higher", 6947L);
+      mapBuilder.put("fines-doubled", 6948L);
+      mapBuilder.put("fines-tripled", 6949L);
+      mapBuilder.put("evacuation-canceled", 7033L);
+      mapBuilder.put("warning-canceled", 7034L);
+      mapBuilder.put("watch-canceled", 7035L);
+      mapBuilder.put("alert-canceled", 7036L);
+      mapBuilder.put("ended", 7037L);
+      mapBuilder.put("cleared", 7038L);
+      mapBuilder.put("canceled", 7039L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<WarningAdvice> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(WarningAdvice::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

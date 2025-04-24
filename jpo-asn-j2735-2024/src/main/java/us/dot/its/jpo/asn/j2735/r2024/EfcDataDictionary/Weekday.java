@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Weekday extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public Weekday() {
     super(0L, 7L);
@@ -35,5 +42,43 @@ public class Weekday extends Asn1Integer {
   public Weekday(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("reserved", 0L);
+      mapBuilder.put("monday", 1L);
+      mapBuilder.put("tuesday", 2L);
+      mapBuilder.put("wednesday", 3L);
+      mapBuilder.put("thursday", 4L);
+      mapBuilder.put("friday", 5L);
+      mapBuilder.put("saturday", 6L);
+      mapBuilder.put("sunday", 7L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<Weekday> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Weekday::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

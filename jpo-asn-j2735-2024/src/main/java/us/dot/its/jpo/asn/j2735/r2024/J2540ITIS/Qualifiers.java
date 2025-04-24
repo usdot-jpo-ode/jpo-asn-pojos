@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Qualifiers extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public Qualifiers() {
     super(0L, 65535L);
@@ -35,5 +42,122 @@ public class Qualifiers extends Asn1Integer {
   public Qualifiers(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("above", 7681L);
+      mapBuilder.put("below", 7682L);
+      mapBuilder.put("in", 7683L);
+      mapBuilder.put("around", 7684L);
+      mapBuilder.put("after", 7685L);
+      mapBuilder.put("before", 7686L);
+      mapBuilder.put("at", 7687L);
+      mapBuilder.put("on", 7688L);
+      mapBuilder.put("near", 7689L);
+      mapBuilder.put("from-the", 7690L);
+      mapBuilder.put("terminal", 7691L);
+      mapBuilder.put("falling-slowly", 7692L);
+      mapBuilder.put("falling", 7693L);
+      mapBuilder.put("falling-quickly", 7694L);
+      mapBuilder.put("rising-slowly", 7695L);
+      mapBuilder.put("rising", 7696L);
+      mapBuilder.put("rising-quickly", 7697L);
+      mapBuilder.put("steady", 7698L);
+      mapBuilder.put("likely", 7699L);
+      mapBuilder.put("changing-to", 7700L);
+      mapBuilder.put("mostly", 7701L);
+      mapBuilder.put("partly", 7702L);
+      mapBuilder.put("minus", 7703L);
+      mapBuilder.put("weather-ended", 7704L);
+      mapBuilder.put("expected", 7705L);
+      mapBuilder.put("low", 7706L);
+      mapBuilder.put("mid", 7707L);
+      mapBuilder.put("high", 7708L);
+      mapBuilder.put("upper", 7709L);
+      mapBuilder.put("middle", 7765L);
+      mapBuilder.put("lower", 7764L);
+      mapBuilder.put("unseasonably", 7710L);
+      mapBuilder.put("reported", 7711L);
+      mapBuilder.put("advice", 7712L);
+      mapBuilder.put("due-to", 7713L);
+      mapBuilder.put("proceed-to", 7714L);
+      mapBuilder.put("transferred-to", 7715L);
+      mapBuilder.put("use", 7716L);
+      mapBuilder.put("affecting", 7717L);
+      mapBuilder.put("blocking", 7718L);
+      mapBuilder.put("connecting", 7719L);
+      mapBuilder.put("finished", 7720L);
+      mapBuilder.put("for", 7721L);
+      mapBuilder.put("or", 7722L);
+      mapBuilder.put("and", 7723L);
+      mapBuilder.put("later", 7724L);
+      mapBuilder.put("level", 7725L);
+      mapBuilder.put("shortly", 7726L);
+      mapBuilder.put("soon", 7727L);
+      mapBuilder.put("service", 7728L);
+      mapBuilder.put("graffiti", 7733L);
+      mapBuilder.put("damaged", 7729L);
+      mapBuilder.put("out-of-order", 7730L);
+      mapBuilder.put("on-State-right-of-way", 7732L);
+      mapBuilder.put("found-property", 7734L);
+      mapBuilder.put("vandalism", 7731L);
+      mapBuilder.put("major", 7766L);
+      mapBuilder.put("minor", 7767L);
+      mapBuilder.put("begin-time", 7735L);
+      mapBuilder.put("added", 7736L);
+      mapBuilder.put("end-time", 7737L);
+      mapBuilder.put("no", 7738L);
+      mapBuilder.put("do-not", 7739L);
+      mapBuilder.put("block", 7740L);
+      mapBuilder.put("except", 7741L);
+      mapBuilder.put("day", 7742L);
+      mapBuilder.put("night", 7743L);
+      mapBuilder.put("any-time", 7744L);
+      mapBuilder.put("has", 7745L);
+      mapBuilder.put("must", 7757L);
+      mapBuilder.put("may-have", 7746L);
+      mapBuilder.put("may-exceed", 7759L);
+      mapBuilder.put("only", 7747L);
+      mapBuilder.put("lifted", 7748L);
+      mapBuilder.put("empty", 7749L);
+      mapBuilder.put("turning", 7750L);
+      mapBuilder.put("u-turn", 7751L);
+      mapBuilder.put("wait-for", 7752L);
+      mapBuilder.put("when-flashing", 7753L);
+      mapBuilder.put("duration", 7754L);
+      mapBuilder.put("cross", 7755L);
+      mapBuilder.put("when-wet", 7756L);
+      mapBuilder.put("oncoming", 7758L);
+      mapBuilder.put("to-request", 7760L);
+      mapBuilder.put("exempt", 7761L);
+      mapBuilder.put("skewed", 7762L);
+      mapBuilder.put("when-children-are-present", 7763L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<Qualifiers> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Qualifiers::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

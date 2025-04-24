@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class SmallNumbers extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public SmallNumbers() {
     super(0L, 65535L);
@@ -35,5 +42,290 @@ public class SmallNumbers extends Asn1Integer {
   public SmallNumbers(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("n1", 12545L);
+      mapBuilder.put("n2", 12546L);
+      mapBuilder.put("n3", 12547L);
+      mapBuilder.put("n4", 12548L);
+      mapBuilder.put("n5", 12549L);
+      mapBuilder.put("n6", 12550L);
+      mapBuilder.put("n7", 12551L);
+      mapBuilder.put("n8", 12552L);
+      mapBuilder.put("n9", 12553L);
+      mapBuilder.put("n10", 12554L);
+      mapBuilder.put("n11", 12555L);
+      mapBuilder.put("n12", 12556L);
+      mapBuilder.put("n13", 12557L);
+      mapBuilder.put("n14", 12558L);
+      mapBuilder.put("n15", 12559L);
+      mapBuilder.put("n16", 12560L);
+      mapBuilder.put("n17", 12561L);
+      mapBuilder.put("n18", 12562L);
+      mapBuilder.put("n19", 12563L);
+      mapBuilder.put("n20", 12564L);
+      mapBuilder.put("n21", 12565L);
+      mapBuilder.put("n22", 12566L);
+      mapBuilder.put("n23", 12567L);
+      mapBuilder.put("n24", 12568L);
+      mapBuilder.put("n25", 12569L);
+      mapBuilder.put("n26", 12570L);
+      mapBuilder.put("n27", 12571L);
+      mapBuilder.put("n28", 12572L);
+      mapBuilder.put("n29", 12573L);
+      mapBuilder.put("n30", 12574L);
+      mapBuilder.put("n31", 12575L);
+      mapBuilder.put("n32", 12576L);
+      mapBuilder.put("n33", 12577L);
+      mapBuilder.put("n34", 12578L);
+      mapBuilder.put("n35", 12579L);
+      mapBuilder.put("n36", 12580L);
+      mapBuilder.put("n37", 12581L);
+      mapBuilder.put("n38", 12582L);
+      mapBuilder.put("n39", 12583L);
+      mapBuilder.put("n40", 12584L);
+      mapBuilder.put("n41", 12585L);
+      mapBuilder.put("n42", 12586L);
+      mapBuilder.put("n43", 12587L);
+      mapBuilder.put("n44", 12588L);
+      mapBuilder.put("n45", 12589L);
+      mapBuilder.put("n46", 12590L);
+      mapBuilder.put("n47", 12591L);
+      mapBuilder.put("n48", 12592L);
+      mapBuilder.put("n49", 12593L);
+      mapBuilder.put("n50", 12594L);
+      mapBuilder.put("n51", 12595L);
+      mapBuilder.put("n52", 12596L);
+      mapBuilder.put("n53", 12597L);
+      mapBuilder.put("n54", 12598L);
+      mapBuilder.put("n55", 12599L);
+      mapBuilder.put("n56", 12600L);
+      mapBuilder.put("n57", 12601L);
+      mapBuilder.put("n58", 12602L);
+      mapBuilder.put("n59", 12603L);
+      mapBuilder.put("n60", 12604L);
+      mapBuilder.put("n61", 12605L);
+      mapBuilder.put("n62", 12606L);
+      mapBuilder.put("n63", 12607L);
+      mapBuilder.put("n64", 12608L);
+      mapBuilder.put("n65", 12609L);
+      mapBuilder.put("n66", 12610L);
+      mapBuilder.put("n67", 12611L);
+      mapBuilder.put("n68", 12612L);
+      mapBuilder.put("n69", 12613L);
+      mapBuilder.put("n70", 12614L);
+      mapBuilder.put("n71", 12615L);
+      mapBuilder.put("n72", 12616L);
+      mapBuilder.put("n73", 12617L);
+      mapBuilder.put("n74", 12618L);
+      mapBuilder.put("n75", 12619L);
+      mapBuilder.put("n76", 12620L);
+      mapBuilder.put("n77", 12621L);
+      mapBuilder.put("n78", 12622L);
+      mapBuilder.put("n79", 12623L);
+      mapBuilder.put("n80", 12624L);
+      mapBuilder.put("n81", 12625L);
+      mapBuilder.put("n82", 12626L);
+      mapBuilder.put("n83", 12627L);
+      mapBuilder.put("n84", 12628L);
+      mapBuilder.put("n85", 12629L);
+      mapBuilder.put("n86", 12630L);
+      mapBuilder.put("n87", 12631L);
+      mapBuilder.put("n88", 12632L);
+      mapBuilder.put("n89", 12633L);
+      mapBuilder.put("n90", 12634L);
+      mapBuilder.put("n91", 12635L);
+      mapBuilder.put("n92", 12636L);
+      mapBuilder.put("n93", 12637L);
+      mapBuilder.put("n94", 12638L);
+      mapBuilder.put("n95", 12639L);
+      mapBuilder.put("n96", 12640L);
+      mapBuilder.put("n97", 12641L);
+      mapBuilder.put("n98", 12642L);
+      mapBuilder.put("n99", 12643L);
+      mapBuilder.put("n100", 12644L);
+      mapBuilder.put("n101", 12645L);
+      mapBuilder.put("n102", 12646L);
+      mapBuilder.put("n103", 12647L);
+      mapBuilder.put("n104", 12648L);
+      mapBuilder.put("n105", 12649L);
+      mapBuilder.put("n106", 12650L);
+      mapBuilder.put("n107", 12651L);
+      mapBuilder.put("n108", 12652L);
+      mapBuilder.put("n109", 12653L);
+      mapBuilder.put("n110", 12654L);
+      mapBuilder.put("n111", 12655L);
+      mapBuilder.put("n112", 12656L);
+      mapBuilder.put("n113", 12657L);
+      mapBuilder.put("n114", 12658L);
+      mapBuilder.put("n115", 12659L);
+      mapBuilder.put("n116", 12660L);
+      mapBuilder.put("n117", 12661L);
+      mapBuilder.put("n118", 12662L);
+      mapBuilder.put("n119", 12663L);
+      mapBuilder.put("n120", 12664L);
+      mapBuilder.put("n121", 12665L);
+      mapBuilder.put("n122", 12666L);
+      mapBuilder.put("n123", 12667L);
+      mapBuilder.put("n124", 12668L);
+      mapBuilder.put("n125", 12669L);
+      mapBuilder.put("n126", 12670L);
+      mapBuilder.put("n127", 12671L);
+      mapBuilder.put("n128", 12672L);
+      mapBuilder.put("n129", 12673L);
+      mapBuilder.put("n130", 12674L);
+      mapBuilder.put("n131", 12675L);
+      mapBuilder.put("n132", 12676L);
+      mapBuilder.put("n133", 12677L);
+      mapBuilder.put("n134", 12678L);
+      mapBuilder.put("n135", 12679L);
+      mapBuilder.put("n136", 12680L);
+      mapBuilder.put("n137", 12681L);
+      mapBuilder.put("n138", 12682L);
+      mapBuilder.put("n139", 12683L);
+      mapBuilder.put("n140", 12684L);
+      mapBuilder.put("n141", 12685L);
+      mapBuilder.put("n142", 12686L);
+      mapBuilder.put("n143", 12687L);
+      mapBuilder.put("n144", 12688L);
+      mapBuilder.put("n145", 12689L);
+      mapBuilder.put("n146", 12690L);
+      mapBuilder.put("n147", 12691L);
+      mapBuilder.put("n148", 12692L);
+      mapBuilder.put("n149", 12693L);
+      mapBuilder.put("n150", 12694L);
+      mapBuilder.put("n151", 12695L);
+      mapBuilder.put("n152", 12696L);
+      mapBuilder.put("n153", 12697L);
+      mapBuilder.put("n154", 12698L);
+      mapBuilder.put("n155", 12699L);
+      mapBuilder.put("n156", 12700L);
+      mapBuilder.put("n157", 12701L);
+      mapBuilder.put("n158", 12702L);
+      mapBuilder.put("n159", 12703L);
+      mapBuilder.put("n160", 12704L);
+      mapBuilder.put("n161", 12705L);
+      mapBuilder.put("n162", 12706L);
+      mapBuilder.put("n163", 12707L);
+      mapBuilder.put("n164", 12708L);
+      mapBuilder.put("n165", 12709L);
+      mapBuilder.put("n166", 12710L);
+      mapBuilder.put("n167", 12711L);
+      mapBuilder.put("n168", 12712L);
+      mapBuilder.put("n169", 12713L);
+      mapBuilder.put("n170", 12714L);
+      mapBuilder.put("n171", 12715L);
+      mapBuilder.put("n172", 12716L);
+      mapBuilder.put("n173", 12717L);
+      mapBuilder.put("n174", 12718L);
+      mapBuilder.put("n175", 12719L);
+      mapBuilder.put("n176", 12720L);
+      mapBuilder.put("n177", 12721L);
+      mapBuilder.put("n178", 12722L);
+      mapBuilder.put("n179", 12723L);
+      mapBuilder.put("n180", 12724L);
+      mapBuilder.put("n181", 12725L);
+      mapBuilder.put("n182", 12726L);
+      mapBuilder.put("n183", 12727L);
+      mapBuilder.put("n184", 12728L);
+      mapBuilder.put("n185", 12729L);
+      mapBuilder.put("n186", 12730L);
+      mapBuilder.put("n187", 12731L);
+      mapBuilder.put("n188", 12732L);
+      mapBuilder.put("n189", 12733L);
+      mapBuilder.put("n190", 12734L);
+      mapBuilder.put("n191", 12735L);
+      mapBuilder.put("n192", 12736L);
+      mapBuilder.put("n193", 12737L);
+      mapBuilder.put("n194", 12738L);
+      mapBuilder.put("n195", 12739L);
+      mapBuilder.put("n196", 12740L);
+      mapBuilder.put("n197", 12741L);
+      mapBuilder.put("n198", 12742L);
+      mapBuilder.put("n199", 12743L);
+      mapBuilder.put("n200", 12744L);
+      mapBuilder.put("n201", 12745L);
+      mapBuilder.put("n202", 12746L);
+      mapBuilder.put("n203", 12747L);
+      mapBuilder.put("n204", 12748L);
+      mapBuilder.put("n205", 12749L);
+      mapBuilder.put("n206", 12750L);
+      mapBuilder.put("n207", 12751L);
+      mapBuilder.put("n208", 12752L);
+      mapBuilder.put("n209", 12753L);
+      mapBuilder.put("n210", 12754L);
+      mapBuilder.put("n211", 12755L);
+      mapBuilder.put("n212", 12756L);
+      mapBuilder.put("n213", 12757L);
+      mapBuilder.put("n214", 12758L);
+      mapBuilder.put("n215", 12759L);
+      mapBuilder.put("n216", 12760L);
+      mapBuilder.put("n217", 12761L);
+      mapBuilder.put("n218", 12762L);
+      mapBuilder.put("n219", 12763L);
+      mapBuilder.put("n220", 12764L);
+      mapBuilder.put("n221", 12765L);
+      mapBuilder.put("n222", 12766L);
+      mapBuilder.put("n223", 12767L);
+      mapBuilder.put("n224", 12768L);
+      mapBuilder.put("n225", 12769L);
+      mapBuilder.put("n226", 12770L);
+      mapBuilder.put("n227", 12771L);
+      mapBuilder.put("n228", 12772L);
+      mapBuilder.put("n229", 12773L);
+      mapBuilder.put("n230", 12774L);
+      mapBuilder.put("n231", 12775L);
+      mapBuilder.put("n232", 12776L);
+      mapBuilder.put("n233", 12777L);
+      mapBuilder.put("n234", 12778L);
+      mapBuilder.put("n235", 12779L);
+      mapBuilder.put("n236", 12780L);
+      mapBuilder.put("n237", 12781L);
+      mapBuilder.put("n238", 12782L);
+      mapBuilder.put("n239", 12783L);
+      mapBuilder.put("n240", 12784L);
+      mapBuilder.put("n241", 12785L);
+      mapBuilder.put("n242", 12786L);
+      mapBuilder.put("n243", 12787L);
+      mapBuilder.put("n244", 12788L);
+      mapBuilder.put("n245", 12789L);
+      mapBuilder.put("n246", 12790L);
+      mapBuilder.put("n247", 12791L);
+      mapBuilder.put("n248", 12792L);
+      mapBuilder.put("n249", 12793L);
+      mapBuilder.put("n250", 12794L);
+      mapBuilder.put("n251", 12795L);
+      mapBuilder.put("n252", 12796L);
+      mapBuilder.put("n253", 12797L);
+      mapBuilder.put("n254", 12798L);
+      mapBuilder.put("n255", 12799L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<SmallNumbers> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(SmallNumbers::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

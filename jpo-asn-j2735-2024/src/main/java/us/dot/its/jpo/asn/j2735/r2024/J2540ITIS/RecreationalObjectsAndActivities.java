@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class RecreationalObjectsAndActivities extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public RecreationalObjectsAndActivities() {
     super(0L, 65535L);
@@ -35,5 +42,99 @@ public class RecreationalObjectsAndActivities extends Asn1Integer {
   public RecreationalObjectsAndActivities(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("bear-viewing-area", 12033L);
+      mapBuilder.put("deer-viewing-area", 12034L);
+      mapBuilder.put("drinking-water", 12035L);
+      mapBuilder.put("environmental-study-area", 12036L);
+      mapBuilder.put("falling-rocks", 12037L);
+      mapBuilder.put("firearms", 12038L);
+      mapBuilder.put("leashed-pets", 12039L);
+      mapBuilder.put("point-of-interest", 12040L);
+      mapBuilder.put("smoking", 12041L);
+      mapBuilder.put("dog", 12042L);
+      mapBuilder.put("tent-camping", 12043L);
+      mapBuilder.put("trailer-camping", 12044L);
+      mapBuilder.put("first-aid", 12045L);
+      mapBuilder.put("handicapped", 12046L);
+      mapBuilder.put("mechanic", 12047L);
+      mapBuilder.put("trailer-sanitary-station", 12048L);
+      mapBuilder.put("viewing-area", 12049L);
+      mapBuilder.put("scenic-overlook", 12095L);
+      mapBuilder.put("campfire", 12050L);
+      mapBuilder.put("locker", 12051L);
+      mapBuilder.put("sleeping", 12052L);
+      mapBuilder.put("trail", 12053L);
+      mapBuilder.put("climbing", 12054L);
+      mapBuilder.put("rock-climbing", 12055L);
+      mapBuilder.put("hunting", 12056L);
+      mapBuilder.put("playground", 12057L);
+      mapBuilder.put("rock-collecting", 12058L);
+      mapBuilder.put("spelunking", 12059L);
+      mapBuilder.put("bicycle-trail", 12060L);
+      mapBuilder.put("hiking-trail", 12061L);
+      mapBuilder.put("horse-trail", 12062L);
+      mapBuilder.put("trail-interpretive-auto", 12063L);
+      mapBuilder.put("trail-interpretive-pedestrian", 12064L);
+      mapBuilder.put("trail-road-for-4WD-vehicles", 12065L);
+      mapBuilder.put("trail-for-trail-bikes", 12066L);
+      mapBuilder.put("archer", 12067L);
+      mapBuilder.put("hang-glider", 12068L);
+      mapBuilder.put("boat-tours", 12069L);
+      mapBuilder.put("canoeing", 12070L);
+      mapBuilder.put("diving", 12071L);
+      mapBuilder.put("scuba-diving", 12072L);
+      mapBuilder.put("fishing", 12073L);
+      mapBuilder.put("marine-recreation-area", 12074L);
+      mapBuilder.put("motorboating", 12075L);
+      mapBuilder.put("boat-ramp", 12076L);
+      mapBuilder.put("rowboating", 12077L);
+      mapBuilder.put("sailboating", 12078L);
+      mapBuilder.put("water-skiing", 12079L);
+      mapBuilder.put("surfing", 12080L);
+      mapBuilder.put("swimming", 12081L);
+      mapBuilder.put("wading", 12082L);
+      mapBuilder.put("hand-launch", 12083L);
+      mapBuilder.put("kayak", 12084L);
+      mapBuilder.put("wind-surf", 12085L);
+      mapBuilder.put("ice-skating", 12086L);
+      mapBuilder.put("ski-jumping", 12087L);
+      mapBuilder.put("bobbing", 12088L);
+      mapBuilder.put("cross-country-skiing", 12089L);
+      mapBuilder.put("downhill-skiing", 12090L);
+      mapBuilder.put("sledding", 12091L);
+      mapBuilder.put("snowmobiling", 12092L);
+      mapBuilder.put("snowshoeing", 12093L);
+      mapBuilder.put("winter-recreation-area", 12094L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<RecreationalObjectsAndActivities> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name))
+        .map(RecreationalObjectsAndActivities::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

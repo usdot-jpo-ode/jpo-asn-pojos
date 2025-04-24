@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class Units extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public Units() {
     super(0L, 65535L);
@@ -35,5 +42,98 @@ public class Units extends Asn1Integer {
   public Units(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("square-feet", 8705L);
+      mapBuilder.put("square-meters", 8706L);
+      mapBuilder.put("acres", 8707L);
+      mapBuilder.put("hectares", 8708L);
+      mapBuilder.put("inches", 8709L);
+      mapBuilder.put("feet", 8710L);
+      mapBuilder.put("mile", 8711L);
+      mapBuilder.put("miles", 8712L);
+      mapBuilder.put("nautical-miles", 8713L);
+      mapBuilder.put("millimeters", 8714L);
+      mapBuilder.put("meters", 8715L);
+      mapBuilder.put("kilometer", 8716L);
+      mapBuilder.put("kilometers", 8717L);
+      mapBuilder.put("feet-per-second", 8718L);
+      mapBuilder.put("meters-per-second", 8719L);
+      mapBuilder.put("mPH", 8720L);
+      mapBuilder.put("kPH", 8721L);
+      mapBuilder.put("knots", 8722L);
+      mapBuilder.put("elevation", 8766L);
+      mapBuilder.put("aM", 8723L);
+      mapBuilder.put("pM", 8724L);
+      mapBuilder.put("holiday", 8726L);
+      mapBuilder.put("seconds", 8727L);
+      mapBuilder.put("minutes", 8728L);
+      mapBuilder.put("hours", 8729L);
+      mapBuilder.put("days", 8730L);
+      mapBuilder.put("weeks", 8731L);
+      mapBuilder.put("months", 8732L);
+      mapBuilder.put("other-times", 8767L);
+      mapBuilder.put("nSunday", 8758L);
+      mapBuilder.put("nMonday", 8759L);
+      mapBuilder.put("nTuesday", 8760L);
+      mapBuilder.put("nWednesday", 8761L);
+      mapBuilder.put("nThursday", 8762L);
+      mapBuilder.put("nFriday", 8763L);
+      mapBuilder.put("nSaturday", 8764L);
+      mapBuilder.put("weekdays", 8765L);
+      mapBuilder.put("weekends", 8725L);
+      mapBuilder.put("degrees-Angle", 8733L);
+      mapBuilder.put("degrees-Celsius", 8734L);
+      mapBuilder.put("degrees-Fahrenheit", 8735L);
+      mapBuilder.put("grams", 8736L);
+      mapBuilder.put("kilograms", 8737L);
+      mapBuilder.put("ounces", 8738L);
+      mapBuilder.put("pounds", 8739L);
+      mapBuilder.put("tons", 8740L);
+      mapBuilder.put("fluid-ounces", 8741L);
+      mapBuilder.put("gallons", 8742L);
+      mapBuilder.put("milliliters", 8743L);
+      mapBuilder.put("liters", 8744L);
+      mapBuilder.put("kilograms-per-lane-mile", 8745L);
+      mapBuilder.put("tons-per-lane-mile", 8746L);
+      mapBuilder.put("dollar", 8747L);
+      mapBuilder.put("percent", 8748L);
+      mapBuilder.put("grade", 8757L);
+      mapBuilder.put("time-delimiter", 8749L);
+      mapBuilder.put("dollars", 8750L);
+      mapBuilder.put("flight-number", 8751L);
+      mapBuilder.put("person-people", 8752L);
+      mapBuilder.put("response-plan", 8753L);
+      mapBuilder.put("placard-type", 8754L);
+      mapBuilder.put("placard-number", 8755L);
+      mapBuilder.put("fM", 8756L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<Units> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(Units::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

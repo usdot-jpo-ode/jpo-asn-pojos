@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.J2540ITIS;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class WinterDrivingRestrictions extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public WinterDrivingRestrictions() {
     super(0L, 65535L);
@@ -35,5 +42,48 @@ public class WinterDrivingRestrictions extends Asn1Integer {
   public WinterDrivingRestrictions(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("winter-equipment-recommended", 6145L);
+      mapBuilder.put("winter-equipment-required", 6146L);
+      mapBuilder.put("snow-chains-recommended", 6147L);
+      mapBuilder.put("snow-chains-required", 6148L);
+      mapBuilder.put("snow-chains-prohibited", 6149L);
+      mapBuilder.put("studded-tires-prohibited", 6150L);
+      mapBuilder.put("snow-tires-recommended", 6151L);
+      mapBuilder.put("snow-tires-required", 6152L);
+      mapBuilder.put("four-wheel-drive-recommended", 6153L);
+      mapBuilder.put("four-wheel-drive-required", 6154L);
+      mapBuilder.put("snow-tires-or-chains-recommended", 6155L);
+      mapBuilder.put("snow-tires-or-chains-required", 6156L);
+      mapBuilder.put("winter-driving-requirements-lifted", 6271L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<WinterDrivingRestrictions> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(WinterDrivingRestrictions::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

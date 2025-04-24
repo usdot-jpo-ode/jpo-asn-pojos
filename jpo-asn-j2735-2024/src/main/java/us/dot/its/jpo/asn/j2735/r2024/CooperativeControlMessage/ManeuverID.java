@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class ManeuverID extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public ManeuverID() {
     super(0L, 255L);
@@ -35,5 +42,67 @@ public class ManeuverID extends Asn1Integer {
   public ManeuverID(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("unavailable", 0L);
+      mapBuilder.put("stayAtRestManCtl", 1L);
+      mapBuilder.put("stayAtRestAutoLonCtl", 2L);
+      mapBuilder.put("autoSpdCtlFollowRefTrafAccel", 4L);
+      mapBuilder.put("transManToAutoSpdCtl", 5L);
+      mapBuilder.put("stringForm", 6L);
+      mapBuilder.put("autoJoinString", 7L);
+      mapBuilder.put("autoCtl", 8L);
+      mapBuilder.put("increaseGapAutoCtl", 9L);
+      mapBuilder.put("leftLnChgEndString", 10L);
+      mapBuilder.put("rightLnChgEndString", 11L);
+      mapBuilder.put("virtualGapIncDiffLane", 12L);
+      mapBuilder.put("virtualGapRedDiffLane", 13L);
+      mapBuilder.put("emgcyIncInterVehDistToStop", 14L);
+      mapBuilder.put("vehMrgToStringFrmOnramp", 15L);
+      mapBuilder.put("leftLnChgJoinString", 16L);
+      mapBuilder.put("rightLnChgJoinString", 17L);
+      mapBuilder.put("collisionAvoidLnChgOnly", 19L);
+      mapBuilder.put("collisionAvoidLnChgWthSpdRed", 20L);
+      mapBuilder.put("collisionAvoidEmgcyStp", 21L);
+      mapBuilder.put("autoDecelFollowSpdProfile", 28L);
+      mapBuilder.put("stoppingClosedloopVehFollowCtl", 31L);
+      mapBuilder.put("stoppngOpenloopDecelCmd", 32L);
+      mapBuilder.put("brakeToStopManCtl", 33L);
+      mapBuilder.put("incGapContString", 34L);
+      mapBuilder.put("incGapRedSpdToStp", 35L);
+      mapBuilder.put("cruiseCtl", 36L);
+      mapBuilder.put("adapCruiseCtl", 41L);
+      mapBuilder.put("coopAdapCruiseCtl", 42L);
+      mapBuilder.put("manCtl", 46L);
+      mapBuilder.put("coordAutoBrkForStringWthSvcBrkEngBrk", 47L);
+      mapBuilder.put("emgcyBrkForStringOnePlusVehWthSvcBrk", 48L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<ManeuverID> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(ManeuverID::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }
