@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class FuelType extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public FuelType() {
     super(0L, 15L);
@@ -35,5 +42,45 @@ public class FuelType extends Asn1Integer {
   public FuelType(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("unknownFuel", 0L);
+      mapBuilder.put("gasoline", 1L);
+      mapBuilder.put("ethanol", 2L);
+      mapBuilder.put("diesel", 3L);
+      mapBuilder.put("electric", 4L);
+      mapBuilder.put("hybrid", 5L);
+      mapBuilder.put("hydrogen", 6L);
+      mapBuilder.put("natGasLiquid", 7L);
+      mapBuilder.put("natGasComp", 8L);
+      mapBuilder.put("propane", 9L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<FuelType> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(FuelType::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }
