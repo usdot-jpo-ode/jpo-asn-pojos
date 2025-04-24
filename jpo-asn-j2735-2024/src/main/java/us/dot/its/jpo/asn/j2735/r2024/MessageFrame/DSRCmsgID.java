@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.MessageFrame;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class DSRCmsgID extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public DSRCmsgID() {
     super(0L, 32767L);
@@ -35,5 +42,102 @@ public class DSRCmsgID extends Asn1Integer {
   public DSRCmsgID(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("reservedMessageId-D", 0L);
+      mapBuilder.put("alaCarteMessage-D", 1L);
+      mapBuilder.put("basicSafetyMessage-D", 2L);
+      mapBuilder.put("basicSafetyMessageVerbose-D", 3L);
+      mapBuilder.put("commonSafetyRequest-D", 4L);
+      mapBuilder.put("emergencyVehicleAlert-D", 5L);
+      mapBuilder.put("intersectionCollision-D", 6L);
+      mapBuilder.put("mapData-D", 7L);
+      mapBuilder.put("nmeaCorrections-D", 8L);
+      mapBuilder.put("probeDataManagement-D", 9L);
+      mapBuilder.put("probeVehicleData-D", 10L);
+      mapBuilder.put("roadSideAlert-D", 11L);
+      mapBuilder.put("rtcmCorrections-D", 12L);
+      mapBuilder.put("signalPhaseAndTimingMessage-D", 13L);
+      mapBuilder.put("signalRequestMessage-D", 14L);
+      mapBuilder.put("signalStatusMessage-D", 15L);
+      mapBuilder.put("travelerInformation-D", 16L);
+      mapBuilder.put("uperFrame-D", 17L);
+      mapBuilder.put("mapData", 18L);
+      mapBuilder.put("signalPhaseAndTimingMessage", 19L);
+      mapBuilder.put("basicSafetyMessage", 20L);
+      mapBuilder.put("commonSafetyRequest", 21L);
+      mapBuilder.put("emergencyVehicleAlert", 22L);
+      mapBuilder.put("intersectionCollision", 23L);
+      mapBuilder.put("nmeaCorrections", 24L);
+      mapBuilder.put("probeDataManagement", 25L);
+      mapBuilder.put("probeVehicleData", 26L);
+      mapBuilder.put("roadSideAlert", 27L);
+      mapBuilder.put("rtcmCorrections", 28L);
+      mapBuilder.put("signalRequestMessage", 29L);
+      mapBuilder.put("signalStatusMessage", 30L);
+      mapBuilder.put("travelerInformation", 31L);
+      mapBuilder.put("personalSafetyMessage", 32L);
+      mapBuilder.put("roadSafetyMessage", 33L);
+      mapBuilder.put("roadWeatherMessage", 34L);
+      mapBuilder.put("probeDataConfigMessage", 35L);
+      mapBuilder.put("probeDataReportMessage", 36L);
+      mapBuilder.put("tollAdvertisementMessage", 37L);
+      mapBuilder.put("tollUsageMessage", 38L);
+      mapBuilder.put("tollUsageAckMessage", 39L);
+      mapBuilder.put("cooperativeControlMessage", 40L);
+      mapBuilder.put("sensorDataSharingMessage", 41L);
+      mapBuilder.put("maneuverSharingAndCoordinatingMessage", 42L);
+      mapBuilder.put("roadGeometryAndAttributes", 43L);
+      mapBuilder.put("personalSafetyMessage2", 44L);
+      mapBuilder.put("trafficSignalPhaseAndTiming", 45L);
+      mapBuilder.put("signalControlAndPrioritizationRequest", 46L);
+      mapBuilder.put("signalControlAndPrioritizationStatus", 47L);
+      mapBuilder.put("roadUserChargingConfigMessage", 48L);
+      mapBuilder.put("roadUserChargingReportMessage", 49L);
+      mapBuilder.put("trafficLightStatusMessage", 50L);
+      mapBuilder.put("testMessage00", 240L);
+      mapBuilder.put("testMessage01", 241L);
+      mapBuilder.put("testMessage02", 242L);
+      mapBuilder.put("testMessage03", 243L);
+      mapBuilder.put("testMessage04", 244L);
+      mapBuilder.put("testMessage05", 245L);
+      mapBuilder.put("testMessage06", 246L);
+      mapBuilder.put("testMessage07", 247L);
+      mapBuilder.put("testMessage08", 248L);
+      mapBuilder.put("testMessage09", 249L);
+      mapBuilder.put("testMessage10", 250L);
+      mapBuilder.put("testMessage11", 251L);
+      mapBuilder.put("testMessage12", 252L);
+      mapBuilder.put("testMessage13", 253L);
+      mapBuilder.put("testMessage14", 254L);
+      mapBuilder.put("testMessage15", 255L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<DSRCmsgID> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(DSRCmsgID::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

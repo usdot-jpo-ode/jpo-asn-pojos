@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class BasicVehicleClass extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public BasicVehicleClass() {
     super(0L, 255L);
@@ -35,5 +42,91 @@ public class BasicVehicleClass extends Asn1Integer {
   public BasicVehicleClass(long value) {
     this();
     this.value = value;
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("unknownVehicleClass", 0L);
+      mapBuilder.put("specialVehicleClass", 1L);
+      mapBuilder.put("passenger-Vehicle-TypeUnknown", 10L);
+      mapBuilder.put("passenger-Vehicle-TypeOther", 11L);
+      mapBuilder.put("lightTruck-Vehicle-TypeUnknown", 20L);
+      mapBuilder.put("lightTruck-Vehicle-TypeOther", 21L);
+      mapBuilder.put("truck-Vehicle-TypeUnknown", 25L);
+      mapBuilder.put("truck-Vehicle-TypeOther", 26L);
+      mapBuilder.put("truck-axleCnt2", 27L);
+      mapBuilder.put("truck-axleCnt3", 28L);
+      mapBuilder.put("truck-axleCnt4", 29L);
+      mapBuilder.put("truck-axleCnt4Trailer", 30L);
+      mapBuilder.put("truck-axleCnt5Trailer", 31L);
+      mapBuilder.put("truck-axleCnt6Trailer", 32L);
+      mapBuilder.put("truck-axleCnt5MultiTrailer", 33L);
+      mapBuilder.put("truck-axleCnt6MultiTrailer", 34L);
+      mapBuilder.put("truck-axleCnt7MultiTrailer", 35L);
+      mapBuilder.put("motorcycle-TypeUnknown", 40L);
+      mapBuilder.put("motorcycle-TypeOther", 41L);
+      mapBuilder.put("motorcycle-Cruiser-Standard", 42L);
+      mapBuilder.put("motorcycle-SportUnclad", 43L);
+      mapBuilder.put("motorcycle-SportTouring", 44L);
+      mapBuilder.put("motorcycle-SuperSport", 45L);
+      mapBuilder.put("motorcycle-Touring", 46L);
+      mapBuilder.put("motorcycle-Trike", 47L);
+      mapBuilder.put("motorcycle-wPassengers", 48L);
+      mapBuilder.put("transit-TypeUnknown", 50L);
+      mapBuilder.put("transit-TypeOther", 51L);
+      mapBuilder.put("transit-BRT", 52L);
+      mapBuilder.put("transit-ExpressBus", 53L);
+      mapBuilder.put("transit-LocalBus", 54L);
+      mapBuilder.put("transit-SchoolBus", 55L);
+      mapBuilder.put("transit-FixedGuideway", 56L);
+      mapBuilder.put("transit-Paratransit", 57L);
+      mapBuilder.put("transit-Paratransit-Ambulance", 58L);
+      mapBuilder.put("emergency-TypeUnknown", 60L);
+      mapBuilder.put("emergency-TypeOther", 61L);
+      mapBuilder.put("emergency-Fire-Light-Vehicle", 62L);
+      mapBuilder.put("emergency-Fire-Heavy-Vehicle", 63L);
+      mapBuilder.put("emergency-Fire-Paramedic-Vehicle", 64L);
+      mapBuilder.put("emergency-Fire-Ambulance-Vehicle", 65L);
+      mapBuilder.put("emergency-Police-Light-Vehicle", 66L);
+      mapBuilder.put("emergency-Police-Heavy-Vehicle", 67L);
+      mapBuilder.put("emergency-Other-Responder", 68L);
+      mapBuilder.put("emergency-Other-Ambulance", 69L);
+      mapBuilder.put("otherTraveler-TypeUnknown", 80L);
+      mapBuilder.put("otherTraveler-TypeOther", 81L);
+      mapBuilder.put("otherTraveler-Pedestrian", 82L);
+      mapBuilder.put("otherTraveler-Visually-Disabled", 83L);
+      mapBuilder.put("otherTraveler-Physically-Disabled", 84L);
+      mapBuilder.put("otherTraveler-Bicycle", 85L);
+      mapBuilder.put("otherTraveler-Vulnerable-Roadworker", 86L);
+      mapBuilder.put("infrastructure-TypeUnknown", 90L);
+      mapBuilder.put("infrastructure-Fixed", 91L);
+      mapBuilder.put("infrastructure-Movable", 92L);
+      mapBuilder.put("equipped-CargoTrailer", 93L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(value));
+  }
+
+  public static Optional<BasicVehicleClass> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(BasicVehicleClass::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }
