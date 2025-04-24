@@ -59,25 +59,4 @@ jacocoTestReport {
         xml.required = true
         html.required = true
     }
-    // Coverage includes/excludes
-    // Ref: https://liviutudor.com/2016/02/11/jacoco-gradle-excluding-source-files-and-classes/
-    afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, excludes: [
-
-//                    // Exclude modules with few types of interest
-//                    '**/EfcDataDictionary/**',
-//                    '**/J2540ITIS/**',
-//
-//                    // Exclude null message types
-//                    '**/PersonalSafetyMessage2/**',
-//                    '**/RoadGeometryAndAttributes/**',
-//                    '**/SignalControlAndPrioritizationRequest/**',
-//                    '**/SignalControlAndPrioritizationStatus/**',
-//                    '**/TrafficSignalPhaseAndTiming/**'
-
-
-            ])
-        })
-    }
 }
