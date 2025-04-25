@@ -12,7 +12,8 @@ public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
   @Override
   protected void populateRandom(Asn1OctetString instance) {
     final int lower = instance.getMinLength();
-    final int upper = Math.min(instance.getMaxLength(), 255); // Prevent excessively large if unbounded
+    final int upper =
+        Math.min(instance.getMaxLength(), 255); // Prevent excessively large if unbounded
     Random r = new Random();
     int len;
     if (lower == upper) {
@@ -22,7 +23,7 @@ public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
     }
     byte[] bytes = new byte[len];
     for (int i = 0; i < len; i++) {
-      bytes[i] = (byte)r.nextInt(256);
+      bytes[i] = (byte) r.nextInt(256);
     }
     instance.setOctets(bytes);
   }

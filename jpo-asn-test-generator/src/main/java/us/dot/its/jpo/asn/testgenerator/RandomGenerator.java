@@ -41,8 +41,8 @@ public abstract class RandomGenerator<T extends Asn1Type> {
 
   protected abstract void populateRandom(T instance);
 
-  protected static <T extends Asn1Type> RandomGenerator<?> getGeneratorForType(final Class<T> type,
-      GeneratorOptions opts) {
+  protected static <T extends Asn1Type> RandomGenerator<?> getGeneratorForType(
+      final Class<T> type, GeneratorOptions opts) {
     final String name = type.getName();
 
     final var options = opts.withPdu(name);
@@ -97,8 +97,10 @@ public abstract class RandomGenerator<T extends Asn1Type> {
     } catch (NoSuchMethodException nsme) {
       // There is no constructor, eg. for abstract class
       return null;
-    } catch (ClassNotFoundException | InstantiationException |
-             IllegalAccessException | InvocationTargetException e) {
+    } catch (ClassNotFoundException
+        | InstantiationException
+        | IllegalAccessException
+        | InvocationTargetException e) {
       throw new RuntimeException(e);
     }
   }

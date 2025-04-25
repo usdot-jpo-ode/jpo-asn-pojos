@@ -3,14 +3,15 @@
  */
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import us.dot.its.jpo.asn.testgenerator.TestGenCli;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AppTest {
-    @Test void appHasAGreeting() {
-        TestGenCli classUnderTest = new TestGenCli();
-        assertNotNull(classUnderTest, "app should not be null");
-    }
+  @Test
+  void appHasAGreeting() {
+    TestGenCli classUnderTest = new TestGenCli();
+    assertNotNull(classUnderTest, "app should not be null");
+  }
 }

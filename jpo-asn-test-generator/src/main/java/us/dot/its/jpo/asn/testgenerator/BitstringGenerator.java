@@ -16,6 +16,4 @@ public class BitstringGenerator extends RandomGenerator<Asn1Bitstring> {
       instance.set(i, r.nextBoolean());
     }
   }
-
-
 }

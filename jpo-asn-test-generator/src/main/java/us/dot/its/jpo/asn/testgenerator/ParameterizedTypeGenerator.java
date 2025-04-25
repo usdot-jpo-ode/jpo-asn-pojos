@@ -37,17 +37,16 @@ public class ParameterizedTypeGenerator extends RandomGenerator<Asn1Sequence> {
     }
 
     if (idMap.isEmpty()) {
-      log.warn("There are no implementations of this type. "
-          + "pdu: {}, valuePropName: {}", pdu, valuePropName);
+      log.warn(
+          "There are no implementations of this type. " + "pdu: {}, valuePropName: {}",
+          pdu,
+          valuePropName);
       return null;
     }
 
     List<Integer> idList = idMap.keySet().stream().toList();
 
-    log.debug("pdu: {}, valuePropName: {}, idMap: {}",
-        pdu, valuePropName, idMap);
-
-
+    log.debug("pdu: {}, valuePropName: {}, idMap: {}", pdu, valuePropName, idMap);
 
     // Choose a random id from the set
     final int numIds = idList.size();
@@ -68,7 +67,7 @@ public class ParameterizedTypeGenerator extends RandomGenerator<Asn1Sequence> {
       throw new RuntimeException(e);
     }
     Class<?> valuePropType = prop.getPropertyType();
-    var valueGen = getGeneratorForType((Class<Asn1Type>)valuePropType, options());
+    var valueGen = getGeneratorForType((Class<Asn1Type>) valuePropType, options());
     if (valueGen != null) {
       var value = valueGen.createRandom();
       try {
@@ -79,7 +78,6 @@ public class ParameterizedTypeGenerator extends RandomGenerator<Asn1Sequence> {
     }
     return item;
   }
-
 
   @Override
   protected void populateRandom(Asn1Sequence instance) {

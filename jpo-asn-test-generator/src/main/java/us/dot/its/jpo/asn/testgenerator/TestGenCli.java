@@ -11,42 +11,58 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Command(name = "testgen-cli", version = "testgen 1.0", mixinStandardHelpOptions = true,
-    sortOptions = false, sortSynopsis = false)
+@Command(
+    name = "testgen-cli",
+    version = "testgen 1.0",
+    mixinStandardHelpOptions = true,
+    sortOptions = false,
+    sortSynopsis = false)
 public class TestGenCli implements Runnable {
 
-  @Option(names = {"-m", "--module"}, required = true,
+  @Option(
+      names = {"-m", "--module"},
+      required = true,
       description = "REQUIRED. ASN.1 Module name.  For example: MapData, Common.")
   String module;
 
-  @Option(names = {"-p", "--pdu"}, required = true,
+  @Option(
+      names = {"-p", "--pdu"},
+      required = true,
       description =
           "REQUIRED. Protocol Data Unit (PDU).  Name of the class to generate an example of."
               + "For example: MapData, BSMCoreData.")
   String pdu;
 
-  @Option(names = {"-xp", "--exclude-pdus"},
-      description = "Module.PDUs to exclude from sequences (class name eg. 'MapData.PreemptPriorityList', "
-          + " 'REGION.Reg_MovementEvent')")
+  @Option(
+      names = {"-xp", "--exclude-pdus"},
+      description =
+          "Module.PDUs to exclude from sequences (class name eg. 'MapData.PreemptPriorityList', "
+              + " 'REGION.Reg_MovementEvent')")
   Set<String> excludePdus;
 
-  @Option(names = {"-s", "--sequence-of-limit"}, defaultValue = "5",
+  @Option(
+      names = {"-s", "--sequence-of-limit"},
+      defaultValue = "5",
       description = "Limit the number of items in SEQUENCE-OF types. Must be at least 2.")
   int sequenceOfLimit;
 
-  @Option(names = {"-x", "--xer-output-file"},
+  @Option(
+      names = {"-x", "--xer-output-file"},
       description = "Output file path for the XER file.")
   File xerOutputFile;
 
-  @Option(names = {"-j", "--jer-output-file"},
+  @Option(
+      names = {"-j", "--jer-output-file"},
       description = "Output file path for the JER file.")
   File jerOutputFile;
 
-  @Option(names = {"-r", "--regional"}, defaultValue = "false",
-      description = "Include fields named 'regional' and other regional extensions."
-          + " Omitted by default if this flag is not present.")
+  @Option(
+      names = {"-r", "--regional"},
+      defaultValue = "false",
+      description =
+          "Include fields named 'regional' and other regional extensions."
+              + " Omitted by default if this flag is not present.")
   boolean regional;
-
 
   public static void main(String[] args) {
     int exitCode = new CommandLine(new TestGenCli()).execute(args);
@@ -76,8 +92,10 @@ public class TestGenCli implements Runnable {
       }
     }
 
-    RandomGenerator<?> gen = RandomGenerator.getGeneratorForType(getClass(fullPdu),
-        new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePduClasses));
+    RandomGenerator<?> gen =
+        RandomGenerator.getGeneratorForType(
+            getClass(fullPdu),
+            new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePduClasses));
     if (gen == null) {
       throw new RuntimeException(String.format("Generator for type %s not found", fullPdu));
     }
