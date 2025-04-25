@@ -1,0 +1,986 @@
+{
+  "timeStamp": 492216,
+  "segNum": 3186,
+  "probeID": {
+    "name": "DMVXMUQRCHFABJCGWLJJMSSQPSUTFLSNPWIVHABOIRUOSBGQXCRIP",
+    "vin": "0B44D9",
+    "id": {
+      "entityID": "1DF6FFED"
+    },
+    "vehicleType": "axleCnt5MultiTrailer",
+    "vehicleClass": {
+      "rEquip": "quint"
+    }
+  },
+  "startVector": {
+    "utcTime": {
+      "year": 2339,
+      "month": 7,
+      "day": 24,
+      "hour": 21,
+      "minute": 19,
+      "second": 17890,
+      "offset": -295
+    },
+    "long": 1363330068,
+    "lat": 799932279,
+    "elevation": 32469,
+    "heading": 5290,
+    "speed": {
+      "transmisson": "forwardGears",
+      "speed": 5084
+    },
+    "posAccuracy": {
+      "semiMajor": 92,
+      "semiMinor": 91,
+      "orientation": 32338
+    },
+    "timeConfidence": "unavailable",
+    "posConfidence": {
+      "pos": "a10m",
+      "elevation": "elev-050-00"
+    },
+    "speedConfidence": {
+      "heading": "prec0-1deg",
+      "speed": "prec5ms",
+      "throttle": "prec10percent"
+    }
+  },
+  "vehicleType": {
+    "keyType": 179,
+    "role": "motorcycle",
+    "iso3883": 31,
+    "hpmsType": "none",
+    "vehicleType": "motorcycles",
+    "responseEquip": "snowplow",
+    "responderType": "ambulance-units",
+    "fuelType": 6
+  },
+  "snapshots": [
+    {
+      "thePosition": {
+        "utcTime": {
+          "year": 1028,
+          "month": 5,
+          "day": 17,
+          "hour": 17,
+          "minute": 50,
+          "second": 19366,
+          "offset": 296
+        },
+        "long": -684450307,
+        "lat": 18012954,
+        "elevation": 49566,
+        "heading": 2127,
+        "speed": {
+          "transmisson": "reserved3",
+          "speed": 7951
+        },
+        "posAccuracy": {
+          "semiMajor": 238,
+          "semiMinor": 251,
+          "orientation": 25546
+        },
+        "timeConfidence": "time-000-020",
+        "posConfidence": {
+          "pos": "a500m",
+          "elevation": "elev-001-00"
+        },
+        "speedConfidence": {
+          "heading": "prec05deg",
+          "speed": "prec1ms",
+          "throttle": "prec0-5percent"
+        }
+      },
+      "safetyExt": {
+        "events": {
+          "value": "8440",
+          "length": 13
+        },
+        "pathHistory": {
+          "initialPosition": {
+            "utcTime": {
+              "year": 3334,
+              "month": 4,
+              "day": 11,
+              "hour": 12,
+              "minute": 2,
+              "second": 33954,
+              "offset": -559
+            },
+            "long": 1663177681,
+            "lat": 861629264,
+            "elevation": 43768,
+            "heading": 6482,
+            "speed": {
+              "transmisson": "reserved2",
+              "speed": 712
+            },
+            "posAccuracy": {
+              "semiMajor": 88,
+              "semiMinor": 139,
+              "orientation": 46293
+            },
+            "timeConfidence": "time-000-100",
+            "posConfidence": {
+              "pos": "a1m",
+              "elevation": "elev-100-00"
+            },
+            "speedConfidence": {
+              "heading": "prec0-01deg",
+              "speed": "prec100ms",
+              "throttle": "prec1percent"
+            }
+          },
+          "currGNSSstatus": "A5",
+          "crumbData": [
+            {
+              "latOffset": -53967,
+              "lonOffset": 37699,
+              "elevationOffset": -103,
+              "timeOffset": 22894,
+              "speed": 2120,
+              "posAccuracy": {
+                "semiMajor": 135,
+                "semiMinor": 237,
+                "orientation": 51786
+              },
+              "heading": 124
+            },
+            {
+              "latOffset": 69145,
+              "lonOffset": 25150,
+              "elevationOffset": -1587,
+              "timeOffset": 26748,
+              "speed": 5439,
+              "posAccuracy": {
+                "semiMajor": 101,
+                "semiMinor": 132,
+                "orientation": 43889
+              },
+              "heading": 175
+            },
+            {
+              "latOffset": -49123,
+              "lonOffset": -78397,
+              "elevationOffset": 1678,
+              "timeOffset": 13016,
+              "speed": 7859,
+              "posAccuracy": {
+                "semiMajor": 6,
+                "semiMinor": 235,
+                "orientation": 56751
+              },
+              "heading": 42
+            },
+            {
+              "latOffset": 16796,
+              "lonOffset": 71522,
+              "elevationOffset": 875,
+              "timeOffset": 45868,
+              "speed": 2947,
+              "posAccuracy": {
+                "semiMajor": 42,
+                "semiMinor": 158,
+                "orientation": 45692
+              },
+              "heading": 111
+            }
+          ]
+        },
+        "pathPrediction": {
+          "radiusOfCurve": 11095,
+          "confidence": 172
+        },
+        "lights": {
+          "value": "5F80",
+          "length": 9
+        }
+      },
+      "dataSet": {
+        "lights": {
+          "value": "3B00",
+          "length": 9
+        },
+        "lightBar": "freqStops",
+        "wipers": {
+          "statusFront": "intermittent",
+          "rateFront": 39,
+          "statusRear": "high",
+          "rateRear": 76
+        },
+        "brakeStatus": {
+          "wheelBrakes": "68",
+          "traction": "unavailable",
+          "abs": "off",
+          "scs": "unavailable",
+          "brakeBoost": "off",
+          "auxBrakes": "reserved"
+        },
+        "brakePressure": "maxPressure",
+        "roadFriction": 25,
+        "sunData": 983,
+        "rainData": "lightRainOrDrizzle",
+        "airTemp": 154,
+        "airPres": 56,
+        "steering": {
+          "angle": 125,
+          "confidence": "prec0-02deg",
+          "rate": -98,
+          "wheels": -55
+        },
+        "accelSets": {
+          "accel4way": {
+            "long": -1625,
+            "lat": 373,
+            "vert": -70,
+            "yaw": -28344
+          },
+          "vertAccelThres": "D8",
+          "yawRateCon": "unavailable",
+          "hozAccelCon": "accl-100-00",
+          "confidenceSet": {
+            "accelConfidence": {
+              "yawRate": "unavailable",
+              "acceleration": "accl-010-00",
+              "steeringWheelAngle": "prec0-02deg"
+            },
+            "speedConfidence": {
+              "heading": "prec0-1deg",
+              "speed": "prec0-01ms",
+              "throttle": "prec1percent"
+            },
+            "timeConfidence": "time-000-020",
+            "posConfidence": {
+              "pos": "a10cm",
+              "elevation": "elev-050-00"
+            },
+            "steerConfidence": "unavailable",
+            "headingConfidence": "prec10deg",
+            "throttleConfidence": "prec0-5percent"
+          }
+        },
+        "object": {
+          "obDist": 21145,
+          "obDirect": 8426,
+          "dateTime": {
+            "year": 740,
+            "month": 7,
+            "day": 12,
+            "hour": 29,
+            "minute": 59,
+            "second": 32152,
+            "offset": -21
+          }
+        },
+        "fullPos": {
+          "utcTime": {
+            "year": 1266,
+            "month": 0,
+            "day": 24,
+            "hour": 14,
+            "minute": 10,
+            "second": 64945,
+            "offset": 691
+          },
+          "long": 412455424,
+          "lat": -207449308,
+          "elevation": 58312,
+          "heading": 5747,
+          "speed": {
+            "transmisson": "reserved1",
+            "speed": 4710
+          },
+          "posAccuracy": {
+            "semiMajor": 92,
+            "semiMinor": 31,
+            "orientation": 39263
+          },
+          "timeConfidence": "time-000-000-02",
+          "posConfidence": {
+            "pos": "a500m",
+            "elevation": "elev-050-00"
+          },
+          "speedConfidence": {
+            "heading": "prec10deg",
+            "speed": "prec5ms",
+            "throttle": "prec1percent"
+          }
+        },
+        "throttlePos": 115,
+        "speedHeadC": {
+          "heading": "prec0-1deg",
+          "speed": "unavailable",
+          "throttle": "prec10percent"
+        },
+        "speedC": "prec0-01ms",
+        "vehicleData": {
+          "height": 4,
+          "bumpers": {
+            "front": 79,
+            "rear": 9
+          },
+          "mass": 140,
+          "trailerWeight": 42606,
+          "type": "axleCnt5Trailer"
+        },
+        "vehicleIdent": {
+          "name": "LSNEXMKOUJHLWFAJCOQUPIHWENJLLFXUSQMCTKNGHBYPAYDKSOLMMQKSHP",
+          "vin": "14571B61CC033BA8A336ABA67A3327AE",
+          "id": {
+            "stationID": 4115368311
+          },
+          "vehicleType": "axleCnt6MultiTrailer",
+          "vehicleClass": {
+            "rGroup": "fire-units"
+          }
+        },
+        "j1939data": {
+          "tires": [
+            {
+              "location": 237,
+              "pressure": 143,
+              "temp": 44746,
+              "wheelSensorStatus": "off",
+              "wheelEndElectFault": "isOk",
+              "leakageRate": 43751,
+              "detection": "noData"
+            },
+            {
+              "location": 201,
+              "pressure": 17,
+              "temp": 19938,
+              "wheelSensorStatus": "notDefined",
+              "wheelEndElectFault": "isNotDefined",
+              "leakageRate": 8161,
+              "detection": "undefined"
+            },
+            {
+              "location": 41,
+              "pressure": 91,
+              "temp": 8435,
+              "wheelSensorStatus": "on",
+              "wheelEndElectFault": "isNotSupported",
+              "leakageRate": 21540,
+              "detection": "errorIndicator"
+            }
+          ],
+          "axles": [
+            {
+              "location": 209,
+              "weight": 41527
+            },
+            {
+              "location": 70,
+              "weight": 10867
+            }
+          ],
+          "trailerWeight": 35958,
+          "cargoWeight": 24366,
+          "steeringAxleTemperature": 22,
+          "driveAxleLocation": 16,
+          "driveAxleLiftAirPressure": 293,
+          "driveAxleTemperature": 31,
+          "driveAxleLubePressure": 178,
+          "steeringAxleLubePressure": 20
+        },
+        "weatherReport": {
+          "isRaining": "precip",
+          "rainRate": 21546,
+          "precipSituation": "unidentifiedModerate",
+          "solarRadiation": 30516,
+          "friction": 34
+        },
+        "gnssStatus": "64"
+      }
+    },
+    {
+      "thePosition": {
+        "utcTime": {
+          "year": 304,
+          "month": 1,
+          "day": 24,
+          "hour": 30,
+          "minute": 13,
+          "second": 20065,
+          "offset": -180
+        },
+        "long": -1757937203,
+        "lat": -477069837,
+        "elevation": 3696,
+        "heading": 16843,
+        "speed": {
+          "transmisson": "reverseGears",
+          "speed": 6323
+        },
+        "posAccuracy": {
+          "semiMajor": 43,
+          "semiMinor": 151,
+          "orientation": 9268
+        },
+        "timeConfidence": "time-000-000-000-000-2",
+        "posConfidence": {
+          "pos": "a1m",
+          "elevation": "elev-010-00"
+        },
+        "speedConfidence": {
+          "heading": "prec01deg",
+          "speed": "prec5ms",
+          "throttle": "prec10percent"
+        }
+      },
+      "safetyExt": {
+        "events": {
+          "value": "1A28",
+          "length": 13
+        },
+        "pathHistory": {
+          "initialPosition": {
+            "utcTime": {
+              "year": 3494,
+              "month": 11,
+              "day": 22,
+              "hour": 3,
+              "minute": 48,
+              "second": 3811,
+              "offset": -660
+            },
+            "long": -362863178,
+            "lat": -732993457,
+            "elevation": 38910,
+            "heading": 25912,
+            "speed": {
+              "transmisson": "neutral",
+              "speed": 373
+            },
+            "posAccuracy": {
+              "semiMajor": 178,
+              "semiMinor": 147,
+              "orientation": 39993
+            },
+            "timeConfidence": "time-000-005",
+            "posConfidence": {
+              "pos": "a200m",
+              "elevation": "elev-010-00"
+            },
+            "speedConfidence": {
+              "heading": "prec0-05deg",
+              "speed": "prec100ms",
+              "throttle": "unavailable"
+            }
+          },
+          "currGNSSstatus": "EE",
+          "crumbData": [
+            {
+              "latOffset": 88842,
+              "lonOffset": -45592,
+              "elevationOffset": 1374,
+              "timeOffset": 17358,
+              "speed": 7667,
+              "posAccuracy": {
+                "semiMajor": 171,
+                "semiMinor": 27,
+                "orientation": 60724
+              },
+              "heading": 13
+            }
+          ]
+        },
+        "pathPrediction": {
+          "radiusOfCurve": -18395,
+          "confidence": 45
+        },
+        "lights": {
+          "value": "F280",
+          "length": 9
+        }
+      },
+      "dataSet": {
+        "lights": {
+          "value": "2D00",
+          "length": 9
+        },
+        "lightBar": "unavailable",
+        "wipers": {
+          "statusFront": "washerInUse",
+          "rateFront": 115,
+          "statusRear": "automaticPresent",
+          "rateRear": 5
+        },
+        "brakeStatus": {
+          "wheelBrakes": "08",
+          "traction": "on",
+          "abs": "off",
+          "scs": "unavailable",
+          "brakeBoost": "unavailable",
+          "auxBrakes": "off"
+        },
+        "brakePressure": "bkLvl-9",
+        "roadFriction": 28,
+        "sunData": 423,
+        "rainData": "none",
+        "airTemp": 55,
+        "airPres": 90,
+        "steering": {
+          "angle": -64,
+          "confidence": "prec1deg",
+          "rate": 108,
+          "wheels": 35
+        },
+        "accelSets": {
+          "accel4way": {
+            "long": 1452,
+            "lat": 1182,
+            "vert": 92,
+            "yaw": 5538
+          },
+          "vertAccelThres": "80",
+          "yawRateCon": "degSec-005-00",
+          "hozAccelCon": "accl-000-05",
+          "confidenceSet": {
+            "accelConfidence": {
+              "yawRate": "degSec-000-05",
+              "acceleration": "accl-005-00",
+              "steeringWheelAngle": "unavailable"
+            },
+            "speedConfidence": {
+              "heading": "prec0-1deg",
+              "speed": "prec0-1ms",
+              "throttle": "prec0-5percent"
+            },
+            "timeConfidence": "time-000-000-01",
+            "posConfidence": {
+              "pos": "a5cm",
+              "elevation": "elev-000-01"
+            },
+            "steerConfidence": "prec1deg",
+            "headingConfidence": "prec10deg",
+            "throttleConfidence": "unavailable"
+          }
+        },
+        "object": {
+          "obDist": 14214,
+          "obDirect": 17308,
+          "dateTime": {
+            "year": 3341,
+            "month": 7,
+            "day": 23,
+            "hour": 10,
+            "minute": 15,
+            "second": 40985,
+            "offset": -485
+          }
+        },
+        "fullPos": {
+          "utcTime": {
+            "year": 347,
+            "month": 8,
+            "day": 30,
+            "hour": 11,
+            "minute": 47,
+            "second": 51788,
+            "offset": -90
+          },
+          "long": -1702066349,
+          "lat": 92184958,
+          "elevation": 47094,
+          "heading": 24829,
+          "speed": {
+            "transmisson": "forwardGears",
+            "speed": 967
+          },
+          "posAccuracy": {
+            "semiMajor": 74,
+            "semiMinor": 209,
+            "orientation": 8160
+          },
+          "timeConfidence": "time-000-010",
+          "posConfidence": {
+            "pos": "a5cm",
+            "elevation": "elev-010-00"
+          },
+          "speedConfidence": {
+            "heading": "prec10deg",
+            "speed": "prec0-05ms",
+            "throttle": "unavailable"
+          }
+        },
+        "throttlePos": 111,
+        "speedHeadC": {
+          "heading": "prec01deg",
+          "speed": "prec0-05ms",
+          "throttle": "prec1percent"
+        },
+        "speedC": "prec100ms",
+        "vehicleData": {
+          "height": 5,
+          "bumpers": {
+            "front": 83,
+            "rear": 107
+          },
+          "mass": 179,
+          "trailerWeight": 16133,
+          "type": "axleCnt3"
+        },
+        "vehicleIdent": {
+          "name": "SKIBPWOADOVHT",
+          "vin": "5E",
+          "id": {
+            "entityID": "F5FA070C"
+          },
+          "vehicleType": "axleCnt6MultiTrailer",
+          "vehicleClass": {
+            "vGroup": "abnormal-loads"
+          }
+        },
+        "j1939data": {
+          "tires": [
+            {
+              "location": 77,
+              "pressure": 220,
+              "temp": -8114,
+              "wheelSensorStatus": "off",
+              "wheelEndElectFault": "isError",
+              "leakageRate": 3134,
+              "detection": "extremeUnderPressure"
+            },
+            {
+              "location": 76,
+              "pressure": 29,
+              "temp": 41143,
+              "wheelSensorStatus": "notSupported",
+              "wheelEndElectFault": "isNotSupported",
+              "leakageRate": 40038,
+              "detection": "errorIndicator"
+            },
+            {
+              "location": 42,
+              "pressure": 20,
+              "temp": 37711,
+              "wheelSensorStatus": "notSupported",
+              "wheelEndElectFault": "isNotSupported",
+              "leakageRate": 25455,
+              "detection": "extremeUnderPressure"
+            }
+          ],
+          "axles": [
+            {
+              "location": 23,
+              "weight": 11917
+            }
+          ],
+          "trailerWeight": 56051,
+          "cargoWeight": 63849,
+          "steeringAxleTemperature": 194,
+          "driveAxleLocation": 219,
+          "driveAxleLiftAirPressure": 5,
+          "driveAxleTemperature": 190,
+          "driveAxleLubePressure": 22,
+          "steeringAxleLubePressure": 23
+        },
+        "weatherReport": {
+          "isRaining": "precip",
+          "rainRate": 63206,
+          "precipSituation": "frozenPrecipitationModerate",
+          "solarRadiation": 39199,
+          "friction": 16
+        },
+        "gnssStatus": "84"
+      }
+    },
+    {
+      "thePosition": {
+        "utcTime": {
+          "year": 867,
+          "month": 9,
+          "day": 12,
+          "hour": 21,
+          "minute": 4,
+          "second": 38522,
+          "offset": -561
+        },
+        "long": -630542349,
+        "lat": -712591535,
+        "elevation": 4782,
+        "heading": 28585,
+        "speed": {
+          "transmisson": "neutral",
+          "speed": 5502
+        },
+        "posAccuracy": {
+          "semiMajor": 172,
+          "semiMinor": 125,
+          "orientation": 38843
+        },
+        "timeConfidence": "time-000-001",
+        "posConfidence": {
+          "pos": "a10cm",
+          "elevation": "elev-005-00"
+        },
+        "speedConfidence": {
+          "heading": "prec0-1deg",
+          "speed": "prec1ms",
+          "throttle": "prec0-5percent"
+        }
+      },
+      "safetyExt": {
+        "events": {
+          "value": "E970",
+          "length": 13
+        },
+        "pathHistory": {
+          "initialPosition": {
+            "utcTime": {
+              "year": 1808,
+              "month": 0,
+              "day": 1,
+              "hour": 1,
+              "minute": 24,
+              "second": 54962,
+              "offset": -758
+            },
+            "long": -559731420,
+            "lat": -675390213,
+            "elevation": 54759,
+            "heading": 23968,
+            "speed": {
+              "transmisson": "unavailable",
+              "speed": 8030
+            },
+            "posAccuracy": {
+              "semiMajor": 185,
+              "semiMinor": 143,
+              "orientation": 24180
+            },
+            "timeConfidence": "time-000-000-000-000-5",
+            "posConfidence": {
+              "pos": "a5m",
+              "elevation": "unavailable"
+            },
+            "speedConfidence": {
+              "heading": "prec05deg",
+              "speed": "prec10ms",
+              "throttle": "prec1percent"
+            }
+          },
+          "currGNSSstatus": "F9",
+          "crumbData": [
+            {
+              "latOffset": -87973,
+              "lonOffset": -96500,
+              "elevationOffset": -1781,
+              "timeOffset": 45780,
+              "speed": 352,
+              "posAccuracy": {
+                "semiMajor": 37,
+                "semiMinor": 200,
+                "orientation": 29120
+              },
+              "heading": 146
+            }
+          ]
+        },
+        "pathPrediction": {
+          "radiusOfCurve": 2214,
+          "confidence": 16
+        },
+        "lights": {
+          "value": "0580",
+          "length": 9
+        }
+      },
+      "dataSet": {
+        "lights": {
+          "value": "B380",
+          "length": 9
+        },
+        "lightBar": "freqStops",
+        "wipers": {
+          "statusFront": "intermittent",
+          "rateFront": 107,
+          "statusRear": "low",
+          "rateRear": 25
+        },
+        "brakeStatus": {
+          "wheelBrakes": "B8",
+          "traction": "engaged",
+          "abs": "engaged",
+          "scs": "on",
+          "brakeBoost": "off",
+          "auxBrakes": "reserved"
+        },
+        "brakePressure": "bkLvl-10",
+        "roadFriction": 22,
+        "sunData": 411,
+        "rainData": "lightMist",
+        "airTemp": 185,
+        "airPres": 182,
+        "steering": {
+          "angle": 117,
+          "confidence": "prec0-02deg",
+          "rate": -10,
+          "wheels": 96
+        },
+        "accelSets": {
+          "accel4way": {
+            "long": 1892,
+            "lat": -334,
+            "vert": 23,
+            "yaw": -7243
+          },
+          "vertAccelThres": "B8",
+          "yawRateCon": "degSec-000-05",
+          "hozAccelCon": "accl-010-00",
+          "confidenceSet": {
+            "accelConfidence": {
+              "yawRate": "degSec-100-00",
+              "acceleration": "accl-010-00",
+              "steeringWheelAngle": "unavailable"
+            },
+            "speedConfidence": {
+              "heading": "prec0-1deg",
+              "speed": "prec100ms",
+              "throttle": "prec10percent"
+            },
+            "timeConfidence": "time-000-000-02",
+            "posConfidence": {
+              "pos": "a1cm",
+              "elevation": "elev-001-00"
+            },
+            "steerConfidence": "prec0-02deg",
+            "headingConfidence": "prec01deg",
+            "throttleConfidence": "unavailable"
+          }
+        },
+        "object": {
+          "obDist": 7956,
+          "obDirect": 14993,
+          "dateTime": {
+            "year": 2415,
+            "month": 0,
+            "day": 7,
+            "hour": 11,
+            "minute": 9,
+            "second": 38393,
+            "offset": 34
+          }
+        },
+        "fullPos": {
+          "utcTime": {
+            "year": 3185,
+            "month": 0,
+            "day": 11,
+            "hour": 29,
+            "minute": 17,
+            "second": 17652,
+            "offset": -285
+          },
+          "long": 924609251,
+          "lat": 435915757,
+          "elevation": 57489,
+          "heading": 16175,
+          "speed": {
+            "transmisson": "reverseGears",
+            "speed": 4805
+          },
+          "posAccuracy": {
+            "semiMajor": 204,
+            "semiMinor": 49,
+            "orientation": 25060
+          },
+          "timeConfidence": "time-000-000-000-000-05",
+          "posConfidence": {
+            "pos": "a2m",
+            "elevation": "elev-002-00"
+          },
+          "speedConfidence": {
+            "heading": "prec0-1deg",
+            "speed": "prec0-01ms",
+            "throttle": "prec0-5percent"
+          }
+        },
+        "throttlePos": 179,
+        "speedHeadC": {
+          "heading": "prec10deg",
+          "speed": "prec5ms",
+          "throttle": "prec0-5percent"
+        },
+        "speedC": "prec1ms",
+        "vehicleData": {
+          "height": 118,
+          "bumpers": {
+            "front": 100,
+            "rear": 58
+          },
+          "mass": 1,
+          "trailerWeight": 31722,
+          "type": "axleCnt5Trailer"
+        },
+        "vehicleIdent": {
+          "name": "PTY",
+          "vin": "0E46A3A4",
+          "id": {
+            "entityID": "91AC786F"
+          },
+          "vehicleType": "axleCnt5MultiTrailer",
+          "vehicleClass": {
+            "rEquip": "medical-rescue-unit"
+          }
+        },
+        "j1939data": {
+          "tires": [
+            {
+              "location": 200,
+              "pressure": 53,
+              "temp": 38354,
+              "wheelSensorStatus": "notDefined",
+              "wheelEndElectFault": "isNotDefined",
+              "leakageRate": 35132,
+              "detection": "noWarningPressure"
+            },
+            {
+              "location": 47,
+              "pressure": 75,
+              "temp": 3640,
+              "wheelSensorStatus": "on",
+              "wheelEndElectFault": "isNotDefined",
+              "leakageRate": 5154,
+              "detection": "extremeUnderPressure"
+            },
+            {
+              "location": 233,
+              "pressure": 51,
+              "temp": 41689,
+              "wheelSensorStatus": "notSupported",
+              "wheelEndElectFault": "isNotSupported",
+              "leakageRate": 59676,
+              "detection": "extremeUnderPressure"
+            }
+          ],
+          "axles": [
+            {
+              "location": 217,
+              "weight": 45595
+            }
+          ],
+          "trailerWeight": 54487,
+          "cargoWeight": 47945,
+          "steeringAxleTemperature": -4,
+          "driveAxleLocation": 112,
+          "driveAxleLiftAirPressure": 746,
+          "driveAxleTemperature": 155,
+          "driveAxleLubePressure": 68,
+          "steeringAxleLubePressure": 124
+        },
+        "weatherReport": {
+          "isRaining": "precip",
+          "rainRate": 61639,
+          "precipSituation": "rainModerate",
+          "solarRadiation": 31010,
+          "friction": 73
+        },
+        "gnssStatus": "22"
+      }
+    }
+  ]
+}
