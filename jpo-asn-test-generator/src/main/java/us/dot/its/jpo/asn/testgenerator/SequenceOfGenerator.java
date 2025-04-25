@@ -26,7 +26,9 @@ public class SequenceOfGenerator extends RandomGenerator<Asn1SequenceOf<?>> {
         instance.add(itemGen.createRandom());
       }
     } else {
-      System.err.printf("No generator available for item type %s%n", itemClass.getName());
+      spec.commandLine()
+          .getErr()
+          .printf("No generator available for item type %s%n", itemClass.getName());
     }
   }
 }

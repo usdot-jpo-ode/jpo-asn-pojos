@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
+import picocli.CommandLine.Model.CommandSpec;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
@@ -23,13 +24,15 @@ import us.dot.its.jpo.asn.runtime.types.IA5String;
 
 public abstract class RandomGenerator<T extends Asn1Type> {
 
+  CommandSpec spec;
+
   protected final String pdu;
   protected final int sequenceOfLimit;
   protected final boolean regional;
   protected final Set<Class<?>> excludePdus;
 
   public GeneratorOptions options() {
-    return new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePdus);
+    return new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePdus, spec);
   }
 
   public RandomGenerator(GeneratorOptions options) {
@@ -37,6 +40,7 @@ public abstract class RandomGenerator<T extends Asn1Type> {
     this.sequenceOfLimit = options.limit();
     this.regional = options.regional();
     this.excludePdus = options.excludePdus();
+    this.spec = options.spec();
   }
 
   protected abstract void populateRandom(T instance);
@@ -83,7 +87,11 @@ public abstract class RandomGenerator<T extends Asn1Type> {
     } else if (Asn1Null.class.isAssignableFrom(type)) {
       return new NullGenerator(options);
     } else {
-      System.err.printf("No RandomGenerator found for type %s%n", type.getName());
+      options
+          .spec()
+          .commandLine()
+          .getErr()
+          .printf("No RandomGenerator found for type %s%n", type.getName());
       return null;
     }
   }

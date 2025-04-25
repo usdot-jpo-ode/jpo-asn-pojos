@@ -11,6 +11,7 @@ plugins {
     id("io.freefair.lombok") version "8.11"
     id 'com.gradleup.shadow' version '8.3.6'
     id("com.diffplug.spotless") version "7.0.2"
+    id 'jacoco'
 }
 
 repositories {
@@ -23,7 +24,7 @@ dependencies {
     testImplementation libs.junit.jupiter
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.2'
     implementation 'org.apache.commons:commons-lang3:3.17.0'
     implementation 'commons-io:commons-io:2.18.0'
@@ -48,9 +49,18 @@ application {
     mainClass = 'us.dot.its.jpo.asn.testgenerator.TestGenCli'
 }
 
-tasks.named('test') {
+test {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+    }
 }
 
 tasks.named("shadowJar") {

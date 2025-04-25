@@ -9,7 +9,9 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Spec;
 
 @Command(
     name = "testgen-cli",
@@ -18,6 +20,13 @@ import picocli.CommandLine.Option;
     sortOptions = false,
     sortSynopsis = false)
 public class TestGenCli implements Runnable {
+
+  // Use the picocli PrintWriter for output to make testing easier
+  @Spec CommandSpec spec;
+
+  private CommandLine cmd() {
+    return spec.commandLine();
+  }
 
   @Option(
       names = {"-m", "--module"},
@@ -72,30 +81,30 @@ public class TestGenCli implements Runnable {
   @SuppressWarnings({"unchecked"})
   @Override
   public void run() {
-    System.out.println("ASN.1 POJO Test Generator");
-    System.out.println("Module: " + module);
-    System.out.println("PDU: " + pdu);
-    System.out.println("SEQUENCE-OF limit: " + sequenceOfLimit);
+    cmd().getOut().println("ASN.1 POJO Test Generator");
+    cmd().getOut().println("Module: " + module);
+    cmd().getOut().println("PDU: " + pdu);
+    cmd().getOut().println("SEQUENCE-OF limit: " + sequenceOfLimit);
     if (sequenceOfLimit < 2) {
-      System.err.println("Sequence of limit must be greater than or equal to 2");
+      cmd().getErr().println("Sequence of limit must be greater than or equal to 2");
     }
-    System.out.println("Include regional extensions: " + regional);
-    System.out.println("Exclude PDUs: " + excludePdus);
+    cmd().getOut().println("Include regional extensions: " + regional);
+    cmd().getOut().println("Exclude PDUs: " + excludePdus);
     final String fullPdu = fullyQualified(module, pdu);
-    System.out.printf("Fully qualified class name = %s%n", fullPdu);
+    cmd().getOut().printf("Fully qualified class name = %s%n", fullPdu);
     Set<Class<?>> excludePduClasses = new HashSet<>();
     if (excludePdus != null && !excludePdus.isEmpty()) {
       for (var excludePdu : excludePdus) {
         var excludeClass = getClass(fullyQualified(excludePdu));
         excludePduClasses.add(excludeClass);
-        System.out.println("Exclude: " + excludeClass.getName());
+        cmd().getOut().println("Exclude: " + excludeClass.getName());
       }
     }
 
     RandomGenerator<?> gen =
         RandomGenerator.getGeneratorForType(
             getClass(fullPdu),
-            new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePduClasses));
+            new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePduClasses, spec));
     if (gen == null) {
       throw new RuntimeException(String.format("Generator for type %s not found", fullPdu));
     }
@@ -104,21 +113,21 @@ public class TestGenCli implements Runnable {
       var xml = gen.toXml(seq);
       if (xerOutputFile != null) {
         FileUtils.writeStringToFile(xerOutputFile, xml, StandardCharsets.UTF_8);
-        System.out.printf("Saved XER to file %s%n", xerOutputFile.getAbsolutePath());
+        cmd().getOut().printf("Saved XER to file %s%n", xerOutputFile.getAbsolutePath());
       } else {
-        System.out.println("XER:");
-        System.out.println(xml);
+        cmd().getOut().println("XER:");
+        cmd().getOut().println(xml);
       }
       var json = gen.toJson(seq);
       if (jerOutputFile != null) {
         FileUtils.writeStringToFile(jerOutputFile, json, StandardCharsets.UTF_8);
-        System.out.printf("Saved JER to file %s%n", jerOutputFile.getAbsolutePath());
+        cmd().getOut().printf("Saved JER to file %s%n", jerOutputFile.getAbsolutePath());
       } else {
-        System.out.println("JER:");
-        System.out.println(json);
+        cmd().getOut().println("JER:");
+        cmd().getOut().println(json);
       }
     } catch (IOException e) {
-      System.err.println(e.getMessage());
+      cmd().getErr().println(e.getMessage());
       ExceptionUtils.printRootCauseStackTrace(e);
       throw new RuntimeException(e);
     }
