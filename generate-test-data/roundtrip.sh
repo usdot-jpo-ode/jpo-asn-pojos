@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
 
-# Prerequisites:
-# - Linux command line (tested with WSL/Ubuntu on Windows)
 #
 # Script to test "round-tripping" XER and JER messages through the asn1c codec.
 # Accepts an XER and JER file, convets them to UPER, and converts the UPER back
 # to XER and JER.  Outputs UPER, roundtrip XER, JER and diff files.
 #
-# Example usage (prereqs: Java 21+, Git command line):
+# Requires:
 #
-# 1. Generate SPAT messages with the Java tool
+# - Linux command line (tested with WSL/Ubuntu on Windows)
+#
+# Example usage:
+#
+# 1. Generate SPAT messages with the Java tool:
 #
 #   java -jar testgen-cli.jar -m SPAT -p SPAT -x spat.xml -j spat.json
 #
-# 2. Round trip them through asn1c with this script
+# 2. Round trip them through asn1c with this script:
 #
 #   ./roundtrip.sh SPAT spat
 #
-
 
 set -x
 
