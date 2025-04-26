@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.not;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -94,28 +95,77 @@ public class TestGenCliTest {
   }
 
   public static Stream<Arguments> messageTypes() {
-    return Stream.of(
-        Arguments.of("SPAT", "SPAT", "<SPAT>", "\"intersections\""),
-        Arguments.of(
-            "BasicSafetyMessage", "BasicSafetyMessage", "<BasicSafetyMessage>", "\"coreData\""),
-        Arguments.of(
-            "TravelerInformation",
-            "TravelerInformation",
-            "<TravelerInformation>",
-            "\"dataFrames\""),
-        Arguments.of(
-            "PersonalSafetyMessage",
-            "PersonalSafetyMessage",
-            "<PersonalSafetyMessage>",
-            "\"basicType\""),
-        Arguments.of("MapData", "MapData", "<MapData>", "\"layerType\""),
-        Arguments.of("ProbeDataConfig", "ProbeDataConfigMessage", "<ProbeDataConfigMessage>", "{"),
-        // Test choice with null.
-        Arguments.of(
-            "ProbeDataReport",
-            "RptDriverAlertsAndWarnings",
-            "<RptDriverAlertsAndWarnings>",
-            "null"),
-        Arguments.of("MessageFrame", "MessageFrame", "<MessageFrame>", "\"messageId\""));
+    var args =
+        new String[][] {
+          {"SPAT", "SPAT", "<SPAT>", "\"intersections\""},
+          {"BasicSafetyMessage", "BasicSafetyMessage", "<BasicSafetyMessage>", "coreData"},
+          {"CommonSafetyRequest", "CommonSafetyRequest", "<CommonSafetyRequest>", "timeStamp"},
+          {
+            "CooperativeControlMessage",
+            "CooperativeControlMessage",
+            "<CooperativeControlMessage>",
+            "coreData"
+          },
+          {"EmergencyVehicleAlert", "EmergencyVehicleAlert", "<EmergencyVehicleAlert>", "rsaMsg"},
+          {"IntersectionCollision", "IntersectionCollision", "<IntersectionCollision>", "msgCnt"},
+          {
+            "ManeuverSharingAndCoordinatingMessage",
+            "ManeuverSharingAndCoordinatingMessage",
+            "<ManeuverSharingAndCoordinatingMessage>",
+            "\"maneuver\""
+          },
+          {"MapData", "MapData", "<MapData>", "\"layerType\""},
+          {"NMEAcorrections", "NMEAcorrections", "<NMEAcorrections>", "payload"},
+          {
+            "PersonalSafetyMessage", "PersonalSafetyMessage", "<PersonalSafetyMessage>", "basicType"
+          },
+          {"ProbeDataConfig", "ProbeDataConfigMessage", "<ProbeDataConfigMessage>", "descriptor"},
+          {"ProbeDataManagement", "ProbeDataManagement", "<ProbeDataManagement>", "timeStamp"},
+          // Test choice with null.
+          {"ProbeDataReport", "RptDriverAlertsAndWarnings", "<RptDriverAlertsAndWarnings>", "null"},
+          {"ProbeVehicleData", "ProbeVehicleData", "<ProbeVehicleData>", "probeID"},
+          {"RoadSafetyMessage", "RoadSafetyMessage", "<RoadSafetyMessage>", "commonContainer"},
+          {"RoadSideAlert", "RoadSideAlert", "<RoadSideAlert>", "msgCnt"},
+          {
+            "RoadUserChargingConfigMessage",
+            "RoadUserChargingConfigMessage",
+            "<RoadUserChargingConfigMessage>",
+            "chargerInfoTable"
+          },
+          {
+            "RoadUserChargingReportMessage",
+            "RoadUserChargingReportMessage",
+            "<RoadUserChargingReportMessage>",
+            "usageReport"
+          },
+          // Top level choice, JSON is unpredictable
+          {"RoadWeatherMessage", "RoadWeatherMessage", "<RoadWeatherMessage>", "{"},
+          {"RTCMcorrections", "RTCMcorrections", "<RTCMcorrections>", "rtcmHeader"},
+          {
+            "SensorDataSharingMessage",
+            "SensorDataSharingMessage",
+            "<SensorDataSharingMessage>",
+            "sourceID"
+          },
+          {"SignalRequestMessage", "SignalRequestMessage", "<SignalRequestMessage>", "timeStamp"},
+          {"SignalStatusMessage", "SignalStatusMessage", "<SignalStatusMessage>", "timeStamp"},
+          {"TestMessage01", "TestMessage01", "<TestMessage01>", "header"},
+          {
+            "TollAdvertisementMessage",
+            "TollAdvertisementMessage",
+            "<TollAdvertisementMessage>",
+            "tollChargesTable"
+          },
+          {"TollUsageAckMessage", "TollUsageAckMessage", "<TollUsageAckMessage>", "tumAck"},
+          {
+            "TrafficLightStatusMessage",
+            "TrafficLightStatusMessage",
+            "<TrafficLightStatusMessage>",
+            "trafficLightID"
+          },
+          {"TravelerInformation", "TravelerInformation", "<TravelerInformation>", "dataFrames"},
+          {"MessageFrame", "MessageFrame", "<MessageFrame>", "messageId"}
+        };
+    return Arrays.stream(args).map(Arguments::of);
   }
 }
