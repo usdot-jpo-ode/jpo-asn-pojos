@@ -39,8 +39,10 @@ public class NullDeserializer<T extends Asn1Null> extends StdDeserializer<T> {
       throws IOException, JacksonException {
     // Used by XER only, JER never calls this.
     // Read the empty node
-    TreeNode node = jsonParser.getCodec().readTree(jsonParser);
-    log.trace("node: {}", node);
+    if (log.isTraceEnabled()) {
+      TreeNode node = jsonParser.getCodec().readTree(jsonParser);
+      log.trace("node: {}", node);
+    }
     return (T) construct();
   }
 

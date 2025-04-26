@@ -12,5 +12,4 @@ import us.dot.its.jpo.asn.runtime.serialization.NullSerializer;
 @JsonSerialize(using = NullSerializer.class)
 @JsonDeserialize(using = NullDeserializer.class)
 public class Asn1Null implements Asn1Type {
-
 }
