@@ -14,7 +14,12 @@ public class IntegerGenerator extends RandomGenerator<Asn1Integer> {
     Random r = new Random();
     long lowerBound = instance.getLowerBound();
     long upperBound = instance.getUpperBound();
-    long rand = r.nextLong(upperBound - lowerBound) + lowerBound;
+    long rand;
+    if (upperBound - lowerBound >= 0) {
+      rand = r.nextLong(upperBound - lowerBound) + lowerBound;
+    } else {
+      rand = r.nextLong();
+    }
     instance.setValue(rand);
   }
 }

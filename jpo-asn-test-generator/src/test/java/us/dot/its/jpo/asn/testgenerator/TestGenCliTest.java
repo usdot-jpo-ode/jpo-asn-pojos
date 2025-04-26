@@ -163,6 +163,7 @@ public class TestGenCliTest {
             "<TrafficLightStatusMessage>",
             "trafficLightID"
           },
+          {"TrafficLightStatusMessage", "TrafficLightID", "<TrafficLightID>", "id"},
           {"TravelerInformation", "TravelerInformation", "<TravelerInformation>", "dataFrames"},
           {"MessageFrame", "MessageFrame", "<MessageFrame>", "messageId"}
         };
