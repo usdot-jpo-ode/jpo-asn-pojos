@@ -29,17 +29,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import us.dot.its.jpo.asn.j2735.r2024.Common.AccelerationSet4Way;
 import us.dot.its.jpo.asn.j2735.r2024.Common.AmbientAirPressure;
 import us.dot.its.jpo.asn.j2735.r2024.Common.AmbientAirTemperature;
+import us.dot.its.jpo.asn.j2735.r2024.Common.Angle;
 import us.dot.its.jpo.asn.j2735.r2024.Common.BrakeSystemStatus;
+import us.dot.its.jpo.asn.j2735.r2024.Common.BumperHeights;
 import us.dot.its.jpo.asn.j2735.r2024.Common.CoefficientOfFriction;
+import us.dot.its.jpo.asn.j2735.r2024.Common.DDateTime;
 import us.dot.its.jpo.asn.j2735.r2024.Common.ExteriorLights;
 import us.dot.its.jpo.asn.j2735.r2024.Common.FullPositionVector;
 import us.dot.its.jpo.asn.j2735.r2024.Common.GNSSstatus;
 import us.dot.its.jpo.asn.j2735.r2024.Common.LightbarInUse;
+import us.dot.its.jpo.asn.j2735.r2024.Common.ObstacleDistance;
 import us.dot.its.jpo.asn.j2735.r2024.Common.SpeedConfidence;
 import us.dot.its.jpo.asn.j2735.r2024.Common.SpeedandHeadingandThrottleConfidence;
+import us.dot.its.jpo.asn.j2735.r2024.Common.SteeringWheelAngle;
+import us.dot.its.jpo.asn.j2735.r2024.Common.TrailerWeight;
+import us.dot.its.jpo.asn.j2735.r2024.Common.VehicleHeight;
+import us.dot.its.jpo.asn.j2735.r2024.Common.VehicleMass;
+import us.dot.its.jpo.asn.j2735.r2024.Common.VehicleType;
+import us.dot.its.jpo.asn.j2735.r2024.Common.VerticalAccelerationThreshold;
 import us.dot.its.jpo.asn.j2735.r2024.Common.WiperSet;
+import us.dot.its.jpo.asn.j2735.r2024.NTCIP.EssMobileFriction;
+import us.dot.its.jpo.asn.j2735.r2024.NTCIP.EssPrecipRate;
+import us.dot.its.jpo.asn.j2735.r2024.NTCIP.EssPrecipSituation;
+import us.dot.its.jpo.asn.j2735.r2024.NTCIP.EssPrecipYesNo;
+import us.dot.its.jpo.asn.j2735.r2024.NTCIP.EssSolarRadiation;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
@@ -92,15 +108,15 @@ public class VehicleStatus extends Asn1Sequence {
 
   @Asn1Property(tag = 10, name = "steering", optional = true)
   @JsonProperty("steering")
-  private Asn1Sequence steering;
+  private SteeringSequence steering;
 
   @Asn1Property(tag = 11, name = "accelSets", optional = true)
   @JsonProperty("accelSets")
-  private Asn1Sequence accelSets;
+  private AccelSetsSequence accelSets;
 
   @Asn1Property(tag = 12, name = "object", optional = true)
   @JsonProperty("object")
-  private Asn1Sequence object;
+  private ObjectSequence object;
 
   @Asn1Property(tag = 13, name = "fullPos", optional = true)
   @JsonProperty("fullPos")
@@ -120,7 +136,7 @@ public class VehicleStatus extends Asn1Sequence {
 
   @Asn1Property(tag = 17, name = "vehicleData", optional = true)
   @JsonProperty("vehicleData")
-  private Asn1Sequence vehicleData;
+  private VehicleDataSequence vehicleData;
 
   @Asn1Property(tag = 18, name = "vehicleIdent", optional = true)
   @JsonProperty("vehicleIdent")
@@ -132,11 +148,144 @@ public class VehicleStatus extends Asn1Sequence {
 
   @Asn1Property(tag = 20, name = "weatherReport", optional = true)
   @JsonProperty("weatherReport")
-  private Asn1Sequence weatherReport;
+  private WeatherReportSequence weatherReport;
 
   @Asn1Property(tag = 21, name = "gnssStatus", optional = true)
   @JsonProperty("gnssStatus")
   private GNSSstatus gnssStatus;
+
+  @JsonInclude(Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @ToString(callSuper = true)
+  @Getter
+  @Setter
+  public static class SteeringSequence extends Asn1Sequence {
+    @Asn1Property(tag = 0, name = "angle")
+    @JsonProperty("angle")
+    private SteeringWheelAngle angle;
+
+    @Asn1Property(tag = 1, name = "confidence", optional = true)
+    @JsonProperty("confidence")
+    private SteeringWheelAngleConfidence confidence;
+
+    @Asn1Property(tag = 2, name = "rate", optional = true)
+    @JsonProperty("rate")
+    private SteeringWheelAngleRateOfChange rate;
+
+    @Asn1Property(tag = 3, name = "wheels", optional = true)
+    @JsonProperty("wheels")
+    private DrivingWheelAngle wheels;
+
+    public SteeringSequence() {}
+  }
+
+  @JsonInclude(Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @ToString(callSuper = true)
+  @Getter
+  @Setter
+  public static class AccelSetsSequence extends Asn1Sequence {
+    @Asn1Property(tag = 0, name = "accel4way", optional = true)
+    @JsonProperty("accel4way")
+    private AccelerationSet4Way accel4way;
+
+    @Asn1Property(tag = 1, name = "vertAccelThres", optional = true)
+    @JsonProperty("vertAccelThres")
+    private VerticalAccelerationThreshold vertAccelThres;
+
+    @Asn1Property(tag = 2, name = "yawRateCon", optional = true)
+    @JsonProperty("yawRateCon")
+    private YawRateConfidence yawRateCon;
+
+    @Asn1Property(tag = 3, name = "hozAccelCon", optional = true)
+    @JsonProperty("hozAccelCon")
+    private AccelerationConfidence hozAccelCon;
+
+    @Asn1Property(tag = 4, name = "confidenceSet", optional = true)
+    @JsonProperty("confidenceSet")
+    private ConfidenceSet confidenceSet;
+
+    public AccelSetsSequence() {}
+  }
+
+  @JsonInclude(Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @ToString(callSuper = true)
+  @Getter
+  @Setter
+  public static class ObjectSequence extends Asn1Sequence {
+    @Asn1Property(tag = 0, name = "obDist")
+    @JsonProperty("obDist")
+    private ObstacleDistance obDist;
+
+    @Asn1Property(tag = 1, name = "obDirect")
+    @JsonProperty("obDirect")
+    private Angle obDirect;
+
+    @Asn1Property(tag = 2, name = "dateTime")
+    @JsonProperty("dateTime")
+    private DDateTime dateTime;
+
+    public ObjectSequence() {}
+  }
+
+  @JsonInclude(Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @ToString(callSuper = true)
+  @Getter
+  @Setter
+  public static class VehicleDataSequence extends Asn1Sequence {
+    @Asn1Property(tag = 0, name = "height")
+    @JsonProperty("height")
+    private VehicleHeight height;
+
+    @Asn1Property(tag = 1, name = "bumpers")
+    @JsonProperty("bumpers")
+    private BumperHeights bumpers;
+
+    @Asn1Property(tag = 2, name = "mass")
+    @JsonProperty("mass")
+    private VehicleMass mass;
+
+    @Asn1Property(tag = 3, name = "trailerWeight")
+    @JsonProperty("trailerWeight")
+    private TrailerWeight trailerWeight;
+
+    @Asn1Property(tag = 4, name = "type")
+    @JsonProperty("type")
+    private VehicleType type;
+
+    public VehicleDataSequence() {}
+  }
+
+  @JsonInclude(Include.NON_NULL)
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  @ToString(callSuper = true)
+  @Getter
+  @Setter
+  public static class WeatherReportSequence extends Asn1Sequence {
+    @Asn1Property(tag = 0, name = "isRaining")
+    @JsonProperty("isRaining")
+    private EssPrecipYesNo isRaining;
+
+    @Asn1Property(tag = 1, name = "rainRate", optional = true)
+    @JsonProperty("rainRate")
+    private EssPrecipRate rainRate;
+
+    @Asn1Property(tag = 2, name = "precipSituation", optional = true)
+    @JsonProperty("precipSituation")
+    private EssPrecipSituation precipSituation;
+
+    @Asn1Property(tag = 3, name = "solarRadiation", optional = true)
+    @JsonProperty("solarRadiation")
+    private EssSolarRadiation solarRadiation;
+
+    @Asn1Property(tag = 4, name = "friction", optional = true)
+    @JsonProperty("friction")
+    private EssMobileFriction friction;
+
+    public WeatherReportSequence() {}
+  }
 
   public VehicleStatus() {}
 

@@ -1,5 +1,6 @@
 package us.dot.its.jpo.asn.runtime.types;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +19,16 @@ public class Asn1Integer implements Asn1Type, Comparable<Asn1Integer> {
   final long lowerBound;
   @Getter
   final long upperBound;
+
+  public Asn1Integer() {
+    this(Long.MIN_VALUE, Long.MAX_VALUE);
+  }
+
+  @JsonCreator
+  public Asn1Integer(long value) {
+    this();
+    this.value = value;
+  }
 
   public Asn1Integer(long lowerBound, long upperBound) {
     this.lowerBound = lowerBound;
