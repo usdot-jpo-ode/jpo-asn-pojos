@@ -1,4 +1,5 @@
 # Test Generator
+
 This is a Java command line utility for generating test messages in XER and JER format.
 
 ## Prerequisites
@@ -47,11 +48,13 @@ Usage: testgen-cli [-rhV] -m=<module> -p=<pdu> [-xp=<excludePdus>]...
 ### Usage Examples
 
 Generate a MovementEvent and display the output XER and JER on stdout:
+
 ```bash
 java -jar testgen-cli.jar -m SPAT -p MovementEvent
 ```
 
 Generate a SPAT message, and save the XER and JER to files:
+
 ```bash
 java -jar testgen-cli.jar -m SPAT -p SPAT -x spat.xml -j spat.json
 ```

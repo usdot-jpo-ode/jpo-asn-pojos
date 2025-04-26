@@ -141,6 +141,7 @@ public class TestGenCli implements Runnable {
     return String.format("us.dot.its.jpo.asn.j2735.r2024.%s", modulePdu);
   }
 
+  @SuppressWarnings({"rawtypes"})
   static Class getClass(final String fullyQualifiedName) {
     Class clazz;
     try {
