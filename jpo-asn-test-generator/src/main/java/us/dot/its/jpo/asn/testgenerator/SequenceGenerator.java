@@ -24,10 +24,14 @@ public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
         continue;
       }
 
-      // Ignore certain open types containing regional/open types to produce valid messages
-      // eg PreemptPriorityList for MapData
+      // Ignore excluded PDUs
       if (excludePdus.contains(field.type())) {
         fieldsWithValues.add(field);
+        continue;
+      }
+
+      // Ignore optional properties if configured to do so
+      if (excludeOptional && field.optional() && !includeOptional.contains(field.name())) {
         continue;
       }
 

@@ -30,9 +30,12 @@ public abstract class RandomGenerator<T extends Asn1Type> {
   protected final int sequenceOfLimit;
   protected final boolean regional;
   protected final Set<Class<?>> excludePdus;
+  protected final boolean excludeOptional;
+  protected final Set<String> includeOptional;
 
   public GeneratorOptions options() {
-    return new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePdus, spec);
+    return new GeneratorOptions(
+        pdu, sequenceOfLimit, regional, excludePdus, spec, excludeOptional, includeOptional);
   }
 
   public RandomGenerator(GeneratorOptions options) {
@@ -40,6 +43,8 @@ public abstract class RandomGenerator<T extends Asn1Type> {
     this.sequenceOfLimit = options.limit();
     this.regional = options.regional();
     this.excludePdus = options.excludePdus();
+    this.excludeOptional = options.excludeOptional();
+    this.includeOptional = options.includeOptional();
     this.spec = options.spec();
   }
 

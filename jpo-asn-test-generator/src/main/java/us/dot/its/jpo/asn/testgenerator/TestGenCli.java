@@ -14,7 +14,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Spec;
 
 @Command(
-    name = "testgen-cli",
+    name = "java -jar testgen-cli",
     version = "testgen 1.0",
     mixinStandardHelpOptions = true,
     sortOptions = false,
@@ -39,8 +39,25 @@ public class TestGenCli implements Runnable {
       required = true,
       description =
           "REQUIRED. Protocol Data Unit (PDU).  Name of the class to generate an example of."
-              + "For example: MapData, BSMCoreData.")
+              + " For example: MapData, BSMcoreData.")
   String pdu;
+
+  @Option(
+      names = {"-xo", "--exclude-optional"},
+      defaultValue = "false",
+      description =
+          "Exclude all optional properties from SEQUENCE types. All properties except "
+              + "'regional' are included if this flag is not present.")
+  boolean excludeOptional;
+
+  @Option(
+      names = {"-io", "--include-optional"},
+      description =
+          "List of names of optional SEQUENCE properties to include.  If set implies "
+              + "'-xo' and excludes other optional properties not listed.  For example, use "
+              + "'-io=intersections' with MapData to generate a MAP with only and 'intersections' "
+              + "element.")
+  Set<String> includeOptional;
 
   @Option(
       names = {"-xp", "--exclude-pdus"},
@@ -52,7 +69,8 @@ public class TestGenCli implements Runnable {
   @Option(
       names = {"-s", "--sequence-of-limit"},
       defaultValue = "5",
-      description = "Limit the number of items in SEQUENCE-OF types. Must be at least 2.")
+      description =
+          "Limit the number of items in SEQUENCE-OF types. Default 5.  Must be at least 2.")
   int sequenceOfLimit;
 
   @Option(
@@ -90,6 +108,16 @@ public class TestGenCli implements Runnable {
     }
     cmd().getOut().println("Include regional extensions: " + regional);
     cmd().getOut().println("Exclude PDUs: " + excludePdus);
+    if (includeOptional == null) {
+      includeOptional = new HashSet<>();
+    }
+    if (!includeOptional.isEmpty()) {
+      excludeOptional = true;
+      for (var opt : includeOptional) {
+        cmd().getOut().println("Include optional: " + opt);
+      }
+    }
+    cmd().getOut().println("Exclude optional: " + excludeOptional);
     final String fullPdu = fullyQualified(module, pdu);
     cmd().getOut().printf("Fully qualified class name = %s%n", fullPdu);
     Set<Class<?>> excludePduClasses = new HashSet<>();
@@ -104,7 +132,14 @@ public class TestGenCli implements Runnable {
     RandomGenerator<?> gen =
         RandomGenerator.getGeneratorForType(
             getClass(fullPdu),
-            new GeneratorOptions(pdu, sequenceOfLimit, regional, excludePduClasses, spec));
+            new GeneratorOptions(
+                pdu,
+                sequenceOfLimit,
+                regional,
+                excludePduClasses,
+                spec,
+                excludeOptional,
+                includeOptional));
     if (gen == null) {
       throw new RuntimeException(String.format("Generator for type %s not found", fullPdu));
     }
