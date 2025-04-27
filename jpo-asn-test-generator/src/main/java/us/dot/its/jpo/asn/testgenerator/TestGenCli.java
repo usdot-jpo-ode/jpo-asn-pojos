@@ -55,7 +55,7 @@ public class TestGenCli implements Runnable {
       description =
           "List of names of optional SEQUENCE properties to include.  If set implies "
               + "'-xo' and excludes other optional properties not listed.  For example, use "
-              + "'-io=intersections' with MapData to generate a MAP with only and 'intersections' "
+              + "'-io=intersections' with MapData to generate a MAP with only an 'intersections' "
               + "element.")
   Set<String> includeOptional;
 
@@ -70,7 +70,7 @@ public class TestGenCli implements Runnable {
       names = {"-s", "--sequence-of-limit"},
       defaultValue = "5",
       description =
-          "Limit the number of items in SEQUENCE-OF types. Default 5.  Must be at least 2.")
+          "Limit the number of items in SEQUENCE-OF types. Default 5. Must be at least 2.")
   int sequenceOfLimit;
 
   @Option(

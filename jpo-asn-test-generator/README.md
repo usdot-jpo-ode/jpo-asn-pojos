@@ -51,14 +51,14 @@ Usage: java -jar testgen-cli [-rhV] -m=<module> -p=<pdu> [-xo]
                         include.  If set implies '-xo' and excludes other
                         optional properties not listed.  For example, use
                         '-io=intersections' with MapData to generate a MAP
-                        with only and 'intersections' element.
+                        with only an 'intersections' element.
   -xp, --exclude-pdus=<excludePdus>
                       Module.PDUs to exclude from sequences (class name eg.
                         'MapData.PreemptPriorityList',  'REGION.
                         Reg_MovementEvent')
   -s, --sequence-of-limit=<sequenceOfLimit>
                           Limit the number of items in SEQUENCE-OF types.
-                            Default 5.  Must be at least 2.
+                            Default 5. Must be at least 2.
   -x, --xer-output-file=<xerOutputFile>
                           Output file path for the XER file.
   -j, --jer-output-file=<jerOutputFile>
@@ -68,7 +68,6 @@ Usage: java -jar testgen-cli [-rhV] -m=<module> -p=<pdu> [-xo]
                             present.
   -h, --help              Show this help message and exit.
   -V, --version           Print version information and exit.
-
 ```
 
 ### Usage Examples
