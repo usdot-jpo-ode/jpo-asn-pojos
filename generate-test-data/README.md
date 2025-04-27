@@ -114,7 +114,7 @@ JER:
 
 ### converter-new-jer
 
-A a converter generated from the `vlm_master` branch of the [mouse07410 fork](https://github.com/mouse07410/asn1c) of asn1c, which contains updates to the JER implementation that aren't present in the USDOT fork.  Specifically, it contains changes to the implementation of variable length bitstring encodings in JER.
+A converter generated from the `vlm_master` branch of the [mouse07410 fork](https://github.com/mouse07410/asn1c) of asn1c, which contains updates to the JER implementation that aren't present in the USDOT fork.  Specifically, it contains changes to the implementation of variable length bitstring encodings in JER.
 
 Produces and accepts Canonical XER and Minified JER.
 
