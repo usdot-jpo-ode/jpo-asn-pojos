@@ -54,6 +54,7 @@ public class LaneAttributes extends Asn1Sequence {
 
   @Asn1Property(tag = 3, name = "regional", optional = true)
   @JsonProperty("regional")
+  @java.lang.SuppressWarnings("rawtypes")
   private Reg_LaneAttributes regional;
 
   public LaneAttributes() {}
