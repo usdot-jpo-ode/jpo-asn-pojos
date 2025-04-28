@@ -106,20 +106,6 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.12</version>
         <configuration>
-          <excludes>
-            <!-- Exclude modules with few types of interest -->
-            <exclude>**/EfcDataDictionary/**</exclude>
-            <exclude>**/J2540ITIS/**</exclude>
-            <exclude>**/AddGrpB/**</exclude>
-            <exclude>**/AddGrpC/**</exclude>
-            <exclude>**/REGION/**</exclude>
-            <!-- Exclude null messages types -->
-            <exclude>**/PersonalSafetyMessage2/**</exclude>
-            <exclude>**/RoadGeometryAndAttributes/**</exclude>
-            <exclude>**/SignalControlAndPrioritizationRequest/**</exclude>
-            <exclude>**/SignalControlAndPrioritizationStatus/**</exclude>
-            <exclude>**/TrafficSignalPhaseAndTiming/**</exclude>
-          </excludes>
         </configuration>
         <executions>
           <execution>
@@ -135,7 +121,7 @@
               <goal>report-aggregate</goal>
             </goals>
             <configuration>
-              <includeCurrentProject/>
+              <includeCurrentProject>true</includeCurrentProject>
             </configuration>
           </execution>
         </executions>
