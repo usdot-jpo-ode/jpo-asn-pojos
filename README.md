@@ -75,7 +75,7 @@ cd ../jpo-asn-j2735-2024
 To run tests using Maven, from the root directory:
 
 ```bash
-./mvnw clean test
+./mvnw clean package
 ```
 
 ## Installation
