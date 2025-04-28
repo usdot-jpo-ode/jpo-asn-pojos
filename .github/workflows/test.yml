@@ -47,7 +47,7 @@ jobs:
       uses: madrapps/jacoco-report@v1.6.1
       if: github.event_name == 'pull_request'
       with:
-        title: Jacoco Coverage Reports
+        title: Jacoco Coverage Reports (jpo-asn-j2735-2024)
         update-comment: true
         paths: ${{ github.workspace }}/jpo-asn-j2735-2024/build/reports/jacoco/test/jacocoTestReport.xml
         token: ${{ secrets.GITHUB_TOKEN }}
