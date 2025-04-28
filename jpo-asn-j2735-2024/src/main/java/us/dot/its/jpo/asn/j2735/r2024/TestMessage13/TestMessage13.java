@@ -47,6 +47,7 @@ public class TestMessage13 extends Asn1Sequence {
 
   @Asn1Property(tag = 1, name = "regional", optional = true)
   @JsonProperty("regional")
+  @java.lang.SuppressWarnings("rawtypes")
   private Reg_TestMessage13 regional;
 
   public TestMessage13() {}

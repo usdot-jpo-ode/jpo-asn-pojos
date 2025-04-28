@@ -62,6 +62,7 @@ public class RequestorType extends Asn1Sequence {
 
   @Asn1Property(tag = 5, name = "regional", optional = true)
   @JsonProperty("regional")
+  @java.lang.SuppressWarnings("rawtypes")
   private Reg_RequestorType regional;
 
   public RequestorType() {}
