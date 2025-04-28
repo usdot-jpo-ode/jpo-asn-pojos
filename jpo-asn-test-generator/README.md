@@ -2,7 +2,7 @@
 
 This is a Java command line utility for generating test messages in XER and JER encodings.  It is capable of generating examples of all the message types defined in the J2735/2024 specification.
 
-It generates syntactically correct ASN.1 JER and XER messages that observe the constraints as defined in the specification. But note that the content of the messages is random and may not be semantically valid.  For example, a `MadData` message generated with this tool will be syntactically valid ASN.1, but may contain `GenericLane`s with nodes with random coordinates that don't describe geographically meaningful lanes.
+It generates syntactically correct ASN.1 JER and XER messages that observe the constraints as defined in the specification. But note that the content of the messages is random and may not be semantically valid.  For example, a `MapData` message generated with this tool will be syntactically valid ASN.1, but may contain `GenericLane`s with nodes with random coordinates that don't describe geographically meaningful lanes.
 
 ## Prerequisites
 
