@@ -106,11 +106,6 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.12</version>
         <configuration>
-          <excludes>
-            <!-- Exclude modules with few types of interest -->
-            <exclude>**/EfcDataDictionary/**</exclude>
-            <exclude>**/J2540ITIS/**</exclude>
-          </excludes>
         </configuration>
         <executions>
           <execution>
