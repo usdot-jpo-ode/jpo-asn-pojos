@@ -263,7 +263,17 @@ To run the unit tests via Maven, from the **root** directory issue:
 ./mvnw clean package
 ```
 
-The coverage reports will be available at `target/site/jacoco-aggregate/index.html`.
+The coverage reports for both this project and it's dependency, the jpo-asn-runtime project, will be 
+available at `target/site/jacoco-aggregate/index.html`.
+
+Note: if using the "koverage" plugin in the VSCode IDE, add the following to `settings.json` to be
+able to view the aggregated coverage report:
+
+```json
+"koverage.coverageFilePaths": [
+   "**/target/site/jacoco-aggregate"
+]
+```
 
 The individual test results are available in the `target/surefire-reports` directory.
 
