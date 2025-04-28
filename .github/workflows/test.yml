@@ -43,12 +43,22 @@ jobs:
         name: coverage-report-test-generator
         path: jpo-asn-test-generator/build/reports/jacoco/test/html/
 
-    - name: Add Coverage PR Comment
+    - name: Add Coverage PR Comment (jpo-asn-j2735-2024)
       uses: madrapps/jacoco-report@v1.6.1
       if: github.event_name == 'pull_request'
       with:
         title: Jacoco Coverage Reports
         update-comment: true
-        paths: ${{ github.workspace }}/jpo-asn-j2735-2024/build/reports/jacoco/test/jacocoTestReport.xml,${{ github.workspace }}/jpo-asn-test-generator/build/reports/jacoco/test/jacocoTestReport.xml
+        paths: ${{ github.workspace }}/jpo-asn-j2735-2024/build/reports/jacoco/test/jacocoTestReport.xml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        min-coverage-overall: 75
+
+    - name: Add Coverage PR Comment (jpo-asn-test-generator)
+      uses: madrapps/jacoco-report@v1.6.1
+      if: github.event_name == 'pull_request'
+      with:
+        title: Jacoco Coverage Reports (jpo-asn-test-generator)
+        update-comment: true
+        paths: ${{ github.workspace }}/jpo-asn-test-generator/build/reports/jacoco/test/jacocoTestReport.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         min-coverage-overall: 75
