@@ -40,7 +40,7 @@ jobs:
     - name: Upload coverage reports (jpo-asn-test-generator)
       uses: actions/upload-artifact@v4
       with:
-        name: coverage-report
+        name: coverage-report-test-generator
         path: jpo-asn-test-generator/build/reports/jacoco/test/html/
 
     - name: Add Coverage PR Comment
