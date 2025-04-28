@@ -260,10 +260,10 @@ coverage results.
 To run the unit tests via Maven, from the **root** directory issue:
 
 ```bash
-./mvnw clean test
+./mvnw clean package
 ```
 
-The coverage report will be available at `target/target/site/jacoco/index/html`.
+The coverage reports will be available at `target/site/jacoco-aggregate/index.html`.
 
 The individual test results are available in the `target/surefire-reports` directory.
 
