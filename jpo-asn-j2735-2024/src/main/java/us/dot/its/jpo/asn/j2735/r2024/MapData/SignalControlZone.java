@@ -42,6 +42,7 @@ public class SignalControlZone extends Asn1Sequence {
 
   @Asn1Property(tag = 0, name = "zone")
   @JsonProperty("zone")
+  @java.lang.SuppressWarnings("rawtypes")
   private Reg_SignalControlZone zone;
 
   public SignalControlZone() {}
