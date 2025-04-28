@@ -1,6 +1,6 @@
 # Generating test data for J2735/2024
 
-In testing the new standard it is usefult to be able to create examples of all of the features of all of the message type.  The currently available hardware that is deployed in the field produces a subset of message with a subset of features from previous standards, so it is essential to be able to create samples of new message types and new features for testing. There are 2 preexisting third-party open-source tools for converting ASN.1 messages between formats and for generating message examples that have been found useful for this purpose:
+In testing the new standard it is useful to be able to create examples of all the features of all the message type.  The currently available hardware that is deployed in the field produces a subset of message with a subset of features from previous standards, so it is essential to be able to create samples of new message types and new features for testing. There are 2 preexisting third-party open-source tools for converting ASN.1 messages between formats and for generating message examples that have been found useful for this purpose:
 
 * Converters generated using the [asn1c compiler](https://github.com/usdot-fhwa-stol/usdot-asn1c) - Capable of generating UPER, XER, and JER.
 * A converter generated using the [Erlang asn1ct compiler](https://www.erlang.org/doc/apps/asn1/asn1ct.html) - Capable of generating UPER and JER examples.
