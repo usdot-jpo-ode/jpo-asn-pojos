@@ -10,6 +10,7 @@ plugins {
     id 'java-library'
     id("io.freefair.lombok") version "8.12.1"
     id 'jacoco'
+    id 'jacoco-report-aggregation'
 }
 
 group = 'usdot.jpo.asn'
@@ -60,3 +61,9 @@ jacocoTestReport {
         html.required = true
     }
 }
+
+tasks.named('check') {
+    dependsOn tasks.named('testCodeCoverageReport', JacocoReport)
+}
+
+
