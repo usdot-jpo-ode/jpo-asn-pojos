@@ -34,6 +34,6 @@ public class LaneWidth extends Asn1Integer {
   @JsonCreator
   public LaneWidth(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

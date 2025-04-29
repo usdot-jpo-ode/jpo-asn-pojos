@@ -34,6 +34,6 @@ public class DeltaAngle extends Asn1Integer {
   @JsonCreator
   public DeltaAngle(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

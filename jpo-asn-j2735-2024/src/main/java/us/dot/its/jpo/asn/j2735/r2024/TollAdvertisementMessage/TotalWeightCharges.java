@@ -67,7 +67,7 @@ public class TotalWeightCharges extends Asn1Sequence {
     @JsonCreator
     public WeightLimitInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

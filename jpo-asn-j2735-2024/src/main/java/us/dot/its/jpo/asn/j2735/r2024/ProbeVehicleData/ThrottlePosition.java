@@ -34,6 +34,6 @@ public class ThrottlePosition extends Asn1Integer {
   @JsonCreator
   public ThrottlePosition(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

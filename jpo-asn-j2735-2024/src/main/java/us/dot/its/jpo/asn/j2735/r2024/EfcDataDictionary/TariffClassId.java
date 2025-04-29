@@ -33,6 +33,6 @@ public class TariffClassId extends Int4Unsigned {
   @JsonCreator
   public TariffClassId(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

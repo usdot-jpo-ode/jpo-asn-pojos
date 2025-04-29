@@ -34,6 +34,6 @@ public class ObjectID extends Asn1Integer {
   @JsonCreator
   public ObjectID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -114,7 +114,7 @@ public class ReceiptData extends Asn1Sequence {
     @JsonCreator
     public SessionContextVersionInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

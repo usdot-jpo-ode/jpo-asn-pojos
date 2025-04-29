@@ -34,6 +34,6 @@ public class TireLeakageRate extends Asn1Integer {
   @JsonCreator
   public TireLeakageRate(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

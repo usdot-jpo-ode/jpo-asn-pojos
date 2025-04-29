@@ -34,6 +34,6 @@ public class RollDetected extends Asn1Integer {
   @JsonCreator
   public RollDetected(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

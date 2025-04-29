@@ -76,7 +76,7 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
     @JsonCreator
     public VehNumAxlesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -114,7 +114,7 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
     @JsonCreator
     public SequenceOfVehWeightPerAxleInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -127,7 +127,7 @@ public class VehicleAxlesAndWeightInfo extends Asn1Sequence {
     @JsonCreator
     public VehTotalWeightInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

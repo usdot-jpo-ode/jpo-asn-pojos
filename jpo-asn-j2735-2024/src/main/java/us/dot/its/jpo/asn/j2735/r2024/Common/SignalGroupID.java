@@ -34,6 +34,6 @@ public class SignalGroupID extends Asn1Integer {
   @JsonCreator
   public SignalGroupID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

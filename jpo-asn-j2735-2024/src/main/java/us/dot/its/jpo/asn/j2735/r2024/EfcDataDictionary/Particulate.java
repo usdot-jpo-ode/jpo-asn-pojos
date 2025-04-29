@@ -57,7 +57,7 @@ public class Particulate extends Asn1Sequence {
     @JsonCreator
     public ValueInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

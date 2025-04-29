@@ -41,7 +41,7 @@ public class ITIScodes extends Asn1Integer {
   @JsonCreator
   public ITIScodes(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 
   private static class NamedValues {
@@ -2515,7 +2515,7 @@ public class ITIScodes extends Asn1Integer {
 
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(namedValues.valueMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(getValue()));
   }
 
   public static Optional<ITIScodes> named(String name) {

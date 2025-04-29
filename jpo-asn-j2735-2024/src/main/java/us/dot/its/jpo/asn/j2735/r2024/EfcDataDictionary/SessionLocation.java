@@ -58,7 +58,7 @@ public class SessionLocation extends Asn1Sequence {
     @JsonCreator
     public LaneCodeNumberInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

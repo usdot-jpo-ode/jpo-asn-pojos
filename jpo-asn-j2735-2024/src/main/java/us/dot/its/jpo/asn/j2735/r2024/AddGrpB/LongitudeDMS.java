@@ -34,6 +34,6 @@ public class LongitudeDMS extends Asn1Integer {
   @JsonCreator
   public LongitudeDMS(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

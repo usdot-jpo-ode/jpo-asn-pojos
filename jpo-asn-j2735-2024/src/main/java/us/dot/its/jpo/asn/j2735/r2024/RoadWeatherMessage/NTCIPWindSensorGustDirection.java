@@ -34,6 +34,6 @@ public class NTCIPWindSensorGustDirection extends Asn1Integer {
   @JsonCreator
   public NTCIPWindSensorGustDirection(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

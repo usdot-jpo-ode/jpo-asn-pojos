@@ -34,6 +34,6 @@ public class SteeringAxleLubePressure extends Asn1Integer {
   @JsonCreator
   public SteeringAxleLubePressure(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

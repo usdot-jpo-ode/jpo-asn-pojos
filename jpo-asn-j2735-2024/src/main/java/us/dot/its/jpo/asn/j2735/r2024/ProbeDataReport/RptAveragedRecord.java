@@ -78,7 +78,7 @@ public class RptAveragedRecord extends Asn1Sequence {
     @JsonCreator
     public AvgStopDurationInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -90,7 +90,7 @@ public class RptAveragedRecord extends Asn1Sequence {
     @JsonCreator
     public AvgFuelConsumptionInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -102,7 +102,7 @@ public class RptAveragedRecord extends Asn1Sequence {
     @JsonCreator
     public AvgNumOfOccupantsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

@@ -34,6 +34,6 @@ public class VehicleMass extends Asn1Integer {
   @JsonCreator
   public VehicleMass(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

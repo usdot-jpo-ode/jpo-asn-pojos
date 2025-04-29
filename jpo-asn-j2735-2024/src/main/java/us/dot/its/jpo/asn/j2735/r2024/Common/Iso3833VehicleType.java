@@ -34,6 +34,6 @@ public class Iso3833VehicleType extends Asn1Integer {
   @JsonCreator
   public Iso3833VehicleType(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

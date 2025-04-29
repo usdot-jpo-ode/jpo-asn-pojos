@@ -33,6 +33,6 @@ public class VehicleTotalDistance extends Int4Unsigned {
   @JsonCreator
   public VehicleTotalDistance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

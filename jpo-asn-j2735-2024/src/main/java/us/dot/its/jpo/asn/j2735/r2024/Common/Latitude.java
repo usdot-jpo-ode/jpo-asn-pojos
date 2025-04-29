@@ -34,6 +34,6 @@ public class Latitude extends Asn1Integer {
   @JsonCreator
   public Latitude(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

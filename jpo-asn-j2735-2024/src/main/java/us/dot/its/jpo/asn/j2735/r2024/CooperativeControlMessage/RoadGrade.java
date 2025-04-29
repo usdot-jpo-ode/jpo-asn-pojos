@@ -34,6 +34,6 @@ public class RoadGrade extends Asn1Integer {
   @JsonCreator
   public RoadGrade(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

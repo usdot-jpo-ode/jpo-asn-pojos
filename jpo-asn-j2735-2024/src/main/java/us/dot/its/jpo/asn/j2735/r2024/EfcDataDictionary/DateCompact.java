@@ -61,7 +61,7 @@ public class DateCompact extends Asn1Sequence {
     @JsonCreator
     public YearInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -73,7 +73,7 @@ public class DateCompact extends Asn1Sequence {
     @JsonCreator
     public MonthInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -85,7 +85,7 @@ public class DateCompact extends Asn1Sequence {
     @JsonCreator
     public DayInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

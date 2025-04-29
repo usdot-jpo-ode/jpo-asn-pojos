@@ -34,6 +34,6 @@ public class Duration extends Asn1Integer {
   @JsonCreator
   public Duration(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

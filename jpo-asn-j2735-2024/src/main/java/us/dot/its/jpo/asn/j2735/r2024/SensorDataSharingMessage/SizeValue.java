@@ -34,6 +34,6 @@ public class SizeValue extends Asn1Integer {
   @JsonCreator
   public SizeValue(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

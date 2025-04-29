@@ -34,6 +34,6 @@ public class TireTemp extends Asn1Integer {
   @JsonCreator
   public TireTemp(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

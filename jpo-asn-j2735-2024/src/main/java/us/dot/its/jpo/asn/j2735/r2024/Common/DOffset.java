@@ -34,6 +34,6 @@ public class DOffset extends Asn1Integer {
   @JsonCreator
   public DOffset(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -33,6 +33,6 @@ public class TimeClassId extends Int2Unsigned {
   @JsonCreator
   public TimeClassId(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

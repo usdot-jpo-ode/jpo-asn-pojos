@@ -66,7 +66,7 @@ public class AudioLink extends Asn1Sequence {
     @JsonCreator
     public AmChannelInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -78,7 +78,7 @@ public class AudioLink extends Asn1Sequence {
     @JsonCreator
     public FmChannelInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -90,7 +90,7 @@ public class AudioLink extends Asn1Sequence {
     @JsonCreator
     public SatelliteChannelInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

@@ -34,6 +34,6 @@ public class DMonth extends Asn1Integer {
   @JsonCreator
   public DMonth(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

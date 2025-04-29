@@ -34,6 +34,6 @@ public class StationID extends Asn1Integer {
   @JsonCreator
   public StationID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

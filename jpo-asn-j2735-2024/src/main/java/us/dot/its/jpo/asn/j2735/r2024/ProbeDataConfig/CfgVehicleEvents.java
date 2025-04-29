@@ -98,7 +98,7 @@ public class CfgVehicleEvents extends Asn1Sequence {
     @JsonCreator
     public ResumedSpeedInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

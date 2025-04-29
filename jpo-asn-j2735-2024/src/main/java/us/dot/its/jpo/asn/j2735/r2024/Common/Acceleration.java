@@ -34,6 +34,6 @@ public class Acceleration extends Asn1Integer {
   @JsonCreator
   public Acceleration(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

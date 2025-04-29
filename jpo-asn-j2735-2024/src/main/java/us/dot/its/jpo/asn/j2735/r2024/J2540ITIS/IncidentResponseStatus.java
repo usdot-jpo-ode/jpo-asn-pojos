@@ -41,7 +41,7 @@ public class IncidentResponseStatus extends Asn1Integer {
   @JsonCreator
   public IncidentResponseStatus(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 
   private static class NamedValues {
@@ -76,7 +76,7 @@ public class IncidentResponseStatus extends Asn1Integer {
 
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(namedValues.valueMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(getValue()));
   }
 
   public static Optional<IncidentResponseStatus> named(String name) {

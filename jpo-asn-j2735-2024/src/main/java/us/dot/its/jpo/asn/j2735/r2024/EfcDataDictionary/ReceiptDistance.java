@@ -33,6 +33,6 @@ public class ReceiptDistance extends Int3Unsigned {
   @JsonCreator
   public ReceiptDistance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

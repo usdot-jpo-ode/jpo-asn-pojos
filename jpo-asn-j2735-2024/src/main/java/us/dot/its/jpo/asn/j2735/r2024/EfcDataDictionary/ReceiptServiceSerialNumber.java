@@ -33,6 +33,6 @@ public class ReceiptServiceSerialNumber extends Int3Unsigned {
   @JsonCreator
   public ReceiptServiceSerialNumber(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

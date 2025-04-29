@@ -34,6 +34,6 @@ public class Count extends Asn1Integer {
   @JsonCreator
   public Count(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

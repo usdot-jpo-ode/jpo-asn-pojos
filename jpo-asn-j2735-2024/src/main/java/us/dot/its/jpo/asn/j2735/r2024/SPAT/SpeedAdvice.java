@@ -34,6 +34,6 @@ public class SpeedAdvice extends Asn1Integer {
   @JsonCreator
   public SpeedAdvice(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

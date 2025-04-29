@@ -34,6 +34,6 @@ public class ITIStextPhrase extends IA5String {
   @JsonCreator
   public ITIStextPhrase(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

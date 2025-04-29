@@ -34,6 +34,6 @@ public class RadiusOfCurvature extends Asn1Integer {
   @JsonCreator
   public RadiusOfCurvature(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

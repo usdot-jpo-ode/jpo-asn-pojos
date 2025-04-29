@@ -34,6 +34,6 @@ public class Zoom extends Asn1Integer {
   @JsonCreator
   public Zoom(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class IssuerIdentifier extends Asn1Integer {
   @JsonCreator
   public IssuerIdentifier(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

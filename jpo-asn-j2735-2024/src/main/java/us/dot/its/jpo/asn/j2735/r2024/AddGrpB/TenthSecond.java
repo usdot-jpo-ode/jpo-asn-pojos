@@ -34,6 +34,6 @@ public class TenthSecond extends Asn1Integer {
   @JsonCreator
   public TenthSecond(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

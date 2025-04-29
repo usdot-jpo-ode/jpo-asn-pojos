@@ -34,6 +34,6 @@ public class NTCIPEssCloudSituationV4 extends Asn1Integer {
   @JsonCreator
   public NTCIPEssCloudSituationV4(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

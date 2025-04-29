@@ -41,7 +41,7 @@ public class SmallNumbers extends Asn1Integer {
   @JsonCreator
   public SmallNumbers(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 
   private static class NamedValues {
@@ -314,7 +314,7 @@ public class SmallNumbers extends Asn1Integer {
 
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(namedValues.valueMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(getValue()));
   }
 
   public static Optional<SmallNumbers> named(String name) {

@@ -70,7 +70,7 @@ public class CfgEvents extends Asn1Sequence {
     @JsonCreator
     public SwerveThresholdInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

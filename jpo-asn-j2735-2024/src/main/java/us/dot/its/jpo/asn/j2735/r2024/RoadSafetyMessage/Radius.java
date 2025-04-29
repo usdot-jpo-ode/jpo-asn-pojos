@@ -34,6 +34,6 @@ public class Radius extends Asn1Integer {
   @JsonCreator
   public Radius(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

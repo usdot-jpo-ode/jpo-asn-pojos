@@ -34,6 +34,6 @@ public class AmbientAirTemperature extends Asn1Integer {
   @JsonCreator
   public AmbientAirTemperature(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

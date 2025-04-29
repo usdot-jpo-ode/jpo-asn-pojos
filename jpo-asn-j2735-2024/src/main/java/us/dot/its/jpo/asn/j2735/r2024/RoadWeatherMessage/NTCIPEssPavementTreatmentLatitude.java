@@ -34,6 +34,6 @@ public class NTCIPEssPavementTreatmentLatitude extends Asn1Integer {
   @JsonCreator
   public NTCIPEssPavementTreatmentLatitude(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

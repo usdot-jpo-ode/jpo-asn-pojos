@@ -34,6 +34,6 @@ public class IntersectionID extends Asn1Integer {
   @JsonCreator
   public IntersectionID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }
