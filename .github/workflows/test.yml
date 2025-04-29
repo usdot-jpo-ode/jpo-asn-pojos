@@ -43,7 +43,7 @@ jobs:
         name: coverage-report-test-generator
         path: jpo-asn-test-generator/build/reports/jacoco/test/html/
 
-    - name: Add Coverage PR Comment (jpo-asn-j2735-2024 & jpo-asn-runtime)
+    - name: Add Coverage PR Comment (jpo-asn-j2735-2024 and jpo-asn-runtime)
       uses: madrapps/jacoco-report@v1.6.1
       if: github.event_name == 'pull_request'
       with:

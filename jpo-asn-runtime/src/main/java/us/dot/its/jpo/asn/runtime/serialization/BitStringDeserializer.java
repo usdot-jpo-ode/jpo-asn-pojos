@@ -20,7 +20,6 @@ import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
  * Deserialize an ASN.1 Bitstring from XER or JER
  * @param <T> The bitstring type
  * @author Ivan Yourshaw
- *
  */
 @Slf4j
 public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends StdDeserializer<T> {
