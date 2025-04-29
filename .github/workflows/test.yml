@@ -29,7 +29,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
-        path: jpo-asn-j2735-2024/build/reports/jacoco/test/html/
+        path: jpo-asn-j2735-2024/build/reports/jacoco/testCodeCoverageReport/
 
     - name: Run Tests with Coverage (jpo-asn-test-generator)
       working-directory: ./jpo-asn-test-generator
@@ -41,9 +41,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report-test-generator
-        path: jpo-asn-test-generator/build/reports/jacoco/test/html/
+        path: jpo-asn-test-generator/build/reports/jacoco/test/
 
-    - name: Add Coverage PR Comment (jpo-asn-j2735-2024)
+    - name: Add Coverage PR Comment (jpo-asn-j2735-2024 & jpo-asn-runtime)
       uses: madrapps/jacoco-report@v1.6.1
       if: github.event_name == 'pull_request'
       with:
