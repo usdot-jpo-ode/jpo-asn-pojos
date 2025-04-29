@@ -19,13 +19,13 @@ jobs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
     
-    - name: Run Tests with Coverage (jpo-asn-j2735-2024)
+    - name: Run Tests with Coverage (jpo-asn-j2735-2024 and jpo-asn-runtime)
       working-directory: ./jpo-asn-j2735-2024
       run: |
         chmod +x gradlew
         ./gradlew check
       
-    - name: Upload coverage reports (jpo-asn-j2735-2024)
+    - name: Upload coverage reports (jpo-asn-j2735-2024 and jpo-asn-runtime)
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
