@@ -20,17 +20,17 @@ import us.dot.its.jpo.asn.runtime.serialization.BitstringSerializer;
 @JsonSerialize(using = BitstringSerializer.class)
 public abstract class Asn1Bitstring implements Asn1Type {
 
-    final BitSet bits;
+    private final BitSet bits;
 
     // Lower bound
-    final int size;
+    private final int size;
 
-    final int upperBound;
+    private final int upperBound;
 
     private int actualSize = 0;
 
-    final boolean hasExtensionMarker;
-    final String[] names;
+    private final boolean hasExtensionMarker;
+    private final String[] names;
 
 
     /**
