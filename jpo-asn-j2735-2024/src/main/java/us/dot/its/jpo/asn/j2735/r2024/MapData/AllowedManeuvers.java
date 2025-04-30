@@ -22,13 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.MapData;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.MapData.AllowedManeuvers.AllowedManeuversDeserializer.class)
 public class AllowedManeuvers extends Asn1Bitstring {
 
   public boolean isManeuverStraightAllowed() {
@@ -147,14 +142,4 @@ public class AllowedManeuvers extends Asn1Bitstring {
         });
   }
 
-  public static class AllowedManeuversDeserializer extends BitStringDeserializer<AllowedManeuvers> {
-    public AllowedManeuversDeserializer() {
-      super(AllowedManeuvers.class);
-    }
-
-    @Override
-    protected AllowedManeuvers construct() {
-      return new AllowedManeuvers();
-    }
-  }
 }

@@ -22,12 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using = us.dot.its.jpo.asn.j2735.r2024.Common.ExteriorLights.ExteriorLightsDeserializer.class)
 public class ExteriorLights extends Asn1Bitstring {
 
   public boolean isLowBeamHeadlightsOn() {
@@ -119,14 +115,4 @@ public class ExteriorLights extends Asn1Bitstring {
         });
   }
 
-  public static class ExteriorLightsDeserializer extends BitStringDeserializer<ExteriorLights> {
-    public ExteriorLightsDeserializer() {
-      super(ExteriorLights.class);
-    }
-
-    @Override
-    protected ExteriorLights construct() {
-      return new ExteriorLights();
-    }
-  }
 }

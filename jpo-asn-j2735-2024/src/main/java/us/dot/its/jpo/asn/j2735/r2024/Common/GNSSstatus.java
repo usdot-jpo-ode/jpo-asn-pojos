@@ -22,12 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using = us.dot.its.jpo.asn.j2735.r2024.Common.GNSSstatus.GNSSstatusDeserializer.class)
 public class GNSSstatus extends Asn1Bitstring {
 
   public boolean isUnavailable() {
@@ -110,14 +106,4 @@ public class GNSSstatus extends Asn1Bitstring {
         });
   }
 
-  public static class GNSSstatusDeserializer extends BitStringDeserializer<GNSSstatus> {
-    public GNSSstatusDeserializer() {
-      super(GNSSstatus.class);
-    }
-
-    @Override
-    protected GNSSstatus construct() {
-      return new GNSSstatus();
-    }
-  }
 }

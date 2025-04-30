@@ -22,11 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(using = VehicleEventFlags.VehicleEventFlagsDeserializer.class)
 public class VehicleEventFlags extends Asn1Bitstring {
 
   public boolean isEventHazardLights() {
@@ -163,16 +160,4 @@ public class VehicleEventFlags extends Asn1Bitstring {
         });
   }
 
-  public static class VehicleEventFlagsDeserializer
-      extends BitStringDeserializer<VehicleEventFlags> {
-
-    public VehicleEventFlagsDeserializer() {
-      super(VehicleEventFlags.class);
-    }
-
-    @Override
-    protected VehicleEventFlags construct() {
-      return new VehicleEventFlags();
-    }
-  }
 }
