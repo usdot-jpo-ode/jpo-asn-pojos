@@ -44,11 +44,14 @@ public final class BooleanDeserializer<T extends Asn1Boolean> extends StdDeseria
 
     @Override
     public JsonDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) {
+        JavaType type;
         if (property != null) {
-            JavaType type = property.getType();
-            if (type.isTypeOrSubTypeOf(Asn1Boolean.class)) {
-                return new BooleanDeserializer<>((Class<T>) type.getRawClass());
-            }
+            type = property.getType();
+        } else {
+            type = ctxt.getContextualType();
+        }
+        if (type.isTypeOrSubTypeOf(Asn1Boolean.class)) {
+            return new BooleanDeserializer<>((Class<T>) type.getRawClass());
         }
         return this;
     }
