@@ -34,6 +34,6 @@ public class SpeedProfileMeasurement extends GrossSpeed {
   @JsonCreator
   public SpeedProfileMeasurement(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

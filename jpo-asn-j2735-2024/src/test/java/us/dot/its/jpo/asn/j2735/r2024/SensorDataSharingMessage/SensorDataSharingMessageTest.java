@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
+import org.junit.jupiter.api.Test;
 import us.dot.its.jpo.asn.j2735.r2024.BaseSerializeTest;
 import java.io.IOException;
 import java.util.List;

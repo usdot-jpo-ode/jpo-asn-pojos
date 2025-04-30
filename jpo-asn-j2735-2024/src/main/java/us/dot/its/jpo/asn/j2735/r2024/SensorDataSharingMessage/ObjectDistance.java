@@ -34,6 +34,6 @@ public class ObjectDistance extends Asn1Integer {
   @JsonCreator
   public ObjectDistance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class SecondOfTime extends Asn1Integer {
   @JsonCreator
   public SecondOfTime(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

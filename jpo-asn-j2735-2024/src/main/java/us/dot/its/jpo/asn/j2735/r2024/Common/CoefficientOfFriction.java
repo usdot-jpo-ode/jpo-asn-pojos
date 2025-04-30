@@ -34,6 +34,6 @@ public class CoefficientOfFriction extends Asn1Integer {
   @JsonCreator
   public CoefficientOfFriction(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

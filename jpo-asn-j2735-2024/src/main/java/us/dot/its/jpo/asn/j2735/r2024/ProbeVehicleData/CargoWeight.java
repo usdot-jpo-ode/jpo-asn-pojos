@@ -34,6 +34,6 @@ public class CargoWeight extends Asn1Integer {
   @JsonCreator
   public CargoWeight(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

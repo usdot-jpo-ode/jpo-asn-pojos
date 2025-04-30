@@ -34,6 +34,6 @@ public class ITIScodes extends Asn1Integer {
   @JsonCreator
   public ITIScodes(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

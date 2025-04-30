@@ -34,6 +34,6 @@ public class NTCIPEssSurfaceIceOrWaterDepth extends Asn1Integer {
   @JsonCreator
   public NTCIPEssSurfaceIceOrWaterDepth(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

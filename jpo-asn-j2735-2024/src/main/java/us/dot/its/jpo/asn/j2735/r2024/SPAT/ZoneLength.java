@@ -34,6 +34,6 @@ public class ZoneLength extends Asn1Integer {
   @JsonCreator
   public ZoneLength(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

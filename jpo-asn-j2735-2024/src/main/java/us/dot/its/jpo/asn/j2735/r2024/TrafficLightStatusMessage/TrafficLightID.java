@@ -30,6 +30,7 @@ import lombok.Setter;
 import lombok.ToString;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
+import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 import us.dot.its.jpo.asn.runtime.types.Asn1ObjectIdentifier;
 
 @ToString(callSuper = true)
@@ -40,7 +41,7 @@ public class TrafficLightID extends Asn1Choice {
 
   @Asn1Property(tag = 0, name = "id")
   @JsonProperty("id")
-  private Integer id;
+  private Asn1Integer id;
 
   @Asn1Property(tag = 1, name = "oid")
   @JsonProperty("oid")

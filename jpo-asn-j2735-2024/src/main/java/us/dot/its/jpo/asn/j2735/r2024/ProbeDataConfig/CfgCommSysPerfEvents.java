@@ -90,7 +90,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public J2945_1ChanBusyThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -102,7 +102,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public NumRsusObservedThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -114,7 +114,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public RfV2xJamDetectThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -126,7 +126,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public J2945_1VehDensThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -138,7 +138,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public J2945_1CqiBelowThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -150,7 +150,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public J2945_1TrackErrorThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -162,7 +162,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public GnssHdopExceedsThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -174,7 +174,7 @@ public class CfgCommSysPerfEvents extends Asn1Sequence {
     @JsonCreator
     public GnssSatsBelowThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

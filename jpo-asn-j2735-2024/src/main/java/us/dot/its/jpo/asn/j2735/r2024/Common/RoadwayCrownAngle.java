@@ -34,6 +34,6 @@ public class RoadwayCrownAngle extends Asn1Integer {
   @JsonCreator
   public RoadwayCrownAngle(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

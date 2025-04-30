@@ -34,6 +34,6 @@ public class ConfigId extends Asn1Integer {
   @JsonCreator
   public ConfigId(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

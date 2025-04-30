@@ -34,6 +34,6 @@ public class Scale_B12 extends Asn1Integer {
   @JsonCreator
   public Scale_B12(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

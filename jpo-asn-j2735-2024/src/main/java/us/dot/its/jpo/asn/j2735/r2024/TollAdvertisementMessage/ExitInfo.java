@@ -61,7 +61,7 @@ public class ExitInfo extends Asn1Sequence {
     @JsonCreator
     public ExitNumberInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -73,7 +73,7 @@ public class ExitInfo extends Asn1Sequence {
     @JsonCreator
     public ExitLetterInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

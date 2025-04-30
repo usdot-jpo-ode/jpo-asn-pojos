@@ -95,7 +95,7 @@ public class CfgTrafficSigEncounters extends Asn1Sequence {
     @JsonCreator
     public TrfcsigApproachDelayInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -107,7 +107,7 @@ public class CfgTrafficSigEncounters extends Asn1Sequence {
     @JsonCreator
     public TrfsigApproachSpeedInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -119,7 +119,7 @@ public class CfgTrafficSigEncounters extends Asn1Sequence {
     @JsonCreator
     public TrfsigPedDelayInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

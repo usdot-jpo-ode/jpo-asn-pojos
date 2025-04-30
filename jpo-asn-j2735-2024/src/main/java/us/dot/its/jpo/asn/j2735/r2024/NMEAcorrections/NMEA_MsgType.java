@@ -34,6 +34,6 @@ public class NMEA_MsgType extends Asn1Integer {
   @JsonCreator
   public NMEA_MsgType(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

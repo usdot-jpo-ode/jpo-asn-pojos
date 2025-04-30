@@ -34,6 +34,6 @@ public class SeparationDistance extends Asn1Integer {
   @JsonCreator
   public SeparationDistance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

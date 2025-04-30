@@ -34,6 +34,6 @@ public class BankAngle extends Asn1Integer {
   @JsonCreator
   public BankAngle(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

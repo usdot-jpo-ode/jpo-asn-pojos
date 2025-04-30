@@ -33,6 +33,6 @@ public class VehicleWeightLaden extends Int2Unsigned {
   @JsonCreator
   public VehicleWeightLaden(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

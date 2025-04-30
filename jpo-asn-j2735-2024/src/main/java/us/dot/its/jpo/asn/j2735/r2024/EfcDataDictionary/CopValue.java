@@ -23,9 +23,16 @@
 package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class CopValue extends Asn1Integer {
+
+  private static final NamedValues namedValues = new NamedValues();
 
   public CopValue() {
     super(0L, 15L);
@@ -34,6 +41,44 @@ public class CopValue extends Asn1Integer {
   @JsonCreator
   public CopValue(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
+  }
+
+  private static class NamedValues {
+    private final Map<String, Long> nameMap;
+    private final Map<Long, String> valueMap;
+
+    public NamedValues() {
+      var mapBuilder = new LinkedHashMap<String, Long>();
+      mapBuilder.put("noEntry", 0L);
+      mapBuilder.put("co2class1", 1L);
+      mapBuilder.put("co2class2", 2L);
+      mapBuilder.put("co2class3", 3L);
+      mapBuilder.put("co2class4", 4L);
+      mapBuilder.put("co2class5", 5L);
+      mapBuilder.put("co2class6", 6L);
+      mapBuilder.put("co2class7", 7L);
+      nameMap = Collections.unmodifiableMap(mapBuilder);
+      final var valueMapBuilder = new LinkedHashMap<Long, String>();
+      mapBuilder.forEach((k, v) -> valueMapBuilder.put(v, k));
+      valueMap = Collections.unmodifiableMap(valueMapBuilder);
+    }
+  }
+
+  @Override
+  public Optional<String> name() {
+    return Optional.ofNullable(namedValues.valueMap.get(getValue()));
+  }
+
+  public static Optional<CopValue> named(String name) {
+    return Optional.ofNullable(namedValues.nameMap.get(name)).map(CopValue::new);
+  }
+
+  public static Set<String> names() {
+    return namedValues.nameMap.keySet();
+  }
+
+  public static Set<Long> namedValues() {
+    return namedValues.valueMap.keySet();
   }
 }

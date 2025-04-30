@@ -57,7 +57,7 @@ public class CfgStoppedCriteria extends Asn1Sequence {
     @JsonCreator
     public StoppedSpeedThresholdInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class CfgStoppedCriteria extends Asn1Sequence {
     @JsonCreator
     public AmountOfTimeBelowInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

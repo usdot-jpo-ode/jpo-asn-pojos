@@ -61,7 +61,7 @@ public class TollUsageAckMessage extends Asn1Sequence {
     @JsonCreator
     public AckMaxAgeInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

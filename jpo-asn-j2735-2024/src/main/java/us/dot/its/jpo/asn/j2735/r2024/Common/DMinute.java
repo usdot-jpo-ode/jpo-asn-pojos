@@ -34,6 +34,6 @@ public class DMinute extends Asn1Integer {
   @JsonCreator
   public DMinute(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

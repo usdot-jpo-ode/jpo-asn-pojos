@@ -57,7 +57,7 @@ public class TrailerDetails extends Asn1Sequence {
     @JsonCreator
     public TrailerAxlesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

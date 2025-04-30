@@ -34,6 +34,6 @@ public class YawDetected extends Asn1Integer {
   @JsonCreator
   public YawDetected(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

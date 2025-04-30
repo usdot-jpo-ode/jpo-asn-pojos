@@ -34,6 +34,6 @@ public class OffsetLL_B14 extends Asn1Integer {
   @JsonCreator
   public OffsetLL_B14(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

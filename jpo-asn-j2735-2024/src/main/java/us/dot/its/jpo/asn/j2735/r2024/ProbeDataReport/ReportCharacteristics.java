@@ -90,7 +90,7 @@ public class ReportCharacteristics extends Asn1Sequence {
     @JsonCreator
     public VehPassengerCountInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

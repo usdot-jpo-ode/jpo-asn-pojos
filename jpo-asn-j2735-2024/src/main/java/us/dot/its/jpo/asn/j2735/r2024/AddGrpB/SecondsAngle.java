@@ -34,6 +34,6 @@ public class SecondsAngle extends Asn1Integer {
   @JsonCreator
   public SecondsAngle(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

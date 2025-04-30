@@ -34,6 +34,6 @@ public class CoarseHeading extends Asn1Integer {
   @JsonCreator
   public CoarseHeading(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -70,7 +70,7 @@ public class VehicleStatusRequest extends Asn1Sequence {
     @JsonCreator
     public SubTypeInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -82,7 +82,7 @@ public class VehicleStatusRequest extends Asn1Sequence {
     @JsonCreator
     public SendOnLessThenValueInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -94,7 +94,7 @@ public class VehicleStatusRequest extends Asn1Sequence {
     @JsonCreator
     public SendOnMoreThenValueInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

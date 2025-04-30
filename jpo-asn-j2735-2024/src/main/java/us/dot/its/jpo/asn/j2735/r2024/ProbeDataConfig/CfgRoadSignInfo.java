@@ -61,7 +61,7 @@ public class CfgRoadSignInfo extends Asn1Sequence {
     @JsonCreator
     public LowRoadsignReflect1Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -73,7 +73,7 @@ public class CfgRoadSignInfo extends Asn1Sequence {
     @JsonCreator
     public LowRoadsignReflect2Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
