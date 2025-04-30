@@ -16,7 +16,7 @@ public abstract class Asn1CharacterString implements Asn1Type {
     private final int bitsPerCharacter;
     private String value;
 
-    public Asn1CharacterString(int minLength, int maxLength, int bitsPerCharacter) {
+    protected Asn1CharacterString(int minLength, int maxLength, int bitsPerCharacter) {
         this.minLength = minLength;
         this.maxLength = maxLength;
         this.bitsPerCharacter = bitsPerCharacter;

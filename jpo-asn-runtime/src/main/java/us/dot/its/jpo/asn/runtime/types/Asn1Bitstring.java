@@ -41,7 +41,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
      * @param hasExtensionMarker Indicates whether the bit string supports an extension marker.
      * @param names              An array of names associated with the bits in the bit string.
      */
-    public Asn1Bitstring(int lowerBound, int upperBound, boolean hasExtensionMarker, String[] names) {
+    protected Asn1Bitstring(int lowerBound, int upperBound, boolean hasExtensionMarker, String[] names) {
         this.size = lowerBound;
         this.upperBound = upperBound;
         this.hasExtensionMarker = hasExtensionMarker;
@@ -56,7 +56,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
      * @param hasExtensionMarker Indicates whether the bit string supports an extension marker.
      * @param names              An array of names associated with the bits in the bit string.
      */
-    public Asn1Bitstring(int size, boolean hasExtensionMarker, String[] names) {
+    protected Asn1Bitstring(int size, boolean hasExtensionMarker, String[] names) {
         this(size, size, hasExtensionMarker, names);
     }
 
