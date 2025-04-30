@@ -34,6 +34,6 @@ public class NTCIPEssPercentProductMix extends Asn1Integer {
   @JsonCreator
   public NTCIPEssPercentProductMix(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

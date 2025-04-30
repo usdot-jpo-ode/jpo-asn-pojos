@@ -34,6 +34,6 @@ public class LayerID extends Asn1Integer {
   @JsonCreator
   public LayerID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

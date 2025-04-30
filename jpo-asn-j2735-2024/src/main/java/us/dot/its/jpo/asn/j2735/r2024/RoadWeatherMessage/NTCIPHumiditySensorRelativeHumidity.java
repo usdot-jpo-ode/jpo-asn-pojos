@@ -34,6 +34,6 @@ public class NTCIPHumiditySensorRelativeHumidity extends Asn1Integer {
   @JsonCreator
   public NTCIPHumiditySensorRelativeHumidity(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class HeadingDeg extends Asn1Integer {
   @JsonCreator
   public HeadingDeg(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -33,6 +33,6 @@ public class Time extends Int4Unsigned {
   @JsonCreator
   public Time(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

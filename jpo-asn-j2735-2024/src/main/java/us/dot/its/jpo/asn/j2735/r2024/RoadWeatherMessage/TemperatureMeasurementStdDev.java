@@ -34,6 +34,6 @@ public class TemperatureMeasurementStdDev extends Asn1Integer {
   @JsonCreator
   public TemperatureMeasurementStdDev(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

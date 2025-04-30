@@ -33,6 +33,6 @@ public class VehicleClass extends Int1Unsigned {
   @JsonCreator
   public VehicleClass(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -33,6 +33,6 @@ public class CO2EmissionValue extends Int2Unsigned {
   @JsonCreator
   public CO2EmissionValue(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class GrossDistance extends Asn1Integer {
   @JsonCreator
   public GrossDistance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

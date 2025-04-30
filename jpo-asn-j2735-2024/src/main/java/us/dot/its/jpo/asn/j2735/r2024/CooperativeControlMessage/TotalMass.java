@@ -34,6 +34,6 @@ public class TotalMass extends Asn1Integer {
   @JsonCreator
   public TotalMass(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

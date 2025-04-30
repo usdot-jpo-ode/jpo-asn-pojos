@@ -57,7 +57,7 @@ public class TimeChargesTable extends Asn1Sequence {
     @JsonCreator
     public MaxTimeInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

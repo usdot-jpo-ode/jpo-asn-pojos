@@ -34,6 +34,6 @@ public class NTCIPEssPaveTreatmentAmount extends Asn1Integer {
   @JsonCreator
   public NTCIPEssPaveTreatmentAmount(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

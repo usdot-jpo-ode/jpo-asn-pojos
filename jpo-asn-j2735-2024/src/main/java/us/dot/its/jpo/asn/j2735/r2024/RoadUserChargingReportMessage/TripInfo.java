@@ -62,7 +62,7 @@ public class TripInfo extends Asn1Sequence {
     @JsonCreator
     public DistanceTraveledInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -74,7 +74,7 @@ public class TripInfo extends Asn1Sequence {
     @JsonCreator
     public TimeTraveledInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

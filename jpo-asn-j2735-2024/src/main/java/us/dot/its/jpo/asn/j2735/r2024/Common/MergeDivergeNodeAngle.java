@@ -34,6 +34,6 @@ public class MergeDivergeNodeAngle extends Asn1Integer {
   @JsonCreator
   public MergeDivergeNodeAngle(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

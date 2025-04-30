@@ -34,6 +34,6 @@ public class DSecond extends Asn1Integer {
   @JsonCreator
   public DSecond(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

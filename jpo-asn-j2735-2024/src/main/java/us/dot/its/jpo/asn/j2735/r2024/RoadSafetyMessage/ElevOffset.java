@@ -34,6 +34,6 @@ public class ElevOffset extends Asn1Integer {
   @JsonCreator
   public ElevOffset(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

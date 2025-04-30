@@ -34,6 +34,6 @@ public class AxleWeight extends Asn1Integer {
   @JsonCreator
   public AxleWeight(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

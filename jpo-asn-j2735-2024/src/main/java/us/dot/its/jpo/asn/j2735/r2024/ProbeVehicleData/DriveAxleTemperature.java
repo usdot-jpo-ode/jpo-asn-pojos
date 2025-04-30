@@ -34,6 +34,6 @@ public class DriveAxleTemperature extends Asn1Integer {
   @JsonCreator
   public DriveAxleTemperature(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

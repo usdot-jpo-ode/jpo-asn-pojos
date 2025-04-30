@@ -34,6 +34,6 @@ public class ProbeSegmentNumber extends Asn1Integer {
   @JsonCreator
   public ProbeSegmentNumber(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

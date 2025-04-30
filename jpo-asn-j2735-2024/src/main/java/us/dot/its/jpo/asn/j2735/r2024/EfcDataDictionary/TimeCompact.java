@@ -61,7 +61,7 @@ public class TimeCompact extends Asn1Sequence {
     @JsonCreator
     public HoursInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -73,7 +73,7 @@ public class TimeCompact extends Asn1Sequence {
     @JsonCreator
     public MinsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -85,7 +85,7 @@ public class TimeCompact extends Asn1Sequence {
     @JsonCreator
     public DoubleSecsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

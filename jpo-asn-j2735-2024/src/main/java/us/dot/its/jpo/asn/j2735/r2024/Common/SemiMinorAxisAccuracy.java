@@ -34,6 +34,6 @@ public class SemiMinorAxisAccuracy extends Asn1Integer {
   @JsonCreator
   public SemiMinorAxisAccuracy(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

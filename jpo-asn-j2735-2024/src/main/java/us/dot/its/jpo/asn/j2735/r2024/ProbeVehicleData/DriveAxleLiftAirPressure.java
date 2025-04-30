@@ -34,6 +34,6 @@ public class DriveAxleLiftAirPressure extends Asn1Integer {
   @JsonCreator
   public DriveAxleLiftAirPressure(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

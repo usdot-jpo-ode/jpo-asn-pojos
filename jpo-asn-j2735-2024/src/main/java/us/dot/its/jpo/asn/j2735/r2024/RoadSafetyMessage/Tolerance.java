@@ -34,6 +34,6 @@ public class Tolerance extends Asn1Integer {
   @JsonCreator
   public Tolerance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

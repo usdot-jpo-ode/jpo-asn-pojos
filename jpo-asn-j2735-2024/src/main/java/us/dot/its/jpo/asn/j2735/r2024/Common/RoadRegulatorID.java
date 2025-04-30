@@ -34,6 +34,6 @@ public class RoadRegulatorID extends Asn1Integer {
   @JsonCreator
   public RoadRegulatorID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -62,7 +62,7 @@ public class CfgInterval extends Asn1Choice {
     @JsonCreator
     public TimeIntervalInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -74,7 +74,7 @@ public class CfgInterval extends Asn1Choice {
     @JsonCreator
     public DistanceIntervalInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 }

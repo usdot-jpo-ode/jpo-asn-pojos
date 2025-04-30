@@ -33,6 +33,6 @@ public class Altitude extends Int2Signed {
   @JsonCreator
   public Altitude(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

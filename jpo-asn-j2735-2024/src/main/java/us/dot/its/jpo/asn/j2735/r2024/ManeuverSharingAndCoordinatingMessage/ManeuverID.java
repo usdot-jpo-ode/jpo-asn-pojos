@@ -34,6 +34,6 @@ public class ManeuverID extends Asn1Integer {
   @JsonCreator
   public ManeuverID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class TrafficLightDirectionCode extends Asn1Integer {
   @JsonCreator
   public TrafficLightDirectionCode(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

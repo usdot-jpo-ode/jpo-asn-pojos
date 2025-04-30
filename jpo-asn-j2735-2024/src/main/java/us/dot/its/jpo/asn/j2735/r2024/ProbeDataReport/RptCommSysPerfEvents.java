@@ -112,7 +112,7 @@ public class RptCommSysPerfEvents extends Asn1Choice {
     @JsonCreator
     public NumOfRsusObservedInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 }

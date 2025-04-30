@@ -34,6 +34,6 @@ public class Confidence extends Asn1Integer {
   @JsonCreator
   public Confidence(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

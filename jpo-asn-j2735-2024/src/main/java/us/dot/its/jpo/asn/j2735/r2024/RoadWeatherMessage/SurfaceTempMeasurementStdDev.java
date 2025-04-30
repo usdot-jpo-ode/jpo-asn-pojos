@@ -34,6 +34,6 @@ public class SurfaceTempMeasurementStdDev extends Asn1Integer {
   @JsonCreator
   public SurfaceTempMeasurementStdDev(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

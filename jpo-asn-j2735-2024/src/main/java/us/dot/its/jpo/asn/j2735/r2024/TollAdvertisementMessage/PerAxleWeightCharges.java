@@ -71,7 +71,7 @@ public class PerAxleWeightCharges extends Asn1Sequence {
     @JsonCreator
     public TotalWeightLimitInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -83,7 +83,7 @@ public class PerAxleWeightCharges extends Asn1Sequence {
     @JsonCreator
     public MaxLadenWeightOnAxleInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

@@ -73,7 +73,7 @@ public class RptIntervalEvents extends Asn1Sequence {
     @JsonCreator
     public VehCountInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -85,7 +85,7 @@ public class RptIntervalEvents extends Asn1Sequence {
     @JsonCreator
     public NumOfOccupantsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

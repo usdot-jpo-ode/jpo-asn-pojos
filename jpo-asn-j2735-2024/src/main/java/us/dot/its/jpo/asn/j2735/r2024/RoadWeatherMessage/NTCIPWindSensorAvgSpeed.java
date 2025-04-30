@@ -34,6 +34,6 @@ public class NTCIPWindSensorAvgSpeed extends Asn1Integer {
   @JsonCreator
   public NTCIPWindSensorAvgSpeed(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -12,6 +12,6 @@ public class AInteger extends Asn1Integer {
   @JsonCreator
   public AInteger(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

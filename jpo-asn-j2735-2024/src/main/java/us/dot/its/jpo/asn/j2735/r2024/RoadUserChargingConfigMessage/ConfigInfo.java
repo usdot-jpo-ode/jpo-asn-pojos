@@ -75,7 +75,7 @@ public class ConfigInfo extends Asn1Sequence {
     @JsonCreator
     public ConfigIDInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -87,7 +87,7 @@ public class ConfigInfo extends Asn1Sequence {
     @JsonCreator
     public ConfigVersionInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

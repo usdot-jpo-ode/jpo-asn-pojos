@@ -34,6 +34,6 @@ public class DHour extends Asn1Integer {
   @JsonCreator
   public DHour(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

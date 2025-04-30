@@ -34,6 +34,6 @@ public class StdDev extends Asn1Integer {
   @JsonCreator
   public StdDev(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

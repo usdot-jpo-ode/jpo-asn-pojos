@@ -34,6 +34,6 @@ public class Heading extends Asn1Integer {
   @JsonCreator
   public Heading(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

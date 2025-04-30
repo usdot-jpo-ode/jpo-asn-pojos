@@ -33,6 +33,6 @@ public class ContractSerialNumber extends Int4Unsigned {
   @JsonCreator
   public ContractSerialNumber(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

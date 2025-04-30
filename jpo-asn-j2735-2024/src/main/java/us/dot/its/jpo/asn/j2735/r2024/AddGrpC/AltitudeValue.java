@@ -34,6 +34,6 @@ public class AltitudeValue extends Asn1Integer {
   @JsonCreator
   public AltitudeValue(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

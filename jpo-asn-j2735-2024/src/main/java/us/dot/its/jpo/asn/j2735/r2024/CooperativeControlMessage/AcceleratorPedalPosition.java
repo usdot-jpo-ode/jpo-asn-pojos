@@ -34,6 +34,6 @@ public class AcceleratorPedalPosition extends Asn1Integer {
   @JsonCreator
   public AcceleratorPedalPosition(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

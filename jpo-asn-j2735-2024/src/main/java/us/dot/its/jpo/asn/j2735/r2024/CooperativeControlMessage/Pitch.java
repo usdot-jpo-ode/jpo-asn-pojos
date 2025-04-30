@@ -34,6 +34,6 @@ public class Pitch extends Asn1Integer {
   @JsonCreator
   public Pitch(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

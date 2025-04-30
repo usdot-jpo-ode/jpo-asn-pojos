@@ -34,6 +34,6 @@ public class SemiMajorAxisOrientation extends Asn1Integer {
   @JsonCreator
   public SemiMajorAxisOrientation(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

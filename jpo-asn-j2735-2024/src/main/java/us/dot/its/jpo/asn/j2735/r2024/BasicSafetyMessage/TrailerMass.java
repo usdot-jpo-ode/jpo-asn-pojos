@@ -34,6 +34,6 @@ public class TrailerMass extends Asn1Integer {
   @JsonCreator
   public TrailerMass(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

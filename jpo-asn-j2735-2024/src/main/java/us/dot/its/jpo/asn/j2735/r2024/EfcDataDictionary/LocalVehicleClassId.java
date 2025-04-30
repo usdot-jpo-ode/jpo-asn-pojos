@@ -33,6 +33,6 @@ public class LocalVehicleClassId extends Int2Unsigned {
   @JsonCreator
   public LocalVehicleClassId(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

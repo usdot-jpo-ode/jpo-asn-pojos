@@ -58,7 +58,7 @@ public class AxlesCharges extends Asn1Sequence {
     @JsonCreator
     public AxlesLimitInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

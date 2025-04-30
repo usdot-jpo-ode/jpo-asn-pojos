@@ -34,6 +34,6 @@ public class SunSensor extends Asn1Integer {
   @JsonCreator
   public SunSensor(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class TRRLength extends Asn1Integer {
   @JsonCreator
   public TRRLength(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

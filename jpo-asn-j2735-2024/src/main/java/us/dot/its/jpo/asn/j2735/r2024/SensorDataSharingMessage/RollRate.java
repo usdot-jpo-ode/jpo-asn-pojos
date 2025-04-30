@@ -34,6 +34,6 @@ public class RollRate extends Asn1Integer {
   @JsonCreator
   public RollRate(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }
