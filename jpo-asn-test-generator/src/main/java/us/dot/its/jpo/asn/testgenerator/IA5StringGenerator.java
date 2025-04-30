@@ -1,8 +1,7 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import us.dot.its.jpo.asn.runtime.types.IA5String;
-
 import java.util.Random;
+import us.dot.its.jpo.asn.runtime.types.IA5String;
 
 public class IA5StringGenerator extends RandomGenerator<IA5String> {
 

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.fasterxml.jackson.databind.exc.ValueInstantiationException;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -48,25 +49,19 @@ public final class BitStringDeserializer<T extends Asn1Bitstring> extends StdDes
         this.valueType = valueType;
     }
 
-    private T construct() {
+    private T construct(JsonParser jsonParser) throws ValueInstantiationException {
+        if (valueType == Asn1Bitstring.class) {
+                throw ValueInstantiationException.from(jsonParser,
+                    "Cannot instantiate abstract class Asn1Bitstring directly. Use a concrete subclass instead.",
+                    getValueType());
+        }
         try {
-            if (valueType == Asn1Bitstring.class) {
-                // For tests, try to instantiate ExampleBitstring
-                try {
-                    Class<?> exampleClass = Class.forName("us.dot.its.jpo.asn.runtime.examples.ExampleBitstring");
-                    Constructor<?> constructor = exampleClass.getDeclaredConstructor();
-                    constructor.setAccessible(true);
-                    return (T) constructor.newInstance();
-                } catch (ClassNotFoundException e) {
-                    // Not in a test environment
-                    throw new IllegalArgumentException("Cannot instantiate abstract class Asn1Bitstring directly. Use a concrete subclass instead.");
-                }
-            }
             Constructor<T> constructor = valueType.getDeclaredConstructor();
             constructor.setAccessible(true);
             return constructor.newInstance();
         } catch (Exception e) {
-            throw new RuntimeException("Failed to create instance of " + valueType.getName(), e);
+            throw ValueInstantiationException.from(jsonParser,
+                "Failed to create instance of " + valueType.getName(), getValueType(), e);
         }
     }
 
@@ -86,7 +81,7 @@ public final class BitStringDeserializer<T extends Asn1Bitstring> extends StdDes
 
     @Override
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        T bitstring = construct();
+        T bitstring = construct(jsonParser);
         if (jsonParser.getCodec() instanceof XmlMapper) {
             // XML: binary
             String str = jsonParser.getText();

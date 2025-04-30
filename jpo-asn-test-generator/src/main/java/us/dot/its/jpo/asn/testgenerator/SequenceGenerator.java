@@ -1,11 +1,10 @@
 package us.dot.its.jpo.asn.testgenerator;
 
+import java.util.ArrayList;
+import java.util.List;
 import us.dot.its.jpo.asn.runtime.types.Asn1Field;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 import us.dot.its.jpo.asn.runtime.types.Asn1Type;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
 

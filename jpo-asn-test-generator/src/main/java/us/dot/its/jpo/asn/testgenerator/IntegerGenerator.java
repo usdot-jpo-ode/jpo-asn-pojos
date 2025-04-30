@@ -1,8 +1,7 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
-
 import java.util.Random;
+import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
 
 public class IntegerGenerator extends RandomGenerator<Asn1Integer> {
 
