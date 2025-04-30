@@ -22,14 +22,12 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import us.dot.its.jpo.asn.runtime.types.Asn1RelativeOID;
 
 public class RelativeRoadAuthorityID extends Asn1RelativeOID {
 
-  public RelativeRoadAuthorityID() {
-    super();
-  }
-
+  @JsonCreator
   public RelativeRoadAuthorityID(String value) {
     super(value);
   }
