@@ -101,7 +101,7 @@ and compact XML with no line breaks or indentation.
 Example. To convert the above SDSM XER to JER:
 
 ```bash
-./converter-all -p SensorDataSharingMessage -ixer -ojer sdsm1.xml > sdsm1.json
+./converter-debug -p SensorDataSharingMessage -ixer -ojer sdsm1.xml > sdsm1.json
 ```
 
 Another example to convert a BSM MessageFrame from a file containing UPER-encoded binary to XER and
