@@ -61,7 +61,7 @@ public class Axles extends Asn1Sequence {
     @JsonCreator
     public TotalAxlesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -73,7 +73,7 @@ public class Axles extends Asn1Sequence {
     @JsonCreator
     public FrontAxlesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -85,7 +85,7 @@ public class Axles extends Asn1Sequence {
     @JsonCreator
     public RearAxlesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

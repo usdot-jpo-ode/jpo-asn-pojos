@@ -34,6 +34,6 @@ public class NTCIPEssTotalRadiationV4 extends Asn1Integer {
   @JsonCreator
   public NTCIPEssTotalRadiationV4(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

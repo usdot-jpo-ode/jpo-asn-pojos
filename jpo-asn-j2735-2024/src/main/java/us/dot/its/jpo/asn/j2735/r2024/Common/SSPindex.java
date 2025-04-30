@@ -34,6 +34,6 @@ public class SSPindex extends Asn1Integer {
   @JsonCreator
   public SSPindex(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

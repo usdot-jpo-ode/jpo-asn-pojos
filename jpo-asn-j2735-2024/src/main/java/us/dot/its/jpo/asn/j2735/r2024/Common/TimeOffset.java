@@ -34,6 +34,6 @@ public class TimeOffset extends Asn1Integer {
   @JsonCreator
   public TimeOffset(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

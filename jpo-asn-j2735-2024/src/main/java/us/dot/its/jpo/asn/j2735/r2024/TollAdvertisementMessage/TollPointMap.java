@@ -81,7 +81,7 @@ public class TollPointMap extends Asn1Sequence {
     @JsonCreator
     public RevisionNumInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

@@ -34,6 +34,6 @@ public class TimeRemaining extends Asn1Integer {
   @JsonCreator
   public TimeRemaining(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

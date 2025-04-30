@@ -33,6 +33,6 @@ public class VehicleCurrentMaxTrainWeight extends Int2Unsigned {
   @JsonCreator
   public VehicleCurrentMaxTrainWeight(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

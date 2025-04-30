@@ -34,6 +34,6 @@ public class DYear extends Asn1Integer {
   @JsonCreator
   public DYear(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

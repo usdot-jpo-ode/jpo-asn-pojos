@@ -78,7 +78,7 @@ public class ReceiptServicePart extends Asn1Sequence {
     @JsonCreator
     public StationLocationInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

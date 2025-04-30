@@ -57,7 +57,7 @@ public class CfgHysteresis extends Asn1Sequence {
     @JsonCreator
     public HysSamplesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class CfgHysteresis extends Asn1Sequence {
     @JsonCreator
     public HysRateInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

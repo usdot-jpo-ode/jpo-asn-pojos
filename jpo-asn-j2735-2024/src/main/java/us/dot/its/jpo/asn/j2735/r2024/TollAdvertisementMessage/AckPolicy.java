@@ -57,7 +57,7 @@ public class AckPolicy extends Asn1Sequence {
     @JsonCreator
     public TimeoutInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class AckPolicy extends Asn1Sequence {
     @JsonCreator
     public NumOfRetriesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

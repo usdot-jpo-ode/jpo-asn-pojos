@@ -34,6 +34,6 @@ public class VerticalAcceleration extends Asn1Integer {
   @JsonCreator
   public VerticalAcceleration(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

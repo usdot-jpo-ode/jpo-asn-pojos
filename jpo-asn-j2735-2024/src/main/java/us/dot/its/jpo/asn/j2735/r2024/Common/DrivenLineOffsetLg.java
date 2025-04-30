@@ -34,6 +34,6 @@ public class DrivenLineOffsetLg extends Asn1Integer {
   @JsonCreator
   public DrivenLineOffsetLg(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

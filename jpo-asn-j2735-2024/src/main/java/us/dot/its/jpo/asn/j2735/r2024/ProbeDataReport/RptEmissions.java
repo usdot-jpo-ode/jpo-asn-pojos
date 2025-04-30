@@ -85,7 +85,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public HydrocarbonsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -97,7 +97,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public CoInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -109,7 +109,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public Co2Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -121,7 +121,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public NoInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -133,7 +133,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public No2Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -145,7 +145,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public So2Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -157,7 +157,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public O3Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -169,7 +169,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public Pm10Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -181,7 +181,7 @@ public class RptEmissions extends Asn1Sequence {
     @JsonCreator
     public Pm25Integer(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

@@ -57,7 +57,7 @@ public class Sample extends Asn1Sequence {
     @JsonCreator
     public SampleStartInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class Sample extends Asn1Sequence {
     @JsonCreator
     public SampleEndInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

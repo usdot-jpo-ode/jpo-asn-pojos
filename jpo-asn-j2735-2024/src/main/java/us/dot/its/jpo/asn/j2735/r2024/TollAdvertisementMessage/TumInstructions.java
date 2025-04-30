@@ -57,7 +57,7 @@ public class TumInstructions extends Asn1Sequence {
     @JsonCreator
     public MaxNumOfLocTimeStampsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class TumInstructions extends Asn1Sequence {
     @JsonCreator
     public LocTimeStampRateInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

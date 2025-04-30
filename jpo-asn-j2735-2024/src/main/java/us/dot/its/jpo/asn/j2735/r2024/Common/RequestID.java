@@ -34,6 +34,6 @@ public class RequestID extends Asn1Integer {
   @JsonCreator
   public RequestID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

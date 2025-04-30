@@ -74,7 +74,7 @@ public class EfcContextMark extends Asn1Sequence {
     @JsonCreator
     public ContextVersionInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

@@ -34,6 +34,6 @@ public class AtmosPressureMeasurementStdDev extends Asn1Integer {
   @JsonCreator
   public AtmosPressureMeasurementStdDev(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class TimeIntervalConfidence extends Asn1Integer {
   @JsonCreator
   public TimeIntervalConfidence(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

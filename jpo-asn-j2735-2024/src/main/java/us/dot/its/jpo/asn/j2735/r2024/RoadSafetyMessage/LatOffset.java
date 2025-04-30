@@ -34,6 +34,6 @@ public class LatOffset extends Asn1Integer {
   @JsonCreator
   public LatOffset(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

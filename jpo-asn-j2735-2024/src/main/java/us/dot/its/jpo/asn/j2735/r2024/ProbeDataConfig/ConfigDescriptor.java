@@ -66,7 +66,7 @@ public class ConfigDescriptor extends Asn1Sequence {
     @JsonCreator
     public PercentOfRespInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

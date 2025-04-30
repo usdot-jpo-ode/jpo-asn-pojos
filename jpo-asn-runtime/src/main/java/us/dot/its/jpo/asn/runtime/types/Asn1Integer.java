@@ -14,11 +14,11 @@ import lombok.Setter;
 public class Asn1Integer implements Asn1Type, Comparable<Asn1Integer> {
 
   @Setter
-  protected long value;
+  private long value;
   @Getter
-  final long lowerBound;
+  private final long lowerBound;
   @Getter
-  final long upperBound;
+  private final long upperBound;
 
   public Asn1Integer() {
     this(Long.MIN_VALUE, Long.MAX_VALUE);
@@ -27,7 +27,7 @@ public class Asn1Integer implements Asn1Type, Comparable<Asn1Integer> {
   @JsonCreator
   public Asn1Integer(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 
   public Asn1Integer(long lowerBound, long upperBound) {
@@ -40,16 +40,12 @@ public class Asn1Integer implements Asn1Type, Comparable<Asn1Integer> {
     return value;
   }
 
-  public int intValue() {
-    return (int) value;
-  }
-
   @Override
   public int compareTo(Asn1Integer other) {
     if (other == null) {
       return -1;
     }
-    return Long.compare(value, other.value);
+    return Long.compare(getValue(), other.getValue());
   }
 
 
@@ -62,17 +58,17 @@ public class Asn1Integer implements Asn1Type, Comparable<Asn1Integer> {
       return false;
     }
     Asn1Integer that = (Asn1Integer) o;
-    return value == that.value;
+    return getValue() == that.getValue();
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(value);
+    return Objects.hashCode(getValue());
   }
 
   @Override
   public String toString() {
-    return Long.toString(value);
+    return Long.toString(getValue());
   }
 
   public Optional<String> name() {

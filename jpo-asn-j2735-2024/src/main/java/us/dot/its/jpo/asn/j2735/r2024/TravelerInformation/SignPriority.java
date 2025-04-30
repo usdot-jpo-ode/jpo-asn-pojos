@@ -34,6 +34,6 @@ public class SignPriority extends Asn1Integer {
   @JsonCreator
   public SignPriority(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

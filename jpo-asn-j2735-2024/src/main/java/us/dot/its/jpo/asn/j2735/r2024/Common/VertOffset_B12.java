@@ -34,6 +34,6 @@ public class VertOffset_B12 extends Asn1Integer {
   @JsonCreator
   public VertOffset_B12(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

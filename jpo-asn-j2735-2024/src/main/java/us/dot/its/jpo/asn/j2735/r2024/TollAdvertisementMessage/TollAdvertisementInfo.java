@@ -93,7 +93,7 @@ public class TollAdvertisementInfo extends Asn1Sequence {
     @JsonCreator
     public TotalTamsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -105,7 +105,7 @@ public class TollAdvertisementInfo extends Asn1Sequence {
     @JsonCreator
     public TamNumInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

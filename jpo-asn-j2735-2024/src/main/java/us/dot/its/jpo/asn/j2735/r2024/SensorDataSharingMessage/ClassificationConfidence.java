@@ -34,6 +34,6 @@ public class ClassificationConfidence extends Asn1Integer {
   @JsonCreator
   public ClassificationConfidence(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

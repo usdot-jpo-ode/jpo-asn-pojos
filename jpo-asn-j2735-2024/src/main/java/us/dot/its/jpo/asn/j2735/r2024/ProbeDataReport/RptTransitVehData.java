@@ -61,7 +61,7 @@ public class RptTransitVehData extends Asn1Sequence {
     @JsonCreator
     public CurrNumPasngersInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -73,7 +73,7 @@ public class RptTransitVehData extends Asn1Sequence {
     @JsonCreator
     public AvgNumPasngersInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -85,7 +85,7 @@ public class RptTransitVehData extends Asn1Sequence {
     @JsonCreator
     public TrnstVehSchAdhInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

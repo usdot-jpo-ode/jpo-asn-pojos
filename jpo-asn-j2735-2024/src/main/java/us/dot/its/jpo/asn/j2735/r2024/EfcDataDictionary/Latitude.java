@@ -33,6 +33,6 @@ public class Latitude extends Int4Signed {
   @JsonCreator
   public Latitude(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

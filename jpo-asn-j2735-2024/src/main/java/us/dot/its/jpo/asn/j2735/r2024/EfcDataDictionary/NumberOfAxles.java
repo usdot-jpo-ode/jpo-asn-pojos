@@ -57,7 +57,7 @@ public class NumberOfAxles extends Asn1Sequence {
     @JsonCreator
     public TrailerAxlesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class NumberOfAxles extends Asn1Sequence {
     @JsonCreator
     public TractorAxlesInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

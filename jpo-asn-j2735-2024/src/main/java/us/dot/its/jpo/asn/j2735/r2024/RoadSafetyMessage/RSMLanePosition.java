@@ -34,6 +34,6 @@ public class RSMLanePosition extends Asn1Integer {
   @JsonCreator
   public RSMLanePosition(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

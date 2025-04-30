@@ -34,6 +34,6 @@ public class DrivingWheelAngle extends Asn1Integer {
   @JsonCreator
   public DrivingWheelAngle(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

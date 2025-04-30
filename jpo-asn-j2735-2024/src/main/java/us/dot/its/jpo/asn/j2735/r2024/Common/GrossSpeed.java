@@ -34,6 +34,6 @@ public class GrossSpeed extends Asn1Integer {
   @JsonCreator
   public GrossSpeed(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

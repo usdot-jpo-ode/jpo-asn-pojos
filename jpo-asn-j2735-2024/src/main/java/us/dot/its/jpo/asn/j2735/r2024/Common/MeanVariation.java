@@ -34,6 +34,6 @@ public class MeanVariation extends Asn1Integer {
   @JsonCreator
   public MeanVariation(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

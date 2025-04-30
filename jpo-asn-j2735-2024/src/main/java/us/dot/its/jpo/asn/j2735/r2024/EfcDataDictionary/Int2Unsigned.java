@@ -34,6 +34,6 @@ public class Int2Unsigned extends Asn1Integer {
   @JsonCreator
   public Int2Unsigned(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

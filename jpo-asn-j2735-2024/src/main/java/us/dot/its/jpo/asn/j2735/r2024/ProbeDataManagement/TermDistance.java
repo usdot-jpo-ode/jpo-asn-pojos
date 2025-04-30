@@ -34,6 +34,6 @@ public class TermDistance extends Asn1Integer {
   @JsonCreator
   public TermDistance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

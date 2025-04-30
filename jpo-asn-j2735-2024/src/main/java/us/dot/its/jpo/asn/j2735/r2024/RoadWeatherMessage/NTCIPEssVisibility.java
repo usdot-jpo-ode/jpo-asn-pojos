@@ -34,6 +34,6 @@ public class NTCIPEssVisibility extends Asn1Integer {
   @JsonCreator
   public NTCIPEssVisibility(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

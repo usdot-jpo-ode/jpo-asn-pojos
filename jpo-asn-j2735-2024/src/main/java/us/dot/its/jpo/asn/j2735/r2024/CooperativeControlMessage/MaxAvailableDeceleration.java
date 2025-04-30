@@ -34,6 +34,6 @@ public class MaxAvailableDeceleration extends Asn1Integer {
   @JsonCreator
   public MaxAvailableDeceleration(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

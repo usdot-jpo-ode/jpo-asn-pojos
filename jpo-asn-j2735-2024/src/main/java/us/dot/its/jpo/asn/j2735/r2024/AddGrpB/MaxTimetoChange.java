@@ -34,6 +34,6 @@ public class MaxTimetoChange extends Asn1Integer {
   @JsonCreator
   public MaxTimetoChange(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

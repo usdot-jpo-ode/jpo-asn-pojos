@@ -34,6 +34,6 @@ public class Yaw extends Asn1Integer {
   @JsonCreator
   public Yaw(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

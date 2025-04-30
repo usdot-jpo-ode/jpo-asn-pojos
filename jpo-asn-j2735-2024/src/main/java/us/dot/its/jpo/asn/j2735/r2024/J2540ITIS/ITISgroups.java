@@ -41,7 +41,7 @@ public class ITISgroups extends Asn1Integer {
   @JsonCreator
   public ITISgroups(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 
   private static class NamedValues {
@@ -112,7 +112,7 @@ public class ITISgroups extends Asn1Integer {
 
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(namedValues.valueMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(getValue()));
   }
 
   public static Optional<ITISgroups> named(String name) {

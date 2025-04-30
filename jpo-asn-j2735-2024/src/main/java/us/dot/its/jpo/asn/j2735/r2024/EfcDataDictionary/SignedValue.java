@@ -57,7 +57,7 @@ public class SignedValue extends Asn1Choice {
     @JsonCreator
     public PositiveInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class SignedValue extends Asn1Choice {
     @JsonCreator
     public NegativeInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 }
