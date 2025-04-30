@@ -1,10 +1,11 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import java.util.ArrayList;
-import java.util.List;
 import us.dot.its.jpo.asn.runtime.types.Asn1Field;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 import us.dot.its.jpo.asn.runtime.types.Asn1Type;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
 
@@ -13,7 +14,7 @@ public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
   }
 
   @Override
-  protected void populateRandom(Asn1Sequence instance) {
+  protected Asn1Sequence populateRandom(Asn1Sequence instance) {
     List<Asn1Field> fields = AsnFieldUtil.fields(instance);
     List<Asn1Field> fieldsWithValues = new ArrayList<>();
     for (Asn1Field field : fields) {
@@ -50,5 +51,6 @@ public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
       }
     }
     AsnFieldUtil.setFields(instance, fieldsWithValues);
+    return instance;
   }
 }

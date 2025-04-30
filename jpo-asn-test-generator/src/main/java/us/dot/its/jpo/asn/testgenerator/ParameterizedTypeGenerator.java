@@ -1,11 +1,5 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -13,6 +7,13 @@ import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes.Type;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 import us.dot.its.jpo.asn.runtime.types.Asn1Type;
+
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 @Slf4j
 public class ParameterizedTypeGenerator extends RandomGenerator<Asn1Sequence> {
@@ -80,8 +81,9 @@ public class ParameterizedTypeGenerator extends RandomGenerator<Asn1Sequence> {
   }
 
   @Override
-  protected void populateRandom(Asn1Sequence instance) {
+  protected Asn1Sequence populateRandom(Asn1Sequence instance) {
     // Does nothing
+    return instance;
   }
 
   private String normName(String name) {

@@ -9,7 +9,8 @@ public class NullGenerator extends RandomGenerator<Asn1Null> {
   }
 
   @Override
-  protected void populateRandom(Asn1Null instance) {
+  protected Asn1Null populateRandom(Asn1Null instance) {
     // Nothing to do
+    return instance;
   }
 }

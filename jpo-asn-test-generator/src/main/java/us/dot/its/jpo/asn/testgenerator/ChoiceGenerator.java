@@ -1,12 +1,13 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import java.util.List;
-import java.util.Random;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Spec;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 import us.dot.its.jpo.asn.runtime.types.Asn1Field;
 import us.dot.its.jpo.asn.runtime.types.Asn1Type;
+
+import java.util.List;
+import java.util.Random;
 
 public class ChoiceGenerator extends RandomGenerator<Asn1Choice> {
 
@@ -17,7 +18,7 @@ public class ChoiceGenerator extends RandomGenerator<Asn1Choice> {
   }
 
   @Override
-  protected void populateRandom(Asn1Choice instance) {
+  protected Asn1Choice populateRandom(Asn1Choice instance) {
     List<Asn1Field> fields = AsnFieldUtil.fields(instance);
 
     // Exclude choices named "regional"
@@ -40,5 +41,6 @@ public class ChoiceGenerator extends RandomGenerator<Asn1Choice> {
           new Asn1Field(choice.name(), value, choice.optional(), choice.tag(), choice.type());
       AsnFieldUtil.setField(instance, fieldWithValue);
     }
+    return instance;
   }
 }

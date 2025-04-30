@@ -1,7 +1,8 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import java.util.Random;
 import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
+
+import java.util.Random;
 
 public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
 
@@ -10,7 +11,7 @@ public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
   }
 
   @Override
-  protected void populateRandom(Asn1OctetString instance) {
+  protected Asn1OctetString populateRandom(Asn1OctetString instance) {
     final int lower = instance.getMinLength();
     final int upper =
         (instance.getMaxLength() == instance.getMinLength())
@@ -28,5 +29,6 @@ public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
       bytes[i] = (byte) r.nextInt(256);
     }
     instance.setOctets(bytes);
+    return instance;
   }
 }
