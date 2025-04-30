@@ -34,6 +34,6 @@ public class EssPrecipRate extends Asn1Integer {
   @JsonCreator
   public EssPrecipRate(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

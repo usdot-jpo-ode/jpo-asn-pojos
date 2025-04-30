@@ -34,6 +34,6 @@ public class VariationStdDev extends Asn1Integer {
   @JsonCreator
   public VariationStdDev(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

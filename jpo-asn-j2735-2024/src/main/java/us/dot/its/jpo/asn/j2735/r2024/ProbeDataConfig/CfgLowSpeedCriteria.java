@@ -57,7 +57,7 @@ public class CfgLowSpeedCriteria extends Asn1Sequence {
     @JsonCreator
     public LowSpeedThresholdInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -69,7 +69,7 @@ public class CfgLowSpeedCriteria extends Asn1Sequence {
     @JsonCreator
     public LowSpeedTimeThreshInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

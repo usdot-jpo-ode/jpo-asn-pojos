@@ -33,6 +33,6 @@ public class UserClassId extends Int1Unsigned {
   @JsonCreator
   public UserClassId(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

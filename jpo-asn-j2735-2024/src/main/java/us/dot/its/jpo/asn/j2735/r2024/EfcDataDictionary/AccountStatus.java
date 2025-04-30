@@ -41,7 +41,7 @@ public class AccountStatus extends Asn1Integer {
   @JsonCreator
   public AccountStatus(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 
   private static class NamedValues {
@@ -63,7 +63,7 @@ public class AccountStatus extends Asn1Integer {
 
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(namedValues.valueMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(getValue()));
   }
 
   public static Optional<AccountStatus> named(String name) {

@@ -34,6 +34,6 @@ public class Year extends Asn1Integer {
   @JsonCreator
   public Year(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

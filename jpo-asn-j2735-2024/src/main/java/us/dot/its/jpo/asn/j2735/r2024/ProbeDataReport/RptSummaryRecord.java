@@ -97,7 +97,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public RegTravelTimeInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -109,7 +109,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public RegVehDistTraveledInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -121,7 +121,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public RegVehTimeTraveledInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -133,7 +133,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public FuelConsumptionInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -145,7 +145,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public NumOfLowSpeedEventsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -157,7 +157,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public TimeStoppedInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -169,7 +169,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public NumOfStoppedInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -181,7 +181,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public RegNumOfVehPassedInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -193,7 +193,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public RegNumOfSurpassedVehInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
@@ -205,7 +205,7 @@ public class RptSummaryRecord extends Asn1Sequence {
     @JsonCreator
     public TotalMsgsReceivedInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

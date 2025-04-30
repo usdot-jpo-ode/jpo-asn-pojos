@@ -34,6 +34,6 @@ public class EssSolarRadiation extends Asn1Integer {
   @JsonCreator
   public EssSolarRadiation(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class VehicleHeight extends Asn1Integer {
   @JsonCreator
   public VehicleHeight(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

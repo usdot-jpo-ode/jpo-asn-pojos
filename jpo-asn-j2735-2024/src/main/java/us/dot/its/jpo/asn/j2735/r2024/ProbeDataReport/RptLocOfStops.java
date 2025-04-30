@@ -63,7 +63,7 @@ public class RptLocOfStops extends Asn1Sequence {
     @JsonCreator
     public DurationOfStopInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

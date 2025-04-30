@@ -34,6 +34,6 @@ public class TimeInSecond_B8 extends Asn1Integer {
   @JsonCreator
   public TimeInSecond_B8(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

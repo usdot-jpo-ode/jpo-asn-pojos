@@ -34,6 +34,6 @@ public class PersonalClusterRadius extends Asn1Integer {
   @JsonCreator
   public PersonalClusterRadius(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

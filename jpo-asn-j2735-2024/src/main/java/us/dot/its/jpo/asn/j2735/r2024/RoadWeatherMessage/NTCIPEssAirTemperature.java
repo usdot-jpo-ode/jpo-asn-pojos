@@ -34,6 +34,6 @@ public class NTCIPEssAirTemperature extends Asn1Integer {
   @JsonCreator
   public NTCIPEssAirTemperature(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class PitchRate extends Asn1Integer {
   @JsonCreator
   public PitchRate(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

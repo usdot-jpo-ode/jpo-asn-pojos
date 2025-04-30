@@ -34,6 +34,6 @@ public class WiperRate extends Asn1Integer {
   @JsonCreator
   public WiperRate(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -33,6 +33,6 @@ public class ActualNumberOfPassengers extends Int1Unsigned {
   @JsonCreator
   public ActualNumberOfPassengers(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

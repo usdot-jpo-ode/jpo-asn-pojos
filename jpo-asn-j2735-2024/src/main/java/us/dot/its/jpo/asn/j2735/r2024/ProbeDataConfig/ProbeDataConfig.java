@@ -65,7 +65,7 @@ public class ProbeDataConfig extends Asn1Sequence {
     @JsonCreator
     public MaxAgeOfDataInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

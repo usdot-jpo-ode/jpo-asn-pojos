@@ -34,6 +34,6 @@ public class NTCIPEssTemperatureSensorHeight extends Asn1Integer {
   @JsonCreator
   public NTCIPEssTemperatureSensorHeight(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

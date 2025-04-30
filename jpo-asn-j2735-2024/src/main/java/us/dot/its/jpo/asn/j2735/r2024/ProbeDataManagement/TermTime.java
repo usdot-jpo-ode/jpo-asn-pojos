@@ -34,6 +34,6 @@ public class TermTime extends Asn1Integer {
   @JsonCreator
   public TermTime(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

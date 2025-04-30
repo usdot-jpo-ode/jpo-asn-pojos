@@ -34,6 +34,6 @@ public class DewPointTempMeasurementStdDev extends Asn1Integer {
   @JsonCreator
   public DewPointTempMeasurementStdDev(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

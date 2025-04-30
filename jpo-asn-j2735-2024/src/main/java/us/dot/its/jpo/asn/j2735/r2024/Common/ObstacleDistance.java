@@ -34,6 +34,6 @@ public class ObstacleDistance extends Asn1Integer {
   @JsonCreator
   public ObstacleDistance(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

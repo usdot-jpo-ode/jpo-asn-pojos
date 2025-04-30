@@ -34,6 +34,6 @@ public class DriveAxleLocation extends Asn1Integer {
   @JsonCreator
   public DriveAxleLocation(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

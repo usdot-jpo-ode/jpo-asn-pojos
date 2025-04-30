@@ -87,7 +87,7 @@ public class VehicleData extends Asn1Sequence {
     @JsonCreator
     public LeanAngleInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

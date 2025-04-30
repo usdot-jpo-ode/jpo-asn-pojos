@@ -34,6 +34,6 @@ public class YawRate extends Asn1Integer {
   @JsonCreator
   public YawRate(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

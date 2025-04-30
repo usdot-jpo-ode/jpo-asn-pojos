@@ -72,7 +72,7 @@ public class ItemizedChargerData extends Asn1Sequence {
     @JsonCreator
     public ConfigIDInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

@@ -34,6 +34,6 @@ public class LaneConnectionID extends Asn1Integer {
   @JsonCreator
   public LaneConnectionID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

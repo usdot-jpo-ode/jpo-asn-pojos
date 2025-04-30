@@ -69,7 +69,7 @@ public class ExhaustEmissionValues extends Asn1Sequence {
     @JsonCreator
     public EmissionCoInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

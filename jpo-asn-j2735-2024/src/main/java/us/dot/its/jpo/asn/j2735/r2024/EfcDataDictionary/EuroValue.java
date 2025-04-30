@@ -41,7 +41,7 @@ public class EuroValue extends Asn1Integer {
   @JsonCreator
   public EuroValue(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 
   private static class NamedValues {
@@ -68,7 +68,7 @@ public class EuroValue extends Asn1Integer {
 
   @Override
   public Optional<String> name() {
-    return Optional.ofNullable(namedValues.valueMap.get(value));
+    return Optional.ofNullable(namedValues.valueMap.get(getValue()));
   }
 
   public static Optional<EuroValue> named(String name) {

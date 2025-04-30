@@ -106,7 +106,7 @@ public class CfgRoadwayEvents extends Asn1Sequence {
     @JsonCreator
     public LowLaneMarkReflectInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

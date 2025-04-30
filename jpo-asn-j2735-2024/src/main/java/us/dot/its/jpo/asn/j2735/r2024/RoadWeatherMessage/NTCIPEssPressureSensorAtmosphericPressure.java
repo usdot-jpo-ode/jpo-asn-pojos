@@ -34,6 +34,6 @@ public class NTCIPEssPressureSensorAtmosphericPressure extends Asn1Integer {
   @JsonCreator
   public NTCIPEssPressureSensorAtmosphericPressure(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

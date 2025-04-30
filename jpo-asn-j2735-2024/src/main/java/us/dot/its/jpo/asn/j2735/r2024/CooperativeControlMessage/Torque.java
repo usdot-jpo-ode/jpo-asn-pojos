@@ -34,6 +34,6 @@ public class Torque extends Asn1Integer {
   @JsonCreator
   public Torque(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

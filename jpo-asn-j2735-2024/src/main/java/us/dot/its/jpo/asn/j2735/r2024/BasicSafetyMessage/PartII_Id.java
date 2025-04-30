@@ -34,6 +34,6 @@ public class PartII_Id extends Asn1Integer {
   @JsonCreator
   public PartII_Id(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

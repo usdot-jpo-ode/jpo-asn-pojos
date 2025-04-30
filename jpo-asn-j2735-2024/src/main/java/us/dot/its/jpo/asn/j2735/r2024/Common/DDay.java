@@ -34,6 +34,6 @@ public class DDay extends Asn1Integer {
   @JsonCreator
   public DDay(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

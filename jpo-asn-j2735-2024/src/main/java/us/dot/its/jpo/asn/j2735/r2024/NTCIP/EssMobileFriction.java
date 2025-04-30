@@ -34,6 +34,6 @@ public class EssMobileFriction extends Asn1Integer {
   @JsonCreator
   public EssMobileFriction(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

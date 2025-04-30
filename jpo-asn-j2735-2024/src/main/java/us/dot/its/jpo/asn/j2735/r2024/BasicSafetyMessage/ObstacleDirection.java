@@ -34,6 +34,6 @@ public class ObstacleDirection extends Angle {
   @JsonCreator
   public ObstacleDirection(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

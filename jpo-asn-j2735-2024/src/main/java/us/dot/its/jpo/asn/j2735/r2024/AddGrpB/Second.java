@@ -34,6 +34,6 @@ public class Second extends Asn1Integer {
   @JsonCreator
   public Second(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

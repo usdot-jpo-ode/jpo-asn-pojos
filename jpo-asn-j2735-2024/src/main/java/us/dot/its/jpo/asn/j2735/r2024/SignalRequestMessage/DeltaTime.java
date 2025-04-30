@@ -34,6 +34,6 @@ public class DeltaTime extends Asn1Integer {
   @JsonCreator
   public DeltaTime(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

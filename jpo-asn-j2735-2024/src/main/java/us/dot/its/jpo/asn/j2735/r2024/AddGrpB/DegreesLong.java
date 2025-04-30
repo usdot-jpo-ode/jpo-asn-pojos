@@ -34,6 +34,6 @@ public class DegreesLong extends Asn1Integer {
   @JsonCreator
   public DegreesLong(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

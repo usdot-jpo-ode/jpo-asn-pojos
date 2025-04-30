@@ -61,7 +61,7 @@ public class Path extends Asn1Sequence {
     @JsonCreator
     public PathWidthInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

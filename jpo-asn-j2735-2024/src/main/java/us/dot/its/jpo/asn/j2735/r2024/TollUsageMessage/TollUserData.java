@@ -109,7 +109,7 @@ public class TollUserData extends Asn1Sequence {
     @JsonCreator
     public NumOccupantsInteger(long value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 

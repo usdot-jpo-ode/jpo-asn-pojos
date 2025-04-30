@@ -34,6 +34,6 @@ public class TollPointID extends Asn1Integer {
   @JsonCreator
   public TollPointID(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

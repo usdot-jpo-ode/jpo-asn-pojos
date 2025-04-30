@@ -33,6 +33,6 @@ public class LocationClassId extends Int4Unsigned {
   @JsonCreator
   public LocationClassId(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

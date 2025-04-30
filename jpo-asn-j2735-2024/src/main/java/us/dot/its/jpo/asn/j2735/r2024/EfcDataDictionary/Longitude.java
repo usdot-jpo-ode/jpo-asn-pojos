@@ -33,6 +33,6 @@ public class Longitude extends Int4Signed {
   @JsonCreator
   public Longitude(long value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }
