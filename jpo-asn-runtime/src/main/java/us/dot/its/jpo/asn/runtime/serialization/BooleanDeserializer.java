@@ -1,32 +1,61 @@
 package us.dot.its.jpo.asn.runtime.serialization;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.TreeNode;
+import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import java.io.IOException;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-@SuppressWarnings({"unchecked"})
-public class BooleanDeserializer<T extends Asn1Boolean> extends StdDeserializer<T> {
+import java.io.IOException;
+import java.lang.reflect.Constructor;
 
-    protected Asn1Boolean construct() {
-        return new Asn1Boolean();
-    }
+@SuppressWarnings({"unchecked"})
+public final class BooleanDeserializer<T extends Asn1Boolean> extends StdDeserializer<T> implements ContextualDeserializer {
+
+    private final Class<T> valueType;
 
     public BooleanDeserializer() {
         super(Asn1Boolean.class);
+        this.valueType = (Class<T>) Asn1Boolean.class;
     }
 
-    protected BooleanDeserializer(Class<T> valueType) {
+    public BooleanDeserializer(Class<T> valueType) {
         super(valueType);
+        this.valueType = valueType;
+    }
+
+    private T construct() {
+        try {
+            if (valueType == Asn1Boolean.class) {
+                return (T) new Asn1Boolean();
+            }
+            Constructor<T> constructor = valueType.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            return constructor.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create instance of " + valueType.getName(), e);
+        }
     }
 
     @Override
-    public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        Asn1Boolean result = construct();
+    public JsonDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) {
+        if (property != null) {
+            JavaType type = property.getType();
+            if (type.isTypeOrSubTypeOf(Asn1Boolean.class)) {
+                return new BooleanDeserializer<>((Class<T>) type.getRawClass());
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+        T result = construct();
         if (jsonParser.getCodec() instanceof XmlMapper) {
             // XML: unwrap empty element
             TreeNode node = jsonParser.getCodec().readTree(jsonParser);
@@ -39,6 +68,6 @@ public class BooleanDeserializer<T extends Asn1Boolean> extends StdDeserializer<
             // JSON
             result.setValue(jsonParser.getBooleanValue());
         }
-        return (T)result;
+        return result;
     }
 }
