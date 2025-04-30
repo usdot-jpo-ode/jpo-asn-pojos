@@ -54,7 +54,7 @@ public class PrimaryRegionState extends Asn1Sequence {
     @JsonCreator
     public UsCanMexState(String value) {
       this();
-      this.value = value;
+      this.setValue(value);
     }
   }
 
