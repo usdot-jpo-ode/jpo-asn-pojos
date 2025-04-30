@@ -9,7 +9,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.IOException;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-@SuppressWarnings({"unchecked", "rawtypes"})
+@SuppressWarnings({"unchecked"})
 public class BooleanDeserializer<T extends Asn1Boolean> extends StdDeserializer<T> {
 
     protected Asn1Boolean construct() {
@@ -21,7 +21,7 @@ public class BooleanDeserializer<T extends Asn1Boolean> extends StdDeserializer<
     }
 
     protected BooleanDeserializer(Class<T> valueType) {
-        super(Asn1Boolean.class);
+        super(valueType);
     }
 
     @Override
