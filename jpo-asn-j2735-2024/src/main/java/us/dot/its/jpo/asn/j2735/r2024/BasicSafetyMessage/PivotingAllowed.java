@@ -24,6 +24,4 @@ package us.dot.its.jpo.asn.j2735.r2024.BasicSafetyMessage;
 
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-
-public class PivotingAllowed extends Asn1Boolean {
-}
+public class PivotingAllowed extends Asn1Boolean {}

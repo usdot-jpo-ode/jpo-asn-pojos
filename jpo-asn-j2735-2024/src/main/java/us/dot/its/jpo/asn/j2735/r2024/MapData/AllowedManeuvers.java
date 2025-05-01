@@ -141,5 +141,4 @@ public class AllowedManeuvers extends Asn1Bitstring {
           "reserved1"
         });
   }
-
 }

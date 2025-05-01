@@ -114,5 +114,4 @@ public class PersonalDeviceUsageState extends Asn1Bitstring {
           "viewing"
         });
   }
-
 }

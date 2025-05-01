@@ -105,5 +105,4 @@ public class LaneAttributes_Vehicle extends Asn1Bitstring {
           "permissionOnRequest"
         });
   }
-
 }

@@ -29,5 +29,4 @@ public class CountryCode extends Asn1Bitstring {
   public CountryCode() {
     super(10, false, new String[] {});
   }
-
 }

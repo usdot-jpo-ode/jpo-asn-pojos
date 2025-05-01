@@ -177,5 +177,4 @@ public class HeadingSlice extends Asn1Bitstring {
           "from337-5to360-0degrees"
         });
   }
-
 }

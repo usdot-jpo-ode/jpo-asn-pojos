@@ -24,7 +24,6 @@ package us.dot.its.jpo.asn.j2735.r2024.EfcDataDictionary;
 
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-
 public class EquipmentStatus extends Asn1Bitstring {
 
   public EquipmentStatus() {

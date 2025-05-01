@@ -114,5 +114,4 @@ public class LaneAttributes_Crosswalk extends Asn1Bitstring {
           "unsignalizedSegmentsPresent"
         });
   }
-
 }

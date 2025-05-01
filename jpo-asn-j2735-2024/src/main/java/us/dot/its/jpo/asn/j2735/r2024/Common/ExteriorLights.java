@@ -114,5 +114,4 @@ public class ExteriorLights extends Asn1Bitstring {
           "parkingLightsOn"
         });
   }
-
 }

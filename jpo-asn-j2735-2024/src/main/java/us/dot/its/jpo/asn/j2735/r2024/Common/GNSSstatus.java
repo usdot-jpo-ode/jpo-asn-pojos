@@ -105,5 +105,4 @@ public class GNSSstatus extends Asn1Bitstring {
           "networkCorrectionsPresent"
         });
   }
-
 }

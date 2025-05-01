@@ -24,6 +24,4 @@ package us.dot.its.jpo.asn.j2735.r2024.ManeuverSharingAndCoordinatingMessage;
 
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-
-public class ResponseFlag extends Asn1Boolean {
-}
+public class ResponseFlag extends Asn1Boolean {}
