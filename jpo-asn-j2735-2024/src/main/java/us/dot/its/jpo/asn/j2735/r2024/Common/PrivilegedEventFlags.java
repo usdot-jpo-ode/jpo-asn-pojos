@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.Common.PrivilegedEventFlags.PrivilegedEventFlagsDeserializer
-            .class)
 public class PrivilegedEventFlags extends Asn1Bitstring {
 
   public boolean isPeUnavailable() {
@@ -92,17 +86,5 @@ public class PrivilegedEventFlags extends Asn1Bitstring {
           "peNonEmergencyLightsActive",
           "peNonEmergencySoundActive"
         });
-  }
-
-  public static class PrivilegedEventFlagsDeserializer
-      extends BitStringDeserializer<PrivilegedEventFlags> {
-    public PrivilegedEventFlagsDeserializer() {
-      super(PrivilegedEventFlags.class);
-    }
-
-    @Override
-    protected PrivilegedEventFlags construct() {
-      return new PrivilegedEventFlags();
-    }
   }
 }

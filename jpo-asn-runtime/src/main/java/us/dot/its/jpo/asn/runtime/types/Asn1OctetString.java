@@ -15,13 +15,13 @@ import lombok.Getter;
 public class Asn1OctetString implements Asn1Type {
 
     @Getter
-    protected final int minLength;
+    private final int minLength;
 
     @Getter
-    protected final int maxLength;
+    private final int maxLength;
 
     @JsonIgnore
-    protected byte[] octets;
+    private byte[] octets;
 
     /**
      * Default constructor creates octet string with unrestricted length
@@ -43,8 +43,8 @@ public class Asn1OctetString implements Asn1Type {
     @JsonValue
     public String getValue() {
         HexFormat hexFormat = HexFormat.of().withUpperCase();
-        if (octets != null) {
-            return hexFormat.formatHex(octets);
+        if (getOctets() != null) {
+            return hexFormat.formatHex(getOctets());
         } else {
             return "";
         }
@@ -59,7 +59,7 @@ public class Asn1OctetString implements Asn1Type {
     public void setValue(String value) {
         validate(value);
         HexFormat hexFormat = HexFormat.of();
-        this.octets = hexFormat.parseHex(value.trim());
+        this.setOctets(hexFormat.parseHex(value.trim()));
     }
 
     /**
@@ -99,10 +99,10 @@ public class Asn1OctetString implements Asn1Type {
             throw new IllegalArgumentException("Byte array cannot be null");
         }
 
-        if (bytes.length < minLength || bytes.length > maxLength) {
+        if (bytes.length < getMinLength() || bytes.length > getMaxLength()) {
             throw new IllegalArgumentException(String.format(
                     "OCTET STRING length (%d bytes) out of bounds - must be between %d and %d bytes",
-                    bytes.length, minLength, maxLength));
+                    bytes.length, getMinLength(), getMaxLength()));
         }
     }
 
@@ -126,10 +126,10 @@ public class Asn1OctetString implements Asn1Type {
         int byteLength = trimmedLength / 2;
 
         // Size of hex format string can be 2 * byte size
-        if (byteLength < minLength || byteLength > maxLength) {
+        if (byteLength < getMinLength() || byteLength > getMaxLength()) {
             throw new IllegalArgumentException(String.format(
                     "OCTET STRING length (%d bytes) out of bounds - must be between %d and %d bytes",
-                    byteLength, minLength, maxLength));
+                    byteLength, getMinLength(), getMaxLength()));
         }
 
     }

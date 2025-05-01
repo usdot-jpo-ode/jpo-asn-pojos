@@ -10,9 +10,9 @@ public class RelativeOIDGenerator extends RandomGenerator<Asn1RelativeOID> {
   }
 
   @Override
-  protected void populateRandom(Asn1RelativeOID instance) {
+  protected Asn1RelativeOID populateRandom(Asn1RelativeOID instance) {
     Random r = new Random();
     String str = String.format("%s", r.nextInt(Short.MAX_VALUE));
-    instance.setValue(str);
+    return new Asn1RelativeOID(str);
   }
 }

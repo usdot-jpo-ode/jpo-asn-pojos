@@ -8,19 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import picocli.CommandLine.Model.CommandSpec;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
-import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
-import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
-import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
-import us.dot.its.jpo.asn.runtime.types.Asn1Enumerated;
-import us.dot.its.jpo.asn.runtime.types.Asn1Integer;
-import us.dot.its.jpo.asn.runtime.types.Asn1Null;
-import us.dot.its.jpo.asn.runtime.types.Asn1ObjectIdentifier;
-import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
-import us.dot.its.jpo.asn.runtime.types.Asn1RelativeOID;
-import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
-import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
-import us.dot.its.jpo.asn.runtime.types.Asn1Type;
-import us.dot.its.jpo.asn.runtime.types.IA5String;
+import us.dot.its.jpo.asn.runtime.types.*;
 
 public abstract class RandomGenerator<T extends Asn1Type> {
 
@@ -48,7 +36,7 @@ public abstract class RandomGenerator<T extends Asn1Type> {
     this.spec = options.spec();
   }
 
-  protected abstract void populateRandom(T instance);
+  protected abstract T populateRandom(T instance);
 
   protected static <T extends Asn1Type> RandomGenerator<?> getGeneratorForType(
       final Class<T> type, GeneratorOptions opts) {
@@ -123,7 +111,7 @@ public abstract class RandomGenerator<T extends Asn1Type> {
     if (instance == null) {
       return null;
     }
-    populateRandom(instance);
+    instance = populateRandom(instance);
     return instance;
   }
 

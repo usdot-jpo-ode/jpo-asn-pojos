@@ -17,7 +17,7 @@ public class Asn1ObjectIdentifier implements Asn1Type {
     setValue(value);
   }
 
-  protected String value;
+  private String value;
 
   @JsonValue
   public String getValue() {

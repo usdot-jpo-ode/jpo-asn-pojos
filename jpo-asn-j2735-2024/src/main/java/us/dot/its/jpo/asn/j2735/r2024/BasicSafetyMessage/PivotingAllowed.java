@@ -22,21 +22,6 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.BasicSafetyMessage;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BooleanDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-@JsonDeserialize(using = PivotingAllowed.PivotingAllowedDeserializer.class)
-public class PivotingAllowed extends Asn1Boolean {
-
-  public static class PivotingAllowedDeserializer extends BooleanDeserializer<PivotingAllowed> {
-    public PivotingAllowedDeserializer() {
-      super(PivotingAllowed.class);
-    }
-
-    @Override
-    protected PivotingAllowed construct() {
-      return new PivotingAllowed();
-    }
-  }
-}
+public class PivotingAllowed extends Asn1Boolean {}

@@ -10,7 +10,7 @@ public class IntegerGenerator extends RandomGenerator<Asn1Integer> {
   }
 
   @Override
-  public void populateRandom(Asn1Integer instance) {
+  public Asn1Integer populateRandom(Asn1Integer instance) {
     Random r = new Random();
     long lowerBound = instance.getLowerBound();
     long upperBound = instance.getUpperBound();
@@ -21,5 +21,6 @@ public class IntegerGenerator extends RandomGenerator<Asn1Integer> {
       rand = r.nextLong();
     }
     instance.setValue(rand);
+    return instance;
   }
 }

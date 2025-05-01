@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage.CCMFaultMode
-            .CCMFaultModeDeserializer.class)
 public class CCMFaultMode extends Asn1Bitstring {
 
   public boolean isUnavailable() {
@@ -110,16 +104,5 @@ public class CCMFaultMode extends Asn1Bitstring {
           "transRetarderFault",
           "engineCtlFault"
         });
-  }
-
-  public static class CCMFaultModeDeserializer extends BitStringDeserializer<CCMFaultMode> {
-    public CCMFaultModeDeserializer() {
-      super(CCMFaultMode.class);
-    }
-
-    @Override
-    protected CCMFaultMode construct() {
-      return new CCMFaultMode();
-    }
   }
 }

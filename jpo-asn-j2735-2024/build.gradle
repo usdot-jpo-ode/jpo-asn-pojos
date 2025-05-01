@@ -11,6 +11,7 @@ plugins {
     id("io.freefair.lombok") version "8.12.1"
     id 'jacoco'
     id 'jacoco-report-aggregation'
+    id("com.diffplug.spotless") version "7.0.2"
 }
 
 group = 'usdot.jpo.asn'
@@ -66,4 +67,13 @@ tasks.named('check') {
     dependsOn tasks.named('testCodeCoverageReport', JacocoReport)
 }
 
+spotless {
+    java {
+        targetExclude('**/package-info.java',
+             '**/test/**/*.*',
+             '**/resources/**/*.*')
+        googleJavaFormat('1.21.0').skipJavadocFormatting()
+    }
+}
 
+compileJava.dependsOn 'spotlessApply'

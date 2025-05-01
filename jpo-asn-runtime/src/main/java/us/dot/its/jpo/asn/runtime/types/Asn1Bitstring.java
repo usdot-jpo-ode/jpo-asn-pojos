@@ -1,13 +1,14 @@
 package us.dot.its.jpo.asn.runtime.types;
 
-import static us.dot.its.jpo.asn.runtime.utils.BitUtils.reverseBits;
-
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
+import us.dot.its.jpo.asn.runtime.serialization.BitstringSerializer;
 
 import java.util.BitSet;
 import java.util.HexFormat;
 
-import us.dot.its.jpo.asn.runtime.serialization.BitstringSerializer;
+import static us.dot.its.jpo.asn.runtime.utils.BitUtils.reverseBits;
 
 /**
  * Base class for ASN.1 BIT STRING types.
@@ -18,19 +19,20 @@ import us.dot.its.jpo.asn.runtime.serialization.BitstringSerializer;
  * - Extension markers for accommodating future extensions
  */
 @JsonSerialize(using = BitstringSerializer.class)
+@JsonDeserialize(using = BitStringDeserializer.class)
 public abstract class Asn1Bitstring implements Asn1Type {
 
-    final BitSet bits;
+    private final BitSet bits;
 
     // Lower bound
-    final int size;
+    private final int size;
 
-    final int upperBound;
+    private final int upperBound;
 
     private int actualSize = 0;
 
-    final boolean hasExtensionMarker;
-    final String[] names;
+    private final boolean hasExtensionMarker;
+    private final String[] names;
 
 
     /**
@@ -41,7 +43,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
      * @param hasExtensionMarker Indicates whether the bit string supports an extension marker.
      * @param names              An array of names associated with the bits in the bit string.
      */
-    public Asn1Bitstring(int lowerBound, int upperBound, boolean hasExtensionMarker, String[] names) {
+    protected Asn1Bitstring(int lowerBound, int upperBound, boolean hasExtensionMarker, String[] names) {
         this.size = lowerBound;
         this.upperBound = upperBound;
         this.hasExtensionMarker = hasExtensionMarker;
@@ -56,7 +58,7 @@ public abstract class Asn1Bitstring implements Asn1Type {
      * @param hasExtensionMarker Indicates whether the bit string supports an extension marker.
      * @param names              An array of names associated with the bits in the bit string.
      */
-    public Asn1Bitstring(int size, boolean hasExtensionMarker, String[] names) {
+    protected Asn1Bitstring(int size, boolean hasExtensionMarker, String[] names) {
         this(size, size, hasExtensionMarker, names);
     }
 

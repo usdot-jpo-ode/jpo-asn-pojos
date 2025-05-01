@@ -24,7 +24,7 @@ public class IA5String extends Asn1CharacterString {
     @JsonCreator
     public IA5String(String value) {
         this(0, Integer.MAX_VALUE);
-        this.value = value;
+        this.setValue(value);
     }
 
 }
