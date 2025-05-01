@@ -1,8 +1,9 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import java.util.Random;
 import us.dot.its.jpo.asn.runtime.types.Asn1SequenceOf;
 import us.dot.its.jpo.asn.runtime.types.Asn1Type;
+
+import java.util.Random;
 
 public class SequenceOfGenerator extends RandomGenerator<Asn1SequenceOf<?>> {
 

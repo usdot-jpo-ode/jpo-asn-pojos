@@ -1,7 +1,8 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import java.util.Random;
 import us.dot.its.jpo.asn.runtime.types.Asn1RelativeOID;
+
+import java.util.Random;
 
 public class RelativeOIDGenerator extends RandomGenerator<Asn1RelativeOID> {
 
