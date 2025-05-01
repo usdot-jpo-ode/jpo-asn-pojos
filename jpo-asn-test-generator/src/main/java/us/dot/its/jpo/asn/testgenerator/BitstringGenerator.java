@@ -1,8 +1,7 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
-
 import java.util.Random;
+import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
 public class BitstringGenerator extends RandomGenerator<Asn1Bitstring> {
 

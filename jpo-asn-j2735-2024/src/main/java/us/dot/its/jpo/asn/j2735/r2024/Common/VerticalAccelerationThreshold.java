@@ -70,5 +70,4 @@ public class VerticalAccelerationThreshold extends Asn1Bitstring {
     super(
         5, false, new String[] {"notEquipped", "leftFront", "leftRear", "rightFront", "rightRear"});
   }
-
 }

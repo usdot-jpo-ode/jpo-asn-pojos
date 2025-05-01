@@ -1,13 +1,12 @@
 package us.dot.its.jpo.asn.testgenerator;
 
+import java.util.List;
+import java.util.Random;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Spec;
 import us.dot.its.jpo.asn.runtime.types.Asn1Choice;
 import us.dot.its.jpo.asn.runtime.types.Asn1Field;
 import us.dot.its.jpo.asn.runtime.types.Asn1Type;
-
-import java.util.List;
-import java.util.Random;
 
 public class ChoiceGenerator extends RandomGenerator<Asn1Choice> {
 

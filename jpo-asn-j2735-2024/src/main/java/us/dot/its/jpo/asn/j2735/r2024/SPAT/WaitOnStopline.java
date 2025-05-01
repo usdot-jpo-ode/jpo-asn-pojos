@@ -24,6 +24,4 @@ package us.dot.its.jpo.asn.j2735.r2024.SPAT;
 
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-
-public class WaitOnStopline extends Asn1Boolean {
-}
+public class WaitOnStopline extends Asn1Boolean {}

@@ -1,8 +1,7 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
-
 import java.util.Random;
+import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
 
 public class OctetStringGenerator extends RandomGenerator<Asn1OctetString> {
 

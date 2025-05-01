@@ -105,5 +105,4 @@ public class CCMFaultMode extends Asn1Bitstring {
           "engineCtlFault"
         });
   }
-
 }

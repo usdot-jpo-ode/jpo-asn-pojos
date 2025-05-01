@@ -1,8 +1,7 @@
 package us.dot.its.jpo.asn.testgenerator;
 
-import us.dot.its.jpo.asn.runtime.types.Asn1Enumerated;
-
 import java.util.Random;
+import us.dot.its.jpo.asn.runtime.types.Asn1Enumerated;
 
 public class EnumeratedGenerator extends RandomGenerator<Asn1Enumerated> {
 

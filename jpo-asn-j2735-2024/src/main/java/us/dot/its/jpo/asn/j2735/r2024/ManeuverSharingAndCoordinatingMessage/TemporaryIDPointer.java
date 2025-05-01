@@ -29,5 +29,4 @@ public class TemporaryIDPointer extends Asn1Bitstring {
   public TemporaryIDPointer() {
     super(1, 32, false, new String[] {});
   }
-
 }

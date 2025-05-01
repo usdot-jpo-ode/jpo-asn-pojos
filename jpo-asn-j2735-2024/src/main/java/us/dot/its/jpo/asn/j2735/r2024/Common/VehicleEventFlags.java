@@ -159,5 +159,4 @@ public class VehicleEventFlags extends Asn1Bitstring {
           "eventJackKnife"
         });
   }
-
 }

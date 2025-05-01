@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.exc.ValueInstantiationException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
@@ -29,7 +30,7 @@ public final class BooleanDeserializer<T extends Asn1Boolean> extends StdDeseria
         this.valueType = valueType;
     }
 
-    private T construct() {
+    private T construct(JsonParser jsonParser) throws ValueInstantiationException {
         try {
             if (valueType == Asn1Boolean.class) {
                 return (T) new Asn1Boolean();
@@ -38,7 +39,8 @@ public final class BooleanDeserializer<T extends Asn1Boolean> extends StdDeseria
             constructor.setAccessible(true);
             return constructor.newInstance();
         } catch (Exception e) {
-            throw new RuntimeException("Failed to create instance of " + valueType.getName(), e);
+            throw ValueInstantiationException.from(jsonParser,
+                "Failed to create instance of " + valueType.getName(), getValueType(), e);
         }
     }
 
@@ -58,7 +60,7 @@ public final class BooleanDeserializer<T extends Asn1Boolean> extends StdDeseria
 
     @Override
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        T result = construct();
+        T result = construct(jsonParser);
         if (jsonParser.getCodec() instanceof XmlMapper) {
             // XML: unwrap empty element
             TreeNode node = jsonParser.getCodec().readTree(jsonParser);

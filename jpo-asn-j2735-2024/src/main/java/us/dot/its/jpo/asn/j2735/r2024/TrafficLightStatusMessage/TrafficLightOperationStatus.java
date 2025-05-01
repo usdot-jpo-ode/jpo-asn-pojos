@@ -105,5 +105,4 @@ public class TrafficLightOperationStatus extends Asn1Bitstring {
           "reserved"
         });
   }
-
 }

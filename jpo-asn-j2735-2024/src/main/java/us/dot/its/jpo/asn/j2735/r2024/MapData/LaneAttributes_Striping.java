@@ -88,5 +88,4 @@ public class LaneAttributes_Striping extends Asn1Bitstring {
           "stripeToConnectingLanesAhead"
         });
   }
-
 }

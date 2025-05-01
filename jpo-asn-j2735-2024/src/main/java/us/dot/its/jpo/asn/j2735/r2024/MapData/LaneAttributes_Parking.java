@@ -96,5 +96,4 @@ public class LaneAttributes_Parking extends Asn1Bitstring {
           "noPublicParkingUse"
         });
   }
-
 }

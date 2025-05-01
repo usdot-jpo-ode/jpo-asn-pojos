@@ -24,7 +24,4 @@ package us.dot.its.jpo.asn.j2735.r2024.CooperativeControlMessage;
 
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-
-public class FrontCutIn extends Asn1Boolean {
-
-}
+public class FrontCutIn extends Asn1Boolean {}

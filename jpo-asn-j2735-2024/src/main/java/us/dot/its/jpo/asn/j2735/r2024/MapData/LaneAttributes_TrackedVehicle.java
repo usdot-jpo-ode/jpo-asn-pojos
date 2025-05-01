@@ -78,5 +78,4 @@ public class LaneAttributes_TrackedVehicle extends Asn1Bitstring {
           "spec-otherRailType"
         });
   }
-
 }
