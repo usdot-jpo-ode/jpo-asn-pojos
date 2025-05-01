@@ -3,13 +3,12 @@ package us.dot.its.jpo.asn.testgenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import picocli.CommandLine.Model.CommandSpec;
-import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
-import us.dot.its.jpo.asn.runtime.types.*;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
+import picocli.CommandLine.Model.CommandSpec;
+import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
+import us.dot.its.jpo.asn.runtime.types.*;
 
 public abstract class RandomGenerator<T extends Asn1Type> {
 

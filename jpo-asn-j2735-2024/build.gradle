@@ -69,11 +69,9 @@ tasks.named('check') {
 
 spotless {
     java {
-        target project.fileTree(project.rootDir) {
-            include '**/main/**/*.java'
-            exclude '**/package-info.java'
-            exclude '**/test/**/*.*'
-        }
+        targetExclude('**/package-info.java',
+             '**/test/**/*.*',
+             '**/resources/**/*.*')
         googleJavaFormat('1.21.0').skipJavadocFormatting()
     }
 }
