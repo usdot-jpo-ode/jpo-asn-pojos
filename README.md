@@ -69,7 +69,7 @@ To run tests using Gradle:
 cd jpo-asn-runtime
 ./gradlew clean test
 cd ../jpo-asn-j2735-2024
-./gradlew clean test
+./gradlew clean check
 ```
 
 To run tests using Maven, from the root directory:

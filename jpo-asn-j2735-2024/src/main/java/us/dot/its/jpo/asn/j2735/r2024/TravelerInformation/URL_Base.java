@@ -34,6 +34,6 @@ public class URL_Base extends IA5String {
   @JsonCreator
   public URL_Base(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

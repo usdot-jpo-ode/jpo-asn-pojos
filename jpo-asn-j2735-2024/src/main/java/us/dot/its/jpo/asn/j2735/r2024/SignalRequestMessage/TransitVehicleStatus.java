@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.SignalRequestMessage;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.SignalRequestMessage.TransitVehicleStatus
-            .TransitVehicleStatusDeserializer.class)
 public class TransitVehicleStatus extends Asn1Bitstring {
 
   public boolean isLoading() {
@@ -85,17 +79,5 @@ public class TransitVehicleStatus extends Asn1Bitstring {
         8,
         false,
         new String[] {"loading", "anADAuse", "aBikeLoad", "doorOpen", "charging", "atStopLine"});
-  }
-
-  public static class TransitVehicleStatusDeserializer
-      extends BitStringDeserializer<TransitVehicleStatus> {
-    public TransitVehicleStatusDeserializer() {
-      super(TransitVehicleStatus.class);
-    }
-
-    @Override
-    protected TransitVehicleStatus construct() {
-      return new TransitVehicleStatus();
-    }
   }
 }

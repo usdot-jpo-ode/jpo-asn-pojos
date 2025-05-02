@@ -22,12 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using = us.dot.its.jpo.asn.j2735.r2024.Common.TransitStatus.TransitStatusDeserializer.class)
 public class TransitStatus extends Asn1Bitstring {
 
   public boolean isNone() {
@@ -80,16 +76,5 @@ public class TransitStatus extends Asn1Bitstring {
 
   public TransitStatus() {
     super(6, false, new String[] {"none", "anADAuse", "aBikeLoad", "doorOpen", "occM", "occL"});
-  }
-
-  public static class TransitStatusDeserializer extends BitStringDeserializer<TransitStatus> {
-    public TransitStatusDeserializer() {
-      super(TransitStatus.class);
-    }
-
-    @Override
-    protected TransitStatus construct() {
-      return new TransitStatus();
-    }
   }
 }

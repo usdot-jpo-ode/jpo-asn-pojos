@@ -22,22 +22,6 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.SPAT;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BooleanDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
 
-@JsonDeserialize(using = PedestrianBicycleDetect.PedestrianBicycleDetectDeserializer.class)
-public class PedestrianBicycleDetect extends Asn1Boolean {
-
-  public static class PedestrianBicycleDetectDeserializer
-      extends BooleanDeserializer<PedestrianBicycleDetect> {
-    public PedestrianBicycleDetectDeserializer() {
-      super(PedestrianBicycleDetect.class);
-    }
-
-    @Override
-    protected PedestrianBicycleDetect construct() {
-      return new PedestrianBicycleDetect();
-    }
-  }
-}
+public class PedestrianBicycleDetect extends Asn1Boolean {}

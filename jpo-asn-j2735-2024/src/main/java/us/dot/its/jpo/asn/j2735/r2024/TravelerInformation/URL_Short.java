@@ -34,6 +34,6 @@ public class URL_Short extends IA5String {
   @JsonCreator
   public URL_Short(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

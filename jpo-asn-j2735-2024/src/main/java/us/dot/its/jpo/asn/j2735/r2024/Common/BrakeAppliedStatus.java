@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.Common;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.Common.BrakeAppliedStatus.BrakeAppliedStatusDeserializer
-            .class)
 public class BrakeAppliedStatus extends Asn1Bitstring {
 
   public boolean isUnavailable() {
@@ -75,17 +69,5 @@ public class BrakeAppliedStatus extends Asn1Bitstring {
   public BrakeAppliedStatus() {
     super(
         5, false, new String[] {"unavailable", "leftFront", "leftRear", "rightFront", "rightRear"});
-  }
-
-  public static class BrakeAppliedStatusDeserializer
-      extends BitStringDeserializer<BrakeAppliedStatus> {
-    public BrakeAppliedStatusDeserializer() {
-      super(BrakeAppliedStatus.class);
-    }
-
-    @Override
-    protected BrakeAppliedStatus construct() {
-      return new BrakeAppliedStatus();
-    }
   }
 }

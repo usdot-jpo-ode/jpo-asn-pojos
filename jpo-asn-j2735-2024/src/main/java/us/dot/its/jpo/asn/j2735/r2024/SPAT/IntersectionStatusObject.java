@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.SPAT;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.SPAT.IntersectionStatusObject
-            .IntersectionStatusObjectDeserializer.class)
 public class IntersectionStatusObject extends Asn1Bitstring {
 
   public boolean isManualControlIsEnabled() {
@@ -165,17 +159,5 @@ public class IntersectionStatusObject extends Asn1Bitstring {
           "noValidMAPisAvailableAtThisTime",
           "noValidSPATisAvailableAtThisTime"
         });
-  }
-
-  public static class IntersectionStatusObjectDeserializer
-      extends BitStringDeserializer<IntersectionStatusObject> {
-    public IntersectionStatusObjectDeserializer() {
-      super(IntersectionStatusObject.class);
-    }
-
-    @Override
-    protected IntersectionStatusObject construct() {
-      return new IntersectionStatusObject();
-    }
   }
 }

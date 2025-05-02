@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.PersonalSafetyMessage;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.PersonalSafetyMessage.PublicSafetyAndRoadWorkerActivity
-            .PublicSafetyAndRoadWorkerActivityDeserializer.class)
 public class PublicSafetyAndRoadWorkerActivity extends Asn1Bitstring {
 
   public boolean isUnavailable() {
@@ -92,17 +86,5 @@ public class PublicSafetyAndRoadWorkerActivity extends Asn1Bitstring {
           "directingTraffic",
           "otherActivities"
         });
-  }
-
-  public static class PublicSafetyAndRoadWorkerActivityDeserializer
-      extends BitStringDeserializer<PublicSafetyAndRoadWorkerActivity> {
-    public PublicSafetyAndRoadWorkerActivityDeserializer() {
-      super(PublicSafetyAndRoadWorkerActivity.class);
-    }
-
-    @Override
-    protected PublicSafetyAndRoadWorkerActivity construct() {
-      return new PublicSafetyAndRoadWorkerActivity();
-    }
   }
 }

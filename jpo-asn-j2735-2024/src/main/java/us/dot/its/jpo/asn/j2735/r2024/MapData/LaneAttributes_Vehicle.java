@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.MapData;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.MapData.LaneAttributes_Vehicle
-            .LaneAttributes_VehicleDeserializer.class)
 public class LaneAttributes_Vehicle extends Asn1Bitstring {
 
   public boolean isIsVehicleRevocableLane() {
@@ -110,17 +104,5 @@ public class LaneAttributes_Vehicle extends Asn1Bitstring {
           "hasIRbeaconCoverage",
           "permissionOnRequest"
         });
-  }
-
-  public static class LaneAttributes_VehicleDeserializer
-      extends BitStringDeserializer<LaneAttributes_Vehicle> {
-    public LaneAttributes_VehicleDeserializer() {
-      super(LaneAttributes_Vehicle.class);
-    }
-
-    @Override
-    protected LaneAttributes_Vehicle construct() {
-      return new LaneAttributes_Vehicle();
-    }
   }
 }

@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.MapData;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.MapData.LaneAttributes_Barrier
-            .LaneAttributes_BarrierDeserializer.class)
 public class LaneAttributes_Barrier extends Asn1Bitstring {
 
   public boolean isMedian_RevocableLane() {
@@ -128,17 +122,5 @@ public class LaneAttributes_Barrier extends Asn1Bitstring {
           "lowCurbs",
           "highCurbs"
         });
-  }
-
-  public static class LaneAttributes_BarrierDeserializer
-      extends BitStringDeserializer<LaneAttributes_Barrier> {
-    public LaneAttributes_BarrierDeserializer() {
-      super(LaneAttributes_Barrier.class);
-    }
-
-    @Override
-    protected LaneAttributes_Barrier construct() {
-      return new LaneAttributes_Barrier();
-    }
   }
 }

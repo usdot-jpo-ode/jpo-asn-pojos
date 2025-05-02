@@ -1,12 +1,8 @@
 package us.dot.its.jpo.asn.runtime.examples;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-
-@JsonDeserialize(
-    using = us.dot.its.jpo.asn.runtime.examples.ExampleBitstring.HeadingSliceDeserializer.class)
 public class ExampleBitstring extends Asn1Bitstring {
 
   public boolean isFrom000_0to022_5degrees() {
@@ -137,6 +133,7 @@ public class ExampleBitstring extends Asn1Bitstring {
     set(15, from337_5to360_0degrees);
   }
 
+  @JsonCreator
   public ExampleBitstring() {
     super(
         16,
@@ -159,17 +156,6 @@ public class ExampleBitstring extends Asn1Bitstring {
             "from315-0to337-5degrees",
             "from337-5to360-0degrees"
         });
-  }
-
-  public static class HeadingSliceDeserializer extends BitStringDeserializer<ExampleBitstring> {
-    public HeadingSliceDeserializer() {
-      super(ExampleBitstring.class);
-    }
-
-    @Override
-    protected ExampleBitstring construct() {
-      return new ExampleBitstring();
-    }
   }
 }
 

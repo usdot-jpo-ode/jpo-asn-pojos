@@ -10,6 +10,6 @@ public class AString extends IA5String {
 
   public AString(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

@@ -34,6 +34,6 @@ public class ShortString extends IA5String {
   @JsonCreator
   public ShortString(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

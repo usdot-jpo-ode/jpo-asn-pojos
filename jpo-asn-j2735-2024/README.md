@@ -246,14 +246,13 @@ automated tools to aid in creating and verifying the test messages. Those tools 
 To run the unit tests via Gradle, from this directory issue:
 
 ```bash
-./gradle clean test
+./gradlew clean check
+
 ```
 
 then open the `build/reports/tests/test/index.html` file in a browser to view the test results.
 
-The [JaCoCo](https://www.jacoco.org/jacoco/) plugin is used to measure test coverage. After running
-the tests, open the `build/reports/jacoco/test/html/index.html` file in a browser to view the
-coverage results.
+The [JaCoCo](https://www.jacoco.org/jacoco/) plugin is used to measure test coverage. After running the tests, open the `build/reports/jacoco/testCodeCoverageReport/html/index.html` file in a browser to view the coverage results.
 
 ### Maven
 

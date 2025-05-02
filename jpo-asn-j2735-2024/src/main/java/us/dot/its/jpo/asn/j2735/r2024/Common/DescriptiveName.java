@@ -34,6 +34,6 @@ public class DescriptiveName extends IA5String {
   @JsonCreator
   public DescriptiveName(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }
