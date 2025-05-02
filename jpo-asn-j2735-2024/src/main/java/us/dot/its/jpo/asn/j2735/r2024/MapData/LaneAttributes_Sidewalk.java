@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.MapData;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.MapData.LaneAttributes_Sidewalk
-            .LaneAttributes_SidewalkDeserializer.class)
 public class LaneAttributes_Sidewalk extends Asn1Bitstring {
 
   public boolean isSidewalk_RevocableLane() {
@@ -71,17 +65,5 @@ public class LaneAttributes_Sidewalk extends Asn1Bitstring {
         new String[] {
           "sidewalk-RevocableLane", "bicyleUseAllowed", "isSidewalkFlyOverLane", "walkBikes"
         });
-  }
-
-  public static class LaneAttributes_SidewalkDeserializer
-      extends BitStringDeserializer<LaneAttributes_Sidewalk> {
-    public LaneAttributes_SidewalkDeserializer() {
-      super(LaneAttributes_Sidewalk.class);
-    }
-
-    @Override
-    protected LaneAttributes_Sidewalk construct() {
-      return new LaneAttributes_Sidewalk();
-    }
   }
 }

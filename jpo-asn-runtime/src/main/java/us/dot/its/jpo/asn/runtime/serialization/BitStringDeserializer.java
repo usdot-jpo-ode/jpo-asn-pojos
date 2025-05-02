@@ -4,35 +4,84 @@ import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.fasterxml.jackson.databind.exc.ValueInstantiationException;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Map.Entry;
 import lombok.extern.slf4j.Slf4j;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
+
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Deserialize an ASN.1 Bitstring from XER or JER
  * @param <T> The bitstring type
  * @author Ivan Yourshaw
  */
+@SuppressWarnings({"unchecked"})
 @Slf4j
-public abstract class BitStringDeserializer<T extends Asn1Bitstring> extends StdDeserializer<T> {
+public final class BitStringDeserializer<T extends Asn1Bitstring> extends StdDeserializer<T> implements ContextualDeserializer {
 
-    protected abstract T construct();
+    private final Class<T> valueType;
 
-    protected BitStringDeserializer(Class<?> valueClass) {
-        super(valueClass);
+    /**
+     * Default constructor for Jackson deserialization.
+     * Note: This constructor should not be used directly as Asn1Bitstring is abstract.
+     * Jackson will use the contextual deserializer to get the correct concrete type.
+     */
+    public BitStringDeserializer() {
+        super(Asn1Bitstring.class);
+        this.valueType = (Class<T>) Asn1Bitstring.class;
+    }
+
+    public BitStringDeserializer(Class<T> valueType) {
+        super(valueType);
+        this.valueType = valueType;
+    }
+
+    private T construct(JsonParser jsonParser) throws ValueInstantiationException {
+        if (valueType == Asn1Bitstring.class) {
+                throw ValueInstantiationException.from(jsonParser,
+                    "Cannot instantiate abstract class Asn1Bitstring directly. Use a concrete subclass instead.",
+                    getValueType());
+        }
+        try {
+            Constructor<T> constructor = valueType.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            return constructor.newInstance();
+        } catch (Exception e) {
+            throw ValueInstantiationException.from(jsonParser,
+                "Failed to create instance of " + valueType.getName(), getValueType(), e);
+        }
+    }
+
+    @Override
+    public JsonDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) {
+        JavaType type;
+        if (property != null) {
+            type = property.getType();
+        } else {
+            type = ctxt.getContextualType();
+        }
+        if (type.isTypeOrSubTypeOf(Asn1Bitstring.class)) {
+            return new BitStringDeserializer<>((Class<T>) type.getRawClass());
+        }
+        return this;
     }
 
     @Override
     public T deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        T bitstring = construct();
+        T bitstring = construct(jsonParser);
         if (jsonParser.getCodec() instanceof XmlMapper) {
             // XML: binary
             String str = jsonParser.getText();

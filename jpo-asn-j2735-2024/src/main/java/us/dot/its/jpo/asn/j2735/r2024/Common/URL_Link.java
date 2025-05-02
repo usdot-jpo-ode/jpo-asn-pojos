@@ -34,6 +34,6 @@ public class URL_Link extends IA5String {
   @JsonCreator
   public URL_Link(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

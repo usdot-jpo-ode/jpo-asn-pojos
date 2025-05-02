@@ -24,7 +24,8 @@ public class EnumeratedGenerator extends RandomGenerator<Asn1Enumerated> {
   }
 
   @Override
-  protected void populateRandom(Asn1Enumerated instance) {
+  protected Asn1Enumerated populateRandom(Asn1Enumerated instance) {
     // do nothing here.  Construct create random enum
+    return instance;
   }
 }

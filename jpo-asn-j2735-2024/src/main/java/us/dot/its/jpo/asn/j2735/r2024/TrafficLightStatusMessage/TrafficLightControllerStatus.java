@@ -22,14 +22,8 @@
 
 package us.dot.its.jpo.asn.j2735.r2024.TrafficLightStatusMessage;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import us.dot.its.jpo.asn.runtime.serialization.BitStringDeserializer;
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 
-@JsonDeserialize(
-    using =
-        us.dot.its.jpo.asn.j2735.r2024.TrafficLightStatusMessage.TrafficLightControllerStatus
-            .TrafficLightControllerStatusDeserializer.class)
 public class TrafficLightControllerStatus extends Asn1Bitstring {
 
   public boolean isConflict() {
@@ -110,17 +104,5 @@ public class TrafficLightControllerStatus extends Asn1Bitstring {
           "reserved4",
           "reserved5"
         });
-  }
-
-  public static class TrafficLightControllerStatusDeserializer
-      extends BitStringDeserializer<TrafficLightControllerStatus> {
-    public TrafficLightControllerStatusDeserializer() {
-      super(TrafficLightControllerStatus.class);
-    }
-
-    @Override
-    protected TrafficLightControllerStatus construct() {
-      return new TrafficLightControllerStatus();
-    }
   }
 }

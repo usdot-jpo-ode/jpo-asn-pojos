@@ -11,6 +11,6 @@ public class BString extends IA5String {
 
   public BString(String value) {
     this();
-    this.value = value;
+    this.setValue(value);
   }
 }

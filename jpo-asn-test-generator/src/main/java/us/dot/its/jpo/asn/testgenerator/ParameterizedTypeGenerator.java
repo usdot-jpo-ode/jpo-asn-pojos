@@ -80,8 +80,9 @@ public class ParameterizedTypeGenerator extends RandomGenerator<Asn1Sequence> {
   }
 
   @Override
-  protected void populateRandom(Asn1Sequence instance) {
+  protected Asn1Sequence populateRandom(Asn1Sequence instance) {
     // Does nothing
+    return instance;
   }
 
   private String normName(String name) {

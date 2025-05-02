@@ -17,7 +17,7 @@ public class ChoiceGenerator extends RandomGenerator<Asn1Choice> {
   }
 
   @Override
-  protected void populateRandom(Asn1Choice instance) {
+  protected Asn1Choice populateRandom(Asn1Choice instance) {
     List<Asn1Field> fields = AsnFieldUtil.fields(instance);
 
     // Exclude choices named "regional"
@@ -40,5 +40,6 @@ public class ChoiceGenerator extends RandomGenerator<Asn1Choice> {
           new Asn1Field(choice.name(), value, choice.optional(), choice.tag(), choice.type());
       AsnFieldUtil.setField(instance, fieldWithValue);
     }
+    return instance;
   }
 }

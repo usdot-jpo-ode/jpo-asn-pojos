@@ -5,9 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import us.dot.its.jpo.asn.j2735.r2024.BaseBitstringTest;
 
 public class TemporaryIDPointerTest extends BaseBitstringTest<TemporaryIDPointer> {

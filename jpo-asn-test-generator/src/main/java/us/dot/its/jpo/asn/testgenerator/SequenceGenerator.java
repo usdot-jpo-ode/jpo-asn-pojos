@@ -13,7 +13,7 @@ public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
   }
 
   @Override
-  protected void populateRandom(Asn1Sequence instance) {
+  protected Asn1Sequence populateRandom(Asn1Sequence instance) {
     List<Asn1Field> fields = AsnFieldUtil.fields(instance);
     List<Asn1Field> fieldsWithValues = new ArrayList<>();
     for (Asn1Field field : fields) {
@@ -50,5 +50,6 @@ public class SequenceGenerator extends RandomGenerator<Asn1Sequence> {
       }
     }
     AsnFieldUtil.setFields(instance, fieldsWithValues);
+    return instance;
   }
 }
