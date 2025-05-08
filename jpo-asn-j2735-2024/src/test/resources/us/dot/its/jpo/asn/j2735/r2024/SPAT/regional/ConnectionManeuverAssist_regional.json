@@ -1,0 +1,86 @@
+{
+  "connectionID": 205,
+  "queueLength": 6608,
+  "availableStorageLength": 2066,
+  "waitOnStop": true,
+  "pedBicycleDetect": true,
+  "regional": [
+    {
+      "regionId": 3,
+      "regExtValue": {
+        "ConnectionManeuverAssist_addGrpC": {
+          "vehicleToLanePositions": [
+            {
+              "stationID": 894127122,
+              "laneID": 51
+            },
+            {
+              "stationID": 1698179884,
+              "laneID": 233
+            },
+            {
+              "stationID": 4217793337,
+              "laneID": 71
+            }
+          ],
+          "rsuDistanceFromAnchor": {
+            "node-XY2": {
+              "x": -908,
+              "y": -240
+            }
+          }
+        }
+      }
+    },
+    {
+      "regionId": 3,
+      "regExtValue": {
+        "ConnectionManeuverAssist_addGrpC": {
+          "vehicleToLanePositions": [
+            {
+              "stationID": 4058823155,
+              "laneID": 115
+            },
+            {
+              "stationID": 1818772348,
+              "laneID": 172
+            },
+            {
+              "stationID": 2137779149,
+              "laneID": 23
+            }
+          ],
+          "rsuDistanceFromAnchor": {
+            "node-LatLon": {
+              "lon": -582326792,
+              "lat": -253540056
+            }
+          }
+        }
+      }
+    },
+    {
+      "regionId": 3,
+      "regExtValue": {
+        "ConnectionManeuverAssist_addGrpC": {
+          "vehicleToLanePositions": [
+            {
+              "stationID": 3129015950,
+              "laneID": 196
+            },
+            {
+              "stationID": 1149829911,
+              "laneID": 252
+            }
+          ],
+          "rsuDistanceFromAnchor": {
+            "node-XY1": {
+              "x": 226,
+              "y": -292
+            }
+          }
+        }
+      }
+    }
+  ]
+}
