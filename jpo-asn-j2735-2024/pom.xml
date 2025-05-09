@@ -56,7 +56,7 @@
     <dependency>
       <groupId>usdot.jpo.asn</groupId>
       <artifactId>jpo-asn-runtime</artifactId>
-      <version>1.0</version>
+      <version>1.0.0</version>
     </dependency>
 
     <!-- Test dependencies -->
