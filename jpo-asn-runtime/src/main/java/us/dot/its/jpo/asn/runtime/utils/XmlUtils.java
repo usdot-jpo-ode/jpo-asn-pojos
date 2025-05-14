@@ -183,6 +183,11 @@ public class XmlUtils {
       }
     }
 
+    if (token == null) {
+      element.setFinishedItem(true);
+      element.setFinishedAll(true);
+    }
+
     log.trace("current token: {} name: {} index: {}, nesting: {}",
         token, pc.getCurrentName(), pc.getCurrentIndex(), pc.getNestingDepth());
 
