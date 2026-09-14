@@ -24,6 +24,8 @@ repositories {
 }
 
 dependencies {
+    lombok 'org.projectlombok:lombok:1.18.40'
+
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
     testImplementation 'org.hamcrest:hamcrest:2.2'

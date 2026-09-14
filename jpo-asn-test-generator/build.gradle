@@ -20,6 +20,8 @@ repositories {
 }
 
 dependencies {
+    lombok 'org.projectlombok:lombok:1.18.40'
+
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
 
@@ -80,7 +82,7 @@ jar {
 
 spotless {
     java {
-        googleJavaFormat('1.21.0').skipJavadocFormatting()
+        googleJavaFormat('1.29.0').skipJavadocFormatting()
     }
 }
 
