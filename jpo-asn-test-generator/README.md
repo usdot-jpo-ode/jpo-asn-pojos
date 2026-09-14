@@ -6,7 +6,7 @@ It generates syntactically correct ASN.1 JER and XER messages that observe the c
 
 ## Prerequisites
 
-* Java 21+
+* Java 25+
 * Gradle
 
 ## Build

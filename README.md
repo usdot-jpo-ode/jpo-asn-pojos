@@ -46,7 +46,7 @@ serializers/deserializers for ASN.1 types.
 
 ### Prerequisites
 
-* JDK 21 or higher
+* JDK 25 or higher
 * Gradle or Maven
 
 ### Build
@@ -129,7 +129,7 @@ steps:
   <dependency>
       <groupId>usdot.jpo.asn</groupId>
       <artifactId>jpo-asn-j2735-2024</artifactId>
-      <version>1.1.0</version>
+      <version>2.0.0</version>
   </dependency>
   ```
 
@@ -156,6 +156,5 @@ and submit a corresponding pull request for any enhancements or bug fixes.
 ## License
 
 This project is licensed under the Apache 2 License - see the [LICENSE](LICENSE) file for details.
-
 
 

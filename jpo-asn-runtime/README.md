@@ -13,7 +13,7 @@ This module contains base classes and serializers/deserialiers for ASN.1 types i
 
 ### Prerequisites
 
-* JDK 21 or higher
+* JDK 25 or higher
 * Gradle or Maven
 
 ### Build
