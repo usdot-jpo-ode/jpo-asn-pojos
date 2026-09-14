@@ -41,7 +41,16 @@ import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
 
 public class Asn1Module implements Module {
+  private final boolean emitMessageFrameEnvelope;
   private final ObjectMapper objectMapper = new ObjectMapper();
+
+  public Asn1Module() {
+    this(false);
+  }
+
+  public Asn1Module(boolean emitMessageFrameEnvelope) {
+    this.emitMessageFrameEnvelope = emitMessageFrameEnvelope;
+  }
 
   @Override
   public void applyToConfigBuilder(SchemaGeneratorConfigBuilder schemaGeneratorConfigBuilder) {
@@ -104,7 +113,7 @@ public class Asn1Module implements Module {
         return provideParameterizedTypeDefinition(resolvedType, typeAnnot, context);
       }
 
-      if (isTypedMessageFrame(clazz)) {
+      if (isTypedMessageFrame(clazz) && emitMessageFrameEnvelope) {
         return provideMessageFrameDefinition(resolvedType, clazz, context);
       }
     }
@@ -168,7 +177,7 @@ public class Asn1Module implements Module {
         Class<?> valueClass = (Class<?>) paramType.getActualTypeArguments()[0];
         
         // Generate schema for the value class
-        JsonSchemaGenerator gen = new JsonSchemaGenerator(valueClass);
+        JsonSchemaGenerator gen = new JsonSchemaGenerator(valueClass, false);
         String schemaJson = gen.generate();
         ObjectNode valueSchema = (ObjectNode) objectMapper.readTree(schemaJson);
         // Remove $schema field from sub-schemas
@@ -281,7 +290,8 @@ public class Asn1Module implements Module {
           (ParameterizedType) messageFrameClass.getGenericSuperclass();
       Class<?> pduClass = (Class<?>) parameterizedType.getActualTypeArguments()[0];
 
-      ObjectNode pduSchema = (ObjectNode) objectMapper.readTree(new JsonSchemaGenerator(pduClass).generate());
+      ObjectNode pduSchema =
+          (ObjectNode) objectMapper.readTree(new JsonSchemaGenerator(pduClass, false).generate());
       pduSchema.remove("$schema");
 
       ObjectNode node = context.getGeneratorConfig().createObjectNode();
@@ -375,7 +385,7 @@ public class Asn1Module implements Module {
     
     if (isComplexType) {
       try {
-        JsonSchemaGenerator gen = new JsonSchemaGenerator(type.getErasedType());
+        JsonSchemaGenerator gen = new JsonSchemaGenerator(type.getErasedType(), false);
         String schemaJson = gen.generate();
         // Parse the JSON string into an ObjectNode using ObjectMapper
         ObjectNode schema = (ObjectNode) objectMapper.readTree(schemaJson);
