@@ -38,18 +38,4 @@ This script will generate JSON schemas for the following messages:
 
 The generated schemas will be placed in the `schemas` directory.
 
-### MessageFrame Schema Regeneration
-
-Typed `MessageFrame` schemas (e.g. `BasicSafetyMessageMessageFrame.schema.json`) are committed in [src/main/resources/schemas/](src/main/resources/schemas/). To regenerate all of them from the generic `MessageFrame` schema:
-
-```bash
-./batch_gen_schemas.sh --message-frames
-```
-
-This will:
-
-1. Generate all PDU schemas (including the generic `MessageFrame` schema)
-2. Copy `MessageFrame.schema.json` to `src/main/resources/schemas/MessageFrame/`
-3. Extract typed MessageFrame schemas for all committed message types
-
-The extraction logic is in [extract_message_frame_schemas.py](./extract_message_frame_schemas.py).
+The generated schemas will be placed in the `schemas` directory. To create specific `MessageFrame` type schemas, copy the specific schema from the [MessageFrame](./schemas/MessageFrame/MessageFrame.schema.json) schema. However, only the various MessageFrame schemas have been committed to version control due to reducing redundancy. These are located in the [resources](src/main/resources/schemas/) folder of the project.1
