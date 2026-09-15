@@ -46,8 +46,14 @@ serializers/deserializers for ASN.1 types.
 
 ### Prerequisites
 
-* JDK 25 or higher
-* Gradle or Maven
+The current release requires JDK 25+. Use the included Gradle (`./gradlew`) and Maven (`./mvnw`) wrappers; they pin the tested tool versions for this checkout. Older published releases used the toolchain below.
+
+| Release | JDK | Gradle | Maven |
+|---------|-----|--------|-------|
+| 2.0.0   | 25+ | 9.1.0  | 3.9.9 |
+| 1.2.0   | 21+ | 8.10.2 | 3.9.9 |
+| 1.1.0   | 21+ | 8.10.2 | 3.9.9 |
+| 1.0.0   | 21+ | 8.10.2 | 3.9.9 |
 
 ### Build
 
