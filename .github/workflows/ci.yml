@@ -25,6 +25,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.1.0'
 
       - name: Run Tests with Coverage (jpo-asn-j2735-2024)
         working-directory: ./jpo-asn-j2735-2024
