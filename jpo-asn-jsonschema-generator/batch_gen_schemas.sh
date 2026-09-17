@@ -85,7 +85,7 @@ generate_schema() {
     local output="$3"
     echo "Generating schema for $pdu (module: $module)..."
     mkdir -p "$(dirname "$output")"
-    java -jar build/libs/schemagen-cli.jar -m "$module" -p "$pdu" -o "$output"
+    java -jar "$JAR_FILE" -m "$module" -p "$pdu" -o "$output"
 }
 
 # Generate schema for each PDU
@@ -101,8 +101,11 @@ if [ "$GENERATE_MESSAGE_FRAMES" = true ]; then
     echo "Generating typed MessageFrame schemas..."
 
     RESOURCES_SCHEMAS_DIR="src/main/resources/schemas"
+    MESSAGE_FRAME_SCHEMA="schemas/MessageFrame/MessageFrame.schema.json"
 
-    generate_schema "MessageFrame" "MessageFrame" \
+    mkdir -p "${RESOURCES_SCHEMAS_DIR}/MessageFrame"
+    echo "Copying MessageFrame schema to ${RESOURCES_SCHEMAS_DIR}/MessageFrame/..."
+    cp "$MESSAGE_FRAME_SCHEMA" \
         "${RESOURCES_SCHEMAS_DIR}/MessageFrame/MessageFrame.schema.json"
 
     for mf_entry in "${MESSAGE_FRAMES[@]}"; do

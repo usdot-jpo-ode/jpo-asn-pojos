@@ -49,7 +49,7 @@ Typed `MessageFrame` schemas (e.g. `BasicSafetyMessageMessageFrame.schema.json`)
 This will:
 
 1. Generate all PDU schemas into the `schemas/` directory
-2. Generate the generic `MessageFrame` schema to `src/main/resources/schemas/MessageFrame/`
+2. Copy the generic `MessageFrame` schema from `schemas/` into `src/main/resources/schemas/MessageFrame/`
 3. Generate typed MessageFrame schemas via the CLI for all committed message types
 
 Typed MessageFrame classes use custom Jackson serializers that omit the `messageId`/`value` envelope from the default schema output. The generator's `Asn1Module` special-cases these classes to emit the full wire-format envelope.
