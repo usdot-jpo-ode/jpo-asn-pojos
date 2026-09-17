@@ -36,4 +36,20 @@ This script will generate JSON schemas for the following messages:
 - RTCMCorrections
 - RoadSafetyMessage
 
-The generated schemas will be placed in the `schemas` directory. To create specific `MessageFrame` type schemas, copy the specific schema from the [MessageFrame](./schemas/MessageFrame/MessageFrame.schema.json) schema. However, only the various MessageFrame schemas have been committed to version control due to reducing redundancy. These are located in the [resources](src/main/resources/schemas/) folder of the project.
+The generated schemas will be placed in the `schemas` directory.
+
+### MessageFrame Schema Regeneration
+
+Typed `MessageFrame` schemas (e.g. `BasicSafetyMessageMessageFrame.schema.json`) are committed in [src/main/resources/schemas/](src/main/resources/schemas/). To regenerate all of them:
+
+```bash
+./batch_gen_schemas.sh --message-frames
+```
+
+This will:
+
+1. Generate all PDU schemas into the `schemas/` directory
+2. Copy the generic `MessageFrame` schema from `schemas/` into `src/main/resources/schemas/MessageFrame/`
+3. Generate typed MessageFrame schemas via the CLI for all committed message types
+
+Typed MessageFrame classes use custom Jackson serializers that omit the `messageId`/`value` envelope from the default schema output. The generator's `Asn1Module` special-cases these classes to emit the full wire-format envelope.

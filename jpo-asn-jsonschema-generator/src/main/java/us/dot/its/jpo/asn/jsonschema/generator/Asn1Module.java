@@ -20,7 +20,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 import us.dot.its.jpo.asn.runtime.types.Asn1Bitstring;
 import us.dot.its.jpo.asn.runtime.types.Asn1Boolean;
@@ -39,7 +41,16 @@ import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
 
 public class Asn1Module implements Module {
+  private final boolean emitMessageFrameEnvelope;
   private final ObjectMapper objectMapper = new ObjectMapper();
+
+  public Asn1Module() {
+    this(false);
+  }
+
+  public Asn1Module(boolean emitMessageFrameEnvelope) {
+    this.emitMessageFrameEnvelope = emitMessageFrameEnvelope;
+  }
 
   @Override
   public void applyToConfigBuilder(SchemaGeneratorConfigBuilder schemaGeneratorConfigBuilder) {
@@ -100,6 +111,10 @@ public class Asn1Module implements Module {
       Asn1ParameterizedTypes typeAnnot = clazz.getAnnotation(Asn1ParameterizedTypes.class);
       if (typeAnnot != null) {
         return provideParameterizedTypeDefinition(resolvedType, typeAnnot, context);
+      }
+
+      if (isTypedMessageFrame(clazz) && emitMessageFrameEnvelope) {
+        return provideMessageFrameDefinition(resolvedType, clazz, context);
       }
     }
 
@@ -162,7 +177,7 @@ public class Asn1Module implements Module {
         Class<?> valueClass = (Class<?>) paramType.getActualTypeArguments()[0];
         
         // Generate schema for the value class
-        JsonSchemaGenerator gen = new JsonSchemaGenerator(valueClass);
+        JsonSchemaGenerator gen = new JsonSchemaGenerator(valueClass, false);
         String schemaJson = gen.generate();
         ObjectNode valueSchema = (ObjectNode) objectMapper.readTree(schemaJson);
         // Remove $schema field from sub-schemas
@@ -246,6 +261,73 @@ public class Asn1Module implements Module {
     return new CustomDefinition(node);
   }
 
+  private boolean isTypedMessageFrame(Class<?> clazz) {
+    if (!clazz.getSimpleName().endsWith("MessageFrame")) {
+      return false;
+    }
+
+    Type genericSuperclass = clazz.getGenericSuperclass();
+    if (!(genericSuperclass instanceof ParameterizedType parameterizedType)) {
+      return false;
+    }
+
+    Type rawType = parameterizedType.getRawType();
+    return rawType instanceof Class<?> rawClass && rawClass.getSimpleName().equals("MessageFrame");
+  }
+
+  private CustomDefinition provideMessageFrameDefinition(
+      ResolvedType resolvedType, Class<?> messageFrameClass, SchemaGenerationContext context) {
+    try {
+      Object messageFrameInstance = construct(messageFrameClass);
+      Method getMessageId = messageFrameClass.getMethod("getMessageId");
+      Method getName = messageFrameClass.getMethod("getName");
+
+      Object messageIdObj = getMessageId.invoke(messageFrameInstance);
+      long messageId = ((Asn1Integer) messageIdObj).getValue();
+      String pduName = (String) getName.invoke(messageFrameInstance);
+
+      ParameterizedType parameterizedType =
+          (ParameterizedType) messageFrameClass.getGenericSuperclass();
+      Class<?> pduClass = (Class<?>) parameterizedType.getActualTypeArguments()[0];
+
+      ObjectNode pduSchema =
+          (ObjectNode) objectMapper.readTree(new JsonSchemaGenerator(pduClass, false).generate());
+      pduSchema.remove("$schema");
+
+      ObjectNode node = context.getGeneratorConfig().createObjectNode();
+      node.put("type", "object");
+      node.put("title", resolvedType.getBriefDescription());
+      node.put("description", "ASN.1 SEQUENCE Type");
+
+      ObjectNode properties = node.putObject("properties");
+
+      ObjectNode messageIdProp = properties.putObject("messageId");
+      messageIdProp.put("type", "integer");
+      messageIdProp.put("const", messageId);
+
+      ObjectNode valueProp = properties.putObject("value");
+      valueProp.put("type", "object");
+      valueProp.put("title", resolvedType.getBriefDescription() + "Value");
+      valueProp.put("description", "ASN.1 SEQUENCE Type");
+
+      ObjectNode valueProperties = valueProp.putObject("properties");
+      ObjectNode pduWrapper = valueProperties.putObject(pduName);
+      pduWrapper.setAll(pduSchema);
+
+      ArrayNode valueRequired = valueProp.putArray("required");
+      valueRequired.add(pduName);
+
+      ArrayNode required = node.putArray("required");
+      required.add("messageId");
+      required.add("value");
+
+      return new CustomDefinition(node);
+    } catch (Exception e) {
+      throw new RuntimeException(
+          "Failed to generate schema for MessageFrame type: " + messageFrameClass.getName(), e);
+    }
+  }
+
   private CustomDefinition provideParameterizedTypeDefinition(ResolvedType resolvedType,
       Asn1ParameterizedTypes typeAnnot, SchemaGenerationContext context) {
     
@@ -303,7 +385,7 @@ public class Asn1Module implements Module {
     
     if (isComplexType) {
       try {
-        JsonSchemaGenerator gen = new JsonSchemaGenerator(type.getErasedType());
+        JsonSchemaGenerator gen = new JsonSchemaGenerator(type.getErasedType(), false);
         String schemaJson = gen.generate();
         // Parse the JSON string into an ObjectNode using ObjectMapper
         ObjectNode schema = (ObjectNode) objectMapper.readTree(schemaJson);

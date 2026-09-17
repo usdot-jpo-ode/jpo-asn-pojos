@@ -25,19 +25,29 @@ import java.util.Map;
 public class JsonSchemaGenerator {
 
   private final Class<?> clazz;
+  private final boolean emitMessageFrameEnvelope;
   private final static ObjectMapper mapper = new ObjectMapper();
 
   public JsonSchemaGenerator(Class<?> clazz) {
+    this(clazz, true);
+  }
+
+  public JsonSchemaGenerator(Class<?> clazz, boolean emitMessageFrameEnvelope) {
     this.clazz = clazz;
+    this.emitMessageFrameEnvelope = emitMessageFrameEnvelope;
   }
 
   public String generate() throws JsonProcessingException {
+    return generateSchema();
+  }
+
+  private String generateSchema() throws JsonProcessingException {
     var config = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_7, OptionPreset.PLAIN_JSON)
         .with(Option.EXTRA_OPEN_API_FORMAT_VALUES)
         .without(Option.FLATTENED_ENUMS_FROM_TOSTRING)
         .with(Option.DEFINITIONS_FOR_ALL_OBJECTS)
         .with(new JacksonModule())
-        .with(new Asn1Module())
+        .with(new Asn1Module(emitMessageFrameEnvelope))
         .build();
 
     var schemaGenerator = new SchemaGenerator(config);
