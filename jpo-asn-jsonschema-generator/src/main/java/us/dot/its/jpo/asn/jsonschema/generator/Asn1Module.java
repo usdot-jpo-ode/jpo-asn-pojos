@@ -41,16 +41,7 @@ import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.types.Asn1OctetString;
 
 public class Asn1Module implements Module {
-  private final boolean emitMessageFrameEnvelope;
   private final ObjectMapper objectMapper = new ObjectMapper();
-
-  public Asn1Module() {
-    this(false);
-  }
-
-  public Asn1Module(boolean emitMessageFrameEnvelope) {
-    this.emitMessageFrameEnvelope = emitMessageFrameEnvelope;
-  }
 
   @Override
   public void applyToConfigBuilder(SchemaGeneratorConfigBuilder schemaGeneratorConfigBuilder) {
@@ -113,7 +104,7 @@ public class Asn1Module implements Module {
         return provideParameterizedTypeDefinition(resolvedType, typeAnnot, context);
       }
 
-      if (isTypedMessageFrame(clazz) && emitMessageFrameEnvelope) {
+      if (isTypedMessageFrame(clazz)) {
         return provideMessageFrameDefinition(resolvedType, clazz, context);
       }
     }
@@ -177,27 +168,16 @@ public class Asn1Module implements Module {
         Class<?> valueClass = (Class<?>) paramType.getActualTypeArguments()[0];
         
         // Generate schema for the value class
-        JsonSchemaGenerator gen = new JsonSchemaGenerator(valueClass, false);
+        JsonSchemaGenerator gen = new JsonSchemaGenerator(valueClass);
         String schemaJson = gen.generate();
         ObjectNode valueSchema = (ObjectNode) objectMapper.readTree(schemaJson);
         // Remove $schema field from sub-schemas
         valueSchema.remove("$schema");
         
-        // Create a parent field for the value class
+        // Preserve the existing open-type representation for non-object PDUs.
         String parentFieldName = valueClass.getSimpleName();
-        ObjectNode parentField = properties.putObject(parentFieldName);
-        
-        // Update the schema with the value type's properties
-        if (valueSchema.has("properties")) {
-          parentField.setAll(valueSchema);
-        }
-        
-        // Add required fields from the value type
-        if (valueSchema.has("required")) {
-          ArrayNode valueRequired = (ArrayNode) valueSchema.get("required");
-          ArrayNode required = node.putArray("required");
-          required.add(parentFieldName);
-        }
+        node = createOpenTypeValueDefinition(resolvedType, parentFieldName,
+            valueSchema.has("properties") ? valueSchema : objectMapper.createObjectNode(), context);
       } catch (Exception e) {
         // If generation fails, keep the empty schema
       }
@@ -280,19 +260,9 @@ public class Asn1Module implements Module {
     try {
       Object messageFrameInstance = construct(messageFrameClass);
       Method getMessageId = messageFrameClass.getMethod("getMessageId");
-      Method getName = messageFrameClass.getMethod("getName");
 
       Object messageIdObj = getMessageId.invoke(messageFrameInstance);
       long messageId = ((Asn1Integer) messageIdObj).getValue();
-      String pduName = (String) getName.invoke(messageFrameInstance);
-
-      ParameterizedType parameterizedType =
-          (ParameterizedType) messageFrameClass.getGenericSuperclass();
-      Class<?> pduClass = (Class<?>) parameterizedType.getActualTypeArguments()[0];
-
-      ObjectNode pduSchema =
-          (ObjectNode) objectMapper.readTree(new JsonSchemaGenerator(pduClass, false).generate());
-      pduSchema.remove("$schema");
 
       ObjectNode node = context.getGeneratorConfig().createObjectNode();
       node.put("type", "object");
@@ -305,17 +275,11 @@ public class Asn1Module implements Module {
       messageIdProp.put("type", "integer");
       messageIdProp.put("const", messageId);
 
-      ObjectNode valueProp = properties.putObject("value");
-      valueProp.put("type", "object");
+      ObjectNode valueProp = provideMessageFrameValueDefinition(resolvedType, context);
+      properties.set("value", valueProp);
       valueProp.put("title", resolvedType.getBriefDescription() + "Value");
-      valueProp.put("description", "ASN.1 SEQUENCE Type");
-
-      ObjectNode valueProperties = valueProp.putObject("properties");
-      ObjectNode pduWrapper = valueProperties.putObject(pduName);
-      pduWrapper.setAll(pduSchema);
-
-      ArrayNode valueRequired = valueProp.putArray("required");
-      valueRequired.add(pduName);
+      valueProp.putArray("required").add(
+          (String) messageFrameClass.getMethod("getName").invoke(messageFrameInstance));
 
       ArrayNode required = node.putArray("required");
       required.add("messageId");
@@ -326,6 +290,40 @@ public class Asn1Module implements Module {
       throw new RuntimeException(
           "Failed to generate schema for MessageFrame type: " + messageFrameClass.getName(), e);
     }
+  }
+
+  // Resolve the serialized PDU name and payload for a complete typed frame.
+  private ObjectNode provideMessageFrameValueDefinition(
+      ResolvedType resolvedType, SchemaGenerationContext context) {
+    Class<?> messageFrameClass = resolvedType.getErasedType();
+    try {
+      Object instance = construct(messageFrameClass);
+      String pduName = (String) messageFrameClass.getMethod("getName").invoke(instance);
+      ParameterizedType superclass = (ParameterizedType) messageFrameClass.getGenericSuperclass();
+      Class<?> pduClass = (Class<?>) superclass.getActualTypeArguments()[0];
+      ObjectNode pduSchema =
+          (ObjectNode) objectMapper.readTree(new JsonSchemaGenerator(pduClass).generate());
+      pduSchema.remove("$schema");
+
+      return createOpenTypeValueDefinition(resolvedType, pduName, pduSchema, context);
+    } catch (Exception e) {
+      throw new RuntimeException(
+          "Failed to generate value schema for MessageFrame type: " + messageFrameClass.getName(), e);
+    }
+  }
+
+  // Shared by complete typed frames and the open-type sequence value handler.
+  private ObjectNode createOpenTypeValueDefinition(ResolvedType resolvedType,
+      String pduName, ObjectNode pduSchema, SchemaGenerationContext context) {
+    ObjectNode node = context.getGeneratorConfig().createObjectNode();
+    node.put("type", "object");
+    node.put("title", resolvedType.getBriefDescription());
+    node.put("description", "ASN.1 SEQUENCE Type");
+    node.putObject("properties").set(pduName, pduSchema);
+    if (pduSchema.has("required")) {
+      node.putArray("required").add(pduName);
+    }
+    return node;
   }
 
   private CustomDefinition provideParameterizedTypeDefinition(ResolvedType resolvedType,
@@ -362,8 +360,11 @@ public class Asn1Module implements Module {
       Class<?> valueClass = type.value();
       ResolvedType valueType = context.getTypeContext().resolve(valueClass);
       
-      // Generate schema for the value type
-      ObjectNode valueSchema = generateRecursiveSchema(valueType, context);
+      // Generic MessageFrame branches already have their envelope. Use the
+      // sequence value handler directly, rather than generating a complete frame.
+      ObjectNode valueSchema = isTypedMessageFrame(valueClass)
+          ? (ObjectNode) provideSequenceDefinition(valueType, context).getValue()
+          : generateRecursiveSchema(valueType, context);
       valueProp.setAll(valueSchema);
 
       // Add required properties
@@ -385,7 +386,7 @@ public class Asn1Module implements Module {
     
     if (isComplexType) {
       try {
-        JsonSchemaGenerator gen = new JsonSchemaGenerator(type.getErasedType(), false);
+        JsonSchemaGenerator gen = new JsonSchemaGenerator(type.getErasedType());
         String schemaJson = gen.generate();
         // Parse the JSON string into an ObjectNode using ObjectMapper
         ObjectNode schema = (ObjectNode) objectMapper.readTree(schemaJson);

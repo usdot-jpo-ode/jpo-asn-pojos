@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.is;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SpecVersion;
@@ -34,6 +35,8 @@ import us.dot.its.jpo.asn.j2735.r2024.SensorDataSharingMessage.SensorDataSharing
 import us.dot.its.jpo.asn.j2735.r2024.SignalRequestMessage.SignalRequestMessageMessageFrame;
 import us.dot.its.jpo.asn.j2735.r2024.SignalStatusMessage.SignalStatusMessageMessageFrame;
 import us.dot.its.jpo.asn.j2735.r2024.TravelerInformation.TravelerInformationMessageFrame;
+import us.dot.its.jpo.asn.runtime.annotations.Asn1Property;
+import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
 
 class MessageFrameSchemaGeneratorTest {
 
@@ -166,14 +169,31 @@ class MessageFrameSchemaGeneratorTest {
   }
 
   @Test
-  void nestedMessageFrameGenerationUsesOpenTypeWrapperOnly() throws IOException {
-    JsonNode schema =
-        MAPPER.readTree(new JsonSchemaGenerator(BasicSafetyMessageMessageFrame.class, false).generate());
+  void genericMessageFrameValueUsesOpenTypeWrapperOnly() throws IOException {
+    JsonNode genericSchema =
+        MAPPER.readTree(new JsonSchemaGenerator(MessageFrame.class).generate());
+    JsonNode schema = findBranchByMessageId((ArrayNode) genericSchema.get("oneOf"), 20)
+        .get("properties").get("value");
 
     assertThat(schema.get("properties").has("messageId"), is(false));
     assertThat(schema.get("properties").has("value"), is(false));
     assertThat(schema.get("properties").has("BasicSafetyMessage"), is(true));
     assertThat(toStringList(schema.get("required")), contains("BasicSafetyMessage"));
+  }
+
+  public static class SequenceWithMessageFrame extends Asn1Sequence {
+    @Asn1Property(tag = 0)
+    public BasicSafetyMessageMessageFrame frame;
+  }
+
+  @Test
+  void typedMessageFrameNestedInOrdinarySequenceKeepsItsEnvelope() throws IOException {
+    JsonNode schema = MAPPER.readTree(new JsonSchemaGenerator(SequenceWithMessageFrame.class).generate());
+    JsonNode frame = schema.get("properties").get("frame");
+    assertThat(toStringList(frame.get("required")), contains("messageId", "value"));
+    assertThat(frame.get("properties").get("messageId").get("const").asInt(), equalTo(20));
+    assertThat(frame.get("properties").get("value").get("properties")
+        .has("BasicSafetyMessage"), is(true));
   }
 
   @Test
@@ -197,6 +217,7 @@ class MessageFrameSchemaGeneratorTest {
           "Generic MessageFrame branches must not double-wrap messageId/value",
           valueProperties.has("messageId"),
           is(false));
+      assertThat(valueProperties.has("value"), is(false));
       assertThat(valueProperties.size(), greaterThan(0));
     }
 
@@ -204,6 +225,30 @@ class MessageFrameSchemaGeneratorTest {
     assertThat(
         basicSafetyBranch.get("properties").get("value").get("properties").has("BasicSafetyMessage"),
         is(true));
+  }
+
+  @ParameterizedTest
+  @MethodSource("typedMessageFrameProvider")
+  void generatedTypedSchemaRejectsMissingEnvelopeAndWrongMessageId(
+      Class<?> messageFrameClass, String module, String schemaFileName, String pduName,
+      int messageId, List<String> sampleJsonResources) throws IOException {
+    JsonNode schemaNode = MAPPER.readTree(new JsonSchemaGenerator(messageFrameClass).generate());
+    JsonSchema schema = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7)
+        .getSchema(schemaNode);
+    ObjectNode sample =
+        (ObjectNode) MAPPER.readTree(
+            JsonFileLoader.loadResource(sampleJsonResources.getFirst()));
+
+    assertThat(schema.validate(sample.get("value")).size(), greaterThan(0));
+    var missingValue = sample.deepCopy();
+    missingValue.remove("value");
+    assertThat(schema.validate(missingValue).size(), greaterThan(0));
+    var wrongId = sample.deepCopy();
+    wrongId.put("messageId", messageId + 1);
+    assertThat(schema.validate(wrongId).size(), greaterThan(0));
+    var missingPdu = sample.deepCopy();
+    ((ObjectNode) missingPdu.get("value")).remove(pduName);
+    assertThat(schema.validate(missingPdu).size(), greaterThan(0));
   }
 
   @ParameterizedTest
