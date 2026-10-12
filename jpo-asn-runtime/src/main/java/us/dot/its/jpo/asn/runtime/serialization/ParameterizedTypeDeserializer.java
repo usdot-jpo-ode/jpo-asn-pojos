@@ -4,6 +4,7 @@ import static us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes.IdTy
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 import us.dot.its.jpo.asn.runtime.annotations.Asn1ParameterizedTypes;
 import us.dot.its.jpo.asn.runtime.types.Asn1Sequence;
+import us.dot.its.jpo.asn.runtime.utils.XmlUtils;
 
 
 /**
@@ -59,24 +61,13 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
         if (jsonParser instanceof FromXmlParser xmlParser) {
             // XER
             XmlMapper xmlMapper = (XmlMapper)xmlParser.getCodec();
-            TreeNode node = xmlMapper.readTree(xmlParser);
-
-            if (node instanceof ObjectNode objectNode) {
-                log.trace("ObjectNode: {}", objectNode);
-                JsonNode idPropNode = objectNode.findValue(idPropName);
-                String xml = xmlMapper.writeValueAsString(node);
-                log.trace("node xml: {}", xml);
-                if (idPropNode == null) {
-                    throw new RuntimeException("idPropNode is null");
-                }
-                final Object id = (idType == INTEGER) ? idPropNode.asInt() : idPropNode.asText();
-                log.trace("id: {}", id);
-                Class<?> subType = getSubtypeForId(id, idType, types);
-                log.trace("subtype: {}", subType.getName());
-                return (T)xmlMapper.readValue(xml, subType);
-            } else {
-                throw new RuntimeException("Not instance of object");
-            }
+            String xml = XmlUtils.extractXmlSubtree(xmlParser);
+            log.trace("Captured XML subtree: {}", xml);
+            final Object id = findDirectXmlId(xmlMapper, xml, idPropName, idType);
+            log.trace("id: {}", id);
+            Class<?> subType = getSubtypeForId(id, idType, types);
+            log.trace("subtype: {}", subType.getName());
+            return (T)xmlMapper.readValue(xml, subType);
         } else {
             // JER
             TreeNode node = jsonParser.getCodec().readTree(jsonParser);
@@ -100,6 +91,40 @@ public abstract class ParameterizedTypeDeserializer<T extends Asn1Sequence> exte
                 throw new RuntimeException("Not instance of object");
             }
         }
+    }
+
+    private Object findDirectXmlId(XmlMapper xmlMapper, String xml, String idPropName,
+            Asn1ParameterizedTypes.IdType idType) throws IOException {
+        try (JsonParser idParser = xmlMapper.createParser(xml)) {
+            if (idParser.nextToken() != JsonToken.START_OBJECT) {
+                throw new RuntimeException("XML subtree does not start with an object");
+            }
+            FromXmlParser xmlIdParser = (FromXmlParser)idParser;
+            int rootDepth = getXmlNestingDepth(xmlIdParser);
+            int parentDepth = rootDepth - 1;
+            JsonToken token;
+            while ((token = idParser.nextToken()) != null) {
+                int depth = getXmlNestingDepth(xmlIdParser);
+                if (token == JsonToken.END_OBJECT && depth == parentDepth) {
+                    break;
+                }
+                if (token == JsonToken.FIELD_NAME && depth == rootDepth
+                        && idPropName.equals(idParser.getCurrentName())) {
+                    token = idParser.nextToken();
+                    if (token == null || token == JsonToken.END_OBJECT) {
+                        throw new RuntimeException("id property " + idPropName + " has no value");
+                    }
+                    return idType == INTEGER ? idParser.getValueAsInt() : idParser.getValueAsString();
+                }
+            }
+        }
+        throw new RuntimeException("Direct XML id property " + idPropName + " is missing");
+    }
+
+    private int getXmlNestingDepth(FromXmlParser xmlParser) {
+        int nestingDepth = xmlParser.getParsingContext().getNestingDepth();
+        return nestingDepth > 0 ? nestingDepth
+                : XmlUtils.calculateNestingDepth(xmlParser.getParsingContext());
     }
 
     private Class<?> getSubtypeForId(final Object id, Asn1ParameterizedTypes.IdType idType, Asn1ParameterizedTypes.Type[] types) {

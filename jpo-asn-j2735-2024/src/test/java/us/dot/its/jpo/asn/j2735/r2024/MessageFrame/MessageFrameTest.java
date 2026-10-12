@@ -11,12 +11,25 @@ import us.dot.its.jpo.asn.j2735.r2024.SPAT.SPAT;
 import us.dot.its.jpo.asn.j2735.r2024.SPAT.SPATMessageFrame;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
+import org.xmlunit.matchers.CompareMatcher;
+import us.dot.its.jpo.asn.j2735.r2024.RoadSafetyMessage.RoadSafetyMessageMessageFrame;
 
 // Deserialization tests for Generic MessageFrame
 public class MessageFrameTest extends BaseSerializeTest<MessageFrame> {
 
     public MessageFrameTest() {
         super(MessageFrame.class);
+    }
+
+    @Test
+    public void xmlDeserialize_RSM_PreservesStrictGenericChoiceOrder() throws IOException {
+        final String xml = loadResource("/us/dot/its/jpo/asn/j2735/r2024/RoadSafetyMessage/xml/message_frame/rsmf_1.xml");
+        MessageFrame<?> frame = fromXml(xml);
+        assertThat(frame, instanceOf(RoadSafetyMessageMessageFrame.class));
+
+        final String roundTripXml = toXml(frame);
+        assertThat(roundTripXml, CompareMatcher.isIdenticalTo(xml)
+            .ignoreComments().ignoreWhitespace());
     }
 
     @Test

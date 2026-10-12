@@ -4,7 +4,9 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
 import com.fasterxml.jackson.dataformat.xml.deser.XmlReadContext;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Objects;
@@ -139,6 +141,85 @@ public class XmlUtils {
       }
     }
     return xml.toString();
+  }
+
+  /**
+   * Reconstruct the complete XML element at the parser's current object token, preserving the
+   * encounter order of its children. The parser remains positioned on the matching END_OBJECT.
+   *
+   * @param xmlParser XML parser positioned on START_OBJECT for the element to extract
+   * @return The complete XML subtree, including its root element
+   * @throws IOException If the parser is not positioned on an object or the subtree is incomplete
+   */
+  public static String extractXmlSubtree(FromXmlParser xmlParser) throws IOException {
+    if (xmlParser.getCurrentToken() != JsonToken.START_OBJECT) {
+      throw new IOException("extractXmlSubtree requires the parser to be on START_OBJECT");
+    }
+
+    XmlReadContext startContext = xmlParser.getParsingContext();
+    XmlReadContext parentContext = startContext.getParent();
+    String rootName = parentContext == null ? null : parentContext.getCurrentName();
+    if (rootName == null || rootName.isEmpty()) {
+      rootName = xmlParser.getStaxReader().getLocalName();
+    }
+    if (rootName == null || rootName.isEmpty()) {
+      throw new IOException("Unable to determine the root element name for XML subtree");
+    }
+
+    final int parentNestingDepth = getNestingDepth(startContext) - 1;
+    StringBuilder xml = new StringBuilder();
+    Deque<String> openElements = new ArrayDeque<>();
+    xml.append('<').append(rootName).append('>');
+
+    while (true) {
+      JsonToken token = xmlParser.nextToken();
+      if (token == null) {
+        throw new IOException("Unexpected end of XML while extracting <" + rootName + ">");
+      }
+      int nestingDepth = getNestingDepth(xmlParser.getParsingContext());
+
+      if (token == JsonToken.END_OBJECT && nestingDepth == parentNestingDepth) {
+        if (!openElements.isEmpty()) {
+          throw new IOException("Unclosed XML elements while extracting <" + rootName + ">");
+        }
+        xml.append("</").append(rootName).append('>');
+        return xml.toString();
+      }
+
+      switch (token) {
+        case FIELD_NAME -> {
+          String name = xmlParser.getCurrentName();
+          if (name == null || name.isEmpty()) {
+            throw new IOException("Encountered an unnamed XML element in <" + rootName + ">");
+          }
+          xml.append('<').append(name).append('>');
+          openElements.push(name);
+        }
+        case VALUE_STRING, VALUE_NUMBER_INT, VALUE_NUMBER_FLOAT, VALUE_TRUE, VALUE_FALSE -> {
+          if (openElements.isEmpty()) {
+            throw new IOException("Encountered a scalar without an XML element in <" + rootName + ">");
+          }
+          xml.append(StringEscapeUtils.escapeXml11(xmlParser.getText()));
+          xml.append("</").append(openElements.pop()).append('>');
+        }
+        case VALUE_NULL -> {
+          if (openElements.isEmpty()) {
+            throw new IOException("Encountered an empty value without an XML element in <"
+                + rootName + ">");
+          }
+          xml.append("</").append(openElements.pop()).append('>');
+        }
+        case END_OBJECT -> {
+          if (openElements.isEmpty()) {
+            throw new IOException("Encountered an unmatched XML object end in <" + rootName + ">");
+          }
+          xml.append("</").append(openElements.pop()).append('>');
+        }
+        default -> {
+          // START_OBJECT and array boundary tokens describe structure but do not add XML tags.
+        }
+      }
+    }
   }
 
   // Helper method for extracting an xml element from the XmlParser stream
