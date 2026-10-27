@@ -4,10 +4,15 @@
 
 This release requires JDK 25 or newer for consumers of the `jpo-asn-runtime` and
 `jpo-asn-j2735-2024` libraries. The Maven and Gradle library versions were incremented to
-2.0.0 because Java 25 class files are not compatible with Java 21 runtimes.
+2.0.0 because Java 25 class files are not compatible with Java 21 runtimes. The build updates
+Lombok annotation processing, JaCoCo, Gradle, and the repository CI toolchain for Java 25 across
+all subprojects. The `jpo-asn-jsonschema-generator` module also adds CLI regeneration of typed
+MessageFrame JSON schemas with the correct `messageId`/`value` wire-format envelope.
 
-The build also updates Lombok annotation processing, JaCoCo, Gradle, and the repository CI
-toolchain for Java 25.
+The code was reviewed in detail within the following PRs:
+
+* [JDK 25 Updates](https://github.com/usdot-jpo-ode/jpo-asn-pojos/pull/24)
+* [MessageFrame Schema Generation Fixes](https://github.com/usdot-jpo-ode/jpo-asn-pojos/pull/25)
 
 ## Version 1.2.0, April 2026
 
